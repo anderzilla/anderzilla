@@ -24,8 +24,20 @@ def cms_api(req: func.HttpRequest) -> func.HttpResponse:
         maximum = 2900000 if req.route_params.get('path', '') == 'admin/media-upload' else 300000
         if len(raw) > maximum:
             raise Error(413, 'too_large', 'Requisição muito grande.')
-        principal = swa_principal(req.headers.get('x-ms-client-principal'))
-        result = dispatch(CMS(AzureSQLStore()), principal, req.method, '/api/' + req.route_params.get('path', ''), json.loads(raw) if raw else {}, os.environ.get('CMS_ENVIRONMENT', 'homolog'))
+        from urllib.parse import urlsplit
+        query = urlsplit(req.url).query
+        route = '/api/' + req.route_params.get('path', '') + ('?' + query if query else '')
+        is_worker = route.startswith('/api/worker/')
+        if is_worker:
+            # Worker auth: Bearer only, no query/cookie token, no x-ms-client-principal trust
+            from worker_auth import authenticate_worker
+
+            header_dict = {k: v for k, v in req.headers.items()}
+            principal = authenticate_worker(header_dict, url=req.url)
+            result = dispatch(CMS(AzureSQLStore()), principal, req.method, route, json.loads(raw) if raw else {}, os.environ.get('CMS_ENVIRONMENT', 'homolog'))
+        else:
+            principal = swa_principal(req.headers.get('x-ms-client-principal'))
+            result = dispatch(CMS(AzureSQLStore()), principal, req.method, route, json.loads(raw) if raw else {}, os.environ.get('CMS_ENVIRONMENT', 'homolog'))
         return func.HttpResponse(json.dumps(result, ensure_ascii=False), mimetype='application/json', headers=headers)
     except Error as error:
         return func.HttpResponse(json.dumps({'error': {'code': error.code, 'message': str(error)}}), status_code=error.status, mimetype='application/json', headers=headers)

@@ -52,7 +52,7 @@ def main():
                     raise Error(413, 'too_large', 'Requisição muito grande.')
                 body = json.loads(self.rfile.read(length)) if length else {}
                 principal = {'id': 'local-operator', 'name': 'Operador local', 'roles': ['anderzilla_admin']}
-                self.respond(200, dispatch(cms, principal, self.command, urlsplit(self.path).path, body, 'local', 'sqlite-local'))
+                self.respond(200, dispatch(cms, principal, self.command, self.path, body, 'local', 'sqlite-local'))
             except Error as error:
                 self.respond(error.status, {'error': {'code': error.code, 'message': str(error)}})
             except (ValueError, UnicodeDecodeError):

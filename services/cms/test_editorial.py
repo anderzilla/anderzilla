@@ -1,12 +1,16 @@
 import base64
+import copy
 import io
+import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 from PIL import Image
-from core import CMS, Error, validate
-from storage import SQLiteStore
+from core import CMS, Error, FIELDS, PUBLIC_COLLECTIONS, validate, validate_references
+from storage import SQLiteStore, Session
 from seed_examples import seed
+from import_newsroom import import_manifest
 
 ADMIN = {'id': 'admin', 'roles': ['anderzilla_admin']}
 
@@ -34,6 +38,8 @@ class EditorialTests(unittest.TestCase):
         self.assertEqual(row['data']['mimeType'], 'image/webp')
         image = Image.open(io.BytesIO(base64.b64decode(row['data']['assetBase64'])))
         self.assertFalse(image.getexif())
+        with self.cms.store.transaction() as db:
+            self.assertEqual(db.media_bytes(), len(row['data']['assetBase64']))
         data = {key: value for key, value in row['data'].items() if key not in {'assetBase64', 'assetSha256', 'mimeType'}}
         changed = self.cms.save(ADMIN, 'media', data, row['id'], 1)
         self.assertEqual(changed['data']['assetBase64'], row['data']['assetBase64'])
@@ -80,6 +86,94 @@ class EditorialTests(unittest.TestCase):
         self.approve('pages', self.cms.save(ADMIN, 'pages', data))
         with self.assertRaises(Error):
             self.approve('pages', self.cms.save(ADMIN, 'pages', data))
+
+    def test_newsroom_rejects_unsafe_sources_dates_and_social(self):
+        for data in ({'sources': json.dumps([{'name':'Bad', 'url':'https://127.0.0.1/a'}])}, {'sources':'{}'}, {'sources':'[{}]'}, {'verifiedAt':'2026-19-90'}, {'hashtagsPT':'#Games invalid'}, {'socialInstagramPT':'x'*2201}):
+            with self.assertRaises(Error):
+                validate('content', data)
+        validate('content', {'sources':json.dumps([{'name':'Official','url':'https://example.com/news','publishedAt':'2026-09-10'}]),'verifiedAt':'2026-09-10','hashtagsPT':'#Games #Programação'})
+
+    def test_newsroom_import_is_audited_and_retry_preserves_edits(self):
+        data = {'titlePT':'Notícia','titleEN':'News','summaryPT':'Resumo','summaryEN':'Summary','bodyPT':'Texto','bodyEN':'Text','category':'games','sourceName':'Official','sourceUrl':'https://example.com/news','publishedAt':'2026-09-10','slugPT':'noticia','slugEN':'news'}
+        manifest = {'items':[{'key':'news','data':data}]}
+        first = import_manifest(self.cms, manifest, approve=True)[0]
+        self.assertEqual(first['status'], 'approved')
+        self.assertEqual(len(self.cms.revisions(ADMIN, 'content', first['id'])['items']), 2)
+        retry = import_manifest(self.cms, manifest, approve=True)[0]
+        self.assertEqual(retry['action'], 'preserved')
+        self.assertEqual(retry['version'], 2)
+        with self.cms.store.transaction() as db:
+            self.assertTrue(all(event['actor']=='operator:editorial-launch' for event in db.recent_audit()))
+
+    def test_social_image_must_be_approved_and_release_rechecks_reference(self):
+        data = {'titlePT':'Notícia','titleEN':'News','summaryPT':'Resumo','summaryEN':'Summary','bodyPT':'Texto','bodyEN':'Text','category':'games','sourceName':'Official','sourceUrl':'https://example.com/news','publishedAt':'2026-09-10','slugPT':'social','slugEN':'social'}
+        image = self.upload()
+        row = self.cms.save(ADMIN, 'content', {**data, 'socialMediaId':image['id']})
+        with self.assertRaises(Error):
+            self.approve('content', row)
+        image = self.approve('media', image)
+        self.approve('content', row)
+        self.cms.release(ADMIN, 'social-reference-before-archive')
+        self.cms.save(ADMIN, 'media', None, image['id'], image['version'], 'archive')
+        with self.assertRaises(Error):
+            self.cms.release(ADMIN, 'social-archived-reference')
+
+    def test_release_cache_preserves_snapshot_and_reads_each_collection_once(self):
+        seed(self.cms.store, approved=True)
+        expected = {}
+        # Reference implementation of the original uncached release selection.
+        with self.cms.store.transaction() as db:
+            for collection in sorted(PUBLIC_COLLECTIONS):
+                expected[collection] = []
+                for row in db.records(collection):
+                    if row['status'] != 'approved':
+                        continue
+                    validate(collection, row['data'], approved=True, internal=True)
+                    validate_references(db, collection, row['data'], row['id'])
+                    public = copy.deepcopy(row)
+                    public['data'].pop('approvalReference', None)
+                    expected[collection].append(public)
+            for collection in ('missions', 'rewards'):
+                demos = [row for row in db.records(collection) if row['status'] == 'approved' and row['data'].get('isDemo') is True]
+                if demos:
+                    expected[collection] = demos
+        reads = []
+        original = Session.records
+
+        def counted(db, collection):
+            reads.append(collection)
+            return original(db, collection)
+
+        with patch.object(Session, 'records', counted), patch.object(Session, 'record', side_effect=AssertionError('Release must not query individual references')):
+            release = self.cms.release(ADMIN, 'release-cache-equivalence')
+            self.assertEqual(sorted(reads), sorted(FIELDS))
+            reads.clear()
+            self.assertEqual(self.cms.release(ADMIN, 'release-cache-equivalence'), release)
+            self.assertEqual(reads, [])
+        snapshot = self.cms.releases(ADMIN, release['id'], True)
+        self.assertEqual(snapshot['collections'], expected)
+
+    def test_release_cache_rejects_preexisting_duplicate_slugs(self):
+        row = self.approve('pages', self.cms.save(ADMIN, 'pages', {'titlePT':'Page', 'slugPT':'duplicate', 'bodyPT':'Body'}))
+        duplicate = {**copy.deepcopy(row), 'id':'duplicate-fixture', 'version':1}
+        # Simulate a legacy inconsistent store only inside the disposable fixture.
+        with self.cms.store.transaction() as db:
+            db.save_record('pages', duplicate)
+        with self.assertRaises(Error) as failure:
+            self.cms.release(ADMIN, 'duplicate-cache-release')
+        self.assertEqual(failure.exception.code, 'duplicate_slug')
+
+    def test_import_uploads_cover_and_separate_social_image(self):
+        output = io.BytesIO()
+        Image.new('RGB', (120, 63), '#0000ff').save(output, format='PNG')
+        cover = {'filename':'news-cover.png','contentBase64':base64.b64encode(output.getvalue()).decode(),'altPT':'Arte editorial','altEN':'Editorial art','credit':'Fixture','license':'Own test fixture'}
+        data = {'titlePT':'Notícia','titleEN':'News','summaryPT':'Resumo','summaryEN':'Summary','bodyPT':'Texto','bodyEN':'Text','category':'games','sourceName':'Official','sourceUrl':'https://example.com/news','publishedAt':'2026-09-10','slugPT':'noticia','slugEN':'news'}
+        manifest = {'items':[{'key':'news','data':data,'cover':cover,'socialImage':{**cover,'filename':'news-social.png'}}]}
+        result = import_manifest(self.cms, manifest, approve=True)
+        row = self.cms.list(ADMIN, 'content')['items'][0]
+        self.assertNotEqual(row['data']['socialMediaId'], row['data']['coverMediaId'])
+        self.assertEqual(len(self.cms.list(ADMIN, 'media')['items']), 2)
+        self.assertEqual(result[0]['status'], 'approved')
 
 
 if __name__ == '__main__':

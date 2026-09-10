@@ -20,6 +20,14 @@ class Session:
         rows = self.execute('SELECT document FROM cms_records WHERE collection=? ORDER BY updated_at DESC', (collection,)).fetchall()
         return [json.loads(row[0]) for row in rows]
 
+    def media_bytes(self):
+        """Return encoded quota usage without transferring every uploaded image."""
+        if self.sql_server:
+            query = "SELECT COALESCE(SUM(CONVERT(bigint,LEN(asset.assetBase64))),0) FROM cms_records CROSS APPLY OPENJSON(document) WITH (assetBase64 nvarchar(max) '$.data.assetBase64') AS asset WHERE collection='media'"
+        else:
+            query = "SELECT COALESCE(SUM(length(json_extract(document, '$.data.assetBase64'))),0) FROM cms_records WHERE collection='media'"
+        return int(self.execute(query).fetchone()[0])
+
     def record(self, collection, record_id):
         row = self.execute('SELECT document FROM cms_records WHERE collection=? AND id=?', (collection, record_id)).fetchone()
         return json.loads(row[0]) if row else None

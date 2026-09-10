@@ -12,9 +12,10 @@ from urllib.parse import urlsplit
 
 COMMON = {'titlePT', 'titleEN', 'summaryPT', 'summaryEN', 'isDemo'}
 EDITORIAL = {'slugPT', 'slugEN', 'seoTitlePT', 'seoTitleEN', 'seoDescriptionPT', 'seoDescriptionEN', 'tags', 'author', 'coverMediaId', 'mediaIds'}
+NEWSROOM = {'sources', 'verifiedAt', 'eventDate', 'editorialType', 'socialMediaId'} | {name + lang for name in ('hashtags', 'socialInstagram', 'socialFacebook', 'socialWhatsapp') for lang in ('PT', 'EN')}
 ASSET_FIELDS = {'assetBase64', 'assetSha256', 'mimeType'}
 FIELDS = {
-    'content': COMMON | EDITORIAL | {'bodyPT', 'bodyEN', 'category', 'sourceName', 'sourceUrl', 'publishedAt', 'imageUrl', 'slug'},
+    'content': COMMON | EDITORIAL | NEWSROOM | {'bodyPT', 'bodyEN', 'category', 'sourceName', 'sourceUrl', 'publishedAt', 'imageUrl', 'slug'},
     'events': COMMON | {'platform', 'url', 'startsAt', 'endsAt', 'timezone'},
     'offers': COMMON | {'url', 'priceMinor', 'currency', 'disclosurePT', 'disclosureEN'},
     'affiliates': COMMON | {'url', 'disclosurePT', 'disclosureEN', 'approvalReference'},
@@ -82,7 +83,7 @@ def validate(collection, data, approved=False, internal=False):
         elif key in {'points', 'limit', 'priceMinor', 'width', 'height'}:
             if type(value) is not int or not 0 <= value <= 100000000:
                 raise Error(422, 'invalid_number', key + ': inteiro não negativo obrigatório.')
-        elif not isinstance(value, str) or len(value) > (50000 if key.startswith('body') else 3000):
+        elif not isinstance(value, str) or len(value) > (50000 if key.startswith('body') else 15000 if key == 'sources' else 3000):
             raise Error(422, 'invalid_text', key + ': texto inválido ou muito longo.')
         if isinstance(value, str) and value:
             if key.lower().endswith('url') or key == 'url':
@@ -100,10 +101,10 @@ def validate(collection, data, approved=False, internal=False):
                     address = None
                 if address and not address.is_global:
                     raise Error(422, 'invalid_url', 'Endereço privado não permitido.')
-            if key in {'startsAt', 'endsAt', 'publishedAt'}:
+            if key in {'startsAt', 'endsAt', 'publishedAt', 'verifiedAt', 'eventDate'}:
                 try:
                     parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
-                    if parsed.tzinfo is None and not (key == 'publishedAt' and re.fullmatch(r'\d{4}-\d{2}-\d{2}', value)):
+                    if parsed.tzinfo is None and not (key in {'publishedAt', 'verifiedAt', 'eventDate'} and re.fullmatch(r'\d{4}-\d{2}-\d{2}', value)):
                         raise ValueError()
                 except ValueError:
                     raise Error(422, 'invalid_date', key + ': data ISO com fuso obrigatório.')
@@ -121,6 +122,30 @@ def validate(collection, data, approved=False, internal=False):
         raise Error(422, 'invalid_period', 'Fim deve ser posterior ao início.')
     if collection == 'content' and data.get('category') and data['category'] not in {'games', 'consoles', 'celulares', 'ia', 'gadgets', 'curiosidades'}:
         raise Error(422, 'invalid_category', 'Categoria editorial não permitida.')
+    if collection == 'content':
+        if data.get('editorialType') and data['editorialType'] not in {'news', 'analysis', 'comparison', 'explainer', 'rumor'}:
+            raise Error(422, 'invalid_editorial_type', 'Tipo editorial inválido.')
+        if data.get('sources'):
+            try:
+                sources = json.loads(data['sources'])
+                if not isinstance(sources, list) or not 1 <= len(sources) <= 20:
+                    raise ValueError()
+                for source in sources:
+                    if not isinstance(source, dict) or set(source) - {'name', 'url', 'publishedAt', 'note'}:
+                        raise ValueError()
+                    if not isinstance(source.get('name'), str) or not source['name'].strip() or not source.get('url'):
+                        raise ValueError()
+                    validate('content', {'sourceUrl': source['url'], 'sourceName': source['name'], **({'publishedAt': source['publishedAt']} if 'publishedAt' in source else {})})
+                    if 'note' in source and (not isinstance(source['note'], str) or len(source['note']) > 1500):
+                        raise ValueError()
+            except (ValueError, TypeError):
+                raise Error(422, 'invalid_sources', 'Fontes: use uma lista JSON com 1–20 objetos name, url e data/nota opcionais.')
+        for key in ('hashtagsPT', 'hashtagsEN'):
+            if data.get(key) and (len(data[key].split()) > 15 or any(not re.fullmatch(r'#[\w]+', tag) for tag in data[key].split())):
+                raise Error(422, 'invalid_hashtags', 'Use até 15 hashtags separadas por espaço, sem pontuação.')
+        for key in ('socialInstagramPT', 'socialInstagramEN'):
+            if len(data.get(key, '')) > 2200:
+                raise Error(422, 'invalid_social', 'Legenda Instagram: máximo 2200 caracteres.')
     if collection == 'campaigns' and data.get('placement') and data['placement'] != 'home':
         raise Error(422, 'invalid_placement', 'Espaço disponível nesta entrega: home.')
     if approved:
@@ -139,6 +164,10 @@ def validate(collection, data, approved=False, internal=False):
 def validate_references(db, collection, data, record_id=None):
     """Check references again at release time, since a dependency may be archived."""
     if collection in {'content', 'pages'}:
+        if data.get('socialMediaId'):
+            media = db.record('media', data['socialMediaId'])
+            if not media or media['status'] != 'approved' or media['data'].get('mediaType', 'image') != 'image':
+                raise Error(422, 'invalid_social_image', 'Selecione uma imagem social aprovada na biblioteca.')
         if data.get('coverMediaId'):
             media = db.record('media', data['coverMediaId'])
             if not media or media['status'] != 'approved' or media['data'].get('mediaType', 'image') != 'image':
@@ -207,7 +236,7 @@ class CMS:
                     url='/media/' + sha + '.webp', assetBase64=base64.b64encode(asset).decode(), assetSha256=sha, mimeType='image/webp')
         validate('media', data, approved=True, internal=True)
         with self.store.transaction() as db:
-            if sum(len(row['data'].get('assetBase64', '')) for row in db.records('media')) + len(data['assetBase64']) > 14000000:
+            if db.media_bytes() + len(data['assetBase64']) > 14000000:
                 raise Error(413, 'media_quota', 'Biblioteca atingiu o limite inicial de 10 MB. Revise os arquivos antes de continuar.')
             record = {'id': str(uuid.uuid4()), 'version': 1, 'status': 'draft', 'data': data, 'updatedAt': now()}
             db.save_record('media', record)
@@ -272,14 +301,29 @@ class CMS:
             existing = db.release_by_key(key)
             if existing:
                 return existing
+            # A release is read-only until its snapshot is written. Load each
+            # collection once under the transaction lock, then validate the same
+            # frozen view without per-reference SQL round trips. Never reuse this
+            # cache across transactions or in save(), where records may change.
+            records = {name: db.records(name) for name in sorted(FIELDS)}
+            indexes = {name: {row['id']: row for row in rows} for name, rows in records.items()}
+
+            class ReleaseReferences:
+                def records(self, collection):
+                    return records[collection]
+
+                def record(self, collection, record_id):
+                    return indexes[collection].get(record_id)
+
+            references = ReleaseReferences()
             collections = {}
             for collection in sorted(PUBLIC_COLLECTIONS):
                 items = []
-                for record in db.records(collection):
+                for record in records[collection]:
                     if record['status'] != 'approved':
                         continue
                     validate(collection, record['data'], approved=True, internal=True)
-                    validate_references(db, collection, record['data'], record['id'])
+                    validate_references(references, collection, record['data'], record['id'])
                     public = copy.deepcopy(record)
                     public['data'].pop('approvalReference', None)
                     items.append(public)
@@ -287,7 +331,7 @@ class CMS:
             if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > 14000000:
                 raise Error(413, 'media_quota', 'Snapshot excede limite inicial de 10 MB de imagens.')
             for collection in ('missions', 'rewards'):
-                demos = [copy.deepcopy(row) for row in db.records(collection) if row['status'] == 'approved' and row['data'].get('isDemo') is True]
+                demos = [copy.deepcopy(row) for row in records[collection] if row['status'] == 'approved' and row['data'].get('isDemo') is True]
                 for row in demos:
                     validate(collection, row['data'], approved=True)
                 if demos:
