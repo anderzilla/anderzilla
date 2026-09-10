@@ -1,5 +1,7 @@
 # Karaca Points e Store Points
 
+Planejamento detalhado de 10/09/2026: [economia, XP, gamificação, parcerias e operação](KARACA-ECONOMY-AND-PARTNERSHIPS.md) e [mapa de candidatos e recompensas com fontes oficiais](../research/KARACA-PARTNER-MAP-2026-09.md). São propostas; não ativam pontos reais, contratos, orçamento ou migração do saldo demonstrativo. O plano explicita revisão jurídica para campanhas com estoque promocional limitado, além dos controles técnicos abaixo.
+
 Direção autorizada pelo proprietário: identidade **Karaca!**, pontos ganhos no site e usados exclusivamente na Store Points. Produtos fornecidos pelo proprietário. Sem compra de pontos ou checkout em dinheiro. Assinaturas, produtos digitais e gadgets são categorias planejadas, não estoque confirmado.
 
 ## Implementado no playtest 04

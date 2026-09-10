@@ -53,6 +53,8 @@ Aliases EN aceitáveis: `/en/commerce/brazil`, `/en/commerce/international` (red
 
 ## Modelo CMS
 
+Extensão Karaca proposta em 10/09/2026, ainda não implementada: [plano de economia e operação](KARACA-ECONOMY-AND-PARTNERSHIPS.md). Acrescenta XP, temporadas, contratos de distribuição, lotes de recompensas, orçamento e revisão de resgates. Mantém `market`, separa aprovação de afiliado de autorização de troca por pontos e só publica SKU com direito, cobertura e entrega confirmados. Rotas `/[lang]/karaca` e `/[lang]/store-points` são alvos de planejamento; #points/#store atuais seguem demonstrativos.
+
 Tipos: `products`, `affiliate_placements`, `ad_placements`, `sponsor_packages`, `trust_blocks`, `feature_flags`, `market_hubs`.  
 Campos críticos: `market`, `currency`, `status`, `ctaUrl`, `disclosureKey`.  
 Flags: showProducts, showAffiliatesBr, showAffiliatesIntl, showAds, showSponsor, showPointsStore, showMarketBr, showMarketIntl.  

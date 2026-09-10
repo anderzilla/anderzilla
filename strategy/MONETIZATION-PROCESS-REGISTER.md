@@ -19,11 +19,18 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 | mon-live | Lives Twitch/YT/Kick | global | #live / hub live | Tips, subs, sponsor in-stream | em_build | parcial | Cadência + disclosure live | 2026-09-10 |
 | mon-sponsor | Patrocínios diretos | global | /patrocine | Pacotes fechados | especificado | sim | Kit sem métricas fake | 2026-09-10 |
 | mon-newsletter | Lista email | global | captura hub | Sponsor / lançamentos | ideia | sim | Lead magnet real | 2026-09-10 |
-| mon-karaca | Karaca Points / Store | global | #points #store | Retenção (não vende KP) | em_build (demo) | sim (flags) | Auth+ledger antes de resgate | 2026-09-10 |
+| mon-karaca | Karaca Points / Store | global | #points #store | Retenção (não vende KP) | em_build (demo) | sim (flags) | Plano econômico/XP preparado; definir verba e coorte; auth+ledger antes de resgate | 2026-09-10 |
+| mon-karaca-sponsored | Campanhas e catálogo Karaca patrocinados | global | Store Points + missões (proposto) | Conteúdo/campanha patrocinados; benefícios financiados | especificado | planejado | Negociar direito de resgate, cobertura, região e regulamento; nenhum sponsor ativo | 2026-09-10 |
+| mon-karaca-supply | Fornecimento B2B de recompensas | global | Store Points (proposto) | Custo de operação/retencão; não receita automática | especificado | planejado | Cotar fornecedores BR e validar elegibilidade, mínimos e SKUs; sem compra autorizada | 2026-09-10 |
 | mon-partnerstack | Rede PartnerStack | intl | — | SaaS affiliates USD | pausado | n/a | Reaplicar ≥ 2026-09-21 | 2026-09-10 |
 | mon-kiwify-br | Infoproduto/checkout BRL | br | hub BR (futuro) | PIX → C6 via plataforma BR | ideia | sim | Avaliar Kiwify/Hotmart vs Stripe BR | 2026-09-10 |
 | mon-trust | Trust / Transparência | global | /transparencia | Confiança (explica BR×INT) | especificado | sim | Implementar com Commerce CMS | 2026-09-10 |
 | mon-platform | Receita nativa YT/Twitch | global | canais | Ads plataforma / bits | ideia | n/a | Após cadência estável | 2026-09-10 |
+| mon-automation-control | Controle de processos comerciais | global | CMS / Automações | Apoia verificação de ofertas e relatórios sem representar receita | em_build | sim | Painel/backend construídos e schema homolog aplicado; implantar bundle único e conectar fontes reais depois | 2026-09-10 |
+
+## Planejamento Karaca! — 10/09/2026
+
+[Plano de economia, gamificação e operação](KARACA-ECONOMY-AND-PARTNERSHIPS.md) e [diretório de candidatos/fontes](../research/KARACA-PARTNER-MAP-2026-09.md). XP separado de KP é proposta; KP continua sem venda/saque. ExitLag, Nuuvem, Fanatical, fornecedores de PIN e lojas são candidatos, não acordos ativos. Afiliado, fornecedor e patrocinador têm permissões distintas. Nenhum contato, cadastro, compra ou lançamento nesta pesquisa.
 
 ## Rails de payout (operador — não publicar dados sensíveis)
 
