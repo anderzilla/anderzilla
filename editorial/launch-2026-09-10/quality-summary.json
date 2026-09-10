@@ -1,0 +1,29 @@
+{
+  "articles": 60,
+  "languages": [
+    "pt-BR",
+    "en"
+  ],
+  "categories": {
+    "games": 10,
+    "consoles": 10,
+    "gadgets": 10,
+    "ia": 10,
+    "celulares": 10,
+    "curiosidades": 10
+  },
+  "formats": {
+    "news": 39,
+    "explainer": 10,
+    "analysis": 10,
+    "comparison": 1
+  },
+  "images": 120,
+  "socialTexts": 360,
+  "sourceLinks": 71,
+  "preparedAt": "2026-09-10",
+  "status": "approved_in_cms_deployed_visual_preview",
+  "releaseId": "c77440a8-558f-4780-a990-6438cf14e9f7",
+  "previewUrl": "https://salmon-stone-0a4d29c0f-visual.eastus2.5.azurestaticapps.net",
+  "productionPromoted": false
+}

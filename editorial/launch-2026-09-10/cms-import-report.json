@@ -1,0 +1,422 @@
+[
+  {
+    "key": "gta-vi-data-plataformas",
+    "id": "35277bce-3d3e-4188-b0c5-c094d78482ae",
+    "status": "approved",
+    "version": 2,
+    "action": "preserved"
+  },
+  {
+    "key": "modern-warfare-4-confirmado",
+    "id": "5c5fa0b4-cad3-4f30-a765-414028ef0470",
+    "status": "approved",
+    "version": 2,
+    "action": "preserved"
+  },
+  {
+    "key": "control-resonant-assist-mode",
+    "id": "d605db77-fde7-4cf2-aa74-ed35e64b9a6c",
+    "status": "approved",
+    "version": 2,
+    "action": "preserved"
+  },
+  {
+    "key": "no-mans-sky-cosmos",
+    "id": "1958ddc3-791f-49f9-b5a0-e06d6f428247",
+    "status": "approved",
+    "version": 2,
+    "action": "preserved"
+  },
+  {
+    "key": "muramasa-revenant-blades",
+    "id": "1a378916-1c2d-4498-a209-739096c39574",
+    "status": "approved",
+    "version": 2,
+    "action": "preserved"
+  },
+  {
+    "key": "doa-minato",
+    "id": "07942ddb-7ad1-4cac-b14a-1a1ed9a8aea2",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "zero-company-escolha-jogadores",
+    "id": "cea74bc9-b121-429f-a6e8-3224174b054f",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "ffvii-revelation-data",
+    "id": "7cc67305-4b57-4588-865f-b9c31e3bf001",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "cod-the-haunting-setembro",
+    "id": "3a2a2ded-b933-4c2d-b983-ee0d60a34ef9",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "physint-xbox-kojima",
+    "id": "288fa989-3d2f-4809-963a-2dd779ee13bb",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-xbox-ally-x20",
+    "id": "b28a0608-0d59-4f66-8b61-1345fd3151a3",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-ally-atualizacao-dock",
+    "id": "487813dd-809c-4697-819f-8b12febfa06b",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "playstation-portal-1080p",
+    "id": "a61c459e-ff06-40ed-8496-ce2e6519cdbd",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "legion-go-steamos",
+    "id": "a4fa6ca7-c55d-4db0-978f-0374f7d739b9",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "steam-deck-oled-ficha",
+    "id": "48a92a13-e36c-47c4-8beb-9ef31f70f9df",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "switch-2-bundles",
+    "id": "ac5d596c-306e-4c08-82e9-906a17d70925",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "ps-plus-setembro-catalogo",
+    "id": "3afd03b5-432d-43b9-b781-8a804241c4ab",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "xbox-insiders-setembro",
+    "id": "a9952111-8860-4702-9705-161efcecab95",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "xbox-discos-direito-digital",
+    "id": "66011743-1fbc-492f-b9a6-50b021e4ac63",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "xbox-tokyo-game-show-2026",
+    "id": "9588ab59-4730-403e-8030-9cf03ac398f0",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "logitech-mx-keypad",
+    "id": "dd256a7a-c490-4238-afae-94f6ab534cde",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "logitech-superstrike-clique",
+    "id": "34f43ac9-d2da-48ed-b500-feb2cfea9232",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-oled-245",
+    "id": "a59fceff-c2e6-4550-a208-7812ccf7fcad",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-gladius-iv-ace",
+    "id": "f6f85721-49e1-4d4a-a4bd-bb8d170fecdc",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-spatha-x-65k",
+    "id": "732702eb-ad9b-47e4-8589-8b016ccbd93d",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-strix-morph-96",
+    "id": "fa4787e0-65d7-42b9-891d-0edb81523038",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-rapture-gt-bn98",
+    "id": "f286205b-8724-4135-b4e2-dca334994f04",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "rog-xreal-r1",
+    "id": "cce84ac8-d5d9-43c8-a9fb-8951e2aec5cc",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "lego-playstation",
+    "id": "82d0d3d7-045e-4684-b81a-bf2c8f35c654",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "dualsense-gta-vi",
+    "id": "c112e286-b348-4ce5-a172-a0a955a0b76f",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "gpt-6-astra",
+    "id": "252f4abb-d81d-4fc2-bcc5-45a1c3e41db7",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "claude-fable-mythos-51",
+    "id": "beca1378-327e-4eb0-9b6c-5051df7b58b7",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "gemini-38-flash",
+    "id": "eae657b0-0e27-4bcd-8e0b-be25a580470d",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "qwen38-flash-next",
+    "id": "ad536104-d74d-49f1-8bea-639b87f8e0ca",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "qwen-image-3",
+    "id": "cb05234a-343a-40ff-a2e2-8d74852a5232",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "mistral-agentic-search",
+    "id": "f0aeb09a-3b54-4096-a88c-53f0f079be26",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "shieldstral",
+    "id": "2ea9141c-2d76-4697-90f9-e5b53c1eed4b",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "claude-marca-texto",
+    "id": "5117432e-bc26-41ba-bd44-63c22172f71f",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "gemini-apps-conectados",
+    "id": "ccde50ca-b80d-45d9-92cb-02c0bc52c087",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "claude-cientistas",
+    "id": "a37e1b79-740b-4be3-99f5-0c0c6445fece",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "iphone18pro",
+    "id": "9e501cb9-77df-4004-af4d-306e0a7f9c31",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "iphone17e-contexto",
+    "id": "1fb88f16-95d8-4257-b131-d060c7ceb5f6",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "pixel11-tensor",
+    "id": "a8dc81ba-5fd6-40ef-a8c7-e69c791ed866",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "pixel11-pro-fold",
+    "id": "3c468842-08ea-422b-b20d-4fed8ea853f0",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "galaxy-fold8-comparacao",
+    "id": "835c540c-28bb-4092-a241-5780d4244bee",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "galaxy-s26-privacy",
+    "id": "f9a31967-318e-40d9-9b54-7b0c86718e24",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "honor-magic-v6",
+    "id": "66e37c0d-d6fe-43bb-a33f-6a37dd72b20a",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "xiaomi17ultra",
+    "id": "77005166-88cb-41aa-8454-f911d602e153",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "oppo-findx9ultra",
+    "id": "28f1a380-32cb-4a9d-a29b-d948c5a5ddb2",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "oneplus15-165hz",
+    "id": "73ce9c52-8c2f-470f-91e7-7c04f133907a",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "typescript7-go",
+    "id": "2edbed4f-1267-40ef-b84c-63dccfe68988",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "npm-trusted-publishing",
+    "id": "60ff3ee4-9876-40c7-8eb1-26965cf29f97",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "github-secrets-merge",
+    "id": "e98c5c41-0208-4f35-a181-f4793c6f36f4",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "godot-mouse-polling",
+    "id": "15463748-cbb5-4fa9-af5e-11ac411aa709",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "codeql-go127",
+    "id": "9ab0eff1-e682-4ca8-8900-3a23e183327b",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "raspberrypi-radio",
+    "id": "84efaacf-2106-417a-868b-c788643d3a21",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "unitree-robos-fabrica",
+    "id": "b8cd5728-3da4-4c0b-82a0-516cf030e4b0",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "honor-robot-phone",
+    "id": "9276d099-1c7e-40a3-87aa-debe81d67c96",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "xiaomi-vision-gran-turismo",
+    "id": "b9f39aaa-f866-4a53-9b1c-0b29c4983ec7",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  },
+  {
+    "key": "model-hardware-standard",
+    "id": "fba937a3-68fb-4986-a29e-abeeb65957fb",
+    "status": "approved",
+    "version": 2,
+    "action": "created"
+  }
+]

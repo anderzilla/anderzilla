@@ -1,0 +1,13 @@
+{
+  "articlePages": 120,
+  "checks": [
+    "titles",
+    "canonical",
+    "noindex preview",
+    "JPEG share asset",
+    "JSON-LD",
+    "UTF-8"
+  ],
+  "artifact": "Z:\\AnderZilla\\.deploy\\editorial-launch-c77440a8-558f-4780-a990-6438cf14e9f7",
+  "releaseId": "c77440a8-558f-4780-a990-6438cf14e9f7"
+}

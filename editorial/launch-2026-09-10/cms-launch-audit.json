@@ -1,0 +1,187 @@
+{
+  "release": {
+    "id": "c77440a8-558f-4780-a990-6438cf14e9f7",
+    "status": "deployed",
+    "createdAt": "2026-09-10T15:22:22.909437+00:00",
+    "updatedAt": "2026-09-10T15:26:05.449604+00:00",
+    "url": "https://salmon-stone-0a4d29c0f-visual.eastus2.5.azurestaticapps.net"
+  },
+  "approvedArticles": 60,
+  "approvedImages": 120,
+  "revisionHistoryVerified": 60,
+  "corrections": [
+    {
+      "id": "2edbed4f-1267-40ef-b84c-63dccfe68988",
+      "version": 4,
+      "reason": "Final independent English copy review"
+    },
+    {
+      "id": "28f1a380-32cb-4a9d-a29b-d948c5a5ddb2",
+      "version": 4,
+      "reason": "Final independent English copy review"
+    },
+    {
+      "id": "f6f85721-49e1-4d4a-a4bd-bb8d170fecdc",
+      "version": 4,
+      "reason": "Final independent English copy review"
+    }
+  ],
+  "archived": [
+    {
+      "collection": "content",
+      "id": "d70ffc5d-c126-552f-8c20-9245719f7552",
+      "title": "DEMO — laboratório de gadgets",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "content",
+      "id": "f8e7487f-7d85-552b-b5e8-526152e6bd58",
+      "title": "DEMO — laboratório de IA",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "content",
+      "id": "3661061d-afd4-5702-b279-d82d31411d8e",
+      "title": "DEMO — laboratório de celulares",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "content",
+      "id": "f00648fd-baeb-549f-9ccb-5d45e6f32b51",
+      "title": "DEMO — laboratório de consoles",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "content",
+      "id": "1f607695-05b0-597a-97bd-6dceb4ccef20",
+      "title": "DEMO — laboratório de games",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "content",
+      "id": "b1255d9b-b76b-5b84-b75e-4626664e6db9",
+      "title": "DEMO — como funciona uma pauta no AnderZilla",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "content",
+      "id": "webb-neptune-auroras",
+      "title": "Do arquivo: Webb revelou as auroras de Netuno",
+      "version": 2,
+      "reason": "Short initial curation replaced by reviewed launch archive"
+    },
+    {
+      "collection": "content",
+      "id": "airpods-live-translation",
+      "title": "Do arquivo: fones que ajudam a atravessar idiomas",
+      "version": 2,
+      "reason": "Short initial curation replaced by reviewed launch archive"
+    },
+    {
+      "collection": "content",
+      "id": "gemini-remember-items",
+      "title": "Uma ajudinha da IA para lembrar onde ficou a chave",
+      "version": 2,
+      "reason": "Short initial curation replaced by reviewed launch archive"
+    },
+    {
+      "collection": "content",
+      "id": "iphone17e-magsafe",
+      "title": "iPhone 17e: MagSafe e mais espaço no modelo de entrada",
+      "version": 2,
+      "reason": "Short initial curation replaced by reviewed launch archive"
+    },
+    {
+      "collection": "content",
+      "id": "gears-eday-controller",
+      "title": "O universo de Gears foi parar no controle Xbox",
+      "version": 2,
+      "reason": "Short initial curation replaced by reviewed launch archive"
+    },
+    {
+      "collection": "content",
+      "id": "mario-kart-switch2-update",
+      "title": "Mario Kart 8 Deluxe ganha reforço para a próxima corrida",
+      "version": 2,
+      "reason": "Short initial curation replaced by reviewed launch archive"
+    },
+    {
+      "collection": "events",
+      "id": "dbadc3f4-a4da-56ef-95c9-d135498bf910",
+      "title": "DEMO — encontro de teste, não agendado",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "offers",
+      "id": "cb203b7c-da81-5b8c-9b9a-5105428d5064",
+      "title": "DEMO — apresentação do ForgeKit",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "affiliates",
+      "id": "f0f50976-0a7e-50ac-b698-c61afffd950f",
+      "title": "DEMO — espaço de afiliado sem parceiro",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "campaigns",
+      "id": "2ebb7614-250f-5dea-9818-91812494144d",
+      "title": "DEMO — campanha da própria comunidade",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "pages",
+      "id": "df88439d-6a83-578b-b999-e775d1ca0891",
+      "title": "DEMO — página institucional",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "media",
+      "id": "072a427b-f9b7-52c7-ac2d-232173cced80",
+      "title": "DEMO — fundo de exemplo",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "taxonomies",
+      "id": "9c78afd7-c9de-515f-97f2-4bab3a95b969",
+      "title": "DEMO — laboratório",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "missions",
+      "id": "7441329f-c5da-5734-bb02-060fc06491e5",
+      "title": "DEMO — missão do laboratório",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    },
+    {
+      "collection": "rewards",
+      "id": "05eade4a-4c0a-50cf-871e-89088d8a8849",
+      "title": "DEMO — gadget ilustrativo sem estoque",
+      "version": 2,
+      "reason": "Demo retained in CMS history"
+    }
+  ],
+  "previousReleases": [
+    {
+      "id": "ef7f8574-4bc7-48b0-a861-88f28e9d2904",
+      "status": "failed",
+      "createdAt": "2026-09-10T15:17:52.488939+00:00",
+      "updatedAt": "2026-09-10T15:20:38.859027+00:00",
+      "url": null
+    }
+  ]
+}
