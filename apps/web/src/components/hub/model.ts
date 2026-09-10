@@ -58,6 +58,19 @@ export interface Discovery {
   coverMediaId?: string;
   mediaIds?: string;
   isDemo?: boolean;
+  sources?: {name:string;url:string;publishedAt?:string;note?:string}[];
+  verifiedAt?: string;
+  eventDate?: string;
+  editorialType?: string;
+  hashtagsPT?: string;
+  hashtagsEN?: string;
+  socialInstagramPT?: string;
+  socialInstagramEN?: string;
+  socialFacebookPT?: string;
+  socialFacebookEN?: string;
+  socialWhatsappPT?: string;
+  socialWhatsappEN?: string;
+  socialMediaId?: string;
 }
 export const discoveries = (cmsPublished.enabled ? cmsPublished.discoveries : discoveryData) as Discovery[];
 export function articleUrl(item:Discovery,lang:Language){return `/${lang}/radar/${(lang==='pt'?item.slugPT:item.slugEN)||item.id}/`}

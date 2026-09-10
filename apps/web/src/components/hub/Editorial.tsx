@@ -2,7 +2,7 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import published from './cms-published.json';
 
-export type PublicMedia = {id:string;url:string;mediaType?:string;altPT?:string;altEN?:string;credit?:string;license?:string;width?:number;height?:number};
+export type PublicMedia = {id:string;url:string;previewUrl?:string;mediaType?:string;altPT?:string;altEN?:string;credit?:string;license?:string;width?:number;height?:number};
 export function findMedia(id?:string){return (published.media as PublicMedia[]).find(item=>item.id===id)}
 export function SafeMarkdown({body}:{body:string}){
   return <div className="editorial-body"><Markdown remarkPlugins={[remarkGfm]} skipHtml

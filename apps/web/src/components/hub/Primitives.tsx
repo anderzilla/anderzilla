@@ -105,6 +105,7 @@ export function DiscoveryCard({ item }: { item: Discovery }) {
   const { t, title, summary, date, labels, open,lang } = useHub();
   return (
     <article
+      id={`discovery-${item.id}`}
       className="card"
       style={{ "--cat": colors[item.category] } as CSSProperties}
     >
@@ -113,6 +114,7 @@ export function DiscoveryCard({ item }: { item: Discovery }) {
         {item.isDemo&&<DemoBadge english={lang==='en'}/>}
         <div className="card-category">
           <span>{labels[item.category]}</span>
+          {item.editorialType&&item.editorialType!=='news'&&<span className="archive">{({explainer:t('ENTENDA','EXPLAINER'),analysis:t('ANÁLISE','ANALYSIS'),comparison:t('COMPARATIVO','COMPARISON'),rumor:t('RUMOR','RUMOR')} as Record<string,string>)[item.editorialType]}</span>}
           {item.published < "2026-01-01" && (
             <span className="archive">{t("ARQUIVO", "ARCHIVE")}</span>
           )}
@@ -259,7 +261,7 @@ export function DetailDialog() {
               </button>
             </div>
             <p className="note">
-              {t(
+              {current.verifiedAt?t('Apuração documental, com fontes e datas no artigo.','Documentary reporting; sources and dates are listed in the article.'):t(
                 "Resumo de curadoria, não teste próprio nem link de afiliado. A data se refere à publicação original.",
                 "Curated summary, not a hands-on review or affiliate link. Date refers to original publication.",
               )}

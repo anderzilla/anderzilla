@@ -140,14 +140,19 @@ function Footer() {
 function Home() {
   const { t, filter, setFilter, labels, player, surprise,title,summary } = useHub();
   const [query,setQuery]=useState('');
-  const feed = [...discoveries]
+  const [pageSize,setPageSize]=useState(12);
+  const matching = [...discoveries]
     .sort(
       (a, b) =>
         Number(player.interests.includes(b.category)) -
           Number(player.interests.includes(a.category)) ||
-        b.published.localeCompare(a.published),
+        b.published.localeCompare(a.published) || (b.eventDate||b.published).localeCompare(a.eventDate||a.published),
     )
     .filter((x) => (filter === "all" || x.category === filter)&&`${title(x)} ${summary(x)} ${x.tags||''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
+  const categoryOrder=[...categories].sort((a,b)=>Number(player.interests.includes(b))-Number(player.interests.includes(a)));
+  const groups=categoryOrder.map(category=>matching.filter(item=>item.category===category));
+  const feed=filter==='all'&&!query.trim()?Array.from({length:Math.max(0,...groups.map(group=>group.length))},(_,index)=>groups.flatMap(group=>group[index]?[group[index]]:[])).flat():matching;
+  function loadMore(){const next=feed[pageSize];setPageSize(size=>size+12);requestAnimationFrame(()=>{if(next)document.getElementById(`discovery-${next.id}`)?.querySelector<HTMLAnchorElement>('h3 a')?.focus()})}
   function scrollFeed() {
     document
       .getElementById("feed-start")
@@ -162,7 +167,7 @@ function Home() {
     <>
       <div className="ticker">
         <strong>{t("NO RADAR", "ON THE RADAR")}</strong>
-        {discoveries.filter(item=>!item.isDemo).slice(0,4).map(item=><span key={item.id}>{title(item)}</span>)}
+        {feed.filter(item=>!item.isDemo).slice(0,4).map(item=><span key={item.id}>{title(item)}</span>)}
       </div>
       <div className="wrap">
         <div className="welcome">
@@ -244,7 +249,7 @@ function Home() {
                 } as CSSProperties
               }
               aria-pressed={filter === cat}
-              onClick={() => setFilter(cat)}
+              onClick={() => {setFilter(cat);setPageSize(12)}}
             >
               <Icon name={cat} />
               {labels[cat]}
@@ -260,18 +265,20 @@ function Home() {
               </h2>
               <small>
                 {t(
-                  "Curadoria + exemplos identificados como DEMO",
-                  "Curation + examples labeled DEMO",
+                  "Notícias, comparativos e explicadores com fontes",
+                  "Sourced news, comparisons and explainers",
                 )}
               </small>
             </div>
-            <label className="radar-search">{t('Buscar no radar','Search the radar')}<input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder={t('Games, IA, gadgets…','Games, AI, gadgets…')}/></label>
+            <label className="radar-search">{t('Buscar no radar','Search the radar')}<input type="search" value={query} onChange={e=>{setQuery(e.target.value);setPageSize(12)}} placeholder={t('Games, IA, gadgets…','Games, AI, gadgets…')}/></label>
+            <p className="source">{feed.length} {t('descobertas neste radar','discoveries on this radar')}</p>
             <div className="feed" aria-live="polite">
               {!feed.length&&<p className="empty">{t('Nenhuma descoberta para esta busca.','No discoveries match your search.')}</p>}
-              {feed.map((item) => (
+              {feed.slice(0,pageSize).map((item) => (
                 <DiscoveryCard key={item.id} item={item} />
               ))}
             </div>
+            {feed.length>pageSize&&<button className="button secondary" onClick={loadMore}>{t('Carregar mais descobertas','Load more discoveries')} ({feed.length-pageSize})</button>}
           </section>
           <aside className="sidebar">
             <section className="quiz-teaser">

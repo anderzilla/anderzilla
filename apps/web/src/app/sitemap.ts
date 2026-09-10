@@ -17,16 +17,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
   ];
   const comparisons = listComparisons().map((c) => `/stackpick/${c.slug}`);
-  const articles=discoveries.filter(item=>!item.isDemo).flatMap(item=>[articleUrl(item,'pt'),articleUrl(item,'en')]);
-  const routes = [...base, ...comparisons,...articles];
+  const articles:MetadataRoute.Sitemap=discoveries.filter(item=>!item.isDemo).flatMap(item=>(['pt','en'] as const).map(lang=>({url:`${SITE.url}${articleUrl(item,lang)}`,lastModified:item.verifiedAt||item.published,changeFrequency:'weekly' as const,priority:0.7,alternates:{languages:{'pt-BR':`${SITE.url}${articleUrl(item,'pt')}`,en:`${SITE.url}${articleUrl(item,'en')}`}}})));
+  const routes = [...base, ...comparisons];
 
-  return routes.map((route) => ({
+  return [...routes.map((route) => ({
     url: `${SITE.url}${route}`,
     lastModified: now,
     changeFrequency:
       route === "" || route === "/forgekit" || route.startsWith("/stackpick")
-        ? "weekly"
-        : "monthly",
+        ? "weekly" as const
+        : "monthly" as const,
     priority:
       route === ""
         ? 1
@@ -35,5 +35,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
           : route.startsWith("/stackpick")
             ? 0.8
             : 0.7,
-  }));
+  })),...articles];
 }

@@ -22,6 +22,18 @@ def snapshot():
 
 
 class ImportSnapshotTests(unittest.TestCase):
+    def test_newsroom_sources_export_allowlist_and_https(self):
+        value = snapshot()
+        data = value['collections']['content'][0]['data']
+        data['sources'] = json.dumps([{'name':'Official','url':'https://example.com/news','private':'do-not-publish'}])
+        data['socialWhatsappPT'] = 'Leia a apuração'
+        row = transform(value)['discoveries'][0]
+        self.assertEqual(row['sources'], [{'name':'Official','url':'https://example.com/news'}])
+        self.assertEqual(row['socialWhatsappPT'], 'Leia a apuração')
+        data['sources'] = json.dumps([{'name':'Private','url':'https://127.0.0.1/news'}])
+        with self.assertRaises(ValueError):
+            transform(value)
+
     def test_content_formatting_localized_seo_and_gallery_preserved(self):
         value = snapshot()
         published = transform(value)

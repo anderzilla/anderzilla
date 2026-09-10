@@ -12,6 +12,24 @@ from urllib.parse import urlsplit
 from PIL import Image
 
 CATEGORIES = {'games', 'consoles', 'celulares', 'ia', 'gadgets', 'curiosidades'}
+NEWSROOM = ('verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'hashtagsPT', 'hashtagsEN', 'socialInstagramPT', 'socialInstagramEN', 'socialFacebookPT', 'socialFacebookEN', 'socialWhatsappPT', 'socialWhatsappEN')
+
+def public_sources(value):
+    sources = json.loads(value) if value else []
+    if not isinstance(sources, list) or len(sources) > 20:
+        raise ValueError('Invalid source list')
+    result = []
+    for source in sources:
+        if not isinstance(source, dict) or not isinstance(source.get('name'), str) or not source['name'].strip():
+            raise ValueError('Invalid source')
+        row = {'name': source['name'], 'url': https(source['url'])}
+        if source.get('publishedAt'):
+            datetime.fromisoformat(source['publishedAt'].replace('Z', '+00:00'))
+            row['publishedAt'] = source['publishedAt']
+        if isinstance(source.get('note'), str):
+            row['note'] = source['note']
+        result.append(row)
+    return result
 
 def write_assets(snapshot, public_dir):
     """Materialize only approved, hashed WebP uploads; never trust a supplied path."""
@@ -34,6 +52,9 @@ def write_assets(snapshot, public_dir):
         folder = public_dir / 'media'
         folder.mkdir(exist_ok=True)
         (folder / (sha + '.webp')).write_bytes(raw)
+        # A broadly compatible share derivative; the site retains compact WebP.
+        with Image.open(io.BytesIO(raw)) as picture:
+            picture.convert('RGB').save(folder / (sha + '-social.jpg'), 'JPEG', quality=90, optimize=True)
 
 
 def https(value):
@@ -80,6 +101,8 @@ def transform(snapshot):
                     'observed': snapshot['createdAt'][:10],
                     'fact': d.get('bodyPT') or d['summaryPT'],
                     'factEN': d.get('bodyEN') or d['summaryEN'],
+                    'sources': public_sources(d.get('sources')),
+                    **{key: d[key] for key in NEWSROOM if key in d},
                     **{key: d[key] for key in ('slugPT','slugEN','seoTitlePT','seoTitleEN','seoDescriptionPT','seoDescriptionEN','author','tags','coverMediaId','mediaIds','isDemo') if key in d},
                 })
             elif collection == 'events':
@@ -112,6 +135,7 @@ def transform(snapshot):
                     sha = hashlib.sha256(raw).hexdigest()
                     if sha != d.get('assetSha256') or public['url'] != '/media/' + sha + '.webp':
                         raise ValueError('Media integrity mismatch')
+                    public['previewUrl'] = '/media/' + sha + '-social.jpg'
                 out['media'].append(public)
             elif collection == 'taxonomies':
                 out['taxonomies'].append({'id': row['id'], **{key: d[key] for key in ('titlePT','titleEN','slug','kind','isDemo') if key in d}})
@@ -125,6 +149,8 @@ def transform(snapshot):
         for row in out[name]:
             if row.get('coverMediaId') and row['coverMediaId'] not in media_ids:
                 raise ValueError('Missing approved cover media')
+            if row.get('socialMediaId') and row['socialMediaId'] not in media_ids:
+                raise ValueError('Missing approved social media')
             if any(value.strip() not in media_ids for value in row.get('mediaIds','').split(',') if value.strip()):
                 raise ValueError('Missing approved gallery media')
             if any(value.strip() not in tag_ids for value in row.get('tags','').split(',') if value.strip()):
