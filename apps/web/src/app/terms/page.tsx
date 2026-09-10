@@ -3,8 +3,9 @@ import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { SITE } from "../../../content/affiliates";
 
 export const metadata: Metadata = {
+  alternates: { canonical: `${SITE.url}/terms` },
   title: "Terms",
-  description: "Terms of use and affiliate disclosure for Anderzilla.",
+  description: "Terms of use and affiliate disclosure for AnderZilla.",
 };
 
 export default function TermsPage() {
@@ -15,7 +16,7 @@ export default function TermsPage() {
       <div className="prose-dark mt-8 max-w-3xl">
         <p>
           By using {SITE.domain} you agree to these terms. Content is provided for
-          informational and commercial purposes by {SITE.author} under the Anderzilla
+          informational and commercial purposes by {SITE.author} under the AnderZilla
           brand.
         </p>
         <h2>Products</h2>
@@ -28,15 +29,14 @@ export default function TermsPage() {
         <p>
           StackPick comparisons and recommendations reflect editorial judgment. Tool
           features and pricing change — verify on the vendor&apos;s site before you buy.
-          Affiliate partner slots may be placeholders until programs are approved; we do
-          not invent live partnerships.
+          Official product links are provided alongside the comparisons.
         </p>
         <h2>Affiliate disclosure</h2>
         <AffiliateDisclosure className="not-prose my-4" />
         <h2>Limitation</h2>
         <p>
           The site is provided &quot;as is&quot; without warranties. To the fullest
-          extent permitted by law, Anderzilla is not liable for indirect or consequential
+          extent permitted by law, AnderZilla is not liable for indirect or consequential
           damages arising from use of the site or third-party services.
         </p>
         <h2>Contact</h2>

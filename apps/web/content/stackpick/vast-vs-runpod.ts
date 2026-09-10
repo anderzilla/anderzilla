@@ -6,7 +6,7 @@ export const vastVsRunpod: StackPickComparison = {
   category: "GPU cloud",
   teaser: "Rent GPUs for training and inference without a hyperscaler bill.",
   updated: "2026-09-08",
-  author: "Anderzilla",
+  author: "AnderZilla",
   productA: { id: "vast-ai", name: "Vast.ai" },
   productB: { id: "runpod", name: "RunPod" },
   tldr:
@@ -34,17 +34,11 @@ export const vastVsRunpod: StackPickComparison = {
       a: "More DIY around instances",
       b: "Stronger serverless story",
     },
-    {
-      feature: "Affiliate status (Anderzilla)",
-      a: "STACKPICK_TODO — 1P referral",
-      b: "STACKPICK_TODO — referral → PS cash gate",
-    },
   ],
   a: {
     pros: [
       "Aggressive pricing when you filter well",
       "Huge variety of GPU SKUs",
-      "Lifetime referral model exists publicly",
     ],
     cons: [
       "Marketplace quality variance",
@@ -55,11 +49,9 @@ export const vastVsRunpod: StackPickComparison = {
     pros: [
       "Cleaner pod UX for many ML builders",
       "Serverless options reduce ops toil",
-      "Clear referral/affiliate path (with gates)",
     ],
     cons: [
       "May cost more than the absolute cheapest Vast listing",
-      "Cash affiliate requires referral volume gate",
     ],
   },
   faq: [

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Credibility } from "@/components/Credibility";
 import { SITE } from "../../../content/affiliates";
 
 export const metadata: Metadata = {
+  alternates: { canonical: `${SITE.url}/about` },
   title: "About",
   description: `About AnderZilla — ${SITE.role} building from ${SITE.location}.`,
 };
@@ -21,17 +23,15 @@ export default function AboutPage() {
           across mobile, web, and backend (banking, industrial, agritech).
         </p>
         <p>
-          This site is the monetization hub: digital products (
-          <Link href="/forgekit">ForgeKit</Link>), comparison content (
-          <Link href="/stackpick">StackPick</Link>), and upcoming projects like Gear31.club
-          and a newsletter. It is <em>not</em> a consultancy brand — consulting lives
-          elsewhere.
+          Explore the <Link href="/forgekit">ForgeKit</Link> software starter and
+          <Link href="/stackpick"> StackPick</Link> tool comparisons. Each is built around
+          helping you understand your options and make progress on your own projects.
         </p>
         <h2>What I care about</h2>
         <p>
-          Shipping real software, keeping architecture honest, and talking to programmers,
-          gamers, and nerds without the motivational-poster voice. Geek culture welcome;
-          cringe optional (preferably off).
+          Readable code, useful documentation, and clear technical tradeoffs. This is a
+          space for programmers, gamers, and tech enthusiasts who enjoy understanding
+          how things work.
         </p>
         <h2>Where I work</h2>
         <p>
@@ -39,6 +39,7 @@ export default function AboutPage() {
           and pricing here are English / USD for a global audience.
         </p>
       </div>
+      <div className="mt-12"><Credibility /></div>
       <div className="mt-10 flex flex-wrap gap-3">
         <a
           href={SITE.forgekit.gumroad}

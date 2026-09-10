@@ -1,5 +1,5 @@
 # Multi-stage Next.js standalone image for Google Cloud Run
-FROM node:20-bookworm-slim AS deps
+FROM node:22-bookworm-slim AS deps
 WORKDIR /app
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends openssl ca-certificates \
@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 # Needed because package.json postinstall runs prisma generate
 COPY prisma ./prisma
 RUN npm ci --legacy-peer-deps
-FROM node:20-bookworm-slim AS builder
+FROM node:22-bookworm-slim AS builder
 WORKDIR /app
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends openssl ca-certificates \
@@ -21,7 +21,7 @@ COPY . .
 # Dummy SQLite URL so Prisma can generate / build without a real DB
 ENV DATABASE_URL=file:./prod-build.db
 RUN npx prisma generate && npm run build
-FROM node:20-bookworm-slim AS runner
+FROM node:22-bookworm-slim AS runner
 WORKDIR /app
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends openssl ca-certificates \

@@ -1,25 +1,24 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { buttonStyles } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BuyButton } from "@/components/buy-button";
 
-const GUMROAD_URL =
-  process.env.NEXT_PUBLIC_GUMROAD_URL ?? "https://anderzilla.gumroad.com/l/edkel";
+const GUMROAD_URL = "https://anderzilla.gumroad.com/l/edkel";
 const DEMO_URL = "https://forgekit-kwzn5potra-rj.a.run.app";
 const LINKEDIN_URL = "https://www.linkedin.com/in/andersonhenriquegoncalves";
 
 const forWhom = [
   {
     title: "Indie founders shipping a paid digital product",
-    body: "You need a clean Next.js MVP with landing, auth, entitlements, and a clear path to take payments — not another 50-package monorepo.",
+    body: "You need a clean Next.js MVP with landing, auth, entitlements, and a starting point for connecting your own payments.",
   },
   {
     title: "Engineers who want ownership of the code",
-    body: "You prefer a readable TypeScript codebase you can fork, deploy, and grow — Gumroad for delivery today, optional MoR checkout hooks when you are ready.",
+    body: "You prefer a readable TypeScript codebase you can fork, deploy, and grow with documentation and payment integration examples to adapt.",
   },
   {
     title: "Builders validating a SaaS-shaped idea",
-    body: "Landing + gated dashboard + Prisma models give you a honest skeleton to customize without inventing session and entitlement plumbing from scratch.",
+    body: "Landing + gated dashboard + Prisma models give you a focused starting point to customize without inventing session and entitlement plumbing from scratch.",
   },
 ];
 
@@ -33,8 +32,8 @@ const notFor = [
     body: "You buy the ZIP and own the app. There is no AnderZilla-hosted multi-tenant product behind this purchase.",
   },
   {
-    title: "Buyers who need hand-holding consulting",
-    body: "Support means clear docs and reasonable product questions — not custom architecture workshops or unpaid agency work.",
+    title: "Teams seeking a custom implementation",
+    body: "Includes setup documentation and product questions. Custom architecture, feature development, and ongoing operations are outside the kit’s scope.",
   },
 ];
 
@@ -52,8 +51,8 @@ const deliverables = [
     group: "API & data",
     items: [
       "Auth routes: register, login, logout",
-      "Checkout route shaped for MoR providers",
-      "Webhook route for entitlement grants",
+      "Checkout route example for payment integration",
+      "Webhook route example for entitlement grants",
       "Prisma schema: User + Entitlement",
       "SQLite for local demos (Postgres-ready)",
     ],
@@ -76,7 +75,7 @@ const stack = [
   "Tailwind CSS",
   "Prisma",
   "SQLite → Postgres",
-  "bcrypt sessions",
+  "Password hashing + signed sessions",
   "Docker / Cloud Run",
 ];
 
@@ -101,7 +100,7 @@ const faqs = [
   },
   {
     q: "Is payment processing included?",
-    a: "Buyers purchase ForgeKit on Gumroad. Inside the kit, checkout and webhook routes are structured as a checkout-ready architecture so you can wire your own merchant-of-record or payment provider when you sell your product. Gumroad covers delivery of this starter; your product’s live billing is yours to connect.",
+    a: "Buyers purchase ForgeKit on Gumroad. Inside the kit, checkout and webhook routes are structured as payment integration starting points so you can wire your own merchant-of-record or payment provider when you sell your product. Gumroad covers delivery of this starter; your product’s live billing is yours to connect.",
   },
   {
     q: "Can I use Postgres in production?",
@@ -139,7 +138,10 @@ export default function HomePage() {
             </span>
           </span>
         </div>
-        <nav className="hidden items-center gap-4 text-sm text-zinc-400 sm:flex">
+        <nav
+          aria-label="Product navigation"
+          className="hidden items-center gap-4 text-sm text-zinc-400 md:flex"
+        >
           <a href="#for-whom" className="hover:text-zinc-100">
             Fit
           </a>
@@ -152,13 +154,31 @@ export default function HomePage() {
           <a href="#faq" className="hover:text-zinc-100">
             FAQ
           </a>
-          <a href={DEMO_URL} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-100">
+          <a
+            href={DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-zinc-100"
+          >
             Demo
           </a>
-          <a href="#buy">
-            <Button size="sm">Buy on Gumroad</Button>
+          <a
+            href={GUMROAD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonStyles({ size: "sm" })}
+          >
+            Buy on Gumroad
           </a>
         </nav>
+        <a
+          href={GUMROAD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonStyles({ size: "sm", className: "md:hidden" })}
+        >
+          Buy ForgeKit
+        </a>
       </header>
 
       <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24">
@@ -168,40 +188,53 @@ export default function HomePage() {
             Next.js digital product kit · One-time US$149 · Gumroad delivery
           </p>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-zinc-50 md:text-6xl md:leading-[1.05]">
-            A serious Next.js MVP you can sell from — without the bloat.
+            Your next digital product starts here.
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-zinc-400">
-            ForgeKit is a focused starter for founders and engineers: marketing landing,
-            auth, Prisma entitlements, gated dashboard, and a checkout-ready architecture.
-            Buy once on Gumroad, download the ZIP, and ship on your own terms.
+            ForgeKit is a focused starter for founders and engineers: marketing
+            landing, auth, Prisma entitlements, gated dashboard, and payment
+            integration starting points. Buy once on Gumroad, download the ZIP,
+            and make it your own. Connect and test your payment provider before
+            accepting payments in your app.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a href={GUMROAD_URL} target="_blank" rel="noopener noreferrer">
-              <Button size="lg">Buy on Gumroad — US$149</Button>
+            <a
+              href={GUMROAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonStyles({ size: "lg", variant: "primary" })}
+            >
+              Buy on Gumroad — US$149
             </a>
-            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="secondary">
-                Try live demo
-              </Button>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonStyles({ size: "lg", variant: "secondary" })}
+            >
+              Try live demo
             </a>
-            <Link href="/dashboard">
-              <Button size="lg" variant="ghost">
-                Demo dashboard
-              </Button>
+            <Link
+              href="/dashboard"
+              className={buttonStyles({ size: "lg", variant: "ghost" })}
+            >
+              Explore dashboard
             </Link>
           </div>
           <p className="text-sm text-zinc-500">
-            By{" "}
-            <span className="text-zinc-300">AnderZilla</span>
+            By <span className="text-zinc-300">AnderZilla</span>
             {" · "}
-            Senior Software Engineer / hands-on architect · 15+ years production systems
+            Senior Software Engineer / hands-on architect · 15+ years production
+            systems
           </p>
         </section>
 
         {/* 2. Who it's for / not for */}
         <section id="for-whom" className="scroll-mt-20 py-12">
           <div className="mb-8 max-w-2xl">
-            <h2 className="text-2xl font-semibold tracking-tight">Who it&apos;s for — and who it&apos;s not</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              Who it&apos;s for — and who it&apos;s not
+            </h2>
             <p className="mt-2 text-sm leading-6 text-zinc-400">
               Clear fit beats vague promises. Buy if this matches how you work.
             </p>
@@ -215,7 +248,9 @@ export default function HomePage() {
                 {forWhom.map((item) => (
                   <Card key={item.title} className="p-5">
                     <h3 className="font-medium text-zinc-100">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-zinc-400">{item.body}</p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-400">
+                      {item.body}
+                    </p>
                   </Card>
                 ))}
               </div>
@@ -226,9 +261,14 @@ export default function HomePage() {
               </p>
               <div className="space-y-3">
                 {notFor.map((item) => (
-                  <Card key={item.title} className="border-zinc-800/80 bg-zinc-950/40 p-5">
+                  <Card
+                    key={item.title}
+                    className="border-zinc-800/80 bg-zinc-950/40 p-5"
+                  >
                     <h3 className="font-medium text-zinc-200">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-zinc-500">{item.body}</p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-500">
+                      {item.body}
+                    </p>
                   </Card>
                 ))}
               </div>
@@ -239,9 +279,12 @@ export default function HomePage() {
         {/* 3. What's inside */}
         <section id="inside" className="scroll-mt-20 py-12">
           <div className="mb-8 max-w-2xl">
-            <h2 className="text-2xl font-semibold tracking-tight">What&apos;s inside</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              What&apos;s inside
+            </h2>
             <p className="mt-2 text-sm leading-6 text-zinc-400">
-              Concrete deliverables from the ZIP — the same codebase that powers the live demo.
+              Concrete deliverables from the ZIP — the same codebase that powers
+              the live demo.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -252,7 +295,10 @@ export default function HomePage() {
                 </h3>
                 <ul className="space-y-2.5">
                   {col.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-zinc-300">
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-zinc-300"
+                    >
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
                       {item}
                     </li>
@@ -263,17 +309,23 @@ export default function HomePage() {
           </div>
 
           <Card className="mt-4">
-            <h3 className="mb-3 text-lg font-medium text-zinc-50">What&apos;s in the ZIP</h3>
+            <h3 className="mb-3 text-lg font-medium text-zinc-50">
+              What&apos;s in the ZIP
+            </h3>
             <ul className="grid gap-2 sm:grid-cols-2">
               {zipContents.map((item) => (
-                <li key={item} className="flex items-start gap-2 font-mono text-xs leading-5 text-zinc-400">
+                <li
+                  key={item}
+                  className="flex items-start gap-2 font-mono text-xs leading-5 text-zinc-400"
+                >
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-600" />
                   {item}
                 </li>
               ))}
             </ul>
             <p className="mt-4 text-xs text-zinc-500">
-              No node_modules, no .env secrets, no databases in the download. Install from the lockfile after unzip.
+              No node_modules, no .env secrets, no databases in the download.
+              Install from the lockfile after unzip.
             </p>
           </Card>
         </section>
@@ -283,14 +335,20 @@ export default function HomePage() {
           <Card className="border-amber-500/30 bg-gradient-to-br from-zinc-900 to-zinc-950">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <p className="text-sm font-medium text-amber-300">One-time license</p>
-                <h2 className="mt-1 text-3xl font-semibold tracking-tight">US$149</h2>
+                <p className="text-sm font-medium text-amber-300">
+                  One-time license
+                </p>
+                <h2 className="mt-1 text-3xl font-semibold tracking-tight">
+                  US$149
+                </h2>
                 <p className="mt-2 max-w-md text-sm leading-6 text-zinc-400">
-                  Pay once on Gumroad. Download the ZIP, follow GETTING_STARTED.md, and run
-                  locally. The live demo stays free to explore.
+                  Pay once on Gumroad. Download the ZIP, follow
+                  GETTING_STARTED.md, and run locally. The live demo stays free
+                  to explore.
                 </p>
                 <p className="mt-3 text-xs text-zinc-500">
-                  License · perpetual commercial use · no resale of the unmodified starter
+                  License · perpetual commercial use · no resale of the
+                  unmodified starter
                 </p>
               </div>
               <BuyButton />
@@ -310,12 +368,14 @@ export default function HomePage() {
                   Senior engineer. Hands-on architect.
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
-                  AnderZilla is a Senior Software Engineer and hands-on architect with 15+ years
-                  building production systems across mobile, web, and backend — in banking,
-                  industrial, and agritech contexts. Daily stack includes Python, FastAPI, React,
-                  Next.js, TypeScript, and React Native. Based in Curitiba, Brazil; works remote.
-                  ForgeKit is an indie product from that practice: opinionated where it saves time,
-                  honest about what you still wire yourself.
+                  AnderZilla is a Senior Software Engineer and hands-on
+                  architect with 15+ years building production systems across
+                  mobile, web, and backend — in banking, industrial, and
+                  agritech contexts. Daily stack includes Python, FastAPI,
+                  React, Next.js, TypeScript, and React Native. Based in
+                  Curitiba, Brazil; works remote. ForgeKit is an indie product
+                  from that practice: opinionated where it saves time, honest
+                  about what you still wire yourself.
                 </p>
                 <a
                   href={LINKEDIN_URL}
@@ -327,7 +387,9 @@ export default function HomePage() {
                 </a>
               </div>
               <div className="flex flex-col justify-center gap-3 border-t border-zinc-800 bg-zinc-950/50 p-6 md:border-l md:border-t-0 md:px-8">
-                <p className="text-xs uppercase tracking-wider text-zinc-500">Focus</p>
+                <p className="text-xs uppercase tracking-wider text-zinc-500">
+                  Focus
+                </p>
                 <ul className="space-y-2 text-sm text-zinc-300">
                   <li>Production systems</li>
                   <li>Mobile · web · backend</li>
@@ -353,8 +415,9 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-500">
-            Checkout-ready routes and webhook handlers are included so you can connect Gumroad
-            delivery today and optional merchant-of-record hooks when your own product needs them.
+            Payment route examples are included as integration starting points.
+            Configure your provider, verify webhook signatures, and test
+            entitlement handling before accepting live payments.
           </p>
         </section>
 
@@ -364,15 +427,19 @@ export default function HomePage() {
             <Card className="p-5">
               <h3 className="font-medium text-zinc-100">License</h3>
               <p className="mt-2 text-sm leading-6 text-zinc-400">
-                Perpetual use and modification in commercial projects. No reselling the unmodified
-                starter as a competing template. Attribution optional.
+                Perpetual use and modification in commercial projects. No
+                reselling the unmodified starter as a competing template.
+                Attribution optional.
               </p>
             </Card>
             <Card className="p-5">
-              <h3 className="font-medium text-zinc-100">Support expectations</h3>
+              <h3 className="font-medium text-zinc-100">
+                Support expectations
+              </h3>
               <p className="mt-2 text-sm leading-6 text-zinc-400">
-                Docs-first (GETTING_STARTED + README). Reasonable product questions after purchase.
-                Not included: custom builds, unpaid consulting, or production on-call.
+                Docs-first (GETTING_STARTED + README). Reasonable product
+                questions after purchase. Custom development and production
+                on-call are outside the license.
               </p>
             </Card>
           </div>
@@ -394,22 +461,32 @@ export default function HomePage() {
         {/* 7. Final CTA */}
         <section className="py-12">
           <Card className="border-amber-500/20 bg-gradient-to-b from-zinc-900/80 to-zinc-950 text-center">
-            <p className="text-sm font-medium text-amber-300">Ready to ship your own product shell?</p>
+            <p className="text-sm font-medium text-amber-300">
+              Ready to ship your own product shell?
+            </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50">
               Get ForgeKit — US$149
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-zinc-400">
-              One-time Gumroad purchase. ZIP delivery. Clear English docs. Built by AnderZilla —
-              no fake testimonials, no invented metrics.
+              One-time Gumroad purchase. ZIP delivery. Clear English docs. Built
+              by AnderZilla — ready for you to customize and deploy.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a href={GUMROAD_URL} target="_blank" rel="noopener noreferrer">
-                <Button size="lg">Buy on Gumroad — US$149</Button>
+              <a
+                href={GUMROAD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonStyles({ size: "lg", variant: "primary" })}
+              >
+                Buy on Gumroad — US$149
               </a>
-              <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="secondary">
-                  Try live demo
-                </Button>
+              <a
+                href={DEMO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonStyles({ size: "lg", variant: "secondary" })}
+              >
+                Try live demo
               </a>
             </div>
           </Card>
@@ -417,19 +494,32 @@ export default function HomePage() {
       </main>
 
       <footer className="relative z-10 border-t border-zinc-900 py-8 text-center text-sm text-zinc-500">
-        <p>
-          ForgeKit · by AnderZilla · {new Date().getFullYear()}
-        </p>
+        <p>ForgeKit · by AnderZilla · {new Date().getFullYear()}</p>
         <p className="mt-2 text-xs text-zinc-600">
-          <a href={LINKEDIN_URL} className="hover:text-zinc-400" target="_blank" rel="noopener noreferrer">
+          <a
+            href={LINKEDIN_URL}
+            className="hover:text-zinc-400"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             LinkedIn
           </a>
           {" · "}
-          <a href={GUMROAD_URL} className="hover:text-zinc-400" target="_blank" rel="noopener noreferrer">
+          <a
+            href={GUMROAD_URL}
+            className="hover:text-zinc-400"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Gumroad
           </a>
           {" · "}
-          <a href={DEMO_URL} className="hover:text-zinc-400" target="_blank" rel="noopener noreferrer">
+          <a
+            href={DEMO_URL}
+            className="hover:text-zinc-400"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Live demo
           </a>
         </p>

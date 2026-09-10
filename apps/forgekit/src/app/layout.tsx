@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ForgeKit — Next.js digital product kit by AnderZilla",
   description:
-    "A serious Next.js MVP starter: landing, auth, Prisma entitlements, gated dashboard, and checkout-ready architecture. One-time US$149 on Gumroad. Built by AnderZilla.",
+    "A serious Next.js MVP starter: landing, auth, Prisma entitlements, gated dashboard, and payment integration starting points. One-time US$149 on Gumroad. Built by AnderZilla.",
   authors: [{ name: "AnderZilla" }],
 };
 

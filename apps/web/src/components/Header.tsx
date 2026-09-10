@@ -12,7 +12,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-ink-600/60 bg-ink-950/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="group flex items-center gap-2 font-semibold tracking-tight">
+        <Link
+          href="/"
+          className="group flex items-center gap-2 font-semibold tracking-tight"
+        >
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-glow to-violet-glow text-sm font-bold text-ink-950">
             Az
           </span>
@@ -21,11 +24,14 @@ export function Header() {
               AnderZilla
             </span>
             <span className="mt-0.5 font-mono text-[10px] font-normal text-zinc-500">
-              ship notes
+              tools & perspectives
             </span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-1 sm:flex">
+        <nav
+          aria-label="Main navigation"
+          className="hidden items-center gap-1 md:flex"
+        >
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className="btn-ghost">
               {item.label}
@@ -38,9 +44,19 @@ export function Header() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Buy on Gumroad
+          Buy ForgeKit
         </a>
       </div>
+      <nav
+        aria-label="Mobile navigation"
+        className="container-page flex flex-wrap gap-1 pb-3 md:hidden"
+      >
+        {nav.map((item) => (
+          <Link key={item.href} href={item.href} className="btn-ghost">
+            {item.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }

@@ -16,7 +16,7 @@ export type AffiliateSlot = {
 };
 
 export const AFFILIATE_DISCLOSURE =
-  "Some links on Anderzilla and StackPick may be affiliate links. If you buy through them, I may earn a commission at no extra cost to you. I only recommend tools I'd use myself.";
+  "StackPick currently links directly to official product sites and earns no commission from these links. Any future affiliate links will be disclosed.";
 
 export const STACKPICK_AFFILIATES: AffiliateSlot[] = [
   {
@@ -161,10 +161,10 @@ export const SITE = {
   name: "AnderZilla",
   domain: "anderzilla.com",
   url: "https://anderzilla.com",
-  tagline: "Tools, stacks & geek fuel for builders who ship.",
-  author: "Anderson Henrique Gonçalves",
+  tagline: "Tech to explore, play, and enjoy.",
+  author: "AnderZilla",
   authorShort: "AnderZilla",
-  location: "Curitiba, Brazil · Remote",
+  location: "Curitiba, Brazil",
   role: "Senior Software Engineer / Architect",
   email: "hello@anderzilla.com",
   forgekit: {
@@ -173,9 +173,14 @@ export const SITE = {
     gumroad: "https://anderzilla.gumroad.com/l/edkel",
     demo: "https://forgekit-kwzn5potra-rj.a.run.app",
     blurb:
-      "A serious Next.js MVP kit — landing, auth, Prisma entitlements, gated dashboard, and checkout-ready architecture. Gumroad ZIP delivery.",
+      "A Next.js source kit with a landing page, authentication, Prisma data models, and a gated dashboard. Download, customize, and deploy.",
   },
   social: {
+    tiktok: "https://www.tiktok.com/@anderzilla",
+    instagram: "https://www.instagram.com/anderzilla/",
+    youtube: "https://www.youtube.com/@anderzilla-tv",
+    twitch: "https://www.twitch.tv/anderzillacwb",
+    kick: "https://kick.com/anderzilla",
     github: "https://github.com/anderzilla",
     twitter: "https://x.com/anderzilla",
     linkedin: "https://www.linkedin.com/in/andersonhenriquegoncalves",
@@ -193,3 +198,12 @@ export const SITE = {
     },
   ],
 } as const;
+
+/** Channel URLs confirmed by the owner; not an API connection or activity claim. */
+export const SOCIAL_CHANNELS = [
+  { label: "YouTube", href: SITE.social.youtube },
+  { label: "TikTok", href: SITE.social.tiktok },
+  { label: "Instagram", href: SITE.social.instagram },
+  { label: "Twitch", href: SITE.social.twitch },
+  { label: "Kick", href: SITE.social.kick },
+] as const;

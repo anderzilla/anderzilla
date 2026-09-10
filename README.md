@@ -1,33 +1,11 @@
-﻿# AnderZilla
+# AnderZilla
 
-Personal brand hub for **programmers, gamers, nerds & tech enthusiasts**.
+Código do hub pessoal de tecnologia, IA, games e gadgets e do produto ForgeKit.
 
-- **Site (hub):** `apps/web` → target domain `anderzilla.com`
-- **Product:** `apps/forgekit` → Gumroad https://anderzilla.gumroad.com/l/edkel (US$149)
-- **Docs / Codex briefs:** `docs/`
+- `apps/web`: hub editorial (migração PT-BR/EN planejada).
+- `apps/forgekit`: storefront e demonstração do starter.
+- `infra/gcp`: fundação de nuvem isolada para homologação e produção.
 
-Not CodeMatrix. Brand name on storefronts: **AnderZilla**.
+A documentação, o dossiê, a estratégia e as ferramentas de IA estão na branch `codex/anderzilla-docs`, worktree irmão `../AnderZilla-docs`. O commit de referência fica em `.anderzilla-docs-ref`.
 
-## Quick start (Windows)
-
-```powershell
-cd Z:\AnderZilla\apps\web
-npm install
-npm run dev
-# http://localhost:3000
-
-cd Z:\AnderZilla\apps\forgekit
-npm install
-npm run dev
-# http://localhost:3000 (or next free port)
-```
-
-## Codex / Claude Code
-
-1. Open workspace folder: `Z:\AnderZilla`
-2. Read `AGENTS.md` and `docs/BRIEF-polish-vitrine.md`
-3. Primary product work: polish `apps/web` (Anderzilla.com) + keep `apps/forgekit` buyer-ready
-
-## Repo
-
-Push this folder to https://github.com/anderzilla/AnderZilla when ready.
+Para trabalhar: leia `AGENTS.md`; instale dependências com `npm ci` em cada app; execute `npm run dev` ou `npm run build`. Configuração declarativa de deploy não significa recurso ativo. Nunca usar projetos ou credenciais CodeMatrix nesta operação.

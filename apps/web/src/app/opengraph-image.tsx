@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Anderzilla — tools, stacks & geek fuel";
+export const alt = "AnderZilla — tools, stacks & geek fuel";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -37,7 +37,7 @@ export default function OgImage() {
         >
           Az
         </div>
-        <div style={{ marginTop: 36, fontSize: 64, fontWeight: 700 }}>Anderzilla</div>
+        <div style={{ marginTop: 36, fontSize: 64, fontWeight: 700 }}>AnderZilla</div>
         <div style={{ marginTop: 16, fontSize: 28, color: "#a1a1aa", maxWidth: 800 }}>
           Tools, stacks & geek fuel for builders who ship.
         </div>

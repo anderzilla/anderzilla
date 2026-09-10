@@ -1,0 +1,146 @@
+name: Release AnderZilla web
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Protected environment (must already be configured)
+        type: choice
+        options: [homolog, production]
+        required: true
+      mode:
+        description: Bootstrap pushes first image; release requires existing Terraform service
+        type: choice
+        options: [release, bootstrap-image]
+        default: release
+        required: true
+      homolog_digest:
+        description: 'Production only: exact sha256 digest already validated in homolog (bootstrap only copies it)'
+        type: string
+        required: false
+permissions:
+  contents: read
+concurrency:
+  group: anderzilla-web-${{ inputs.environment }}
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      DEPLOY_ENV: ${{ inputs.environment }}
+      DEPLOY_MODE: ${{ inputs.mode }}
+      PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+      PROJECT_NUMBER: ${{ vars.GCP_PROJECT_NUMBER }}
+      REGION: ${{ vars.GCP_REGION }}
+      DEPLOY_ACCOUNT: ${{ vars.GCP_DEPLOY_SERVICE_ACCOUNT }}
+      WIF_PROVIDER: ${{ vars.GCP_WIF_PROVIDER }}
+      OWNER_IDENTITY: ${{ vars.GCP_OWNER_IDENTITY }}
+      HOMOLOG_PROJECT: ${{ vars.ANDERZILLA_HOMOLOG_PROJECT_ID }}
+      PRODUCTION_PROJECT: ${{ vars.ANDERZILLA_PRODUCTION_PROJECT_ID }}
+      HOMOLOG_REGION: ${{ vars.ANDERZILLA_HOMOLOG_REGION }}
+      PROMOTE_DIGEST: ${{ inputs.homolog_digest }}
+    steps:
+      - name: Validate explicit target before authentication
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$OWNER_IDENTITY" == 'player.one@anderzilla.com' ]]
+          [[ "$HOMOLOG_PROJECT" =~ ^anderzilla-[a-z0-9-]+[a-z0-9]$ ]]
+          [[ "$PRODUCTION_PROJECT" =~ ^anderzilla-[a-z0-9-]+[a-z0-9]$ ]]
+          [[ "$HOMOLOG_PROJECT" != "$PRODUCTION_PROJECT" ]]
+          if [[ "$DEPLOY_ENV" == 'production' ]]; then
+            [[ "$GITHUB_REF" == 'refs/heads/main' && "$PROJECT_ID" == "$PRODUCTION_PROJECT" ]]
+            [[ "$PROMOTE_DIGEST" =~ ^sha256:[a-f0-9]{64}$ ]]
+            [[ "$HOMOLOG_REGION" =~ ^[a-z]+-[a-z]+[0-9]+$ ]]
+          else
+            [[ "$DEPLOY_ENV" == 'homolog' && "$GITHUB_REF" == 'refs/heads/develop' && "$PROJECT_ID" == "$HOMOLOG_PROJECT" ]]
+            [[ -z "$PROMOTE_DIGEST" ]]
+          fi
+          [[ "$PROJECT_NUMBER" =~ ^[0-9]+$ ]]
+          [[ "$REGION" =~ ^[a-z]+-[a-z]+[0-9]+$ ]]
+          [[ "$DEPLOY_ACCOUNT" == "anderzilla-deployer@$PROJECT_ID.iam.gserviceaccount.com" ]]
+          [[ "$WIF_PROVIDER" == "projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/anderzilla-github/providers/github" ]]
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        if: inputs.environment == 'homolog'
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - name: Build application before release
+        if: inputs.environment == 'homolog'
+        working-directory: apps/web
+        run: |
+          npm ci
+          npm run build
+      - uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.DEPLOY_ACCOUNT }}
+          project_id: ${{ env.PROJECT_ID }}
+      - uses: google-github-actions/setup-gcloud@v3
+      - name: Verify authenticated target
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$(gcloud auth list --filter=status:ACTIVE --format='value(account)')" == "$DEPLOY_ACCOUNT" ]]
+          [[ "$(gcloud projects describe "$PROJECT_ID" --account="$DEPLOY_ACCOUNT" --format='value(projectNumber)')" == "$PROJECT_NUMBER" ]]
+          gcloud artifacts repositories describe anderzilla --project="$PROJECT_ID" --location="$REGION" --account="$DEPLOY_ACCOUNT" >/dev/null
+          gcloud auth configure-docker "$REGION-docker.pkg.dev" --account="$DEPLOY_ACCOUNT" --quiet
+      - name: Build and push immutable image
+        if: inputs.environment == 'homolog'
+        id: image
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="$REGION-docker.pkg.dev/$PROJECT_ID/anderzilla/web:$GITHUB_SHA-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          docker build --label "org.opencontainers.image.revision=$GITHUB_SHA" --tag "$IMAGE" apps/web
+          docker push "$IMAGE"
+          DIGEST="$(gcloud artifacts docker images describe "$IMAGE" --project="$PROJECT_ID" --account="$DEPLOY_ACCOUNT" --format='value(image_summary.digest)')"
+          [[ "$DIGEST" =~ ^sha256:[a-f0-9]{64}$ ]]
+          echo "ref=$REGION-docker.pkg.dev/$PROJECT_ID/anderzilla/web@$DIGEST" >> "$GITHUB_OUTPUT"
+          echo "Image: \`$REGION-docker.pkg.dev/$PROJECT_ID/anderzilla/web@$DIGEST\`" >> "$GITHUB_STEP_SUMMARY"
+      - name: Promote exact homolog artifact without rebuilding
+        if: inputs.environment == 'production'
+        id: promote
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE="$HOMOLOG_REGION-docker.pkg.dev/$HOMOLOG_PROJECT/anderzilla/web@$PROMOTE_DIGEST"
+          gcloud auth configure-docker "$HOMOLOG_REGION-docker.pkg.dev" --account="$DEPLOY_ACCOUNT" --quiet
+          if [[ "$DEPLOY_MODE" == 'release' ]]; then
+            gcloud run services describe anderzilla-web-homolog --project="$HOMOLOG_PROJECT" --region="$HOMOLOG_REGION" --account="$DEPLOY_ACCOUNT" --format=json > "$RUNNER_TEMP/homolog.json"
+            REVISION="$(jq -r '.status.latestReadyRevisionName' "$RUNNER_TEMP/homolog.json")"
+            [[ "$REVISION" == anderzilla-web-homolog-* ]]
+            [[ "$REVISION" == "$(jq -r '.status.latestCreatedRevisionName' "$RUNNER_TEMP/homolog.json")" ]]
+            jq -e --arg rev "$REVISION" '[.status.traffic[] | select(.revisionName == $rev) | .percent] | add == 100' "$RUNNER_TEMP/homolog.json" >/dev/null
+            DEPLOYED="$(gcloud run revisions describe "$REVISION" --project="$HOMOLOG_PROJECT" --region="$HOMOLOG_REGION" --account="$DEPLOY_ACCOUNT" --format='value(status.imageDigest)')"
+            [[ "$DEPLOYED" == "$SOURCE" ]]
+          fi
+          docker pull "$SOURCE"
+          SOURCE_SHA="$(docker image inspect "$SOURCE" --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')"
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          git merge-base --is-ancestor "$SOURCE_SHA" HEAD
+          TARGET="$REGION-docker.pkg.dev/$PROJECT_ID/anderzilla/web:promoted-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          docker tag "$SOURCE" "$TARGET"
+          docker push "$TARGET"
+          COPIED_DIGEST="$(gcloud artifacts docker images describe "$TARGET" --project="$PROJECT_ID" --account="$DEPLOY_ACCOUNT" --format='value(image_summary.digest)')"
+          [[ "$COPIED_DIGEST" == "$PROMOTE_DIGEST" ]]
+          echo "ref=$REGION-docker.pkg.dev/$PROJECT_ID/anderzilla/web@$COPIED_DIGEST" >> "$GITHUB_OUTPUT"
+          echo "Promoted source commit: $SOURCE_SHA; exact digest: $COPIED_DIGEST" >> "$GITHUB_STEP_SUMMARY"
+      - name: Update existing service image only
+        if: inputs.mode == 'release'
+        env:
+          IMAGE_REF: ${{ steps.image.outputs.ref || steps.promote.outputs.ref }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          SERVICE="anderzilla-web-$DEPLOY_ENV"
+          # update cannot create a missing service; Terraform provisions it first.
+          gcloud run services describe "$SERVICE" --project="$PROJECT_ID" --region="$REGION" --account="$DEPLOY_ACCOUNT" >/dev/null
+          gcloud run services update "$SERVICE" --image="$IMAGE_REF" --project="$PROJECT_ID" --region="$REGION" --account="$DEPLOY_ACCOUNT" --quiet

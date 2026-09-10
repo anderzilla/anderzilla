@@ -3,8 +3,9 @@ import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { SITE } from "../../../content/affiliates";
 
 export const metadata: Metadata = {
+  alternates: { canonical: `${SITE.url}/privacy` },
   title: "Privacy",
-  description: "Privacy policy and affiliate disclosure for Anderzilla.",
+  description: "Privacy policy and affiliate disclosure for AnderZilla.",
 };
 
 export default function PrivacyPage() {
@@ -21,7 +22,7 @@ export default function PrivacyPage() {
         <p>
           Basic server and analytics logs (IP, user agent, pages viewed) may be collected
           by hosting providers (e.g. Cloud Run, CDN). Product checkouts (Gumroad) are
-          processed by those platforms under their own policies — Anderzilla does not
+          processed by those platforms under their own policies — AnderZilla does not
           store your full payment details.
         </p>
         <h2>Cookies</h2>

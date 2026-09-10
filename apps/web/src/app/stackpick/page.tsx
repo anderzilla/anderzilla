@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
-import { SITE, STACKPICK_AFFILIATES } from "../../../content/affiliates";
+import { SITE } from "../../../content/affiliates";
 import { listComparisons } from "../../../content/stackpick";
 
 export const metadata: Metadata = {
+  alternates: { canonical: `${SITE.url}/stackpick` },
   title: "StackPick",
   description:
-    "StackPick — Wirecutter-lite comparisons for AI, hosting, auth, databases, and GPU cloud. Affiliate slots stay placeholders until partnerships are live.",
+    "Compare developer tools across hosting, AI, authentication, databases, and GPU cloud. Explore use cases, tradeoffs, and official product links.",
   openGraph: {
     title: `StackPick · ${SITE.name}`,
-    description: "Honest AI/dev comparisons. No invented partnerships.",
+    description: "Developer tool comparisons organized around your use case.",
     url: `${SITE.url}/stackpick`,
   },
 };
@@ -20,13 +21,13 @@ export default function StackPickPage() {
 
   return (
     <div className="container-page py-16">
-      <p className="badge">pSEO · Wirecutter-lite</p>
+      <p className="badge">Developer tool comparisons</p>
       <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
         StackPick
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-zinc-300">
-        Side-by-side picks for builders who want tradeoffs, not hype decks. Written by{" "}
-        {SITE.authorShort} — personal brand, not a faceless review farm.
+        Side-by-side perspectives on the tools behind your next project. Written
+        by {SITE.authorShort}.
       </p>
 
       <AffiliateDisclosure className="mt-8" />
@@ -34,8 +35,8 @@ export default function StackPickPage() {
       <section className="mt-12">
         <h2 className="section-title">Comparisons</h2>
         <p className="mt-2 muted text-sm">
-          Each page: TL;DR · table · pros/cons · FAQ · CTA placeholders from{" "}
-          <code className="font-mono text-violet-soft">content/affiliates.ts</code>.
+          Start with the verdict, compare key differences, and review the pros,
+          cons, and FAQs.
         </p>
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {comparisons.map((c) => (
@@ -58,35 +59,14 @@ export default function StackPickPage() {
         </div>
       </section>
 
-      <section className="mt-14">
-        <h2 className="section-title">Affiliate slots</h2>
-        <p className="mt-2 muted text-sm">
-          Status{" "}
-          <span className="font-mono text-amber-soft">STACKPICK_TODO</span> /{" "}
-          <span className="font-mono text-amber-soft">closed</span> until live.
+      <section className="mt-14 card">
+        <h2 className="section-title">How to use these comparisons</h2>
+        <p className="mt-3 max-w-3xl leading-relaxed text-zinc-400">
+          These are editorial starting points, not benchmark results. Choose the
+          tradeoffs that fit your workload, budget, and team. Visit the official
+          product sites for current features, limits, and pricing before making
+          a decision.
         </p>
-        <div className="mt-6 overflow-hidden rounded-2xl border border-ink-600">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-ink-800 text-zinc-300">
-              <tr>
-                <th className="px-4 py-3 font-medium">Tool</th>
-                <th className="px-4 py-3 font-medium">Category</th>
-                <th className="px-4 py-3 font-medium">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {STACKPICK_AFFILIATES.map((a) => (
-                <tr key={a.id} className="border-t border-ink-600/80">
-                  <td className="px-4 py-3 text-zinc-200">{a.label}</td>
-                  <td className="px-4 py-3 text-zinc-400">{a.category}</td>
-                  <td className="px-4 py-3 font-mono text-xs text-amber-soft">
-                    {a.status}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </section>
 
       <p className="mt-10 text-sm text-zinc-500">

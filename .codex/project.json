@@ -1,4 +1,1 @@
-﻿workspace: Z:\\AnderZilla
-primary_app: apps/web
-product_app: apps/forgekit
-brief: docs/BRIEF-polish-vitrine.md
+{"workspace":"Z:/AnderZilla","primary_app":"apps/web","product_app":"apps/forgekit","documentation_worktree":"Z:/AnderZilla-docs","documentation_branch":"codex/anderzilla-docs"}

@@ -19,6 +19,14 @@ const sizes: Record<NonNullable<Props["size"]>, string> = {
   lg: "h-12 px-6 text-base",
 };
 
+export function buttonStyles({
+  className = "",
+  variant = "primary",
+  size = "md",
+}: Pick<Props, "className" | "variant" | "size"> = {}) {
+  return `inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 disabled:opacity-50 ${variants[variant]} ${sizes[size]} ${className}`;
+}
+
 export function Button({
   className = "",
   variant = "primary",
@@ -26,9 +34,6 @@ export function Button({
   ...props
 }: Props) {
   return (
-    <button
-      className={`inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 disabled:opacity-50 ${variants[variant]} ${sizes[size]} ${className}`}
-      {...props}
-    />
+    <button className={buttonStyles({ variant, size, className })} {...props} />
   );
 }

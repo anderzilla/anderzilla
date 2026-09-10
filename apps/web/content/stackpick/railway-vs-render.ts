@@ -6,7 +6,7 @@ export const railwayVsRender: StackPickComparison = {
   category: "Hosting",
   teaser: "PaaS for indie backends — DX, pricing surprises, and when to pick each.",
   updated: "2026-09-08",
-  author: "Anderzilla",
+  author: "AnderZilla",
   productA: { id: "railway", name: "Railway" },
   productB: { id: "render", name: "Render" },
   tldr:
@@ -39,11 +39,6 @@ export const railwayVsRender: StackPickComparison = {
       a: "Credits / trial style — verify current offer",
       b: "Hobby free tier historically friendlier",
     },
-    {
-      feature: "Affiliate status (Anderzilla)",
-      a: "STACKPICK_TODO — 1P program exists",
-      b: "STACKPICK_TODO — no verified publisher affiliate",
-    },
   ],
   a: {
     pros: [
@@ -64,7 +59,6 @@ export const railwayVsRender: StackPickComparison = {
     ],
     cons: [
       "Less “playground” feel for complex topologies",
-      "No verified cash affiliate for this publisher yet",
     ],
   },
   faq: [
@@ -75,10 +69,6 @@ export const railwayVsRender: StackPickComparison = {
     {
       q: "Can I run Docker on both?",
       a: "Yes — both support container-style deploys. Prefer the one whose dashboard you actually open weekly.",
-    },
-    {
-      q: "Are the CTAs affiliate links?",
-      a: "Not yet. Buttons below use STACKPICK_TODO placeholders until programs are approved and wired in content/affiliates.ts.",
     },
   ],
   notes: [

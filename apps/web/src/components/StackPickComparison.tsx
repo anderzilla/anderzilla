@@ -39,22 +39,14 @@ function CtaButton({
         >
           Visit {productName} (official)
         </a>
-        <span className="font-mono text-xs text-amber-soft">
-          {status === "closed" ? "affiliate closed" : "STACKPICK_TODO"}
-        </span>
       </div>
     );
   }
 
   return (
-    <button
-      type="button"
-      disabled
-      className="btn-secondary cursor-not-allowed opacity-60"
-      title="No live affiliate CTA yet"
-    >
-      {productName} · {status}
-    </button>
+    <span className="text-sm text-zinc-400">
+      Official link unavailable for {productName}.
+    </span>
   );
 }
 
@@ -68,15 +60,15 @@ export function StackPickComparisonView({ data }: { data: Comparison }) {
 
   return (
     <article className="container-page py-16">
-      <nav className="text-sm text-zinc-500">
+      <nav aria-label="Breadcrumb" className="text-sm text-zinc-500">
         <Link href="/stackpick" className="hover:text-amber-soft">
           StackPick
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-zinc-400">{data.slug}</span>
+        <span className="text-zinc-400">{data.title}</span>
       </nav>
 
-      <p className="badge mt-6">{data.category} · Wirecutter-lite</p>
+      <p className="badge mt-6">{data.category}</p>
       <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
         {data.title}
       </h1>
@@ -91,10 +83,12 @@ export function StackPickComparisonView({ data }: { data: Comparison }) {
         <p className="text-xs font-semibold uppercase tracking-wider text-amber-soft">
           TL;DR verdict
         </p>
-        <p className="mt-2 text-xl font-semibold text-white">{data.verdictLabel}</p>
+        <p className="mt-2 text-xl font-semibold text-white">
+          {data.verdictLabel}
+        </p>
         <p className="mt-3 text-zinc-300 leading-relaxed">{data.tldr}</p>
         <p className="mt-4 font-mono text-sm text-violet-soft">
-          Primary lean: {winnerName}
+          Best fit: {winnerName}
         </p>
       </section>
 
@@ -102,17 +96,29 @@ export function StackPickComparisonView({ data }: { data: Comparison }) {
         <h2 className="section-title">Comparison table</h2>
         <div className="mt-6 overflow-x-auto rounded-2xl border border-ink-600">
           <table className="w-full min-w-[640px] text-left text-sm">
+            <caption className="sr-only">{data.title}: key differences</caption>
             <thead className="bg-ink-800 text-zinc-300">
               <tr>
-                <th className="px-4 py-3 font-medium">Dimension</th>
-                <th className="px-4 py-3 font-medium">{data.productA.name}</th>
-                <th className="px-4 py-3 font-medium">{data.productB.name}</th>
+                <th scope="col" className="px-4 py-3 font-medium">
+                  Dimension
+                </th>
+                <th scope="col" className="px-4 py-3 font-medium">
+                  {data.productA.name}
+                </th>
+                <th scope="col" className="px-4 py-3 font-medium">
+                  {data.productB.name}
+                </th>
               </tr>
             </thead>
             <tbody>
               {data.rows.map((row) => (
-                <tr key={row.feature} className="border-t border-ink-600/80 align-top">
-                  <td className="px-4 py-3 font-medium text-zinc-200">{row.feature}</td>
+                <tr
+                  key={row.feature}
+                  className="border-t border-ink-600/80 align-top"
+                >
+                  <td className="px-4 py-3 font-medium text-zinc-200">
+                    {row.feature}
+                  </td>
                   <td className="px-4 py-3 text-zinc-400">{row.a}</td>
                   <td className="px-4 py-3 text-zinc-400">{row.b}</td>
                 </tr>
@@ -168,15 +174,20 @@ export function StackPickComparisonView({ data }: { data: Comparison }) {
       </section>
 
       <section className="mt-12">
-        <h2 className="section-title">Try / learn more</h2>
+        <h2 className="section-title">Explore the products</h2>
         <p className="mt-2 text-sm text-zinc-400">
-          Official product links are fine. Affiliate/sponsored CTAs stay placeholder until{" "}
-          <code className="font-mono text-violet-soft">content/affiliates.ts</code> is
-          marked <span className="font-mono text-amber-soft">live</span>.
+          Check current features, pricing, and usage limits on the official
+          product sites.
         </p>
         <div className="mt-6 flex flex-col gap-4">
-          <CtaButton affiliateId={data.productA.id} productName={data.productA.name} />
-          <CtaButton affiliateId={data.productB.id} productName={data.productB.name} />
+          <CtaButton
+            affiliateId={data.productA.id}
+            productName={data.productA.name}
+          />
+          <CtaButton
+            affiliateId={data.productB.id}
+            productName={data.productB.name}
+          />
         </div>
       </section>
 
@@ -188,10 +199,12 @@ export function StackPickComparisonView({ data }: { data: Comparison }) {
               key={item.q}
               className="card group open:border-violet-glow/30"
             >
-              <summary className="cursor-pointer list-none font-medium text-zinc-100">
+              <summary className="cursor-pointer font-medium text-zinc-100">
                 {item.q}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">{item.a}</p>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                {item.a}
+              </p>
             </details>
           ))}
         </div>

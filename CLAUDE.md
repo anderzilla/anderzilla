@@ -1,0 +1,1 @@
+Leia AGENTS.md e o commit de documentação em .anderzilla-docs-ref. Dossiê, papéis, skills e RAG: ../AnderZilla-docs. Código de aplicação neste worktree; documentação na branch codex/anderzilla-docs. Conteúdo pessoal PT/EN, separado de CodeMatrix.

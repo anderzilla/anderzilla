@@ -7,3 +7,15 @@
 .DS_Store
 *.log
 .pnpm-store/
+
+# Local adapters generated from the documentation worktree
+.codex/config.toml
+.mcp.json
+.agents/
+.claude/agents/
+.claude/skills/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.auto.tfvars

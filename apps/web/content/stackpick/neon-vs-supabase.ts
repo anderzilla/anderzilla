@@ -6,7 +6,7 @@ export const neonVsSupabase: StackPickComparison = {
   category: "Database",
   teaser: "Serverless Postgres vs Postgres-plus-backend platform.",
   updated: "2026-09-08",
-  author: "Anderzilla",
+  author: "AnderZilla",
   productA: { id: "neon", name: "Neon" },
   productB: { id: "supabase", name: "Supabase" },
   tldr:
@@ -34,11 +34,6 @@ export const neonVsSupabase: StackPickComparison = {
       a: "Pure Postgres focus",
       b: "Postgres + platform APIs",
     },
-    {
-      feature: "Affiliate status (Anderzilla)",
-      a: "STACKPICK_TODO — OSS/platform partners",
-      b: "STACKPICK_TODO — partner form",
-    },
   ],
   a: {
     pros: [
@@ -48,7 +43,6 @@ export const neonVsSupabase: StackPickComparison = {
     ],
     cons: [
       "You still assemble auth/files/etc.",
-      "Not a classic comparison-blog affiliate today",
     ],
   },
   b: {
@@ -59,7 +53,6 @@ export const neonVsSupabase: StackPickComparison = {
     ],
     cons: [
       "Platform surface area = more opinions",
-      "Public publisher commission not confirmed — placeholders only",
     ],
   },
   faq: [
@@ -69,7 +62,7 @@ export const neonVsSupabase: StackPickComparison = {
     },
     {
       q: "What about Firebase?",
-      a: "Different model (document + Google ecosystem). Google Cloud affiliate programs also have geo limits — not assumed here.",
+      a: "Different model (document + Google ecosystem). Compare its data model with the relational structure your application needs.",
     },
   ],
 };

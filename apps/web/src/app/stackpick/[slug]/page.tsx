@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = getComparison(slug);
   if (!data) return { title: "Comparison" };
   return {
+    alternates: { canonical: `${SITE.url}/stackpick/${data.slug}` },
     title: data.title,
     description: data.teaser,
     openGraph: {

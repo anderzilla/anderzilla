@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Products and stack picks for builders who ship. ForgeKit, StackPick, and more.",
     images: [
       {
-        url: "/og.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "AnderZilla",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description: "Tools, stacks & geek fuel for builders who ship.",
-    images: ["/og.png"],
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
@@ -80,8 +80,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen font-sans`}
       >
         <div className="flex min-h-screen flex-col bg-hero-glow bg-ink-950">
+          <a href="#main-content" className="skip-link">Skip to content</a>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>

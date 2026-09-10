@@ -1,17 +1,17 @@
 import Link from "next/link";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
-import { SITE } from "../../content/affiliates";
+import { SITE, SOCIAL_CHANNELS } from "../../content/affiliates";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-24 border-t border-ink-600/60 bg-ink-900/40">
+    <footer className="mt-8 border-t border-ink-600/60 bg-ink-900/40">
       <div className="container-page grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="font-semibold text-white">AnderZilla</p>
           <p className="mt-2 text-sm text-zinc-400">
-            Personal brand hub — products, stack picks, and geek fuel.
-            Not a consultancy Inc.
+            My corner of tech, AI, games, and gadgets. Stay curious, try things,
+            and have some fun.
           </p>
         </div>
         <div>
@@ -36,9 +36,6 @@ export function Footer() {
               <Link href="/stackpick" className="hover:text-amber-soft">
                 StackPick
               </Link>
-            </li>
-            <li>
-              <span className="text-zinc-500">Gear31.club · soon</span>
             </li>
           </ul>
         </div>
@@ -68,10 +65,21 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="text-sm font-semibold text-zinc-200">Locale</p>
-          <p className="mt-3 text-sm text-zinc-400">
-            UI in English · prices in USD · Curitiba · remote worldwide
-          </p>
+          <p className="text-sm font-semibold text-zinc-200">Find me online</p>
+          <ul className="mt-3 space-y-2 text-sm text-zinc-400">
+            {SOCIAL_CHANNELS.map((channel) => (
+              <li key={channel.href}>
+                <a
+                  href={channel.href}
+                  className="hover:text-amber-soft"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {channel.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="container-page pb-8">
@@ -82,7 +90,7 @@ export function Footer() {
           <p>
             © {year} AnderZilla
           </p>
-          <p className="font-mono text-[11px]">engineering geek · dark UX · ship notes</p>
+          <p className="font-mono text-[11px]">Build · play · explore</p>
         </div>
       </div>
     </footer>
