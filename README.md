@@ -39,3 +39,7 @@ Os relatórios distinguem observação autenticada, informação do proprietári
 - [Backend e dados](strategy/BACKEND-AND-DATA.md)
 - [Karaca Points](strategy/KARACA-POINTS.md)
 - [Revisão de implementação entre IAs](decisions/AI-IMPLEMENTATION-REVIEW.md)
+
+## Administração integral
+
+[Plano do Centro de Controle AnderZilla](strategy/ADMIN-CMS-PLAN.md): módulos, UX, fonte editorial única, publicação, permissões, fases e distribuição entre IAs. Documento de planejamento; painel ainda não implementado.
