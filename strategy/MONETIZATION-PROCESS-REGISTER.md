@@ -13,7 +13,7 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 | mon-hub-br | Hub comercial Área Brasil | br | /comercio/brasil | Agrupa ofertas BRL/afiliados BR | especificado | sim | Implementar hub + empty state | 2026-09-10 |
 | mon-hub-intl | Hub comercial Área Internacional | intl | /comercio/internacional | Agrupa ForgeKit + afiliados USD | especificado | sim | Implementar hub + ForgeKit destaque | 2026-09-10 |
 | mon-stackpick | StackPick comparações | global | /stackpick | Afiliado quando aprovado (por market) | especificado | sim | CTAs só active + market | 2026-09-10 |
-| mon-aff-br | Afiliados Brasil | br | /parceiros?market=br · hub BR | Amazon BR, ML, Hotmart… | especificado | sim | Só aprovados + HTTPS | 2026-09-10 |
+| mon-aff-br | Afiliados Brasil | br | /parceiros?market=br · hub BR | Amazon BR, ML, Hotmart… | especificado | sim | Candidatos listados abaixo; só promover com aprovação+URL | 2026-09-10 |
 | mon-aff-intl | Afiliados Internacional | intl | /parceiros?market=intl · hub INT | SaaS/Impact/Awin… | especificado | sim | Só aprovados; PartnerStack pausado | 2026-09-10 |
 | mon-ads | Slots publicidade | global | home / inventário | Ads / house | especificado | sim | Ocultar se não vendido | 2026-09-10 |
 | mon-live | Lives Twitch/YT/Kick | global | #live / hub live | Tips, subs, sponsor in-stream | em_build | parcial | Cadência + disclosure live | 2026-09-10 |
@@ -37,3 +37,27 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 3. Rodar skill `anderzilla-trust-commerce` no início de tarefas commerce.  
 4. Nunca marcar afiliado/sponsor/`ativo` sem evidência (contrato + URL + market).  
 5. Registrar data (America/Sao_Paulo) na coluna Atualizado.
+
+## Candidatos Área Brasil (afiliados / checkouts BRL)
+
+Fonte: Caça Promo · 2026-09-10. **Nenhum `ativo`.** Só candidatura/docs oficiais — aprovação e URL de tracking ainda pendentes.
+
+| ID | Candidato | URL oficial | Status | Notas |
+|----|-----------|-------------|--------|-------|
+| cand-amazon-br | Amazon Associados Brasil | https://associados.amazon.com.br/ | especificado | Programa oficial Amazon.com.br |
+| cand-ml-br | Mercado Livre Afiliados/Criadores | https://www.mercadolivre.com.br/l/comece-a-recomendar | especificado | Links/IDs e campanhas creators ML BR |
+| cand-hotmart | Hotmart Afiliados | https://signup.hotmart.com/pt-br/afiliado | especificado | Cadastro oficial afiliados |
+| cand-monetizze | Monetizze Afiliados | https://www.monetizze.com.br/afiliados/ | especificado | Checkout BRL + vitrine |
+| cand-kiwify | Kiwify Afiliados | https://ajuda.kiwify.com.br/pt-br/category/afiliados-18psomu/ | especificado | Docs; site https://kiwify.com.br/ |
+| cand-magalu | Influenciador Magalu | https://www.parceiromagalu.com.br/divulgador | especificado | Programa Magalu PF |
+| cand-shopee | Shopee Afiliados BR | https://affiliate.shopee.com.br/ | especificado | Portal + blog guia Shopee |
+| cand-awin-br | Awin Brasil | https://ui.awin.com/publisher-signup/br/step1 | especificado | Rede publisher BR (KaBuM via Awin) |
+| cand-lomadee | Lomadee | https://www.lomadee.com.br/pt-br/afiliados | especificado | Rede BR afiliados/creators |
+| cand-afilio | Afilio | https://afilio.com.br/afiliados/ | especificado | Register: dashboard.afilio.com.br |
+| cand-kabum | KaBuM! Afiliados | https://www.kabum.com.br/hotsite/afiliados/ | especificado | Oficial via Awin |
+| cand-terabyte | Terabyte Parceiros | https://landing.terabyteshop.com.br/parceiros | especificado | Criadores tech/gamer |
+| cand-eduzz | Eduzz | https://ajuda.eduzz.com/hc/pt-br/articles/4407884619547-como-fazer-para-me-cadastrar-na-eduzz | especificado | Parceiro via eduzz.com |
+| cand-braip | Braip Afiliados | https://braip.com/afiliado | especificado | Landing oficial afiliado |
+| cand-pichau | Pichau Parceiros | https://www.pichau.com.br/parceiros | ideia | Só lista influenciadores; inscrição afiliado pouco clara |
+
+Regra: promover a `ativo` no processo `mon-aff-br` só com contrato/aprovação + URL HTTPS de tracking verificada + `market=br` no CMS.
