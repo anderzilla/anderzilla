@@ -13,3 +13,6 @@ Sem métricas, depoimentos ou parceiros inventados. Sem CPF/PIX/Wise no texto. P
 
 ## Done
 Arquivos de conteúdo ou blocos CMS trust_blocks prontos para o BRIEF A/B consumirem.
+
+## Anexo LIVE/GAMES
+Ver strategy/BRIEF-trust-commerce-live-karaca.md.
