@@ -23,3 +23,8 @@ Senior Software Engineer / hands-on architect, 15+ years (mobile/web/backend), b
 1. Polish `apps/web` as the main Anderzilla.com site (IA, ForgeKit CTAs, StackPick)
 2. Keep `apps/forgekit` storefront premium (AnderZilla credibility block)
 3. Write `docs/GUMROAD_LISTING_COPY.md` if missing
+
+
+## Full context
+Read `docs/CONTEXT.md` before large changes. Anderson authorized Codex to use that context freely on this machine.
+
