@@ -55,3 +55,7 @@ Workflow preparado e YAML validado, ainda não executado no GitHub. Consulta con
 Antes de automatizar: publicar branches pelo fluxo acordado, configurar tokens distintos em environments homolog/production e verificar as proteções disponíveis no plano. Não fazer squash que elimine a ancestralidade do commit homologado usada pela promoção. O workflow GCP foi arquivado em infra/gcp/deploy-web.workflow.yml e saiu da pasta de workflows ativos.
 
 GCP criado anteriormente permanece sem novo deploy/faturamento vinculado por esta execução. Google Workspace continua responsável pelo email. Assinatura Workspace não equivale a crédito para consumo GCP.
+
+## Prévia Next.js posterior
+
+A migração componentizada está publicada em slot visual separado, com acesso público apenas ao conteúdo demonstrativo. Registro atual: [AZURE-NEXT-PREVIEW.md](AZURE-NEXT-PREVIEW.md). Homolog formal continua privada e produção não recebeu o redesign nesta entrega.

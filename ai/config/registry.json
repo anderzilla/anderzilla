@@ -6,13 +6,19 @@
     "commercial",
     "platform",
     "reviewer",
-    "analyst"
+    "analyst",
+    "frontend",
+    "backend",
+    "brand"
   ],
   "skills": [
     "anderzilla-editorial",
     "anderzilla-monetization",
     "anderzilla-release",
-    "anderzilla-knowledge"
+    "anderzilla-knowledge",
+    "anderzilla-frontend",
+    "anderzilla-backend",
+    "anderzilla-brand"
   ],
   "servers": [
     {

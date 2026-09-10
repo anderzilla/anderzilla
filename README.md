@@ -31,3 +31,11 @@ Comece pelo [dossiê](DOSSIER.md), pelo [estado dos acessos](operations/ACCESS-I
 - `private/` e `.cache/` ficam fora do Git e do índice de conhecimento.
 
 Os relatórios distinguem observação autenticada, informação do proprietário, fonte pública e hipótese. Uma integração listada não está automaticamente conectada; uma configuração de deploy validada não significa ambiente publicado.
+
+## Base Next.js e Karaca Points
+
+- [Arquitetura de componentes](strategy/NEXTJS-IMPLEMENTATION.md)
+- [Manual da marca](strategy/BRAND-MANUAL.md)
+- [Backend e dados](strategy/BACKEND-AND-DATA.md)
+- [Karaca Points](strategy/KARACA-POINTS.md)
+- [Revisão de implementação entre IAs](decisions/AI-IMPLEMENTATION-REVIEW.md)

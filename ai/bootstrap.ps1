@@ -12,10 +12,36 @@ if ($originUrl -notmatch 'github.com[:/]anderzilla/AnderZilla(?:\.git)?$') { thr
 $pythonPath = (Get-Command python -ErrorAction Stop).Source
 $ragPath = Join-Path $docsRoot 'ai/rag/rag.py'
 if (-not (Test-Path -LiteralPath $ragPath)) { throw 'RAG não encontrado.' }
+function Test-OwnedJson([string]$Left, [string]$Right) {
+  # Compare keys irrespective of order; preserve arrays, types and all settings.
+  # Duplicate keys and invalid JSON fail closed.
+  $comparison = @($Left, $Right) | ConvertTo-Json -Compress
+  $result = $comparison | & $pythonPath -c @'
+import json, sys
+def unique(pairs):
+    value = {}
+    for key, item in pairs:
+        if key in value:
+            raise ValueError("Duplicate JSON key")
+        value[key] = item
+    return value
+try:
+    left, right = json.load(sys.stdin)
+    parsed = [json.loads(v, object_pairs_hook=unique) for v in (left, right)]
+    print("equal" if json.dumps(parsed[0], sort_keys=True) == json.dumps(parsed[1], sort_keys=True) else "different")
+except (ValueError, TypeError):
+    print("different")
+'@
+  return ($LASTEXITCODE -eq 0 -and $result -eq 'equal')
+}
 function Write-OwnedFile([string]$Path, [string]$Content) {
   if (Test-Path -LiteralPath $Path) {
     $oldContent = Get-Content -Raw -LiteralPath $Path
-    if ($oldContent -ne $Content) { throw "Arquivo existente difere: $Path. Revise sem sobrescrever configuração alheia." }
+    $matches = $oldContent -ceq $Content
+    if (-not $matches -and [IO.Path]::GetFileName($Path) -ceq '.mcp.json') {
+      $matches = Test-OwnedJson $oldContent $Content
+    }
+    if (-not $matches) { throw "Arquivo existente difere: $Path. Revise sem sobrescrever configuração alheia." }
   } else {
     New-Item -ItemType Directory -Force (Split-Path $Path) | Out-Null
     [IO.File]::WriteAllText($Path, $Content, [Text.UTF8Encoding]::new($false))
