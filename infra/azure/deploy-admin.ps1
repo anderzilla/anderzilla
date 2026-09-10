@@ -15,14 +15,20 @@ $sourceApi=(Resolve-Path (Join-Path $PSScriptRoot '../../services/cms')).Path
 $api=Join-Path (Join-Path $PSScriptRoot '../../.deploy') ('admin-api-'+[guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $api -Force | Out-Null
 $api=(Resolve-Path $api).Path
-foreach($file in @('api.py','core.py','function_app.py','storage.py','host.json','requirements.txt')) {
+foreach($file in @('api.py','core.py','function_app.py','storage.py','automation.py','worker_auth.py','host.json','requirements.txt')) {
   Copy-Item -LiteralPath (Join-Path $sourceApi $file) -Destination $api
 }
 $packages=Join-Path $api '.python_packages/lib/site-packages'
 & $Python -m pip install --disable-pip-version-check --only-binary=:all: --platform manylinux_2_28_x86_64 --platform manylinux2014_x86_64 --implementation cp --python-version 3.11 --abi cp311 --abi abi3 --abi none --target $packages -r (Join-Path $api 'requirements.txt') --quiet
-if($LASTEXITCODE -or !(Test-Path (Join-Path $packages 'pytds/__init__.py')) -or !(Test-Path (Join-Path $packages 'PIL/__init__.py'))) {throw 'Linux API dependencies were not packaged.'}
+if($LASTEXITCODE -or !(Test-Path (Join-Path $packages 'pytds/__init__.py')) -or !(Test-Path (Join-Path $packages 'PIL/__init__.py')) -or !(Test-Path (Join-Path $packages 'google/auth/transport/requests.py')) -or !(Test-Path (Join-Path $packages 'requests/__init__.py'))) {throw 'Linux API dependencies were not packaged.'}
 $config=Get-Content (Join-Path $out 'staticwebapp.config.json') -Raw | ConvertFrom-Json
 if ($config.platform.apiRuntime -ne 'python:3.11' -or !($config.routes | Where-Object {$_.route -eq '/*' -and $_.allowedRoles -contains 'anderzilla_admin'})) { throw 'Protected admin artifact required.' }
+$workerRoute=$config.routes | Where-Object {$_.route -eq '/api/worker/*'}
+if (-not $workerRoute -or $workerRoute.allowedRoles.Count -ne 1 -or $workerRoute.allowedRoles[0] -ne 'anonymous') { throw 'Worker anonymous route missing or misconfigured.' }
+$routesOrder=$config.routes.route
+$workerIdx=[Array]::IndexOf($routesOrder,'/api/worker/*')
+$catchIdx=[Array]::IndexOf($routesOrder,'/*')
+if ($workerIdx -eq -1 -or $catchIdx -eq -1 -or $workerIdx -ge $catchIdx) { throw 'Worker route must precede protected catchall.' }
 $previous=$env:SWA_CLI_DEPLOYMENT_TOKEN
 try {
   $token=& $AzureCli staticwebapp secrets list -n $app -g $group --subscription $subscription --query properties.apiKey -o tsv --only-show-errors
