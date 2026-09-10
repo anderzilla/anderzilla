@@ -22,5 +22,3 @@ rewards:{label:'Store Points',singular:'recompensa',icon:'♧',description:'Cat�
 export const statusLabel:Record<string,string>={draft:'Rascunho',approved:'Aprovado',archived:'Arquivado',queued:'Na fila',building:'Construindo',validated:'Validado',deploying:'Publicando',deployed:'Publicado',failed:'Falhou',in_review:'Em revisão'};
 export const apiBase=(process.env.NEXT_PUBLIC_ADMIN_API_BASE||'/api').replace(/\/$/,'');
 export async function request<T>(path:string,token:string,options:RequestInit={}):Promise<T>{const response=await fetch(apiBase+path,{...options,credentials:'same-origin',headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`} :{}),...options.headers}});const payload=await response.json().catch(()=>({}));if(!response.ok)throw new Error(payload.error?.message||payload.message||(typeof payload.error==='string'?payload.error:`Operação recusada (${response.status}).`));return payload;}
-
-
