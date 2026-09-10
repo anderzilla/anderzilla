@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-zinc-100 antialiased;
+}
+
+::selection {
+  @apply bg-violet-glow/40 text-white;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-amber-glow px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-glow transition hover:bg-amber-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-glow;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-ink-600 bg-ink-800/80 px-5 py-2.5 text-sm font-semibold text-zinc-100 transition hover:border-violet-soft/50 hover:bg-ink-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-glow;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-ink-800 hover:text-white;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-600/80 bg-ink-900/80 p-6 shadow-lg backdrop-blur;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border border-violet-glow/30 bg-violet-glow/10 px-2.5 py-0.5 text-xs font-medium text-violet-soft;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold tracking-tight text-white sm:text-3xl;
+  }
+
+  .muted {
+    @apply text-zinc-400;
+  }
+
+  .prose-dark {
+    @apply space-y-4 text-zinc-300 leading-relaxed;
+  }
+
+  .prose-dark h2 {
+    @apply text-xl font-semibold text-white pt-4;
+  }
+
+  .prose-dark a {
+    @apply text-amber-soft underline-offset-2 hover:underline;
+  }
+
+  .code-chip {
+    @apply font-mono text-xs text-violet-soft;
+  }
+}
