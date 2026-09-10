@@ -1,5 +1,7 @@
 # AnderZilla — hub de descobertas e exploração
 
+Atualização: [Playtest 03 — cores neon, publicidade, afiliados, live e agenda](HUB-LIVE-AND-MONETIZATION.md). O relato do Playtest 02 abaixo registra a base aprovada.
+
 ## Direção vigente
 
 O objetivo principal é dar vontade de explorar novidades e voltar: games, consoles, celulares, gadgets, IA e curiosidades tecnológicas. A proposta de revista clara e séria foi rejeitada pelo proprietário por parecer um portal genérico. O hub deve comunicar diversão e personalidade imediatamente. Cursos, assinaturas e produtos são ofertas complementares, encontradas quando o interesse do visitante cria contexto.

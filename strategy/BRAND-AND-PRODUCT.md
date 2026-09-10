@@ -39,3 +39,11 @@ O proprietário confirmou AnderZilla-Ghost.png como imagem já utilizada nas pla
 ## Prioridade de experiência confirmada
 
 O proprietário rejeitou o primeiro template de revista por ser genérico e sério demais. A direção vigente é um hub divertido de novidades de games, consoles, celulares, IA, gadgets e curiosidades, com exploração, personalização e gamificação útil. O Ghost é o anfitrião; cursos, assinaturas e vendas são complementos ao interesse conquistado pelo conteúdo. Ver [HUB-GAMIFICATION.md](HUB-GAMIFICATION.md), que substitui a direção de layout inicial.
+
+## Refinamentos neon e linguagem
+
+Direção gamer aprovada pelo proprietário. ZILLA em vermelho; ações principais verde-limão neon; pink neon em desafios/lives. A chamada brasileira passa a usar “caraca!”. Incorporar publicidade identificada, área de afiliados sem parcerias presumidas e sala de live com agenda própria. Ainda não há evento confirmado. Ver [HUB-LIVE-AND-MONETIZATION.md](HUB-LIVE-AND-MONETIZATION.md).
+
+## Karaca Points
+
+A grafia vigente é **Karaca!**, com K. O proprietário definiu Karaca Points conquistados no site e Store Points exclusiva para resgates por pontos, com produtos fornecidos por ele. Ver [estrutura e execução](KARACA-POINTS.md). O playtest usa saldo demonstrativo sem migração ou resgate real.

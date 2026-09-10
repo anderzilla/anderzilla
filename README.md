@@ -5,6 +5,7 @@ Esta branch contém a estratégia, o inventário, as decisões e as ferramentas 
 Comece pelo [dossiê](DOSSIER.md), pelo [estado dos acessos](operations/ACCESS-INVENTORY.md) e pelo [plano por fases](strategy/ROADMAP.md).
 
 ## Mapa
+- [Playtest 03: neon, monetização, live e agenda](strategy/HUB-LIVE-AND-MONETIZATION.md)
 - [Hub de descobertas e gamificação — direção atual](strategy/HUB-GAMIFICATION.md)
 - [Benchmark de dez sites](research/BENCHMARK-10-SITES.md)
 - [Template editorial e identidade Ghost](strategy/EDITORIAL-TEMPLATE.md)
