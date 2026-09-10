@@ -2,6 +2,16 @@
 
 **Direção atual:** Azure Static Web Apps Free é a hospedagem principal. Produção e homolog publicados; DNS web alterado na Wix, email Google preservado. Estado de HTTPS e acesso privado em [registro Azure](AZURE-RELEASE.md). As seções GCP abaixo registram o histórico anterior.
 
+## Atualização operacional — Cloud Run homolog
+
+`player.one@anderzilla.com` foi confirmada como identidade ativa na configuração isolada `anderzilla`. O projeto `anderzilla-homolog` está ativo e vinculado à conta de faturamento aberta `01105A-C48B2C-14BA6D`; `anderzilla-production` não foi vinculado nem alterado.
+
+O serviço privado `anderzilla-automation-worker` foi publicado em `southamerica-east1` na revisão `anderzilla-automation-worker-00004-lzv`, URL `https://anderzilla-automation-worker-kx7kuixj6q-rj.a.run.app`, imagem `sha256:9fa9d7472040d9a609376a3936d99a85c00494c1bf7379dd7a15222ce3e13c72`. Acesso anônimo foi testado e recusado com 403. Não há senha de aplicação: a fronteira é Cloud Run IAM. A conta runtime não recebeu papéis adicionais de projeto.
+
+Foi criado orçamento mensal de R$50 para homologação, com alertas em 50%, 80% e 100%. Também existe um orçamento anterior de R$100 visível na mesma conta; ambos são alertas, não limites rígidos. O teto informado pelo proprietário continua R$150/mês para o projeto.
+
+O CMS Azure está conectado ao worker por token OIDC Google de curta duração, sem chave de conta de serviço. A execução de homologação `c758b0ce-3071-46dd-843b-b8b17fd22a7a` saiu da fila, recebeu um lease, foi processada no Cloud Run e voltou como concluída, com uma entrega e hash de resultado persistido. O agendador `anderzilla-automation-poll` usa a conta separada `anderzilla-scheduler@anderzilla-homolog.iam.gserviceaccount.com`, com invocação somente no serviço, quatro vezes ao dia. Chamadas de teste do Scheduler chegaram com HTTP 200.
+
 ## Atualização — Google Cloud liberado parcialmente
 
 Após o proprietário concluir etapas no console, a criação dos projetos `anderzilla-homolog` (727980282274) e `anderzilla-production` (710416906845) foi concluída com sucesso sob `player.one@anderzilla.com`. O erro de termos foi superado. O projeto inicial `lithe-resource-508205-a6` foi preservado.

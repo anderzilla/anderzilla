@@ -1,4 +1,27 @@
-# Cloud Run — fundação preparada, sem recursos aplicados
+# Cloud Run — worker de automação em homologação
+
+## Estado operacional — 10/09/2026
+
+O piloto privado `anderzilla-automation-worker` está ativo no projeto `anderzilla-homolog` (727980282274), região `southamerica-east1`, sob a identidade operacional `player.one@anderzilla.com`. Azure Static Web Apps continua hospedando o portal e o domínio; este worker apenas executa processos auxiliares e não altera o site público.
+
+- URL autenticada: `https://anderzilla-automation-worker-kx7kuixj6q-rj.a.run.app`
+- Revisão pronta: `anderzilla-automation-worker-00004-lzv`, com 100% do tráfego.
+- Imagem imutável: `southamerica-east1-docker.pkg.dev/anderzilla-homolog/anderzilla-automation/worker@sha256:9fa9d7472040d9a609376a3936d99a85c00494c1bf7379dd7a15222ce3e13c72`.
+- Runtime: `anderzilla-automation-runtime@anderzilla-homolog.iam.gserviceaccount.com`, sem papéis adicionais de projeto.
+- Limites: zero instâncias mínimas, uma máxima, concorrência 1, 1 CPU, 512 MiB, timeout de plataforma 45 segundos e CPU por requisição.
+- IAM: nenhuma concessão `allUsers` ou `allAuthenticatedUsers`. Smoke test anônimo retornou 403; chamada autenticada retornou 200.
+- Processos do piloto: `editorial-package` determinístico e `seo-audit` determinístico. Não há chamada a LLM, publicação ou promessa de ranking. O `seo-audit` recebe uma execução persistida do CMS e devolve resultado autenticado com hash canônico.
+- Validação real: 131 testes locais do worker e 108 do CMS; build Cloud Build `8446ded8-2f52-423e-a5a8-13e48fa0cd32`; auditoria ponta a ponta `c758b0ce-3071-46dd-843b-b8b17fd22a7a` concluída com HTTP 200, 8 verificações aprovadas, 3 alertas e 0 falhas.
+
+O CMS Azure e o worker estão ligados sem chave JSON. O Cloud Run obtém um token OIDC da própria conta runtime e o envia em cabeçalho dedicado; o CMS valida assinatura Google, emissor, audiência, subject, email verificado e validade antes de conceder um lease. A fila mantém idempotência durável, lease de dois minutos, fencing token, no máximo três entregas e conclusão com hash canônico. A concorrência 1 também protege o cache transitório do endpoint direto. O allowlist é fixo aos hosts AnderZilla/Azure documentados e cada salto refaz a checagem de DNS público; não existe pinagem de IP, portanto o risco teórico de alteração de DNS permanece registrado.
+
+O Cloud Scheduler `anderzilla-automation-poll` está habilitado em `southamerica-east1` e chama `/v1/poll` às 10h, 14h, 18h e 22h em `America/Sao_Paulo`. Ele usa a conta exclusiva `anderzilla-scheduler@anderzilla-homolog.iam.gserviceaccount.com`, com `roles/run.invoker` somente no serviço. Duas execuções manuais do agendador chegaram ao Cloud Run com HTTP 200. O intervalo reduz ativações e pode deixar uma execução aguardando até a próxima janela; o botão do CMS continua permitindo registrar a fila a qualquer momento.
+
+O faturamento foi vinculado somente a `anderzilla-homolog`. As APIs Run, Artifact Registry, Cloud Build, IAM e Billing Budgets foram habilitadas nesse projeto. O orçamento `AnderZilla homolog Cloud Run` é de R$50/mês, com alertas em 50%, 80% e 100%; alertas não interrompem o consumo. `anderzilla-production` não foi vinculado nem alterado.
+
+O repositório Artifact Registry `anderzilla-automation` e a conta runtime foram criados apenas em homologação. A conta de build padrão recebeu leitura somente no bucket de fontes, escrita somente nesse repositório e `logging.logWriter` no projeto, após o primeiro build falhar por falta de `storage.objects.get`.
+
+As seções históricas abaixo descrevem a fundação e decisões anteriores. Quando houver conflito, este estado operacional é a evidência mais recente.
 
 ## Atualização — Google Cloud liberado parcialmente
 
