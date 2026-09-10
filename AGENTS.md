@@ -27,3 +27,9 @@ Azure Static Web Apps Free é o destino principal autorizado. Assinatura 44b7634
 - Local copies: `docs/TRUST-AND-COMMERCE-CMS-PROMPT.md`, `docs/MONETIZATION-PROCESS-REGISTER.md`
 - Agent: `.claude/agents/anderzilla-commerce-trust.md` · Skill: `anderzilla-trust-commerce`
 - When adding/changing monetization: update the process register in the docs worktree.
+
+## Market split (Brasil × Internacional)
+- Commerce hubs: `/[lang]/comercio/brasil` and `/[lang]/comercio/internacional`
+- Every commercial CMS entity needs `market`: br | intl | global
+- Payout rails (operator): USD→Wise, BRL→C6/PIX — never commit secrets
+- Spec: Z:/AnderZilla-docs/strategy/TRUST-AND-COMMERCE-CMS.md
