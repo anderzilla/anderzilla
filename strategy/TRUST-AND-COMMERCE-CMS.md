@@ -10,48 +10,64 @@
 
 Área coerente, organizada e **controlável pelo CMS** para ForgeKit e demais estratégias de monetização (atuais e próximas), com respaldo de site que dê **segurança ao usuário** (transparência, disclosure, estados vazios honestos).
 
+## Duas áreas de mercado (obrigatório)
+
+Separar sempre a monetização em **Área Brasil** e **Área Internacional**. Idioma do site (`pt`/`en`) ≠ mercado: um visitante PT pode ver ofertas INT e vice-versa, com rótulo claro de mercado/moeda/loja.
+
+| Área | Moeda / payout (operador) | Comprador típico | Canais (status real) |
+|------|---------------------------|------------------|----------------------|
+| **Brasil** | BRL → C6 / PIX (painel da plataforma; sem dados bancários no Git) | BR | Amazon Associados BR, Mercado Livre, Hotmart/Monetizze/Kiwify (quando aprovados), Stripe BR/PIX futuro, AdSense BR, creators YT/TikTok BR, patrocínios locais |
+| **Internacional** | USD → Wise (via rail da plataforma: Gumroad/PayPal etc.) | Global EN+ | ForgeKit Gumroad US$149 (ativo), PartnerStack (pausado até ≥2026-09-21), Amazon US, Fanatical/Awin, ElevenLabs, Hostinger, Logitech/Impact, Impact/SaaS, ads USD |
+
+Regras:
+- Todo placement CMS tem `market`: `br` | `intl` | `global`.
+- CTAs mostram moeda e loja (ex.: “Comprar na Gumroad · USD”).
+- Afiliado BR não mistura cookie/loja US no mesmo botão.
+- Trust center explica as duas áreas e que imposto/payout do operador não é o mesmo do checkout do comprador.
+- Nunca colar CPF, conta, PIX completo ou dados Wise no repositório.
+
 ## Fatos verificados (não inventar)
 
-- ForgeKit US$149 · Gumroad https://anderzilla.gumroad.com/l/edkel · ZIP + GETTING_STARTED
+- ForgeKit US$149 · Gumroad https://anderzilla.gumroad.com/l/edkel · ZIP + GETTING_STARTED · market=`intl`
 - Demo https://forgekit-kwzn5potra-rj.a.run.app · Buy → Gumroad (não Polar stub)
 - PartnerStack declined até 2026-09-21
-- Afiliados: só `active` + URL HTTPS verificada; senão estado honesto / fonte oficial sem comissão
+- Afiliados: só `active` + URL HTTPS verificada + `market` preenchido
 - Ads: slot não vendido → ocultar ou house ad; nunca anunciante fictício
-- Karaca Points: sem venda de pontos; resgate real só com auth+API+estoque; demo rotulada
-- Azure SWA = hosting portal; não herdar CodeMatrix; marca AnderZilla; PT-BR + EN
+- Karaca Points: retenção; sem venda de pontos; `market=global` / flags
+- Azure SWA = hosting portal; marca AnderZilla; PT-BR + EN
 
 ## Rotas públicas alvo
 
 | Rota (conceito) | Função |
 |---|---|
-| `/[lang]/produtos` | Catálogo de produtos próprios |
-| `/[lang]/forgekit` | Página ForgeKit premium CMS-driven |
-| `/[lang]/stackpick` | Comparações (ranking editorial ≠ receita) |
-| `/[lang]/parceiros` | Afiliados/parceiros + disclosure |
+| `/[lang]/produtos` | Catálogo (filtros BR / INT / todos) |
+| `/[lang]/forgekit` | ForgeKit premium (área INT) |
+| `/[lang]/comercio/brasil` | Hub comercial Área Brasil |
+| `/[lang]/comercio/internacional` | Hub comercial Área Internacional |
+| `/[lang]/stackpick` | Comparações (ranking editorial ≠ receita; CTA por market) |
+| `/[lang]/parceiros` | Afiliados/parceiros + disclosure + filtro market |
 | `/[lang]/patrocine` | Pacotes sponsor (sem métricas inventadas) |
-| `/[lang]/transparencia` | Trust center (como ganhamos dinheiro) |
+| `/[lang]/transparencia` | Trust center (como ganhamos dinheiro · BR × INT) |
 
-Trust center cobre: quem é AnderZilla; como monetiza; disclosure; o que são/não são Karaca Points; compra ForgeKit; suporte; privacy/terms.
+Aliases EN aceitáveis: `/en/commerce/brazil`, `/en/commerce/international` (redirect ou rotas paralelas).
 
-## Modelo CMS (controlável sem deploy)
+## Modelo CMS
 
-Tipos: `products`, `affiliate_placements`, `ad_placements`, `sponsor_packages`, `trust_blocks`, `feature_flags`.  
-Flags: showProducts, showAffiliates, showAds, showSponsor, showPointsStore.  
-Fluxo: draft → preview → published snapshot (publisher existente). Sem segredos no Git.
+Tipos: `products`, `affiliate_placements`, `ad_placements`, `sponsor_packages`, `trust_blocks`, `feature_flags`, `market_hubs`.  
+Campos críticos: `market`, `currency`, `status`, `ctaUrl`, `disclosureKey`.  
+Flags: showProducts, showAffiliatesBr, showAffiliatesIntl, showAds, showSponsor, showPointsStore, showMarketBr, showMarketIntl.  
+Fluxo: draft → preview → published snapshot. Sem segredos no Git.
 
 ## Critérios de sucesso
 
-1. Trust page sozinha explica oferta e dinheiro  
-2. ForgeKit completo, AnderZilla, CTA Gumroad  
-3. Admin publica produto/afiliado/ad/sponsor/trust sem código  
-4. Canais inativos não parecem quebrados/falsos  
-5. PT-BR + EN nas rotas commerce/trust  
-6. Builds verdes + resumo de rotas/tipos
-
-## Prompt de implementação (Codex / agentes)
-
-Ver seção completa em `strategy/TRUST-AND-COMMERCE-CMS-PROMPT.md` (mesmo conteúdo operacional expandido). Ao implementar: ler BRAND-AND-PRODUCT, HUB-LIVE-AND-MONETIZATION, SPONSOR-KIT-DRAFT, KARACA-POINTS, ADMIN-CMS-PLAN, research/monetization.md, MONETIZATION-PROCESS-REGISTER.md.
+1. Trust page explica BR × INT e a oferta ForgeKit  
+2. Hubs `/comercio/brasil` e `/comercio/internacional` distintos, honestos se vazios  
+3. ForgeKit completo, AnderZilla, CTA Gumroad USD  
+4. Admin publica por market sem código  
+5. Canais inativos não parecem quebrados/falsos  
+6. PT-BR + EN  
+7. Builds verdes + resumo de rotas/tipos
 
 ## Manutenção
 
-Sempre que um processo de monetização for criado, alterado ou encerrado: atualizar `MONETIZATION-PROCESS-REGISTER.md` e, se mudar IA/CMS, este arquivo + skill `anderzilla-trust-commerce`.
+Sempre que um processo for criado/alterado/encerrado: atualizar `MONETIZATION-PROCESS-REGISTER.md` (coluna Market) + este arquivo se a IA de rotas/CMS mudar + skill `anderzilla-trust-commerce`.
