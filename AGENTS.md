@@ -21,3 +21,9 @@ O proprietário autorizou multiagentes e consulta a outras IAs para este projeto
 
 ## Hospedagem vigente
 Azure Static Web Apps Free é o destino principal autorizado. Assinatura 44b76346-26bd-4cd3-a529-627e47e99e5a, tenant 3fdcb773-0842-4fb9-925e-bea17d681f83, conta anderzilla@ymail.com. Publicar apps/web/out, sem backend híbrido. Homolog exige papel convidado anderzilla_reviewer; produção usa o mesmo conteúdo validado. Google Workspace permanece para email e serviços efetivamente incluídos; Cloud Run legado ForgeKit é preservado até migração própria. GCP não é mais o fluxo ativo do portal. Não presumir que assinatura Workspace inclua consumo GCP.
+
+## Monetization / Trust & Commerce
+- Canonical docs: `Z:/AnderZilla-docs/strategy/TRUST-AND-COMMERCE-CMS.md`, `MONETIZATION-PROCESS-REGISTER.md`, `TRUST-AND-COMMERCE-CMS-PROMPT.md`
+- Local copies: `docs/TRUST-AND-COMMERCE-CMS-PROMPT.md`, `docs/MONETIZATION-PROCESS-REGISTER.md`
+- Agent: `.claude/agents/anderzilla-commerce-trust.md` · Skill: `anderzilla-trust-commerce`
+- When adding/changing monetization: update the process register in the docs worktree.
