@@ -1,5 +1,6 @@
 # Referências editoriais e comerciais para AnderZilla
 
+**Direção de layout substituída:** a proposta visual inicial foi rejeitada por ser genérica e séria. O benchmark continua como pesquisa de referência; a experiência vigente é o [hub de descobertas e gamificação](../strategy/HUB-GAMIFICATION.md).
 A direção recomendada é uma **revista pessoal de tecnologia, games e descobertas**, com opinião própria, experiências demonstráveis e produtos associados ao assunto. A referência operacional mais próxima é o Manual do Usuário; Adrenaline e Fireship ajudam a conectar diversão, conhecimento técnico e oferta. Os grandes portais servem para estudar organização e formatos, sem reproduzir seu volume ou custo.
 
 O site deve responder rapidamente a três perguntas: o que vale explorar, quem está compartilhando essa experiência e qual é o próximo passo útil. IA, games e gadgets formam o universo editorial. StackPick ajuda a decidir; ForgeKit é um produto próprio contextual; patrocínio tem um caminho comercial separado. Consultoria continua exclusivamente na CodeMatrix.

@@ -1,5 +1,6 @@
 # Template editorial AnderZilla
 
+**Direção de layout substituída:** a proposta visual inicial foi rejeitada por ser genérica e séria. O benchmark continua como pesquisa de referência; a experiência vigente é o [hub de descobertas e gamificação](HUB-GAMIFICATION.md).
 Base: [benchmark de dez referências](../research/BENCHMARK-10-SITES.md). Conceito navegável no worktree de código: `Z:/AnderZilla/prototypes/editorial/index.html`. É um estudo local, não uma rota publicada ou uma migração já aplicada a apps/web.
 
 ## Identidade proposta

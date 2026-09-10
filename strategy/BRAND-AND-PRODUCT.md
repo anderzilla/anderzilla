@@ -35,3 +35,7 @@ A estrutura suportará produtos, afiliados, parcerias diretas, banners contextua
 ## Identidade visual reconhecida
 
 O proprietário confirmou AnderZilla-Ghost.png como imagem já utilizada nas plataformas. Preservar esse personagem como referência central: boné vermelho com A, rosto de caveira amarelo, olhos/sombras escuras e fundo azul. Não substituí-lo por um monograma genérico. O arquivo original fica em C:/Users/ander/OneDrive/Imagens/AnderZilla-Ghost.png; uma cópia byte a byte integra o protótipo de código em prototypes/editorial/assets/anderzilla-ghost.png. Direção e tokens em [EDITORIAL-TEMPLATE.md](EDITORIAL-TEMPLATE.md).
+
+## Prioridade de experiência confirmada
+
+O proprietário rejeitou o primeiro template de revista por ser genérico e sério demais. A direção vigente é um hub divertido de novidades de games, consoles, celulares, IA, gadgets e curiosidades, com exploração, personalização e gamificação útil. O Ghost é o anfitrião; cursos, assinaturas e vendas são complementos ao interesse conquistado pelo conteúdo. Ver [HUB-GAMIFICATION.md](HUB-GAMIFICATION.md), que substitui a direção de layout inicial.
