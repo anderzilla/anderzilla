@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Geist, Geist_Mono, Oxanium, Space_Grotesk } from "next/font/google";
+import { SiteFrame } from "@/components/SiteFrame";
 import { SITE } from "../../content/affiliates";
 import "./globals.css";
 
@@ -15,14 +14,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const oxanium = Oxanium({
+  variable: "--font-brand-display",
+  subsets: ["latin"],
+});
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-brand-body",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — ${SITE.tagline}`,
+    default: `${SITE.name} — Games, IA e boas descobertas`,
     template: `%s · ${SITE.name}`,
   },
   description:
-    "AnderZilla is a personal brand hub — ForgeKit, StackPick, and tools for programmers, gamers, and tech nerds.",
+    "Games, AI, gadgets and great discoveries with AnderZilla. Explore the radar, challenges, streams and Karaca Points.",
   keywords: [
     "AnderZilla",
     "ForgeKit",
@@ -36,12 +44,11 @@ export const metadata: Metadata = {
   creator: SITE.author,
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "pt_BR",
     url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description:
-      "Products and stack picks for builders who ship. ForgeKit, StackPick, and more.",
+    title: `${SITE.name} — Games, IA e boas descobertas`,
+    description: "Games, AI, gadgets and great discoveries with the Ghost.",
     images: [
       {
         url: "/opengraph-image",
@@ -53,8 +60,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: "Tools, stacks & geek fuel for builders who ship.",
+    title: `${SITE.name} — Games, IA e boas descobertas`,
+    description: "Games, AI, gadgets and great discoveries.",
     images: ["/opengraph-image"],
   },
   robots: {
@@ -75,16 +82,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="pt-BR" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen font-sans`}
+        className={`${geistSans.variable} ${geistMono.variable} ${oxanium.variable} ${spaceGrotesk.variable} min-h-screen font-sans`}
       >
-        <div className="flex min-h-screen flex-col bg-hero-glow bg-ink-950">
-          <a href="#main-content" className="skip-link">Skip to content</a>
-          <Header />
-          <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   );

@@ -1,0 +1,148 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AnderZilla Karaca Points API",
+    "version": "0.1.0-planned",
+    "description": "Planned HTTP contract; no HTTP service is implemented or deployed by this specification. The local Python/SQLite core implements only domain operations. All identities and roles come from trusted Azure Static Web Apps authentication. Demonstration balances never migrate into this API."
+  },
+  "security": [{ "swaSession": [] }],
+  "paths": {
+    "/api/v1/points/wallet": {
+      "get": {
+        "operationId": "getWallet",
+        "summary": "Read the authenticated account's authoritative balance",
+        "responses": {
+          "200": { "description": "Current wallet", "headers": { "Cache-Control": { "$ref": "#/components/headers/PrivateCache" } }, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Wallet" } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "503": { "$ref": "#/components/responses/Unavailable" }
+        }
+      }
+    },
+    "/api/v1/points/ledger": {
+      "get": {
+        "operationId": "getLedger",
+        "summary": "Read the authenticated account's ledger newest first",
+        "parameters": [{ "$ref": "#/components/parameters/Cursor" }, { "$ref": "#/components/parameters/Limit" }],
+        "responses": {
+          "200": { "description": "A stable cursor page scoped to the authenticated account", "headers": { "Cache-Control": { "$ref": "#/components/headers/PrivateCache" } }, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false, "required": ["items", "nextCursor"], "properties": { "items": { "type": "array", "maxItems": 100, "items": { "$ref": "#/components/schemas/LedgerEntry" } }, "nextCursor": { "type": ["string", "null"], "maxLength": 2048 } } } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "422": { "$ref": "#/components/responses/Invalid" },
+          "503": { "$ref": "#/components/responses/Unavailable" }
+        }
+      }
+    },
+    "/api/v1/missions": {
+      "get": {
+        "operationId": "getMissions",
+        "summary": "List enabled missions and server-defined awards",
+        "parameters": [{ "$ref": "#/components/parameters/Cursor" }, { "$ref": "#/components/parameters/Limit" }],
+        "responses": {
+          "200": { "description": "Eligible mission page", "headers": { "Cache-Control": { "$ref": "#/components/headers/PrivateCache" } }, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false, "required": ["items", "nextCursor"], "properties": { "items": { "type": "array", "maxItems": 100, "items": { "$ref": "#/components/schemas/Mission" } }, "nextCursor": { "type": ["string", "null"], "maxLength": 2048 } } } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "422": { "$ref": "#/components/responses/Invalid" },
+          "503": { "$ref": "#/components/responses/Unavailable" }
+        }
+      }
+    },
+    "/api/v1/missions/{missionId}/complete": {
+      "post": {
+        "operationId": "completeMission",
+        "summary": "Verify server evidence and award a mission at most once per occurrence",
+        "description": "The adapter resolves evidenceRef against owned server records. The request cannot supply an award, occurrence, result, account ID or balance. Disabled/unconfigured verification fails closed. Replays with the same payload return the original result; changed payload with the same key returns 409.",
+        "parameters": [{ "name": "missionId", "in": "path", "required": true, "schema": { "$ref": "#/components/schemas/Id" } }, { "$ref": "#/components/parameters/IdempotencyKey" }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false, "required": ["missionVersion", "evidenceRef"], "properties": { "missionVersion": { "type": "integer", "minimum": 1 }, "evidenceRef": { "$ref": "#/components/schemas/Id" } } } } } },
+        "responses": {
+          "200": { "description": "Verified completion, including an idempotent replay", "headers": { "Cache-Control": { "$ref": "#/components/headers/PrivateCache" } }, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false, "required": ["completionId"], "properties": { "completionId": { "$ref": "#/components/schemas/Id" } } } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "409": { "$ref": "#/components/responses/Conflict" },
+          "422": { "$ref": "#/components/responses/Invalid" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "503": { "$ref": "#/components/responses/Unavailable" }
+        }
+      }
+    },
+    "/api/v1/rewards": {
+      "get": {
+        "operationId": "getRewards",
+        "summary": "List active rewards eligible for the authenticated account",
+        "parameters": [{ "$ref": "#/components/parameters/Cursor" }, { "$ref": "#/components/parameters/Limit" }],
+        "responses": {
+          "200": { "description": "Active catalog page; no delivery secrets", "headers": { "Cache-Control": { "$ref": "#/components/headers/PrivateCache" } }, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false, "required": ["items", "nextCursor"], "properties": { "items": { "type": "array", "maxItems": 100, "items": { "$ref": "#/components/schemas/Reward" } }, "nextCursor": { "type": ["string", "null"], "maxLength": 2048 } } } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "422": { "$ref": "#/components/responses/Invalid" },
+          "503": { "$ref": "#/components/responses/Unavailable" }
+        }
+      }
+    },
+    "/api/v1/redemptions": {
+      "post": {
+        "operationId": "reserveReward",
+        "summary": "Atomically reserve points and one unit of stock",
+        "description": "Account, cost, region eligibility and stock are resolved by the server. rewardVersion freezes the displayed cost and terms; termsVersion must match that version. The future SQL adapter must persist terms acceptance. The local core does not yet implement terms acceptance. Returns the same redemption ID on retry; never a second reservation.",
+        "parameters": [{ "$ref": "#/components/parameters/IdempotencyKey" }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false, "required": ["rewardId", "rewardVersion", "termsVersion"], "properties": { "rewardId": { "$ref": "#/components/schemas/Id" }, "rewardVersion": { "type": "integer", "minimum": 1 }, "termsVersion": { "type": "integer", "minimum": 1 } } } } } },
+        "responses": {
+          "200": { "description": "Reservation or its existing idempotent result", "headers": { "Cache-Control": { "$ref": "#/components/headers/PrivateCache" } }, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": false, "required": ["redemptionId"], "properties": { "redemptionId": { "$ref": "#/components/schemas/Id" } } } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "409": { "$ref": "#/components/responses/Conflict" },
+          "422": { "$ref": "#/components/responses/Invalid" },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "503": { "$ref": "#/components/responses/Unavailable" }
+        }
+      }
+    },
+    "/api/v1/redemptions/{redemptionId}": {
+      "get": {
+        "operationId": "getRedemption",
+        "summary": "Read one redemption belonging to the authenticated account",
+        "parameters": [{ "name": "redemptionId", "in": "path", "required": true, "schema": { "$ref": "#/components/schemas/Id" } }],
+        "responses": {
+          "200": { "description": "Order without private fulfillment credentials", "headers": { "Cache-Control": { "$ref": "#/components/headers/PrivateCache" } }, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Redemption" } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "422": { "$ref": "#/components/responses/Invalid" },
+          "503": { "$ref": "#/components/responses/Unavailable" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "swaSession": { "type": "apiKey", "in": "cookie", "name": "StaticWebAppsAuthCookie", "description": "Session managed by Azure Static Web Apps. Clients use the platform login flow; never fabricate this cookie or trust a browser-supplied x-ms-client-principal header. Adapter must enforce authentication, ownership and roles behind the SWA integration, and Origin/CSRF validation for cookie-authenticated writes." }
+    },
+    "headers": {
+      "PrivateCache": { "schema": { "type": "string", "const": "no-store" }, "description": "Do not cache account-specific responses." }
+    },
+    "parameters": {
+      "Cursor": { "name": "cursor", "in": "query", "schema": { "type": "string", "minLength": 1, "maxLength": 2048 }, "description": "Opaque cursor returned by the previous page. Server validates account scope and ordering." },
+      "Limit": { "name": "limit", "in": "query", "schema": { "type": "integer", "minimum": 1, "maximum": 100, "default": 25 } },
+      "IdempotencyKey": { "name": "Idempotency-Key", "in": "header", "required": true, "schema": { "type": "string", "minLength": 8, "maxLength": 128, "pattern": "^[A-Za-z0-9._:-]+$" }, "description": "Unique per account and logical command. Persist the key across retries. Server binds it to the canonical operation and complete payload, including version and terms." }
+    },
+    "schemas": {
+      "Id": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "Wallet": { "type": "object", "additionalProperties": false, "required": ["available", "reserved", "unit"], "properties": { "available": { "type": "integer", "minimum": 0 }, "reserved": { "type": "integer", "minimum": 0 }, "unit": { "const": "KP" } } },
+      "LedgerEntry": { "type": "object", "additionalProperties": false, "required": ["id", "availableDelta", "reservedDelta", "reason", "referenceId", "createdAt"], "properties": { "id": { "$ref": "#/components/schemas/Id" }, "availableDelta": { "type": "integer", "description": "Signed change; may be negative for reservation." }, "reservedDelta": { "type": "integer", "description": "Signed change; may be negative for fulfillment/refund." }, "reason": { "enum": ["mission", "reserve", "refund", "consume", "adjustment"] }, "referenceId": { "$ref": "#/components/schemas/Id" }, "createdAt": { "type": "string", "format": "date-time" } } },
+      "Mission": { "type": "object", "additionalProperties": false, "required": ["id", "version", "awardKP", "startsAt", "endsAt"], "properties": { "id": { "$ref": "#/components/schemas/Id" }, "version": { "type": "integer", "minimum": 1 }, "awardKP": { "type": "integer", "minimum": 1 }, "startsAt": { "type": "string", "format": "date-time" }, "endsAt": { "type": "string", "format": "date-time" } } },
+      "Reward": { "type": "object", "additionalProperties": false, "required": ["id", "version", "costKP", "stock", "termsVersion", "title", "terms", "country"], "properties": { "id": { "$ref": "#/components/schemas/Id" }, "version": { "type": "integer", "minimum": 1 }, "costKP": { "type": "integer", "minimum": 1 }, "stock": { "type": "integer", "minimum": 0 }, "termsVersion": { "type": "integer", "minimum": 1 }, "title": { "$ref": "#/components/schemas/LocalizedText" }, "terms": { "$ref": "#/components/schemas/LocalizedText" }, "country": { "type": "string", "pattern": "^[A-Z]{2}$" } } },
+      "LocalizedText": { "type": "object", "additionalProperties": false, "required": ["pt-BR", "en"], "properties": { "pt-BR": { "type": "string", "minLength": 1, "maxLength": 20000 }, "en": { "type": "string", "minLength": 1, "maxLength": 20000 } } },
+      "Redemption": { "type": "object", "additionalProperties": false, "required": ["id", "rewardId", "rewardVersion", "costKP", "state", "createdAt"], "properties": { "id": { "$ref": "#/components/schemas/Id" }, "rewardId": { "$ref": "#/components/schemas/Id" }, "rewardVersion": { "type": "integer", "minimum": 1 }, "costKP": { "type": "integer", "minimum": 1 }, "state": { "enum": ["pending_review", "fulfilling", "fulfilled", "cancelled"] }, "createdAt": { "type": "string", "format": "date-time" } } },
+      "Error": { "type": "object", "additionalProperties": false, "required": ["code", "message", "correlationId"], "properties": { "code": { "enum": ["unauthenticated", "forbidden", "not_found", "idempotency_conflict", "version_conflict", "insufficient_points", "reward_unavailable", "mission_unavailable", "invalid_request", "rate_limited", "temporarily_unavailable"] }, "message": { "type": "string", "minLength": 1, "maxLength": 500 }, "correlationId": { "type": "string", "minLength": 1, "maxLength": 128 } } }
+    },
+    "responses": {
+      "Unauthorized": { "description": "401: No valid authenticated session", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "Forbidden": { "description": "403: Account suspended, eligibility or required role denied", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "NotFound": { "description": "404: Missing resource or resource owned by another account", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "Conflict": { "description": "409: Conflicting idempotency payload, stale version, insufficient points or unavailable stock/mission", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "Invalid": { "description": "422: Invalid input, key, cursor or evidence", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "RateLimited": { "description": "429: Request rate exceeded", "headers": { "Retry-After": { "schema": { "type": "integer", "minimum": 1 } } }, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "Unavailable": { "description": "503: Backend/database unavailable or verifier disabled; no fallback to demonstration points", "headers": { "Retry-After": { "schema": { "type": "integer", "minimum": 1 } } }, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+    }
+  }
+}

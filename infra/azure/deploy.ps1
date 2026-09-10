@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory)][ValidateSet('homolog', 'production')][string]$Environment,
+    [Parameter(Mandatory)][ValidateSet('homolog', 'production', 'preview')][string]$Environment,
     [string]$ArtifactPath = (Join-Path $PSScriptRoot '../../apps/web/out'),
     [string]$AzureCli = 'az'
 )
@@ -8,7 +8,8 @@ $ErrorActionPreference = 'Stop'
 $subscription = '44b76346-26bd-4cd3-a529-627e47e99e5a'
 $tenant = '3fdcb773-0842-4fb9-925e-bea17d681f83'
 $group = 'anderzilla-web'
-$app = "anderzilla-web-$Environment"
+$app = if ($Environment -eq 'preview') { 'anderzilla-web-homolog' } else { "anderzilla-web-$Environment" }
+$deploymentEnvironment = if ($Environment -eq 'preview') { 'visual' } else { 'production' }
 $accountJson = & $AzureCli account show --subscription $subscription --output json --only-show-errors
 if ($LASTEXITCODE -ne 0) { throw 'Azure account inspection failed.' }
 $account = $accountJson | ConvertFrom-Json
@@ -28,9 +29,13 @@ try {
     if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($token)) { throw 'Could not retrieve deployment credential.' }
     $env:SWA_CLI_DEPLOYMENT_TOKEN = $token.Trim()
     $token = $null
-    & npx --yes '@azure/static-web-apps-cli@2.0.10' deploy $stage --app-location $stage --swa-config-location $stage --env production --no-use-keychain
+    & npx --yes '@azure/static-web-apps-cli@2.0.10' deploy $stage --app-location $stage --swa-config-location $stage --env $deploymentEnvironment --no-use-keychain
     if ($LASTEXITCODE -ne 0) { throw 'Static Web Apps deployment failed.' }
-    Write-Host "Published $Environment to https://$($resource.defaultHostname). Verify HTTP and role access before changing DNS."
+    if ($Environment -eq 'preview') {
+        & $AzureCli staticwebapp environment list --subscription $subscription --resource-group $group --name $app --query "[?name=='visual'].{environment:name,hostname:hostname,status:status}" --output json --only-show-errors
+    } else {
+        Write-Host "Published $Environment to https://$($resource.defaultHostname). Verify HTTP and role access before changing DNS."
+    }
 } finally {
     $env:SWA_CLI_DEPLOYMENT_TOKEN = $previousToken
     $token = $null

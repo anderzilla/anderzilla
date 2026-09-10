@@ -2,7 +2,7 @@
 param(
     [Parameter(Mandatory)][string]$Source,
     [Parameter(Mandatory)][string]$Destination,
-    [Parameter(Mandatory)][ValidateSet('homolog', 'production')][string]$Environment
+    [Parameter(Mandatory)][ValidateSet('homolog', 'production', 'preview')][string]$Environment
 )
 $ErrorActionPreference = 'Stop'
 $sourcePath = (Resolve-Path -LiteralPath $Source).Path
@@ -26,5 +26,14 @@ if ($Environment -eq 'homolog') {
     # A public fallback must not bypass restricted routes.
     $config.Remove('navigationFallback') | Out-Null
     $config | ConvertTo-Json -Depth 30 | Set-Content -LiteralPath $configPath -Encoding utf8NoBOM
+}
+if ($Environment -eq 'preview') {
+    # Public visual sample only. Isolated named slot, never the custom-domain deployment.
+    # No accounts, private data, functioning rewards or administration in this artifact.
+    if (!$config.ContainsKey('globalHeaders')) { $config.globalHeaders = @{} }
+    $config.globalHeaders['X-Robots-Tag'] = 'noindex, nofollow, noarchive'
+    $config.globalHeaders['Cache-Control'] = 'no-store'
+    $config | ConvertTo-Json -Depth 30 | Set-Content -LiteralPath $configPath -Encoding utf8NoBOM
+    "User-agent: *`nDisallow: /" | Set-Content -LiteralPath (Join-Path $Destination 'robots.txt') -Encoding utf8NoBOM
 }
 Write-Host "Prepared $Environment artifact: $Destination"

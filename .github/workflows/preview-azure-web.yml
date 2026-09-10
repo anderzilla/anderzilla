@@ -1,0 +1,47 @@
+name: Azure visual preview
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: azure-visual-preview
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    # Configure the homolog resource token in this separate GitHub environment.
+    environment: visual-preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci
+        working-directory: apps/web
+      - run: npm run build
+        working-directory: apps/web
+      - name: Prepare public demonstration (no private data)
+        shell: pwsh
+        run: ./infra/azure/prepare-artifact.ps1 -Source apps/web/out -Destination deploy-preview -Environment preview
+      - name: Publish isolated named slot
+        id: deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: deploy-preview
+          config_file_location: deploy-preview
+          output_location: ''
+          skip_app_build: true
+          skip_api_build: true
+          deployment_environment: visual
+      - name: Check preview response
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.static_web_app_url }}
+        run: |
+          set -euo pipefail
+          [[ "$PREVIEW_URL" =~ ^https://[a-z0-9-]+-visual\.[a-z0-9.-]+\.azurestaticapps\.net/?$ ]]
+          curl --fail --silent --show-error --max-time 30 --dump-header preview-headers.txt "$PREVIEW_URL" > /dev/null
+          grep -qi 'x-robots-tag:.*noindex' preview-headers.txt
