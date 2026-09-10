@@ -1,0 +1,38 @@
+{
+  "project": "anderzilla",
+  "roles": [
+    "researcher",
+    "editor",
+    "commercial",
+    "platform",
+    "reviewer",
+    "analyst"
+  ],
+  "skills": [
+    "anderzilla-editorial",
+    "anderzilla-monetization",
+    "anderzilla-release",
+    "anderzilla-knowledge"
+  ],
+  "servers": [
+    {
+      "id": "anderzilla-knowledge",
+      "transport": "stdio",
+      "source": "ai/rag/rag.py",
+      "access": "read-only local allowlist",
+      "status": "implemented; session connection requires client reload"
+    },
+    {
+      "id": "microsoft-learn",
+      "url": "https://learn.microsoft.com/api/mcp",
+      "access": "public documentation only",
+      "status": "official endpoint; no account or Azure control"
+    },
+    {
+      "id": "google-developer-knowledge",
+      "url": "https://developerknowledge.googleapis.com/mcp",
+      "access": "official docs; authentication/project required",
+      "status": "candidate pending dedicated Google access"
+    }
+  ]
+}
