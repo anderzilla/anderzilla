@@ -19,3 +19,6 @@
 *.tfstate.*
 *.tfplan
 *.auto.tfvars
+.publisher-work/
+__pycache__/
+*.pyc

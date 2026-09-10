@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { useHub } from "./HubProvider";
-import { colors, type Discovery } from "./model";
+import { articleUrl, colors, type Discovery } from "./model";
+import { DemoBadge, findMedia, SafeMarkdown } from './Editorial';
 
 const paths: Record<string, string> = {
   all: "M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z",
@@ -61,12 +62,15 @@ export function External({
   );
 }
 export function Art({ item, extra = "" }: { item: Discovery; extra?: string }) {
+  const {lang}=useHub();
+  const media=findMedia(item.coverMediaId);
   const shapes: Partial<Record<Discovery["category"], string>> = {
     celulares: "phone",
     ia: "orb",
     curiosidades: "planet",
   };
   const shape = shapes[item.category];
+  if(media) return <div className={`art cms-cover ${extra}`}><img src={media.url} alt={(lang==='pt'?media.altPT:media.altEN)||''} loading="lazy" width={media.width} height={media.height}/></div>;
   return (
     <div className={`art ${item.category} ${extra}`} aria-hidden="true">
       {shape ? <div className={shape} /> : <Icon name={item.category} />}
@@ -98,7 +102,7 @@ export function SaveButton({
   );
 }
 export function DiscoveryCard({ item }: { item: Discovery }) {
-  const { t, title, summary, date, labels, open } = useHub();
+  const { t, title, summary, date, labels, open,lang } = useHub();
   return (
     <article
       className="card"
@@ -106,6 +110,7 @@ export function DiscoveryCard({ item }: { item: Discovery }) {
     >
       <Art item={item} />
       <div className="card-copy">
+        {item.isDemo&&<DemoBadge english={lang==='en'}/>}
         <div className="card-category">
           <span>{labels[item.category]}</span>
           {item.published < "2026-01-01" && (
@@ -113,9 +118,10 @@ export function DiscoveryCard({ item }: { item: Discovery }) {
           )}
         </div>
         <h3>
-          <button onClick={() => open(item)}>{title(item)}</button>
+          <a href={articleUrl(item,lang)}>{title(item)}</a>
         </h3>
         <p>{summary(item)}</p>
+        <button className="quiet" onClick={()=>open(item)}>{t('Espiada rápida','Quick look')} ↗</button>
         <div className="card-bottom">
           <small>
             {item.sourceName}
@@ -200,6 +206,7 @@ export function DetailDialog() {
     date,
     labels,
     surprise,
+    lang,
   } = useHub();
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -229,6 +236,7 @@ export function DetailDialog() {
           <div className="dialog-copy">
             <p className="eyebrow">{labels[current.category]}</p>
             <h2 id="dialog-title">{title(current)}</h2>
+            {current.isDemo&&<DemoBadge english={lang==='en'}/>}
             <p className="source">
               {current.sourceName} ·{" "}
               <time dateTime={current.published}>{date(current)}</time>
@@ -238,9 +246,10 @@ export function DetailDialog() {
               <strong>
                 {t("O detalhe que vale o clique", "The detail worth the click")}
               </strong>
-              <p>{fact(current)}</p>
+              <SafeMarkdown body={fact(current)}/>
             </div>
             <div className="dialog-buttons">
+              <a className="button secondary" href={articleUrl(current,lang)}>{t('Ler artigo completo','Read full article')}</a>
               <External className="button" href={current.url}>
                 {t("Ver fonte original", "Read original source")} ↗
               </External>

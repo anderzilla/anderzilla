@@ -15,12 +15,15 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s services/rewards -v
+      - run: pip install -r services/cms/requirements.txt
+      - run: python -m unittest discover -s services/cms -v
+      - run: python -m unittest discover -s services/publisher -v
   build:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        app: [web, forgekit]
+        app: [web, forgekit, admin]
     defaults:
       run:
         working-directory: apps/${{ matrix.app }}

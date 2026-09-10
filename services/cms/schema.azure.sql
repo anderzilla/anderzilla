@@ -1,0 +1,4 @@
+IF OBJECT_ID('cms_records') IS NULL CREATE TABLE cms_records(collection NVARCHAR(32) NOT NULL,id NVARCHAR(64) NOT NULL,updated_at NVARCHAR(40) NOT NULL,document NVARCHAR(MAX) NOT NULL,CONSTRAINT pk_cms_records PRIMARY KEY(collection,id));
+IF OBJECT_ID('cms_revisions') IS NULL CREATE TABLE cms_revisions(collection NVARCHAR(32) NOT NULL,id NVARCHAR(64) NOT NULL,version INT NOT NULL,document NVARCHAR(MAX) NOT NULL,CONSTRAINT pk_cms_revisions PRIMARY KEY(collection,id,version));
+IF OBJECT_ID('cms_audit') IS NULL CREATE TABLE cms_audit(id NVARCHAR(64) PRIMARY KEY,created_at NVARCHAR(40) NOT NULL,document NVARCHAR(MAX) NOT NULL);
+IF OBJECT_ID('cms_releases') IS NULL CREATE TABLE cms_releases(id NVARCHAR(64) PRIMARY KEY,request_key NVARCHAR(100) NOT NULL UNIQUE,created_at NVARCHAR(40) NOT NULL,document NVARCHAR(MAX) NOT NULL,snapshot NVARCHAR(MAX) NOT NULL);

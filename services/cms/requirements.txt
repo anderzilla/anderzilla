@@ -1,0 +1,5 @@
+azure-functions==1.25.0
+python-tds==1.17.1
+certifi==2026.7.22
+pyOpenSSL==25.3.0
+Pillow==12.1.1

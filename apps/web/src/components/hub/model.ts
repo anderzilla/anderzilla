@@ -1,3 +1,4 @@
+import cmsPublished from './cms-published.json';
 import discoveryData from "./discoveries.json";
 
 export type Language = "pt" | "en";
@@ -46,8 +47,20 @@ export interface Discovery {
   observed: string;
   fact: string;
   factEN: string;
+  slugPT?: string;
+  slugEN?: string;
+  seoTitlePT?: string;
+  seoTitleEN?: string;
+  seoDescriptionPT?: string;
+  seoDescriptionEN?: string;
+  author?: string;
+  tags?: string;
+  coverMediaId?: string;
+  mediaIds?: string;
+  isDemo?: boolean;
 }
-export const discoveries = discoveryData as Discovery[];
+export const discoveries = (cmsPublished.enabled ? cmsPublished.discoveries : discoveryData) as Discovery[];
+export function articleUrl(item:Discovery,lang:Language){return `/${lang}/radar/${(lang==='pt'?item.slugPT:item.slugEN)||item.id}/`}
 export const colors: Record<Category, string> = {
   games: "#b39aff",
   consoles: "#ff939b",
@@ -122,6 +135,8 @@ export const platforms = {
 };
 export type Platform = keyof typeof platforms;
 export interface HubEvent {
+  url?: string;
+  isDemo?: boolean;
   id: string;
   platform: Platform;
   titlePT: string;
@@ -135,6 +150,7 @@ export interface Broadcast {
   expiresAt: string;
 }
 export interface Affiliate {
+  isDemo?: boolean;
   titlePT: string;
   titleEN: string;
   url: string;
@@ -146,4 +162,4 @@ export const hubSettings: {
   broadcast: Broadcast | null;
   youtubeVideoId: string | null;
   affiliates: Affiliate[];
-} = { events: [], broadcast: null, youtubeVideoId: null, affiliates: [] };
+} = { events: cmsPublished.events as HubEvent[], broadcast: null, youtubeVideoId: null, affiliates: cmsPublished.affiliates as Affiliate[] };

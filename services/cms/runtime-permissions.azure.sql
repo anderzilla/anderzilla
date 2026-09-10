@@ -1,0 +1,11 @@
+-- Run after creating the contained SQL user anderzilla_cms_runtime securely.
+-- Never grant db_owner/db_datawriter to the application user.
+GRANT SELECT, INSERT, UPDATE ON OBJECT::dbo.cms_records TO anderzilla_cms_runtime;
+GRANT SELECT, INSERT ON OBJECT::dbo.cms_revisions TO anderzilla_cms_runtime;
+GRANT SELECT, INSERT ON OBJECT::dbo.cms_audit TO anderzilla_cms_runtime;
+GRANT SELECT, INSERT ON OBJECT::dbo.cms_releases TO anderzilla_cms_runtime;
+GRANT UPDATE ON OBJECT::dbo.cms_releases(document) TO anderzilla_cms_runtime;
+DENY DELETE ON OBJECT::dbo.cms_records TO anderzilla_cms_runtime;
+DENY UPDATE, DELETE ON OBJECT::dbo.cms_revisions TO anderzilla_cms_runtime;
+DENY UPDATE, DELETE ON OBJECT::dbo.cms_audit TO anderzilla_cms_runtime;
+DENY DELETE ON OBJECT::dbo.cms_releases TO anderzilla_cms_runtime;

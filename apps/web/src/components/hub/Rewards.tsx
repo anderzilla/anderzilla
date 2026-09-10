@@ -3,6 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import { useHub } from "./HubProvider";
 import { discoveries, pointRules, type Mission } from "./model";
 import { External, Icon, Passport } from "./Primitives";
+import published from './cms-published.json';
+import { DemoBadge } from './Editorial';
+
+function CMSDemoDefinitions({collection}:{collection:'missions'|'rewards'}){
+ const {lang,t}=useHub();
+ const rows=published[collection] as {id:string;titlePT:string;titleEN:string;points:number;termsPT?:string;termsEN?:string;isDemo:boolean}[];
+ return <div className="mission-grid">{rows.filter(r=>r.isDemo).map(r=><article className="mission-card" key={r.id}><DemoBadge english={lang==='en'}/><h3>{lang==='pt'?r.titlePT:r.titleEN}</h3><p>{r.points} KP · {t('ilustrativos','illustrative')}</p><p>{lang==='pt'?r.termsPT:r.termsEN}</p><button className="button secondary" disabled>{t('Demonstração · indisponível','Demo · unavailable')}</button></article>)}</div>
+}
 
 export function PointsTeaser() {
   const { t, balance } = useHub();
@@ -92,6 +100,7 @@ export function PointsPage() {
         )}
       </p>
       <h2>{t("Suas missões", "Your missions")}</h2>
+      <CMSDemoDefinitions collection="missions"/>
       <div className="mission-grid">
         {missions.map((m) => (
           <article className="mission-card" key={m.id}>
@@ -160,6 +169,7 @@ export function StorePage() {
         )}
       </p>
       <Wallet store />
+      <CMSDemoDefinitions collection="rewards"/>
       <div className="mission-grid reward-concepts">
         {[
           [t("Assinaturas", "Subscriptions"), "◇"],
@@ -330,7 +340,7 @@ export function QuizPage() {
     questionChanged.current = true;
   }, [index, result]);
   const q = questions[index];
-  const source = discoveries.find((x) => x.category === q.cat)!;
+  const source = discoveries.find((x) => !x.isDemo && x.category === q.cat);
   if (result)
     return (
       <div className="wrap subpage quiz-page">
@@ -409,8 +419,7 @@ export function QuizPage() {
                       "Almost. Here is what the source explains:",
                     )}
               </strong>
-              <p>{fact(source)}</p>
-              <External href={source.url}>{source.sourceName} ↗</External>
+              {source?<><p>{fact(source)}</p><External href={source.url}>{source.sourceName} ↗</External></>:<p>{t('Fonte arquivada. Este desafio é demonstrativo.','Archived source. This challenge is a demo.')}</p>}
             </div>
             <button
               className="button"

@@ -7,6 +7,11 @@ param(
 $ErrorActionPreference = 'Stop'
 $sourcePath = (Resolve-Path -LiteralPath $Source).Path
 if (!(Test-Path -LiteralPath (Join-Path $sourcePath 'index.html'))) { throw 'Static export index.html missing. Run npm run build in apps/web.' }
+$releaseMarker=Join-Path $sourcePath 'cms-release.json'
+if($Environment -eq 'production' -and (Test-Path -LiteralPath $releaseMarker)) {
+    $cmsRelease=Get-Content -LiteralPath $releaseMarker -Raw | ConvertFrom-Json
+    if($cmsRelease.containsDemo -ne $false) {throw 'CMS artifact contains demonstration data or has no explicit production classification.'}
+}
 if (Test-Path -LiteralPath $Destination) { throw 'Destination must be a new directory.' }
 New-Item -ItemType Directory -Path $Destination | Out-Null
 Get-ChildItem -LiteralPath $sourcePath -Force | Copy-Item -Destination $Destination -Recurse

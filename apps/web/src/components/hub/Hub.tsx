@@ -1,5 +1,5 @@
 "use client";
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import { HubProvider, useHub } from "./HubProvider";
 import {
   categories,
@@ -34,6 +34,7 @@ import {
   StorePage,
 } from "./Rewards";
 import "./hub.css";
+import { CMSSections } from "./CMSSections";
 
 function Header() {
   const { t, lang, changeLanguage, route, player } = useHub();
@@ -137,7 +138,8 @@ function Footer() {
   );
 }
 function Home() {
-  const { t, filter, setFilter, labels, player, surprise } = useHub();
+  const { t, filter, setFilter, labels, player, surprise,title,summary } = useHub();
+  const [query,setQuery]=useState('');
   const feed = [...discoveries]
     .sort(
       (a, b) =>
@@ -145,7 +147,7 @@ function Home() {
           Number(player.interests.includes(a.category)) ||
         b.published.localeCompare(a.published),
     )
-    .filter((x) => filter === "all" || x.category === filter);
+    .filter((x) => (filter === "all" || x.category === filter)&&`${title(x)} ${summary(x)} ${x.tags||''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
   function scrollFeed() {
     document
       .getElementById("feed-start")
@@ -160,10 +162,7 @@ function Home() {
     <>
       <div className="ticker">
         <strong>{t("NO RADAR", "ON THE RADAR")}</strong>
-        <span>Mario Kart / Switch 2</span>
-        <span>Gemini + Find Hub</span>
-        <span>Gears of War</span>
-        <span>iPhone 17e</span>
+        {discoveries.filter(item=>!item.isDemo).slice(0,4).map(item=><span key={item.id}>{title(item)}</span>)}
       </div>
       <div className="wrap">
         <div className="welcome">
@@ -261,12 +260,14 @@ function Home() {
               </h2>
               <small>
                 {t(
-                  "Curadoria inicial · fontes e datas reais",
-                  "Starter collection · real sources and dates",
+                  "Curadoria + exemplos identificados como DEMO",
+                  "Curation + examples labeled DEMO",
                 )}
               </small>
             </div>
+            <label className="radar-search">{t('Buscar no radar','Search the radar')}<input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder={t('Games, IA, gadgets…','Games, AI, gadgets…')}/></label>
             <div className="feed" aria-live="polite">
+              {!feed.length&&<p className="empty">{t('Nenhuma descoberta para esta busca.','No discoveries match your search.')}</p>}
               {feed.map((item) => (
                 <DiscoveryCard key={item.id} item={item} />
               ))}
@@ -335,6 +336,7 @@ function Home() {
         <PointsTeaser />
         <AdPlacement />
         <AffiliateArea />
+        <CMSSections />
         <section className="return-band">
           <Ghost size={68} />
           <div>

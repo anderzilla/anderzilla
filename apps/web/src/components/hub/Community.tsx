@@ -9,6 +9,7 @@ import {
   type Platform,
 } from "./model";
 import { External, Ghost, Icon } from "./Primitives";
+import { DemoBadge } from "./Editorial";
 
 export function LiveRoom({ inRoom = false }: { inRoom?: boolean }) {
   const { t, lang, ready } = useHub();
@@ -25,7 +26,7 @@ export function LiveRoom({ inRoom = false }: { inRoom?: boolean }) {
       ? b
       : null;
   const next = hubSettings.events
-    .filter((e) => Date.parse(e.startsAt) > now)
+    .filter((e) => !e.isDemo && Date.parse(e.startsAt) > now)
     .sort((a, b) => Date.parse(a.startsAt) - Date.parse(b.startsAt))[0];
   return (
     <section className="live-room">
@@ -219,11 +220,11 @@ export function AgendaPage() {
                 <p className="eyebrow">
                   {platforms[e.platform].name} / Brasília
                 </p>
-                <h2>{lang === "pt" ? e.titlePT : e.titleEN}</h2>
+                <h2>{lang === "pt" ? e.titlePT : e.titleEN}</h2>{e.isDemo&&<DemoBadge english={lang==='en'}/>}
               </div>
               <External
                 className="button secondary"
-                href={platforms[e.platform].url}
+                href={e.url||platforms[e.platform].url}
               >
                 {t("Abrir canal", "Open channel")} ↗
               </External>
@@ -317,7 +318,7 @@ export function AffiliateArea() {
         </small>
       </div>
       <p className="affiliate-disclosure">
-        {active.length
+        {active.some(a=>!a.isDemo)
           ? t(
               "Os links identificados como afiliados podem gerar comissão para o AnderZilla.",
               "Links labeled affiliate may earn AnderZilla a commission.",
@@ -333,12 +334,10 @@ export function AffiliateArea() {
               <article key={a.url} className="affiliate-card">
                 <div>
                   <p className="eyebrow">
-                    {t("LINK DE AFILIADO", "AFFILIATE LINK")}
+                    {a.isDemo?<DemoBadge english={lang==='en'}/>:t("LINK DE AFILIADO", "AFFILIATE LINK")}
                   </p>
                   <h3>{lang === "pt" ? a.titlePT : a.titleEN}</h3>
-                  <External href={a.url} affiliate>
-                    {t("Ver oferta", "View offer")} ↗
-                  </External>
+                  <>{a.isDemo?<p>{t("Sem oferta ou parceria ativa","No active offer or partnership")}</p>:<External href={a.url} affiliate>{t("Ver oferta", "View offer")} ↗</External>}</>
                 </div>
               </article>
             ))
