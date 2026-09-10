@@ -1,5 +1,13 @@
 # AnderZilla — dossiê de preparação
 
+## Atualização — Google Cloud liberado parcialmente
+
+Após o proprietário concluir etapas no console, a criação dos projetos `anderzilla-homolog` (727980282274) e `anderzilla-production` (710416906845) foi concluída com sucesso sob `player.one@anderzilla.com`. O erro de termos foi superado. O projeto inicial `lithe-resource-508205-a6` foi preservado.
+
+A conta de faturamento visível, “Minha conta de faturamento”, informa moeda BRL e `open: false` (fechada). Não foi vinculada aos projetos. É necessário o proprietário reabrir/regularizar essa conta ou disponibilizar outra conta ativa. A causa do fechamento não foi determinada pela API.
+
+Nenhum serviço Cloud Run, registry, imagem ou recurso de execução foi implantado. Projetos foram criados sem faturamento; conta/configuração padrão e recursos CodeMatrix preservados. Esta atualização substitui o bloqueio anterior por termos descrito nos registros históricos. A definição de orçamento adicional vs total permanece pendente.
+
 **10 de setembro de 2026.** AnderZilla é a marca pessoal de tecnologia, IA, games e gadgets de Anderson, com conteúdo descontraído, comunidade e receita própria. A atuação profissional permanece na CodeMatrix. O projeto começa em português e inglês, com ambição internacional e limite informado de R$150/mês.
 
 ## Resultado desta fase

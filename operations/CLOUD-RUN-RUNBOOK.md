@@ -1,5 +1,13 @@
 # Cloud Run — fundação preparada, sem recursos aplicados
 
+## Atualização — Google Cloud liberado parcialmente
+
+Após o proprietário concluir etapas no console, a criação dos projetos `anderzilla-homolog` (727980282274) e `anderzilla-production` (710416906845) foi concluída com sucesso sob `player.one@anderzilla.com`. O erro de termos foi superado. O projeto inicial `lithe-resource-508205-a6` foi preservado.
+
+A conta de faturamento visível, “Minha conta de faturamento”, informa moeda BRL e `open: false` (fechada). Não foi vinculada aos projetos. É necessário o proprietário reabrir/regularizar essa conta ou disponibilizar outra conta ativa. A causa do fechamento não foi determinada pela API.
+
+Nenhum serviço Cloud Run, registry, imagem ou recurso de execução foi implantado. Projetos foram criados sem faturamento; conta/configuração padrão e recursos CodeMatrix preservados. Esta atualização substitui o bloqueio anterior por termos descrito nos registros históricos. A definição de orçamento adicional vs total permanece pendente.
+
 Verificado localmente em 10/09/2026. Código: `Z:/AnderZilla/infra/gcp`; workflows: `Z:/AnderZilla/.github/workflows`. Terraform validado com provider oficial Google 7.46.1, registrado no lockfile. Nenhum projeto, faturamento, IAM remoto ou serviço foi criado nesta etapa. A identidade autorizada é `player.one@anderzilla.com`; o campo Terraform registra intenção, não comprova controle da conta.
 
 ## Arquitetura e limites
