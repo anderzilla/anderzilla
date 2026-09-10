@@ -1,0 +1,43 @@
+# Benchmark internacional — The Verge, Ars Technica e PC Gamer
+
+Consulta: **10/09/2026**. Escopo: fontes primárias públicas e inspeção real das três homepages no Chrome, com captura de tela desktop. O visual descrito é o estado observado nesta sessão; preferência de tema, cookies, anúncios, região e tamanho da janela podem mudar a experiência. Não houve auditoria mobile, desempenho, conversão, contas pagas ou receita. Nenhuma audiência ou rentabilidade foi estimada. As propostas de adaptação são julgamento estratégico, não fatos sobre o desempenho dos concorrentes. Skill aplicada: anderzilla-monetization; contexto: BRAND-AND-PRODUCT.md, monetization.md, SPONSOR-KIT-DRAFT.md e ACCESS-INVENTORY.md.
+
+## 1. The Verge — personalidade editorial e distribuição multimídia
+
+**Visual observado:** fundo quase preto, contraste branco, acento verde-menta, logotipo vertical de grande presença e manchete extremamente condensada. O destaque fotográfico divide espaço com um fluxo lateral de notas autorais. A navegação separa Tech, Reviews, Science, Entertainment, AI e Policy. Há combinação de matérias longas, cartões menores e comentários rápidos; o site parece publicação viva, com voz, em vez de catálogo. Na captura havia espaço superior amplo, área de publicidade e aviso de privacidade ocupando parte da tela. Isso é observação da sessão, não medição de frequência de anúncios. [Homepage](https://www.theverge.com/).
+
+**Conteúdo e serviços:** cobre tecnologia pela relação com cultura e pessoas, oferecendo notícias, análises, reportagens, vídeo e podcasts. É uma referência útil para evitar que AnderZilla se torne apenas um índice de ferramentas. [Sobre](https://www.theverge.com/about-the-verge). A assinatura oferece acesso completo, newsletters temáticas, podcasts sem anúncios e RSS integral; promete menos anúncios nas páginas, e não ausência total deles. [Benefícios oficiais](https://theverge.zendesk.com/hc/en-us/articles/36003508719507-What-a-subscription-to-The-Verge-offers).
+
+**Monetização comprovada:** assinatura, publicidade, branded content identificado, apoio de patrocinadores a conteúdo editorial e comissões de afiliados. A política distingue redação, comercial e conteúdo publicitário; reviews editoriais pagos são rejeitados. [Política editorial e comercial](https://www.theverge.com/ethics-statement).
+
+**Funil inferido:** notícia ou vídeo atrai; personalidade de autores e frequência promovem retorno; newsletters aprofundam vínculo; assinatura vende conveniência e exclusividade; reviews e guias capturam intenção de compra. Não foram consultadas métricas internas para validar esse caminho.
+
+**Adaptar:** um grande destaque real, notas curtas de experimentos, IA/games/gadgets na navegação e uma oferta coerente por matéria. Criar identidade tipográfica própria, com título legível em português e inglês. **Evitar:** copiar logotipo, condensação excessiva, feed interminável ou ritmo de redação grande. Com R$150/mês e operação pessoal, escolher uma experiência semanal que gere artigo e vídeo é mais viável que disputar breaking news. Assinatura editorial fica para depois de haver frequência e benefício recorrente demonstrável.
+
+## 2. Ars Technica — profundidade, leitura e comunidade
+
+**Visual observado:** tema escuro, marca laranja, acentos verdes, títulos serifados e composição que combina lista compacta com uma matéria destacada maior. Metadados e comentários estão próximos dos títulos. A interface oferece modos Classic, Grid, List e Neutron Star, tornando densidade uma escolha explícita. Um banner comercial superior e uma faixa de newsletter inferior estavam visíveis. O apelo principal é leitura e repertório, com menos espetáculo tipográfico que The Verge. [Homepage](https://arstechnica.com/).
+
+**Conteúdo e serviços:** tecnologia, ciência, hardware, software, games e política tecnológica com análises aprofundadas. A página institucional associa sua origem ao público técnico e à combinação de precisão com diversão. [Sobre](https://arstechnica.com/about-us/). A assinatura Ars Pro remove anúncios e rastreamento e acrescenta opções de leitura, RSS integral e fóruns de assinantes; Pro++ acrescenta apoio e identificação especial. A oferta demonstra como conveniência e pertencimento podem complementar o conteúdo. [Assinaturas](https://arstechnica.com/subscribe/).
+
+**Monetização comprovada:** publicidade com contato comercial público no rodapé, assinaturas e afiliados. A política de afiliação declara possibilidade de comissão, mas orienta que isso não determine escolhas ou cobertura editorial; avisos costumam acompanhar links de compra. [Rodapé comercial](https://arstechnica.com/); [política de afiliados](https://arstechnica.com/affiliate-link-policy/). Valores de receita e participação de cada fonte não foram verificados.
+
+**Funil inferido:** explicação técnica útil conquista confiança; repetição e discussão estimulam hábito; leitores mais envolvidos pagam por experiência de leitura e comunidade; recomendações capturam compras pertinentes. O elo entre confiança e conversão é hipótese de análise.
+
+**Adaptar:** StackPick com critérios, versões, data, limitações e resultados reproduzíveis; autor presente sem transformar o site em currículo; leitura confortável e fontes junto das afirmações. Transformar um teste real de IA ou gadget em referência que continue útil depois da notícia. **Evitar:** lançar fórum próprio vazio, múltiplos modos complexos ou assinatura sem entrega diferenciada. Para uma pessoa e orçamento reduzido, começar com layout único acessível e discussão nos canais sociais já existentes. Separar dados medidos, opiniões e informações do fornecedor dá uma vantagem de confiança sem exigir ferramentas pagas.
+
+## 3. PC Gamer — descoberta, utilidade e intenção de compra
+
+**Visual observado:** base clara, cabeçalho preto, faixa vermelha de navegação, etiquetas fortes e fotografias de jogos/pessoas. O primeiro bloco junta matéria dominante com News Stream lateral, seguido por cartões. O cabeçalho reúne redes e acesso à revista; categorias distinguem games, hardware, notícias, reviews, guias e vídeos. Existe muito conteúdo abaixo da dobra, incluindo ofertas, newsletter e cupons. Um espaço amplo separava menu e conteúdo na captura; não foi determinado se decorria de publicidade não carregada. [Homepage](https://www.pcgamer.com/).
+
+**Conteúdo e serviços:** foco editorial em jogos para PC e equipamentos, com notícias, crítica, guias, vídeos e revista. A página institucional apresenta políticas de teste e revisão, licenciamento e contato. O cadastro comunitário visto na home não deve ser confundido automaticamente com assinatura paga: o CTA de assinatura observado encaminha à revista. [Sobre e políticas](https://www.pcgamer.com/about-pc-gamer/).
+
+**Monetização comprovada:** anúncios, revista, afiliação e conteúdo financiado por marcas. A política explica links remunerados e widgets de preço. Outra página diferencia conteúdo comercial revisado pelo parceiro, patrocínio de material editorial sem aprovação prévia e maior destaque de ofertas de parceiros com remuneração preferencial. [Disclosure de afiliados](https://www.pcgamer.com/about-pc-gamer/); [financiamento de conteúdo](https://www.pcgamer.com/content-funding-on-pc-gamer/). Não se verificou quanto cada mecanismo rende nem se um anúncio específico foi vendido diretamente.
+
+**Funil inferido:** notícia e entretenimento trazem o jogador; guias resolvem problemas; review compara opções; oferta leva à loja; newsletter facilita retorno. A organização editorial evidencia esses destinos, mas não comprova conversão.
+
+**Adaptar:** unir “o que estou jogando” a guias genuínos e comparações de periféricos; distinguir descoberta, avaliação e oferta; mostrar região, atualização e ressalvas em StackPick. A personalidade de quem joga pode aparecer nos cartões e no autor. **Evitar:** portal com centenas de cupons desatualizados, captura intrusiva e avaliações sem equipamento testado. No orçamento AnderZilla, selecionar poucas recomendações com links aprovados e mercado BR/US explícito. Patrocinador compra entregáveis claramente identificados, nunca a conclusão do teste ou posição no ranking.
+
+## Implicação para o template AnderZilla
+
+Combinar identidade reconhecível e voz pessoal do Verge, legibilidade e evidência do Ars, e navegação orientada a jogos e decisões de compra do PC Gamer. Homepage proposta: destaque da semana, últimas experiências reais, jogos/vídeos, StackPick e oferta contextual. Não reproduzir escala editorial, excesso de inventário comercial ou modelos de assinatura antes de validar capacidade e demanda. Essas referências são grandes publicações; sua estrutura comercial não é um plano de custos apropriado para um criador solo.

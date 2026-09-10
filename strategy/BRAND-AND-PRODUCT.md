@@ -31,3 +31,7 @@ A estrutura suportará produtos, afiliados, parcerias diretas, banners contextua
 - Área Patrocine usa canal confirmado e formulário realmente funcional, sem sucesso simulado.
 - Slots comerciais aparecem só quando vendidos/aprovados; placeholders ficam no cadastro administrativo.
 - Experimentos e opinião própria demonstráveis; sem avaliações ou métricas inventadas.
+
+## Identidade visual reconhecida
+
+O proprietário confirmou AnderZilla-Ghost.png como imagem já utilizada nas plataformas. Preservar esse personagem como referência central: boné vermelho com A, rosto de caveira amarelo, olhos/sombras escuras e fundo azul. Não substituí-lo por um monograma genérico. O arquivo original fica em C:/Users/ander/OneDrive/Imagens/AnderZilla-Ghost.png; uma cópia byte a byte integra o protótipo de código em prototypes/editorial/assets/anderzilla-ghost.png. Direção e tokens em [EDITORIAL-TEMPLATE.md](EDITORIAL-TEMPLATE.md).

@@ -5,6 +5,8 @@ Esta branch contém a estratégia, o inventário, as decisões e as ferramentas 
 Comece pelo [dossiê](DOSSIER.md), pelo [estado dos acessos](operations/ACCESS-INVENTORY.md) e pelo [plano por fases](strategy/ROADMAP.md).
 
 ## Mapa
+- [Benchmark de dez sites](research/BENCHMARK-10-SITES.md)
+- [Template editorial e identidade Ghost](strategy/EDITORIAL-TEMPLATE.md)
 - [Direção de marca e produto](strategy/BRAND-AND-PRODUCT.md)
 - [Pesquisa de monetização](research/monetization.md)
 - [Presença pública, jogos e contas](research/gaming-presence.md)
