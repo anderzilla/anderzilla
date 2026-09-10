@@ -1,0 +1,116 @@
+[
+  {
+    "Name": "anderzilla.com",
+    "Type": 1,
+    "TTL": 0,
+    "IPAddress": "185.230.63.107",
+    "NameHost": null,
+    "NameExchange": null,
+    "Preference": null,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 6,
+    "TTL": 1800,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": null,
+    "Preference": null,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 15,
+    "TTL": 3600,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": "aspmx.l.google.com",
+    "Preference": 10,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 15,
+    "TTL": 3600,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": "alt1.aspmx.l.google.com",
+    "Preference": 20,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 15,
+    "TTL": 3600,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": "alt2.aspmx.l.google.com",
+    "Preference": 30,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 15,
+    "TTL": 3600,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": "alt3.aspmx.l.google.com",
+    "Preference": 40,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 15,
+    "TTL": 3600,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": "alt4.aspmx.l.google.com",
+    "Preference": 50,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 16,
+    "TTL": 3600,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": null,
+    "Preference": null,
+    "Strings": [
+      "v=spf1 include:_spf.google.com ~all"
+    ]
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 16,
+    "TTL": 3600,
+    "IPAddress": null,
+    "NameHost": null,
+    "NameExchange": null,
+    "Preference": null,
+    "Strings": [
+      "google-site-verification=hT9BDwNy-KqMr60ApGvUamtgCrV7wc6ruykrweYXZa8"
+    ]
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 2,
+    "TTL": 86281,
+    "IPAddress": null,
+    "NameHost": "ns2.wixdns.net",
+    "NameExchange": null,
+    "Preference": null,
+    "Strings": null
+  },
+  {
+    "Name": "anderzilla.com",
+    "Type": 2,
+    "TTL": 86281,
+    "IPAddress": null,
+    "NameHost": "ns3.wixdns.net",
+    "NameExchange": null,
+    "Preference": null,
+    "Strings": null
+  }
+]

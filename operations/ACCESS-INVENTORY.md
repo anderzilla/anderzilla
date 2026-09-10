@@ -1,5 +1,7 @@
 # Inventário de acessos — 10/09/2026
 
+**Direção atual:** Azure Static Web Apps Free é a hospedagem principal. Produção e homolog publicados; DNS web alterado na Wix, email Google preservado. Estado de HTTPS e acesso privado em [registro Azure](AZURE-RELEASE.md). As seções GCP abaixo registram o histórico anterior.
+
 ## Atualização — Google Cloud liberado parcialmente
 
 Após o proprietário concluir etapas no console, a criação dos projetos `anderzilla-homolog` (727980282274) e `anderzilla-production` (710416906845) foi concluída com sucesso sob `player.one@anderzilla.com`. O erro de termos foi superado. O projeto inicial `lithe-resource-508205-a6` foi preservado.

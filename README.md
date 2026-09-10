@@ -12,6 +12,8 @@ Comece pelo [dossiê](DOSSIER.md), pelo [estado dos acessos](operations/ACCESS-I
 - [Debate entre IAs e decisões](decisions/AI-REVIEW.md)
 - [Plano editorial de 90 dias](strategy/EDITORIAL-90-DAYS.md)
 - [Rascunho para patrocinadores](strategy/SPONSOR-KIT-DRAFT.md)
+- [Azure como nuvem principal](decisions/AZURE-PRIMARY.md)
+- [Publicação Azure e DNS](operations/AZURE-RELEASE.md)
 - [Fluxo de branches e versões](operations/DEVELOPMENT-FLOW.md)
 - [Operação de agentes, skills e MCP](ai/OPERATING-MODEL.md)
 - [RAG local](ai/rag/README.md)

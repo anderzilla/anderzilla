@@ -11,12 +11,12 @@ Dockerfiles, Terraform e GitHub Actions permanecem na esteira de código: são a
 1. Atualizar documentação e registrar decisão quando necessário; commit documental.
 2. Fixar hash documental em .anderzilla-docs-ref na branch de implementação.
 3. Desenvolver em codex/<assunto>, sem checkout destrutivo de trabalho alheio.
-4. PR para develop: builds e verificações; deploy manual de homologação privada.
+4. PR para develop: build e verificações; workflow Azure preparado para publicar homologação privada após push. Ativação remota ainda pendente, conforme AZURE-RELEASE.md.
 5. Validar visual, PT/EN, links, acessibilidade, conteúdo e orçamento em homologação.
-6. Promover para main e produção pelo ambiente GitHub específico, identidade federada e artefato identificado.
-7. Registrar commit, digest, revisão Cloud Run, URL, autor da validação e rollback.
+6. Promover para main e produção pelo ambiente GitHub específico, usando token SWA exclusivo do ambiente e o artefato identificado da execução homologada, sem reconstrução.
+7. Registrar commit, digest do artefato, implantação Azure, URL, validação e rollback.
 
-Branches remotas, proteções, environments e OIDC não são presumidos pela presença do YAML. Validar plano GitHub e configurar no repositório privado quando acesso/permissões estiverem confirmados. Não publicar branch documental em hospedagem web nem usar como contexto público.
+Branches remotas, proteções, environments e credenciais de entrega não são presumidos pela presença do YAML. Validar plano GitHub e configurar no repositório privado quando acesso/permissões estiverem confirmados. Não publicar branch documental em hospedagem web nem usar como contexto público.
 
 ## Reconstrução
 Em máquina nova: clone o repositório, crie worktree da branch documental, confira o hash de .anderzilla-docs-ref, execute ai/bootstrap.ps1 a partir da documentação e rode validações. O RAG é descartável e reconstruído; tokens não fazem parte do setup. Não fazer merge de histórias sem relação para sincronizar documentação.
