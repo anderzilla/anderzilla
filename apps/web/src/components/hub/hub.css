@@ -1149,7 +1149,7 @@
   .hub .category .icon {
     width: 17px;
   }
-  .hub .profile-link span {
+  .hub .profile-link-label {
     display: none;
   }
   .hub .return-band h2 {

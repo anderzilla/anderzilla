@@ -113,7 +113,7 @@ function Header() {
             ) : (
               <Ghost size={26} />
             )}
-            <span>{t("Seu radar", "Your radar")}</span>
+            <span className="profile-link-label">{t("Seu radar", "Your radar")}</span>
           </a>
         </div>
       </header>
