@@ -10,6 +10,11 @@ import io
 from datetime import datetime, timezone
 from urllib.parse import urlsplit
 
+try:
+    from . import commerce
+except ImportError:
+    import commerce
+
 COMMON = {'titlePT', 'titleEN', 'summaryPT', 'summaryEN', 'isDemo'}
 EDITORIAL = {'slugPT', 'slugEN', 'seoTitlePT', 'seoTitleEN', 'seoDescriptionPT', 'seoDescriptionEN', 'tags', 'author', 'coverMediaId', 'mediaIds'}
 NEWSROOM = {'sources', 'verifiedAt', 'eventDate', 'editorialType', 'socialMediaId'} | {name + lang for name in ('hashtags', 'socialInstagram', 'socialFacebook', 'socialWhatsapp') for lang in ('PT', 'EN')}
@@ -38,6 +43,10 @@ REQUIRED = {
     'missions': {'titlePT', 'points', 'verifier', 'limit', 'termsPT'},
     'rewards': {'titlePT', 'points', 'category', 'regions', 'termsPT'},
 }
+for legacy in ('offers', 'affiliates', 'campaigns'):
+    FIELDS[legacy] |= {'market', 'currency', 'store', 'status'}
+FIELDS.update(commerce.FIELDS)
+REQUIRED.update({name: {'titlePT', 'titleEN', 'market', 'status'} for name in commerce.FIELDS})
 PUBLIC_COLLECTIONS = set(FIELDS) - {'missions', 'rewards'}
 ROLES = {'anderzilla_admin', 'anderzilla_editor', 'anderzilla_commercial', 'anderzilla_rewards'}
 # Biblioteca de imagens: 60 notícias com fotos/galerias — 2 MiB por imagem, 1600 px, total 32 MiB.
@@ -66,7 +75,7 @@ def require(principal, collection=None, publish=False):
         return
     if publish or not roles.intersection(ROLES):
         raise Error(403, 'forbidden', 'Esta conta não tem permissão para esta operação.')
-    required = 'anderzilla_commercial' if collection in {'offers', 'affiliates', 'campaigns'} else 'anderzilla_rewards' if collection in {'missions', 'rewards'} else 'anderzilla_editor'
+    required = 'anderzilla_commercial' if collection in ({'offers', 'affiliates', 'campaigns'} | set(commerce.FIELDS)) else 'anderzilla_rewards' if collection in {'missions', 'rewards'} else 'anderzilla_editor'
     if collection and required not in roles:
         raise Error(403, 'forbidden', 'Módulo não autorizado para esta conta.')
 
@@ -83,7 +92,7 @@ def validate(collection, data, approved=False, internal=False):
             if not isinstance(value, str) or len(value) > MEDIA_PER_IMAGE_B64_LIMIT:
                 raise Error(413, 'asset_too_large', 'Arquivo normalizado muito grande.')
             continue
-        if key == 'isDemo':
+        if key in {'isDemo', 'enabled'}:
             if type(value) is not bool:
                 raise Error(422, 'invalid_boolean', 'isDemo deve ser booleano.')
         elif key in {'points', 'limit', 'priceMinor', 'width', 'height'}:
@@ -154,6 +163,15 @@ def validate(collection, data, approved=False, internal=False):
                 raise Error(422, 'invalid_social', 'Legenda Instagram: máximo 2200 caracteres.')
     if collection == 'campaigns' and data.get('placement') and data['placement'] != 'home':
         raise Error(422, 'invalid_placement', 'Espaço disponível nesta entrega: home.')
+    if collection in {'offers', 'affiliates', 'campaigns'}:
+        for key, values in [('market', {'br','intl','global'}), ('currency', {'BRL','USD'}), ('status', {'candidate','active','paused','ended'})]:
+            if key in data and data[key] not in values:
+                raise Error(422, 'invalid_commerce', key + ': valor inválido.')
+    if collection in commerce.FIELDS:
+        try:
+            commerce.check(collection, data, approved)
+        except ValueError as exc:
+            raise Error(422, 'invalid_commerce', str(exc))
     if approved:
         missing = [key for key in REQUIRED[collection] if data.get(key) in (None, '', 0)]
         if collection == 'pages' and data.get('slugPT') and 'slug' in missing:
@@ -169,6 +187,11 @@ def validate(collection, data, approved=False, internal=False):
 
 def validate_references(db, collection, data, record_id=None):
     """Check references again at release time, since a dependency may be archived."""
+    if collection in {'feature_flags', 'market_hubs', 'trust_blocks', 'products'}:
+        identity = 'key' if collection == 'feature_flags' else 'slug'
+        for other in db.records(collection):
+            if other['id'] != record_id and other['status'] == 'approved' and other['data'].get('market') == data.get('market') and other['data'].get(identity) == data.get(identity):
+                raise Error(422, 'duplicate_commerce', 'Já existe uma revisão aprovada com esta chave neste mercado.')
     if collection in {'content', 'pages'}:
         if data.get('socialMediaId'):
             media = db.record('media', data['socialMediaId'])
@@ -331,6 +354,10 @@ class CMS:
                     validate(collection, record['data'], approved=True, internal=True)
                     validate_references(references, collection, record['data'], record['id'])
                     public = copy.deepcopy(record)
+                    if collection in commerce.FIELDS and record['data'].get('status') != 'active':
+                        continue
+                    if collection in {'affiliate_placements', 'ad_placements'}:
+                        public['data']['approvalVerified'] = bool(record['data'].get('approvalReference'))
                     public['data'].pop('approvalReference', None)
                     items.append(public)
                 collections[collection] = items

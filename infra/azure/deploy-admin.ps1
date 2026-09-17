@@ -15,7 +15,7 @@ $sourceApi=(Resolve-Path (Join-Path $PSScriptRoot '../../services/cms')).Path
 $api=Join-Path (Join-Path $PSScriptRoot '../../.deploy') ('admin-api-'+[guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $api -Force | Out-Null
 $api=(Resolve-Path $api).Path
-foreach($file in @('api.py','core.py','function_app.py','storage.py','automation.py','worker_auth.py','host.json','requirements.txt')) {
+foreach($file in @('api.py','core.py','commerce.py','reporting.py','function_app.py','storage.py','automation.py','worker_auth.py','host.json','requirements.txt')) {
   Copy-Item -LiteralPath (Join-Path $sourceApi $file) -Destination $api
 }
 $packages=Join-Path $api '.python_packages/lib/site-packages'

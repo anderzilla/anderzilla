@@ -1,3 +1,4 @@
+import {commerceRoutes} from "@/components/commerce/data";
 import type { MetadataRoute } from "next";
 import { SITE } from "../../content/affiliates";
 import { listComparisons } from "../../content/stackpick";
@@ -18,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const comparisons = listComparisons().map((c) => `/stackpick/${c.slug}`);
   const articles:MetadataRoute.Sitemap=discoveries.filter(item=>!item.isDemo).flatMap(item=>(['pt','en'] as const).map(lang=>({url:`${SITE.url}${articleUrl(item,lang)}`,lastModified:item.verifiedAt||item.published,changeFrequency:'weekly' as const,priority:0.7,alternates:{languages:{'pt-BR':`${SITE.url}${articleUrl(item,'pt')}`,en:`${SITE.url}${articleUrl(item,'en')}`}}})));
-  const routes = [...base, ...comparisons];
+  const routes = [...base, ...comparisons, ...["pt","en"].flatMap(lang=>commerceRoutes.map(route=>`/${lang}/${route}`))];
 
   return [...routes.map((route) => ({
     url: `${SITE.url}${route}`,

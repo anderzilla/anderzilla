@@ -1,5 +1,6 @@
 """Validate an approved CMS snapshot and emit only public hub data (no HTML execution)."""
 import argparse
+import sys
 import base64
 import hashlib
 import io
@@ -10,6 +11,9 @@ import json
 from pathlib import Path
 from urllib.parse import urlsplit
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'cms'))
+import commerce
 
 CATEGORIES = {'games', 'consoles', 'celulares', 'ia', 'gadgets', 'curiosidades'}
 NEWSROOM = ('verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'hashtagsPT', 'hashtagsEN', 'socialInstagramPT', 'socialInstagramEN', 'socialFacebookPT', 'socialFacebookEN', 'socialWhatsappPT', 'socialWhatsappEN')
@@ -82,14 +86,35 @@ def transform(snapshot):
     out = {'enabled': True, 'discoveries': [], 'events': [], 'affiliates': [],
            'offers': [], 'campaigns': [], 'pages': [], 'media': [], 'taxonomies': [],
            'missions': [], 'rewards': [], 'releaseId': snapshot.get('releaseId')}
+    out.update({name: [] for name in commerce.FIELDS if name in snapshot['collections']})
+    identities = set()
     for collection, records in snapshot['collections'].items():
-        if collection not in {'content', 'events', 'affiliates', 'offers', 'campaigns', 'pages', 'media', 'taxonomies', 'missions', 'rewards'}:
+        if collection not in ({'content', 'events', 'affiliates', 'offers', 'campaigns', 'pages', 'media', 'taxonomies', 'missions', 'rewards'} | set(commerce.FIELDS)):
             raise ValueError('Non-public collection in snapshot')
         for row in records:
             if row.get('status') != 'approved':
                 raise ValueError('Unapproved record in snapshot')
             d = row['data']
-            if collection == 'content':
+            # Legacy commerce remains in the CMS for migration; only market-aware
+            # collections participate in public flags and disclosure rendering.
+            if collection in {'offers', 'affiliates', 'campaigns'}:
+                continue
+            if collection in commerce.FIELDS:
+                evidence = d.get('approvalVerified') is True
+                commerce.check(collection, {**{key:value for key,value in d.items() if key != 'approvalReference'}, **({'approvalReference': 'verified'} if evidence else {})}, approved=True)
+                if d.get('status') != 'active':
+                    continue
+                if collection in {'feature_flags','products','market_hubs','trust_blocks'}:
+                    identity = (collection, d.get('market'), d.get('key') if collection == 'feature_flags' else d.get('slug'))
+                    if identity in identities:
+                        raise ValueError('Duplicate commerce key in market')
+                    identities.add(identity)
+                public = {'id': row['id'], **{key: d[key] for key in commerce.FIELDS[collection] - {'approvalReference'} if key in d}}
+                for key in ('ctaUrl', 'demoUrl', 'imageUrl'):
+                    if public.get(key):
+                        https(public[key])
+                out[collection].append(public)
+            elif collection == 'content':
                 if d['category'] not in CATEGORIES:
                     raise ValueError('Unknown category')
                 date = d['publishedAt'][:10]
@@ -122,7 +147,7 @@ def transform(snapshot):
                           'campaigns': ('titlePT','titleEN','url','placement','startsAt','endsAt','disclosurePT','disclosureEN'),
                           'pages': ('titlePT','titleEN','slug','bodyPT','bodyEN')}[collection]
                 public = {'id': row['id'], **{key: d[key] for key in fields if key in d}}
-                public.update({key: d[key] for key in ('isDemo','coverMediaId','slugPT','slugEN','seoTitlePT','seoTitleEN','seoDescriptionPT','seoDescriptionEN','tags','author','mediaIds') if key in d})
+                public.update({key: d[key] for key in ('market','currency','store','status','isDemo','coverMediaId','slugPT','slugEN','seoTitlePT','seoTitleEN','seoDescriptionPT','seoDescriptionEN','tags','author','mediaIds') if key in d})
                 if 'url' in public:
                     https(public['url'])
                 if collection == 'campaigns' and public.get('placement') != 'home':

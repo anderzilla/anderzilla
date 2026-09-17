@@ -2,16 +2,33 @@
   "trailingSlash": "never",
   "routes": [
     {
+      "route": "/forgekit",
+      "redirect": "/pt/forgekit",
+      "statusCode": 301
+    },
+    {
+      "route": "/stackpick",
+      "redirect": "/pt/stackpick",
+      "statusCode": 301
+    },
+    {
       "route": "/opengraph-image",
-      "headers": { "Content-Type": "image/png" }
+      "headers": {
+        "Content-Type": "image/png"
+      }
     },
     {
       "route": "/_next/static/*",
-      "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     }
   ],
   "responseOverrides": {
-    "404": { "rewrite": "/404.html", "statusCode": 404 }
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
   },
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",

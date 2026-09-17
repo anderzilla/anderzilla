@@ -24,3 +24,10 @@ Canonical docs: `Z:/AnderZilla-docs` branch `codex/anderzilla-docs`.
 
 ## After
 Build touched apps; list routes + CMS fields; document how admin publishes per market.
+
+## Implementation contract (2026-09-17)
+- Collections: products, affiliate_placements, ad_placements, sponsor_packages, trust_blocks, feature_flags, market_hubs.
+- Commercial status candidate|active|paused|ended is separate from editorial draft/approved. Only active approved records belong in the public snapshot.
+- Keep approvalReference private. Legacy offers/affiliates/campaigns without reviewed market, currency, store and active state must not bypass the new rules.
+- Feature flags resolve the selected market before the global default; global offers must respect the visitor's selected market flags too.
+- Editor guide: Z:/AnderZilla/docs/TRUST-COMMERCE-EDITOR-GUIDE.md. Prompt inventory: Z:/AnderZilla/docs/PROMPT-EXECUTION-AUDIT.md. Local validation never proves deployment.

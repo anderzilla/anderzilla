@@ -24,6 +24,40 @@ def snapshot():
 
 
 class ImportSnapshotTests(unittest.TestCase):
+    def test_commerce_snapshot_preserves_market_and_removes_private_evidence(self):
+        from seed_commerce import FORGEKIT
+        value = snapshot()
+        value['collections']['products'] = [{'id':'forgekit','status':'approved','data':dict(FORGEKIT)}]
+        published = transform(value)
+        self.assertEqual(published['products'][0]['market'], 'intl')
+        self.assertEqual(published['products'][0]['priceMinor'], 14900)
+        affiliate = {key: content for key, content in FORGEKIT.items() if key not in {'slug','bodyPT','bodyEN','priceMinor','demoUrl'}}
+        affiliate.update(approvalVerified=True, approvalReference='PRIVATE')
+        value['collections']['affiliate_placements'] = [{'id':'affiliate','status':'approved','data':affiliate}]
+        self.assertNotIn('PRIVATE', json.dumps(transform(value)))
+        affiliate.pop('approvalVerified')
+        affiliate.pop('approvalReference')
+        with self.assertRaises(ValueError):
+            transform(value)
+
+    def test_commerce_rejects_unsafe_url_and_ad_period(self):
+        from seed_commerce import FORGEKIT
+        value = snapshot()
+        value['collections']['products'] = [{'id':'forgekit','status':'approved','data':{**FORGEKIT,'ctaUrl':'https://127.0.0.1/private'}}]
+        with self.assertRaises(ValueError):
+            transform(value)
+        value['collections'].pop('products')
+        ad = {key: content for key, content in FORGEKIT.items() if key not in {'slug','bodyPT','bodyEN','priceMinor','demoUrl'}}
+        ad.update(approvalVerified=True, placement='home', startsAt='2026-09-17T12:00:00Z', endsAt='2026-09-16T12:00:00Z')
+        value['collections']['ad_placements'] = [{'id':'ad','status':'approved','data':ad}]
+        with self.assertRaises(ValueError):
+            transform(value)
+
+    def test_legacy_snapshot_without_markets_hides_commerce(self):
+        published = transform(snapshot())
+        for collection in ('offers', 'affiliates', 'campaigns'):
+            self.assertEqual(published[collection], [])
+
     def test_media_source_is_public_https(self):
         value = snapshot()
         data = value['collections']['media'][0]['data']

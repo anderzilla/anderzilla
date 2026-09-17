@@ -83,6 +83,9 @@ def dispatch(cms, principal, method, path, body=None, environment='homolog', mod
         return {'user': {'name': principal['name'], 'roles': principal['roles']}, 'environment': environment, 'mode': mode}
     if method == 'GET' and path == '/api/admin/summary':
         return cms.summary(principal)
+    if method == 'GET' and path == '/api/admin/reports/operations':
+        from reporting import operations
+        return operations(cms, principal, query, environment)
     if method == 'GET' and path == '/api/admin/health':
         require(principal, publish=True)
         if not hasattr(cms.store, 'health'):
@@ -90,7 +93,7 @@ def dispatch(cms, principal, method, path, body=None, environment='homolog', mod
         return cms.store.health()
     if method == 'POST' and path == '/api/admin/media-upload':
         return cms.upload_media(principal, body)
-    match = re.fullmatch(r'/api/admin/records/([a-z]+)(?:/([a-zA-Z0-9-]+))?(?:/(transition|revisions))?', path)
+    match = re.fullmatch(r'/api/admin/records/([a-z_]+)(?:/([a-zA-Z0-9-]+))?(?:/(transition|revisions))?', path)
     if match:
         collection, record_id, suffix = match.groups()
         if method == 'GET' and suffix == 'revisions' and record_id:

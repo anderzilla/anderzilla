@@ -5,6 +5,7 @@ pyOpenSSL==25.3.0
 Pillow==12.1.1
 google-auth==2.41.1
 requests==2.32.3
+tzdata==2026.4
 # requests is required at runtime by google.auth.transport.requests; pin for Python 3.11.
 # Isolated import verification: python -m pip install --no-deps -r requirements.txt --target /tmp/cms-deps && PYTHONPATH=/tmp/cms-deps python -c "import google.auth.transport.requests; import google.oauth2.id_token; print('ok')"
 # Or run: python -m pytest services/cms/test_package_imports.py -k test_isolated_import
