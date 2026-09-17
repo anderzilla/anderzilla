@@ -59,3 +59,8 @@ GCP criado anteriormente permanece sem novo deploy/faturamento vinculado por est
 ## Prévia Next.js posterior
 
 A migração componentizada está publicada em slot visual separado, com acesso público apenas ao conteúdo demonstrativo. Registro atual: [AZURE-NEXT-PREVIEW.md](AZURE-NEXT-PREVIEW.md). Homolog formal continua privada e produção não recebeu o redesign nesta entrega.
+
+
+## Atualização — lançamento editorial em produção, 16/09/2026
+
+60 matérias e imagens revisadas publicadas no domínio oficial. HTTPS, 120 páginas PT/EN, 242 arquivos de mídia e indexação verificados. Registro e rollback: [AZURE-EDITORIAL-PRODUCTION-2026-09-16.md](AZURE-EDITORIAL-PRODUCTION-2026-09-16.md).

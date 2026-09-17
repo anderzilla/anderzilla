@@ -72,4 +72,10 @@ Fluxo: draft → preview → published snapshot. Sem segredos no Git.
 
 ## Manutenção
 
+### Implementação local — 17/09/2026
+
+O prompt foi implementado localmente em `Z:/AnderZilla`: rotas PT/EN, cadastro dos sete tipos no Admin/CMS, validação por mercado e importação pelo publisher existente. O conteúdo comercial tem estado próprio (`candidate`, `active`, `paused`, `ended`), separado da aprovação editorial. Evidência privada de aprovação não integra o JSON público. Registros comerciais legados permanecem disponíveis no Admin para consulta/migração, mas são omitidos do conteúdo público. Para voltar a aparecer, devem ser revisados e cadastrados nas novas coleções com mercado, moeda, loja e estado explícitos.
+
+O guia operacional e a auditoria de prompts ficam em `docs/TRUST-COMMERCE-EDITOR-GUIDE.md` e `docs/PROMPT-EXECUTION-AUDIT.md` no worktree de código. Essa implementação não equivale a deploy nem ativa parceria, anúncio, candidatura ou resgate KP. A situação operacional de cada processo está no registro de monetização.
+
 Sempre que um processo for criado/alterado/encerrado: atualizar `MONETIZATION-PROCESS-REGISTER.md` (coluna Market) + este arquivo se a IA de rotas/CMS mudar + skill `anderzilla-trust-commerce`.
