@@ -1,5 +1,9 @@
 # Azure — publicação do portal
 
+## Atualização — 17/09/2026
+
+Homolog e produção foram republicados com o build atual de `apps/web` (Trust & Commerce, contas/avatar, revisão legal LGPD/CDC/Marco Civil/Constituição): ver [AZURE-HOMOLOG-2026-09-17.md](AZURE-HOMOLOG-2026-09-17.md) e [AZURE-PRODUCTION-2026-09-17.md](AZURE-PRODUCTION-2026-09-17.md). Produção foi promovida sem revisão visual humana prévia do homolog (sem acesso `anderzilla_reviewer` disponível na sessão); verificação pós-publicação em produção (pública) substituiu essa etapa, mas não é o mesmo processo documentado abaixo. As seções originais de 10/09 abaixo continuam válidas para o histórico de DNS/domínio.
+
 ## Estado em 10/09/2026
 
 Azure é o destino principal autorizado. Login CLI e portal confirmados como anderzilla@ymail.com, tenant 3fdcb773-0842-4fb9-925e-bea17d681f83, assinatura ativa 44b76346-26bd-4cd3-a529-627e47e99e5a. Grupo anderzilla-web, região eastus2, provider Microsoft.Web registrado. Somente duas Static Web Apps **SKU Free**, sem backend, banco, Front Door ou plano pago.
