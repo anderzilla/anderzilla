@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "iPhone 18 Pro em português, desktop 1280 px: capa e duas imagens de galeria carregadas, enquadramento contain, duas colunas e sem rolagem horizontal.",
+    "iPhone 18 Pro em inglês, celular 390 px: capa e galeria carregadas, uma coluna, legendas e links Image source corretos, sem rolagem horizontal.",
+    "Qwen-Image-3.0 em português, celular 390 px: três imagens carregadas, infográfico vertical inteiro e exemplos identificados explicitamente como gerados por IA.",
+    "Capas e galerias exibem links para ampliar e links de origem com crédito.",
+    "Override temporário de viewport removido após a conferência."
+  ]
+}

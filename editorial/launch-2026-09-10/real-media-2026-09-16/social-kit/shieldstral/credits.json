@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "altPT": "Shieldstral: arte oficial com escudo sobre blocos coloridos.",
+    "altEN": "Shieldstral: official artwork with a shield over colored blocks.",
+    "credit": "Mistral AI",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://mistral.ai/news/shieldstral/"
+  },
+  {
+    "file": "gallery-01.jpg",
+    "altPT": "Shieldstral: gráfico de segurança de texto divulgado pela Mistral.",
+    "altEN": "Shieldstral: text-safety chart published by Mistral.",
+    "credit": "Mistral AI",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://mistral.ai/news/shieldstral/"
+  },
+  {
+    "file": "gallery-02.jpg",
+    "altPT": "Shieldstral: gráfico de detecção de recusas divulgado pela Mistral.",
+    "altEN": "Shieldstral: refusal-detection chart published by Mistral.",
+    "credit": "Mistral AI",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://mistral.ai/news/shieldstral/"
+  }
+]

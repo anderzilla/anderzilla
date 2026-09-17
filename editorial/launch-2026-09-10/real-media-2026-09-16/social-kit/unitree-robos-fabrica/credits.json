@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "altPT": "Unitree: robô em imagem institucional, não em registro da fábrica.",
+    "altEN": "Unitree: robot in institutional imagery, not a factory photograph.",
+    "credit": "Unitree",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://www.unitree.com/about/"
+  },
+  {
+    "file": "gallery-01.jpg",
+    "altPT": "Unitree: humanoide em pose dinâmica em imagem institucional.",
+    "altEN": "Unitree: humanoid in a dynamic pose in institutional imagery.",
+    "credit": "Unitree",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://www.unitree.com/about/"
+  },
+  {
+    "file": "gallery-02.jpg",
+    "altPT": "Unitree: humanoide em demonstração de movimento em imagem institucional.",
+    "altEN": "Unitree: humanoid demonstrating movement in institutional imagery.",
+    "credit": "Unitree",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://www.unitree.com/about/"
+  }
+]

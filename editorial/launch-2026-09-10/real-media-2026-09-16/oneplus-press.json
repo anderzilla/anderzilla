@@ -1,0 +1,12 @@
+{
+  "key": "oneplus-press",
+  "sourcePage": "https://www.oneplus.com/us/press/press-release/oneplus-launches-the-oneplus-15--the-ultimate-performance-flagship-smartphone-for-north-america",
+  "images": [
+    {
+      "url": "https://www.oneplus.com/content/dam/oneplus/na/press/11.21.png",
+      "alt": "",
+      "path": "main#mianContent > div.root.responsivegrid > div#app > div.content-wrapper > div.cmp-rich-text.theme-light > div.cmp-text.responsive-narrow > p.ql-align-center.ql-direction-ltr.ql-long-253058 > span.ql-author-253058",
+      "srcset": ""
+    }
+  ]
+}

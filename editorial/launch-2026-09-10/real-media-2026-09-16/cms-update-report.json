@@ -1,0 +1,548 @@
+[
+  {
+    "key": "gta-vi-data-plataformas",
+    "id": "35277bce-3d3e-4188-b0c5-c094d78482ae",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "f7439819-4f4a-4ce3-9752-f0c25a357f6b",
+    "galleryMediaIds": [
+      "5283e0e7-052f-4413-825b-f617de93c6c1",
+      "24ff6660-2ecd-4b5c-bc4d-823bd9079ee4"
+    ]
+  },
+  {
+    "key": "modern-warfare-4-confirmado",
+    "id": "5c5fa0b4-cad3-4f30-a765-414028ef0470",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "d69462e0-e420-4573-9be3-7ad3ff00f4f2",
+    "galleryMediaIds": [
+      "209f9ff6-11bf-480d-bce7-5fd810c25a37",
+      "7376fc3f-ae43-4bc0-a02a-e5b8df1be308"
+    ]
+  },
+  {
+    "key": "control-resonant-assist-mode",
+    "id": "d605db77-fde7-4cf2-aa74-ed35e64b9a6c",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "f876f85a-7df1-49a9-a5e3-b1865f816a70",
+    "galleryMediaIds": [
+      "d16d4f71-8bd4-4c14-aaa9-7e3e93526004",
+      "65702a1d-0575-4c5a-84db-ce12db04aca8"
+    ]
+  },
+  {
+    "key": "no-mans-sky-cosmos",
+    "id": "1958ddc3-791f-49f9-b5a0-e06d6f428247",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "7260c58e-123a-42b6-b66e-1b7e4f673072",
+    "galleryMediaIds": [
+      "07393e07-a725-4c09-b470-1ee07835f407"
+    ]
+  },
+  {
+    "key": "muramasa-revenant-blades",
+    "id": "1a378916-1c2d-4498-a209-739096c39574",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "1b106d10-fb51-4189-8192-0061d07466d4",
+    "galleryMediaIds": [
+      "082ebe01-ba5a-4bdf-b615-89bb71e493de"
+    ]
+  },
+  {
+    "key": "doa-minato",
+    "id": "07942ddb-7ad1-4cac-b14a-1a1ed9a8aea2",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "14361add-ebc3-46a5-b79a-5b813757c0ad",
+    "galleryMediaIds": [
+      "d3dca6f3-2804-4e39-a240-9092b330fb0c",
+      "a4c785d1-5a8f-4a04-8158-36167a48d5b9"
+    ]
+  },
+  {
+    "key": "zero-company-escolha-jogadores",
+    "id": "cea74bc9-b121-429f-a6e8-3224174b054f",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "7c9e142a-d183-46e4-a798-5bbbd08cdbf5",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "ffvii-revelation-data",
+    "id": "7cc67305-4b57-4588-865f-b9c31e3bf001",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "56280065-2e90-4071-8fc1-3e2d7ab92df1",
+    "galleryMediaIds": [
+      "1d3c7607-472c-4bc1-ac5d-754a10afb91f"
+    ]
+  },
+  {
+    "key": "cod-the-haunting-setembro",
+    "id": "3a2a2ded-b933-4c2d-b983-ee0d60a34ef9",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "56a0a88a-5456-4406-9aba-a6f6f80f6aa9",
+    "galleryMediaIds": [
+      "fe5e5631-870e-432a-b2bb-9ccdd79cb4dd"
+    ]
+  },
+  {
+    "key": "physint-xbox-kojima",
+    "id": "288fa989-3d2f-4809-963a-2dd779ee13bb",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "5d501996-2def-4a90-af0f-5fabc418634d",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "rog-xbox-ally-x20",
+    "id": "b28a0608-0d59-4f66-8b61-1345fd3151a3",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "40b6b87e-b784-4c07-9f14-632c84396fd9",
+    "galleryMediaIds": [
+      "e3731401-bc77-4d71-bcab-bfb93a26f6d0",
+      "77d766cf-1c59-4a3c-b5e4-c2e5b78620b7"
+    ]
+  },
+  {
+    "key": "rog-ally-atualizacao-dock",
+    "id": "487813dd-809c-4697-819f-8b12febfa06b",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "0df6e5ab-a18e-4f09-84d8-86745ef198bc",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "playstation-portal-1080p",
+    "id": "a61c459e-ff06-40ed-8496-ce2e6519cdbd",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "2ac99875-74cf-406b-b5c3-b0a83032b962",
+    "galleryMediaIds": [
+      "377234d7-3b82-477a-be34-2eb00fd15e7c",
+      "78e80993-ee6b-4a6a-99a2-fa508849cb4f"
+    ]
+  },
+  {
+    "key": "legion-go-steamos",
+    "id": "a4fa6ca7-c55d-4db0-978f-0374f7d739b9",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "bc2eaef4-3e2c-424c-a0b7-5dbc93227d29",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "steam-deck-oled-ficha",
+    "id": "48a92a13-e36c-47c4-8beb-9ef31f70f9df",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "29aadfbd-988a-4a43-b811-b37617c0c3ad",
+    "galleryMediaIds": [
+      "53d77659-a732-4acf-9596-ed567856dd98",
+      "a54dfbcc-bbc3-4f79-bf18-00737c7144f0"
+    ]
+  },
+  {
+    "key": "switch-2-bundles",
+    "id": "ac5d596c-306e-4c08-82e9-906a17d70925",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "017acccb-1a4c-417e-8a99-587ae7b67266",
+    "galleryMediaIds": [
+      "061e0110-5adc-4ab1-96d0-7a76eb930515"
+    ]
+  },
+  {
+    "key": "ps-plus-setembro-catalogo",
+    "id": "3afd03b5-432d-43b9-b781-8a804241c4ab",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "0732fadf-3460-4c4c-8e15-5e85d7575b60",
+    "galleryMediaIds": [
+      "f2cf1b1e-82ad-47ba-ae46-00194b606d92",
+      "abb11dc1-8845-4eba-9a90-e9283ceaa147"
+    ]
+  },
+  {
+    "key": "xbox-insiders-setembro",
+    "id": "a9952111-8860-4702-9705-161efcecab95",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "5084b935-0b03-4a3e-ad89-0677472defc1",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "xbox-discos-direito-digital",
+    "id": "66011743-1fbc-492f-b9a6-50b021e4ac63",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "5c1a0d75-1464-4553-bdec-996742e81bb6",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "xbox-tokyo-game-show-2026",
+    "id": "9588ab59-4730-403e-8030-9cf03ac398f0",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "76bae964-3112-43ef-a739-97c1fb53e895",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "logitech-mx-keypad",
+    "id": "dd256a7a-c490-4238-afae-94f6ab534cde",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "327d3250-6479-4d5a-b20d-11437f688e89",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "logitech-superstrike-clique",
+    "id": "34f43ac9-d2da-48ed-b500-feb2cfea9232",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "53c81b0f-19e9-4f1c-a43f-3d64e40ebe83",
+    "galleryMediaIds": [
+      "dd1ebde4-961c-4cf8-a6c4-a30675d24771",
+      "27ec0e76-7c32-41ae-9f60-3a0334a47680"
+    ]
+  },
+  {
+    "key": "rog-oled-245",
+    "id": "a59fceff-c2e6-4550-a208-7812ccf7fcad",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "6ab19f9b-b0c0-4428-858e-df534160041c",
+    "galleryMediaIds": [
+      "db628a2d-148b-4ef3-99d0-40ae6d8183d7",
+      "329354e7-bb89-4c2b-b3e5-32fdb919e590"
+    ]
+  },
+  {
+    "key": "rog-gladius-iv-ace",
+    "id": "f6f85721-49e1-4d4a-a4bd-bb8d170fecdc",
+    "version": 6,
+    "status": "approved",
+    "coverMediaId": "bf9242cd-8770-4585-969b-f44a872272c2",
+    "galleryMediaIds": [
+      "71846da7-5588-4807-852c-b41619aa2f38",
+      "cd5f2f77-bb2c-4ebe-9a9d-0d7a18c15c47"
+    ]
+  },
+  {
+    "key": "rog-spatha-x-65k",
+    "id": "732702eb-ad9b-47e4-8589-8b016ccbd93d",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "e835bece-adf4-4b7c-a65e-77dc25109a95",
+    "galleryMediaIds": [
+      "1fa2b55b-08c9-4ed2-bf1b-9e50f86eef78",
+      "4014dd13-4e25-4459-8343-17d854ca120e"
+    ]
+  },
+  {
+    "key": "rog-strix-morph-96",
+    "id": "fa4787e0-65d7-42b9-891d-0edb81523038",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "d8065e54-3721-4735-b30d-4b9ba2093b29",
+    "galleryMediaIds": [
+      "6fb988a1-46ad-43c6-a554-5422bcb18b2e",
+      "1df1a035-883c-4e5c-836c-57ca60741146"
+    ]
+  },
+  {
+    "key": "rog-rapture-gt-bn98",
+    "id": "f286205b-8724-4135-b4e2-dca334994f04",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "216042dd-c9b2-4089-bb11-a03e56a01de6",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "rog-xreal-r1",
+    "id": "cce84ac8-d5d9-43c8-a9fb-8951e2aec5cc",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "3e4e4246-2d53-4980-97bd-a6b42eb181e4",
+    "galleryMediaIds": [
+      "40b87497-05ee-4ca6-95d5-1b43eecf2d1c",
+      "b62d1271-98a7-45d2-93d4-d08a465035c0"
+    ]
+  },
+  {
+    "key": "lego-playstation",
+    "id": "82d0d3d7-045e-4684-b81a-bf2c8f35c654",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "147ab191-aca8-4978-9057-4c7ef8f2a348",
+    "galleryMediaIds": [
+      "f35d1b59-0d8f-4d07-9e38-620e9ed01076",
+      "422f233b-349f-459e-90a0-cf9de62b948c"
+    ]
+  },
+  {
+    "key": "dualsense-gta-vi",
+    "id": "c112e286-b348-4ce5-a172-a0a955a0b76f",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "ed5413ad-bd9c-433d-b39b-11490c51828a",
+    "galleryMediaIds": [
+      "4efc0594-121a-41a8-92a5-d0048b13ca55",
+      "073c1e10-f571-4466-94c2-a77ba00bdc20"
+    ]
+  },
+  {
+    "key": "gpt-6-astra",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Página com proteção Cloudflare/render JS; source-image-inventory 0 imagens e og:image ausente/bloqueado no fetch estático em 16/09/2026; nenhuma foto oficial verificável sem render — fallback até inspeção manual"
+  },
+  {
+    "key": "claude-fable-mythos-51",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Imagem isolada de microscopia não serve como capa representativa dos modelos; manter arte editorial identificada."
+  },
+  {
+    "key": "gemini-38-flash",
+    "id": "eae657b0-0e27-4bcd-8e0b-be25a580470d",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "693dbf7c-ba72-4c65-9b26-9b5a1ad277f0",
+    "galleryMediaIds": [
+      "5d86af9c-6192-415e-888f-13a81f668a2c",
+      "07e0f884-4fb4-41b0-b350-a41a6937a59d"
+    ]
+  },
+  {
+    "key": "qwen38-flash-next",
+    "id": "ad536104-d74d-49f1-8bea-639b87f8e0ca",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "e43576b8-22b3-4fbb-9b30-f396e7178dcf",
+    "galleryMediaIds": [
+      "c8ac635d-67f4-47ef-943a-aa1044ff320c"
+    ]
+  },
+  {
+    "key": "qwen-image-3",
+    "id": "cb05234a-343a-40ff-a2e2-8d74852a5232",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "0847a563-eb15-44bd-8424-d261966ae719",
+    "galleryMediaIds": [
+      "d51e3535-5922-4e14-af81-216f84fbf7fa",
+      "598a5c2e-9f2e-4f4d-b648-83ef1d9b4361"
+    ]
+  },
+  {
+    "key": "mistral-agentic-search",
+    "id": "f0aeb09a-3b54-4096-a88c-53f0f079be26",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "6d80263f-ea7d-42f0-9185-75b4b24232f1",
+    "galleryMediaIds": [
+      "094174cb-3ab4-4ba0-9c0b-949fb6f21ea5",
+      "de0c1a29-fe5b-4397-bb6a-5468a7e28f15"
+    ]
+  },
+  {
+    "key": "shieldstral",
+    "id": "2ea9141c-2d76-4697-90f9-e5b53c1eed4b",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "f5ca7f53-9053-402a-b483-cf6afd68cf09",
+    "galleryMediaIds": [
+      "549cf29e-a4e9-4184-b0ee-f26a1ada1e72",
+      "85318d2d-4393-40be-a7ba-4f5fa9e31cd2"
+    ]
+  },
+  {
+    "key": "claude-marca-texto",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Asset download or image validation failed; see downloadErrors."
+  },
+  {
+    "key": "gemini-apps-conectados",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Inventário DOM filtrou 0 imagens pertinentes no corpo da matéria (5 totais, 0 com ancestral válido como single_contents/ArticlePost__content/post-single__content/article-rte) — nenhuma foto/screenshot oficial verificável sem duplicar banners/outras matérias; fallback até asset manual"
+  },
+  {
+    "key": "claude-cientistas",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Asset download or image validation failed; see downloadErrors."
+  },
+  {
+    "key": "iphone18pro",
+    "id": "9e501cb9-77df-4004-af4d-306e0a7f9c31",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "4332657a-9f9e-484c-8ec8-44e01e13c24d",
+    "galleryMediaIds": [
+      "e222d9f0-e161-42c4-9c09-3822de26fa4f",
+      "1f40cd28-ac43-48e7-9cd1-d89a7b5cad18"
+    ]
+  },
+  {
+    "key": "iphone17e-contexto",
+    "id": "1fb88f16-95d8-4257-b131-d060c7ceb5f6",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "24cdefdc-838a-4584-a2b2-7166a4f88f5d",
+    "galleryMediaIds": [
+      "a65b15da-9dd3-4456-b832-4a985793dcfa",
+      "686dfe9b-6be4-4896-bb49-2e56a253ae62"
+    ]
+  },
+  {
+    "key": "pixel11-tensor",
+    "id": "a8dc81ba-5fd6-40ef-a8c7-e69c791ed866",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "96a3a870-1998-42b2-bbf2-75881ba2526c",
+    "galleryMediaIds": [
+      "b2f4684f-68de-4a20-9da9-41fddb5d6af1",
+      "933303fb-caa0-42d9-8c9a-a754ba9c81fd"
+    ]
+  },
+  {
+    "key": "pixel11-pro-fold",
+    "id": "3c468842-08ea-422b-b20d-4fed8ea853f0",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "4c3d1c49-74ee-45f2-a165-f46ba713e226",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "galaxy-fold8-comparacao",
+    "id": "835c540c-28bb-4092-a241-5780d4244bee",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "592412c9-4331-420e-9e3a-fa2805a70c82",
+    "galleryMediaIds": [
+      "f0ffc6bb-5a95-425d-9c68-3d8ee41764a4",
+      "9964bd26-8635-4822-986a-a47f4aae0bb2"
+    ]
+  },
+  {
+    "key": "galaxy-s26-privacy",
+    "id": "f9a31967-318e-40d9-9b54-7b0c86718e24",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "ac8d4cab-251d-4386-94b1-33a05dba9ad6",
+    "galleryMediaIds": [
+      "a0b905cb-8ef6-43ea-b5fd-1c0c840c34e0",
+      "610ececa-9781-4317-b899-2b0d01a817c6"
+    ]
+  },
+  {
+    "key": "honor-magic-v6",
+    "id": "66e37c0d-d6fe-43bb-a33f-6a37dd72b20a",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "a805dbc3-c1e5-4a0d-9e68-8da48abaf2f5",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "xiaomi17ultra",
+    "id": "77005166-88cb-41aa-8454-f911d602e153",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "199f4219-fb5c-4ea8-bef9-0decb5db387d",
+    "galleryMediaIds": [
+      "521abe61-9386-4346-9822-dd19117c7e76"
+    ]
+  },
+  {
+    "key": "oppo-findx9ultra",
+    "id": "28f1a380-32cb-4a9d-a29b-d948c5a5ddb2",
+    "version": 6,
+    "status": "approved",
+    "coverMediaId": "22977a9f-45e5-4f80-b107-5e9a6da476f6",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "oneplus15-165hz",
+    "id": "73ce9c52-8c2f-470f-91e7-7c04f133907a",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "85cc555b-9346-49e9-a0c0-8af10a9fad7b",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "typescript7-go",
+    "id": "2edbed4f-1267-40ef-b84c-63dccfe68988",
+    "version": 6,
+    "status": "approved",
+    "coverMediaId": "83046195-f26f-4bcf-b49f-152aabddea57",
+    "galleryMediaIds": [
+      "121300fe-2f90-4134-a53d-10c88d26c446"
+    ]
+  },
+  {
+    "key": "npm-trusted-publishing",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Asset download or image validation failed; see downloadErrors."
+  },
+  {
+    "key": "github-secrets-merge",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Asset download or image validation failed; see downloadErrors."
+  },
+  {
+    "key": "godot-mouse-polling",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Asset download or image validation failed; see downloadErrors."
+  },
+  {
+    "key": "codeql-go127",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Asset download or image validation failed; see downloadErrors."
+  },
+  {
+    "key": "raspberrypi-radio",
+    "id": "84efaacf-2106-417a-868b-c788643d3a21",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "a0547e64-7349-4f2b-8d5d-cdfea4554492",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "unitree-robos-fabrica",
+    "id": "b8cd5728-3da4-4c0b-82a0-516cf030e4b0",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "3a65bc67-c69c-4430-b698-c483fc01de75",
+    "galleryMediaIds": [
+      "e757b0d5-8dbe-4e35-86cc-fc047309764a",
+      "d015dd46-fd74-4e9e-a234-0d1440ef3c15"
+    ]
+  },
+  {
+    "key": "honor-robot-phone",
+    "id": "9276d099-1c7e-40a3-87aa-debe81d67c96",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "029213b3-5a56-4619-abb4-1f9aaba98d77",
+    "galleryMediaIds": [
+      "5986b659-7462-449c-aed7-3e3d619a08f9"
+    ]
+  },
+  {
+    "key": "xiaomi-vision-gran-turismo",
+    "id": "b9f39aaa-f866-4a53-9b1c-0b29c4983ec7",
+    "version": 4,
+    "status": "approved",
+    "coverMediaId": "7b88d183-a822-49a0-ada4-4f8231539041",
+    "galleryMediaIds": []
+  },
+  {
+    "key": "model-hardware-standard",
+    "status": "fallback",
+    "reason": "Manter ilustração editorial original: não foi obtida foto ou captura pertinente com qualidade suficiente na revisão das fontes. Inventário DOM filtrou 0 imagens pertinentes no corpo da matéria (20 totais, 0 com ancestral válido como single_contents/ArticlePost__content/post-single__content/article-rte) — nenhuma foto/screenshot oficial verificável sem duplicar banners/outras matérias; fallback até asset manual"
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "key": "xiaomi17ultra",
+      "status": "ready",
+      "reason": "Duas imagens pertinentes localizadas na página oficial do produto e inspecionadas visualmente; fundo vazio rejeitado.",
+      "images": [
+        {
+          "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/489eb45a3fd47a6c3c09a0a94fa5bace.jpg",
+          "sourcePage": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "credit": "Xiaomi",
+          "rightsUrl": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "rightsBasis": "Imagem de produto publicada pela Xiaomi em sua página oficial; crédito preservado, sem alegação de licença aberta.",
+          "kind": "photo",
+          "altPT": "Xiaomi 17 Ultra verde segurado na horizontal, com as câmeras traseiras em destaque.",
+          "altEN": "Green Xiaomi 17 Ultra held horizontally, showing its rear cameras."
+        },
+        {
+          "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/gcdah302e2d613088f2aff7jf97a0bc8.jpg",
+          "sourcePage": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "credit": "Xiaomi",
+          "rightsUrl": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "rightsBasis": "Imagem de produto publicada pela Xiaomi em sua página oficial; crédito preservado, sem alegação de licença aberta.",
+          "kind": "photo",
+          "altPT": "Detalhe do módulo circular de câmeras Leica do Xiaomi 17 Ultra verde.",
+          "altEN": "Close-up of the circular Leica camera module on the green Xiaomi 17 Ultra."
+        }
+      ]
+    },
+    {
+      "key": "zero-company-escolha-jogadores",
+      "status": "ready",
+      "reason": "Fonte específica recuperada e capa oficial inspecionada visualmente.",
+      "articleSourceUrl": "https://blog.playstation.com/2026/09/10/players-choice-vote-for-augusts-best-new-game-3/",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/1f0c508aff62bebf2a659f5fd428b9f92cdbef81.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/10/players-choice-vote-for-augusts-best-new-game-3/",
+          "credit": "Electronic Arts / Lucasfilm Games — via PlayStation Blog",
+          "rightsUrl": "https://blog.playstation.com/2026/09/10/players-choice-vote-for-augusts-best-new-game-3/",
+          "rightsBasis": "Arte de divulgação publicada na notícia oficial do resultado da votação. Direitos dos titulares preservados; não é fotografia.",
+          "kind": "official-artwork",
+          "altPT": "Arte oficial de Star Wars Zero Company reunindo os personagens do jogo.",
+          "altEN": "Official Star Wars Zero Company artwork featuring the game characters."
+        }
+      ]
+    }
+  ]
+}

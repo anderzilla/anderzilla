@@ -1,0 +1,2108 @@
+[
+  {
+    "key": "gta-vi-data-plataformas",
+    "sourceUrl": "https://www.rockstargames.com/VI",
+    "sourceName": "Rockstar Games",
+    "title": "Grand Theft Auto VI - Rockstar Games",
+    "snippet": "Grand Theft Auto VI - Rockstar Games Skip to Main Content Homepage Pre-Order Now Expand Navigation Menu (self.__next_s=self.__next_s||[]).push([0,{\"children\":\"if (typeof history !== undefined) { history.scrollRestoration = 'manual'; }\",\"id\":\"navigation-reset\"}]) An Extended Look: Now Playing Coming November 19, 2026 Coming November 19, 2026 Pre-Order Now Pre-Order Now PlayStation 5 Xbox Series X|S Plays Best On PlayStation 5 PlayStation 5 Xbox Series X|S Pre-Order Now Plays Best On PlayStation 5 Scroll for more content. An Extended Look Now Playing label Watch Trailer 2 Watch Trailer 1 Ultimate Edition An exclusive collection of items threaded across all aspects of Jason and Lucia’s story. Learn More Pre-order Bonuses Vintage Vice City Pack Pre-order to get unique benefits that flash back to when the neon burned brightest. Learn More Vice City, USA. Jason and Lucia have always known the deck is stacked against them. But when an easy score goes wrong, they find themselves on the darkest side of the sunniest place in America, in the middle of a criminal conspiracy stretching across the state of Leonida — forced to rely on each other more than ever if they want to make it out alive. P",
+    "metas": [
+      [
+        "og:image",
+        "https://www.rockstargames.com/VI/-/opengraph-image.jpg?opengraph-image.0t8ty~nlmxq2s.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://www.rockstargames.com/VI/-/twitter-image.jpg?twitter-image.0t8ty~nlmxq2s.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.rockstargames.com/VI/_next/static/media/poster_full.0az_iud2g3y4j.jpg?akim=1&imdensity=1&imwidth=3840",
+        ""
+      ],
+      [
+        "https://www.rockstargames.com/VI/_next/static/media/poster_logo.0m-7c805zusl7.png?akim=1&imdensity=1&imwidth=3840",
+        ""
+      ],
+      [
+        "https://www.rockstargames.com/VI/_next/static/media/shard0.0_vm6ya9-h67x.png?akim=1&imdensity=1&imwidth=3840",
+        ""
+      ],
+      [
+        "https://www.rockstargames.com/VI/_next/static/media/shard1.14.-n-5n.4nws.png?akim=1&imdensity=1&imwidth=3840",
+        ""
+      ],
+      [
+        "https://www.rockstargames.com/VI/_next/static/media/shard2.0n4e6vntuoxgf.png?akim=1&imdensity=1&imwidth=3840",
+        ""
+      ]
+    ],
+    "body_len": 978234
+  },
+  {
+    "key": "modern-warfare-4-confirmado",
+    "sourceUrl": "https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement",
+    "sourceName": "Call of Duty Blog — Activision",
+    "title": "Announcing Call of Duty: Modern Warfare 4",
+    "snippet": "var curUrl = window.location.href; var isDev = window.location.host.includes(\"dev\") || window.location.host.includes(\"preview\") || window.location.host.includes(\"test\"); var isStage = window.location.host.includes(\"stage\"); var codDomain = isDev ? 'profile-dev' : isStage ? 'profile-stage' : 'profile'; // var domain = isDev || isStage || window.location.host.includes(\"profile\") ? \"s-dev\" : \"s\"; var domain = isDev ? 's-dev': isStage ? 's-stage' : \"s\"; var siteId, fetchUrl; if(curUrl.includes(\"callofduty.com\") > 0) { siteId = \"cod\"; fetchUrl = \"https://\" + codDomain + \".callofduty.com\"; } else if(curUrl.includes(\"crashbandicoot.com\") > 0) { siteId = \"crash\"; fetchUrl = \"https://\" + domain + \".crashbandicoot.com\"; } else if(curUrl.includes(\"tonyhawkthegame.com\") > 0) { siteId = \"th\"; fetchUrl = \"https://\" + domain + \".tonyhawkthegame.com\"; } else if(curUrl.includes(\"sekirothegame.com\") > 0) { siteId = \"sekiro\"; fetchUrl = \"https://\" + domain + \".sekirothegame.com\"; } else if(curUrl.includes(\"activision.com\") > 0) { siteId = \"activision\"; fetchUrl = \"https://\" + domain + \".activision.com\"; } var OneTrust = { dataSubjectParams: { id: \"\", isAnonymous: false, token : \"\" } }; function otGet",
+    "metas": [
+      [
+        "og:image",
+        "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/nav-logos/cod-news-logo.png",
+        "News logo"
+      ],
+      [
+        "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/cod-logo.svg",
+        "Call of Duty logo"
+      ],
+      [
+        "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/cod-logo.svg",
+        "Call of Duty logo"
+      ],
+      [
+        "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/nav-logos/cod-news-logo.png",
+        "News logo"
+      ],
+      [
+        "https://www.callofduty.com/content/dam/atvi/callofduty/global/global-nav/profile_icon.png",
+        "Profile Avatar logo"
+      ]
+    ],
+    "body_len": 141887
+  },
+  {
+    "key": "control-resonant-assist-mode",
+    "sourceUrl": "https://blog.playstation.com/2026/09/10/play-your-way-with-control-resonants-expanded-assist-mode/",
+    "sourceName": "PlayStation Blog",
+    "title": "Play your way with Control Resonant’s expanded Assist Mode – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2028/09/805dc24cfeb0a3136d766b4e28d4d1a269bfde1b.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2028/09/805dc24cfeb0a3136d766b4e28d4d1a269bfde1b.jpg?resize=1088%2C612&crop_strategy=smart",
+        "Play your way with Control Resonant’s expanded Assist Mode"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2019/12/12963571_10153971518151166_2176598244272312874_n.jpg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 183396
+  },
+  {
+    "key": "no-mans-sky-cosmos",
+    "sourceUrl": "https://blog.playstation.com/2026/09/09/introducing-no-mans-sky-cosmos-update-live-on-ps5-today/",
+    "sourceName": "PlayStation Blog",
+    "title": "Introducing No Man’s Sky: Cosmos update, live on PS5 today – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2028/09/1fcb9012ac68d94603ef56602137ee30751e1d5d-scaled.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2028/09/1fcb9012ac68d94603ef56602137ee30751e1d5d-scaled.png?resize=1088%2C612&crop_strategy=smart",
+        "Introducing No Man’s Sky: Cosmos update, live on PS5 today"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2022/06/af22dd794245c9bec7b91db2eb2a2395c48ae1a2.jpeg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 185889
+  },
+  {
+    "key": "muramasa-revenant-blades",
+    "sourceUrl": "https://blog.playstation.com/2026/09/10/muramasa-revenant-blades-launches-february-4-2027/",
+    "sourceName": "PlayStation Blog",
+    "title": "Muramasa: Revenant Blades launches February 4, 2027 – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2028/09/34e2d12bc6c74a76dd80303a202de7bc2fcc54a9.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2028/09/34e2d12bc6c74a76dd80303a202de7bc2fcc54a9.jpg?resize=1088%2C612&crop_strategy=smart",
+        "Muramasa: Revenant Blades launches February 4, 2027"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/3682747285f0738f486a25a7d98b2a348c7d03d0.png?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 202112
+  },
+  {
+    "key": "doa-minato",
+    "sourceUrl": "https://blog.playstation.com/2026/09/09/introducing-dead-or-alive-6-last-rounds-new-fighter-minato/",
+    "sourceName": "PlayStation Blog",
+    "title": "Introducing Dead or Alive 6 Last Round’s new fighter, Minato – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2026/09/1a05883d89d3374af40adabfea45e78b8eff62fb.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/1a05883d89d3374af40adabfea45e78b8eff62fb.jpg?resize=1088%2C612&crop_strategy=smart",
+        "Introducing Dead or Alive 6 Last Round’s new fighter, Minato"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/02/a78d538933fa253556def3b1f6d4ccf8434d3436.jpg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 188548
+  },
+  {
+    "key": "zero-company-escolha-jogadores",
+    "sourceUrl": "https://blog.playstation.com/2026/",
+    "sourceName": "PlayStation Blog",
+    "title": "2026 – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2020/09/PROJECT_THUNDER__BG_CVR_1900X470_2X_V1.jpg?w=0&h=0"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2028/09/89dcfaafc4b7d6426df135110e537dd5c35bd00a-scaled.jpg?resize=1088%2C612&crop_strategy=smart",
+        "Monster Hunter Wilds: Ascendance hands-on report &#8211; taking on new monster Araketa and Elder Dragon Teostra"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2023/03/0c2eda8bd87db0918edbf5216ee81cac4d670623.jpeg?fit=400%2C400",
+        ""
+      ]
+    ],
+    "body_len": 139756
+  },
+  {
+    "key": "ffvii-revelation-data",
+    "sourceUrl": "https://blog.playstation.com/2026/09/03/final-fantasy-vii-revelation-launches-on-ps5-april-8-2027/",
+    "sourceName": "PlayStation Blog",
+    "title": "Final Fantasy VII Revelation launches on PS5 April 8, 2027 – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2026/09/b2011ae5a054c3ae375a364174ee44aff00a0602.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/b2011ae5a054c3ae375a364174ee44aff00a0602.jpg?resize=1088%2C612&crop_strategy=smart",
+        "Final Fantasy VII Revelation launches on PS5 April 8, 2027"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/70707a6e360ff27d06125185a1ee7b811bd36407.jpg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 177703
+  },
+  {
+    "key": "cod-the-haunting-setembro",
+    "sourceUrl": "https://blog.playstation.com/2026/09/08/call-of-duty-black-ops-7-and-warzone-season-06-launches-the-haunting-september-17/",
+    "sourceName": "PlayStation Blog",
+    "title": "Call of Duty: Black Ops 7 and Warzone Season 06 launches The Haunting September 17 – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2026/09/18e581351f2ed2273a5e97ea892561e8f5b92937.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/18e581351f2ed2273a5e97ea892561e8f5b92937.jpg?resize=1088%2C612&crop_strategy=smart",
+        "Call of Duty: Black Ops 7 and Warzone Season 06 launches The Haunting September 17"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2019/10/Activision.jpg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 188976
+  },
+  {
+    "key": "physint-xbox-kojima",
+    "sourceUrl": "https://news.xbox.com/en-us/2026/09/09/xbox-and-kojima-productions-expand-partnership-to-publish-physint/",
+    "sourceName": "Xbox Wire",
+    "title": "XBOX and KOJIMA PRODUCTIONS Expand Partnership to Publish PHYSINT - XBOX Wire",
+    "snippet": "XBOX and KOJIMA PRODUCTIONS Expand Partnership to Publish PHYSINT - XBOX Wire {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"Article\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-and-kojima-productions-expand-partnership-to-publish-physint\\/#article\",\"isPartOf\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-and-kojima-productions-expand-partnership-to-publish-physint\\/\"},\"author\":{\"name\":\"Jeff Rubenstein\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#\\/schema\\/person\\/59c8861d4664193ba14f5cf367788121\"},\"headline\":\"XBOX and KOJIMA PRODUCTIONS Expand Partnership to Publish PHYSINT\",\"datePublished\":\"2026-09-10T02:30:35+00:00\",\"dateModified\":\"2026-09-10T09:47:23+00:00\",\"mainEntityOfPage\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-and-kojima-productions-expand-partnership-to-publish-physint\\/\"},\"wordCount\":165,\"publisher\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#organization\"},\"image\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-and-kojima-productions-expand-partnership-to-publish-physint\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/xboxwire.thesourcemediaassets.com\\/sites\\/2\\/2026\\/09\\/KJPXBOX-a19bab905ef4e406d93c.jpg\",\"keywords\":[",
+    "metas": [
+      [
+        "og:image",
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/KJPXBOX-a19bab905ef4e406d93c.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+        "Microsoft"
+      ],
+      [
+        "https://news.xbox.com/en-us/wp-content/themes/xbox-wire-refresh/assets/images/logo.png",
+        "Xbox Wire"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/KJPXBOX-a19bab905ef4e406d93c-1600x900.jpg",
+        "XBOX + KOJIMA PRODUCTIONS"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/Season21_KeyArt_4K_Branded-04e115ad227ecaa1e0fb-960x540.jpg",
+        "Sea of Thieves Season 21 Hero Image"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/Hasbro_Horiz_Keyart_3840x2160-04af78a6d89b7c2ad19b-960x540.jpg",
+        "Hasbro Games Junior Collection key art"
+      ]
+    ],
+    "body_len": 71937
+  },
+  {
+    "key": "rog-xbox-ally-x20",
+    "sourceUrl": "https://rog.asus.com/us/articles/rog-ally/pre-order-your-rog-xbox-ally-x20-today-standalone-or-as-part-of-an-incredible-rog-20th-anniversary-bundle/",
+    "sourceName": "ASUS ROG",
+    "title": "Pre-order your ROG XBOX Ally X20 today, standalone or as part of an incredible ROG 20th anniversary bundle",
+    "snippet": "Pre-order your ROG XBOX Ally X20 today, standalone or as part of an incredible ROG 20th anniversary bundle window.AsusAPIConfig = {\"system\":\"rog\",\"websitePath\":\"us\",\"theme\":\"rog\",\"campaignId\":\"3f8bcb17-b07f-4992-bcf7-72cdfcf704f9\",\"zIndex\":11900}; (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \"dataLayer\" ? \"&l=\" + l : \"\"; j.defer = true; j.src = \"https://www.googletagmanager.com/gtm.js?id=\" + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \"script\", \"dataLayer\", \"GTM-NJRLM8\"); [{\"@context\":\"http://schema.org\",\"@type\":\"Article\",\"headline\":\"ROG - Republic of Gamers - For Those Who Dare\",\"image\":[\"https://dlcdnrog.asus.com/rog/media/1779969050494.webp\",\"https://dlcdnrog.asus.com/rog/media/1778900386228.webp\",\"https://dlcdnrog.asus.com/rog/media/177742910327.webp\"],\"datePublished\":\"Aug 25, 2026\",\"dateModified\":\"\",\"author\":{\"@type\":\"Person\",\"name\":\"ROG\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"ROG - Republic of Gamers\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://dlcdnwebimgs.asus.com/gain/07B097A3-E9C2-4AFF-9196-3ADE8F5BCEA1\"}}},{\"",
+    "metas": [
+      [
+        "og:image",
+        "https://dlcdnrog.asus.com/rog/media/1787189906774.webp"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://rog.asus.com/media/17871899038.jpg",
+        "The ROG XBOX Ally X20 bundle on a table"
+      ],
+      [
+        "https://rog.asus.com/media/1787189901696.jpg",
+        "A woman playing the ROG XBOX Ally X20 with Forza Horizon 6 on screen"
+      ],
+      [
+        "https://rog.asus.com/media/1787189905549.jpg",
+        "A man playing the ROG XBOX Ally X20 on a couch with the R1 Gaming Glasses, a virtual screen projected in front of him"
+      ],
+      [
+        "https://rog.asus.com/media/1787189908127.jpg",
+        "Two ROG XBOX Ally X20 handhelds in dbrand Killswitch cases back to back on a table"
+      ],
+      [
+        "https://rog.asus.com/media/1787189907558.jpg",
+        "A hand putting the ROG XBOX Ally X20  into a bag"
+      ]
+    ],
+    "body_len": 161689
+  },
+  {
+    "key": "rog-ally-atualizacao-dock",
+    "sourceUrl": "https://news.xbox.com/en-us/2026/04/30/rog-xbox-ally-update-docking-library-vibration-auto-sr/",
+    "sourceName": "Xbox Wire",
+    "title": "New ROG Xbox Ally Updates: Docking Improvements, Auto SR Preview, Collective Library, Enhanced Vibration, and More - XBOX Wire",
+    "snippet": "New ROG Xbox Ally Updates: Docking Improvements, Auto SR Preview, Collective Library, Enhanced Vibration, and More - XBOX Wire {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"Article\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/04\\/30\\/rog-xbox-ally-update-docking-library-vibration-auto-sr\\/#article\",\"isPartOf\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/04\\/30\\/rog-xbox-ally-update-docking-library-vibration-auto-sr\\/\"},\"author\":{\"name\":\"Joe Skrebels, XBOX Wire Editor-in-Chief\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#\\/schema\\/person\\/35444f6003e8bdc30ce2b86b9fcbc203\"},\"headline\":\"New ROG Xbox Ally Updates: Docking Improvements, Auto SR Preview, Collective Library, Enhanced Vibration, and More\",\"datePublished\":\"2026-04-30T16:00:00+00:00\",\"dateModified\":\"2026-05-05T21:25:06+00:00\",\"mainEntityOfPage\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/04\\/30\\/rog-xbox-ally-update-docking-library-vibration-auto-sr\\/\"},\"wordCount\":1303,\"publisher\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#organization\"},\"image\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/04\\/30\\/rog-xbox-ally-update-docking-library-vibration-auto-sr\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/xboxwire.thesourcemedi",
+    "metas": [
+      [
+        "og:image",
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/04/ROG_FINAL_no-guns-JPG-3c2bcd603c2bf170f6d0.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+        "Microsoft"
+      ],
+      [
+        "https://news.xbox.com/en-us/wp-content/themes/xbox-wire-refresh/assets/images/logo.png",
+        "Xbox Wire"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/04/ROG_FINAL_no-guns-JPG-3c2bcd603c2bf170f6d0.jpg",
+        "ROG Ally Updates Hero Image"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/04/Auto-SR-FH5-3afd4599dbbd5daa2be6-1900x1080.jpg",
+        ""
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/04/Combined-Add-an-app-1-a48363643d3d9222464b-1900x1194.jpg",
+        ""
+      ]
+    ],
+    "body_len": 93191
+  },
+  {
+    "key": "playstation-portal-1080p",
+    "sourceUrl": "https://blog.playstation.com/2026/03/17/new-playstation-portal-software-update-adds-1080p-high-quality-mode-and-ux-refinements/",
+    "sourceName": "PlayStation Blog",
+    "title": "New PlayStation Portal software update adds 1080p High Quality mode and UX refinements  – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2026/03/aaab7bfad10bed081706b646e629921b425a1265-scaled.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/03/aaab7bfad10bed081706b646e629921b425a1265-scaled.jpg?resize=1088%2C612&crop_strategy=smart",
+        "New PlayStation Portal software update adds 1080p High Quality mode and UX refinements "
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2025/11/509bd08feda4f4e317f692b1ae34522b409a7cba.jpg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 190081
+  },
+  {
+    "key": "legion-go-steamos",
+    "sourceUrl": "https://news.lenovo.com/pressroom/press-releases/lenovo-levels-up-ces-with-legion-gaming-devices/",
+    "sourceName": "Lenovo StoryHub",
+    "title": "Lenovo Levels Up CES with Legion Pro Rollable Concept and Latest Gaming Devices - Lenovo StoryHub",
+    "snippet": "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-P9VS4F3G'); var lmd = { \"cc\":\"ww\", \"language\":\"en\", \"section\":\"news\", \"bu\":\"news.lenovo\", \"pageName\":\"news.lenovo.com\", \"subsection\":\"/pressroom/press-releases/lenovo-levels-up-ces-with-legion-gaming-devices/\", \"pageType\":\"news\", }; lmd = { \"category\":\"Pressroom | Press Releases\" };_satellite.track(\"categoryHome_clicked\"); firedCustom('CustomInteraction', 'Story: Lenovo Levels Up CES with Legion Pro Rollable Concept and Latest Gaming Devices'); --> --> Lenovo Levels Up CES with Legion Pro Rollable Concept and Latest Gaming Devices - Lenovo StoryHub {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/news.lenovo.com\\/pressroom\\/press-releases\\/lenovo-levels-up-ces-with-legion-gaming-devices\\/\",\"url\":\"https:\\/\\/news.lenovo.com\\/pressroom\\/press-releases\\/lenovo-levels-up-ces-with-legion-gaming-devices\\/\",\"name\":\"Lenovo Levels Up C",
+    "metas": [
+      [
+        "og:image",
+        "https://media.lenovonews.fiestic.com/2026/01/08043838/Legion1.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://media.lenovonews.fiestic.com/2026/01/08043838/Legion2.png",
+        ""
+      ],
+      [
+        "https://media.lenovonews.fiestic.com/2026/01/08043838/Legion3.png",
+        ""
+      ],
+      [
+        "https://media.lenovonews.fiestic.com/2026/01/08043839/LegionGo1.png",
+        ""
+      ],
+      [
+        "https://media.lenovonews.fiestic.com/2026/01/08043839/Legion4.png",
+        ""
+      ],
+      [
+        "https://media.lenovonews.fiestic.com/2022/12/08021506/lenovo-storyhub-facebook-icon.png",
+        "Facebook"
+      ]
+    ],
+    "body_len": 82933
+  },
+  {
+    "key": "steam-deck-oled-ficha",
+    "sourceUrl": "https://www.steamdeck.com/en/tech/oled",
+    "sourceName": "Valve — Steam Deck",
+    "title": "Steam Deck :: Tech Specs",
+    "snippet": "Steam Deck :: Tech Specs window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-33822635-15'); $J = jQuery.noConflict(); Steam Deck OLED Steam Deck LCD Dock Software Deck Verified Tech Specs Add to Wishlist Change language English Español - España (Spanish - Spain) Français (French) Deutsch (German) Italiano (Italian) 日本語 (Japanese) 한국어 (Korean) 繁體中文 (Traditional Chinese) Русский (Russian) Português - Brasil (Portuguese - Brazil) Български (Bulgarian) Español - Latinoamérica (Spanish - Latin America) 简体中文 (Simplified Chinese) Čeština (Czech) Dansk (Danish) Nederlands (Dutch) Suomi (Finnish) Ελληνικά (Greek) Magyar (Hungarian) Norsk (Norwegian) Polski (Polish) Português (Portuguese - Portugal) Română (Romanian) Svenska (Swedish) ไทย (Thai) Türkçe (Turkish) Українська (Ukrainian) Tiếng Việt (Vietnamese) Bahasa Indonesia (Indonesian) Cancel [esc] Steam Deck OLED Steam Deck LCD Dock D-pad View Thumbstick / L3 Trackpad Steam Left speaker 7.4\" touchscreen Thumbstick / R3 Menu ABXY Trackpad Quick access Right speaker Mic L2 L1 Volume Headphone jack Fan Charging port Status LED Power button R1 R2 R4 R5 microSD card ",
+    "metas": [
+      [
+        "og:image",
+        "https://cdn.fastly.steamstatic.com/steamdeck/images/oled/social_media_image.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_oled_1_english.png?v=2",
+        ""
+      ],
+      [
+        "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_mobile_1_english.png",
+        ""
+      ],
+      [
+        "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_2_english.png",
+        ""
+      ],
+      [
+        "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_mobile_2_english.png",
+        ""
+      ],
+      [
+        "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_3_english.png",
+        ""
+      ]
+    ],
+    "body_len": 32848
+  },
+  {
+    "key": "switch-2-bundles",
+    "sourceUrl": "https://www.nintendo.com/us/whatsnew/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/",
+    "sourceName": "Nintendo",
+    "title": "Two new Nintendo Switch 2 bundles deliver sun-soaked sports, high-speed thrills and extra value - News - Nintendo Official Site",
+    "snippet": "Two new Nintendo Switch 2 bundles deliver sun-soaked sports, high-speed thrills and extra value - News - Nintendo Official Site (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-WS6V89B'); (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-57PNCMD'); {\"@context\":\"https://schema.org/\",\"@graph\":[{\"@type\":\"NewsArticle\",\"headline\":\"Two new Nintendo Switch 2 bundles deliver sun-soaked sports, high-speed thrills and extra value\",\"image\":\"https://assets.nintendo.com/image/upload/q_auto/f_auto/c_fill,w_1200/ncom/en_US/articles/2026/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/MarioKartWorld",
+    "metas": [
+      [
+        "og:image",
+        "https://assets.nintendo.com/image/upload/v1643742733/ncom/global/social-share.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://assets.nintendo.com/image/upload/v1643742733/ncom/global/social-share.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://assets.nintendo.com/image/upload/c_scale,w_24,q_auto/ncom/global/flags-change-region/FlagUsaIconRegionSelect.png",
+        "Region and language selector. Currently: USA."
+      ],
+      [
+        "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/ccb3e8ca3c296e21a8c933e8369031511589d0ef6b079cf5bb3667b09893482c/Global%20Nav/Explore/Nintendo-Switch-2",
+        ""
+      ],
+      [
+        "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Global%20Nav/Explore/Explore-Nintendo-Switch-alt",
+        ""
+      ],
+      [
+        "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/ccb3e8ca3c296e21a8c933e8369031511589d0ef6b079cf5bb3667b09893482c/Global%20Nav/Explore/Games",
+        ""
+      ],
+      [
+        "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Global%20Nav/Explore/Explore-Nintendo-Switch-Online",
+        ""
+      ]
+    ],
+    "body_len": 235577
+  },
+  {
+    "key": "ps-plus-setembro-catalogo",
+    "sourceUrl": "https://blog.playstation.com/2026/09/09/playstation-plus-game-catalog-for-september-runescape-dragonwilds-wwe-2k26-ball-x-pit-date-everything-and-more/",
+    "sourceName": "PlayStation Blog",
+    "title": "PlayStation Plus Game Catalog for September: RuneScape: Dragonwilds, WWE 2K26, Ball x Pit, Date Everything! and more – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2026/09/1a99d9682f34d3b6309a1c08879506eca547812a.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/1a99d9682f34d3b6309a1c08879506eca547812a.jpg?resize=1088%2C612&crop_strategy=smart",
+        "PlayStation Plus Game Catalog for September: RuneScape: Dragonwilds, WWE 2K26, Ball x Pit, Date Everything! and more"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2019/03/pslogo.png?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 220300
+  },
+  {
+    "key": "xbox-insiders-setembro",
+    "sourceUrl": "https://news.xbox.com/en-us/2026/09/09/xbox-insiders-october-2026-console-features-3/",
+    "sourceName": "Xbox Wire",
+    "title": "Available for XBOX Insiders: More Ways to Customize, Play, and Connect - XBOX Wire",
+    "snippet": "Available for XBOX Insiders: More Ways to Customize, Play, and Connect - XBOX Wire {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"Article\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-insiders-october-2026-console-features-3\\/#article\",\"isPartOf\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-insiders-october-2026-console-features-3\\/\"},\"author\":{\"name\":\"Jon\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#\\/schema\\/person\\/0094902d75472e076e9dd25445a3d7df\"},\"headline\":\"Available for XBOX Insiders: More Ways to Customize, Play, and Connect\",\"datePublished\":\"2026-09-09T16:00:06+00:00\",\"dateModified\":\"2026-09-09T16:31:50+00:00\",\"mainEntityOfPage\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-insiders-october-2026-console-features-3\\/\"},\"wordCount\":970,\"publisher\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#organization\"},\"image\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-insiders-october-2026-console-features-3\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/xboxwire.thesourcemediaassets.com\\/sites\\/2\\/2026\\/09\\/0.-Hero-26909-2e5fc49130f2ee755d29.png\",\"articleSection\":[\"XBOX Insider\"],\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https:",
+    "metas": [
+      [
+        "og:image",
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/0.-Hero-26909-2e5fc49130f2ee755d29-1024x576.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+        "Microsoft"
+      ],
+      [
+        "https://news.xbox.com/en-us/wp-content/themes/xbox-wire-refresh/assets/images/logo.png",
+        "Xbox Wire"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/0.-Hero-26909-2e5fc49130f2ee755d29-1600x900.png",
+        ""
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/1.-Startup-animation-865665f17a0c65c4ac0a-1024x576.png",
+        ""
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/3.-BadgeViewer-43988e0191ebebd4a69b-1024x576.png",
+        ""
+      ]
+    ],
+    "body_len": 95255
+  },
+  {
+    "key": "xbox-discos-direito-digital",
+    "sourceUrl": "https://news.xbox.com/en-us/2026/08/26/your-discs-now-also-digital/",
+    "sourceName": "Xbox Wire",
+    "title": "Your Discs. Now Also Digital. - XBOX Wire",
+    "snippet": "Your Discs. Now Also Digital. - XBOX Wire {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"Article\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/08\\/26\\/your-discs-now-also-digital\\/#article\",\"isPartOf\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/08\\/26\\/your-discs-now-also-digital\\/\"},\"author\":{\"name\":\"Jon\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#\\/schema\\/person\\/0094902d75472e076e9dd25445a3d7df\"},\"headline\":\"Your Discs. Now Also Digital.\",\"datePublished\":\"2026-08-26T14:30:17+00:00\",\"dateModified\":\"2026-09-10T05:24:06+00:00\",\"mainEntityOfPage\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/08\\/26\\/your-discs-now-also-digital\\/\"},\"wordCount\":463,\"publisher\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#organization\"},\"image\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/08\\/26\\/your-discs-now-also-digital\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/xboxwire.thesourcemediaassets.com\\/sites\\/2\\/2026\\/08\\/PRESERVATION_GEARS-16x9-1-f50ea7c7183d739eee78.png\",\"articleSection\":[\"XBOX Insider\"],\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/08\\/26\\/your-discs-now-also-digital\\/\",\"url\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/08\\/26\\/your-discs-now-als",
+    "metas": [
+      [
+        "og:image",
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/08/PRESERVATION_GEARS-16x9-1-f50ea7c7183d739eee78-1024x576.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+        "Microsoft"
+      ],
+      [
+        "https://news.xbox.com/en-us/wp-content/themes/xbox-wire-refresh/assets/images/logo.png",
+        "Xbox Wire"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/08/PRESERVATION_GEARS-16x9-1-f50ea7c7183d739eee78-1600x900.png",
+        ""
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/0.-Hero-26909-2e5fc49130f2ee755d29-960x540.png",
+        ""
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/underwater_explosion-6c6fe64fc3b1f46605d5-960x540.jpg",
+        "Wreck Runners Playtest"
+      ]
+    ],
+    "body_len": 76762
+  },
+  {
+    "key": "xbox-tokyo-game-show-2026",
+    "sourceUrl": "https://news.xbox.com/en-us/2026/09/09/xbox-tokyo-game-show-broadcast-announce-2026/",
+    "sourceName": "Xbox Wire",
+    "title": "XBOX @ Tokyo Game Show 2026 - XBOX Wire",
+    "snippet": "XBOX @ Tokyo Game Show 2026 - XBOX Wire {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"Article\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-tokyo-game-show-broadcast-announce-2026\\/#article\",\"isPartOf\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-tokyo-game-show-broadcast-announce-2026\\/\"},\"author\":{\"name\":\"Mike Nelson, XBOX Wire Editor\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#\\/schema\\/person\\/ecb918e0c861e0b346ca2e7101871278\"},\"headline\":\"XBOX @ Tokyo Game Show 2026\",\"datePublished\":\"2026-09-09T22:00:00+00:00\",\"mainEntityOfPage\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-tokyo-game-show-broadcast-announce-2026\\/\"},\"wordCount\":876,\"publisher\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/#organization\"},\"image\":{\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-tokyo-game-show-broadcast-announce-2026\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/xboxwire.thesourcemediaassets.com\\/sites\\/2\\/2026\\/09\\/TGS_AnnounceStatic_2026-814e275774b1b96bd7e9.jpg\",\"keywords\":[\"Tokyo Game Show\"],\"articleSection\":[\"Return of XBOX\"],\"inLanguage\":\"en-US\"},{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/news.xbox.com\\/en-us\\/2026\\/09\\/09\\/xbox-tokyo-game-show-bro",
+    "metas": [
+      [
+        "og:image",
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/TGS_AnnounceStatic_2026-814e275774b1b96bd7e9.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+        "Microsoft"
+      ],
+      [
+        "https://news.xbox.com/en-us/wp-content/themes/xbox-wire-refresh/assets/images/logo.png",
+        "Xbox Wire"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/TGS_AnnounceStatic_2026-814e275774b1b96bd7e9-1600x900.jpg",
+        "TGS 2026 Key Art"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/XGP_TCL-PARTNER-a9a894bf85566ec68565-960x540.jpg",
+        "XBOX x TCL Hero Image"
+      ],
+      [
+        "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/DFE-Cozy-Collection-hero-c2760f2ab03deb2afe5f-960x540.jpg",
+        ""
+      ]
+    ],
+    "body_len": 79152
+  },
+  {
+    "key": "logitech-mx-keypad",
+    "sourceUrl": "https://news.logitech.com/press-releases/news-details/2026/Logitech-Unveils-MX-Keypad-for-Developers-The-Customizable-Multi-App-AI-Control-Center/default.aspx",
+    "sourceName": "Logitech",
+    "title": "Logitech Unveils MX Keypad for Developers: The Customizable Multi-App AI Control Center | Logitech",
+    "snippet": "Logitech Unveils MX Keypad for Developers: The Customizable Multi-App AI Control Center | Logitech function GetGlobalBrandingOptions(){ return '{\"dateFormat\":{\"moment\":{\"date\":\"MMMM D, YYYY\",\"time\":\"h:mm A\"},\"datePicker\":{\"date\":\"MM d, yy\"}}}'; } // ConsentProvider: Evergreen / External only -- the inert counterpart to snowplow.js. // Emits Snowplow's configuration but deliberately does NOT start tracking: there is no // window \"load\" listener wired to the tracker's init entry point here. Q4Tracker's // consent-gated path (subscribed to ConsentBus) instantiates the tracker on a consent grant. // ConsentProvider: None keeps rendering snowplow.js verbatim -- see BasePage.GetSnowplowFileName. // // The initProps block below is a deliberate verbatim copy of snowplow.js's. Keep the two in // sync: this file only ever differs from snowplow.js by what it OMITS (the load listener) and // by window.SnowplowConfig. // // Note for editors: the comments here deliberately avoid spelling out the tracker's init call, // because AnalyticsRenderingServiceTest asserts that string never appears in this rendered // template. Describe it, don't write it, or you will trip that guard on prose alone. var ",
+    "metas": [
+      [
+        "og:image",
+        "https://mms.businesswire.com/media/20260908069585/en/2890941/4/MX_Lexend_LIFE_Graphite_1.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://mms.businesswire.com/media/20260908069585/en/2890941/4/MX_Lexend_LIFE_Graphite_1.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://s24.q4cdn.com/131595232/files/design/svg/logi-logo.svg",
+        "Logitech"
+      ],
+      [
+        "https://s24.q4cdn.com/131595232/files/design/svg/logi-logo-hover.svg",
+        "Logitech"
+      ],
+      [
+        "https://s24.q4cdn.com/131595232/files/design/svg/logitechg-bottom.svg",
+        "Gaming"
+      ],
+      [
+        "https://s24.q4cdn.com/131595232/files/design/svg/logitechg-overlay.svg",
+        "Gaming"
+      ],
+      [
+        "https://s24.q4cdn.com/131595232/files/design/svg/astro-bottom.svg",
+        "Astro"
+      ]
+    ],
+    "body_len": 63852
+  },
+  {
+    "key": "logitech-superstrike-clique",
+    "sourceUrl": "https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse",
+    "sourceName": "Logitech",
+    "title": "PRO X2 SUPERSTRIKE Wireless Gaming Mouse | Logitech G",
+    "snippet": "[ { \"@context\": \"https://schema.org/\", \"@type\": \"Product\", \"@id\": \"https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse\", \"brand\": \"Logitech G\", \"category\": \"gaming-mice\", \"image\": [ \"https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-top-angle-lifestyle-gallery-2.png\" ], \"itemCondition\": \"NewCondition\", \"name\": \"PRO X2 SUPERSTRIKE\", \"offers\": { \"@type\": \"AggregateOffer\", \"priceCurrency\": \"USD\", \"availability\": \"https://schema.org/InStock\", \"lowPrice\": 179.99, \"highPrice\": 179.99, \"offerCount\": \"1\" }, \"productID\": \"pro-x2-superstrike-mouse\", \"url\": \"https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse\", \"aggregateRating\": { \"@type\": \"AggregateRating\", \"ratingValue\": 4.6454, \"reviewCount\": 423 }, \"model\": [ { \"@type\": \"ProductModel\", \"name\": \"PRO X2 SUPERSTRIKE - Lunar Eclipse\", \"color\": \"Lunar Eclipse\", \"sku\": \"910-007700\", \"mpn\": \"910-007700\", \"category\": \"gaming-mice\", \"image\": [ \"https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-top-angle-lifestyle-g",
+    "metas": [
+      [
+        "og:image",
+        "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/og-fallback.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/og-fallback.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://resource.logitechg.com/w_115,h_115,ar_1,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/navigation/2025/logitech-g-navigation-gaming-mice.png",
+        "Gaming Mice"
+      ],
+      [
+        "https://resource.logitechg.com/w_115,h_115,ar_1,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/navigation/2025/logitech-g-navigation-gaming-mousepads-3.png",
+        "Gaming Mousepads"
+      ],
+      [
+        "https://resource.logitechg.com/w_115,h_115,ar_1,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/navigation/2025/logitech-g-navigation-gaming-keyboards.png",
+        "Gaming Keyboards"
+      ],
+      [
+        "https://resource.logitechg.com/w_115,h_115,ar_1,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/navigation/2025/logitech-g-navigation-gaming-headsets-audio.png",
+        "Gaming Headsets &amp; Audio"
+      ],
+      [
+        "https://resource.logitechg.com/w_115,h_115,ar_1,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/navigation/2025/logitech-g-navigation-racing-wheels.png",
+        "Racing Wheels"
+      ]
+    ],
+    "body_len": 369634
+  },
+  {
+    "key": "rog-oled-245",
+    "sourceUrl": "https://rog.asus.com/articles/gaming-monitors/new-245-inch-rog-monitors-bring-oled-panel-tech-to-the-esports-arena/",
+    "sourceName": "ASUS ROG",
+    "title": "New 24.5-inch ROG monitors bring OLED panel tech to the esports arena",
+    "snippet": "New 24.5-inch ROG monitors bring OLED panel tech to the esports arena window.AsusAPIConfig = {\"system\":\"rog\",\"websitePath\":\"global\",\"theme\":\"rog\",\"campaignId\":\"3f8bcb17-b07f-4992-bcf7-72cdfcf704f9\",\"zIndex\":11900}; (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \"dataLayer\" ? \"&l=\" + l : \"\"; j.defer = true; j.src = \"https://www.googletagmanager.com/gtm.js?id=\" + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \"script\", \"dataLayer\", \"GTM-NJRLM8\"); [{\"@context\":\"http://schema.org\",\"@type\":\"Article\",\"headline\":\"ROG - Republic of Gamers - For Those Who Dare\",\"image\":[\"https://dlcdnrog.asus.com/rog/media/178702024355.webp\",\"https://dlcdnrog.asus.com/rog/media/1787020218409.webp\",\"https://dlcdnrog.asus.com/rog/media/1787298308959.webp\"],\"datePublished\":\"Aug 25, 2026\",\"dateModified\":\"\",\"author\":{\"@type\":\"Person\",\"name\":\"ROG\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"ROG - Republic of Gamers\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://dlcdnwebimgs.asus.com/gain/07B097A3-E9C2-4AFF-9196-3ADE8F5BCEA1\"}}},{\"@context\":\"http://schema.org\",\"@t",
+    "metas": [
+      [
+        "og:image",
+        "https://dlcdnrog.asus.com/rog/media/178718734471.webp"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://rog.asus.com/media/1787187343593.jpg",
+        "The ROG Swift OLED PG259QWS Ace on a desk surrounded by ROG gear, against a purple background."
+      ],
+      [
+        "https://rog.asus.com/media/1787187348309.jpg",
+        "The ROG Swift OLED PG259QWS Ace with its stand swiveled against a black background."
+      ],
+      [
+        "https://rog.asus.com/media/1787020226692.jpg",
+        "A closeup of the ROG Strix OLED XG259QDPG Ace"
+      ],
+      [
+        "https://rog.asus.com/media/1787187338991.jpg",
+        "New ROG OLED Esports Monitors side by side on gray podiums against a gray background."
+      ],
+      [
+        "https://rog.asus.com/media/1787020228886.jpg",
+        "The ROG Strix OLED XG259QDPG Ace"
+      ]
+    ],
+    "body_len": 184044
+  },
+  {
+    "key": "rog-gladius-iv-ace",
+    "sourceUrl": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-gladius-iv-ace-gaming-mouse-delivers-next-level-ergonomics-and-precision/",
+    "sourceName": "ASUS ROG",
+    "title": "The ROG Gladius IV Ace gaming mouse delivers next-level ergonomics and precision",
+    "snippet": "The ROG Gladius IV Ace gaming mouse delivers next-level ergonomics and precision window.AsusAPIConfig = {\"system\":\"rog\",\"websitePath\":\"global\",\"theme\":\"rog\",\"campaignId\":\"3f8bcb17-b07f-4992-bcf7-72cdfcf704f9\",\"zIndex\":11900}; (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \"dataLayer\" ? \"&l=\" + l : \"\"; j.defer = true; j.src = \"https://www.googletagmanager.com/gtm.js?id=\" + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \"script\", \"dataLayer\", \"GTM-NJRLM8\"); [{\"@context\":\"http://schema.org\",\"@type\":\"Article\",\"headline\":\"ROG - Republic of Gamers - For Those Who Dare\",\"image\":[\"https://dlcdnrog.asus.com/rog/media/1787264835866.webp\",\"https://dlcdnrog.asus.com/rog/media/1774325810349.webp\",\"https://dlcdnrog.asus.com/rog/media/176645697463.webp\"],\"datePublished\":\"Aug 25, 2026\",\"dateModified\":\"\",\"author\":{\"@type\":\"Person\",\"name\":\"ROG\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"ROG - Republic of Gamers\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://dlcdnwebimgs.asus.com/gain/07B097A3-E9C2-4AFF-9196-3ADE8F5BCEA1\"}}},{\"@context\":\"http://sche",
+    "metas": [
+      [
+        "og:image",
+        "https://dlcdnrog.asus.com/rog/media/1787264842240.webp"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://rog.asus.com/media/178726484164.jpg",
+        "The ROG Gladius IV Ace"
+      ],
+      [
+        "https://rog.asus.com/media/1787264839429.jpg",
+        "The ROG Gladius IV Ace on a black desktmat atop a grey table surrounded by accessories."
+      ],
+      [
+        "https://rog.asus.com/media/1787264843357.jpg",
+        "The black ROG Gladius IV Ace on a black desktmat beside an ROG keyboard."
+      ],
+      [
+        "https://dlcdnrog.asus.com/rog/media/1677195380555.webp",
+        ""
+      ],
+      [
+        "https://dlcdnrog.asus.com/rog/media/1766457117748.webp",
+        ""
+      ]
+    ],
+    "body_len": 161508
+  },
+  {
+    "key": "rog-spatha-x-65k",
+    "sourceUrl": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-spatha-x-65k-gaming-mouse-gives-you-total-control-over-your-favorite-mmos/",
+    "sourceName": "ASUS ROG",
+    "title": "The ROG Spatha X 65K gaming mouse gives you total control over your favorite MMOs",
+    "snippet": "The ROG Spatha X 65K gaming mouse gives you total control over your favorite MMOs window.AsusAPIConfig = {\"system\":\"rog\",\"websitePath\":\"global\",\"theme\":\"rog\",\"campaignId\":\"3f8bcb17-b07f-4992-bcf7-72cdfcf704f9\",\"zIndex\":11900}; (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \"dataLayer\" ? \"&l=\" + l : \"\"; j.defer = true; j.src = \"https://www.googletagmanager.com/gtm.js?id=\" + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \"script\", \"dataLayer\", \"GTM-NJRLM8\"); [{\"@context\":\"http://schema.org\",\"@type\":\"Article\",\"headline\":\"ROG - Republic of Gamers - For Those Who Dare\",\"image\":[\"https://dlcdnrog.asus.com/rog/media/1787264842240.webp\",\"https://dlcdnrog.asus.com/rog/media/1774325810349.webp\",\"https://dlcdnrog.asus.com/rog/media/176645697463.webp\"],\"datePublished\":\"Aug 25, 2026\",\"dateModified\":\"\",\"author\":{\"@type\":\"Person\",\"name\":\"ROG\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"ROG - Republic of Gamers\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://dlcdnwebimgs.asus.com/gain/07B097A3-E9C2-4AFF-9196-3ADE8F5BCEA1\"}}},{\"@context\":\"http://sch",
+    "metas": [
+      [
+        "og:image",
+        "https://dlcdnrog.asus.com/rog/media/1787264835866.webp"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://rog.asus.com/media/1787264833449.jpg",
+        "The ROG Spatha X 65K gaming mouse on a slate-blue surface against a red backdrop."
+      ],
+      [
+        "https://rog.asus.com/media/1787264838217.jpg",
+        "The ROG Spatha X 65K on a gray table, opened up with its internals on display."
+      ],
+      [
+        "https://rog.asus.com/media/1787264837173.jpg",
+        "The ROG Spatha X 65K on a gray ROG deskmat."
+      ],
+      [
+        "https://dlcdnrog.asus.com/rog/media/1677195380555.webp",
+        ""
+      ],
+      [
+        "https://dlcdnrog.asus.com/rog/media/1766457117748.webp",
+        ""
+      ]
+    ],
+    "body_len": 156545
+  },
+  {
+    "key": "rog-strix-morph-96",
+    "sourceUrl": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-strix-morph-96-wireless-an-excellent-base-for-your-custom-gaming-keyboard/",
+    "sourceName": "ASUS ROG",
+    "title": "The ROG Strix Morph 96 Wireless an excellent base for your custom gaming keyboard",
+    "snippet": "The ROG Strix Morph 96 Wireless an excellent base for your custom gaming keyboard window.AsusAPIConfig = {\"system\":\"rog\",\"websitePath\":\"global\",\"theme\":\"rog\",\"campaignId\":\"3f8bcb17-b07f-4992-bcf7-72cdfcf704f9\",\"zIndex\":11900}; (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \"dataLayer\" ? \"&l=\" + l : \"\"; j.defer = true; j.src = \"https://www.googletagmanager.com/gtm.js?id=\" + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \"script\", \"dataLayer\", \"GTM-NJRLM8\"); [{\"@context\":\"http://schema.org\",\"@type\":\"Article\",\"headline\":\"ROG - Republic of Gamers - For Those Who Dare\",\"image\":[\"https://dlcdnrog.asus.com/rog/media/1787264842240.webp\",\"https://dlcdnrog.asus.com/rog/media/1787264835866.webp\",\"https://dlcdnrog.asus.com/rog/media/176645697463.webp\"],\"datePublished\":\"Mar 29, 2026\",\"dateModified\":\"\",\"author\":{\"@type\":\"Person\",\"name\":\"ROG\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"ROG - Republic of Gamers\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://dlcdnwebimgs.asus.com/gain/07B097A3-E9C2-4AFF-9196-3ADE8F5BCEA1\"}}},{\"@context\":\"http://sch",
+    "metas": [
+      [
+        "og:image",
+        "https://dlcdnrog.asus.com/rog/media/1774325810349.webp"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://rog.asus.com/media/1774325807374.jpg",
+        "The ROG Strix Morph 96 Wireless standing up on a desk"
+      ],
+      [
+        "https://rog.asus.com/media/1774325811326.jpg",
+        "A side profile of two ROG Strix Morph 96 Wireless keyboards with each light bar showing"
+      ],
+      [
+        "https://rog.asus.com/media/1774325902606.jpg",
+        "An ROG Strix Morphn 96 Wireless keyboard with many of its keycaps and switches removed"
+      ],
+      [
+        "https://rog.asus.com/media/1774325809158.jpg",
+        "The ROG Strix Morph 96 Wireless keyboard with the top case removed and the layers of internals showing"
+      ],
+      [
+        "https://dlcdnrog.asus.com/rog/media/1677195380555.webp",
+        ""
+      ]
+    ],
+    "body_len": 153635
+  },
+  {
+    "key": "rog-rapture-gt-bn98",
+    "sourceUrl": "https://rog.asus.com/ca-en/articles/gaming/new-esports-oled-gaming-monitors-the-rog-gladius-returns-and-more-see-the-rog-gear-from-gamescom-2026/",
+    "sourceName": "ASUS ROG",
+    "title": "New esports OLED gaming monitors, the ROG Gladius returns, and more: see the ROG gear from Gamescom 2026",
+    "snippet": "New esports OLED gaming monitors, the ROG Gladius returns, and more: see the ROG gear from Gamescom 2026 window.AsusAPIConfig = {\"system\":\"rog\",\"websitePath\":\"ca-en\",\"theme\":\"rog\",\"campaignId\":\"3f8bcb17-b07f-4992-bcf7-72cdfcf704f9\",\"zIndex\":11900}; (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \"dataLayer\" ? \"&l=\" + l : \"\"; j.defer = true; j.src = \"https://www.googletagmanager.com/gtm.js?id=\" + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \"script\", \"dataLayer\", \"GTM-NJRLM8\"); [{\"@context\":\"http://schema.org\",\"@type\":\"Article\",\"headline\":\"ROG - Republic of Gamers - For Those Who Dare\",\"image\":[\"https://dlcdnrog.asus.com/rog/media/1787971857739.webp\",\"https://dlcdnrog.asus.com/rog/media/1787667318158.webp\",\"https://dlcdnrog.asus.com/rog/media/178599542877.webp\"],\"datePublished\":\"Aug 25, 2026\",\"dateModified\":\"\",\"author\":{\"@type\":\"Person\",\"name\":\"ROG\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"ROG - Republic of Gamers\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://dlcdnwebimgs.asus.com/gain/07B097A3-E9C2-4AFF-9196-3ADE8F5BCEA1\"}}},{",
+    "metas": [
+      [
+        "og:image",
+        "https://dlcdnrog.asus.com/rog/media/1787355950914.webp"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://rog.asus.com/media/1787020216761.jpg",
+        "The ROG Strix OLED XG259QWPG Ace with its Quick OSD menu on display surrounded by ROG gaming peripherals on a desk."
+      ],
+      [
+        "https://rog.asus.com/media/1787187338991.jpg",
+        "New ROG OLED Esports Monitors side by side on gray podiums against a gray background."
+      ],
+      [
+        "https://rog.asus.com/media/178702023714.jpg",
+        "The ROG Strix XG27ACNS gaming monitor at an angle against a black background."
+      ],
+      [
+        "https://rog.asus.com/media/178726484164.jpg",
+        "The ROG Gladius IV Ace"
+      ],
+      [
+        "https://rog.asus.com/media/1787264833449.jpg",
+        "The ROG Spatha X 65K gaming mouse on a slate-blue surface against a red backdrop."
+      ]
+    ],
+    "body_len": 163618
+  },
+  {
+    "key": "rog-xreal-r1",
+    "sourceUrl": "https://rog.asus.com/us/glasses/rog-xreal-r1/",
+    "sourceName": "ASUS ROG",
+    "title": "ROG XREAL R1 Gaming AR Glasses: 240Hz, 0.01ms & 171\" Display",
+    "snippet": "ROG XREAL R1 Gaming AR Glasses: 240Hz, 0.01ms &amp; 171&quot; Display window.AsusAPIConfig = {\"system\":\"rog\",\"websitePath\":\"us\",\"theme\":\"rog\",\"campaignId\":\"3f8bcb17-b07f-4992-bcf7-72cdfcf704f9\",\"zIndex\":11900}; (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \"dataLayer\" ? \"&l=\" + l : \"\"; j.defer = true; j.src = \"https://www.googletagmanager.com/gtm.js?id=\" + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \"script\", \"dataLayer\", \"GTM-NJRLM8\"); [{\"@context\":\"http://schema.org\",\"@type\":\"Product\",\"name\":\"ROG XREAL R1\",\"image\":[\"https://dlcdnwebimgs.asus.com/gain/D55C57D4-9E20-4023-92A3-C00C874C10B2\",\"https://dlcdnwebimgs.asus.com/gain/D55C57D4-9E20-4023-92A3-C00C874C10B2\"],\"description\":\"Experience gaming with ROG XREAL R1 AR Glasses. 240Hz, 0.01ms, 171\\\" display, Sound by Bose & Native 3DoF Anchor mode. Includes ROG Control Dock for HDR.\",\"brand\":{\"@type\":\"Brand\",\"name\":\"ROG\"},\"offers\":{\"@type\":\"Offer\",\"priceCurrency\":\"USD\",\"price\":\"\",\"availability\":\"https://schema.org/InStock\"}},{\"@context\":\"http://schema.org\",\"@type\":\"BreadcrumbList\",",
+    "metas": [
+      [
+        "og:image",
+        "https://dlcdnwebimgs.asus.com/gain/D55C57D4-9E20-4023-92A3-C00C874C10B2"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://dlcdnwebimgs.asus.com/gain/D55C57D4-9E20-4023-92A3-C00C874C10B2/w717/h525/fwebp",
+        ""
+      ],
+      [
+        "https://www.asus.com/media/images/award_logo/1265/202607130934562200787.PNG",
+        ""
+      ],
+      [
+        "https://www.asus.com/media/images/award_logo/1263/202006261536482940815.png",
+        ""
+      ],
+      [
+        "https://www.asus.com/media/images/award_logo/1312/202606302216547420401.PNG",
+        ""
+      ],
+      [
+        "https://www.asus.com/media/images/award_logo/1337/201911252353119720633.PNG",
+        ""
+      ]
+    ],
+    "body_len": 327221
+  },
+  {
+    "key": "lego-playstation",
+    "sourceUrl": "https://blog.playstation.com/2026/09/03/building-on-30-years-of-play-first-look-at-the-lego-playstation/",
+    "sourceName": "PlayStation Blog",
+    "title": "Building on 30 years of play: First look at the LEGO® PlayStation™ – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2026/09/06b554da9ad96ea244c2f809bd52a2a1e637a673.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/06b554da9ad96ea244c2f809bd52a2a1e637a673.jpg?resize=1088%2C612&crop_strategy=smart",
+        "Building on 30 years of play: First look at the LEGO® PlayStation™"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/e02ae87e67261364222c009ea31479d81e69d574.jpg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 223205
+  },
+  {
+    "key": "dualsense-gta-vi",
+    "sourceUrl": "https://blog.playstation.com/2026/09/03/first-look-at-the-grand-theft-auto-vi-limited-edition-dualsense-wireless-controllers/",
+    "sourceName": "PlayStation Blog",
+    "title": "First look at the Grand Theft Auto VI Limited-Edition DualSense Wireless Controllers – PlayStation.Blog",
+    "snippet": "document.documentElement.classList.remove(\"no-js\"); var currentDarkModeOption = localStorage.getItem( 'darkMode' ); if ( currentDarkModeOption && currentDarkModeOption === 'dark' ) { document.documentElement.classList.add( 'prefers-color-mode-dark' ); } if ( currentDarkModeOption && currentDarkModeOption === 'light' ) { document.documentElement.classList.add( 'prefers-color-mode-light' ); } /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}link{display:none}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}butto",
+    "metas": [
+      [
+        "og:image",
+        "https://blog.playstation.com/tachyon/2026/09/a5bd4c6e9ca55c1e1fe1705b79e86300f205831f.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.playstation.com/content/themes/playstation-2018/images/sonylogo-2x.jpg",
+        "playstation.com"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/905454595385344a4ea16004b40952e8415704ad.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/2de1f08e61322b2860933833ecf2ad861db9bfdb.png",
+        ""
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2026/09/a5bd4c6e9ca55c1e1fe1705b79e86300f205831f.png",
+        "First look at the Grand Theft Auto VI Limited-Edition DualSense Wireless Controllers"
+      ],
+      [
+        "https://blog.playstation.com/tachyon/2020/07/ybnDHXn7_400x400.jpg?fit=40%2C40",
+        ""
+      ]
+    ],
+    "body_len": 224823
+  },
+  {
+    "key": "gpt-6-astra",
+    "sourceUrl": "https://openai.com/index/gpt-6-astra/",
+    "sourceName": "OpenAI — anúncio Astra",
+    "title": "NO TITLE",
+    "snippet": "body{font-family:Arial,Helvetica,sans-serif}.container{align-items:center;display:flex;flex-direction:column;gap:2rem;height:100%;justify-content:center;width:100%}@keyframes enlarge-appear{0%{opacity:0;transform:scale(75%) rotate(-90deg)}to{opacity:1;transform:scale(100%) rotate(0deg)}}.logo{color:#8e8ea0}.scale-appear{animation:enlarge-appear .4s ease-out}@media (min-width:768px){.scale-appear{height:48px;width:48px}}.data:empty{display:none}.data{border-radius:5px;color:#8e8ea0;text-align:center}@media (prefers-color-scheme:dark){body{background-color:#343541}.logo{color:#acacbe}} Enable JavaScript and cookies to continue (function(){window._cf_chl_opt = {cFPWv: 'g',cH: '9PVvTwncHKCd4y.lSOX0upV8pr1QAmzhybvpIUkx4ZU-1789607680-1.2.1.1-xXTBhvifSYFWzrM1ALGhaKxQR2CBlHgXLmicsisyPuUkwWBx1Zw__WBAlDu1aswc',cITimeS: '1789607680',cRay: 'a3c44165db915686',cTplB: '0',cTplC:1,cTplO:0,cTplV:5,cType: 'managed',cUPMDTk:\"/index/gpt-6-astra/?__cf_chl_tk=WVRFyqLhNCO57Ad.3k3.gkH8Up7VZW4_9d_ctmsXXwA-1789607680-1.0.1.1-PAZy7w7jWRelyXhov2Ox7ANkNVgexstZngYBcEcxZpU\",cvId: '3',cZone: 'openai.com',fa:\"/index/gpt-6-astra/?__cf_chl_f_tk=WVRFyqLhNCO57Ad.3k3.gkH8Up7VZW4_9d_ctmsXXwA-1789607680-1.0.1.1-PAZy7w7jW",
+    "metas": [],
+    "imgs_sample": [],
+    "body_len": 9841
+  },
+  {
+    "key": "claude-fable-mythos-51",
+    "sourceUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+    "sourceName": "Anthropic — Fable e Mythos 5.1",
+    "title": "Introducing Claude Fable 5.1 and Claude Mythos 5.1 \\ Anthropic",
+    "snippet": "Introducing Claude Fable 5.1 and Claude Mythos 5.1 \\ Anthropic Skip to main content Skip to footer Research Policy Commitments Learn News Try Claude Introduction A new performance frontier Scientific research Safety Claude Mythos 5.1 Cost and availability September 2026 :Claude: Fable 5.1 and Mythos 5.1 [ 1 ] ................................................................................................................................................................ Introduction [ 2 ] ................................................................................................................................................................ A new performance frontier [ 3 ] ................................................................................................................................................................ Scientific research [ 4 ] ................................................................................................................................................................ Safety, security, and alignment [ 5 ] .................................................................................................................................",
+    "metas": [
+      [
+        "og:image",
+        "https://cdn.sanity.io/images/4zrzovbb/website/932ca7d6f414ca22fd5a26dcc131410575b9b3e5-1200x630.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://cdn.sanity.io/images/4zrzovbb/website/932ca7d6f414ca22fd5a26dcc131410575b9b3e5-1200x630.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F4d8f06a743ecfc6ec87ccde0b1964e48175a141e-800x800.png&w=1920&q=75",
+        "Radar image (Magellan): bright cone, radian lava flows"
+      ],
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fe374c070fc1a84872dcb1343b5bb0ed540ca3770-800x800.png&w=1920&q=75",
+        "Altimetry 10-20km footprint"
+      ],
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F3dd626b47b88feb72082646cdea87944d49a3c7f-800x800.png&w=1920&q=75",
+        "New DEM (300m) a volcano 15km across"
+      ]
+    ],
+    "body_len": 449322
+  },
+  {
+    "key": "gemini-38-flash",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+    "sourceName": "Google — Gemini 3.8",
+    "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+    "snippet": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber { \"@context\": \"https://schema.org\", \"@type\": \"NewsArticle\", \"mainEntityOfPage\": \"https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/\", \"headline\": \"Introducing Gemini 3.8 Flash and 3.8 Flash Cyber\", \"datePublished\": \"2026-09-02T15:00:00+00:00\", \"dateModified\": \"2026-09-03T19:59:49.428661+00:00\", \"description\": \"Gemini 3.8 Flash and 3.8 Flash Cyber deliver next-generation intelligence for agentic workflows and cybersecurity.\", \"author\": { \"@type\": \"Person\", \"name\": \"Tulsee Doshi\" }, \"publisher\": { \"@type\": \"Organization\", \"name\": \"Google\", \"logo\": { \"@type\": \"ImageObject\", \"url\": \"https://blog.google/static/blogv2/images/google-1000x1000.png?version=pr20260902-1737\", \"width\": \"200\", \"height\": \"200\" } }, \"image\": { \"@type\": \"ImageObject\", \"url\": \"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8_flash__blog__header__16-9__light.width-1300.png\", \"width\": \"1440\", \"height\": \"810\" } } @property --border-draw-percent{inherits:false;initial-value:.1%;syntax:\" \"}@property --border-mask-color{inherits:false;initial-value:transparent;syntax:\" \"}@property --btn-bg-color{",
+    "metas": [
+      [
+        "og:image",
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8_flash__blog__header__16-9__light.width-1300.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.google/static/blogv2/images/super-g-aurora.svg?version=pr20260902-1737",
+        "Google"
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8_flash__blog__header__1.width-200.format-webp.webp",
+        "a hero image reading &quot;Gemini 3.8 Flash and 3.8 Flash Cyber&quot;"
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3.8-flash__evals__table_l.width-1200.format-webp_2pLdBp5.webp",
+        "comparison chart showing Gemini 3.8 Flash and other models"
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8-flash__evals__deepswe.width-1200.format-webp.webp",
+        "chart showing Gemini 3.8 Flash DeepSWE v1.1"
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3.8-flash_evals_vals-finan.width-100.format-webp.webp",
+        "chart showing Gemini 3.8 Flash Vals Finance Agent v2"
+      ]
+    ],
+    "body_len": 406298
+  },
+  {
+    "key": "qwen38-flash-next",
+    "sourceUrl": "https://qwen.ai/blog?id=qwen3.8-flash-next",
+    "sourceName": "Qwen Team — Flash-Next",
+    "title": "Qwen",
+    "snippet": "Qwen window.dataLayer = window.dataLayer || []; function gtag(){window.dataLayer.push(arguments);} gtag('consent', 'default', { 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'analytics_storage': 'denied', 'wait_for_update': 500, 'url_passthrough': true, 'ads_data_redaction': true }); !(function () {var a = window.__ICE_APP_CONTEXT__ || {};var b = {\"appData\":null,\"loaderData\":{\"layout\":{\"pageConfig\":{}},\"home\":{\"pageConfig\":{}}},\"routePath\":\"/home\",\"matchedIds\":[\"layout\",\"home\"],\"documentOnly\":true,\"renderMode\":\"CSR\"};for (var k in a) {b[k] = a[k]}window.__ICE_APP_CONTEXT__=b;})(); (function () { var VIDEO = 'https://cloud.video.taobao.com/vod/2Sk0Z3eIgdp-lw0qfF6IEnxTVq2CI5PP8MSNZYBbg70.mp4'; var STORAGE_KEY = 'qwen_splash_seen'; // 素材版本标识：更换素材时同步修改，可让新素材重新展示 var MEDIA_KEY = '2Sk0Z3eIgdp-lw0qfF6IEnxTVq2CI5PP8MSNZYBbg70'; // 下架时间：到点后彻底不再展示（当前设置为 7 天有效期） var END_TIME = Date.parse('2026-08-10T23:59:59+08:00'); var DURATION = 5000; // 仅以下页面展示开屏视频：/（会重定向到 /home）、/home var path = (location.pathname || '/').replace(/\\/+$/, '') || '/'; path = path.toLowerCase(); var blogId = ''; try { blogId = new URLSearchParams(location.search).get('id') || ''; } catch ",
+    "metas": [
+      [
+        "og:image",
+        "https://img.alicdn.com/imgextra/i4/O1CN01OXv3EM1FN8t9W4P79_!!6000000000474-2-tps-80-80.png"
+      ]
+    ],
+    "imgs_sample": [],
+    "body_len": 92483
+  },
+  {
+    "key": "qwen-image-3",
+    "sourceUrl": "https://qwen.ai/blog?id=qwen-image-3.0",
+    "sourceName": "Qwen Team — Image 3.0",
+    "title": "Qwen",
+    "snippet": "Qwen window.dataLayer = window.dataLayer || []; function gtag(){window.dataLayer.push(arguments);} gtag('consent', 'default', { 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'analytics_storage': 'denied', 'wait_for_update': 500, 'url_passthrough': true, 'ads_data_redaction': true }); !(function () {var a = window.__ICE_APP_CONTEXT__ || {};var b = {\"appData\":null,\"loaderData\":{\"layout\":{\"pageConfig\":{}},\"home\":{\"pageConfig\":{}}},\"routePath\":\"/home\",\"matchedIds\":[\"layout\",\"home\"],\"documentOnly\":true,\"renderMode\":\"CSR\"};for (var k in a) {b[k] = a[k]}window.__ICE_APP_CONTEXT__=b;})(); (function () { var VIDEO = 'https://cloud.video.taobao.com/vod/2Sk0Z3eIgdp-lw0qfF6IEnxTVq2CI5PP8MSNZYBbg70.mp4'; var STORAGE_KEY = 'qwen_splash_seen'; // 素材版本标识：更换素材时同步修改，可让新素材重新展示 var MEDIA_KEY = '2Sk0Z3eIgdp-lw0qfF6IEnxTVq2CI5PP8MSNZYBbg70'; // 下架时间：到点后彻底不再展示（当前设置为 7 天有效期） var END_TIME = Date.parse('2026-08-10T23:59:59+08:00'); var DURATION = 5000; // 仅以下页面展示开屏视频：/（会重定向到 /home）、/home var path = (location.pathname || '/').replace(/\\/+$/, '') || '/'; path = path.toLowerCase(); var blogId = ''; try { blogId = new URLSearchParams(location.search).get('id') || ''; } catch ",
+    "metas": [
+      [
+        "og:image",
+        "https://img.alicdn.com/imgextra/i4/O1CN01OXv3EM1FN8t9W4P79_!!6000000000474-2-tps-80-80.png"
+      ]
+    ],
+    "imgs_sample": [],
+    "body_len": 92483
+  },
+  {
+    "key": "mistral-agentic-search",
+    "sourceUrl": "https://mistral.ai/news/agentic-search/",
+    "sourceName": "Mistral — Agentic Search",
+    "title": "Introducing Agentic Search | Mistral",
+    "snippet": "Introducing Agentic Search | Mistral {\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"@id\":\"https://mistral.ai/news/agentic-search/\",\"name\":\"Agentic Search. More accurate and efficient results from your AI systems.\",\"mainEntityOfPage\":\"https://mistral.ai/news/agentic-search/\",\"datePublished\":\"2026-08-20T12:00:17.000Z\",\"dateModified\":\"2026-08-20T14:06:00.269Z\"} ;(function () { function applyTheme(doc) { try { var stored = localStorage.getItem('theme') var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches // 'system' (or unset) follows the OS; 'dark'/'light' are explicit choices. var isDark = stored === 'dark' || ((stored === 'system' || stored === null) && prefersDark) if (isDark) { doc.documentElement.classList.add('dark') } else { doc.documentElement.classList.remove('dark') } } catch (e) {} } applyTheme(document) // The ClientRouter copies the incoming attributes over the live ones, which // would drop the theme class until the darkmode button re-adds it. Apply the theme // to the incoming document so the class survives the swap without a flash. document.addEventListener('astro:before-swap', function (event) { applyTheme(event.newDocument) }) })() ;(f",
+    "metas": [
+      [
+        "og:image",
+        "https://mistral.ai/cms-media/api/media/file/Thumbnail-Blog-Agenticsearch.png"
+      ],
+      [
+        "twitter:image",
+        "https://mistral.ai/cms-media/api/media/file/Thumbnail-Blog-Agenticsearch.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://mistral.ai/_astro/ai-app_LCReD.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/logo-forge_Z1mQhkS.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/vibe_Z20p2OU.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/logo-vibe-code_drDoK.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/logo-compute_ZDL3ab.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ]
+    ],
+    "body_len": 270320
+  },
+  {
+    "key": "shieldstral",
+    "sourceUrl": "https://mistral.ai/news/shieldstral/",
+    "sourceName": "Mistral — Shieldstral",
+    "title": "Introducing Shieldstral. | Mistral",
+    "snippet": "Introducing Shieldstral. | Mistral {\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"@id\":\"https://mistral.ai/news/shieldstral/\",\"name\":\"Introducing Shieldstral.\",\"mainEntityOfPage\":\"https://mistral.ai/news/shieldstral/\",\"datePublished\":\"2026-08-04T12:00:26.000Z\",\"dateModified\":\"2026-09-10T14:01:55.126Z\"} ;(function () { function applyTheme(doc) { try { var stored = localStorage.getItem('theme') var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches // 'system' (or unset) follows the OS; 'dark'/'light' are explicit choices. var isDark = stored === 'dark' || ((stored === 'system' || stored === null) && prefersDark) if (isDark) { doc.documentElement.classList.add('dark') } else { doc.documentElement.classList.remove('dark') } } catch (e) {} } applyTheme(document) // The ClientRouter copies the incoming attributes over the live ones, which // would drop the theme class until the darkmode button re-adds it. Apply the theme // to the incoming document so the class survives the swap without a flash. document.addEventListener('astro:before-swap', function (event) { applyTheme(event.newDocument) }) })() ;(function (w, d, s, l, i) { w[l] = w[l] || [] w[l].push({ '",
+    "metas": [
+      [
+        "og:image",
+        "https://mistral.ai/cms-media/api/media/file/Thumbnail-Model%3DShieldstral.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://mistral.ai/cms-media/api/media/file/Thumbnail-Model%3DShieldstral.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://mistral.ai/_astro/ai-app_LCReD.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/logo-forge_Z1mQhkS.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/vibe_Z20p2OU.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/logo-vibe-code_drDoK.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ],
+      [
+        "https://mistral.ai/_astro/logo-compute_ZDL3ab.webp?dpl=6aaaa3e6d4d2290017119943",
+        ""
+      ]
+    ],
+    "body_len": 275313
+  },
+  {
+    "key": "claude-marca-texto",
+    "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+    "sourceName": "Anthropic — watermark de texto",
+    "title": "How Claude's text watermarking works \\ Anthropic",
+    "snippet": "How Claude&#x27;s text watermarking works \\ Anthropic Skip to main content Skip to footer Research Policy Commitments Learn News Try Claude Announcements How Claude’s text watermark works Aug 14, 2026 Future Claude models will generate text that contains a watermark. This is a way of determining the likelihood that Claude was involved in writing the text, and we, along with several other major AI providers, are implementing this change to comply with the EU AI Act. In this article, we share answers to some of the questions we’ve received about how our chosen watermarking method works, whether it affects Claude’s outputs, and why we’re making this change. To summarize: We use a method of watermarking that does not have any practical impact on the quality or content of Claude’s outputs; The difference between watermarked and un-watermarked text will not be distinguishable to readers; Nothing is added to the text and there are no hidden characters; Watermarking doesn’t require extra tokens, and will not be more expensive; Watermarking carries no identifying information and can’t be traced to a specific person, organization, or chat; Watermarking won’t be specific to Claude. As of Augu",
+    "metas": [
+      [
+        "og:image",
+        "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Quill&backgroundColor=heather"
+      ],
+      [
+        "twitter:image",
+        "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Quill&backgroundColor=heather"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www-cdn.anthropic.com/images/4zrzovbb/website/33dbe8f783d4835a838b4c4ae85d3c04e352fee1-1000x1000.svg",
+        "How Claude’s text watermark works"
+      ]
+    ],
+    "body_len": 195549
+  },
+  {
+    "key": "gemini-apps-conectados",
+    "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-services-gemini-august-2026/",
+    "sourceName": "Google — apps conectados ao Gemini",
+    "title": "New connected apps are coming to Gemini",
+    "snippet": "New connected apps are coming to Gemini { \"@context\": \"https://schema.org\", \"@type\": \"NewsArticle\", \"mainEntityOfPage\": \"https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-services-gemini-august-2026/\", \"headline\": \"Now you can connect even more of your favorite apps and services to Gemini.\", \"datePublished\": \"2026-08-12T14:00:00+00:00\", \"dateModified\": \"2026-08-12T15:30:49.460523+00:00\", \"description\": \"Connect your favorite services directly to Gemini to help you plan trips, manage projects and tackle your daily to-do list.\", \"author\": { \"@type\": \"Person\", \"name\": \"Mai Lowe\" }, \"publisher\": { \"@type\": \"Organization\", \"name\": \"Google\", \"logo\": { \"@type\": \"ImageObject\", \"url\": \"https://blog.google/static/blogv2/images/google-1440x754.jpg?version=pr20260902-1737\", \"width\": \"200\", \"height\": \"200\" } }, \"image\": { \"@type\": \"ImageObject\", \"url\": \"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Social_Share_V4.max-1440x810.png\", \"width\": \"1440\", \"height\": \"810\" } } @property --border-draw-percent{inherits:false;initial-value:.1%;syntax:\" \"}@property --border-mask-color{inherits:false;initial-value:transparent;syntax:\" \"}@property --btn-bg-color{i",
+    "metas": [
+      [
+        "og:image",
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Social_Share_V4.max-1440x810.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://blog.google/static/blogv2/images/super-g-aurora.svg?version=pr20260902-1737",
+        "Google"
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/Tackle_household_chores_w_Gemini_hero.png",
+        ""
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_for_Desktop_Th.2e16d0ba.fill-300x300.format-webp.webp",
+        ""
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Lyria_social.2e16d0ba.fill-300x300.format-webp.webp",
+        ""
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/August_AI_Recap_socia.2e16d0ba.fill-300x300.format-webp.webp",
+        ""
+      ]
+    ],
+    "body_len": 389546
+  },
+  {
+    "key": "claude-cientistas",
+    "sourceUrl": "https://www.anthropic.com/news/expanding-support-for-scientists",
+    "sourceName": "Anthropic — apoio a cientistas",
+    "title": "Expanding our support for scientists \\ Anthropic",
+    "snippet": "Expanding our support for scientists \\ Anthropic Skip to main content Skip to footer Research Policy Commitments Learn News Try Claude Announcements Expanding our support for scientists Aug 27, 2026 As Claude becomes increasingly capable at scientific research, we are focusing on building products and programs to support the research community. In June, we launched Claude Science , a product that integrates the tools that researchers most commonly use, produces auditable artifacts, and provides flexible access to computing resources. We have also continued to broaden our AI for Science program , which provides free credits to researchers working on high-impact scientific projects. Starting today, we are announcing a significant expansion of these efforts. We are opening 10,000 seats for scientists around the world to access Claude subscriptions for free and at discounted rates for one year through our new Claude team plan for scientists . Standard seats will be free and premium seats with 5x usage limits will be available for $15 per month. Over the coming months, we intend to extend this program well beyond the initial 10,000 seats. Alongside these subscriptions, we are also expan",
+    "metas": [
+      [
+        "og:image",
+        "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20HeadNodeThink&backgroundColor=olive"
+      ],
+      [
+        "twitter:image",
+        "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20HeadNodeThink&backgroundColor=olive"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www-cdn.anthropic.com/images/4zrzovbb/website/46e4aa7ea208ed440d5bd9e9e3a0ee66bc336ff1-1000x1000.svg",
+        " Expanding our support for scientists"
+      ]
+    ],
+    "body_len": 146203
+  },
+  {
+    "key": "iphone18pro",
+    "sourceUrl": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+    "sourceName": "Apple — iPhone 18 Pro",
+    "title": "Apple debuts iPhone 18 Pro and iPhone 18 Pro Max - Apple",
+    "snippet": "Apple debuts iPhone 18 Pro and iPhone 18 Pro Max - Apple Apple Store Mac iPad iPhone Watch Vision AirPods TV &amp; Home Entertainment Accessories Support 0 + {\"props\":{\"globalNavData\":{\"locale\":\"en_US\",\"ariaLabel\":\"Global\",\"analyticsAttributes\":[{\"name\":\"data-analytics-activitymap-region-id\",\"value\":\"global nav\"},{\"name\":\"data-analytics-region\",\"value\":\"global nav\"}],\"links\":[{\"id\":\"2758e8127e4ab787ae4e849277f79b83b3522719ae4b96a595421e50ea2d03f7\",\"name\":\"apple\",\"text\":\"Apple\",\"url\":\"/\",\"ariaLabel\":\"Apple\",\"submenuAriaLabel\":\"Apple menu\",\"images\":[{\"name\":\"regular\",\"assetInline\":\" \"},{\"name\":\"compact\",\"assetInline\":\" \"}],\"analyticsAttributes\":[{\"name\":\"data-analytics-title\",\"value\":\"apple home\"}]},{\"id\":\"ad4a2a26eb4836393385e9f6c61b526b4a3cb31409c5ed8730ce7a704dd7132f\",\"name\":\"store\",\"text\":\"Store\",\"url\":\"/us/shop/goto/store\",\"ariaLabel\":\"Store\",\"submenuAriaLabel\":\"Store menu\",\"images\":[{\"name\":\"regular\",\"assetInline\":\" \"}],\"analyticsAttributes\":[{\"name\":\"data-analytics-title\",\"value\":\"store\"},{\"name\":\"data-analytics-element-engagement\",\"value\":\"hover - store\"}]},{\"id\":\"9a82f08a3cc17e59a61372a40e7ecb17783e9c10aef163465f29bb5b00d4725a\",\"name\":\"mac\",\"text\":\"Mac\",\"url\":\"/mac/\",\"ariaLa",
+    "metas": [
+      [
+        "og:image",
+        "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/tile/Apple-iPhone-18-Pro-2up-260909-lp.jpg.og.jpg?202609162000"
+      ],
+      [
+        "twitter:image",
+        "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/tile/Apple-iPhone-18-Pro-2up-260909-lp.jpg.og.jpg?202609162000"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-2up-260909_inline.jpg.large.jpg",
+        "The front of a burgundy iPhone 18 Pro is displayed next to a rear-facing burgundy iPhone 18 Pro Max."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-color-lineup-260909_big.jpg.large.jpg",
+        "iPhone 18 Pro is displayed in black, silver, glacier, and burgundy."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-photography-aperture-low-light-260909_big.jpg.large.jpg",
+        "A photograph captured on iPhone 18 Pro using the new 48MP Fusion Main camera amid low-light conditions."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-photography-aperture-depth-of-field-260909_big.jpg.large.jpg",
+        "A black-and-white photograph of a person is captured on iPhone 18 Pro."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-photography-aperture-focus-sharp-260909_big.jpg.large.jpg",
+        "A photograph captured on iPhone 18 Pro shows people on a staircase and crisp details in the background."
+      ]
+    ],
+    "body_len": 298725
+  },
+  {
+    "key": "iphone17e-contexto",
+    "sourceUrl": "https://www.apple.com/ie/newsroom/2026/03/apple-introduces-iphone-17e/",
+    "sourceName": "Apple — iPhone 17e",
+    "title": "Apple introduces iPhone 17e - Apple (IE)",
+    "snippet": "Apple introduces iPhone 17e - Apple (IE) Apple Store Mac iPad iPhone Watch AirPods TV &amp; Home Entertainment Accessories Support 0 + {\"props\":{\"globalNavData\":{\"locale\":\"en_IE\",\"ariaLabel\":\"Global\",\"analyticsAttributes\":[{\"name\":\"data-analytics-activitymap-region-id\",\"value\":\"global nav\"},{\"name\":\"data-analytics-region\",\"value\":\"global nav\"}],\"links\":[{\"id\":\"ba22be50190185f31ab80184bd93d77eeb8318d8d3e0d4ac67341988d2fb4bbd\",\"name\":\"apple\",\"text\":\"Apple\",\"url\":\"/ie/\",\"ariaLabel\":\"Apple\",\"submenuAriaLabel\":\"Apple menu\",\"images\":[{\"name\":\"regular\",\"assetInline\":\" \"},{\"name\":\"compact\",\"assetInline\":\" \"}],\"analyticsAttributes\":[{\"name\":\"data-analytics-title\",\"value\":\"apple home\"}]},{\"id\":\"474205232778d0967231ca573b16c89cd23614f77c52e37aa01cf52dfb374207\",\"name\":\"store\",\"text\":\"Store\",\"url\":\"/ie/shop/goto/store\",\"ariaLabel\":\"Store\",\"submenuAriaLabel\":\"Store menu\",\"images\":[{\"name\":\"regular\",\"assetInline\":\" \"}],\"analyticsAttributes\":[{\"name\":\"data-analytics-title\",\"value\":\"store\"},{\"name\":\"data-analytics-element-engagement\",\"value\":\"hover - store\"}]},{\"id\":\"2a3375b6fc445cbc50c72759d5db63602b2fbf209d1b94955db94daa22df75d9\",\"name\":\"mac\",\"text\":\"Mac\",\"url\":\"/ie/mac/\",\"ariaLabel\":\"Mac\",\"subme",
+    "metas": [
+      [
+        "og:image",
+        "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-hero-geo-260302-lp.jpg.og.jpg?202608191721"
+      ],
+      [
+        "twitter:image",
+        "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-hero-geo-260302-lp.jpg.og.jpg?202608191721"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-hero-geo-260302_big.jpg.large.jpg",
+        "Two iPhone 17e devices, one in black and the other in soft pink, are stacked on top of each other."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-family-lineup-ROW-260302_big.jpg.large.jpg",
+        "Four iPhone 17e devices — one in black, one in white, and two in soft pink — are shown."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/article/Apple-iPhone-17e-lockscreen-260302_inline.jpg.large.jpg",
+        "The 6.1-inch Super Retina XDR display is shown on iPhone 17e."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/article/Apple-iPhone-17e-accessories-260302_big.jpg.large.jpg",
+        "A pink iPhone 17e with a midnight purple FineWoven Wallet with MagSafe, a black iPhone 17e with MagSafe Charger, and a white iPhone 17e with Clear Case with MagSafe are shown."
+      ],
+      [
+        "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/article/Apple-iPhone-17e-photography-24MP-260302_big.jpg.large.jpg",
+        "A photo taken with the 24MP Fusion camera on iPhone 17e."
+      ]
+    ],
+    "body_len": 231519
+  },
+  {
+    "key": "pixel11-tensor",
+    "sourceUrl": "https://blog.google/intl/es-es/productos/dispositivos/serie-pixel-11-tu-pixel-mas-personal-hasta-la-fecha/",
+    "sourceName": "Google — série Pixel 11",
+    "title": "Google presenta Pixel 11, Pixel 11 Pro y Pixel 11 Pro XL.",
+    "snippet": "Google presenta Pixel 11, Pixel 11 Pro y Pixel 11 Pro XL. { \"@context\": \"https://schema.org\", \"@type\": \"NewsArticle\", \"mainEntityOfPage\": \"https://blog.google/intl/es-es/productos/dispositivos/serie-pixel-11-tu-pixel-mas-personal-hasta-la-fecha/\", \"headline\": \"Serie Pixel 11: Tu Pixel más personal hasta la fecha\", \"datePublished\": \"2026-08-12T14:00:00+00:00\", \"dateModified\": \"2026-08-12T15:49:05.655420+00:00\", \"description\": \"Descubre la gama Google Pixel 11, que incluye hardware de cámara actualizado, el chip Tensor G6, notificaciones LED HiLight y compatibilidad con Gemini AI más rápida.\", \"author\": { \"@type\": \"Person\", \"name\": \"Spencer Boone\" }, \"publisher\": { \"@type\": \"Organization\", \"name\": \"Google\", \"logo\": { \"@type\": \"ImageObject\", \"url\": \"https://blog.google/static/blogv2/images/google-1000x1000.png?version=pr20260902-1737\", \"width\": \"200\", \"height\": \"200\" } }, \"image\": { \"@type\": \"ImageObject\", \"url\": \"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Fudge_Sizzle-Grizzly_Thumbnail_2730x1532_3.width-1300.png\", \"width\": \"1440\", \"height\": \"810\" } } @property --border-draw-percent{inherits:false;initial-value:.1%;syntax:\" \"}@property --border-mask-color{inherits",
+    "metas": [
+      [
+        "og:image",
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Fudge_Sizzle-Grizzly_Thumbnail_2730x1532_3.width-1300.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/NFG_Cubs_Frost.width-1200.format-webp.webp",
+        "Vista frontal y trasera de un teléfono Google Pixel ."
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/The_Pixel_11_Series_ProandProXL.width-1200.format-webp.webp",
+        "Vista frontal y trasera de los Google Pixel, Pro y Pro XL, que muestran la barra de triple cámara en la parte posterior y un fondo de pantalla texturizado a juego en la pantalla frontal."
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Pixel-11ProXL_Family-Shot.width-1200.format-webp.webp",
+        "Pixel 11 Pro y Pixel 11 Pro XL en colores disponibles"
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Grizzly---Vibe3_inline.width-1200.format-webp.webp",
+        "Una persona que lleva una chaqueta amarilla brillante sale de un coche mientras sostiene un teléfono Google Pixel ."
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Pixel_11_Launch_social.width-800.format-webp.webp",
+        "Pixel 11 Pro con fondo rosa"
+      ]
+    ],
+    "body_len": 342385
+  },
+  {
+    "key": "pixel11-pro-fold",
+    "sourceUrl": "https://blog.google/intl/en-in/products/hardware/googles-most-sophisticated-foldable-pixel-11-pro-fold/",
+    "sourceName": "Google — Pixel 11 Pro Fold",
+    "title": "Google’s most sophisticated foldable: Pixel 11 Pro Fold",
+    "snippet": "Google’s most sophisticated foldable: Pixel 11 Pro Fold { \"@context\": \"https://schema.org\", \"@type\": \"NewsArticle\", \"mainEntityOfPage\": \"https://blog.google/intl/en-in/products/hardware/googles-most-sophisticated-foldable-pixel-11-pro-fold/\", \"headline\": \"Google’s most sophisticated foldable: Pixel 11 Pro Fold\", \"datePublished\": \"2026-08-12T14:00:00+00:00\", \"dateModified\": \"2026-08-12T14:09:03.716470+00:00\", \"description\": \"\", \"author\": { \"@type\": \"Person\", \"name\": \"Justin Savich\" }, \"publisher\": { \"@type\": \"Organization\", \"name\": \"Google\", \"logo\": { \"@type\": \"ImageObject\", \"url\": \"https://blog.google/static/blogv2/images/google-1000x1000.png?version=pr20260902-1737\", \"width\": \"200\", \"height\": \"200\" } }, \"image\": { \"@type\": \"ImageObject\", \"url\": \"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Pixel_11_Pro_Fold_Social.width-1300.png\", \"width\": \"1440\", \"height\": \"810\" } } @property --border-draw-percent{inherits:false;initial-value:.1%;syntax:\" \"}@property --border-mask-color{inherits:false;initial-value:transparent;syntax:\" \"}@property --btn-bg-color{inherits:false;initial-value:transparent;syntax:\" \"}@property --card-draw-percent{inherits:false;initial-value:.1%;sy",
+    "metas": [
+      [
+        "og:image",
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Pixel_11_Pro_Fold_Social.width-1300.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/P11P_Fold_Back_Open_Olive.width-1200.format-webp.webp",
+        "Image showing Pixel 11 Pro Fold in Olive when opened from the back"
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/HealthGuardian_social.2e16d0ba.fill-300x300.format-webp.webp",
+        ""
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/image_2_RR1hZ0W.2e16d0ba.fill-300x300.format-webp.webp",
+        ""
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Pixel_11_Launch_socia.2e16d0ba.fill-300x300.format-webp.webp",
+        ""
+      ],
+      [
+        "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Olive_Pixel_Buds_Life.2e16d0ba.fill-300x300.format-webp.webp",
+        ""
+      ]
+    ],
+    "body_len": 303673
+  },
+  {
+    "key": "galaxy-fold8-comparacao",
+    "sourceUrl": "https://news.samsung.com/global/galaxy-unpacked-july-2026-a-first-look-at-galaxy-z-fold8-ultra-galaxy-z-fold8-and-galaxy-z-flip8",
+    "sourceName": "Samsung — primeiros detalhes Fold8",
+    "title": "[Galaxy Unpacked July 2026] A First Look at Galaxy Z Fold8 Ultra, Galaxy Z Fold8 and Galaxy Z Flip8 – Samsung Global Newsroom",
+    "snippet": "[Galaxy Unpacked July 2026] A First Look at Galaxy Z Fold8 Ultra, Galaxy Z Fold8 and Galaxy Z Flip8 &#8211; Samsung Global Newsroom img:is([sizes=\"auto\" i], [sizes^=\"auto,\" i]) { contain-intrinsic-size: 3000px 1500px } /* */ img.wp-smiley, img.emoji { display: inline !important; border: none !important; box-shadow: none !important; height: 1em !important; width: 1em !important; margin: 0 0.07em !important; vertical-align: -0.1em !important; background: none !important; padding: 0 !important; } /*! This file is auto-generated */ .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none} .twentytwenty-horizontal .twentytwenty-handle:after,.twentytwenty-horizontal .twentytwenty-handle:before,.twentytwenty-vertical .twentytwenty-handle:after,.twentytwenty-vertical .twentytwenty-handle:before{background:#fff;box-shadow:0 0 12px rgba(51,51,51,.5);content:\" \";display:block;position:absolute;z-index:30}.twentytwenty-horizontal .twentytwenty-handle:after,.twentytwenty-horizontal .twentytwenty-han",
+    "metas": [
+      [
+        "og:image",
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22215934/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_Thumb932.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22215934/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_Thumb932.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2025/10/citizenship_728x410_우측배너.jpg",
+        ""
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220302/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main1.jpg",
+        "(From left) Galaxy Z Flip8, Galaxy Z Fold8 and Galaxy Z Fold8 Ultra"
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220341/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main2.jpg",
+        "Galaxy Z Fold8 Ultra features a remarkably thin profile when unfolded."
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220359/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main3.jpg",
+        "Flex Titanium technology reduces crease visibility."
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220433/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main4.jpg",
+        "Gemini Notebook streamlines the process of organizing meeting materials and notes."
+      ]
+    ],
+    "body_len": 186404
+  },
+  {
+    "key": "galaxy-s26-privacy",
+    "sourceUrl": "https://news.samsung.com/global/samsung-unveils-galaxy-s26-series-the-most-intuitive-galaxy-ai-phone-yet",
+    "sourceName": "Samsung — Galaxy S26",
+    "title": "Samsung Unveils Galaxy S26 Series: The Most Intuitive Galaxy AI Phone Yet – Samsung Global Newsroom",
+    "snippet": "Samsung Unveils Galaxy S26 Series: The Most Intuitive Galaxy AI Phone Yet &#8211; Samsung Global Newsroom img:is([sizes=\"auto\" i], [sizes^=\"auto,\" i]) { contain-intrinsic-size: 3000px 1500px } /* */ img.wp-smiley, img.emoji { display: inline !important; border: none !important; box-shadow: none !important; height: 1em !important; width: 1em !important; margin: 0 0.07em !important; vertical-align: -0.1em !important; background: none !important; padding: 0 !important; } /*! This file is auto-generated */ .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none} .twentytwenty-horizontal .twentytwenty-handle:after,.twentytwenty-horizontal .twentytwenty-handle:before,.twentytwenty-vertical .twentytwenty-handle:after,.twentytwenty-vertical .twentytwenty-handle:before{background:#fff;box-shadow:0 0 12px rgba(51,51,51,.5);content:\" \";display:block;position:absolute;z-index:30}.twentytwenty-horizontal .twentytwenty-handle:after,.twentytwenty-horizontal .twentytwenty-handle:before{height:9999px;l",
+    "metas": [
+      [
+        "og:image",
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26025332/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_thumb932.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26025332/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_thumb932.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2025/10/citizenship_728x410_우측배너.jpg",
+        ""
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031538/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main1.jpg",
+        ""
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031539/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main2.jpg",
+        ""
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031540/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main3.jpg",
+        ""
+      ],
+      [
+        "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031541/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main4.jpg",
+        ""
+      ]
+    ],
+    "body_len": 233106
+  },
+  {
+    "key": "honor-magic-v6",
+    "sourceUrl": "https://www.honor.com/global/news/honor-magic-v6-launch/",
+    "sourceName": "HONOR — lançamento Magic V6 na Malásia",
+    "title": "HONOR Launches Magic V6: The Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity with Ultra-Slim Durability - HONOR Global",
+    "snippet": "HONOR Launches Magic V6: The Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity with Ultra-Slim Durability - HONOR Global // data layer javascript window.digitalData={\"page\":{\"pageInfo\":{\"pageName\":\"honor::global:news:honor-magic-v6-launch\",\"countryCode\":\"GLOBAL\",\"countryCodeForAPI\":\"GB\",\"siteCode\":\"global\",\"siteCode2\":\"global\",\"siteName\":\"United Kingdom (English)\",\"appNum\":\"A87295736\",\"dbName\":\"WWW_DEVICE_EN_H\",\"language\":\"en_global\",\"site\":\"honor\",\"uri\":\"/global/news/honor-magic-v6-launch/\",\"siteCodeForAPI\":\"worldwide-h\",\"pageNameForGTM\":\"news-honor-magic-v6-launch\",\"pageCategory1\":\"Official Site\",\"pageCategory2\":\"Brand\"},\"category\":{\"pageType\":\"news detail\",\"primaryCategory\":\"global\",\"subCategory1\":\"news\",\"subCategory2\":\"honor-magic-v6-launch\"}},\"event\":[]}; window.isArabicSite=false; window.languageShortNameForCodeAudio = \"en\"; window.verificationCodeAudioSwitch = localStorage.getItem(\"accessibility_switch_\" + window.digitalData.page.pageInfo.siteCode) === \"enabled\"; window.displayEnergyEfficiencyLabels= true; window.enableCDNIpExpected= true; window.countryLangAemConfig ={EURASIA: { siteCode: \"ru_UZ_X\", siteCode4Honor: \"ru_UZ_X\", languageCode: \"ru\" },ID: { sit",
+    "metas": [
+      [
+        "og:image",
+        "https://www.honor.com/content/dam/honor/global/news/2026/honor-magic-v6-launch/news-mb.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www-file.honor.com/content/dam/honor/common/logo/honor-logo-black.svg",
+        "HONOR"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        "HONOR Robot Phone"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        "HONOR Robot Phone"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        "HONOR Magic V6"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        ""
+      ]
+    ],
+    "body_len": 595586
+  },
+  {
+    "key": "xiaomi17ultra",
+    "sourceUrl": "https://www.mi.com/global/support/faq/details/KA-667490/",
+    "sourceName": "Xiaomi — FAQ global 17 Ultra",
+    "title": "Xiaomi 17 Ultra FAQ",
+    "snippet": "Xiaomi 17 Ultra FAQ !function(e,t,a,n,r){e[n]=e[n]||[],e[n].push({\"gtm.start\":(new Date).getTime(),event:\"gtm.js\"});var g=t.getElementsByTagName(a)[0],i=t.createElement(a);i.async=!0,i.src=\"https://www.googletagmanager.com/gtm.js?id=GTM-5KRKGGMR&l=infraConfigDataLayer\",g.parentNode.insertBefore(i,g)}(window,document,\"script\",\"infraConfigDataLayer\") window.xmot=window.xmot||function(){if((xmot.q=xmot.q||[]).push(arguments),\"getSettings\"===arguments[0])return{}} {\"@context\":\"http://schema.org/\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Xiaomi 17 Ultra FAQ\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Product Information\\nQ1: What series does the Xiaomi 17 Ultra belong to? \\nA: The Xiaomi 17 Ultra belongs to the Xiaomi series.\\n \\nQ2: What are the selling points of the Xiaomi 17 Ultra? \\nA: The selling points of the Xiaomi 17 Ultra are as follows:\\n1. The Xiaomi 17 Ultra features a Leica 200MP 75–100 mm telephoto camera.\\n2. It is equipped with a Leica 1-inch ultra-dynamic main camera.\\n3. It features Leica UltraPure optical design for purer and clearer imaging.\\n4. It packs a 6000 mAh (typ) Xiaomi Surge battery for long-lasting endurance.\\n5. It is powered by the Snap",
+    "metas": [
+      [
+        "og:image",
+        "https://i02.appmifile.com/i18n/share/new-logo.png"
+      ],
+      [
+        "twitter:image",
+        "https://i02.appmifile.com/i18n/share/new-logo.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://i01.appmifile.com/webfile/globalimg/logo/pwa-mi/72x72.png",
+        "Xiaomi 17 Ultra FAQ"
+      ],
+      [
+        "https://i01.appmifile.com/webfile/globalimg/pandora/user-head/user-avatar-v4-default.png",
+        "user avatar"
+      ]
+    ],
+    "body_len": 575418
+  },
+  {
+    "key": "oppo-findx9ultra",
+    "sourceUrl": "https://www.oppo.com/jp/newsroom/press/findx9ultra-release/",
+    "sourceName": "OPPO Japão — lançamento Find X9 Ultra",
+    "title": "光学10倍×5,000万画素超望遠カメラとデュアル2億画素カメラを搭載 「OPPO Find X9 Ultra」を7月8日（水）より販売開始 | OPPO Japan",
+    "snippet": "光学10倍×5,000万画素超望遠カメラとデュアル2億画素カメラを搭載 「OPPO Find X9 Ultra」を7月8日（水）より販売開始 | OPPO Japan window.DIGITAL_DATA = { pageInfo: { \"pageTitle\": \"光学10倍×5,000万画素超望遠カメラとデュアル2億画素カメラを搭載 「OPPO Find X9 Ultra」を7月8日（水）より販売開始\", \"pageGroup\": \"News Details Page\", \"countryCode\": \"jp\" } } (function () { var defaultSize = window .getComputedStyle(document.documentElement) .getPropertyValue(\"font-size\"); function getFontBase(windowWidth) { var fontBase = 0; var screenBreakPoints = [1440, 1024, 768, 360]; var arrLength = screenBreakPoints.length; for (var i = 0; i = breakpoint) { fontBase = breakpoint; break; } if (i === arrLength - 1 && fontBase === 0) { fontBase = screenBreakPoints[arrLength - 1]; } } return fontBase; } function setFontSize() { var ww = window.innerWidth; var maxWidth = 1440; if (ww > maxWidth) { ww = maxWidth; } var fontBase = getFontBase(ww); var fontSize = (100 * ww) / fontBase; var targetSize = (fontSize / parseFloat(defaultSize)) * 100 + \"%\"; document.documentElement.style.fontSize = targetSize; } setFontSize(); window.addEventListener(\"resize\", setFontSize); })(); window.lazySizesConfig = window.lazySizesConfig || {}; window.lazySizesConfig.customMedia = { 'md': '(max-width: 1080px)',",
+    "metas": [
+      [
+        "og:image",
+        "https://www.oppo.com/content/dam/oppo_com/jp/mkt/newsroom/press/2026/findx9ultra-release/PR_oppofindx9ultra_260608_header.webp"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/navigation/440-440-orange.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo_com/common/mkt/v2-2/find-x9-ultra-x9s-en/find-x9-ultra/navigation/440-440-brown.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/find-x9-series-en/navigation/find-x9/440-440-titanium-v2.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo_com/common/mkt/v2-2/oppo-reno16-series-en/navigation/reno16/440-440-white.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo_com/common/mkt/v2-2/reno15-series-en/navigation/reno15-f/440-blue.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/jp/mkt/homepage/navigation/header_a5_5g_400x400.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/oppo-pad3-en/navigation/440-440-silver-v3.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/pad-2-en/navigation/oppo-pad-2-440_440.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/oppo-pad-se-en/navigation/440-440-silver.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo_com/common/mkt/v2-2/oppo-enco-clip2-open-earbuds-en/navigation/440-440-black.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/enco-buds3-pro/navigation/white-440-440-v2.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/new-navigation/en/audio/Enco-air2-pro.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/new-navigation/en/audio/OPPO-Enco-Free2-white.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/new-navi/enco-buds-white.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/jp/mkt/homepage/new-navi/Band2_blue.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/new-navi/watch-free.png"
+      ],
+      [
+        "json-ld:image",
+        "/content/dam/oppo/common/mkt/v2-2/new-navi/Band-style_Black.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/navigation/440-440-orange.png",
+        "OPPO Find N6"
+      ],
+      [
+        "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-x9-ultra-x9s-en/find-x9-ultra/navigation/440-440-brown.png",
+        "OPPO Find X9 Ultra"
+      ],
+      [
+        "https://www.oppo.com/content/dam/oppo/common/mkt/v2-2/find-x9-series-en/navigation/find-x9/440-440-titanium-v2.png",
+        "OPPO Find X9"
+      ],
+      [
+        "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/oppo-reno16-series-en/navigation/reno16/440-440-white.png",
+        "OPPO Reno16 5G"
+      ],
+      [
+        "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/reno15-series-en/navigation/reno15-f/440-blue.png",
+        "OPPO Reno15 A"
+      ]
+    ],
+    "body_len": 152579
+  },
+  {
+    "key": "oneplus15-165hz",
+    "sourceUrl": "https://www.oneplus.com/us/15",
+    "sourceName": "OnePlus — especificações 15",
+    "title": "OnePlus 15",
+    "snippet": "OnePlus 15 { \"@context\" : \"https://schema.org\", \"@type\" : \"WebSite\", \"name\" : \"OnePlus\", \"url\" : \"https://www.oneplus.com/\" } body,html{overflow-x:hidden}.universal-loading-canvas{position:fixed;top:0;height:100%;width:100%}.universal-loading-canvas .univesal-loading-container{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.univesal-loading-container{display:block;width:48px;height:48px}@media screen and (max-width:735px){.univesal-loading-container{width:40px;height:40px}}.univesal-loading-container .universal-spinner{-webkit-animation:1.4s linear infinite rotator;animation:1.4s linear infinite rotator;width:100%;height:100%}.univesal-loading-container .path{stroke-dasharray:187;stroke-dashoffset:0;-webkit-transform-origin:center;transform-origin:center;stroke:#000;-webkit-animation:1.4s ease-in-out infinite dash;animation:1.4s ease-in-out infinite dash}@-webkit-keyframes rotator{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(270deg);transform:rotate(270deg)}}@keyframes rotator{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(270deg);transform:rotate(270deg)}}@-w",
+    "metas": [],
+    "imgs_sample": [
+      [
+        "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-kv-mo-logo-1-d6fa5b.png",
+        ""
+      ],
+      [
+        "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-kv-mo-bg-1-d2e7d7.png",
+        ""
+      ],
+      [
+        "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-kv-mo-phone-1-c46d36.png",
+        ""
+      ],
+      [
+        "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-performance-arrow-r-red-1-b2ac30.svg",
+        ""
+      ],
+      [
+        "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-performance-close-1-abd00e.svg",
+        ""
+      ]
+    ],
+    "body_len": 567452
+  },
+  {
+    "key": "typescript7-go",
+    "sourceUrl": "https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/",
+    "sourceName": "Microsoft — TypeScript 7",
+    "title": "Announcing TypeScript 7.0 - TypeScript",
+    "snippet": "// Initialize theme from localStorage or system preference let theme = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('theme', theme); const metaTag = document.createElement('meta'); metaTag.setAttribute('name', 'awa-ver'); metaTag.content = theme; document.head.appendChild(metaTag); isDarkTheme = theme === 'dark'; /* The theme is already set synchronously on above, so the legacy body-hide (visibility:hidden in the deferred theme stylesheet) is unnecessary and blocks the LCP paint; force the page visible immediately via an inline — unlike a , this is not gated on external stylesheet loads. */ html body { visibility: visible !important; opacity: 1 !important; } Announcing TypeScript 7.0 - TypeScript {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"Article\",\"@id\":\"https:\\/\\/devblogs.microsoft.com\\/typescript\\/announcing-typescript-7-0\\/#article\",\"isPartOf\":{\"@id\":\"https:\\/\\/devblogs.microsoft.com\\/typescript\\/announcing-typescript-7-0\\/\"},\"author\":{\"name\":\"Daniel Rosenwasser\",\"@id\":\"https:\\/\\/devblogs.microsoft.com\\/typescript\\/#\\/schema\\/person\\/12dfa7bf",
+    "metas": [
+      [
+        "og:image",
+        "https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2026/07/ts7-0-stable-1-1.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+        "Microsoft"
+      ],
+      [
+        "https://devblogs.microsoft.com/typescript/wp-content/themes/devblogs-evo/images/emojis/heart.svg",
+        "heart"
+      ],
+      [
+        "https://devblogs.microsoft.com/typescript/wp-content/themes/devblogs-evo/images/emojis/celebrate.svg",
+        "celebrate"
+      ],
+      [
+        "https://devblogs.microsoft.com/typescript/wp-content/themes/devblogs-evo/images/emojis/compelling.svg",
+        "compelling"
+      ],
+      [
+        "https://devblogs.microsoft.com/typescript/wp-content/themes/devblogs-evo/images/emojis/like.svg",
+        "like"
+      ]
+    ],
+    "body_len": 286249
+  },
+  {
+    "key": "npm-trusted-publishing",
+    "sourceUrl": "https://github.blog/changelog/2026-09-03-multiple-trusted-publishing-configurations-for-npm/",
+    "sourceName": "GitHub — trusted publishing npm",
+    "title": "Multiple trusted publishing configurations for npm - GitHub Changelog",
+    "snippet": "Multiple trusted publishing configurations for npm - GitHub Changelog {\"@context\":\"https:\\/\\/schema.org\",\"headline\":\"Multiple trusted publishing configurations for npm\",\"author\":{\"@type\":\"Person\",\"name\":\"Allison\"},\"datePublished\":\"2026-09-03T13:34:34-07:00\",\"abstract\":\"We&rsquo;re continuing to make trusted publishing smoother for npm publishers, guided by maintainers feedback. Three updates to npm publishing are now generally available: Multiple trusted publishing configurations per package Staged&hellip;\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/github.blog\\/changelog\\/2026-09-03-multiple-trusted-publishing-configurations-for-npm\"},\"@type\":\"TechArticle\"} {\"@context\":\"https:\\/\\/schema.org\",\"headline\":\"Multiple trusted publishing configurations for npm\",\"author\":{\"@type\":\"Person\",\"name\":\"Allison\"},\"datePublished\":\"2026-09-03T13:34:34-07:00\",\"abstract\":\"We&rsquo;re continuing to make trusted publishing smoother for npm publishers, guided by maintainers feedback. Three updates to npm publishing are now generally available: Multiple trusted publishing configurations per package Staged&hellip;\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/github.blog\\/changelog\\",
+    "metas": [
+      [
+        "og:image",
+        "https://github.blog/wp-content/uploads/2026/09/Changelog_NewRelease_Unfurl_Centered_MultipleTrustedPublishingConfigsNPM.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-new-releases.svg",
+        ""
+      ]
+    ],
+    "body_len": 96789
+  },
+  {
+    "key": "github-secrets-merge",
+    "sourceUrl": "https://github.blog/changelog/2026-09-09-block-pull-requests-with-exposed-secrets-from-merging/",
+    "sourceName": "GitHub — bloqueio de merge por segredos",
+    "title": "Block pull requests with exposed secrets from merging - GitHub Changelog",
+    "snippet": "Block pull requests with exposed secrets from merging - GitHub Changelog {\"@context\":\"https:\\/\\/schema.org\",\"headline\":\"Block pull requests with exposed secrets from merging\",\"author\":{\"@type\":\"Person\",\"name\":\"Allison\"},\"datePublished\":\"2026-09-09T10:14:02-07:00\",\"abstract\":\"Repository rulesets allow you to easily add scalable protections across your repositories. Starting today, you can use repository rulesets to block pull requests from merging when the pull request introduces&hellip;\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/github.blog\\/changelog\\/2026-09-09-block-pull-requests-with-exposed-secrets-from-merging\"},\"@type\":\"TechArticle\"} {\"@context\":\"https:\\/\\/schema.org\",\"headline\":\"Block pull requests with exposed secrets from merging\",\"author\":{\"@type\":\"Person\",\"name\":\"Allison\"},\"datePublished\":\"2026-09-09T10:14:02-07:00\",\"abstract\":\"Repository rulesets allow you to easily add scalable protections across your repositories. Starting today, you can use repository rulesets to block pull requests from merging when the pull request introduces&hellip;\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/github.blog\\/changelog\\/2026-09-09-block-pull-requests-with-exp",
+    "metas": [
+      [
+        "og:image",
+        "https://github.blog/wp-content/uploads/2026/09/Changelog_Improvement_Unfurl_TextOnly_BlockPullRequests.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-improvements.svg",
+        ""
+      ]
+    ],
+    "body_len": 104103
+  },
+  {
+    "key": "godot-mouse-polling",
+    "sourceUrl": "https://godotengine.org/article/fixing-high-polling-rate-mice-on-windows/",
+    "sourceName": "Godot — mouse polling no Windows",
+    "title": "Fixing high polling rate mice on Windows in Godot – Godot Engine",
+    "snippet": "Fixing high polling rate mice on Windows in Godot – Godot Engine Donate Features Console support Priorities Showcase Blog Community Assets Download Docs Contribute Donate Features Console support Priorities Community Forum Events document.addEventListener(\"DOMContentLoaded\",function(){const e=document.querySelectorAll(\"[data-dropdown]\");e.forEach(e=>{const n=e.getAttribute(\"data-dropdown\"),t=document.getElementById(n);if(t){let n=-1;const i=()=>{if(n===-1)return;clearTimeout(n),n=-1},a=()=>t.style.display===\"block\",r=()=>{if(a())return;if(window.innerWidth {if(!a())return;const o=()=>{i(),t.style.display=\"none\",e.classList.remove(\"dropdown-open\")};if(s){o();return}n=setTimeout(o,100)},l=e=>{if(window.innerWidth t=>{t.pointerType===\"touch\"&&e(t)},o=e=>t=>{t.pointerType!==\"touch\"&&e(t)};e.addEventListener(\"pointerup\",c(e=>l(e))),document.documentElement.addEventListener(\"pointerup\",c(n=>{!e.contains(n.target)&&!t.contains(n.target)&&s({instant:!0})})),e.addEventListener(\"pointerenter\",o(e=>r())),e.addEventListener(\"pointerleave\",o(e=>s())),t.addEventListener(\"pointerenter\",o(e=>i())),t.addEventListener(\"pointerleave\",o(e=>s()))}})}) Fixing high polling rate mice on Windows in Godot B",
+    "metas": [
+      [
+        "og:image",
+        "https://godotengine.org/storage/blog/covers/fixing-high-polling-rate-mice-on-windows.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://godotengine.org/assets/logo.svg",
+        "Godot Engine"
+      ],
+      [
+        "https://godotengine.org/assets/logo_dark.svg",
+        "Godot Engine"
+      ],
+      [
+        "https://godotengine.org/assets/icons/hamburger.svg",
+        "Main menu"
+      ],
+      [
+        "https://godotengine.org/storage/blog/covers/fixing-high-polling-rate-mice-on-windows.jpg",
+        " "
+      ],
+      [
+        "https://godotengine.org/assets/images/authors/calinou.webp",
+        "Hugo Locurcio"
+      ]
+    ],
+    "body_len": 35202
+  },
+  {
+    "key": "codeql-go127",
+    "sourceUrl": "https://github.blog/changelog/2026-09-03-codeql-2-26-4-improves-github-actions-security-detections/",
+    "sourceName": "GitHub — CodeQL 2.26.4",
+    "title": "CodeQL 2.26.4 improves GitHub actions security detections - GitHub Changelog",
+    "snippet": "CodeQL 2.26.4 improves GitHub actions security detections - GitHub Changelog {\"@context\":\"https:\\/\\/schema.org\",\"headline\":\"CodeQL 2.26.4 improves GitHub actions security detections\",\"author\":{\"@type\":\"Person\",\"name\":\"Allison\"},\"datePublished\":\"2026-09-03T07:04:59-07:00\",\"abstract\":\"CodeQL is the static analysis engine behind GitHub code scanning, which finds and remediates security issues in your code. We&rsquo;ve recently released CodeQL 2.26.4, which adds support for Go 1.27,&hellip;\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/github.blog\\/changelog\\/2026-09-03-codeql-2-26-4-improves-github-actions-security-detections\"},\"@type\":\"TechArticle\"} {\"@context\":\"https:\\/\\/schema.org\",\"headline\":\"CodeQL 2.26.4 improves GitHub actions security detections\",\"author\":{\"@type\":\"Person\",\"name\":\"Allison\"},\"datePublished\":\"2026-09-03T07:04:59-07:00\",\"abstract\":\"CodeQL is the static analysis engine behind GitHub code scanning, which finds and remediates security issues in your code. We&rsquo;ve recently released CodeQL 2.26.4, which adds support for Go 1.27,&hellip;\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/github.blog\\/changelog\\/2026-09-03-codeql-2-26-4-improves-githu",
+    "metas": [
+      [
+        "og:image",
+        "https://github.blog/wp-content/uploads/2026/09/642719862-23b15938-a289-499a-8382-c30fe42eefce.jpeg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-improvements.svg",
+        ""
+      ]
+    ],
+    "body_len": 103499
+  },
+  {
+    "key": "raspberrypi-radio",
+    "sourceUrl": "https://www.raspberrypi.com/news/build-an-internet-radio/",
+    "sourceName": "Raspberry Pi — rádio online",
+    "title": "Build an internet radio - Raspberry Pi",
+    "snippet": "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('consent', 'default', { 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'analytics_storage': 'denied' }); {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"Article\",\"@id\":\"https:\\/\\/www.raspberrypi.com\\/news\\/build-an-internet-radio\\/#article\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.raspberrypi.com\\/news\\/build-an-internet-radio\\/\"},\"author\":{\"name\":\"Phil King\",\"@id\":\"https:\\/\\/www.raspberrypi.com\\/#\\/schema\\/person\\/1cf13774ac8b9a6be4be0b5b55001d13\"},\"headline\":\"Build an internet radio\",\"datePublished\":\"2026-09-03T09:12:33+00:00\",\"dateModified\":\"2026-09-04T09:31:53+00:00\",\"mainEntityOfPage\":{\"@id\":\"https:\\/\\/www.raspberrypi.com\\/news\\/build-an-internet-radio\\/\"},\"wordCount\":1236,\"commentCount\":6,\"publisher\":{\"@id\":\"https:\\/\\/www.raspberrypi.com\\/#organization\"},\"image\":{\"@id\":\"https:\\/\\/www.raspberrypi.com\\/news\\/build-an-internet-radio\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.raspberrypi.com\\/app\\/uploads\\/2026\\/08\\/segz2e-09-03.jpg\",\"keywords\":[\"radio\",\"Raspberry Pi tutorial\"],\"articleSection\":[\"Publications\",\"Tutorial\"],\"inLanguage\":\"en-GB\",\"potentia",
+    "metas": [
+      [
+        "og:image",
+        "https://www.raspberrypi.com/app/uploads/2026/08/segz2e-09-03-1024x683.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.raspberrypi.com/app/uploads/2018/04/PhilKing-229x300.jpg",
+        ""
+      ],
+      [
+        "https://www.raspberrypi.com/app/uploads/2026/08/segz2e-09-03-1024x683.jpg",
+        ""
+      ],
+      [
+        "https://www.raspberrypi.com/app/uploads/2026/08/segz2e-09-01-1024x535.png",
+        ""
+      ],
+      [
+        "https://www.raspberrypi.com/app/uploads/2026/08/segz2e-09-02-1024x541.png",
+        ""
+      ],
+      [
+        "https://www.raspberrypi.com/app/uploads/2026/08/GPIO-Zero-Essentials-Book-Cover.jpg",
+        ""
+      ]
+    ],
+    "body_len": 129090
+  },
+  {
+    "key": "unitree-robos-fabrica",
+    "sourceUrl": "https://www.unitree.com/about/",
+    "sourceName": "Unitree — cronologia oficial",
+    "title": "About Unitree - Unitree Robotics",
+    "snippet": "About Unitree - Unitree Robotics Unitree Robotics is a world-renowned civilian robotics company, which is focusing on the R&amp;D, production, and sales of consumer and industry-class high-performance general-purpose legged and humanoid robots, six-axis manipulators, and so on.Unitree Robotics has been invited to attend the 2021 CCTV Spring Festival Gala, the opening ceremony of Winter Games 2022, the 2023 Super Bowl, The 19th Asian Games and The 4th Asian Para Games, and the 2025 Year of the Snake CCTV Spring Festival Gala, and has been interviewed and reported by CCTV and other well-known media for many times.Unitree Robotics is the world‘s first company to start public retail of high-performance quadruped robots, and the first to achieve industry landing, with global sales leading over the years. Unitree has excellent leadership in core robot parts, motion control, robot sensing and other comprehensive fields. Unitree attaches great importance to independent research and development and technological innovation, fully self-researching key core robot components such as motors, reducers, controllers, LIDAR and high-performance perception and motion control algorithms, integrating ",
+    "metas": [],
+    "imgs_sample": [
+      [
+        "https://www.unitree.com/images/7dd9ff96debd40bfb67e29d15ef3a0e0_1600x1200.png",
+        ""
+      ],
+      [
+        "https://www.unitree.com/images/666488e01aba4f0a9051c8488056dca8_1600x1200.png",
+        ""
+      ],
+      [
+        "https://www.unitree.com/images/0e78dffa1e6f47deb8526a1d3000b96f_1600x1200.png",
+        ""
+      ],
+      [
+        "https://www.unitree.com/images/ac84be21e7ac4ae19c3e30dbd824dedf_1600x1200.png",
+        ""
+      ],
+      [
+        "https://www.unitree.com/images/13fbc296587d4201a6940a437d080d1c_1600x1200.png",
+        ""
+      ]
+    ],
+    "body_len": 32197
+  },
+  {
+    "key": "honor-robot-phone",
+    "sourceUrl": "https://www.honor.com/global/news/honor-mwc2026-launch/",
+    "sourceName": "HONOR — MWC 2026",
+    "title": "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6 - HONOR Global",
+    "snippet": "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6 - HONOR Global // data layer javascript window.digitalData={\"page\":{\"pageInfo\":{\"pageName\":\"honor::global:news:honor-mwc2026-launch\",\"countryCode\":\"GLOBAL\",\"countryCodeForAPI\":\"GB\",\"siteCode\":\"global\",\"siteCode2\":\"global\",\"siteName\":\"United Kingdom (English)\",\"appNum\":\"A87295736\",\"dbName\":\"WWW_DEVICE_EN_H\",\"language\":\"en_global\",\"site\":\"honor\",\"uri\":\"/global/news/honor-mwc2026-launch/\",\"siteCodeForAPI\":\"worldwide-h\",\"pageNameForGTM\":\"news-honor-mwc2026-launch\",\"pageCategory1\":\"Official Site\",\"pageCategory2\":\"Brand\"},\"category\":{\"pageType\":\"news detail\",\"primaryCategory\":\"global\",\"subCategory1\":\"news\",\"subCategory2\":\"honor-mwc2026-launch\"}},\"event\":[]}; window.isArabicSite=false; window.languageShortNameForCodeAudio = \"en\"; window.verificationCodeAudioSwitch = localStorage.getItem(\"accessibility_switch_\" + window.digitalData.page.pageInfo.siteCode) === \"enabled\"; window.displayEnergyEfficiencyLabels= true; window.enableCDNIpExpected= true; window.countryLangAemConfig ={EURASIA: { siteCode: \"ru_UZ_X\", siteCode4Honor: \"ru_UZ_X\", languageCode: \"ru\" },ID: { siteCode: \"in_ID_X\", siteCode4Honor: \"in_ID_",
+    "metas": [
+      [
+        "og:image",
+        "https://www.honor.com/content/dam/honor/global/news/2026/honor-mwc2026-launch/news-mb.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www-file.honor.com/content/dam/honor/common/logo/honor-logo-black.svg",
+        "HONOR"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        "HONOR Robot Phone"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        "HONOR Robot Phone"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        "HONOR Magic V6"
+      ],
+      [
+        "https://www.honor.com/etc/designs/honor-site/assets/lazyload/placeholder.png",
+        ""
+      ]
+    ],
+    "body_len": 595961
+  },
+  {
+    "key": "xiaomi-vision-gran-turismo",
+    "sourceUrl": "https://www.mi.com/global/discover/article?id=5972",
+    "sourceName": "Xiaomi — anúncio global de fevereiro",
+    "title": "Xiaomi Global Home",
+    "snippet": "Xiaomi Global Home !function(e,t,a,n,r){e[n]=e[n]||[],e[n].push({\"gtm.start\":(new Date).getTime(),event:\"gtm.js\"});var g=t.getElementsByTagName(a)[0],i=t.createElement(a);i.async=!0,i.src=\"https://www.googletagmanager.com/gtm.js?id=GTM-5KRKGGMR&l=infraConfigDataLayer\",g.parentNode.insertBefore(i,g)}(window,document,\"script\",\"infraConfigDataLayer\") window.xmot=window.xmot||function(){if((xmot.q=xmot.q||[]).push(arguments),\"getSettings\"===arguments[0])return{}} window.dataLayer=window.dataLayer||[] !function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({\"gtm.start\":(new Date).getTime(),event:\"gtm.js\"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src=\"https://www.googletagmanager.com/gtm.js?id=GTM-N7BDPG6\",m.parentNode.insertBefore(r,m)}(window,document,\"script\",\"dataLayer\") !function(e){var n=\"https://s.go-mpulse.net/boomerang/\";if(\"False\"==\"True\")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n=\"https://s2.go-mpulse.net/boomerang/\";if(window.BOOMR_API_key=\"CGK7X-KWLZ2-9JBMW-YPK4H-NXS33\",function(){function e(){if(!i){var e=document.createElement(\"script\");e.id=\"boomr-scr-as\",e.src=window.BOOMR",
+    "metas": [
+      [
+        "og:image",
+        "https://i02.appmifile.com/i18n/share/new-logo.png"
+      ],
+      [
+        "twitter:image",
+        "https://i02.appmifile.com/i18n/share/new-logo.png"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://i01.appmifile.com/webfile/globalimg/logo/pwa-mi/72x72.png",
+        "Xiaomi Global Home"
+      ],
+      [
+        "https://i01.appmifile.com/webfile/globalimg/pandora/user-head/user-avatar-v4-default.png",
+        "user avatar"
+      ]
+    ],
+    "body_len": 42794
+  },
+  {
+    "key": "model-hardware-standard",
+    "sourceUrl": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+    "sourceName": "Anthropic — prévia MHS",
+    "title": "Previewing the Model Hardware Standard \\ Anthropic",
+    "snippet": "Previewing the Model Hardware Standard \\ Anthropic Skip to main content Skip to footer Research Policy Commitments Learn News Try Claude Announcements Beneficial Deployments Previewing the Model Hardware Standard Aug 27, 2026 We’re opening a research preview of the Model Hardware Standard (MHS), a shared specification for AI agents to safely operate physical devices, to a first group of scientific research labs and advanced manufacturers. MHS enables AI agents to operate multiple lab and manufacturing instruments, such as microscopes, liquid handlers, and robotic arms, in parallel, and perform intricate tasks ranging from routine drug discovery experiments to laser calibration on a quantum computer. The development of MHS began as a collaboration between Anthropic and HHMI Janelia Research Campus . It typically takes a lab or manufacturing facility weeks, if not months, to set up and integrate their hardware. Most devices don’t communicate with each other, instead requiring specialists to build bespoke integrations. MHS reduces this integration work to hours or minutes. And by incorporating AI into these tools, MHS also helps researchers and engineers more readily orchestrate auton",
+    "metas": [
+      [
+        "og:image",
+        "https://cdn.sanity.io/images/4zrzovbb/website/5008271abbababe59f4fbb01998697f7dd0b5b60-1280x720.jpg"
+      ],
+      [
+        "twitter:image",
+        "https://cdn.sanity.io/images/4zrzovbb/website/5008271abbababe59f4fbb01998697f7dd0b5b60-1280x720.jpg"
+      ]
+    ],
+    "imgs_sample": [
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F0aa7623ba0e545ce39e0de725583c0445ce6b76d-1999x1250.png&w=3840&q=75",
+        ""
+      ],
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F943af4b43644ab0d213ba362eabd609c98cd8887-1999x1125.jpg&w=3840&q=75",
+        ""
+      ],
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F34951ed9f87af7ef8b6d639b6e68f4f294e36804-1999x912.png&w=3840&q=75",
+        ""
+      ],
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fb451d157b06b5977035c6c711eea044c89c15f43-1999x1377.png&w=3840&q=75",
+        ""
+      ],
+      [
+        "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fcd09961c40c470e184f91a38957262312caa2260-1999x1125.png&w=3840&q=75",
+        ""
+      ]
+    ],
+    "body_len": 396761
+  }
+]

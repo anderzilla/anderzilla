@@ -1,0 +1,2241 @@
+{
+  "approvedForImport": false,
+  "items": [
+    {
+      "key": "gta-vi-data-plataformas",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://www.rockstargames.com/VI/_next/static/media/featured.0y5yxwenpsgc3.jpg?akim=1&imdensity=1&imwidth=3840",
+          "sourcePage": "https://www.rockstargames.com/VI",
+          "credit": "Rockstar Games",
+          "rightsUrl": "https://www.rockstargames.com/VI",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Cena de GTA VI divulgada pela Rockstar Games.",
+          "altEN": "GTA VI scene published by Rockstar Games.",
+          "kind": "screenshot",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8e65b05b5b85083feb6d10a560c71b37f6cfff7415efe03e41c192fa95cd3b29.webp",
+          "width": 1600,
+          "height": 821,
+          "bytes": 112376,
+          "cmsTitle": "gta-vi-data-plataformas — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.rockstargames.com/VI/_next/static/media/trailer-2.0l.7aqib91fz6.jpg?akim=1&imdensity=1&imwidth=3840",
+          "sourcePage": "https://www.rockstargames.com/VI",
+          "credit": "Rockstar Games",
+          "rightsUrl": "https://www.rockstargames.com/VI",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Cena de GTA VI divulgada pela Rockstar Games.",
+          "altEN": "GTA VI scene published by Rockstar Games.",
+          "kind": "screenshot",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\4ff46c160669a1af27847ac8ca28f8f4d2fec3b1d507cb7da93b6f049a1c69c4.webp",
+          "width": 1080,
+          "height": 1600,
+          "bytes": 242862,
+          "cmsTitle": "gta-vi-data-plataformas — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.rockstargames.com/VI/_next/static/media/poster_full.0az_iud2g3y4j.jpg?akim=1&imdensity=1&imwidth=3840",
+          "sourcePage": "https://www.rockstargames.com/VI",
+          "credit": "Rockstar Games",
+          "rightsUrl": "https://www.rockstargames.com/legal",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.rockstargames.com/VI; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de gta vi data plataformas — foto do corpo da matéria",
+          "altEN": "Official gta vi data plataformas image — body photo",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\fe6684a52f8af74674ab3d04be1842d12bcb046b03bbb6ff1f273416915a23bd.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 275730,
+          "cmsTitle": "gta-vi-data-plataformas — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "modern-warfare-4-confirmado",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Activision / Call of Duty",
+      "images": [
+        {
+          "url": "https://i.ytimg.com/vi/jLbst85USN8/maxresdefault.jpg",
+          "sourcePage": "https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement",
+          "credit": "Activision / Call of Duty",
+          "rightsUrl": "https://www.callofduty.com/legal/terms",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Video Thumbnail",
+          "altEN": "Video Thumbnail",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\3d15e7e52f394459e7a37847d5f2199298f037e1497e28f045a14a0863fe0463.webp",
+          "width": 1280,
+          "height": 720,
+          "bytes": 86606,
+          "cmsTitle": "modern-warfare-4-confirmado — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/Rex_Reveal_Blog-Item.webp",
+          "sourcePage": "https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement",
+          "credit": "Activision / Call of Duty",
+          "rightsUrl": "https://www.callofduty.com/legal/terms",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de modern warfare 4 confirmado — foto do corpo da matéria",
+          "altEN": "Official modern warfare 4 confirmado image — body photo",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\79c7c0248aba987ad99c4950abbd09ab5861feef45e97f1066da70d0eee1c051.webp",
+          "width": 900,
+          "height": 1600,
+          "bytes": 170612,
+          "cmsTitle": "modern-warfare-4-confirmado — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-001.webp",
+          "sourcePage": "https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement",
+          "credit": "Activision / Call of Duty",
+          "rightsUrl": "https://www.callofduty.com/legal/terms",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de modern warfare 4 confirmado — foto do corpo da matéria",
+          "altEN": "Official modern warfare 4 confirmado image — body photo",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\6eed7c58769be92b3a7f18128e20deb4c704a5ff8482e6bcb184d125db89b13d.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 133574,
+          "cmsTitle": "modern-warfare-4-confirmado — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "control-resonant-assist-mode",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2028/09/805dc24cfeb0a3136d766b4e28d4d1a269bfde1b.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/10/play-your-way-with-control-resonants-expanded-assist-mode/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Play your way with Control Resonant’s expanded Assist Mode",
+          "altEN": "Play your way with Control Resonant’s expanded Assist Mode",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\6821176ba505a98b4560844ec94a6d46601c04fafdd34329eba97652c19b36c6.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 55018,
+          "cmsTitle": "control-resonant-assist-mode — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55508659423_c0cbabbc3b_k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/10/play-your-way-with-control-resonants-expanded-assist-mode/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Captura de tela de Control Resonant destacando opções de acessibilidade no modo assistivo",
+          "altEN": "Control Resonant screenshot highlighting accessibility options in Assist Mode",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a6f47d0fea8ab38073523160e3766f51564d07861f821d70e2cf15d1b552e599.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 201640,
+          "cmsTitle": "control-resonant-assist-mode — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55508659818_d2620720d6_4k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/10/play-your-way-with-control-resonants-expanded-assist-mode/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem destacada de Control Resonant no PlayStation Blog",
+          "altEN": "Control Resonant featured image on PlayStation Blog",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5364d38eec8568988544594d0e22fd13129e39250abf6dacb019db3c95143ca1.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 40812,
+          "cmsTitle": "control-resonant-assist-mode — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "no-mans-sky-cosmos",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://live.staticflickr.com/65535/55514359487_e80a0d2581_4k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/introducing-no-mans-sky-cosmos-update-live-on-ps5-today/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de No Man's Sky: Cosmos para PS5",
+          "altEN": "Official No Man's Sky: Cosmos image for PS5",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\61d0ff506c38d1a004a1ee690af57dae1383cfe8c8eb3d862944b68f520eb9e3.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 75846,
+          "cmsTitle": "no-mans-sky-cosmos — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://i.ytimg.com/vi/8MSNYzsNk_E/maxresdefault.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/introducing-no-mans-sky-cosmos-update-live-on-ps5-today/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Introducing No Man’s Sky: Cosmos update, live on PS5 today",
+          "altEN": "Introducing No Man’s Sky: Cosmos update, live on PS5 today",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8776475d6bc36c94a973a1da836eadd61877e04183bcb642a41fc29b477bc0cf.webp",
+          "width": 1280,
+          "height": 720,
+          "bytes": 112142,
+          "cmsTitle": "no-mans-sky-cosmos — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "muramasa-revenant-blades",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://live.staticflickr.com/65535/55508721124_598d5b2cb3_4k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/10/muramasa-revenant-blades-launches-february-4-2027/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de Muramasa: Revenant Blades com data de lançamento",
+          "altEN": "Official Muramasa: Revenant Blades image with launch date",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\021e0e1b4d0194da719a4706e3d50c5920a35af02c3243927ee4859a6e1f6c5f.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 262168,
+          "cmsTitle": "muramasa-revenant-blades — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2028/09/34e2d12bc6c74a76dd80303a202de7bc2fcc54a9.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/10/muramasa-revenant-blades-launches-february-4-2027/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Captura de tela de Muramasa: Revenant Blades exibindo combate",
+          "altEN": "Muramasa: Revenant Blades screenshot showing combat",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2df8ad8540e228ecf457a6b1db714a4b61a43172d4638914488d9e4a70563be9.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 147096,
+          "cmsTitle": "muramasa-revenant-blades — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "doa-minato",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/1a05883d89d3374af40adabfea45e78b8eff62fb.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/introducing-dead-or-alive-6-last-rounds-new-fighter-minato/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Introducing Dead or Alive 6 Last Round’s new fighter, Minato",
+          "altEN": "Introducing Dead or Alive 6 Last Round’s new fighter, Minato",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c9bf88627f657b86d49f47147502c388f5158c7c633af5b51a7278608489601c.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 77858,
+          "cmsTitle": "doa-minato — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55508644453_d409331ebf_k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/introducing-dead-or-alive-6-last-rounds-new-fighter-minato/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de doa minato — foto do corpo da matéria",
+          "altEN": "Official doa minato image — body photo",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\813d6c2ed0f0fe48bfd209729df2886c33de92b986cf5001364f75fe6e847f2b.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 158372,
+          "cmsTitle": "doa-minato — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55507533477_13c47394ed_k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/introducing-dead-or-alive-6-last-rounds-new-fighter-minato/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de doa minato — foto do corpo da matéria",
+          "altEN": "Official doa minato image — body photo",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a492bc83de0842fd17e7a1050be4daf9abf6db3c10e2f54a5e842ac2a306b70d.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 158142,
+          "cmsTitle": "doa-minato — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "zero-company-escolha-jogadores",
+      "status": "ready",
+      "reason": "Fonte específica recuperada e capa oficial inspecionada visualmente.",
+      "articleSourceUrl": "https://blog.playstation.com/2026/09/10/players-choice-vote-for-augusts-best-new-game-3/",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/1f0c508aff62bebf2a659f5fd428b9f92cdbef81.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/10/players-choice-vote-for-augusts-best-new-game-3/",
+          "credit": "Electronic Arts / Lucasfilm Games — via PlayStation Blog",
+          "rightsUrl": "https://blog.playstation.com/2026/09/10/players-choice-vote-for-augusts-best-new-game-3/",
+          "rightsBasis": "Arte de divulgação publicada na notícia oficial do resultado da votação. Direitos dos titulares preservados; não é fotografia.",
+          "kind": "official-artwork",
+          "altPT": "Arte oficial de Star Wars Zero Company reunindo os personagens do jogo.",
+          "altEN": "Official Star Wars Zero Company artwork featuring the game characters.",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b053ebbd173305361a1448146257d1773a1d27b8a8bd7855a73094a926e8c684.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 75382,
+          "cmsTitle": "zero-company-escolha-jogadores — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "ffvii-revelation-data",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://live.staticflickr.com/65535/55505859268_491f17c8b1_k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/final-fantasy-vii-revelation-launches-on-ps5-april-8-2027/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de ffvii revelation data — foto do corpo da matéria",
+          "altEN": "Official ffvii revelation data image — body photo",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8b738561e60adeb37a0f15901b88fa09fbd1c96d60ac90de948599e73f3dccc5.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 351226,
+          "cmsTitle": "ffvii-revelation-data — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/b2011ae5a054c3ae375a364174ee44aff00a0602.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/final-fantasy-vii-revelation-launches-on-ps5-april-8-2027/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Final Fantasy VII Revelation launches on PS5 April 8, 2027",
+          "altEN": "Final Fantasy VII Revelation launches on PS5 April 8, 2027",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a5cb9ab38b578c1bad60dac902cea1712dd6514cdc4cd7196e91a8bc271b851d.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 117102,
+          "cmsTitle": "ffvii-revelation-data — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "cod-the-haunting-setembro",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 2 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://i.ytimg.com/vi/loeFxc7AyrY/maxresdefault.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/08/call-of-duty-black-ops-7-and-warzone-season-06-launches-the-haunting-september-17/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Call of Duty: Black Ops 7 and Warzone Season 06 launches The Haunting September 17",
+          "altEN": "Call of Duty: Black Ops 7 and Warzone Season 06 launches The Haunting September 17",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8a07ec10c8e2be8bc3acc3b5b0f09c137a3683107d907f8e40724ee06f2e9817.webp",
+          "width": 1280,
+          "height": 720,
+          "bytes": 90052,
+          "cmsTitle": "cod-the-haunting-setembro — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/18e581351f2ed2273a5e97ea892561e8f5b92937.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/08/call-of-duty-black-ops-7-and-warzone-season-06-launches-the-haunting-september-17/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Call of Duty: Black Ops 7 and Warzone Season 06 launches The Haunting September 17",
+          "altEN": "Call of Duty: Black Ops 7 and Warzone Season 06 launches The Haunting September 17",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a2eab2ca72dba9092daeb3aabd32de8603cdfa01006baaf7daea5bb659158016.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 79380,
+          "cmsTitle": "cod-the-haunting-setembro — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "physint-xbox-kojima",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/KJPXBOX-a19bab905ef4e406d93c.jpg",
+          "sourcePage": "https://news.xbox.com/en-us/2026/09/09/xbox-and-kojima-productions-expand-partnership-to-publish-physint/",
+          "credit": "Microsoft / Xbox",
+          "rightsUrl": "https://news.xbox.com/en-us/2026/09/09/xbox-and-kojima-productions-expand-partnership-to-publish-physint/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Imagem oficial do anúncio Xbox.",
+          "altEN": "Official image accompanying the Xbox announcement.",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\0417848e9442c5b58142e06e10e10f466021129cde7c91f209a93ad0addd79ae.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 17374,
+          "cmsTitle": "physint-xbox-kojima — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "rog-xbox-ally-x20",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (ArticlePost__content) — HTTP verificável; crédito ASUS ROG",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/17871899038.jpg",
+          "sourcePage": "https://rog.asus.com/us/articles/rog-ally/pre-order-your-rog-xbox-ally-x20-today-standalone-or-as-part-of-an-incredible-rog-20th-anniversary-bundle/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG XBOX Ally X20 bundle on a table",
+          "altEN": "The ROG XBOX Ally X20 bundle on a table",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\e53fa9cc9550b48e170a97dd62e8c85f3604fb6ef2f2aa1c96c970b5c4809979.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 94510,
+          "cmsTitle": "rog-xbox-ally-x20 — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787189901696.jpg",
+          "sourcePage": "https://rog.asus.com/us/articles/rog-ally/pre-order-your-rog-xbox-ally-x20-today-standalone-or-as-part-of-an-incredible-rog-20th-anniversary-bundle/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "A woman playing the ROG XBOX Ally X20 with Forza Horizon 6 on screen",
+          "altEN": "A woman playing the ROG XBOX Ally X20 with Forza Horizon 6 on screen",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2d193ad29a8f626e0e7b796a1a31e10b2e9955ee28833e7e7e204151c13b3f7e.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 108586,
+          "cmsTitle": "rog-xbox-ally-x20 — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787189905549.jpg",
+          "sourcePage": "https://rog.asus.com/us/articles/rog-ally/pre-order-your-rog-xbox-ally-x20-today-standalone-or-as-part-of-an-incredible-rog-20th-anniversary-bundle/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "A man playing the ROG XBOX Ally X20 on a couch with the R1 Gaming Glasses, a virtual screen projected in front of him",
+          "altEN": "A man playing the ROG XBOX Ally X20 on a couch with the R1 Gaming Glasses, a virtual screen projected in front of him",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d52e222e93385ebd9d1a05d6aaac88d88e258aed75d8c0177d0ac68732ca950e.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 162788,
+          "cmsTitle": "rog-xbox-ally-x20 — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "rog-ally-atualizacao-dock",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/04/ROG_FINAL_no-guns-JPG-3c2bcd603c2bf170f6d0.jpg",
+          "sourcePage": "https://news.xbox.com/en-us/2026/04/30/rog-xbox-ally-update-docking-library-vibration-auto-sr/",
+          "credit": "Microsoft / Xbox",
+          "rightsUrl": "https://news.xbox.com/en-us/2026/04/30/rog-xbox-ally-update-docking-library-vibration-auto-sr/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Imagem oficial do anúncio Xbox.",
+          "altEN": "Official image accompanying the Xbox announcement.",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a78503e34b49eba1981a05971798ddb514fd14def05573487569b01ca8bf642d.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 301204,
+          "cmsTitle": "rog-ally-atualizacao-dock — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "playstation-portal-1080p",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/03/4f453850da8724db2d6f1404b8c568b174c35018.png",
+          "sourcePage": "https://blog.playstation.com/2026/03/17/new-playstation-portal-software-update-adds-1080p-high-quality-mode-and-ux-refinements/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "\"1080p High Quality mode setting screen\"",
+          "altEN": "\"1080p High Quality mode setting screen\"",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\416f3a638a39f9c338a8aff47220841e9490d6cafeb9200c64ebdeabd48af443.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 210950,
+          "cmsTitle": "playstation-portal-1080p — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/03/41e446398254cfad40fb870bbdbdea8dfecae192.png",
+          "sourcePage": "https://blog.playstation.com/2026/03/17/new-playstation-portal-software-update-adds-1080p-high-quality-mode-and-ux-refinements/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "\"Select the specific game you want to play from the bundle\"",
+          "altEN": "\"Select the specific game you want to play from the bundle\"",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d5212e0213e94234cf392e708ad9f866f8e5b2c5085a9af8d7727bf0af18e1e5.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 34950,
+          "cmsTitle": "playstation-portal-1080p — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/03/63c3742fdd19a8b8eceea56d859b443b910de4d6.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/03/17/new-playstation-portal-software-update-adds-1080p-high-quality-mode-and-ux-refinements/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "\"Scan the QR code to create an account\"",
+          "altEN": "\"Scan the QR code to create an account\"",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8a14a1859a5d3e0b538542cb60bc3ceeea2787cb013dd9d2a5e75fd6b50be540.webp",
+          "width": 1200,
+          "height": 608,
+          "bytes": 33930,
+          "cmsTitle": "playstation-portal-1080p — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "legion-go-steamos",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Lenovo",
+      "images": [
+        {
+          "url": "https://media.lenovonews.fiestic.com/2026/01/08043839/LegionGo1.png",
+          "sourcePage": "https://news.lenovo.com/pressroom/press-releases/lenovo-levels-up-ces-with-legion-gaming-devices/",
+          "credit": "Lenovo",
+          "rightsUrl": "https://news.lenovo.com/pressroom/",
+          "rightsBasis": "Lenovo StoryHub – imagem oficial do corpo da matéria (singular-article); foto oficial oferecida para cobertura editorial (verificar termos Lenovo)",
+          "altPT": "Imagem oficial de legion go steamos — foto do corpo da matéria",
+          "altEN": "Official legion go steamos image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\474be9319d855273e6e8059b27a901869f02baf6a3ddf19703c06290d5b9faa5.webp",
+          "width": 975,
+          "height": 650,
+          "bytes": 36880,
+          "cmsTitle": "legion-go-steamos — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "steam-deck-oled-ficha",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://cdn.fastly.steamstatic.com/steamdeck/images/oled/social_media_image.jpg",
+          "sourcePage": "https://www.steamdeck.com/en/tech/oled",
+          "credit": "Valve",
+          "rightsUrl": "https://www.steamdeck.com/en/tech/oled",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Steam Deck OLED em imagem oficial de divulgação.",
+          "altEN": "Steam Deck OLED in official promotional imagery.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f5f1f907202218fe529f2e0aa940043b62279f028cd0ae8f0ef8567a30cbaf28.webp",
+          "width": 1080,
+          "height": 536,
+          "bytes": 10188,
+          "cmsTitle": "steam-deck-oled-ficha — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_mobile_1_english.png",
+          "sourcePage": "https://www.steamdeck.com/en/tech/oled",
+          "credit": "Valve / Steam Deck",
+          "rightsUrl": "https://store.steampowered.com/legal/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.steamdeck.com/en/tech/oled; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de steam deck oled ficha — foto do corpo da matéria",
+          "altEN": "Official steam deck oled ficha image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\24639f55e88a47ea4a957c555086fb023968ae29ac71f316e9245996d1d52542.webp",
+          "width": 1420,
+          "height": 720,
+          "bytes": 28526,
+          "cmsTitle": "steam-deck-oled-ficha — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_2_english.png",
+          "sourcePage": "https://www.steamdeck.com/en/tech/oled",
+          "credit": "Valve / Steam Deck",
+          "rightsUrl": "https://store.steampowered.com/legal/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.steamdeck.com/en/tech/oled; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de steam deck oled ficha — foto do corpo da matéria",
+          "altEN": "Official steam deck oled ficha image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\93108476c761a2d17b1e5eebf23153c35d4d7aebbdc3c3ab271fd89bdeba6011.webp",
+          "width": 1600,
+          "height": 452,
+          "bytes": 20814,
+          "cmsTitle": "steam-deck-oled-ficha — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "switch-2-bundles",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 2 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Nintendo",
+      "images": [
+        {
+          "url": "https://assets.nintendo.com/image/upload/q_auto:best/f_auto/c_fill,w_813/dpr_2.0/ncom/en_US/articles/2026/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/MarioKartWorldBundle",
+          "sourcePage": "https://www.nintendo.com/us/whatsnew/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/",
+          "credit": "Nintendo",
+          "rightsUrl": "https://www.nintendo.com/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.nintendo.com/us/whatsnew/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de switch 2 bundles — foto do corpo da matéria",
+          "altEN": "Official switch 2 bundles image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\9aff9bf8781aec3cef7fe6c4d3785494ae234b0a3e95baa593c24a85917e28c2.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 101308,
+          "cmsTitle": "switch-2-bundles — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/ncom/en_US/articles/2026/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/NSSR_Bundle",
+          "sourcePage": "https://www.nintendo.com/us/whatsnew/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/",
+          "credit": "Nintendo",
+          "rightsUrl": "https://www.nintendo.com/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.nintendo.com/us/whatsnew/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de switch 2 bundles — foto do corpo da matéria",
+          "altEN": "Official switch 2 bundles image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f7a4ec993e106e93daeb94a2002391cc13d8d77d9860488f84c2f0ae8fec9d51.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 68964,
+          "cmsTitle": "switch-2-bundles — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "ps-plus-setembro-catalogo",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/1a99d9682f34d3b6309a1c08879506eca547812a.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/playstation-plus-game-catalog-for-september-runescape-dragonwilds-wwe-2k26-ball-x-pit-date-everything-and-more/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "PlayStation Plus Game Catalog for September: RuneScape: Dragonwilds, WWE 2K26, Ball x Pit, Date Everything! and more",
+          "altEN": "PlayStation Plus Game Catalog for September: RuneScape: Dragonwilds, WWE 2K26, Ball x Pit, Date Everything! and more",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\eebae4a7a5fcd685b9491791fcefbeb3e2b058e64f092b92e625e7f059d142bb.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 70210,
+          "cmsTitle": "ps-plus-setembro-catalogo — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/0645476d1f7c9a97321fae602adaa847552c514b.jpeg",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/playstation-plus-game-catalog-for-september-runescape-dragonwilds-wwe-2k26-ball-x-pit-date-everything-and-more/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de ps plus setembro catalogo — foto do corpo da matéria",
+          "altEN": "Official ps plus setembro catalogo image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\61d540edc6623fa56209636e9e14f70a813e102f0aad9e3f63456d262cdda9dd.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 163898,
+          "cmsTitle": "ps-plus-setembro-catalogo — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/8d3bec7aebf639f2df99ea34e543b5e38455cc9e.jpeg",
+          "sourcePage": "https://blog.playstation.com/2026/09/09/playstation-plus-game-catalog-for-september-runescape-dragonwilds-wwe-2k26-ball-x-pit-date-everything-and-more/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de ps plus setembro catalogo — foto do corpo da matéria",
+          "altEN": "Official ps plus setembro catalogo image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\52579985a7ce469fad2e3a0e2c651c5a09db6706a9023c3f4bce6bf3a9777ff6.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 244856,
+          "cmsTitle": "ps-plus-setembro-catalogo — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "xbox-insiders-setembro",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/0.-Hero-26909-2e5fc49130f2ee755d29-1024x576.png",
+          "sourcePage": "https://news.xbox.com/en-us/2026/09/09/xbox-insiders-october-2026-console-features-3/",
+          "credit": "Microsoft / Xbox",
+          "rightsUrl": "https://news.xbox.com/en-us/2026/09/09/xbox-insiders-october-2026-console-features-3/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Imagem oficial do anúncio Xbox.",
+          "altEN": "Official image accompanying the Xbox announcement.",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bb8b9bf1a98cf633a51e0b0f3b104979d02756d874c84692c527b2392a7244b4.webp",
+          "width": 1024,
+          "height": 576,
+          "bytes": 30942,
+          "cmsTitle": "xbox-insiders-setembro — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "xbox-discos-direito-digital",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/08/PRESERVATION_GEARS-16x9-1-f50ea7c7183d739eee78-1024x576.png",
+          "sourcePage": "https://news.xbox.com/en-us/2026/08/26/your-discs-now-also-digital/",
+          "credit": "Microsoft / Xbox",
+          "rightsUrl": "https://news.xbox.com/en-us/2026/08/26/your-discs-now-also-digital/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Imagem oficial do anúncio Xbox.",
+          "altEN": "Official image accompanying the Xbox announcement.",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\6c35c9ccdca9d62979b13c1bc153cb4d4bb77bec786f6f2f5bb17bcf64e959c3.webp",
+          "width": 1024,
+          "height": 576,
+          "bytes": 19810,
+          "cmsTitle": "xbox-discos-direito-digital — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "xbox-tokyo-game-show-2026",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/TGS_AnnounceStatic_2026-814e275774b1b96bd7e9.jpg",
+          "sourcePage": "https://news.xbox.com/en-us/2026/09/09/xbox-tokyo-game-show-broadcast-announce-2026/",
+          "credit": "Microsoft / Xbox",
+          "rightsUrl": "https://news.xbox.com/en-us/2026/09/09/xbox-tokyo-game-show-broadcast-announce-2026/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Imagem oficial do anúncio Xbox.",
+          "altEN": "Official image accompanying the Xbox announcement.",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b23df0472b4b15884ad2f6cd8a0d0b15709a76dd954d6f786215119631f6d612.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 382790,
+          "cmsTitle": "xbox-tokyo-game-show-2026 — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "logitech-mx-keypad",
+      "status": "fallback",
+      "reason": "Página Logitech News com 0 imagens extraídas no inventário DOM (bloqueio/render JS); nenhum asset estático de corpo verificável — requer asset manual via press release Logitech",
+      "images": [],
+      "downloadErrors": []
+    },
+    {
+      "key": "logitech-superstrike-clique",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-haptic-feature-1.jpg",
+          "sourcePage": "https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse",
+          "credit": "Logitech G",
+          "rightsUrl": "https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Detalhe do mouse Logitech G PRO X2 Superstrike.",
+          "altEN": "Detail of the Logitech G PRO X2 Superstrike mouse.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1c48f2bec11d04d82ea7697d976d68929aa86a4b8864a732bd8753bf711bf6e2.webp",
+          "width": 1600,
+          "height": 899,
+          "bytes": 171340,
+          "cmsTitle": "logitech-superstrike-clique — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-configuration-feature-2.jpg",
+          "sourcePage": "https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse",
+          "credit": "Logitech G",
+          "rightsUrl": "https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Detalhe do mouse Logitech G PRO X2 Superstrike.",
+          "altEN": "Detail of the Logitech G PRO X2 Superstrike mouse.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2c7dd7eec7a46a1c7373991ddb184bd58f00ae124914db0de7032d4581a68b50.webp",
+          "width": 1600,
+          "height": 899,
+          "bytes": 183000,
+          "cmsTitle": "logitech-superstrike-clique — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-precise-click-feature-3.jpg",
+          "sourcePage": "https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse",
+          "credit": "Logitech G",
+          "rightsUrl": "https://www.logitechg.com/en-us/shop/p/pro-x2-superstrike-mouse",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Detalhe do mouse Logitech G PRO X2 Superstrike.",
+          "altEN": "Detail of the Logitech G PRO X2 Superstrike mouse.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\79dfd80f6ca20e41227942353eee221fb15ef80218e9e69bb74d5db0707d5f87.webp",
+          "width": 1600,
+          "height": 899,
+          "bytes": 122912,
+          "cmsTitle": "logitech-superstrike-clique — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": [
+        {
+          "url": "https://resource.logitechg.com/w_422,h_220,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-haptic-feature-1.jpg",
+          "error": "Too small for editorial cover"
+        },
+        {
+          "url": "https://resource.logitechg.com/w_422,h_220,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-configuration-feature-2.jpg",
+          "error": "Too small for editorial cover"
+        },
+        {
+          "url": "https://resource.logitechg.com/w_422,h_220,c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-precise-click-feature-3.jpg",
+          "error": "Too small for editorial cover"
+        }
+      ]
+    },
+    {
+      "key": "rog-oled-245",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (ArticlePost__content) — HTTP verificável; crédito ASUS ROG",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1787187343593.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-monitors/new-245-inch-rog-monitors-bring-oled-panel-tech-to-the-esports-arena/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Swift OLED PG259QWS Ace on a desk surrounded by ROG gear, against a purple background.",
+          "altEN": "The ROG Swift OLED PG259QWS Ace on a desk surrounded by ROG gear, against a purple background.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\aa05329ba01f9a3b5e110736bb0938f1fd2f6c77113eba71b30aa465393184e3.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 179514,
+          "cmsTitle": "rog-oled-245 — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787187348309.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-monitors/new-245-inch-rog-monitors-bring-oled-panel-tech-to-the-esports-arena/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Swift OLED PG259QWS Ace with its stand swiveled against a black background.",
+          "altEN": "The ROG Swift OLED PG259QWS Ace with its stand swiveled against a black background.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\7c9407cee358d97b18ca253d93735432972bef6942790a1ab15a9b55a3197b01.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 184968,
+          "cmsTitle": "rog-oled-245 — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787020226692.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-monitors/new-245-inch-rog-monitors-bring-oled-panel-tech-to-the-esports-arena/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "A closeup of the ROG Strix OLED XG259QDPG Ace's stand against a black background.",
+          "altEN": "A closeup of the ROG Strix OLED XG259QDPG Ace's stand against a black background.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\66cd7335c0a03b053236df164829204102d4f32c4a6dee0a1386dca0e90ce141.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 48074,
+          "cmsTitle": "rog-oled-245 — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "rog-gladius-iv-ace",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (ArticlePost__content) — HTTP verificável; crédito ASUS ROG",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/178726484164.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-gladius-iv-ace-gaming-mouse-delivers-next-level-ergonomics-and-precision/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Gladius IV Ace's four distinct colorways lined up on a grey table against a blue background.",
+          "altEN": "The ROG Gladius IV Ace's four distinct colorways lined up on a grey table against a blue background.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\e741c81a0435b34c6fcf3e3383768a01daae5a7d531b239998895fd359464b56.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 64104,
+          "cmsTitle": "rog-gladius-iv-ace — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264839429.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-gladius-iv-ace-gaming-mouse-delivers-next-level-ergonomics-and-precision/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Gladius IV Ace on a black desktmat atop a grey table surrounded by accessories.",
+          "altEN": "The ROG Gladius IV Ace on a black desktmat atop a grey table surrounded by accessories.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\4224b61f5125d2936b3f55a9f8af26a23bee9478fd16014abda2928e1e48c1e4.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 255408,
+          "cmsTitle": "rog-gladius-iv-ace — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264843357.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-gladius-iv-ace-gaming-mouse-delivers-next-level-ergonomics-and-precision/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The black ROG Gladius IV Ace on a black desktmat beside an ROG keyboard.",
+          "altEN": "The black ROG Gladius IV Ace on a black desktmat beside an ROG keyboard.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\16f51bc45dd2acd81e1e2a77096525e36ff4df4d41779b23e1ca4d01b2fa42dd.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 200612,
+          "cmsTitle": "rog-gladius-iv-ace — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "rog-spatha-x-65k",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (ArticlePost__content) — HTTP verificável; crédito ASUS ROG",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1787264833449.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-spatha-x-65k-gaming-mouse-gives-you-total-control-over-your-favorite-mmos/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Spatha X 65K gaming mouse on a slate-blue surface against a red backdrop.",
+          "altEN": "The ROG Spatha X 65K gaming mouse on a slate-blue surface against a red backdrop.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c668e28b38f9e833bccd7fb29c7c69703d45f2c0d2435557ee3ad45a3461dca0.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 147792,
+          "cmsTitle": "rog-spatha-x-65k — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264838217.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-spatha-x-65k-gaming-mouse-gives-you-total-control-over-your-favorite-mmos/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Spatha X 65K on a gray table, opened up with its internals on display.",
+          "altEN": "The ROG Spatha X 65K on a gray table, opened up with its internals on display.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\70ec4228575447d8ef10226e0b4851255d586f31336158e26eb2638d1edba2a6.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 272156,
+          "cmsTitle": "rog-spatha-x-65k — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264837173.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-spatha-x-65k-gaming-mouse-gives-you-total-control-over-your-favorite-mmos/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Spatha X 65K on a gray ROG deskmat.",
+          "altEN": "The ROG Spatha X 65K on a gray ROG deskmat.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\393e63544256533ed73e8ea7e31ded24f1b0749143c877854dc653db4e6ca6ed.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 152854,
+          "cmsTitle": "rog-spatha-x-65k — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "rog-strix-morph-96",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (ArticlePost__content) — HTTP verificável; crédito ASUS ROG",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1774325807374.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-strix-morph-96-wireless-an-excellent-base-for-your-custom-gaming-keyboard/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "The ROG Strix Morph 96 Wireless standing up on a desk",
+          "altEN": "The ROG Strix Morph 96 Wireless standing up on a desk",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\870e4502da6f09c7ef941f2567241f334687e2d9504610c35ccde1063a3f7770.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 78860,
+          "cmsTitle": "rog-strix-morph-96 — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1774325811326.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-strix-morph-96-wireless-an-excellent-base-for-your-custom-gaming-keyboard/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "A side profile of two ROG Strix Morph 96 Wireless keyboards with each light bar showing",
+          "altEN": "A side profile of two ROG Strix Morph 96 Wireless keyboards with each light bar showing",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\99d38adbc17b70475719c8a8d10b9267d0200c056f4e2140facfdf90ae2617c3.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 32754,
+          "cmsTitle": "rog-strix-morph-96 — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://rog.asus.com/media/1774325902606.jpg",
+          "sourcePage": "https://rog.asus.com/articles/gaming-keyboards-gaming-mice/the-rog-strix-morph-96-wireless-an-excellent-base-for-your-custom-gaming-keyboard/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/terms/",
+          "rightsBasis": "ASUS ROG – imagem oficial do corpo do artigo; foto oficial de produto oferecida via ROG Article para cobertura editorial (verificar termos de imprensa ASUS)",
+          "altPT": "An ROG Strix Morphn 96 Wireless keyboard with many of its keycaps and switches removed",
+          "altEN": "An ROG Strix Morphn 96 Wireless keyboard with many of its keycaps and switches removed",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\980a22848d4a409798f7d75d307ac732c21d43bccda94139db637537312e7dd1.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 71760,
+          "cmsTitle": "rog-strix-morph-96 — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "rog-rapture-gt-bn98",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1787355002843.jpg",
+          "sourcePage": "https://rog.asus.com/ca-en/articles/gaming/new-esports-oled-gaming-monitors-the-rog-gladius-returns-and-more-see-the-rog-gear-from-gamescom-2026/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/ca-en/articles/gaming/new-esports-oled-gaming-monitors-the-rog-gladius-returns-and-more-see-the-rog-gear-from-gamescom-2026/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Roteador ROG Rapture GT-BN98 Pro em imagem de divulgação.",
+          "altEN": "ROG Rapture GT-BN98 Pro router in promotional imagery.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\e22cb0064f0f9ab68b977f7174d1fdabe3d4e0a9180acd22775bc77c79f4a292.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 68434,
+          "cmsTitle": "rog-rapture-gt-bn98 — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "rog-xreal-r1",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://dlcdnwebimgs.asus.com/files/media/202602/6d8a766b-a684-40f6-9911-03ae7d6eed2f/v1/img/kv.jpg",
+          "sourcePage": "https://rog.asus.com/us/glasses/rog-xreal-r1/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/us/glasses/rog-xreal-r1/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Jogadores usam os óculos ROG XREAL R1 com computador e portátil.",
+          "altEN": "Players use ROG XREAL R1 glasses with a computer and handheld.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1e00effc4f207c050f2a83360a1274a8703230fbb6ea2136fd191dc592337934.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 111026,
+          "cmsTitle": "rog-xreal-r1 — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://dlcdnwebimgs.asus.com/files/media/202602/6d8a766b-a684-40f6-9911-03ae7d6eed2f/v1/img/ecosystem/1.jpg",
+          "sourcePage": "https://rog.asus.com/us/glasses/rog-xreal-r1/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/us/glasses/rog-xreal-r1/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Jogador usa os óculos ROG XREAL R1 em uma estação de PC.",
+          "altEN": "Player using ROG XREAL R1 glasses at a PC gaming station.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\62d2e49ced6f4213989be09c3a56cb9520f941446e464eecc86d7305c89a3f60.webp",
+          "width": 832,
+          "height": 606,
+          "bytes": 57536,
+          "cmsTitle": "rog-xreal-r1 — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://dlcdnwebimgs.asus.com/files/media/202602/6d8a766b-a684-40f6-9911-03ae7d6eed2f/v1/img/ecosystem/2.jpg",
+          "sourcePage": "https://rog.asus.com/us/glasses/rog-xreal-r1/",
+          "credit": "ASUS ROG",
+          "rightsUrl": "https://rog.asus.com/us/glasses/rog-xreal-r1/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Jogador usa os óculos ROG XREAL R1 com o portátil ROG Xbox Ally.",
+          "altEN": "Player using ROG XREAL R1 glasses with a ROG Xbox Ally handheld.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d6e28e9e27557ed07d45c02b6ffcd36b2558da705b51bee6becb8bb9ae5a4bca.webp",
+          "width": 832,
+          "height": 606,
+          "bytes": 71204,
+          "cmsTitle": "rog-xreal-r1 — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "lego-playstation",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://i.ytimg.com/vi/5FB8SIlnd6c/maxresdefault.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/building-on-30-years-of-play-first-look-at-the-lego-playstation/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Building on 30 years of play: First look at the LEGO® PlayStation™",
+          "altEN": "Building on 30 years of play: First look at the LEGO® PlayStation™",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\4c5c6aa81f4ddd5445384cc25a977180c929c7fbaff2ccf742dc8c41befc9798.webp",
+          "width": 1280,
+          "height": 720,
+          "bytes": 62968,
+          "cmsTitle": "lego-playstation — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/06b554da9ad96ea244c2f809bd52a2a1e637a673.jpg?resize=1088%2C612&crop_strategy=smart",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/building-on-30-years-of-play-first-look-at-the-lego-playstation/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Building on 30 years of play: First look at the LEGO® PlayStation™",
+          "altEN": "Building on 30 years of play: First look at the LEGO® PlayStation™",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5b0d7c8ebc126c63439c2a2c0b6535fa0d29df10d6ad03b2a4d20b0ce40bfe2f.webp",
+          "width": 1088,
+          "height": 612,
+          "bytes": 39576,
+          "cmsTitle": "lego-playstation — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55505878054_184ea26944_k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/building-on-30-years-of-play-first-look-at-the-lego-playstation/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de lego playstation — foto do corpo da matéria",
+          "altEN": "Official lego playstation image — body photo",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f326f1a04739a92a952100c2ac9f51b81200e0d67fdcc452aa25bd0f0f8310e8.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 51958,
+          "cmsTitle": "lego-playstation — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "dualsense-gta-vi",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (post-single__content/featured-asset) — HTTP verificável; crédito Sony Interactive Entertainment / PlayStation",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/a5bd4c6e9ca55c1e1fe1705b79e86300f205831f.png",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/first-look-at-the-grand-theft-auto-vi-limited-edition-dualsense-wireless-controllers/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "First look at the Grand Theft Auto VI Limited-Edition DualSense Wireless Controllers",
+          "altEN": "First look at the Grand Theft Auto VI Limited-Edition DualSense Wireless Controllers",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2f0fb62436871beff19db987d6a997122357ed234c9154853e91afafcdba0467.webp",
+          "width": 1080,
+          "height": 608,
+          "bytes": 51830,
+          "cmsTitle": "dualsense-gta-vi — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55505866143_cb4df88743_k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/first-look-at-the-grand-theft-auto-vi-limited-edition-dualsense-wireless-controllers/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de dualsense gta vi — foto do corpo da matéria",
+          "altEN": "Official dualsense gta vi image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2474c6694e463426717a1ff9f6c06a098fd6f11d4ef4aa3de232ef48aa589166.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 84784,
+          "cmsTitle": "dualsense-gta-vi — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55504761597_008d0d7839_k.jpg",
+          "sourcePage": "https://blog.playstation.com/2026/09/03/first-look-at-the-grand-theft-auto-vi-limited-edition-dualsense-wireless-controllers/",
+          "credit": "Sony Interactive Entertainment / PlayStation",
+          "rightsUrl": "https://www.playstation.com/en-us/legal/terms-of-use/",
+          "rightsBasis": "PlayStation Blog – imagem oficial do corpo da matéria; arte oferecida via blog oficial para cobertura editorial (verificar diretrizes de imprensa PlayStation)",
+          "altPT": "Imagem oficial de dualsense gta vi — foto do corpo da matéria",
+          "altEN": "Official dualsense gta vi image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5718745da01fd572107cb861de21bfb3f311a364cf0d5916b2aadd8004990f9c.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 80168,
+          "cmsTitle": "dualsense-gta-vi — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "gpt-6-astra",
+      "status": "fallback",
+      "reason": "Página com proteção Cloudflare/render JS; source-image-inventory 0 imagens e og:image ausente/bloqueado no fetch estático em 16/09/2026; nenhuma foto oficial verificável sem render — fallback até inspeção manual",
+      "images": [],
+      "downloadErrors": []
+    },
+    {
+      "key": "claude-fable-mythos-51",
+      "status": "fallback",
+      "reason": "Imagem isolada de microscopia não serve como capa representativa dos modelos; manter arte editorial identificada.",
+      "images": [],
+      "downloadErrors": []
+    },
+    {
+      "key": "gemini-38-flash",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8_flash__blog__header__16-9__light.width-1300.png",
+          "sourcePage": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+          "credit": "Google",
+          "rightsUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Imagem de divulgação do Gemini 3.8 Flash.",
+          "altEN": "Gemini 3.8 Flash announcement artwork.",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bc23cd86ae67674e3b1e7e400ff9c354ed1460e5851816a4b9f09ea4b862e257.webp",
+          "width": 1300,
+          "height": 731,
+          "bytes": 32280,
+          "cmsTitle": "gemini-38-flash — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3.8-flash__evals__table_l.width-1200.format-webp_2pLdBp5.webp",
+          "sourcePage": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+          "credit": "Google",
+          "rightsUrl": "https://about.google/brand-resource-center/",
+          "rightsBasis": "Google Blog – imagem oficial do corpo da matéria; foto oficial oferecida via blog para cobertura editorial (verificar diretrizes de marca Google)",
+          "altPT": "comparison chart showing Gemini 3.8 Flash and other models",
+          "altEN": "comparison chart showing Gemini 3.8 Flash and other models",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a5781dd3fd3977055c91208f6e99556ed7e94197020dbc7eabc2d2d28f9fafca.webp",
+          "width": 1200,
+          "height": 1470,
+          "bytes": 108320,
+          "cmsTitle": "gemini-38-flash — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8-flash__evals__deepswe.width-1200.format-webp.webp",
+          "sourcePage": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+          "credit": "Google",
+          "rightsUrl": "https://about.google/brand-resource-center/",
+          "rightsBasis": "Google Blog – imagem oficial do corpo da matéria; foto oficial oferecida via blog para cobertura editorial (verificar diretrizes de marca Google)",
+          "altPT": "chart showing Gemini 3.8 Flash DeepSWE v1.1",
+          "altEN": "chart showing Gemini 3.8 Flash DeepSWE v1.1",
+          "kind": "official-artwork",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1af7b3550e3d9b4585e17a2086778e963c55e4a5ea1f70b50a196525b806e884.webp",
+          "width": 1200,
+          "height": 675,
+          "bytes": 26432,
+          "cmsTitle": "gemini-38-flash — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": [
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8_flash__blog__header__1.width-200.format-webp.webp",
+          "error": "Too small for editorial cover"
+        }
+      ]
+    },
+    {
+      "key": "qwen38-flash-next",
+      "status": "fallback",
+      "reason": "Página com proteção Cloudflare/render JS; source-image-inventory 0 imagens e og:image ausente/bloqueado no fetch estático em 16/09/2026; nenhuma foto oficial verificável sem render — fallback até inspeção manual",
+      "images": [],
+      "downloadErrors": []
+    },
+    {
+      "key": "qwen-image-3",
+      "status": "fallback",
+      "reason": "Página com proteção Cloudflare/render JS; source-image-inventory 0 imagens e og:image ausente/bloqueado no fetch estático em 16/09/2026; nenhuma foto oficial verificável sem render — fallback até inspeção manual",
+      "images": [],
+      "downloadErrors": []
+    },
+    {
+      "key": "mistral-agentic-search",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Mistral AI",
+      "images": [
+        {
+          "url": "https://mistral.ai/_astro/Thumbnail-Blog-Agenticsearch_Z233ryT.webp?dpl=6aaaa3e6d4d2290017119943",
+          "sourcePage": "https://mistral.ai/news/agentic-search/",
+          "credit": "Mistral AI",
+          "rightsUrl": "https://mistral.ai/terms/",
+          "rightsBasis": "Mistral AI – imagem oficial do corpo da matéria oferecida via blog oficial para cobertura editorial (verificar termos Mistral)",
+          "altPT": "Imagem oficial de mistral agentic search — foto do corpo da matéria",
+          "altEN": "Official mistral agentic search image — body photo",
+          "kind": "diagram",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5d5eeb37c929c2a50f287cb2977401dab77dfaf8825ed5b0534c35c3c6207887.webp",
+          "width": 1200,
+          "height": 716,
+          "bytes": 14664,
+          "cmsTitle": "mistral-agentic-search — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://mistral.ai/_astro/pasted-image-4_INqkQ.webp?dpl=6aaaa3e6d4d2290017119943",
+          "sourcePage": "https://mistral.ai/news/agentic-search/",
+          "credit": "Mistral AI",
+          "rightsUrl": "https://mistral.ai/terms/",
+          "rightsBasis": "Mistral AI – imagem oficial do corpo da matéria oferecida via blog oficial para cobertura editorial (verificar termos Mistral)",
+          "altPT": "Imagem oficial de mistral agentic search — foto do corpo da matéria",
+          "altEN": "Official mistral agentic search image — body photo",
+          "kind": "diagram",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f2a81570841075c1dbc1f59f54df5e90f88edc71b68a880250a90cc4e140aeb6.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 33458,
+          "cmsTitle": "mistral-agentic-search — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://mistral.ai/_astro/pasted-image-5_Z1Id2ck.webp?dpl=6aaaa3e6d4d2290017119943",
+          "sourcePage": "https://mistral.ai/news/agentic-search/",
+          "credit": "Mistral AI",
+          "rightsUrl": "https://mistral.ai/terms/",
+          "rightsBasis": "Mistral AI – imagem oficial do corpo da matéria oferecida via blog oficial para cobertura editorial (verificar termos Mistral)",
+          "altPT": "Imagem oficial de mistral agentic search — foto do corpo da matéria",
+          "altEN": "Official mistral agentic search image — body photo",
+          "kind": "diagram",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\31022344a51c85776b94acacb507cfaa3022472425e006c116c4edeeda5aa5fa.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 27094,
+          "cmsTitle": "mistral-agentic-search — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "shieldstral",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Mistral AI",
+      "images": [
+        {
+          "url": "https://mistral.ai/_astro/Thumbnail-Model_Shieldstral@2x_ZUxlF0.webp?dpl=6aaaa3e6d4d2290017119943",
+          "sourcePage": "https://mistral.ai/news/shieldstral/",
+          "credit": "Mistral AI",
+          "rightsUrl": "https://mistral.ai/terms/",
+          "rightsBasis": "Mistral AI – imagem oficial do corpo da matéria oferecida via blog oficial para cobertura editorial (verificar termos Mistral)",
+          "altPT": "Imagem oficial de shieldstral — foto do corpo da matéria",
+          "altEN": "Official shieldstral image — body photo",
+          "kind": "diagram",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\db19eff2e6a9d0a78f45f4cd332b5220f3a809ccdfacdd390b12543f3c37162d.webp",
+          "width": 1600,
+          "height": 955,
+          "bytes": 30946,
+          "cmsTitle": "shieldstral — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://mistral.ai/_astro/text-safety-1_Z21NQHD.webp?dpl=6aaaa3e6d4d2290017119943",
+          "sourcePage": "https://mistral.ai/news/shieldstral/",
+          "credit": "Mistral AI",
+          "rightsUrl": "https://mistral.ai/terms/",
+          "rightsBasis": "Mistral AI – imagem oficial do corpo da matéria oferecida via blog oficial para cobertura editorial (verificar termos Mistral)",
+          "altPT": "Imagem oficial de shieldstral — foto do corpo da matéria",
+          "altEN": "Official shieldstral image — body photo",
+          "kind": "diagram",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\ad77004167e36ef87cc05076ca468e12ed982a58e00c1e5815ee00a0a6d59b45.webp",
+          "width": 1600,
+          "height": 938,
+          "bytes": 32638,
+          "cmsTitle": "shieldstral — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://mistral.ai/_astro/refusal-detection-1_Z1j6eqW.webp?dpl=6aaaa3e6d4d2290017119943",
+          "sourcePage": "https://mistral.ai/news/shieldstral/",
+          "credit": "Mistral AI",
+          "rightsUrl": "https://mistral.ai/terms/",
+          "rightsBasis": "Mistral AI – imagem oficial do corpo da matéria oferecida via blog oficial para cobertura editorial (verificar termos Mistral)",
+          "altPT": "Imagem oficial de shieldstral — foto do corpo da matéria",
+          "altEN": "Official shieldstral image — body photo",
+          "kind": "diagram",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\86ce4f247e40d32aa4c49c8235e8aba0b8cd5f9d8b01ed5ce62b68e190338bea.webp",
+          "width": 1600,
+          "height": 938,
+          "bytes": 28138,
+          "cmsTitle": "shieldstral — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "claude-marca-texto",
+      "status": "fallback",
+      "reason": "Asset download or image validation failed; see downloadErrors.",
+      "images": [],
+      "downloadErrors": [
+        {
+          "url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/33dbe8f783d4835a838b4c4ae85d3c04e352fee1-1000x1000.svg",
+          "error": "cannot identify image file <_io.BytesIO object at 0x0000019FD67A62F0>"
+        }
+      ]
+    },
+    {
+      "key": "gemini-apps-conectados",
+      "status": "fallback",
+      "reason": "Inventário DOM filtrou 0 imagens pertinentes no corpo da matéria (5 totais, 0 com ancestral válido como single_contents/ArticlePost__content/post-single__content/article-rte) — nenhuma foto/screenshot oficial verificável sem duplicar banners/outras matérias; fallback até asset manual",
+      "images": [],
+      "downloadErrors": []
+    },
+    {
+      "key": "claude-cientistas",
+      "status": "fallback",
+      "reason": "Asset download or image validation failed; see downloadErrors.",
+      "images": [],
+      "downloadErrors": [
+        {
+          "url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/46e4aa7ea208ed440d5bd9e9e3a0ee66bc336ff1-1000x1000.svg",
+          "error": "cannot identify image file <_io.BytesIO object at 0x0000019FD67A62F0>"
+        }
+      ]
+    },
+    {
+      "key": "iphone18pro",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (article/gallery) — HTTP verificável; crédito Apple",
+      "images": [
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-2up-260909_inline.jpg.large.jpg",
+          "sourcePage": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+          "credit": "Apple",
+          "rightsUrl": "https://www.apple.com/legal/internet-services/terms/site.html",
+          "rightsBasis": "Apple Newsroom – imagem oficial do corpo da matéria (article/gallery); foto oficial de produto oferecida via Apple Newsroom para publicação editorial (crédito Apple)",
+          "altPT": "The front of a burgundy iPhone 18 Pro is displayed next to a rear-facing burgundy iPhone 18 Pro Max.",
+          "altEN": "The front of a burgundy iPhone 18 Pro is displayed next to a rear-facing burgundy iPhone 18 Pro Max.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\38aca8da57049b86e3b86a86e3581e6ca290058edad05ef0bd55e154e8889990.webp",
+          "width": 653,
+          "height": 915,
+          "bytes": 15062,
+          "cmsTitle": "iphone18pro — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-color-lineup-260909_big.jpg.large.jpg",
+          "sourcePage": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+          "credit": "Apple",
+          "rightsUrl": "https://www.apple.com/legal/internet-services/terms/site.html",
+          "rightsBasis": "Apple Newsroom – imagem oficial do corpo da matéria (article/gallery); foto oficial de produto oferecida via Apple Newsroom para publicação editorial (crédito Apple)",
+          "altPT": "iPhone 18 Pro is displayed in black, silver, glacier, and burgundy.",
+          "altEN": "iPhone 18 Pro is displayed in black, silver, glacier, and burgundy.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\ca674c570335a63e19c2356e1211996f524ac270f354227e295af7b4c8fef380.webp",
+          "width": 980,
+          "height": 700,
+          "bytes": 20928,
+          "cmsTitle": "iphone18pro — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-photography-aperture-low-light-260909_big.jpg.large.jpg",
+          "sourcePage": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+          "credit": "Apple",
+          "rightsUrl": "https://www.apple.com/legal/internet-services/terms/site.html",
+          "rightsBasis": "Apple Newsroom – imagem oficial do corpo da matéria (article/gallery); foto oficial de produto oferecida via Apple Newsroom para publicação editorial (crédito Apple)",
+          "altPT": "A photograph captured on iPhone 18 Pro using the new 48MP Fusion Main camera amid low-light conditions.",
+          "altEN": "A photograph captured on iPhone 18 Pro using the new 48MP Fusion Main camera amid low-light conditions.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\3da2336d49b40b6c1671a7b0c3a26cda13d51aae6a4e20db6cab625183f43714.webp",
+          "width": 980,
+          "height": 735,
+          "bytes": 24202,
+          "cmsTitle": "iphone18pro — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "iphone17e-contexto",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (article/gallery) — HTTP verificável; crédito Apple",
+      "images": [
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-hero-geo-260302_big.jpg.large.jpg",
+          "sourcePage": "https://www.apple.com/ie/newsroom/2026/03/apple-introduces-iphone-17e/",
+          "credit": "Apple",
+          "rightsUrl": "https://www.apple.com/legal/internet-services/terms/site.html",
+          "rightsBasis": "Apple Newsroom – imagem oficial do corpo da matéria (article/gallery); foto oficial de produto oferecida via Apple Newsroom para publicação editorial (crédito Apple)",
+          "altPT": "Two iPhone 17e devices, one in black and the other in soft pink, are stacked on top of each other.",
+          "altEN": "Two iPhone 17e devices, one in black and the other in soft pink, are stacked on top of each other.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c527f3ee1ff1aebdfd190f43f24b87f81c4832551e2f2292d54a71082566e8e9.webp",
+          "width": 980,
+          "height": 552,
+          "bytes": 7962,
+          "cmsTitle": "iphone17e-contexto — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-family-lineup-ROW-260302_big.jpg.large.jpg",
+          "sourcePage": "https://www.apple.com/ie/newsroom/2026/03/apple-introduces-iphone-17e/",
+          "credit": "Apple",
+          "rightsUrl": "https://www.apple.com/legal/internet-services/terms/site.html",
+          "rightsBasis": "Apple Newsroom – imagem oficial do corpo da matéria (article/gallery); foto oficial de produto oferecida via Apple Newsroom para publicação editorial (crédito Apple)",
+          "altPT": "Four iPhone 17e devices — one in black, one in white, and two in soft pink — are shown.",
+          "altEN": "Four iPhone 17e devices — one in black, one in white, and two in soft pink — are shown.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d1a51e21ef45de586d3dad5c8d1a634eba9783416a8cb5531b9505ef8e576093.webp",
+          "width": 980,
+          "height": 784,
+          "bytes": 18836,
+          "cmsTitle": "iphone17e-contexto — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/article/Apple-iPhone-17e-lockscreen-260302_inline.jpg.large.jpg",
+          "sourcePage": "https://www.apple.com/ie/newsroom/2026/03/apple-introduces-iphone-17e/",
+          "credit": "Apple",
+          "rightsUrl": "https://www.apple.com/legal/internet-services/terms/site.html",
+          "rightsBasis": "Apple Newsroom – imagem oficial do corpo da matéria (article/gallery); foto oficial de produto oferecida via Apple Newsroom para publicação editorial (crédito Apple)",
+          "altPT": "The 6.1-inch Super Retina XDR display is shown on iPhone 17e.",
+          "altEN": "The 6.1-inch Super Retina XDR display is shown on iPhone 17e.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\95dafa9c42b6d2797fcff6de27d9394ee300b5a0b4f38b171b501e02034050c0.webp",
+          "width": 653,
+          "height": 915,
+          "bytes": 39164,
+          "cmsTitle": "iphone17e-contexto — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "pixel11-tensor",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Google",
+      "images": [
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/NFG_Cubs_Frost.width-1200.format-webp.webp",
+          "sourcePage": "https://blog.google/intl/es-es/productos/dispositivos/serie-pixel-11-tu-pixel-mas-personal-hasta-la-fecha/",
+          "credit": "Google",
+          "rightsUrl": "https://about.google/brand-resource-center/",
+          "rightsBasis": "Google Blog – imagem oficial do corpo da matéria; foto oficial oferecida via blog para cobertura editorial (verificar diretrizes de marca Google)",
+          "altPT": "Vista frontal y trasera de un teléfono Google Pixel .",
+          "altEN": "Vista frontal y trasera de un teléfono Google Pixel .",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\be91390739b692463cdd4163765a4a70967769b5c7409eafb14f2e98256a6e6a.webp",
+          "width": 1200,
+          "height": 675,
+          "bytes": 16634,
+          "cmsTitle": "pixel11-tensor — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/The_Pixel_11_Series_ProandProXL.width-1200.format-webp.webp",
+          "sourcePage": "https://blog.google/intl/es-es/productos/dispositivos/serie-pixel-11-tu-pixel-mas-personal-hasta-la-fecha/",
+          "credit": "Google",
+          "rightsUrl": "https://about.google/brand-resource-center/",
+          "rightsBasis": "Google Blog – imagem oficial do corpo da matéria; foto oficial oferecida via blog para cobertura editorial (verificar diretrizes de marca Google)",
+          "altPT": "Vista frontal y trasera de los Google Pixel, Pro y Pro XL, que muestran la barra de triple cámara en la parte posterior y un fondo de pantalla texturizado a juego en la pantalla frontal.",
+          "altEN": "Vista frontal y trasera de los Google Pixel, Pro y Pro XL, que muestran la barra de triple cámara en la parte posterior y un fondo de pantalla texturizado a juego en la pantalla frontal.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\3031d397e512737da0abd05049c3efc1322a7c5f7af61eff5a3a1acdbab926a8.webp",
+          "width": 1200,
+          "height": 743,
+          "bytes": 31582,
+          "cmsTitle": "pixel11-tensor — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Pixel-11ProXL_Family-Shot.width-1200.format-webp.webp",
+          "sourcePage": "https://blog.google/intl/es-es/productos/dispositivos/serie-pixel-11-tu-pixel-mas-personal-hasta-la-fecha/",
+          "credit": "Google",
+          "rightsUrl": "https://about.google/brand-resource-center/",
+          "rightsBasis": "Google Blog – imagem oficial do corpo da matéria; foto oficial oferecida via blog para cobertura editorial (verificar diretrizes de marca Google)",
+          "altPT": "Pixel 11 Pro y Pixel 11 Pro XL en colores disponibles",
+          "altEN": "Pixel 11 Pro y Pixel 11 Pro XL en colores disponibles",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d6ff8646669f888958b906a339b4991e55f02e1d7c323b993f3d05b3044824d4.webp",
+          "width": 1200,
+          "height": 675,
+          "bytes": 19318,
+          "cmsTitle": "pixel11-tensor — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "pixel11-pro-fold",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 1 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Google",
+      "images": [
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/P11P_Fold_Back_Open_Olive.width-1200.format-webp.webp",
+          "sourcePage": "https://blog.google/intl/en-in/products/hardware/googles-most-sophisticated-foldable-pixel-11-pro-fold/",
+          "credit": "Google",
+          "rightsUrl": "https://about.google/brand-resource-center/",
+          "rightsBasis": "Google Blog – imagem oficial do corpo da matéria; foto oficial oferecida via blog para cobertura editorial (verificar diretrizes de marca Google)",
+          "altPT": "Image showing Pixel 11 Pro Fold in Olive when opened from the back",
+          "altEN": "Image showing Pixel 11 Pro Fold in Olive when opened from the back",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\7a50408a41ed39c8be5f535b59018d5d780fcd269154a956a81148b134b87675.webp",
+          "width": 1200,
+          "height": 1200,
+          "bytes": 37772,
+          "cmsTitle": "pixel11-pro-fold — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "galaxy-fold8-comparacao",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (single_contents) — HTTP verificável; crédito Samsung",
+      "images": [
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220302/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main1.jpg",
+          "sourcePage": "https://news.samsung.com/global/galaxy-unpacked-july-2026-a-first-look-at-galaxy-z-fold8-ultra-galaxy-z-fold8-and-galaxy-z-flip8",
+          "credit": "Samsung",
+          "rightsUrl": "https://news.samsung.com/global/terms",
+          "rightsBasis": "Samsung Newsroom – imagem oficial do corpo da matéria em single_contents; foto oficial de produto oferecida para cobertura editorial (verificar termos Samsung)",
+          "altPT": "(From left) Galaxy Z Flip8, Galaxy Z Fold8 and Galaxy Z Fold8 Ultra",
+          "altEN": "(From left) Galaxy Z Flip8, Galaxy Z Fold8 and Galaxy Z Fold8 Ultra",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bfabfb7903c1213ffbd1681c485ae0f6ca02d26a0de001ecee5646209a447aa3.webp",
+          "width": 1000,
+          "height": 496,
+          "bytes": 34906,
+          "cmsTitle": "galaxy-fold8-comparacao — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220341/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main2.jpg",
+          "sourcePage": "https://news.samsung.com/global/galaxy-unpacked-july-2026-a-first-look-at-galaxy-z-fold8-ultra-galaxy-z-fold8-and-galaxy-z-flip8",
+          "credit": "Samsung",
+          "rightsUrl": "https://news.samsung.com/global/terms",
+          "rightsBasis": "Samsung Newsroom – imagem oficial do corpo da matéria em single_contents; foto oficial de produto oferecida para cobertura editorial (verificar termos Samsung)",
+          "altPT": "Galaxy Z Fold8 Ultra features a remarkably thin profile when unfolded.",
+          "altEN": "Galaxy Z Fold8 Ultra features a remarkably thin profile when unfolded.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b7415b028c02d542c19ac281db493de95eb3a4e79f41993140c105fc444d74b9.webp",
+          "width": 1000,
+          "height": 564,
+          "bytes": 22902,
+          "cmsTitle": "galaxy-fold8-comparacao — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220359/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main3.jpg",
+          "sourcePage": "https://news.samsung.com/global/galaxy-unpacked-july-2026-a-first-look-at-galaxy-z-fold8-ultra-galaxy-z-fold8-and-galaxy-z-flip8",
+          "credit": "Samsung",
+          "rightsUrl": "https://news.samsung.com/global/terms",
+          "rightsBasis": "Samsung Newsroom – imagem oficial do corpo da matéria em single_contents; foto oficial de produto oferecida para cobertura editorial (verificar termos Samsung)",
+          "altPT": "Flex Titanium technology reduces crease visibility.",
+          "altEN": "Flex Titanium technology reduces crease visibility.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\05ec7938cce5b3d58864456bd08be1f984b68dc2354113906949f7bb30fa2815.webp",
+          "width": 1000,
+          "height": 725,
+          "bytes": 106734,
+          "cmsTitle": "galaxy-fold8-comparacao — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "galaxy-s26-privacy",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (single_contents) — HTTP verificável; crédito Samsung",
+      "images": [
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031538/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main1.jpg",
+          "sourcePage": "https://news.samsung.com/global/samsung-unveils-galaxy-s26-series-the-most-intuitive-galaxy-ai-phone-yet",
+          "credit": "Samsung",
+          "rightsUrl": "https://news.samsung.com/global/terms",
+          "rightsBasis": "Samsung Newsroom – imagem oficial do corpo da matéria em single_contents; foto oficial de produto oferecida para cobertura editorial (verificar termos Samsung)",
+          "altPT": "Imagem oficial de galaxy s26 privacy — foto do corpo da matéria",
+          "altEN": "Official galaxy s26 privacy image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d332de0ff70e8758bc22e3736ea5b613f84569a6f1927e97fda749cbca289ea1.webp",
+          "width": 1000,
+          "height": 750,
+          "bytes": 18056,
+          "cmsTitle": "galaxy-s26-privacy — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031539/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main2.jpg",
+          "sourcePage": "https://news.samsung.com/global/samsung-unveils-galaxy-s26-series-the-most-intuitive-galaxy-ai-phone-yet",
+          "credit": "Samsung",
+          "rightsUrl": "https://news.samsung.com/global/terms",
+          "rightsBasis": "Samsung Newsroom – imagem oficial do corpo da matéria em single_contents; foto oficial de produto oferecida para cobertura editorial (verificar termos Samsung)",
+          "altPT": "Imagem oficial de galaxy s26 privacy — foto do corpo da matéria",
+          "altEN": "Official galaxy s26 privacy image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\28931b0ea568cd6c6b0e99dc1bf1b39765f9fc38181909e52b047f299b924982.webp",
+          "width": 1000,
+          "height": 750,
+          "bytes": 20128,
+          "cmsTitle": "galaxy-s26-privacy — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031540/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main3.jpg",
+          "sourcePage": "https://news.samsung.com/global/samsung-unveils-galaxy-s26-series-the-most-intuitive-galaxy-ai-phone-yet",
+          "credit": "Samsung",
+          "rightsUrl": "https://news.samsung.com/global/terms",
+          "rightsBasis": "Samsung Newsroom – imagem oficial do corpo da matéria em single_contents; foto oficial de produto oferecida para cobertura editorial (verificar termos Samsung)",
+          "altPT": "Imagem oficial de galaxy s26 privacy — foto do corpo da matéria",
+          "altEN": "Official galaxy s26 privacy image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8c83b730fb1c352352a25d781ebeb9309e8a98c233790b8d6b2e19f1a48faebc.webp",
+          "width": 1000,
+          "height": 750,
+          "bytes": 23808,
+          "cmsTitle": "galaxy-s26-privacy — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "honor-magic-v6",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 2 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito HONOR",
+      "images": [
+        {
+          "url": "https://www-file.honor.com/content/dam/honor/global/news/2026/honor-magic-v6-launch/news.jpg",
+          "sourcePage": "https://www.honor.com/global/news/honor-magic-v6-launch/",
+          "credit": "HONOR",
+          "rightsUrl": "https://www.honor.com/global/terms/",
+          "rightsBasis": "HONOR Newsroom – imagem oficial do corpo da matéria (article-rte); foto oficial oferecida via HONOR news para cobertura editorial (verificar termos HONOR)",
+          "altPT": "Imagem oficial de honor magic v6 — foto do corpo da matéria",
+          "altEN": "Official honor magic v6 image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1ff67bc6ec9a7e4906f9e343126717bdeb9083cbac4a0ccad3c01d1734ce72c8.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 70012,
+          "cmsTitle": "honor-magic-v6 — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "xiaomi17ultra",
+      "status": "ready",
+      "reason": "Duas imagens pertinentes localizadas na página oficial do produto e inspecionadas visualmente; fundo vazio rejeitado.",
+      "images": [
+        {
+          "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/489eb45a3fd47a6c3c09a0a94fa5bace.jpg",
+          "sourcePage": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "credit": "Xiaomi",
+          "rightsUrl": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "rightsBasis": "Imagem de produto publicada pela Xiaomi em sua página oficial; crédito preservado, sem alegação de licença aberta.",
+          "kind": "photo",
+          "altPT": "Xiaomi 17 Ultra verde segurado na horizontal, com as câmeras traseiras em destaque.",
+          "altEN": "Green Xiaomi 17 Ultra held horizontally, showing its rear cameras.",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5a5d375b24c89c6a24c24b2c485b340b84e90b634a0ef2d03cd4a19e43e55e1a.webp",
+          "width": 1600,
+          "height": 879,
+          "bytes": 88740,
+          "cmsTitle": "xiaomi17ultra — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/gcdah302e2d613088f2aff7jf97a0bc8.jpg",
+          "sourcePage": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "credit": "Xiaomi",
+          "rightsUrl": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+          "rightsBasis": "Imagem de produto publicada pela Xiaomi em sua página oficial; crédito preservado, sem alegação de licença aberta.",
+          "kind": "photo",
+          "altPT": "Detalhe do módulo circular de câmeras Leica do Xiaomi 17 Ultra verde.",
+          "altEN": "Close-up of the circular Leica camera module on the green Xiaomi 17 Ultra.",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\0990131eac6fab51e194292963b071a90e9c1aaf4feba00eb2d7ad632f50553d.webp",
+          "width": 1600,
+          "height": 512,
+          "bytes": 59874,
+          "cmsTitle": "xiaomi17ultra — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "oppo-findx9ultra",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito OPPO",
+      "images": [
+        {
+          "url": "https://www.oppo.com/content/dam/oppo_com/jp/mkt/newsroom/press/2026/findx9ultra-release/PR_oppofindx9ultra_260608_header.webp",
+          "sourcePage": "https://www.oppo.com/jp/newsroom/press/findx9ultra-release/",
+          "credit": "OPPO",
+          "rightsUrl": "https://www.oppo.com/jp/legal/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.oppo.com/jp/newsroom/press/findx9ultra-release/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de oppo findx9ultra — foto do corpo da matéria",
+          "altEN": "Official oppo findx9ultra image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\26c6d6eca732ae1ba30606e471b18df08d4ec2ee9b0f42076286665fe247c862.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 77458,
+          "cmsTitle": "oppo-findx9ultra — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": [
+        {
+          "url": "https://www.oppo.com/jimu/oppo-site-nav/resources/images/app-icon.webp",
+          "error": "Too small for editorial cover"
+        }
+      ]
+    },
+    {
+      "key": "oneplus15-165hz",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito OnePlus",
+      "images": [
+        {
+          "url": "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-kv-mo-bg-1-d2e7d7.png",
+          "sourcePage": "https://www.oneplus.com/us/15",
+          "credit": "OnePlus",
+          "rightsUrl": "https://www.oneplus.com/legal/terms",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.oneplus.com/us/15; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de oneplus15 165hz — foto do corpo da matéria",
+          "altEN": "Official oneplus15 165hz image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d5f5a1f335a17dc26622ee181b7491018ee4ee34ae5044858ab8afcc15accd50.webp",
+          "width": 1576,
+          "height": 1554,
+          "bytes": 119064,
+          "cmsTitle": "oneplus15-165hz — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/videos-ai-trip_640_poster-1-1583ef.jpg",
+          "sourcePage": "https://www.oneplus.com/us/15",
+          "credit": "OnePlus",
+          "rightsUrl": "https://www.oneplus.com/legal/terms",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.oneplus.com/us/15; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de oneplus15 165hz — foto do corpo da matéria",
+          "altEN": "Official oneplus15 165hz image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\84516329429f989011fb34860187fb5795561a8d4e9ea34d9b1351dde92eb142.webp",
+          "width": 736,
+          "height": 1600,
+          "bytes": 71294,
+          "cmsTitle": "oneplus15-165hz — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": [
+        {
+          "url": "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-kv-mo-phone-1-c46d36.png",
+          "error": "Too small for editorial cover"
+        }
+      ]
+    },
+    {
+      "key": "typescript7-go",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Microsoft",
+      "images": [
+        {
+          "url": "https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2026/07/7-0-speedup-chart-2.png",
+          "sourcePage": "https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/",
+          "credit": "Microsoft",
+          "rightsUrl": "https://devblogs.microsoft.com/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Compile times of the projects between TypeScript 6 and 7 described the table above, ranging from 7.7x to 11.9x",
+          "altEN": "Compile times of the projects between TypeScript 6 and 7 described the table above, ranging from 7.7x to 11.9x",
+          "kind": "screenshot",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\39ec51ac4fa7ad2044182cc226048249a1f869a69f630b11ca50f2f0e49f1ec8.webp",
+          "width": 1507,
+          "height": 756,
+          "bytes": 35650,
+          "cmsTitle": "typescript7-go — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2026/07/7-0-mem-chart-2.png",
+          "sourcePage": "https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/",
+          "credit": "Microsoft",
+          "rightsUrl": "https://devblogs.microsoft.com/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Differences in memory reduction between TypeScript 6 and 7 described in the table above, ranging from -6% to -26%",
+          "altEN": "Differences in memory reduction between TypeScript 6 and 7 described in the table above, ranging from -6% to -26%",
+          "kind": "screenshot",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c577edd91b65d4fbabfea5a9a9f6d84a2902a13a63977484c6d245476d3b4f74.webp",
+          "width": 1507,
+          "height": 756,
+          "bytes": 36670,
+          "cmsTitle": "typescript7-go — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": [
+        {
+          "url": "https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2021/08/Daniel-Rosenwasser-635x817-1-96x96.png",
+          "error": "Too small for editorial cover"
+        }
+      ]
+    },
+    {
+      "key": "npm-trusted-publishing",
+      "status": "fallback",
+      "reason": "Asset download or image validation failed; see downloadErrors.",
+      "images": [],
+      "downloadErrors": [
+        {
+          "url": "https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-new-releases.svg",
+          "error": "cannot identify image file <_io.BytesIO object at 0x0000019FD73644F0>"
+        }
+      ]
+    },
+    {
+      "key": "github-secrets-merge",
+      "status": "fallback",
+      "reason": "Asset download or image validation failed; see downloadErrors.",
+      "images": [],
+      "downloadErrors": [
+        {
+          "url": "https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-improvements.svg",
+          "error": "cannot identify image file <_io.BytesIO object at 0x0000019FD7364630>"
+        }
+      ]
+    },
+    {
+      "key": "godot-mouse-polling",
+      "status": "fallback",
+      "reason": "Asset download or image validation failed; see downloadErrors.",
+      "images": [],
+      "downloadErrors": [
+        {
+          "url": "https://godotengine.org/storage/blog/fixing-high-polling-rate-mice-on-windows/mouse_polling_rate_comparison.webp",
+          "error": "Too small for editorial cover"
+        },
+        {
+          "url": "https://godotengine.org/storage/blog/fixing-high-polling-rate-mice-on-windows/mouse_movement_frametimes_no_vsync_before.webp",
+          "error": "Too small for editorial cover"
+        },
+        {
+          "url": "https://godotengine.org/storage/blog/fixing-high-polling-rate-mice-on-windows/mouse_movement_frametimes_no_vsync_after.webp",
+          "error": "Too small for editorial cover"
+        }
+      ]
+    },
+    {
+      "key": "codeql-go127",
+      "status": "fallback",
+      "reason": "Asset download or image validation failed; see downloadErrors.",
+      "images": [],
+      "downloadErrors": [
+        {
+          "url": "https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-improvements.svg",
+          "error": "cannot identify image file <_io.BytesIO object at 0x0000019FD7364540>"
+        }
+      ]
+    },
+    {
+      "key": "raspberrypi-radio",
+      "status": "ready",
+      "reason": "Seleção corrigida por inspeção visual e conferência da fonte oficial.",
+      "images": [
+        {
+          "url": "https://www.raspberrypi.com/app/uploads/2026/08/segz2e-09-03-1024x683.jpg",
+          "sourcePage": "https://www.raspberrypi.com/news/build-an-internet-radio/",
+          "credit": "Raspberry Pi — divulgação do projeto",
+          "rightsUrl": "https://www.raspberrypi.com/news/build-an-internet-radio/",
+          "rightsBasis": "Imagem publicada na fonte oficial identificada. Crédito e direitos dos titulares preservados; não alegamos licença aberta.",
+          "altPT": "Rádio com Raspberry Pi apresentado na reportagem original.",
+          "altEN": "Raspberry Pi radio featured in the original article.",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\19ffc1fa9c4b35a7a1e1dca42e9821f3bc9d4305628043eeba9435897228e0ae.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 171456,
+          "cmsTitle": "raspberrypi-radio — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": [
+        {
+          "url": "https://secure.gravatar.com/avatar/a85fba853318a56b49721f62b4c02ab169e622d9d17b44d98be64bfa14f5e159?s=300&d=https%3A%2F%2Fid.raspberrypi.com%2Favatar.png&r=g",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://www.raspberrypi.com/app/uploads/2021/01/WhatsApp-Image-2021-01-07-at-15.24.32-300x300.jpeg",
+          "error": "Too small for editorial cover"
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/c1d24f4341370f4aacc4eddbd820074a62b088f8a7d6f189204a20e6a0a1047d?s=300&d=https%3A%2F%2Fid.raspberrypi.com%2Favatar.png&r=g",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "key": "unitree-robos-fabrica",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito Unitree",
+      "images": [
+        {
+          "url": "https://www.unitree.com/images/7dd9ff96debd40bfb67e29d15ef3a0e0_1600x1200.png",
+          "sourcePage": "https://www.unitree.com/about/",
+          "credit": "Unitree",
+          "rightsUrl": "https://www.unitree.com/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.unitree.com/about/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de unitree robos fabrica — foto do corpo da matéria",
+          "altEN": "Official unitree robos fabrica image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b832e1e070a9eff77049894466ae3c163f7db922476e03eea2a3140e34f838a8.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 193172,
+          "cmsTitle": "unitree-robos-fabrica — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.unitree.com/images/666488e01aba4f0a9051c8488056dca8_1600x1200.png",
+          "sourcePage": "https://www.unitree.com/about/",
+          "credit": "Unitree",
+          "rightsUrl": "https://www.unitree.com/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.unitree.com/about/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de unitree robos fabrica — foto do corpo da matéria",
+          "altEN": "Official unitree robos fabrica image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bf7a1e2114cd72945b4fb6f57d8d69170484c2c9f8b03b12961193efa6352802.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 52736,
+          "cmsTitle": "unitree-robos-fabrica — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www.unitree.com/images/0e78dffa1e6f47deb8526a1d3000b96f_1600x1200.png",
+          "sourcePage": "https://www.unitree.com/about/",
+          "credit": "Unitree",
+          "rightsUrl": "https://www.unitree.com/terms/",
+          "rightsBasis": "Imagem do corpo da matéria em https://www.unitree.com/about/; origem comprovada em página oficial pública — disponibilidade não equivale a licença; verificar termos do publisher antes de republicar",
+          "altPT": "Imagem oficial de unitree robos fabrica — foto do corpo da matéria",
+          "altEN": "Official unitree robos fabrica image — body photo",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\ac53d167a80c7fc4d7e9d55f3bdcae294444fb9dd96125c63f8a22d2e8a0c9a9.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 50488,
+          "cmsTitle": "unitree-robos-fabrica — fonte oficial 3",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "honor-robot-phone",
+      "status": "ready",
+      "reason": "Galeria do corpo da matéria verificada: 3 imagem(ns) extraída(s) de ancestral DOM válido (corpo da matéria) — HTTP verificável; crédito HONOR",
+      "images": [
+        {
+          "url": "https://www-file.honor.com/content/dam/honor/global/news/2026/honor-mwc2026-launch/news-2.jpg",
+          "sourcePage": "https://www.honor.com/global/news/honor-mwc2026-launch/",
+          "credit": "HONOR",
+          "rightsUrl": "https://www.honor.com/global/terms/",
+          "rightsBasis": "HONOR Newsroom – imagem oficial do corpo da matéria (article-rte); foto oficial oferecida via HONOR news para cobertura editorial (verificar termos HONOR)",
+          "altPT": "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6 2",
+          "altEN": "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6 2",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\aed989683e43bb2b9332d7a83cb8fbe93a1461577d84d08aa27c1dd90301945b.webp",
+          "width": 587,
+          "height": 587,
+          "bytes": 6486,
+          "cmsTitle": "honor-robot-phone — fonte oficial 2",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        },
+        {
+          "url": "https://www-file.honor.com/content/dam/honor/global/news/2026/honor-mwc2026-launch/news-1.jpg",
+          "sourcePage": "https://www.honor.com/global/news/honor-mwc2026-launch/",
+          "credit": "HONOR",
+          "rightsUrl": "https://www.honor.com/global/terms/",
+          "rightsBasis": "HONOR Newsroom – imagem oficial do corpo da matéria (article-rte); foto oficial oferecida via HONOR news para cobertura editorial (verificar termos HONOR)",
+          "altPT": "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6 1",
+          "altEN": "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6 1",
+          "kind": "photo",
+          "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\fa671c5760267923862dfebda9a14ac984f7f69bcbeb455598c4a185ae745f68.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 106340,
+          "cmsTitle": "honor-robot-phone — fonte oficial 1",
+          "licenseLabel": "Divulgação. Direitos reservados ao titular."
+        }
+      ],
+      "downloadErrors": []
+    },
+    {
+      "key": "xiaomi-vision-gran-turismo",
+      "status": "fallback",
+      "reason": "Asset download or image validation failed; see downloadErrors.",
+      "images": [],
+      "downloadErrors": [
+        {
+          "url": "https://i01.appmifile.com/webfile/globalimg/pandora/user-head/user-avatar-v4-default.png",
+          "error": "Too small for editorial cover"
+        }
+      ]
+    },
+    {
+      "key": "model-hardware-standard",
+      "status": "fallback",
+      "reason": "Inventário DOM filtrou 0 imagens pertinentes no corpo da matéria (20 totais, 0 com ancestral válido como single_contents/ArticlePost__content/post-single__content/article-rte) — nenhuma foto/screenshot oficial verificável sem duplicar banners/outras matérias; fallback até asset manual",
+      "images": [],
+      "downloadErrors": []
+    }
+  ]
+}

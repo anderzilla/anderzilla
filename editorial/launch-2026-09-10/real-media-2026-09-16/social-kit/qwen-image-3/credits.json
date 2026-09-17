@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "altPT": "Qwen-Image-3.0: banner oficial de lançamento com texto e personagem ilustrado.",
+    "altEN": "Qwen-Image-3.0: official launch banner with text and an illustrated character.",
+    "credit": "Qwen / Alibaba",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://qwen.ai/blog?id=qwen-image-3.0"
+  },
+  {
+    "file": "gallery-01.jpg",
+    "altPT": "Qwen-Image-3.0: exemplo gerado por IA, publicado pela Qwen, de um infográfico sobre tubarão-baleia com texto em chinês.",
+    "altEN": "Qwen-Image-3.0: AI-generated example published by Qwen, showing a whale shark infographic with Chinese text.",
+    "credit": "Qwen / Alibaba",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://qwen.ai/blog?id=qwen-image-3.0"
+  },
+  {
+    "file": "gallery-02.jpg",
+    "altPT": "Qwen-Image-3.0: exemplo gerado por IA, publicado pela Qwen, de uma explicação de geometria com texto e diagrama.",
+    "altEN": "Qwen-Image-3.0: AI-generated example published by Qwen, showing a geometry explanation with text and a diagram.",
+    "credit": "Qwen / Alibaba",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://qwen.ai/blog?id=qwen-image-3.0"
+  }
+]

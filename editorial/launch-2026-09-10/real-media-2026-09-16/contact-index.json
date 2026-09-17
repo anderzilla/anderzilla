@@ -1,0 +1,632 @@
+[
+  {
+    "index": 0,
+    "key": "gta-vi-data-plataformas",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8e65b05b5b85083feb6d10a560c71b37f6cfff7415efe03e41c192fa95cd3b29.webp"
+  },
+  {
+    "index": 1,
+    "key": "gta-vi-data-plataformas",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\4ff46c160669a1af27847ac8ca28f8f4d2fec3b1d507cb7da93b6f049a1c69c4.webp"
+  },
+  {
+    "index": 2,
+    "key": "gta-vi-data-plataformas",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\fe6684a52f8af74674ab3d04be1842d12bcb046b03bbb6ff1f273416915a23bd.webp"
+  },
+  {
+    "index": 3,
+    "key": "modern-warfare-4-confirmado",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\3d15e7e52f394459e7a37847d5f2199298f037e1497e28f045a14a0863fe0463.webp"
+  },
+  {
+    "index": 4,
+    "key": "modern-warfare-4-confirmado",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\79c7c0248aba987ad99c4950abbd09ab5861feef45e97f1066da70d0eee1c051.webp"
+  },
+  {
+    "index": 5,
+    "key": "modern-warfare-4-confirmado",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\6eed7c58769be92b3a7f18128e20deb4c704a5ff8482e6bcb184d125db89b13d.webp"
+  },
+  {
+    "index": 6,
+    "key": "control-resonant-assist-mode",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\6821176ba505a98b4560844ec94a6d46601c04fafdd34329eba97652c19b36c6.webp"
+  },
+  {
+    "index": 7,
+    "key": "control-resonant-assist-mode",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a6f47d0fea8ab38073523160e3766f51564d07861f821d70e2cf15d1b552e599.webp"
+  },
+  {
+    "index": 8,
+    "key": "control-resonant-assist-mode",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5364d38eec8568988544594d0e22fd13129e39250abf6dacb019db3c95143ca1.webp"
+  },
+  {
+    "index": 9,
+    "key": "no-mans-sky-cosmos",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\61d0ff506c38d1a004a1ee690af57dae1383cfe8c8eb3d862944b68f520eb9e3.webp"
+  },
+  {
+    "index": 10,
+    "key": "no-mans-sky-cosmos",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8776475d6bc36c94a973a1da836eadd61877e04183bcb642a41fc29b477bc0cf.webp"
+  },
+  {
+    "index": 11,
+    "key": "muramasa-revenant-blades",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\021e0e1b4d0194da719a4706e3d50c5920a35af02c3243927ee4859a6e1f6c5f.webp"
+  },
+  {
+    "index": 12,
+    "key": "muramasa-revenant-blades",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2df8ad8540e228ecf457a6b1db714a4b61a43172d4638914488d9e4a70563be9.webp"
+  },
+  {
+    "index": 13,
+    "key": "doa-minato",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c9bf88627f657b86d49f47147502c388f5158c7c633af5b51a7278608489601c.webp"
+  },
+  {
+    "index": 14,
+    "key": "doa-minato",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\813d6c2ed0f0fe48bfd209729df2886c33de92b986cf5001364f75fe6e847f2b.webp"
+  },
+  {
+    "index": 15,
+    "key": "doa-minato",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a492bc83de0842fd17e7a1050be4daf9abf6db3c10e2f54a5e842ac2a306b70d.webp"
+  },
+  {
+    "index": 16,
+    "key": "zero-company-escolha-jogadores",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b053ebbd173305361a1448146257d1773a1d27b8a8bd7855a73094a926e8c684.webp"
+  },
+  {
+    "index": 17,
+    "key": "ffvii-revelation-data",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8b738561e60adeb37a0f15901b88fa09fbd1c96d60ac90de948599e73f3dccc5.webp"
+  },
+  {
+    "index": 18,
+    "key": "ffvii-revelation-data",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a5cb9ab38b578c1bad60dac902cea1712dd6514cdc4cd7196e91a8bc271b851d.webp"
+  },
+  {
+    "index": 19,
+    "key": "cod-the-haunting-setembro",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8a07ec10c8e2be8bc3acc3b5b0f09c137a3683107d907f8e40724ee06f2e9817.webp"
+  },
+  {
+    "index": 20,
+    "key": "cod-the-haunting-setembro",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a2eab2ca72dba9092daeb3aabd32de8603cdfa01006baaf7daea5bb659158016.webp"
+  },
+  {
+    "index": 21,
+    "key": "physint-xbox-kojima",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\0417848e9442c5b58142e06e10e10f466021129cde7c91f209a93ad0addd79ae.webp"
+  },
+  {
+    "index": 22,
+    "key": "rog-xbox-ally-x20",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\e53fa9cc9550b48e170a97dd62e8c85f3604fb6ef2f2aa1c96c970b5c4809979.webp"
+  },
+  {
+    "index": 23,
+    "key": "rog-xbox-ally-x20",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2d193ad29a8f626e0e7b796a1a31e10b2e9955ee28833e7e7e204151c13b3f7e.webp"
+  },
+  {
+    "index": 24,
+    "key": "rog-xbox-ally-x20",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d52e222e93385ebd9d1a05d6aaac88d88e258aed75d8c0177d0ac68732ca950e.webp"
+  },
+  {
+    "index": 25,
+    "key": "rog-ally-atualizacao-dock",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a78503e34b49eba1981a05971798ddb514fd14def05573487569b01ca8bf642d.webp"
+  },
+  {
+    "index": 26,
+    "key": "playstation-portal-1080p",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\416f3a638a39f9c338a8aff47220841e9490d6cafeb9200c64ebdeabd48af443.webp"
+  },
+  {
+    "index": 27,
+    "key": "playstation-portal-1080p",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d5212e0213e94234cf392e708ad9f866f8e5b2c5085a9af8d7727bf0af18e1e5.webp"
+  },
+  {
+    "index": 28,
+    "key": "playstation-portal-1080p",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8a14a1859a5d3e0b538542cb60bc3ceeea2787cb013dd9d2a5e75fd6b50be540.webp"
+  },
+  {
+    "index": 29,
+    "key": "legion-go-steamos",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\474be9319d855273e6e8059b27a901869f02baf6a3ddf19703c06290d5b9faa5.webp"
+  },
+  {
+    "index": 30,
+    "key": "steam-deck-oled-ficha",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f5f1f907202218fe529f2e0aa940043b62279f028cd0ae8f0ef8567a30cbaf28.webp"
+  },
+  {
+    "index": 31,
+    "key": "steam-deck-oled-ficha",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\24639f55e88a47ea4a957c555086fb023968ae29ac71f316e9245996d1d52542.webp"
+  },
+  {
+    "index": 32,
+    "key": "steam-deck-oled-ficha",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\93108476c761a2d17b1e5eebf23153c35d4d7aebbdc3c3ab271fd89bdeba6011.webp"
+  },
+  {
+    "index": 33,
+    "key": "switch-2-bundles",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\9aff9bf8781aec3cef7fe6c4d3785494ae234b0a3e95baa593c24a85917e28c2.webp"
+  },
+  {
+    "index": 34,
+    "key": "switch-2-bundles",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f7a4ec993e106e93daeb94a2002391cc13d8d77d9860488f84c2f0ae8fec9d51.webp"
+  },
+  {
+    "index": 35,
+    "key": "ps-plus-setembro-catalogo",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\eebae4a7a5fcd685b9491791fcefbeb3e2b058e64f092b92e625e7f059d142bb.webp"
+  },
+  {
+    "index": 36,
+    "key": "ps-plus-setembro-catalogo",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\61d540edc6623fa56209636e9e14f70a813e102f0aad9e3f63456d262cdda9dd.webp"
+  },
+  {
+    "index": 37,
+    "key": "ps-plus-setembro-catalogo",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\52579985a7ce469fad2e3a0e2c651c5a09db6706a9023c3f4bce6bf3a9777ff6.webp"
+  },
+  {
+    "index": 38,
+    "key": "xbox-insiders-setembro",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bb8b9bf1a98cf633a51e0b0f3b104979d02756d874c84692c527b2392a7244b4.webp"
+  },
+  {
+    "index": 39,
+    "key": "xbox-discos-direito-digital",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\6c35c9ccdca9d62979b13c1bc153cb4d4bb77bec786f6f2f5bb17bcf64e959c3.webp"
+  },
+  {
+    "index": 40,
+    "key": "xbox-tokyo-game-show-2026",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b23df0472b4b15884ad2f6cd8a0d0b15709a76dd954d6f786215119631f6d612.webp"
+  },
+  {
+    "index": 41,
+    "key": "logitech-superstrike-clique",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1c48f2bec11d04d82ea7697d976d68929aa86a4b8864a732bd8753bf711bf6e2.webp"
+  },
+  {
+    "index": 42,
+    "key": "logitech-superstrike-clique",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2c7dd7eec7a46a1c7373991ddb184bd58f00ae124914db0de7032d4581a68b50.webp"
+  },
+  {
+    "index": 43,
+    "key": "logitech-superstrike-clique",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\79dfd80f6ca20e41227942353eee221fb15ef80218e9e69bb74d5db0707d5f87.webp"
+  },
+  {
+    "index": 44,
+    "key": "rog-oled-245",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\aa05329ba01f9a3b5e110736bb0938f1fd2f6c77113eba71b30aa465393184e3.webp"
+  },
+  {
+    "index": 45,
+    "key": "rog-oled-245",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\7c9407cee358d97b18ca253d93735432972bef6942790a1ab15a9b55a3197b01.webp"
+  },
+  {
+    "index": 46,
+    "key": "rog-oled-245",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\66cd7335c0a03b053236df164829204102d4f32c4a6dee0a1386dca0e90ce141.webp"
+  },
+  {
+    "index": 47,
+    "key": "rog-gladius-iv-ace",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\e741c81a0435b34c6fcf3e3383768a01daae5a7d531b239998895fd359464b56.webp"
+  },
+  {
+    "index": 48,
+    "key": "rog-gladius-iv-ace",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\4224b61f5125d2936b3f55a9f8af26a23bee9478fd16014abda2928e1e48c1e4.webp"
+  },
+  {
+    "index": 49,
+    "key": "rog-gladius-iv-ace",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\16f51bc45dd2acd81e1e2a77096525e36ff4df4d41779b23e1ca4d01b2fa42dd.webp"
+  },
+  {
+    "index": 50,
+    "key": "rog-spatha-x-65k",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c668e28b38f9e833bccd7fb29c7c69703d45f2c0d2435557ee3ad45a3461dca0.webp"
+  },
+  {
+    "index": 51,
+    "key": "rog-spatha-x-65k",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\70ec4228575447d8ef10226e0b4851255d586f31336158e26eb2638d1edba2a6.webp"
+  },
+  {
+    "index": 52,
+    "key": "rog-spatha-x-65k",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\393e63544256533ed73e8ea7e31ded24f1b0749143c877854dc653db4e6ca6ed.webp"
+  },
+  {
+    "index": 53,
+    "key": "rog-strix-morph-96",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\870e4502da6f09c7ef941f2567241f334687e2d9504610c35ccde1063a3f7770.webp"
+  },
+  {
+    "index": 54,
+    "key": "rog-strix-morph-96",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\99d38adbc17b70475719c8a8d10b9267d0200c056f4e2140facfdf90ae2617c3.webp"
+  },
+  {
+    "index": 55,
+    "key": "rog-strix-morph-96",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\980a22848d4a409798f7d75d307ac732c21d43bccda94139db637537312e7dd1.webp"
+  },
+  {
+    "index": 56,
+    "key": "rog-rapture-gt-bn98",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\e22cb0064f0f9ab68b977f7174d1fdabe3d4e0a9180acd22775bc77c79f4a292.webp"
+  },
+  {
+    "index": 57,
+    "key": "rog-xreal-r1",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1e00effc4f207c050f2a83360a1274a8703230fbb6ea2136fd191dc592337934.webp"
+  },
+  {
+    "index": 58,
+    "key": "rog-xreal-r1",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\62d2e49ced6f4213989be09c3a56cb9520f941446e464eecc86d7305c89a3f60.webp"
+  },
+  {
+    "index": 59,
+    "key": "rog-xreal-r1",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d6e28e9e27557ed07d45c02b6ffcd36b2558da705b51bee6becb8bb9ae5a4bca.webp"
+  },
+  {
+    "index": 60,
+    "key": "lego-playstation",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\4c5c6aa81f4ddd5445384cc25a977180c929c7fbaff2ccf742dc8c41befc9798.webp"
+  },
+  {
+    "index": 61,
+    "key": "lego-playstation",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5b0d7c8ebc126c63439c2a2c0b6535fa0d29df10d6ad03b2a4d20b0ce40bfe2f.webp"
+  },
+  {
+    "index": 62,
+    "key": "lego-playstation",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f326f1a04739a92a952100c2ac9f51b81200e0d67fdcc452aa25bd0f0f8310e8.webp"
+  },
+  {
+    "index": 63,
+    "key": "dualsense-gta-vi",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2f0fb62436871beff19db987d6a997122357ed234c9154853e91afafcdba0467.webp"
+  },
+  {
+    "index": 64,
+    "key": "dualsense-gta-vi",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\2474c6694e463426717a1ff9f6c06a098fd6f11d4ef4aa3de232ef48aa589166.webp"
+  },
+  {
+    "index": 65,
+    "key": "dualsense-gta-vi",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5718745da01fd572107cb861de21bfb3f311a364cf0d5916b2aadd8004990f9c.webp"
+  },
+  {
+    "index": 66,
+    "key": "gemini-38-flash",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bc23cd86ae67674e3b1e7e400ff9c354ed1460e5851816a4b9f09ea4b862e257.webp"
+  },
+  {
+    "index": 67,
+    "key": "gemini-38-flash",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\a5781dd3fd3977055c91208f6e99556ed7e94197020dbc7eabc2d2d28f9fafca.webp"
+  },
+  {
+    "index": 68,
+    "key": "gemini-38-flash",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1af7b3550e3d9b4585e17a2086778e963c55e4a5ea1f70b50a196525b806e884.webp"
+  },
+  {
+    "index": 69,
+    "key": "mistral-agentic-search",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5d5eeb37c929c2a50f287cb2977401dab77dfaf8825ed5b0534c35c3c6207887.webp"
+  },
+  {
+    "index": 70,
+    "key": "mistral-agentic-search",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\f2a81570841075c1dbc1f59f54df5e90f88edc71b68a880250a90cc4e140aeb6.webp"
+  },
+  {
+    "index": 71,
+    "key": "mistral-agentic-search",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\31022344a51c85776b94acacb507cfaa3022472425e006c116c4edeeda5aa5fa.webp"
+  },
+  {
+    "index": 72,
+    "key": "shieldstral",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\db19eff2e6a9d0a78f45f4cd332b5220f3a809ccdfacdd390b12543f3c37162d.webp"
+  },
+  {
+    "index": 73,
+    "key": "shieldstral",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\ad77004167e36ef87cc05076ca468e12ed982a58e00c1e5815ee00a0a6d59b45.webp"
+  },
+  {
+    "index": 74,
+    "key": "shieldstral",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\86ce4f247e40d32aa4c49c8235e8aba0b8cd5f9d8b01ed5ce62b68e190338bea.webp"
+  },
+  {
+    "index": 75,
+    "key": "iphone18pro",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\38aca8da57049b86e3b86a86e3581e6ca290058edad05ef0bd55e154e8889990.webp"
+  },
+  {
+    "index": 76,
+    "key": "iphone18pro",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\ca674c570335a63e19c2356e1211996f524ac270f354227e295af7b4c8fef380.webp"
+  },
+  {
+    "index": 77,
+    "key": "iphone18pro",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\3da2336d49b40b6c1671a7b0c3a26cda13d51aae6a4e20db6cab625183f43714.webp"
+  },
+  {
+    "index": 78,
+    "key": "iphone17e-contexto",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c527f3ee1ff1aebdfd190f43f24b87f81c4832551e2f2292d54a71082566e8e9.webp"
+  },
+  {
+    "index": 79,
+    "key": "iphone17e-contexto",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d1a51e21ef45de586d3dad5c8d1a634eba9783416a8cb5531b9505ef8e576093.webp"
+  },
+  {
+    "index": 80,
+    "key": "iphone17e-contexto",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\95dafa9c42b6d2797fcff6de27d9394ee300b5a0b4f38b171b501e02034050c0.webp"
+  },
+  {
+    "index": 81,
+    "key": "pixel11-tensor",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\be91390739b692463cdd4163765a4a70967769b5c7409eafb14f2e98256a6e6a.webp"
+  },
+  {
+    "index": 82,
+    "key": "pixel11-tensor",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\3031d397e512737da0abd05049c3efc1322a7c5f7af61eff5a3a1acdbab926a8.webp"
+  },
+  {
+    "index": 83,
+    "key": "pixel11-tensor",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d6ff8646669f888958b906a339b4991e55f02e1d7c323b993f3d05b3044824d4.webp"
+  },
+  {
+    "index": 84,
+    "key": "pixel11-pro-fold",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\7a50408a41ed39c8be5f535b59018d5d780fcd269154a956a81148b134b87675.webp"
+  },
+  {
+    "index": 85,
+    "key": "galaxy-fold8-comparacao",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bfabfb7903c1213ffbd1681c485ae0f6ca02d26a0de001ecee5646209a447aa3.webp"
+  },
+  {
+    "index": 86,
+    "key": "galaxy-fold8-comparacao",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b7415b028c02d542c19ac281db493de95eb3a4e79f41993140c105fc444d74b9.webp"
+  },
+  {
+    "index": 87,
+    "key": "galaxy-fold8-comparacao",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\05ec7938cce5b3d58864456bd08be1f984b68dc2354113906949f7bb30fa2815.webp"
+  },
+  {
+    "index": 88,
+    "key": "galaxy-s26-privacy",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d332de0ff70e8758bc22e3736ea5b613f84569a6f1927e97fda749cbca289ea1.webp"
+  },
+  {
+    "index": 89,
+    "key": "galaxy-s26-privacy",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\28931b0ea568cd6c6b0e99dc1bf1b39765f9fc38181909e52b047f299b924982.webp"
+  },
+  {
+    "index": 90,
+    "key": "galaxy-s26-privacy",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\8c83b730fb1c352352a25d781ebeb9309e8a98c233790b8d6b2e19f1a48faebc.webp"
+  },
+  {
+    "index": 91,
+    "key": "honor-magic-v6",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\1ff67bc6ec9a7e4906f9e343126717bdeb9083cbac4a0ccad3c01d1734ce72c8.webp"
+  },
+  {
+    "index": 92,
+    "key": "xiaomi17ultra",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\5a5d375b24c89c6a24c24b2c485b340b84e90b634a0ef2d03cd4a19e43e55e1a.webp"
+  },
+  {
+    "index": 93,
+    "key": "xiaomi17ultra",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\0990131eac6fab51e194292963b071a90e9c1aaf4feba00eb2d7ad632f50553d.webp"
+  },
+  {
+    "index": 94,
+    "key": "oppo-findx9ultra",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\26c6d6eca732ae1ba30606e471b18df08d4ec2ee9b0f42076286665fe247c862.webp"
+  },
+  {
+    "index": 95,
+    "key": "oneplus15-165hz",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\d5f5a1f335a17dc26622ee181b7491018ee4ee34ae5044858ab8afcc15accd50.webp"
+  },
+  {
+    "index": 96,
+    "key": "oneplus15-165hz",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\84516329429f989011fb34860187fb5795561a8d4e9ea34d9b1351dde92eb142.webp"
+  },
+  {
+    "index": 97,
+    "key": "typescript7-go",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\39ec51ac4fa7ad2044182cc226048249a1f869a69f630b11ca50f2f0e49f1ec8.webp"
+  },
+  {
+    "index": 98,
+    "key": "typescript7-go",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\c577edd91b65d4fbabfea5a9a9f6d84a2902a13a63977484c6d245476d3b4f74.webp"
+  },
+  {
+    "index": 99,
+    "key": "raspberrypi-radio",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\19ffc1fa9c4b35a7a1e1dca42e9821f3bc9d4305628043eeba9435897228e0ae.webp"
+  },
+  {
+    "index": 100,
+    "key": "unitree-robos-fabrica",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\b832e1e070a9eff77049894466ae3c163f7db922476e03eea2a3140e34f838a8.webp"
+  },
+  {
+    "index": 101,
+    "key": "unitree-robos-fabrica",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\bf7a1e2114cd72945b4fb6f57d8d69170484c2c9f8b03b12961193efa6352802.webp"
+  },
+  {
+    "index": 102,
+    "key": "unitree-robos-fabrica",
+    "imageIndex": 2,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\ac53d167a80c7fc4d7e9d55f3bdcae294444fb9dd96125c63f8a22d2e8a0c9a9.webp"
+  },
+  {
+    "index": 103,
+    "key": "honor-robot-phone",
+    "imageIndex": 0,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\aed989683e43bb2b9332d7a83cb8fbe93a1461577d84d08aa27c1dd90301945b.webp"
+  },
+  {
+    "index": 104,
+    "key": "honor-robot-phone",
+    "imageIndex": 1,
+    "localPath": "Z:\\AnderZilla-docs\\editorial\\launch-2026-09-10\\real-media-2026-09-16\\assets\\fa671c5760267923862dfebda9a14ac984f7f69bcbeb455598c4a185ae745f68.webp"
+  }
+]

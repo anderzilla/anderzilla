@@ -1,0 +1,815 @@
+{
+  "items": [
+    {
+      "key": "gta-vi-data-plataformas",
+      "images": [
+        {
+          "url": "https://www.rockstargames.com/VI/_next/static/media/featured.0y5yxwenpsgc3.jpg?akim=1&imdensity=1&imwidth=3840",
+          "altPT": "Arte oficial de GTA VI com os protagonistas em cenário urbano iluminado e estilizado",
+          "altEN": "Official GTA VI artwork showing the protagonists in a brightly lit stylized city setting"
+        },
+        {
+          "url": "https://www.rockstargames.com/VI/_next/static/media/trailer-2.0l.7aqib91fz6.jpg?akim=1&imdensity=1&imwidth=3840",
+          "altPT": "Arte oficial vertical de GTA VI destacando os protagonistas em pose promocional estilizada",
+          "altEN": "Vertical official GTA VI artwork featuring the protagonists in a stylized promotional pose"
+        },
+        {
+          "url": "https://www.rockstargames.com/VI/_next/static/media/poster_full.0az_iud2g3y4j.jpg?akim=1&imdensity=1&imwidth=3840",
+          "altPT": "Pôster oficial de GTA VI com os protagonistas e elementos gráficos urbanos coloridos",
+          "altEN": "Official GTA VI poster featuring the protagonists with colorful stylized city graphics"
+        }
+      ]
+    },
+    {
+      "key": "modern-warfare-4-confirmado",
+      "images": [
+        {
+          "url": "https://i.ytimg.com/vi/jLbst85USN8/maxresdefault.jpg",
+          "altPT": "Miniatura do trailer de anúncio de Modern Warfare 4 com soldados em cena tensa",
+          "altEN": "Announcement trailer thumbnail for Modern Warfare 4 showing soldiers in a tense scene"
+        },
+        {
+          "url": "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/Rex_Reveal_Blog-Item.webp",
+          "altPT": "Arte oficial vertical de Modern Warfare 4 apresentando o operador Rex em destaque",
+          "altEN": "Vertical official Modern Warfare 4 artwork spotlighting operator Rex in full gear"
+        },
+        {
+          "url": "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-001.webp",
+          "altPT": "Arte oficial de Modern Warfare 4 com três soldados avançando em operação noturna",
+          "altEN": "Official Modern Warfare 4 artwork showing three soldiers advancing during a nighttime operation"
+        }
+      ]
+    },
+    {
+      "key": "control-resonant-assist-mode",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2028/09/805dc24cfeb0a3136d766b4e28d4d1a269bfde1b.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Imagem oficial de Control Resonant destacando recursos do modo assistivo ampliado",
+          "altEN": "Official Control Resonant image highlighting features of the expanded Assist Mode"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55508659423_c0cbabbc3b_k.jpg",
+          "altPT": "Captura de tela de Control Resonant exibindo opções de acessibilidade do modo assistivo",
+          "altEN": "Control Resonant screenshot displaying accessibility options in Assist Mode"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55508659818_d2620720d6_4k.jpg",
+          "altPT": "Arte promocional de Control Resonant exibida no PlayStation Blog com atmosfera imersiva",
+          "altEN": "Promotional Control Resonant artwork featured on PlayStation Blog with immersive atmosphere"
+        }
+      ]
+    },
+    {
+      "key": "no-mans-sky-cosmos",
+      "images": [
+        {
+          "url": "https://live.staticflickr.com/65535/55514359487_e80a0d2581_4k.jpg",
+          "altPT": "Arte oficial da atualização No Man's Sky Cosmos para PS5 em cenário espacial",
+          "altEN": "Official artwork for the No Man's Sky Cosmos update on PS5 in a space setting"
+        },
+        {
+          "url": "https://i.ytimg.com/vi/8MSNYzsNk_E/maxresdefault.jpg",
+          "altPT": "Miniatura do trailer da atualização No Man's Sky Cosmos com paisagem espacial vibrante",
+          "altEN": "Trailer thumbnail for No Man's Sky Cosmos update featuring a vibrant space landscape"
+        }
+      ]
+    },
+    {
+      "key": "muramasa-revenant-blades",
+      "images": [
+        {
+          "url": "https://live.staticflickr.com/65535/55508721124_598d5b2cb3_4k.jpg",
+          "altPT": "Arte oficial de Muramasa: Revenant Blades anunciando a data de lançamento",
+          "altEN": "Official Muramasa: Revenant Blades artwork announcing the launch date"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2028/09/34e2d12bc6c74a76dd80303a202de7bc2fcc54a9.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Captura de gameplay de Muramasa: Revenant Blades exibindo combate samurai estilizado",
+          "altEN": "Muramasa: Revenant Blades gameplay screenshot showcasing stylized samurai combat action"
+        }
+      ]
+    },
+    {
+      "key": "doa-minato",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/1a05883d89d3374af40adabfea45e78b8eff62fb.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Arte oficial de Dead or Alive 6 apresentando a nova lutadora Minato",
+          "altEN": "Official Dead or Alive 6 artwork introducing new fighter Minato"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55508644453_d409331ebf_k.jpg",
+          "altPT": "Arte promocional de Dead or Alive 6 com Minato em pose de luta dinâmica",
+          "altEN": "Promotional Dead or Alive 6 artwork featuring Minato in a dynamic fighting pose"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55507533477_13c47394ed_k.jpg",
+          "altPT": "Imagem oficial de Dead or Alive 6 destacando Minato em cenário de combate",
+          "altEN": "Official Dead or Alive 6 image highlighting Minato in a combat arena"
+        }
+      ]
+    },
+    {
+      "key": "zero-company-escolha-jogadores",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/1f0c508aff62bebf2a659f5fd428b9f92cdbef81.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Arte oficial de Star Wars Zero Company reunindo os personagens do jogo",
+          "altEN": "Official Star Wars Zero Company artwork featuring the assembled game characters"
+        }
+      ]
+    },
+    {
+      "key": "ffvii-revelation-data",
+      "images": [
+        {
+          "url": "https://live.staticflickr.com/65535/55505859268_491f17c8b1_k.jpg",
+          "altPT": "Arte oficial de Final Fantasy VII Revelation com protagonistas em destaque dramático",
+          "altEN": "Official Final Fantasy VII Revelation artwork featuring the protagonists in dramatic spotlight"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/b2011ae5a054c3ae375a364174ee44aff00a0602.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Arte promocional de Final Fantasy VII Revelation anunciando lançamento para PS5",
+          "altEN": "Promotional Final Fantasy VII Revelation artwork announcing upcoming PS5 launch"
+        }
+      ]
+    },
+    {
+      "key": "cod-the-haunting-setembro",
+      "images": [
+        {
+          "url": "https://i.ytimg.com/vi/loeFxc7AyrY/maxresdefault.jpg",
+          "altPT": "Miniatura do trailer da temporada The Haunting de Black Ops 7 com atmosfera sombria",
+          "altEN": "Trailer thumbnail for Black Ops 7 and Warzone Season 06 The Haunting with dark atmosphere"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/18e581351f2ed2273a5e97ea892561e8f5b92937.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Arte oficial da temporada The Haunting de Black Ops 7 e Warzone",
+          "altEN": "Official artwork for Black Ops 7 and Warzone Season 06 The Haunting"
+        }
+      ]
+    },
+    {
+      "key": "physint-xbox-kojima",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/KJPXBOX-a19bab905ef4e406d93c.jpg",
+          "altPT": "Cartaz preto oficial de PHYSINT com logotipos da Kojima Productions e Xbox",
+          "altEN": "Official black PHYSINT poster featuring Kojima Productions and Xbox logos"
+        }
+      ]
+    },
+    {
+      "key": "rog-xbox-ally-x20",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/17871899038.jpg",
+          "altPT": "Conjunto ROG Xbox Ally X20 exibido sobre mesa em foto oficial de produto",
+          "altEN": "ROG Xbox Ally X20 bundle displayed on a table in official product photo"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787189901696.jpg",
+          "altPT": "Mulher jogando no ROG Xbox Ally X20 com Forza Horizon 6 na tela",
+          "altEN": "Woman playing ROG Xbox Ally X20 handheld showing Forza Horizon 6 on screen"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787189905549.jpg",
+          "altPT": "Homem no sofá usando óculos R1 Gaming enquanto joga no ROG Xbox Ally",
+          "altEN": "Man on couch wearing R1 Gaming Glasses while playing on ROG Xbox Ally"
+        }
+      ]
+    },
+    {
+      "key": "rog-ally-atualizacao-dock",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/04/ROG_FINAL_no-guns-JPG-3c2bcd603c2bf170f6d0.jpg",
+          "altPT": "Foto oficial de sala com ROG Ally acoplado à dock exibindo jogo na TV",
+          "altEN": "Official photo of living room with ROG Ally docked displaying game on TV"
+        }
+      ]
+    },
+    {
+      "key": "playstation-portal-1080p",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/03/4f453850da8724db2d6f1404b8c568b174c35018.png",
+          "altPT": "Captura de tela do menu do PlayStation Portal com modo 1080p High Quality",
+          "altEN": "PlayStation Portal menu screenshot showing 1080p High Quality mode option"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/03/41e446398254cfad40fb870bbdbdea8dfecae192.png",
+          "altPT": "Tela do PlayStation Portal para selecionar jogo específico do pacote disponível",
+          "altEN": "PlayStation Portal screen prompting to select a specific game from the bundle"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/03/63c3742fdd19a8b8eceea56d859b443b910de4d6.jpg",
+          "altPT": "Tela do PlayStation Portal exibindo QR code para criação de conta",
+          "altEN": "PlayStation Portal screen displaying QR code for account creation"
+        }
+      ]
+    },
+    {
+      "key": "legion-go-steamos",
+      "images": [
+        {
+          "url": "https://media.lenovonews.fiestic.com/2026/01/08043839/LegionGo1.png",
+          "altPT": "Foto oficial do Lenovo Legion Go exibindo sistema SteamOS na tela",
+          "altEN": "Official Lenovo Legion Go photo showing SteamOS on its display"
+        }
+      ]
+    },
+    {
+      "key": "steam-deck-oled-ficha",
+      "images": [
+        {
+          "url": "https://cdn.fastly.steamstatic.com/steamdeck/images/oled/social_media_image.jpg",
+          "altPT": "Console portátil Steam Deck OLED em imagem oficial de divulgação estilizada",
+          "altEN": "Steam Deck OLED handheld shown in official stylized promotional imagery"
+        },
+        {
+          "url": "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_mobile_1_english.png",
+          "altPT": "Diagrama oficial com especificações técnicas do Steam Deck OLED em inglês",
+          "altEN": "Official Steam Deck OLED technical specifications diagram in English"
+        },
+        {
+          "url": "https://cdn.fastly.steamstatic.com/steamdeck/images/tech-specs/tech-specs_2_english.png",
+          "altPT": "Segunda página oficial com especificações detalhadas do Steam Deck OLED",
+          "altEN": "Second official page showing detailed Steam Deck OLED specifications"
+        }
+      ]
+    },
+    {
+      "key": "switch-2-bundles",
+      "images": [
+        {
+          "url": "https://assets.nintendo.com/image/upload/q_auto:best/f_auto/c_fill,w_813/dpr_2.0/ncom/en_US/articles/2026/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/MarioKartWorldBundle",
+          "altPT": "Foto oficial do bundle Nintendo Switch 2 com Mario Kart World em destaque",
+          "altEN": "Official Nintendo Switch 2 bundle photo featuring Mario Kart World"
+        },
+        {
+          "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/ncom/en_US/articles/2026/two-new-nintendo-switch-2-bundles-deliver-sun-soaked-sports-high-speed-thrills-and-extra-value/NSSR_Bundle",
+          "altPT": "Foto oficial do segundo bundle Nintendo Switch 2 com acessórios e cores vibrantes",
+          "altEN": "Official second Nintendo Switch 2 bundle photo showing accessories and vibrant colors"
+        }
+      ]
+    },
+    {
+      "key": "ps-plus-setembro-catalogo",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/1a99d9682f34d3b6309a1c08879506eca547812a.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Imagem promocional do catálogo PlayStation Plus de setembro com jogos em destaque",
+          "altEN": "Promotional PlayStation Plus September catalog image featuring highlighted games"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/0645476d1f7c9a97321fae602adaa847552c514b.jpeg",
+          "altPT": "Arte oficial do PlayStation Plus de setembro exibindo seleção de jogos disponíveis",
+          "altEN": "Official September PlayStation Plus artwork showing selection of available games"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/8d3bec7aebf639f2df99ea34e543b5e38455cc9e.jpeg",
+          "altPT": "Imagem oficial adicional do catálogo PlayStation Plus de setembro com destaques editoriais",
+          "altEN": "Additional official PlayStation Plus September catalog image with editorial highlights"
+        }
+      ]
+    },
+    {
+      "key": "xbox-insiders-setembro",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/0.-Hero-26909-2e5fc49130f2ee755d29-1024x576.png",
+          "altPT": "Composição promocional verde do Xbox Insiders com logotipos e elementos gráficos modernos",
+          "altEN": "Green promotional composition for Xbox Insiders program with logos and modern graphic elements"
+        }
+      ]
+    },
+    {
+      "key": "xbox-discos-direito-digital",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/08/PRESERVATION_GEARS-16x9-1-f50ea7c7183d739eee78-1024x576.png",
+          "altPT": "Imagem promocional do programa Xbox que transforma discos físicos em versão digital",
+          "altEN": "Promotional image for Xbox program converting physical discs to digital versions"
+        }
+      ]
+    },
+    {
+      "key": "xbox-tokyo-game-show-2026",
+      "images": [
+        {
+          "url": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/TGS_AnnounceStatic_2026-814e275774b1b96bd7e9.jpg",
+          "altPT": "Arte verde oficial do Xbox para Tokyo Game Show 2026 com gato preto estilizado",
+          "altEN": "Official green Xbox artwork for Tokyo Game Show 2026 featuring a stylized black cat"
+        }
+      ]
+    },
+    {
+      "key": "logitech-mx-keypad",
+      "images": []
+    },
+    {
+      "key": "logitech-superstrike-clique",
+      "images": [
+        {
+          "url": "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-haptic-feature-1.jpg",
+          "altPT": "Detalhe do mouse Logitech G PRO X2 Superstrike em fundo claro minimalista",
+          "altEN": "Detail of the Logitech G PRO X2 Superstrike mouse on a minimal light background"
+        },
+        {
+          "url": "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-configuration-feature-2.jpg",
+          "altPT": "Vista superior do Logitech G PRO X2 Superstrike destacando botões configuráveis",
+          "altEN": "Top view of Logitech G PRO X2 Superstrike highlighting configurable buttons"
+        },
+        {
+          "url": "https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x2-superstrike-pdp/2026/pro-x2-superstrike-precise-click-feature-3.jpg",
+          "altPT": "Close do Logitech G PRO X2 Superstrike exibindo clique preciso e sensor avançado",
+          "altEN": "Close-up of Logitech G PRO X2 Superstrike showing precise click and advanced sensor"
+        }
+      ]
+    },
+    {
+      "key": "rog-oled-245",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1787187343593.jpg",
+          "altPT": "Monitor ROG Swift OLED PG259QWS Ace sobre mesa cercado de periféricos e fundo roxo",
+          "altEN": "ROG Swift OLED PG259QWS Ace monitor on desk surrounded by ROG gear against purple background"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787187348309.jpg",
+          "altPT": "Monitor ROG Swift OLED PG259QWS Ace com base giratória sobre fundo preto elegante",
+          "altEN": "ROG Swift OLED PG259QWS Ace monitor with swiveled stand against elegant black background"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787020226692.jpg",
+          "altPT": "Detalhe do suporte do monitor ROG Strix OLED XG259QDPG Ace em fundo preto",
+          "altEN": "Close-up of ROG Strix OLED XG259QDPG Ace monitor stand against black background"
+        }
+      ]
+    },
+    {
+      "key": "rog-gladius-iv-ace",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/178726484164.jpg",
+          "altPT": "Quatro variações de cor do mouse ROG Gladius IV Ace alinhadas em mesa cinza",
+          "altEN": "Four color variants of ROG Gladius IV Ace mouse lined up on grey table"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264839429.jpg",
+          "altPT": "Mouse ROG Gladius IV Ace sobre mousepad preto com acessórios ao redor",
+          "altEN": "ROG Gladius IV Ace mouse on black desk mat surrounded by accessories"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264843357.jpg",
+          "altPT": "Mouse preto ROG Gladius IV Ace ao lado de teclado ROG sobre mousepad",
+          "altEN": "Black ROG Gladius IV Ace mouse beside ROG keyboard on desk mat"
+        }
+      ]
+    },
+    {
+      "key": "rog-spatha-x-65k",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1787264833449.jpg",
+          "altPT": "Mouse gamer ROG Spatha X 65K sobre superfície azul acinzentada com fundo vermelho",
+          "altEN": "ROG Spatha X 65K gaming mouse on slate-blue surface against red backdrop"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264838217.jpg",
+          "altPT": "Mouse ROG Spatha X 65K aberto sobre mesa cinza exibindo componentes internos",
+          "altEN": "ROG Spatha X 65K mouse opened on grey table displaying internal components"
+        },
+        {
+          "url": "https://rog.asus.com/media/1787264837173.jpg",
+          "altPT": "Mouse ROG Spatha X 65K sobre mousepad cinza com logotipo ROG",
+          "altEN": "ROG Spatha X 65K mouse on grey ROG desk mat"
+        }
+      ]
+    },
+    {
+      "key": "rog-strix-morph-96",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1774325807374.jpg",
+          "altPT": "Teclado ROG Strix Morph 96 Wireless apoiado verticalmente sobre mesa de madeira",
+          "altEN": "ROG Strix Morph 96 Wireless keyboard standing upright on wooden desk"
+        },
+        {
+          "url": "https://rog.asus.com/media/1774325811326.jpg",
+          "altPT": "Perfil lateral de dois teclados ROG Strix Morph 96 com barras de luz acesas",
+          "altEN": "Side profile of two ROG Strix Morph 96 Wireless keyboards with light bars illuminated"
+        },
+        {
+          "url": "https://rog.asus.com/media/1774325902606.jpg",
+          "altPT": "Teclado ROG Strix Morph 96 Wireless com várias teclas e switches removidos",
+          "altEN": "ROG Strix Morph 96 Wireless keyboard with many keycaps and switches removed"
+        }
+      ]
+    },
+    {
+      "key": "rog-rapture-gt-bn98",
+      "images": [
+        {
+          "url": "https://rog.asus.com/media/1787355002843.jpg",
+          "altPT": "Roteador ROG Rapture GT-BN98 Pro em imagem oficial de divulgação estilizada",
+          "altEN": "ROG Rapture GT-BN98 Pro router shown in stylized official promotional imagery"
+        }
+      ]
+    },
+    {
+      "key": "rog-xreal-r1",
+      "images": [
+        {
+          "url": "https://dlcdnwebimgs.asus.com/files/media/202602/6d8a766b-a684-40f6-9911-03ae7d6eed2f/v1/img/kv.jpg",
+          "altPT": "Dois jogadores usam óculos ROG XREAL R1 com computador e portátil lado a lado",
+          "altEN": "Two players using ROG XREAL R1 glasses with desktop and handheld side by side"
+        },
+        {
+          "url": "https://dlcdnwebimgs.asus.com/files/media/202602/6d8a766b-a684-40f6-9911-03ae7d6eed2f/v1/img/ecosystem/1.jpg",
+          "altPT": "Pessoa no sofá usando óculos ROG XREAL R1 com portátil ROG Ally na mão",
+          "altEN": "Person on sofa wearing ROG XREAL R1 glasses while holding ROG Ally handheld"
+        },
+        {
+          "url": "https://dlcdnwebimgs.asus.com/files/media/202602/6d8a766b-a684-40f6-9911-03ae7d6eed2f/v1/img/ecosystem/2.jpg",
+          "altPT": "Jogador em escritório usando óculos ROG XREAL R1 conectado ao PC gamer",
+          "altEN": "Player at desk in office using ROG XREAL R1 glasses connected to gaming PC"
+        }
+      ]
+    },
+    {
+      "key": "lego-playstation",
+      "images": [
+        {
+          "url": "https://i.ytimg.com/vi/5FB8SIlnd6c/maxresdefault.jpg",
+          "altPT": "Miniatura de vídeo apresentando LEGO PlayStation celebrando 30 anos de história",
+          "altEN": "Video thumbnail showcasing LEGO PlayStation celebrating 30 years of PlayStation history"
+        },
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/06b554da9ad96ea244c2f809bd52a2a1e637a673.jpg?resize=1088%2C612&crop_strategy=smart",
+          "altPT": "Imagem promocional do LEGO PlayStation exibida no PlayStation Blog com destaque",
+          "altEN": "Promotional LEGO PlayStation image featured prominently on PlayStation Blog"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55505878054_184ea26944_k.jpg",
+          "altPT": "Foto oficial do conjunto LEGO PlayStation montado com detalhes do console clássico",
+          "altEN": "Official photo of assembled LEGO PlayStation set showing classic console details"
+        }
+      ]
+    },
+    {
+      "key": "dualsense-gta-vi",
+      "images": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2026/09/a5bd4c6e9ca55c1e1fe1705b79e86300f205831f.png",
+          "altPT": "Primeira vista dos controles DualSense edição limitada de GTA VI em destaque",
+          "altEN": "First look at Grand Theft Auto VI Limited Edition DualSense controllers on display"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55505866143_cb4df88743_k.jpg",
+          "altPT": "Foto oficial dos controles DualSense de GTA VI lado a lado com acabamento especial",
+          "altEN": "Official photo of GTA VI DualSense controllers side by side with special finish"
+        },
+        {
+          "url": "https://live.staticflickr.com/65535/55504761597_008d0d7839_k.jpg",
+          "altPT": "Detalhe dos controles DualSense de GTA VI destacando botões e textura personalizada",
+          "altEN": "Close-up of GTA VI DualSense controllers highlighting buttons and custom texture"
+        }
+      ]
+    },
+    {
+      "key": "gpt-6-astra",
+      "images": []
+    },
+    {
+      "key": "claude-fable-mythos-51",
+      "images": []
+    },
+    {
+      "key": "gemini-38-flash",
+      "images": [
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8_flash__blog__header__16-9__light.width-1300.png",
+          "altPT": "Imagem oficial de divulgação do modelo Gemini 3.8 Flash do Google",
+          "altEN": "Official promotional artwork for Google Gemini 3.8 Flash model"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3.8-flash__evals__table_l.width-1200.format-webp_2pLdBp5.webp",
+          "altPT": "Tabela comparativa divulgada pelo Google avaliando Gemini 3.8 Flash entre concorrentes",
+          "altEN": "Comparison table released by Google evaluating Gemini 3.8 Flash against competitors"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-8-flash__evals__deepswe.width-1200.format-webp.webp",
+          "altPT": "Diagrama divulgado pelo Google mostrando desempenho do Gemini 3.8 Flash no DeepSWE",
+          "altEN": "Diagram released by Google showing Gemini 3.8 Flash performance on DeepSWE benchmark"
+        }
+      ]
+    },
+    {
+      "key": "qwen38-flash-next",
+      "images": []
+    },
+    {
+      "key": "qwen-image-3",
+      "images": []
+    },
+    {
+      "key": "mistral-agentic-search",
+      "images": [
+        {
+          "url": "https://mistral.ai/_astro/Thumbnail-Blog-Agenticsearch_Z233ryT.webp?dpl=6aaaa3e6d4d2290017119943",
+          "altPT": "Capa oficial do artigo sobre busca agêntica da Mistral AI com identidade visual",
+          "altEN": "Official cover image for Mistral AI agentic search article with branded visuals"
+        },
+        {
+          "url": "https://mistral.ai/_astro/pasted-image-4_INqkQ.webp?dpl=6aaaa3e6d4d2290017119943",
+          "altPT": "Diagrama oficial da Mistral AI ilustrando fluxo de busca agêntica inteligente",
+          "altEN": "Official Mistral AI diagram illustrating intelligent agentic search workflow"
+        },
+        {
+          "url": "https://mistral.ai/_astro/pasted-image-5_Z1Id2ck.webp?dpl=6aaaa3e6d4d2290017119943",
+          "altPT": "Segundo diagrama oficial da Mistral AI detalhando etapas da busca inteligente",
+          "altEN": "Second official Mistral AI diagram detailing stages of intelligent search"
+        }
+      ]
+    },
+    {
+      "key": "shieldstral",
+      "images": [
+        {
+          "url": "https://mistral.ai/_astro/Thumbnail-Model_Shieldstral@2x_ZUxlF0.webp?dpl=6aaaa3e6d4d2290017119943",
+          "altPT": "Capa oficial da Mistral AI para o modelo Shieldstral com identidade visual escura",
+          "altEN": "Official Mistral AI cover for Shieldstral model with dark branded visuals"
+        },
+        {
+          "url": "https://mistral.ai/_astro/text-safety-1_Z21NQHD.webp?dpl=6aaaa3e6d4d2290017119943",
+          "altPT": "Diagrama oficial sobre segurança de texto do Shieldstral da Mistral AI",
+          "altEN": "Official diagram on Shieldstral text safety by Mistral AI"
+        },
+        {
+          "url": "https://mistral.ai/_astro/refusal-detection-1_Z1j6eqW.webp?dpl=6aaaa3e6d4d2290017119943",
+          "altPT": "Diagrama oficial de detecção de recusa do Shieldstral exibindo métricas avaliativas",
+          "altEN": "Official Shieldstral refusal detection diagram showing evaluation metrics"
+        }
+      ]
+    },
+    {
+      "key": "claude-marca-texto",
+      "images": []
+    },
+    {
+      "key": "gemini-apps-conectados",
+      "images": []
+    },
+    {
+      "key": "claude-cientistas",
+      "images": []
+    },
+    {
+      "key": "iphone18pro",
+      "images": [
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-2up-260909_inline.jpg.large.jpg",
+          "altPT": "Frente do iPhone 18 Pro bordô ao lado da traseira do iPhone 18 Pro Max",
+          "altEN": "Front of burgundy iPhone 18 Pro beside rear of burgundy iPhone 18 Pro Max"
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-color-lineup-260909_big.jpg.large.jpg",
+          "altPT": "iPhones 18 Pro alinhados nas cores preto, prata, glacial e bordô",
+          "altEN": "iPhone 18 Pro lineup in black, silver, glacier and burgundy finishes"
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-photography-aperture-low-light-260909_big.jpg.large.jpg",
+          "altPT": "Foto capturada com iPhone 18 Pro usando câmera Fusion de 48 MP em baixa luz",
+          "altEN": "Photo taken on iPhone 18 Pro with new 48MP Fusion Main camera in low light"
+        }
+      ]
+    },
+    {
+      "key": "iphone17e-contexto",
+      "images": [
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-hero-geo-260302_big.jpg.large.jpg",
+          "altPT": "Dois iPhones 17e empilhados, um preto e outro rosa claro, vista lateral",
+          "altEN": "Two iPhone 17e devices stacked, one black and one soft pink, side view"
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/geo/Apple-iPhone-17e-family-lineup-ROW-260302_big.jpg.large.jpg",
+          "altPT": "Quatro iPhones 17e enfileirados nas cores preto, branco e rosa claro",
+          "altEN": "Four iPhone 17e devices lined up in black, white and soft pink finishes"
+        },
+        {
+          "url": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/article/Apple-iPhone-17e-lockscreen-260302_inline.jpg.large.jpg",
+          "altPT": "Tela Super Retina XDR de 6,1 polegadas do iPhone 17e exibindo interface colorida",
+          "altEN": "6.1-inch Super Retina XDR display of iPhone 17e showing colorful interface"
+        }
+      ]
+    },
+    {
+      "key": "pixel11-tensor",
+      "images": [
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/NFG_Cubs_Frost.width-1200.format-webp.webp",
+          "altPT": "Vista frontal e traseira de um smartphone Google Pixel em fundo claro neutro",
+          "altEN": "Front and rear view of a Google Pixel phone on neutral light background"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/The_Pixel_11_Series_ProandProXL.width-1200.format-webp.webp",
+          "altPT": "Frente e traseira dos Pixel, Pro e Pro XL destacando barra tripla de câmeras",
+          "altEN": "Front and rear of Pixel, Pro and Pro XL showing triple camera bar on back"
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Pixel-11ProXL_Family-Shot.width-1200.format-webp.webp",
+          "altPT": "Pixel 11 Pro e Pixel 11 Pro XL exibidos nas cores disponíveis em fundo claro",
+          "altEN": "Pixel 11 Pro and Pixel 11 Pro XL shown in available colors on light background"
+        }
+      ]
+    },
+    {
+      "key": "pixel11-pro-fold",
+      "images": [
+        {
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/P11P_Fold_Back_Open_Olive.width-1200.format-webp.webp",
+          "altPT": "Pixel 11 Pro Fold na cor oliva aberto visto por trás com dobradiça aparente",
+          "altEN": "Pixel 11 Pro Fold in Olive color opened viewed from the back showing hinge"
+        }
+      ]
+    },
+    {
+      "key": "galaxy-fold8-comparacao",
+      "images": [
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220302/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main1.jpg",
+          "altPT": "Galaxy Z Flip8, Galaxy Z Fold8 e Galaxy Z Fold8 Ultra lado a lado em fila",
+          "altEN": "Galaxy Z Flip8, Galaxy Z Fold8 and Galaxy Z Fold8 Ultra side by side in a row"
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220341/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main2.jpg",
+          "altPT": "Galaxy Z Fold8 Ultra ultrafino quando desdobrado exibido de perfil lateral",
+          "altEN": "Galaxy Z Fold8 Ultra shown unfolded with remarkably thin side profile"
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/07/22220359/Samsung-Mobile-Galaxy-Unpacked-July-2026-Galaxy-Z-Fold8-Ultra-Galaxy-Z-Fold8-Galaxy-Z-Flip8-A-First-Look_main3.jpg",
+          "altPT": "Close da dobra com tecnologia Flex Titanium reduzindo visibilidade do vinco central",
+          "altEN": "Close-up of fold with Flex Titanium technology minimizing central crease visibility"
+        }
+      ]
+    },
+    {
+      "key": "galaxy-s26-privacy",
+      "images": [
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031538/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main1.jpg",
+          "altPT": "Foto oficial da série Galaxy S26 divulgada pela Samsung em seu portal de notícias",
+          "altEN": "Official Galaxy S26 series photo released by Samsung on its news portal"
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031539/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main2.jpg",
+          "altPT": "Segunda foto oficial da série Galaxy S26 com smartphones em cenário iluminado",
+          "altEN": "Second official Galaxy S26 series photo showing smartphones in bright setting"
+        },
+        {
+          "url": "https://img.global.news.samsung.com/global/wp-content/uploads/2026/02/26031540/Samsung-Mobile-Galaxy-Unpacked-2026-Galaxy-S26-Series-Launch_main3.jpg",
+          "altPT": "Terceira imagem oficial da série Galaxy S26 exibindo aparelhos em diferentes ângulos",
+          "altEN": "Third official Galaxy S26 series image showing devices from different angles"
+        }
+      ]
+    },
+    {
+      "key": "honor-magic-v6",
+      "images": [
+        {
+          "url": "https://www-file.honor.com/content/dam/honor/global/news/2026/honor-magic-v6-launch/news.jpg",
+          "altPT": "Foto oficial do HONOR Magic V6 dobrável exibido em destaque promocional iluminado",
+          "altEN": "Official HONOR Magic V6 foldable photo shown in bright promotional spotlight"
+        }
+      ]
+    },
+    {
+      "key": "xiaomi17ultra",
+      "images": [
+        {
+          "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/489eb45a3fd47a6c3c09a0a94fa5bace.jpg",
+          "altPT": "Xiaomi 17 Ultra verde segurado na horizontal com as câmeras traseiras em destaque",
+          "altEN": "Green Xiaomi 17 Ultra held horizontally showing its rear cameras prominently"
+        },
+        {
+          "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/gcdah302e2d613088f2aff7jf97a0bc8.jpg",
+          "altPT": "Detalhe do módulo circular de câmeras Leica do Xiaomi 17 Ultra verde",
+          "altEN": "Close-up of the circular Leica camera module on the green Xiaomi 17 Ultra"
+        }
+      ]
+    },
+    {
+      "key": "oppo-findx9ultra",
+      "images": [
+        {
+          "url": "https://www.oppo.com/content/dam/oppo_com/jp/mkt/newsroom/press/2026/findx9ultra-release/PR_oppofindx9ultra_260608_header.webp",
+          "altPT": "Imagem oficial de divulgação do OPPO Find X9 Ultra em destaque editorial",
+          "altEN": "Official promotional image featuring OPPO Find X9 Ultra in editorial spotlight"
+        }
+      ]
+    },
+    {
+      "key": "oneplus15-165hz",
+      "images": [
+        {
+          "url": "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/images-kv-mo-bg-1-d2e7d7.png",
+          "altPT": "Foto oficial do OnePlus 15 exibindo design premium e acabamento traseiro elegante",
+          "altEN": "Official OnePlus 15 photo showcasing premium design and elegant rear finish"
+        },
+        {
+          "url": "https://www.oneplus.com/content/dam/oneplus/na/2025/OnePlus15/assets/videos-ai-trip_640_poster-1-1583ef.jpg",
+          "altPT": "Imagem oficial do OnePlus 15 destacando tela de 165 Hz em uso prático",
+          "altEN": "Official OnePlus 15 image highlighting 165Hz display in practical use"
+        }
+      ]
+    },
+    {
+      "key": "typescript7-go",
+      "images": [
+        {
+          "url": "https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2026/07/7-0-speedup-chart-2.png",
+          "altPT": "Gráfico comparando tempo de compilação entre TypeScript 6 e 7 com aceleração expressiva",
+          "altEN": "Chart comparing compile times between TypeScript 6 and 7 showing notable speedup"
+        },
+        {
+          "url": "https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2026/07/7-0-mem-chart-2.png",
+          "altPT": "Gráfico de redução de memória entre TypeScript 6 e 7 mostrando economia percentual",
+          "altEN": "Chart showing memory reduction between TypeScript 6 and 7 with percentage savings"
+        }
+      ]
+    },
+    {
+      "key": "npm-trusted-publishing",
+      "images": []
+    },
+    {
+      "key": "github-secrets-merge",
+      "images": []
+    },
+    {
+      "key": "godot-mouse-polling",
+      "images": []
+    },
+    {
+      "key": "codeql-go127",
+      "images": []
+    },
+    {
+      "key": "raspberrypi-radio",
+      "images": [
+        {
+          "url": "https://www.raspberrypi.com/app/uploads/2026/08/segz2e-09-03-1024x683.jpg",
+          "altPT": "Rádio artesanal com Raspberry Pi em caixa de madeira apresentado na reportagem original",
+          "altEN": "Handcrafted Raspberry Pi radio in wooden case featured in the original article"
+        }
+      ]
+    },
+    {
+      "key": "unitree-robos-fabrica",
+      "images": [
+        {
+          "url": "https://www.unitree.com/images/7dd9ff96debd40bfb67e29d15ef3a0e0_1600x1200.png",
+          "altPT": "Foto institucional de robôs da Unitree em ambiente interno, não registro de fábrica",
+          "altEN": "Institutional Unitree robot photo in indoor setting, not a factory record"
+        },
+        {
+          "url": "https://www.unitree.com/images/666488e01aba4f0a9051c8488056dca8_1600x1200.png",
+          "altPT": "Segunda foto institucional de robô Unitree em demonstração, sem vínculo fabril",
+          "altEN": "Second institutional Unitree robot photo during demonstration, not factory documentation"
+        },
+        {
+          "url": "https://www.unitree.com/images/0e78dffa1e6f47deb8526a1d3000b96f_1600x1200.png",
+          "altPT": "Terceira foto institucional de robôs Unitree alinhados para divulgação corporativa",
+          "altEN": "Third institutional Unitree robot photo lined up for corporate promotion"
+        }
+      ]
+    },
+    {
+      "key": "honor-robot-phone",
+      "images": [
+        {
+          "url": "https://www-file.honor.com/content/dam/honor/global/news/2026/honor-mwc2026-launch/news-2.jpg",
+          "altPT": "Imagem oficial da HONOR na MWC 2026 com Robot Phone e Magic V6 em destaque",
+          "altEN": "Official HONOR image at MWC 2026 featuring Robot Phone and Magic V6"
+        },
+        {
+          "url": "https://www-file.honor.com/content/dam/honor/global/news/2026/honor-mwc2026-launch/news-1.jpg",
+          "altPT": "Foto oficial da HONOR destacando Robot Phone e robô humanoide na MWC 2026",
+          "altEN": "Official HONOR photo highlighting Robot Phone and humanoid robot at MWC 2026"
+        }
+      ]
+    },
+    {
+      "key": "xiaomi-vision-gran-turismo",
+      "images": []
+    },
+    {
+      "key": "model-hardware-standard",
+      "images": []
+    }
+  ]
+}

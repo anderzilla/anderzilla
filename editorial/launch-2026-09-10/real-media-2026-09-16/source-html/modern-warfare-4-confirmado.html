@@ -1,0 +1,5473 @@
+
+
+     
+
+    
+
+
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+	
+
+
+    
+	
+
+	
+	
+
+  <head>
+
+	
+	
+
+	<script>
+
+        var curUrl = window.location.href;
+
+		var isDev = window.location.host.includes("dev") || window.location.host.includes("preview") || window.location.host.includes("test");
+        var isStage = window.location.host.includes("stage");
+        var codDomain = isDev ? 'profile-dev' : isStage ? 'profile-stage' : 'profile';
+       // var domain = isDev || isStage || window.location.host.includes("profile") ? "s-dev" : "s";
+        var domain = isDev ? 's-dev': isStage ? 's-stage' : "s";
+        var siteId, fetchUrl;
+
+        if(curUrl.includes("callofduty.com") > 0) {
+            siteId = "cod";
+            fetchUrl = "https://" + codDomain + ".callofduty.com";
+        }
+        else if(curUrl.includes("crashbandicoot.com") > 0) {
+			siteId = "crash";
+            fetchUrl = "https://" + domain + ".crashbandicoot.com";
+        }
+        else if(curUrl.includes("tonyhawkthegame.com") > 0) {
+            siteId = "th";
+            fetchUrl = "https://" + domain + ".tonyhawkthegame.com";
+        }
+        else if(curUrl.includes("sekirothegame.com") > 0) {
+            siteId = "sekiro";
+            fetchUrl = "https://" + domain + ".sekirothegame.com";
+        }
+        else if(curUrl.includes("activision.com") > 0) {
+            siteId = "activision";
+            fetchUrl = "https://" + domain + ".activision.com";
+        }
+
+		var OneTrust = {
+				dataSubjectParams: {
+					id: "",
+					isAnonymous: false,
+					token : ""
+				}
+			};		
+			function otGetCookie (cookieName) {
+				var i = 0,
+					cookies = document.cookie.split(";"),
+					length = cookies.length,
+					trimRegex = /^\s+|\s+$/g,
+					cookiePair;
+
+				for (; i < length; i++) {
+					cookiePair = cookies[i].split('=');				
+					if (cookiePair[0].replace(trimRegex, '') === cookieName) return unescape(cookiePair[1]);
+				}
+			}
+			var loggedIn = otGetCookie("ACT_SSO_COOKIE") || otGetCookie("s_ACT_SSO_COOKIE") || false;
+			if(loggedIn) {
+
+				var xsrfToken = otGetCookie("XSRF-TOKEN");
+				var ssoCookieValue = otGetCookie("ACT_SSO_COOKIE");
+    			var headers = {
+        			'Cookie': "ACT_SSO_COOKIE=" + ssoCookieValue,
+					'X-XSRF-TOKEN': xsrfToken
+    			}
+
+				fetch(fetchUrl + "/" + siteId + "/regulations/onetrust/auth", {
+					method: "POST",
+            		credentials: 'include',
+            		mode: 'cors',
+					headers: headers
+				})
+				.then((response) => response.json())
+				.then((json) => { 
+					OneTrust = {
+						dataSubjectParams: {
+							id: json.userId,
+							isAnonymous: false,
+							token : json.token
+						}
+					};
+					console.log("OneTrust: ",OneTrust);
+				})
+        		.catch(error => {
+                    // Handle errors
+                    console.error('Fetch error:', error); 
+                });
+			}
+			window.addEventListener("OneTrustGroupsUpdated", handleOneTrustGroupsUpdated);
+		    function handleOneTrustGroupsUpdated() {
+				if(loggedIn) {
+        			var xsrfToken = otGetCookie("XSRF-TOKEN");
+                    var ssoCookieValue = otGetCookie("ACT_SSO_COOKIE");
+                    var headers = {
+            			'Cookie': "ACT_SSO_COOKIE=" + ssoCookieValue,
+                        'X-XSRF-TOKEN': xsrfToken
+                    };
+					fetch(fetchUrl + "/" + siteId + "/regulations/onetrust/preferences?activeGroups=" + OnetrustActiveGroups, {
+							method: "POST",
+							credentials: 'include',
+                			mode: 'cors',
+							headers: headers
+					})
+            		.catch(error => {
+                        // Handle errors
+                        console.error('Fetch error:', error);
+                    });
+
+				}
+			}
+
+	</script>
+
+
+
+    <meta charset="UTF-8"/>
+
+    <meta name="country" content="US"/>
+
+    
+    
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	
+    	<script src="//cdn.optimizely.com/js/18240914759.js" type="text/plain" class="opt-anon-category-2"></script>
+    
+
+
+	
+    
+
+         <script>var dataLayer = dataLayer || [],
+    	         digitalData = {"page":{"pageInfo":{"charSet":"UTF-8","language":"EN_CA","country":"US","site":"callofduty","pageName":"callofduty:blog:home:2026:05:call-of-duty-modern-warfare-4-announcement","siteSection":"blog","siteSubsection":"call-of-duty-modern-warfare-4-announcement"},"pageCategory":{"primaryCategory":"blog","pageType":"sub category","subCategory1":"home"},"targetEntity":{"locale":"en_ca_US","brand":"callofduty","categoryId":"['blog', 'blog:home', 'callofduty:blog:home:2026:05:call-of-duty-modern-warfare-4-announcement']","pageURL":"https://www.callofduty.com/content/atvi/callofduty/blog/web/en_ca/home/2026/05/call-of-duty-modern-warfare-4-announcement.html","id":"call-of-duty-modern-warfare-4-announcement","name":"Announcing Call of Duty: Modern Warfare 4"}}};
+    </script>
+
+    
+    
+
+     
+     
+    <base href="https://www.callofduty.com"/> 
+
+
+
+	
+    
+
+	
+		<script>
+			(function(w,d,s,l,i){
+    			w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;j.setAttributeNode(d.createAttribute('data-ot-ignore'));
+                j.addEventListener('load', function() { 
+                    var _ge = new CustomEvent('gtm_loaded', { bubbles: true }); 
+                    d.dispatchEvent(_ge);
+                });
+                f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-T6X8245');
+		</script>                                                                                                                                                                        
+    
+
+
+    
+    
+
+     <title>Announcing Call of Duty: Modern Warfare 4</title>
+
+
+    
+    
+
+    <meta name="template" content="cod-article-template"/>
+    
+
+
+
+    
+    
+
+    
+
+
+	
+        
+        
+            
+        
+    
+
+    
+
+	<link rel="image_src" href="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"/>
+
+    <meta property="og:title" content="Announcing Call of Duty: Modern Warfare 4"/>
+    <meta property="og:url" content="https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+	
+	<meta property="og:description" content="This is Warfare Without Limits: Call of Duty®: Modern Warfare® 4 releases on Friday, October 23, 2026 on PlayStation 5, XBOX Series X|S, PC, and Nintendo Switch 2. From Activision and Infinity Ward."/>
+	<meta property="og:type" content="website"/>
+
+    <meta property="og:image" content="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"/>
+    <meta property="og:image:url" content="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"/>
+    <meta property="og:image:secure_url" content="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"/>
+
+    <meta name="twitter:title" content="Announcing Call of Duty: Modern Warfare 4"/>
+    
+	<meta name="twitter:description" content="This is Warfare Without Limits: Call of Duty®: Modern Warfare® 4 releases on Friday, October 23, 2026 on PlayStation 5, XBOX Series X|S, PC, and Nintendo Switch 2. From Activision and Infinity Ward."/>
+    <meta name="twitter:image" content="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="@CallofDuty"/>
+    <meta name="twitter:url" content="https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+
+    <!-- END SHARE META TAGS -->
+
+
+    
+    
+		
+
+	 
+
+   
+
+	
+	
+
+	
+	
+
+        
+        
+        
+    
+        <script type="application/ld+json">
+
+    
+            {
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement"
+                },
+                "headline": "Announcing Call of Duty: Modern Warfare 4",
+                "image": ["https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"],
+                "datePublished": "2026-05-28T12:00:00-07:00",
+                "author": {
+                    "@type": "Person",
+                    "name": "Call of Duty Staff"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Activision Publishing",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "[https://www.callofduty.com/content/dam/atvi/callofduty/global/favicon/favicon.ico]"
+                    }
+                },
+                "description": "This is Warfare Without Limits: Call of Duty®: Modern Warfare® 4 releases on Friday, October 23, 2026 on PlayStation 5, XBOX Series X|S, PC, and Nintendo Switch 2. From Activision and Infinity Ward."
+            }
+        
+        </script>
+
+	
+
+	
+    
+
+    
+    <!-- END SCHEMA TAGS -->
+
+    
+    
+    
+
+	<script> 
+        var ATVI = ATVI || {},
+			wcmmode;
+		if (false) wcmmode = 'edit';
+		if (false) wcmmode = 'design';
+		if (!false && !false) wcmmode = '';
+		ATVI.pageMode = wcmmode;
+		ATVI.pageEnv = ('www.callofduty.com'.indexOf('cmsauthor') > -1) ? 'dev' : 'prod';
+		ATVI.pageLocale = 'en-CA';
+	</script>
+
+
+
+    
+    
+
+   
+
+   
+    <script>
+		(function() {
+
+    		if(window.location.href.includes("callofduty")) {
+
+                var winUrl = window.location.hostname,
+                    url = 'https://profile.callofduty.com/resources/common/scripts/sso.bar.js',
+                    prev = 'https://profile-dev.callofduty.com/resources/common/scripts/sso.bar.js',
+                    stage = 'https://profile-stage.callofduty.com/resources/common/scripts/sso.bar.js',
+                    author = '',
+                    scriptTag = document.createElement('script');
+                if (winUrl.indexOf('preview.') > -1 || winUrl.indexOf('test.') > -1 && prev) url = prev; //switch between "prev" and "url" for support team.
+                if (winUrl.indexOf('stage.') > -1 && stage) url = stage;
+                if (winUrl.indexOf('dev.') > -1) url = prev;
+                if (winUrl.indexOf('cmsauthor') > -1 && author) url = author;
+                scriptTag.setAttribute('src', url);
+                scriptTag.id = 'sso-bar-script';
+                document.write(scriptTag.outerHTML);
+
+    		}
+        })();
+
+        var config = {
+			containerId: 'cdo-bar',
+    		locale: 'en_CA',
+			cms: true,
+    		communityId: 'cod',
+    		customSupportPath: '' || null
+        };
+
+    </script>
+
+    
+    	<script>
+        	(function() {
+                var initSsoLibrary = function() {
+                    if (typeof SSO == "object") {
+                        window.ssobar = new SSO.Bar(config);
+                	} else {
+                    	setTimeout(function() {
+                        	initSsoLibrary();
+                        }, 250);
+                    }
+                };
+
+        		if(window.location.href.includes("callofduty")) initSsoLibrary();
+
+			})();
+      	  </script>
+		
+   
+
+
+
+    
+    
+
+    
+
+	
+
+    
+
+	
+
+    
+
+    
+
+    
+    
+<link rel="stylesheet" href="/apps/atvi/global/clientlibs.3bf3f28740b0f13f93c845b52b11a008.css" type="text/css"><script type="text/javascript" src="/apps/atvi/global/clientlibs.3908e9bde27c6472d5a31a4c4fc89f54.js"></script>
+
+
+
+    
+        
+    
+<link rel="stylesheet" href="/apps/atvi/callofduty/editorial/clientlibs/core.a40e7c6090d5e8cd219984cda47ce773.css" type="text/css"><script type="text/javascript" src="/apps/atvi/callofduty/editorial/clientlibs/core.f26d6486dc328906880503196ba290e5.js" defer></script>
+
+
+    
+
+    
+
+
+
+
+	
+    
+	
+	 
+	 
+	
+	 
+
+	
+
+	
+        
+        
+
+            
+            
+				<link rel="alternate" hreflang="en-us" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/en/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+                <link rel="alternate" hreflang="x-default" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/en/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+				<link rel="alternate" hreflang="en-ca" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/en_ca/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+				<link rel="alternate" hreflang="en-gb" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/en_gb/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="en-au" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/en_au/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="de" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/de/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="it" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/it/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="es" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/es/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="es-mx" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/es_mx/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="fr" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/fr/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="fr-ca" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/fr_ca/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="ar" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/ar/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="pt-br" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/pt_br/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="ja" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/ja/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="ko" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/ko/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="zh-tw" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/zh_tw/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="zh-cn" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/zh_cn/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="ru" href="https://www.callofduty.com/content/atvi/callofduty/blog/web/ru/home/2026/05/call-of-duty-modern-warfare-4-announcement"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+
+	
+    
+    
+
+  
+
+
+    
+    
+    
+    
+    
+    <link rel="icon" href="https://www.callofduty.com/favicon.ico"/>
+	<link rel="icon" type="image/vnd.microsoft.icon" href="https://www.callofduty.com/favicon.ico"/>
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="https://www.callofduty.com/favicon.ico"/>
+
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=100"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="apple-touch-icon" href="https://www.activision.com/content/dam/atvi/global/apple-touch-icon.png"/>
+	<meta name="robots" content="max-image-preview:large"/>
+
+    
+	
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+    
+    
+        
+    
+
+    
+    
+
+    <!--adobe launch header scripts-->
+        
+
+    
+
+
+        <script type="text/javascript" src="https://assets.adobedtm.com/launch-ENf88f61c4c69b40cda3622b8d0a78a9f5.min.js"></script>
+
+
+    <!--end adobe launch scripts-->
+
+
+	
+	
+
+	
+    	<meta name="google-site-verification" content="R-Kg5wv2g0DjQEL5i4ty-Xud4GcIXzVycLyo3wloQxw" />
+    
+
+
+  </head>
+
+
+	
+    
+
+
+<body class=" ">
+
+
+		
+		
+
+    
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6X8245" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	
+
+
+
+        
+        
+	
+
+
+    
+
+        
+        <div class="root responsivegrid">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="article-layout blog-layout aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<link rel="stylesheet" href="/apps/atvi/callofduty/editorial/clientlibs/core.a40e7c6090d5e8cd219984cda47ce773.css" type="text/css">
+<link rel="stylesheet" href="/apps/atvi/callofduty/editorial/components/article-layout/clientlibs.9551a678eb49cabaee7007b626eef2e3.css" type="text/css">
+<script src="/apps/atvi/callofduty/editorial/clientlibs/core.f26d6486dc328906880503196ba290e5.js"></script>
+<script src="/apps/atvi/callofduty/editorial/components/article-layout/clientlibs.78ba7d92b6b61fc0362e808db88808cd.js"></script>
+
+
+
+
+
+
+    
+<link rel="stylesheet" href="/apps/atvi/callofduty/editorial/components/article-layout/clientlibsBlog.91e02fe982778220f5fcadc627a3e66a.css" type="text/css">
+<script src="/apps/atvi/callofduty/editorial/components/article-layout/clientlibsBlog.d41d8cd98f00b204e9800998ecf8427e.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="atvi-xfpage page basicpage">
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="cod-single-header aem-GridColumn aem-GridColumn--default--12">
+
+    
+<link rel="stylesheet" href="/apps/atvi/callofduty/global/components/structure/v2023/cod-single-header/clientlibs.d60040a369694337bce338d72ceb9544.css" type="text/css">
+<script src="/apps/atvi/callofduty/global/components/structure/v2023/cod-single-header/clientlibs.01de6d0a1edef75f194ff13daf97ea2f.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <header id="cod-single-header" role="banner" class="cod-game-header cod-search-header">
+        <a class="skip-to-main-content-link" href="#main">Skip To Main Content</a>
+
+        <div class="cod-header_inner-container">
+            
+            <div class="cod-header_mobile-menu" data-menu="close">
+                
+                <div class="cod-header_mobile-button">
+                    <button aria-label="Menu dropdown" role="button" aria-controls="mobile-dropdown" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="visually-hidden">Menu dropdown</span>
+                    </button>
+                </div>
+
+                
+                <div id="mobile-dropdown" class="cod-header_mobile-dropdown">
+                    <div class="cod-header_mobile-dropdown-inner-container">
+                        
+                        <div class="cod-header_mobile-secondary-menu">
+                            
+                            
+
+	 
+	
+
+	<a href="/ca/en/blog" aria-label="Read news about Call of Duty">
+		<img src="/content/dam/atvi/callofduty/cod-touchui/global/nav-logos/cod-news-logo.png" alt="News logo"/>
+	</a>	
+
+
+
+                            
+                            
+
+                            
+                            
+
+	 
+
+	<ul role="menu" id="menubar2" aria-label="Call of Duty News Menu">
+
+		
+            
+                
+    
+			<li role="menuitem" data-index="0" class="dd" aria-expanded="false" aria-haspopup="true">
+
+                <a href="/ca/en/blog" target="_self" tabindex="0" data-entext="Blog">
+
+					Blog <span class="expand-arrow"></span>
+
+                </a>
+
+				
+                <ul role="menu" aria-label="Blog" class="nav-expand-content">
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/modernwarfare4" aria-label="Modern Warfare 4" data-entext="Modern Warfare 4">
+                           <p>Modern Warfare 4</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/blackops7" aria-label="Black Ops 7 blogs" data-entext="Black Ops 7">
+                           <p>Black Ops 7</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/blackops6" aria-label="Black Ops 6 Blogs" data-entext="Black Ops 6">
+                           <p>Black Ops 6</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/modernwarfare3" aria-label="Modern Warfare 3 Blogs" data-entext="Modern Warfare III">
+                           <p>Modern Warfare III</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/warzone" aria-label="COD: Warzone Blogs" data-entext="COD: Warzone">
+                           <p>COD: Warzone</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/mobile" aria-label="Call of Duty Mobile Blogs" data-entext="Call of Duty Mobile">
+                           <p>Call of Duty Mobile</p>
+                        </a>
+                    </li>
+                        
+                </ul>
+            </li>
+		
+            
+                
+    
+			<li role="menuitem" data-index="1" class="dd" aria-expanded="false" aria-haspopup="true">
+
+                <a href="/guides" target="_self" tabindex="0" data-entext="Guides">
+
+					Guides <span class="expand-arrow"></span>
+
+                </a>
+
+				
+                <ul role="menu" aria-label="Guides" class="nav-expand-content">
+
+                    <li role="menuitem">
+                        <a href="/guides/blackops7" aria-label="Black Ops 7 Guides" data-entext="Black Ops 7">
+                           <p>Black Ops 7</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/blackops6" aria-label="Black Ops 6 Guides" data-entext="Black Ops 6">
+                           <p>Black Ops 6</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/modernwarfare3" aria-label="Modern Warfare III Guides" data-entext="Modern Warfare III">
+                           <p>Modern Warfare III</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/warzone" aria-label="COD Warzone Guides" data-entext="COD: Warzone">
+                           <p>COD: Warzone</p>
+                        </a>
+                    </li>
+                        
+                </ul>
+            </li>
+		
+            
+                
+    
+			<li role="menuitem" data-index="2" aria-haspopup="false">
+
+                <a href="/ca/en/patchnotes" target="_self" tabindex="0" data-entext="Patch Notes">
+
+					Patch Notes 
+
+                </a>
+
+				
+                
+            </li>
+		
+
+		<li class="nav-ellipsis-dropdown">
+        	<button class="nav-ellipsis-dropdown-toggle" aria-label="See more links"><span>...</span></button>
+        	<ul class="nav-ellipsis-dropdown-menu"></ul>
+        </li>
+	</ul>
+
+
+                        </div>
+
+                        
+                        <div class="cod-header_mobile-primary-menu">
+                            
+                            
+
+     
+    
+
+	<a href="https://www.callofduty.com/ca/en" aria-label="Visit the Call of Duty home page">
+
+		<img src="/content/dam/atvi/callofduty/cod-touchui/global/cod-logo.svg" alt="Call of Duty logo"/>
+
+	</a>	
+
+
+
+                            
+                            
+
+	 
+	
+
+	<ul class="cod-header_global-list" role="menu">
+		<li role="menuitem" aria-haspopup="true" data-index="0" class="dd" aria-expanded="false">
+			<a data-entext="Games" aria-controls="submenu-games">Games <span class="expand-arrow"></span></a>
+    		<ul id="submenu-games" role="menu" class="nav-expand-content">
+				<li role="menuitem">
+
+	<a href="/ca/en/modernwarfare4" data-entext="Modern Warfare 4">Modern Warfare 4 <span class="expand-arrow"></span></a>
+
+</li>
+				<li role="menuitem">
+
+	<a href="/ca/en/blackops7" data-entext="Black Ops 7">Black Ops 7 <span class="expand-arrow"></span></a>
+
+</li>
+                <li role="menuitem">
+
+	<a href="/ca/en/warzone" data-entext="COD: Warzone">COD: Warzone <span class="expand-arrow"></span></a>
+
+</li>
+				
+				<li role="menuitem">
+
+	<a href="/ca/en/mobile" data-entext="Call of Duty Mobile">Call of Duty Mobile <span class="expand-arrow"></span></a>
+
+</li>
+    		</ul>
+    	</li>
+		<li role="menuitem" aria-haspopup="true" data-index="1" class="dd" aria-expanded="false">
+			<a data-entext="News" aria-controls="submenu-news">News <span class="expand-arrow"></span></a>
+            <ul id="submenu-news" role="menu" class="nav-expand-content">
+				<li role="menuitem">
+
+	<a href="/ca/en/blog" data-entext="Blogs">Blogs <span class="expand-arrow"></span></a>
+
+</li>
+				<li role="menuitem">
+
+	<a href="/guides" data-entext="Guides">Guides <span class="expand-arrow"></span></a>
+
+</li>
+				<li role="menuitem">
+
+	<a href="/ca/en/patchnotes" data-entext="Patch Notes">Patch Notes <span class="expand-arrow"></span></a>
+
+</li>
+            </ul>
+    	</li>
+		<li role="menuitem" data-index="2" aria-expanded="false">
+			
+
+	<a href="/ca/en/store" data-entext="Store">Store <span class="expand-arrow"></span></a>
+
+
+            
+		</li>
+		<li role="menuitem" aria-haspopup="true" data-index="3" class="dd" aria-expanded="false">
+			<a data-entext="Esports" aria-controls="submenu-esports">Esports <span class="expand-arrow"></span></a>
+			<ul id="submenu-esports" role="menu" class="nav-expand-content">
+            	<li role="menuitem">
+					<a href="https://www.callofdutyleague.com/en-us/" aria-label="Visit the Call of Duty League website" target="_blank" data-entext="Call of Duty League">Call of Duty League</a>
+				</li>
+            	<li role="menuitem">
+					
+
+	<a href="/ca/en/mobile/esports" data-entext="Call of Duty Mobile World Championship">Call of Duty Mobile World Championship <span class="expand-arrow"></span></a>
+
+
+				</li>
+            	<li role="menuitem">
+					<a href="https://www.worldseriesofwarzone.com/" aria-label="Visit the World Series of Warzone website" target="_blank" data-entext="World Series of Warzone">World Series of Warzone</a>
+				</li>
+            </ul>
+    	</li>
+		<li role="menuitem" aria-haspopup="false" data-index="4">
+			<a href="https://support.activision.com" data-entext="Support" aria-label="Visit the Activision Support website" target="_blank">Support</a>
+		</li>
+		
+		<li class="nav-ellipsis-dropdown">
+        	<button class="nav-ellipsis-dropdown-toggle" aria-label="See more links"><span>...</span></button>
+        	<ul role="menu" class="nav-ellipsis-dropdown-menu"></ul>
+        </li>
+    </ul>
+
+
+                        </div>
+
+                        
+                        <div class="cod-header_mobile-sso">
+                            <div class="logged-out">
+                                <a class="sso-login" href="https://profile.callofduty.com/cod/login" data-entext="Login">Login</a>
+                                <span>|</span>
+                                <a href="https://profile.callofduty.com/cod/signup" class="sso-signup" aria-label="Sign up for a Call of Duty account" data-entext="Sign Up">Sign up</a>
+                            </div>
+
+                            <div class="logged-in" aria-expanded="false">
+                                <a class="sso-profile" href="https://profile.callofduty.com/cod/profile" aria-label="Visit your Call of Duty profile" data-entext="Profile">Profile</a>
+                                <span>|</span>
+                                <a class="sso-logout" href="https://profile.callofduty.com/do_logout" aria-label="Log out of your account" data-entext="Sign Out">Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+            </div>
+
+            
+            <div class="cod-header_primary-logo">
+                
+
+     
+    
+
+	<a href="https://www.callofduty.com/ca/en" aria-label="Visit the Call of Duty home page">
+
+		<img src="/content/dam/atvi/callofduty/cod-touchui/global/cod-logo.svg" alt="Call of Duty logo"/>
+
+	</a>	
+
+
+            </div>
+
+            
+            <div class="cod-header_secondary-logo">
+                
+
+	 
+	
+
+	<a href="/ca/en/blog" aria-label="Read news about Call of Duty">
+		<img src="/content/dam/atvi/callofduty/cod-touchui/global/nav-logos/cod-news-logo.png" alt="News logo"/>
+	</a>	
+
+
+            </div>
+
+            
+            
+
+            
+            <div class="cod-header_top-nav">
+                <div class="cod-header_desktop-nav_links">
+                    <nav>
+                        
+                        
+
+                        
+                        
+
+	 
+
+	<ul role="menu" id="menubar2" aria-label="Call of Duty News Menu">
+
+		
+            
+                
+    
+			<li role="menuitem" data-index="0" class="dd" aria-expanded="false" aria-haspopup="true">
+
+                <a href="/ca/en/blog" target="_self" tabindex="0" data-entext="Blog">
+
+					Blog <span class="expand-arrow"></span>
+
+                </a>
+
+				
+                <ul role="menu" aria-label="Blog" class="nav-expand-content">
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/modernwarfare4" aria-label="Modern Warfare 4" data-entext="Modern Warfare 4">
+                           <p>Modern Warfare 4</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/blackops7" aria-label="Black Ops 7 blogs" data-entext="Black Ops 7">
+                           <p>Black Ops 7</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/blackops6" aria-label="Black Ops 6 Blogs" data-entext="Black Ops 6">
+                           <p>Black Ops 6</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/modernwarfare3" aria-label="Modern Warfare 3 Blogs" data-entext="Modern Warfare III">
+                           <p>Modern Warfare III</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/warzone" aria-label="COD: Warzone Blogs" data-entext="COD: Warzone">
+                           <p>COD: Warzone</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/mobile" aria-label="Call of Duty Mobile Blogs" data-entext="Call of Duty Mobile">
+                           <p>Call of Duty Mobile</p>
+                        </a>
+                    </li>
+                        
+                </ul>
+            </li>
+		
+            
+                
+    
+			<li role="menuitem" data-index="1" class="dd" aria-expanded="false" aria-haspopup="true">
+
+                <a href="/guides" target="_self" tabindex="0" data-entext="Guides">
+
+					Guides <span class="expand-arrow"></span>
+
+                </a>
+
+				
+                <ul role="menu" aria-label="Guides" class="nav-expand-content">
+
+                    <li role="menuitem">
+                        <a href="/guides/blackops7" aria-label="Black Ops 7 Guides" data-entext="Black Ops 7">
+                           <p>Black Ops 7</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/blackops6" aria-label="Black Ops 6 Guides" data-entext="Black Ops 6">
+                           <p>Black Ops 6</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/modernwarfare3" aria-label="Modern Warfare III Guides" data-entext="Modern Warfare III">
+                           <p>Modern Warfare III</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/warzone" aria-label="COD Warzone Guides" data-entext="COD: Warzone">
+                           <p>COD: Warzone</p>
+                        </a>
+                    </li>
+                        
+                </ul>
+            </li>
+		
+            
+                
+    
+			<li role="menuitem" data-index="2" aria-haspopup="false">
+
+                <a href="/ca/en/patchnotes" target="_self" tabindex="0" data-entext="Patch Notes">
+
+					Patch Notes 
+
+                </a>
+
+				
+                
+            </li>
+		
+
+		<li class="nav-ellipsis-dropdown">
+        	<button class="nav-ellipsis-dropdown-toggle" aria-label="See more links"><span>...</span></button>
+        	<ul class="nav-ellipsis-dropdown-menu"></ul>
+        </li>
+	</ul>
+
+
+                    </nav>
+                </div>
+            </div>
+
+            
+            <div class="cod-header_sso">
+                <div class="logged-out">
+                    
+                    <a href="https://profile.callofduty.com/cod/login" class="sso-login" aria-label="Log into your Call of Duty account" data-entext="Login">Login</a>
+                </div>
+
+                <div class="logged-in">
+                    <div class="account-name">
+                        <button aria-label="Call of Duty Account Settings" aria-expanded="false">
+                            <img src="/content/dam/atvi/callofduty/global/global-nav/profile_icon.png" alt="Profile Avatar logo"/>
+                            <span id="username"></span>
+                        </button>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <a href="https://profile.callofduty.com/cod/profile" class="sso-profile" data-entext="Profile">Profile</a>
+                        </li>
+						
+                        <li>
+                            <a href="https://profile.callofduty.com/do_logout" class="sso-logout" aria-label="Log out of your account" data-entext="Sign Out">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            <div class="cod-header_locale-selector">
+                <div>
+    
+<link rel="stylesheet" href="/apps/atvi/global/components/content/atvi-locale-selector/clientlibs.f7dc4b2d1fe73813c0a90a67b45b024e.css" type="text/css">
+<script src="/apps/atvi/global/components/content/atvi-locale-selector/clientlibs.4a13c2ab7a8ee37f2f7bf5b7d87826e0.js"></script>
+
+
+
+
+
+
+<div class="atvi-locale-selector  open-down " data-selectedLocale="en_ca" role="navigation" aria-label="locale-selector.ariaLabel">
+    <h2 class="visually-hidden">Choose your region</h2>
+
+    <p class="cur-locale-selector-btn">
+        <button id="locale-selector-toggle" aria-haspopup="listbox" aria-controls="locale-selector-list" aria-expanded="false" class="flag-button flag-en_ca" aria-label="Selected region - English Canada">
+            <span class="visually-hidden">Selected region -
+                English Canada</span>
+            <span class="flag-icon" aria-hidden="true">English Canada</span>
+            <span class="flag-arrow"></span>
+        </button>
+    </p>
+
+    <div class="locale-panel" id="locale-selector-list" role="listbox">
+        <div class="locale-panel-inner-container">
+            <div class="locale-panel-header">
+                <p class="selected-region-text">
+                    <span class="label">Selected region:</span>
+                    <span class="locale-string">English Canada</span>
+                </p>
+                <p class="close-btn">
+                    <button type="button" aria-label="Close Menu">
+                        <span class="visually-hidden">Close Menu</span>+
+                    </button>
+                </p>
+            </div>
+
+            
+
+            
+
+            <ul>
+                <li class=" flag-en" data-lang="en" role="option">
+                    <a href="/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="United States">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            United States
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-en_gb" data-lang="en_gb" role="option">
+                    <a href="/uk/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="United Kingdom">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            United Kingdom
+                        </div>
+                    </a>
+                </li>
+            
+                <li class="active flag-en_ca" data-lang="en_ca" role="option" aria-selected>
+                    <a href="/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="English Canada">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            English Canada
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-en_au" data-lang="en_au" role="option">
+                    <a href="/au/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Australia">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Australia
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-fr" data-lang="fr" role="option">
+                    <a href="/fr/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Francais">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Francais
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-fr_ca" data-lang="fr_ca" role="option">
+                    <a href="/ca/fr/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Canada Français">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Canada Français
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-de" data-lang="de" role="option">
+                    <a href="/de/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Deutschland">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Deutschland
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-it" data-lang="it" role="option">
+                    <a href="/it/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Italia">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Italia
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-es" data-lang="es" role="option">
+                    <a href="/es/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="España">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            España
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-es_mx" data-lang="es_mx" role="option">
+                    <a href="/mx/es/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="México">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            México
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-pt_br" data-lang="pt_br" role="option">
+                    <a href="/br/pt/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Brasil">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Brasil
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ru" data-lang="ru" role="option">
+                    <a href="/ru/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Россия">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Россия
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ar" data-lang="ar" role="option">
+                    <a href="/ar/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Arabic">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Arabic
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ja" data-lang="ja" role="option">
+                    <a href="/ja/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="日本語">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            日本語
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ko" data-lang="ko" role="option">
+                    <a href="/ko/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="한국">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            한국
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-zh_cn" data-lang="zh_cn" role="option">
+                    <a href="/cn/zh/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="简体中文">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            简体中文
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-zh_tw" data-lang="zh_tw" role="option">
+                    <a href="/tw/zh/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="繁體中文">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            繁體中文
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+            </div>
+
+            
+            <div class="cod-header_search" aria-expanded="false">
+                
+
+                
+
+                <form role="search" action="/ca/en/blog/search">
+                    
+
+                    <button class="btn-search" type="submit" aria-label="Search">
+                        <img src="/content/dam/atvi/callofduty/cod-touchui/blog/common/search-icon.png" alt="Search"/>
+                    </button>
+                    <label for="search-input">Search</label>
+                    <input placeholder="Search Call of Duty News" type="search" id="search-input" name="search" spellcheck="false"/>
+                </form>
+            </div>
+
+            
+            <div class="cod-header_cta">
+                
+                <a href="/ca/en/playnow/modernwarfare4" data-entext="Pre-Order Modern Warfare 4" aria-label="Pre-Order Modern Warfare 4">
+                    <span class="cod-header_cta-desktop">Pre-Order Modern Warfare 4</span>
+                    <span class="cod-header_cta-mobile">Pre-order MW4</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+
+                <div id="mobile-sidebar" class="cod-header_mobile-sidebar"> 
+
+					<div class="cod-header_mobile-sidebar-inner-container">
+
+                        <div class="cod-header_mobile-sidebar_header">
+							<div class="cod-header_mobile-sidebar_header-back">
+
+                            </div>
+                            <button class="cod-header_mobile-sidebar_header-close">Close</button>
+                        </div>
+
+                        <div class="cod-header_mobile-sidebar_links">
+
+							<div class="menu-title"></div>
+							
+
+	 
+	
+
+	<ul class="cod-header_global-list" role="menu" aria-label="COD">
+		<li role="menuitem" aria-haspopup="true" data-index="0" class="dd" aria-expanded="false" data-menuname="Games">
+			<a data-entext="Games" aria-controls="submenu-games">Games <span class="expand-arrow"></span></a>
+    		<ul id="submenu-games" role="menu" aria-label="Games" class="nav-expand-content">
+				<li role="menuitem">
+
+	<a href="/ca/en/blackops7" data-entext="Black Ops 7">Black Ops 7 <span class="expand-arrow"></span></a>
+
+</li>
+				<li role="menuitem">
+
+	<a href="/ca/en/blackops6" data-entext="Black Ops 6">Black Ops 6 <span class="expand-arrow"></span></a>
+
+</li>
+                <li role="menuitem">
+
+	<a href="/ca/en/warzone" data-entext="COD: Warzone">COD: Warzone <span class="expand-arrow"></span></a>
+
+</li>
+				<li role="menuitem">
+
+	<a href="/ca/en/mobile" data-entext="Call of Duty Mobile">Call of Duty Mobile <span class="expand-arrow"></span></a>
+
+</li>
+    		</ul>
+    	</li>
+		<li role="menuitem" aria-haspopup="true" data-index="1" class="dd" aria-expanded="false" data-menuname="News">
+			<a data-entext="News" aria-controls="submenu-news">News <span class="expand-arrow"></span></a>
+            <ul id="submenu-news" role="menu" aria-label="News" class="nav-expand-content">
+				<li role="menuitem">
+
+	<a href="/ca/en/blog" data-entext="Blogs">Blogs <span class="expand-arrow"></span></a>
+
+</li>
+				<li role="menuitem">
+
+	<a href="/guides" data-entext="Guides">Guides <span class="expand-arrow"></span></a>
+
+</li>
+				<li role="menuitem">
+
+	<a href="/ca/en/patchnotes" data-entext="Patch Notes">Patch Notes <span class="expand-arrow"></span></a>
+
+</li>
+            </ul>
+    	</li>
+		<li role="menuitem" data-index="2" aria-haspopup="false" data-menuname="Store">
+			
+
+	<a href="/ca/en/store" data-entext="Store">Store <span class="expand-arrow"></span></a>
+
+
+		</li>
+		<li role="menuitem" aria-haspopup="true" data-index="3" class="dd" aria-expanded="false" data-menuname="Esports">
+			<a data-entext="Esports" aria-controls="submenu-esports">Esports <span class="expand-arrow"></span></a>
+			<ul id="submenu-esports" role="menu" aria-label="Esports" class="nav-expand-content">
+            	<li role="menuitem">
+					<a href="https://www.callofdutyleague.com/en-us/" aria-label="Visit the Call of Duty League website" target="_blank" data-entext="Call of Duty League">Call of Duty League</a>
+				</li>
+            	<li role="menuitem">
+					
+
+	<a href="/ca/en/mobile/esports" data-entext="Call of Duty Mobile World Championship">Call of Duty Mobile World Championship <span class="expand-arrow"></span></a>
+
+
+				</li>
+            	<li role="menuitem">
+					<a href="https://www.worldseriesofwarzone.com/" aria-label="Visit the World Series of Warzone website" target="_blank" data-entext="World Series of Warzone">World Series of Warzone</a>
+				</li>
+            </ul>
+    	</li>
+		<li role="menuitem" aria-haspopup="false" data-index="4">
+			<a href="https://support.activision.com" data-entext="Support" aria-label="Visit the Activision Support website" target="_blank">Support</a>
+		</li>
+        
+    </ul>
+
+    <ul role="menu" id="cod-header_mobile-sidebar_secondary" aria-label="News" class="nav-expand-content">
+
+		
+            
+                
+    
+			<li role="menuitem" data-index="0" class="dd" aria-expanded="false" aria-haspopup="true">
+
+                <a href="/ca/en/blog" target="_self" tabindex="0" data-entext="Blog">
+
+					Blog <span class="expand-arrow"></span>
+
+                </a>
+
+				
+                <ul role="menu" aria-label="Blog" class="nav-expand-content">
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/modernwarfare4" aria-label="Modern Warfare 4" data-entext="Modern Warfare 4">
+                           <p>Modern Warfare 4</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/blackops7" aria-label="Black Ops 7 blogs" data-entext="Black Ops 7">
+                           <p>Black Ops 7</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/blackops6" aria-label="Black Ops 6 Blogs" data-entext="Black Ops 6">
+                           <p>Black Ops 6</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/modernwarfare3" aria-label="Modern Warfare 3 Blogs" data-entext="Modern Warfare III">
+                           <p>Modern Warfare III</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/warzone" aria-label="COD: Warzone Blogs" data-entext="COD: Warzone">
+                           <p>COD: Warzone</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/ca/en/blog/mobile" aria-label="Call of Duty Mobile Blogs" data-entext="Call of Duty Mobile">
+                           <p>Call of Duty Mobile</p>
+                        </a>
+                    </li>
+                        
+                </ul>
+            </li>
+		
+            
+                
+    
+			<li role="menuitem" data-index="1" class="dd" aria-expanded="false" aria-haspopup="true">
+
+                <a href="/guides" target="_self" tabindex="0" data-entext="Guides">
+
+					Guides <span class="expand-arrow"></span>
+
+                </a>
+
+				
+                <ul role="menu" aria-label="Guides" class="nav-expand-content">
+
+                    <li role="menuitem">
+                        <a href="/guides/blackops7" aria-label="Black Ops 7 Guides" data-entext="Black Ops 7">
+                           <p>Black Ops 7</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/blackops6" aria-label="Black Ops 6 Guides" data-entext="Black Ops 6">
+                           <p>Black Ops 6</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/modernwarfare3" aria-label="Modern Warfare III Guides" data-entext="Modern Warfare III">
+                           <p>Modern Warfare III</p>
+                        </a>
+                    </li>
+                        
+                
+
+                    <li role="menuitem">
+                        <a href="/guides/warzone" aria-label="COD Warzone Guides" data-entext="COD: Warzone">
+                           <p>COD: Warzone</p>
+                        </a>
+                    </li>
+                        
+                </ul>
+            </li>
+		
+            
+                
+    
+			<li role="menuitem" data-index="2" aria-haspopup="false">
+
+                <a href="/ca/en/patchnotes" target="_self" tabindex="0" data-entext="Patch Notes">
+
+					Patch Notes 
+
+                </a>
+
+				
+                
+            </li>
+		
+
+	</ul>
+
+
+
+                        </div>
+
+                        <div class="cod-header_mobile-sidebar_sso">
+
+							<div class="logged-out">
+                                <a class="sso-login" href="https://profile.callofduty.com/cod/login" data-entext="Login">Login</a>
+                                <span>|</span>
+                                <a href="https://profile.callofduty.com/cod/signup" class="sso-signup" aria-label="Sign up for a Call of Duty account" data-entext="Sign Up">Sign up</a>
+                            </div>
+
+                            <div class="logged-in">
+                                <a class="sso-profile" href="https://profile.callofduty.com/cod/profile" aria-label="Visit your Call of Duty profile" data-entext="Profile">Profile</a>
+                                <span>|</span>
+                                <a class="sso-logout" href="https://profile.callofduty.com/do_logout" aria-label="Log out of your account" data-entext="Sign Out">Sign Out</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section></div>
+
+
+
+
+
+<main id="main-content" class="article-layout-content" data-article-type="blog" data-article-layout="boxOut">
+    <div class="inner-container">
+        <div class="article-header-container">
+            
+            
+            
+            
+            
+
+            
+            
+    
+    
+
+    
+    <div class="graphics">
+        <div class="bg feature-img">
+            <img class="d-img" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-TOUT.jpg"/>
+        </div>
+    </div>
+
+    
+    <div class="box-container">
+        
+        <h1 class="title">
+            Call of Duty: Modern Warfare 4 Releases on October 23, 2026
+        </h1>
+
+        <!--*/ date-bylyine */-->
+        <div class="bylines mobile-up">
+            
+            <p class="dateline">May 28, 2026</p>
+            <p class="byline">
+                by Call of Duty Staff
+            </p>
+        </div>
+
+        <!--*/ tags */-->
+        <div class="tags">
+            
+            
+            
+
+    <ul class="tile-list">
+
+        <li class="tile game-tile mw4">
+
+            
+            MW4
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+        </li>
+
+
+        <li class="tile tag-tile" data-value="news">
+			News
+        </li>
+<li class="tile tag-tile" data-value="news-announcements">
+			Announcements
+        </li>
+
+
+    </ul>
+
+
+        </div>
+    </div>
+
+        </div>
+
+        <div class="article-body-container">
+            
+            <div class="side-nav-wrapper">
+                
+                
+                
+                    
+                    
+
+	<div class="side-nav-wrapper_inner-container">
+
+        <h6>Announcing Call of Duty: Modern Warfare 4</h6>
+
+        <ul class="side-nav">
+            <li><a href="#Game">Game Overview</a></li>
+        
+            <li><a href="#Campaign">Campaign Overview</a></li>
+        
+            <li><a href="#Multiplayer">Multiplayer Overview</a></li>
+        
+            <li><a href="#DMZ">DMZ Overview</a></li>
+        
+            <li><a href="#Technology">Technology and Platforms</a></li>
+        
+            <li><a href="#Incoming">Stay Frosty: Additional Intel Incoming</a></li>
+        </ul>
+	</div>
+
+
+                
+            </div>
+
+            
+            
+
+            <div class="body-content">
+                
+                
+    
+    
+    
+    
+
+    
+    
+
+    <div style="display:none" data-game="mw4"></div>
+
+    <!--*/ date-bylyine */-->
+    <div class="bylines mobile-down">
+        <p class="dateline">May 28, 2026</p>
+        <p class="byline">by Call of Duty Staff</p>
+    </div>
+
+    <div class="cta tablet-down-grid">
+        
+        
+
+        
+        
+            
+
+    
+
+	
+
+
+    
+
+    
+        <a class="btn" id="post-buy-btn" data-label="mw4" data-action="preorder mw4" href="https://www.callofduty.com/ca/en/playnow/modernwarfare4">
+                <span class="mobile-up" style="text-wrap-style: balance;">Pre-order MW4</span>
+            	<span class="mobile-down">Pre-order MW4</span>
+        </a>
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    
+
+
+
+    
+
+    
+	
+
+
+	
+    
+
+    
+	
+
+
+    
+
+
+        
+
+        
+        
+
+        
+    </div>
+
+    <p class="subtitle">This is Warfare Without Limits: Call of Duty®: Modern Warfare® 4 releases on Friday, October 23, 2026 on PlayStation 5, XBOX Series X|S, PC, and Nintendo Switch 2. From Activision and Infinity Ward.</p>
+
+    
+
+
+                
+                <div class="body-content-parsys">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+<link rel="stylesheet" href="/apps/atvi/callofduty/editorial/components/article-rich-text/clientlibs.da40d66e958bd6739f4759a2d6d0b0a3.css" type="text/css">
+<script src="/apps/atvi/callofduty/editorial/components/article-rich-text/clientlibs.ce9412f9a242be04bd31ef61f3c00b8a.js"></script>
+
+
+
+
+
+
+<style>
+    .article_rich_text-1594414172 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text-1594414172 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text-1594414172 ">
+
+    <div class="cmp-text">
+        <h2><span class="line-fade"><a id="Game"></a>Warfare Without Limits</span></h2>
+<p> </p>
+<p>War erupts on the Korean Peninsula as North Korea launches a full-scale invasion that threatens to destabilize the world in <i>Call of Duty®: Modern Warfare® 4</i>. A young squad of South Korean soldiers fights to survive on the collapsing front lines, while half a world away a vengeful Captain Price wages a personal war from the shadows as he stays one step ahead of those hunting him. As Price’s off-book mission collides with the forces behind the invasion, the war spreads beyond anyone’s control.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="atvi-video aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<link rel="stylesheet" href="/apps/atvi/global/components/content/atvi-video/clientlibs.ebece6c901eee3b875f5ff30e6a7cbfd.css" type="text/css">
+<script src="/apps/atvi/global/components/content/atvi-video/clientlibs.fc054749ec6a8a9abf0e77463734b581.js"></script>
+
+
+
+
+
+
+
+<script>
+    ATVI.components.video = ATVI.components.video || {};
+</script>
+
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+    <div id="atvi-video-664804" data-vendor="youtube" data-youtube-id="jLbst85USN8" data-private="false" data-emptytext="ATVI Video" class="atvi-component atvi-video-component  aspect-ratio-default youtube-video  atvi-video" tabindex="0">
+        
+        
+        
+    
+
+    <div class="player-part">
+
+        <div class="display"></div>
+
+        <div class="player-wrapper player-wrapper-atvi-video-664804">
+            
+	<div class="player atvi-instrument atvi-instrument-video-player">
+        <div id="atvi-video-664804-embed"></div>
+    </div>
+
+        </div>
+
+		<div class="playing-overlay"></div>
+
+        
+
+		<!-- /*
+        <div class="external-link-overlay">
+			<a class="external-link" target="_blank" href="https://www.youtube.com/watch?v=jLbst85USN8" tabindex="0"></a>
+        </div>
+        */ -->
+
+    </div>
+
+
+
+        
+        
+
+        
+        
+
+        
+        
+
+	
+	
+
+   	<script>
+
+        window.ATVIVideoEls = window.ATVIVideoEls || [];
+		window.ATVIVideoEls.push({
+            $el: $("#atvi-video-664804"),
+            config: {
+                youtubeId: "jLbst85USN8",
+                start: 0,
+        		isList: false,
+                autoPlay: false, 
+                customControls: false
+            }
+		});
+     	(function($) {
+            ATVI.library.withDependency('atvi-video', true, function() {
+                if (!ATVI.components.video.YTScriptLoaded) ATVI.components.video.initYtAPI();
+            });
+
+        })(jQuery);
+    </script>
+
+
+
+        
+
+        
+
+        
+        
+
+        
+        
+            <div class="atvi-video-thumbnail-container">
+                <div class="atvi-video-thumbnail-play-icon">
+                    <button aria-label="Play Video">
+                        <svg class="thumb-play-icon" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 120 120" fill="none">
+                            <g transform="translate(60,60)">
+                                <circle class="play-btn_ping" cx="0" cy="0" r="43.2" fill="#D60000" fill-opacity="1"/>
+                                <circle class="play-btn_solid" cx="0" cy="0" r="43.2" fill="#D60000"/>
+                            </g>
+                            <path class="play-btn_triangle" d="M50.4 44.0721V77.6721L79.2 60.8721L50.4 44.0721Z" fill="white"/>
+                        </svg>
+                        <span>Play</span>
+                    </button>
+                </div>
+
+                <div class="atvi-video-thumbnail">
+                    
+                    
+                    <img src="https://i.ytimg.com/vi/jLbst85USN8/maxresdefault.jpg" alt="Video Thumbnail"/>
+                    
+                </div>
+            </div>
+        
+    </div>
+
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1582566386-1838585341 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1582566386-1838585341 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1582566386-1838585341 ">
+
+    <div class="cmp-text">
+        <p><i>Modern Warfare 4</i> pushes the series into darker and more dangerous territory, bringing long-running storylines to a powerful and emotional breaking point. </p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-001.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-001.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_389750559-763638424 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_389750559-763638424 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_389750559-763638424 ">
+
+    <div class="cmp-text">
+        <p>The Campaign drops players into trench warfare in Korea, close-quarters combat in New York, high-octane chases through Paris, SAS night raids in Mumbai, and city-wide assaults to reclaim occupied territory. Multiplayer delivers grounded, precise combat where fluid movement, player choice, and greater control define every engagement. In DMZ, players operate as an off-the-books asset behind enemy lines, where every deployment into contested territory forces hard choices about which objectives to pursue, what to secure, and when to get out.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-002.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-002.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_978150770-1726587 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_978150770-1726587 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_978150770-1726587 ">
+
+    <div class="cmp-text">
+        <p><i>Call of Duty: Modern Warfare 4</i> will launch on October 23, 2026, and be available on XBOX Series X|S, PlayStation® 5, PC, and Nintendo® Switch 2. It will not be available on PlayStation® 4 or XBOX One.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_27-1149364488 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_27-1149364488 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_27-1149364488 ">
+
+    <div class="cmp-text">
+        <h2><span class="line-fade"><a id="Campaign"></a>Campaign // Overview</span></h2>
+<h3> </h3>
+<h3>No Line Holds Forever</h3>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-003.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-003.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_277133077--1120262130 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_277133077--1120262130 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_277133077--1120262130 ">
+
+    <div class="cmp-text">
+        <p>Fight as Private Park, a young South Korean soldier facing live combat for the first time alongside his squad. What begins as a routine patrol descends into chaos when North Korea launches a full-scale invasion, forcing Park and his unit into a desperate fight through collapsing cities and counteroffensives. The Campaign drops players into the chaos, pressure, and split-second intensity of ground-level combat.<br />
+</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-004.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-004.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_705970393-1870230484 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_705970393-1870230484 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_705970393-1870230484 ">
+
+    <div class="cmp-text">
+        <p>This is a new setting for the franchise, grounded in the military authenticity <i>Modern Warfare</i> is known for and built with attention to the culture, history, and military detail of the region. The conflict in Korea becomes the catalyst for a broader war.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-005.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-005.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_2009704882--1293917663 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_2009704882--1293917663 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_2009704882--1293917663 ">
+
+    <div class="cmp-text">
+        <p>Beyond the front lines, operator-turned-outlaw Captain Price works outside the system he once served. A hunt for revenge draws Price toward a weapon powerful enough to shift the balance of power, setting in motion a conflict far greater than he ever anticipated. Forced into uneasy alliances and illicit operations, Price is pulled deeper into consequences he can no longer escape.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-carousel aem-GridColumn aem-GridColumn--default--12">
+    
+<link rel="stylesheet" href="/apps/atvi/global/clientlibs/plugins/slick-accessible-v2.7fee9656acdd3e8e6c6410b537c54e74.css" type="text/css">
+<link rel="stylesheet" href="/apps/atvi/callofduty/editorial/components/article-carousel/clientlibs.adc43a8f7b001d4b15ada682eb4cfade.css" type="text/css">
+<script src="/apps/atvi/global/clientlibs/plugins/slick-accessible-v2.dba7464bb196e9905660d38bfe29db01.js"></script>
+<script src="/apps/atvi/callofduty/editorial/components/article-carousel/clientlibs.ec68881fb21072779ff638f1a23b8f85.js"></script>
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<div id="article_carousel" class="article-carousel-container ">
+
+    
+    <style> .article-carousel-container { --default-accent-color: #9C978F; } 
+    </style>
+
+
+    <div class="inner-container">
+
+        <div class="media-container">
+
+            
+            <div class="hero-list">
+
+                <div class="slide-content">
+
+                    
+                    <img class="hero-media hero-img" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-006.webp" alt=""/>
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+                    
+                </div>
+            
+
+                <div class="slide-content hide">
+
+                    
+                    <img class="hero-media hero-img hide" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-007.webp" alt=""/>
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+                    
+                </div>
+            
+
+                <div class="slide-content hide">
+
+                    
+                    <img class="hero-media hero-img hide" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-008.webp" alt=""/>
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+                    
+                </div>
+            
+
+                <div class="slide-content hide">
+
+                    
+                    <img class="hero-media hero-img hide" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-009.webp" alt=""/>
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+                    
+                </div>
+            
+
+                <div class="slide-content hide">
+
+                    
+                    <img class="hero-media hero-img hide" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-010.webp" alt=""/>
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+                    
+                </div>
+            
+
+                <div class="slide-content hide">
+
+                    
+                    <img class="hero-media hero-img hide" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-011.webp" alt=""/>
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+                    
+                </div>
+            </div>
+
+            
+            
+            <div class="carousel-navigation-container thumbnail-list">
+                <div class="thumbnail-content">
+                    <img data-index="0" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-006.webp" alt=""/>
+                    
+                    
+                </div>
+            
+                <div class="thumbnail-content">
+                    <img data-index="1" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-007.webp" alt=""/>
+                    
+                    
+                </div>
+            
+                <div class="thumbnail-content">
+                    <img data-index="2" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-008.webp" alt=""/>
+                    
+                    
+                </div>
+            
+                <div class="thumbnail-content">
+                    <img data-index="3" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-009.webp" alt=""/>
+                    
+                    
+                </div>
+            
+                <div class="thumbnail-content">
+                    <img data-index="4" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-010.webp" alt=""/>
+                    
+                    
+                </div>
+            
+                <div class="thumbnail-content">
+                    <img data-index="5" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-011.webp" alt=""/>
+                    
+                    
+                </div>
+            </div>
+
+
+            
+            
+            <div class="carousel-navigation-container progress-bar-nav">
+
+                <div class="slide-nav"></div>
+
+                <div class="slide-number"></div>
+
+                <button class="custom-arrow custom-prev" type="button">
+                    <span class="custom-prev-icon" aria-hidden="true"></span>
+                    <span class="slick-sr-only">Previous</span>
+                </button>
+                <button class="custom-arrow custom-next" type="button">
+                    <span class="custom-next-icon" aria-hidden="true"></span>
+                    <span class="slick-sr-only">Next</span>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_34006718-1890968780 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_34006718-1890968780 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_34006718-1890968780 ">
+
+    <div class="cmp-text">
+        <p>A nightmare scenario unfolds as overzealous leaders, shadow operations, and outside interference push the conflict toward the brink of global catastrophe. From large-scale battles and covert missions to combined-arms warfare and cinematic set pieces, the <i>Modern Warfare 4</i> Campaign delivers gritty combat and gameplay variety across a war that spreads far beyond the front lines.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1028355989-1390844591 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1028355989-1390844591 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1028355989-1390844591 ">
+
+    <div class="cmp-text">
+        <h2><span class="line-fade"><a id="Multiplayer"></a>Multiplayer // Overview</span></h2>
+<p> </p>
+<p><i>Modern Warfare 4</i> Multiplayer delivers grounded, precise combat built around fluid movement that provides greater control in every fight. Below are some key innovations to the series:</p>
+<p> </p>
+<p> </p>
+<h3>Ballistic Authority</h3>
+<p> </p>
+<p>For <i>Modern Warfare 4</i>, a new weapon-first technology stack unifies precision aiming, physical handling, realistic audio propagation, enhanced visibility, and smarter combat perception into the most authentic <i>Modern Warfare </i>gunplay yet. Bullet trajectory, weapon motion, Operator stance, camera, audio, FOV, and target visibility all line up in one highly tuned combat fidelity system. The promise is simple: no bloom, no guesswork, and no doubt. Every shot tells the truth.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-012.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-012.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1212973475--528404638 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1212973475--528404638 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1212973475--528404638 ">
+
+    <div class="cmp-text">
+        <ul>
+<li>Bloom has been removed, making hipfire shots feel more direct, predictable, and connected to where the weapon is pointed. </li>
+<li>Recoil, convergence, and weapon handling have been rebuilt to more directly reflect player input.</li>
+<li>Depth of field and visual effects have been refined to improve enemy visibility without sacrificing authenticity.</li>
+<li>Weapons respond more naturally to player movement, stance changes, and the environment, creating more consistent behavior in every engagement.</li>
+</ul>
+<p> </p>
+<h3>Movement</h3>
+<p> </p>
+<p>Movement in <i>Modern Warfare 4 </i>is built around fluidity, control, and player freedom, delivering fast, grounded combat that keeps Operators responsive through every engagement while expanding how players move, fight, and adapt across the environment. Refined movement systems are designed to support a wide range of playstyles:</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-013.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-013.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1861782105-692016202 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1861782105-692016202 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1861782105-692016202 ">
+
+    <div class="cmp-text">
+        <ul>
+<li>Traversal, combat movement, and gunplay transitions are designed to feel seamless and responsive, preserving momentum while maintaining control under pressure.</li>
+<li>Expanded movement options for Mantling, Climbing, Hanging and Jumping create new opportunities to reposition, flank, navigate vertical spaces, and approach engagements from multiple angles across increasingly dynamic combat environments.</li>
+<li>Every movement system is designed to preserve the grounded realism, physicality, and combat intensity that define <i>Modern Warfare</i><span> while delivering the fluid, cinematic intensity of operating as an elite soldier in the field, whether you prefer a methodical, tactical approach or aggressive plays.</span></li>
+</ul>
+<h3> </h3>
+<h3>Maps<br />
+</h3>
+<p> </p>
+<p><i>Modern Warfare 4</i> launches with a global set of grounded, visually distinct environments spanning locations around the world, with the 12 Core launch maps — each with a custom infil and distinct visual identity — forming the foundation of a broader Multiplayer offering. In addition, Kill Block, a live-fire training facility built for elite operators, gives players a fresh gameplay experience with every new round. Multiplayer also includes dedicated Gunfight maps and multiple Big War maps built for large-scale vehicles and infantry combat across locations shaped by the Campaign’s global conflict.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-014.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-014.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1682472355-3305990 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1682472355-3305990 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1682472355-3305990 ">
+
+    <div class="cmp-text">
+        <p>Every <i>Modern Warfare 4</i> map is designed to keep combat fast, tactical, and competitive while giving players multiple routes and opportunities to adapt from one engagement to the next. </p>
+<p> </p>
+<p> </p>
+<h3>Kill Block</h3>
+<p> </p>
+<p>Taking place inside the Westbridge Training Facility, Kill Block introduces a dynamic new Multiplayer battleground where the combat space reconfigures between rounds, reshaping sightlines, routes, and cover to keep players adapting in real time. Shaped from a set of purpose-built modular sections capable of creating more than 500 distinct configurations, each match creates its own combat rhythm and tactical challenges. Expect more sections and even more configurations during <i>Modern Warfare 4</i>’s live seasons.</p>
+<p> </p>
+<p>Kill Block supports expanded Gunfight formats, including 3v3 and 10v10 experiences, with future support planned for more core Multiplayer modes. Designed for high-intensity play, Kill Block forces players to think quickly, fight for control, and adjust engagement tactics every round.</p>
+<p> </p>
+<p> </p>
+<h3>Progression and Customization</h3>
+<p> </p>
+<p><i>Modern Warfare 4</i> expands player customization while making it faster and easier to get into the action. A redesigned Create-a-Class system unifies Operators, weapons, Equipment, and Killstreaks into a single loadout, giving players quicker access to specialized builds tailored to different tactics and playstyles.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-015.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-015.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_15-1149364455 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_15-1149364455 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_15-1149364455 ">
+
+    <div class="cmp-text">
+        <p>Gunsmith returns with deeper customization options while remaining approachable for all players, with attachments now shared by weapon class to streamline build creation and experimentation. New to <i>Modern Warfare 4</i>, Gunny brings a Gunnery Sergeant’s eye to weapon customization, helping players quickly assemble effective builds based on their preferred playstyle and unlocked attachments. Featuring configurations developed by Infinity Ward’s Weapons Team, Gunny can instantly configure practical close-, mid-, or long-range weapon builds tailored to different approaches to combat, while still leaving room for further customization and refinement.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1588144748--1542746671 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1588144748--1542746671 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1588144748--1542746671 ">
+
+    <div class="cmp-text">
+        <p>Progression also expands through Apex Attachments. These are specialized unlocks earned by fully progressing a weapon, introducing unique modifications that can significantly change how that weapon behaves in combat. Depending on the attachment, they can alter handling, firing behavior, tactical utility, stealth capability, or combat role, giving fully leveled weapons new ways to perform beyond standard Gunsmith customization. Alongside new weapons, Equipment, and Killstreaks available at launch, players can also enter Prestige at max Soldier Rank to earn exclusive rewards and continue progressing through additional ranks.<br />
+</p>
+<p> </p>
+<p><i>Modern Warfare 4</i> introduces greater player choice through two Prestige paths: Classic Prestige and Regular Prestige. Classic Prestige delivers the traditional reset experience, relocking Create-a-Class progression in exchange for increased XP earn rates and access to exclusive Prestige rewards. For players who prefer to maintain their unlocked Loadouts, Regular Prestige allows progression to restart from Level 1 without resetting Create-a-Class content, offering a more flexible path forward while still rewarding continued progression, with its own set of Prestige rewards and progression milestones.</p>
+<p> </p>
+<p> </p>
+<h3>Additional Multiplayer Intel Incoming</h3>
+<p> </p>
+<p>Expect a more extensive look at all aspects of <i>Modern Warfare 4</i> Multiplayer in the days ahead via the “From the Ward” video series, followed up by a recap blog, including a deep dive into Multiplayer and gameplay systems covering movement and gunplay innovations, maps, modes, progression, and more in greater detail.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_2047435827--475738261 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_2047435827--475738261 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_2047435827--475738261 ">
+
+    <div class="cmp-text">
+        <h2><span class="line-fade"><a id="DMZ"></a>DMZ // Overview</span></h2>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-016.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-016.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_717522015-974003129 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_717522015-974003129 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_717522015-974003129 ">
+
+    <div class="cmp-text">
+        <p>DMZ is the definitive <i>Call of Duty</i> extraction experience, a living combat arena where every deployment is a new story. Deploy solo or with a squad into a volatile conflict zone as an off-the-books asset tasked with recovering advanced military technology left in the wake of war. The conditions in the exclusion zone are always shifting, with changing weather, dynamic military objectives, and hostile forces moving throughout the zone. </p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-017.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-017.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_13-1149364453 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_13-1149364453 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_13-1149364453 ">
+
+    <div class="cmp-text">
+        <p>Loot, fight, negotiate, betray, and extract with whatever you can carry. The harder you push, the harder the world pushes back. Every run is a risk, every encounter is a choice, and no two deployments play out the same way.</p>
+<p> </p>
+<p> </p>
+<h3>Additional DMZ Intel Incoming</h3>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-018.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-018.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1304395555-1821437839 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1304395555-1821437839 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1304395555-1821437839 ">
+
+    <div class="cmp-text">
+        <p>You won’t have long to wait for more information on DMZ. Get your first look at DMZ on June 7, including additional details and gameplay-focused coverage.<br />
+</p>
+<p> </p>
+<p> </p>
+<h2><span class="line-fade"><a id="Technology"></a>Technology and Platforms</span></h2>
+<p> </p>
+<p>Every shot. Every moment. Every battle. <i>Modern Warfare 4</i> delivers the most immersive and technically advanced <i>Call of Duty</i> ever built.</p>
+<p> </p>
+<h3>Gameplay-First Visuals at a New Level of Fidelity</h3>
+<p> </p>
+<p><i>Modern Warfare 4</i> delivers a major leap in visual quality built directly into moment-to-moment gameplay and precision-tuned combat. Industry-leading VFX, lighting, materials, and character rendering work together to make combat clearer, more immersive, and more impactful, from explosions, smoke, and atmospherics to character detail and readability in dense, high-action scenes, even on maps filled with lush foliage and teeming with enemy combatants.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-019.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-019.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1090927978--1930383211 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1090927978--1930383211 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1090927978--1930383211 ">
+
+    <div class="cmp-text">
+        <h3>Fully Optimized for Current-Gen Hardware and High-End PCs</h3>
+<p> </p>
+<p><i>Modern Warfare 4</i> is built natively for current-generation consoles and PC, enabling greater scale, density, responsiveness, and consistency across every mode. Players will experience larger combat spaces, more active worlds, clearer engagements, and more consistent moment-to-moment performance. This current-generation focus goes beyond visual fidelity, helping Campaign, Multiplayer, and DMZ feel fluid, more responsive, and built for the full scope of <i>Modern Warfare 4</i>.</p>
+<p> </p>
+<ul>
+<li><i>Modern Warfare 4</i> will launch on XBOX Series X|S, PlayStation 5, PC, and Nintendo Switch 2. It will not be available on PlayStation 4 or XBOX One.</li>
+<li>You can digitally preorder Modern Warfare 4 now on XBOX Series X|S (XBOX Play Anywhere*), PlayStation® 5, and PC.</li>
+<li><i style="">Modern Warfare 4</i><span style=""> will be available for pre-order on Nintendo® Switch 2 later this year.</span></li>
+</ul>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-020.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-020.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1767273934--909473546 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1767273934--909473546 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1767273934--909473546 ">
+
+    <div class="cmp-text">
+        <h3>A Focus on PC</h3>
+<p> </p>
+<p><i>Modern Warfare 4</i> is built with a renewed focus on the PC community, with Infinity Ward and Beenox partnering to give players more ways to tune performance, visual fidelity, responsiveness, and customization on PC.</p>
+<p> </p>
+<ul>
+<li>PC-specific performance optimizations are designed to support a wide range of hardware, from players prioritizing high frame rates to those pushing maximum visual fidelity.</li>
+<li>Multiple upscaling and frame generation options give PC players more ways to balance image quality, performance, and responsiveness.</li>
+<li>Expanded graphics options give players more control over how the game looks, performs, and feels.</li>
+<li>For players who want to push visual fidelity, high-end PC options include DLSS 4.5 support, expanded real-time ray tracing across Campaign, Multiplayer, and DMZ, improved performance across ray-traced reflections, ambient occlusion, shadows, and volumetrics, and higher-fidelity VFX and volumetric settings.</li>
+<li>Competitive-focused settings help players prioritize high frame rates and responsiveness in the moment-to-moment fight.</li>
+<li>You can digitally prepurchase <i style="">Modern Warfare 4</i><span style=""> now on PC via Battle.net, Steam, or XBOX on PC (XBOX Play Anywhere).</span></li>
+</ul>
+<h3> </h3>
+<h3>Expanding to Nintendo Switch 2</h3>
+<p> </p>
+<p><i>Call of Duty</i>: <i>Modern Warfare 4</i> is coming to Nintendo Switch 2, bringing the <i>Modern Warfare</i> series to Nintendo players for the first time in more than a decade.</p>
+<p> </p>
+<ul>
+<li>Infinity Ward, in partnership with Digital Legends, is developing <i>Modern Warfare 4</i> natively for Nintendo Switch 2.</li>
+<li>More details on <i style="">Call of Duty: Modern Warfare 4</i><span style=""> for Nintendo Switch 2, including when players can pre-order, will be shared later this summer.</span></li>
+</ul>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1908898299--1035074546 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1908898299--1035074546 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1908898299--1035074546 ">
+
+    <div class="cmp-text">
+        <h3>Call of Duty®: Warzone™ Platform Update</h3>
+<p> </p>
+<p><i>Modern Warfare 4</i> launches on October 23, with Season 1 shortly after to kick off a major year of content and seasonal experiences across both <i>Modern Warfare 4</i> and <i>Call of Duty</i>: <i>Warzone</i>. Beginning in Season 1, <i>Call of Duty</i>: <i>Warzone</i> will integrate <i>Modern Warfare 4</i> content and seasonal progression as part of a connected experience between both titles.<br />
+<br />
+As part of this transition, <i>Call of Duty</i>: <i>Warzone</i> on PlayStation 4 and XBOX One will no longer be playable starting with Season 1. Beginning June 4, the game will no longer be available for new downloads on those platforms, though existing players can continue playing until Season 1 launches. Certain items, such as Call of Duty Points bundle purchases, will no longer be available on those platforms.<br />
+<br />
+On June 25, the in-game store for <i>Call of Duty</i>: <i>Warzone</i> on PlayStation 4 and XBOX One will be removed. Players can still progress through free Battle Pass tiers, including unlocking new weapons in remaining <i>Black Ops 7</i> seasons.<br />
+<br />
+For more information, including details on accessing purchased content, <a href="https://support.activision.com/warzone-2/articles/warzone-platform-update">view the Activision Support FAQ</a>.</p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_1568633909--591205803 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_1568633909--591205803 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_1568633909--591205803 ">
+
+    <div class="cmp-text">
+        <h2><span class="line-fade"><a id="Incoming"></a>Stay Frosty: Additional Intel Incoming</span></h2>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+<div class="article-image atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-image-component article-image-container  align-left" data-emptytext="Call of Duty Article Image">
+    
+    
+        <div class="article-image-container img-lazy-container">
+            
+
+            
+                
+
+    
+
+    <img loading="lazy" data-src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-021.webp" data-large="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-021.webp" class="lazy " alt style=" "/>
+
+    
+
+                
+            
+
+            
+            
+        </div>
+        
+    
+</div>
+</div>
+<div class="article-rich-text aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+<style>
+    .article_rich_text_281977569--174655353 .bannerLabel {
+        background-color: #FFF !important;
+    }
+    .article_rich_text_281977569--174655353 .bannerLabel:before {
+        border-color: #FFF;
+    }
+</style>
+
+<div class="article_rich_text_281977569--174655353 ">
+
+    <div class="cmp-text">
+        <p>Track the latest official <i>Modern Warfare 4</i> intel on the Call of Duty Blog as we move toward additional information drops, the <i>Modern Warfare 4</i> Open Beta, and launch on October 23.</p>
+<p> </p>
+<p>Preorders are available now at participating retailers, in-game, on platform stores, or at CallofDuty.com. For more information on preordering, including Vault Edition content, rewards, and a special Loyalty Discount, <a href="https://www.callofduty.com/blog/2026/05/call-of-duty-modern-warfare-4-preorder-benefits-game-editions-details">consult the Pre-Order blog here</a>.</p>
+<p> </p>
+<p> </p>
+<h3>Development Credits</h3>
+<p> </p>
+<p><i>Call of Duty: Modern Warfare 4</i> development is led by Infinity Ward and will be available globally on XBOX Series X|S, PlayStation 5® and PC via <a href="http://battle.net/">Battle.net</a>, XBOX on PC, Steam, and Switch 2 on Friday, October 23rd, 2026.</p>
+<p> </p>
+<p><i>Call of Duty: Modern Warfare 4 </i>delivers a fully optimized experience on PC, led by Infinity Ward in partnership with Beenox, for <a href="http://battle.net/">Battle.net</a>, Blizzard Entertainment’s online gaming service, XBOX on PC, and Steam.</p>
+<p> </p>
+<p>Infinity Ward, in partnership with Digital Legends, is developing <i>Modern Warfare 4</i> natively for Nintendo Switch 2.</p>
+<p> </p>
+<p>Additional development by in alphabetical order: Activision Central Design, Activision Central Technology, Activision QA, Activision Shanghai, Beenox, Demonware, High Moon Studios, Raven Software, Sledgehammer Games, and Treyarch.</p>
+<p> </p>
+<p> </p>
+<p><i>©/TM/</i>© <i>2026 Activision Publishing, Inc. For more information, please visit </i><a href="http://www.callofduty.com/"><i>www.callofduty.com</i></a><i> and </i><a href="http://www.youtube.com/callofduty"><i>www.youtube.com/callofduty</i></a><i>, and follow </i><a href="https://twitter.com/activision"><i>@Activision</i></a><i> and </i><a href="https://twitter.com/CallofDuty"><i>@CallofDuty</i></a><i> on X, Instagram, and Facebook. For Call of Duty Updates, follow </i><a href="https://twitter.com/CODUpdates"><i>@CODUpdates</i></a><i> on X.</i></p>
+<p> </p>
+<p><i>Join </i><a href="http://discord.gg/CallofdutyOfficial"><i>Call of Duty's Official Discord</i></a><i> to get the latest updates and maybe even meet your next squadmate!</i></p>
+
+    </div>
+
+    
+
+	
+    
+
+</div>
+</div>
+
+    
+</div>
+</div>
+
+                
+                <div class="top-cta-container">
+                    <div class="sideline left"></div>
+                    <div class="top-cta">
+                        <span class="glint"></span>
+                        <span class="glint"></span>
+                        <span class="glint"></span>
+                        <span class="glint"></span>
+                        <a href="#main-content" class="atvi-cta-item">Back to Top</a>
+                    </div>
+                    <div class="sideline right"></div>
+                </div>
+            </div>
+
+            
+            <div class="side-cta-wrapper">
+
+                <div class="cta">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+                    
+                        
+                        
+                        
+
+                        
+                        <a class="ad-banner-cta" href="https://www.callofduty.com/ca/en/playnow/modernwarfare4">
+                            <div class="ad-banner-img-wrapper">
+                                <img alt="ad image" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/Rex_Reveal_Blog-Item.webp"/>
+                            </div>
+
+                            
+                                
+
+    
+
+	
+
+
+    
+
+    
+        <span class="btn" id="post-buy-btn" data-label="mw4" data-action="preorder mw4" href="https://www.callofduty.com/ca/en/playnow/modernwarfare4">
+                <span class="mobile-up" style="text-wrap-style: balance;">Pre-order MW4</span>
+            	<span class="mobile-down">Pre-order MW4</span>
+        </span>
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    
+
+
+
+    
+
+    
+	
+
+
+	
+    
+
+    
+	
+
+
+    
+
+
+                            
+                        </a>
+
+                        
+                        
+
+                        
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+                    
+                    
+
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="related-wrapper">
+
+
+
+
+
+
+
+
+    
+<link rel="stylesheet" href="/apps/atvi/callofduty/promotions/verdansk-replay/components/pages/home/article-related-posts/clientlibs.22d0c191430b22422469cf2e74935a0b.css" type="text/css">
+<link rel="stylesheet" href="/apps/atvi/callofduty/editorial/components/article-related-posts/clientlibs.22d0c191430b22422469cf2e74935a0b.css" type="text/css">
+<script src="/apps/atvi/callofduty/promotions/verdansk-replay/components/pages/home/article-related-posts/clientlibs.627477bc2256c1f38115f2083ac1f5ec.js"></script>
+<script src="/apps/atvi/callofduty/editorial/components/article-related-posts/clientlibs.991f23139c8d212e29348dc525a77969.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="article-related-posts" class="article-related-posts-container ">
+    <div class="section-header">
+        <h2>Related Articles</h2>
+    </div>
+
+    <div class="news-list">
+        <ul>
+            <li>
+    
+    
+    
+    
+    
+
+	
+	
+        <div class="blog-card-item blog-card-md " data-game="mw4" data-tag="news,news-announcements">
+	
+
+        <div class="card-inner">
+
+            <div class="graphics">
+
+				
+                
+
+                    <a data-produrl="https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-preorder-benefits-game-editions-details" href="/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-preorder-benefits-game-editions-details" aria-labelledby="title-https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-preorder-benefits-game-editions-details">
+
+                
+
+                <div class="bg">
+
+                    
+                	
+
+                    
+                    
+                        
+
+                        <img aria-hidden="true" data-src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/preorder/MW4-EDITIONS.BENEFITS-TOUT.jpg" alt="Modern Warfare 4 Editions: Pre-order Benefits Detailed" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/preorder/MW4-EDITIONS.BENEFITS-TOUT.jpg" class="blog-image"/>
+                    
+
+                </div>
+
+                
+					</a>
+                
+            </div>
+
+            <div class="text">
+
+                <div class="date-line">
+					
+    
+
+    <ul class="game-list">
+        <li class="game-tile mw4">
+
+			
+            <a href="https://www.callofduty.com/ca/en/blog/modernwarfare4">MW4</a>
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+    
+            
+            
+    
+            
+            
+    
+            
+            
+
+            
+            
+
+            
+            
+    
+            
+            
+    
+            
+            
+    
+        </li>
+    </ul>
+
+
+					
+
+    
+         
+    
+        
+    
+        <div data-month="05" data-loc="en_CA" data-date="May 28, 2026" data-date-loc="May 28, 2026" class="news-published">
+            <span class="date-ph" data-i18n-template="{0} days ago">...</span> 
+        </div>
+    
+
+                </div>
+
+                <div class="title" id="title-https://www.callofduty.com/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-preorder-benefits-game-editions-details">
+                    
+
+                        <a href="/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-preorder-benefits-game-editions-details">
+							Modern Warfare 4 Editions: Pre-order Benefits Detailed
+						</a>
+                    
+                </div>
+
+                
+
+                
+
+    <ul class="tag-list">
+        <li class="tag-item" data-value="news">
+            
+            News
+        </li>
+    
+        <li class="tag-item" data-value="news-announcements">
+            
+            Announcements
+        </li>
+    </ul>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</li>
+            <li>
+    
+    
+    
+    
+    
+
+	
+	
+        <div class="blog-card-item blog-card-md " data-game="mw4" data-tag="news,news-announcements">
+	
+
+        <div class="card-inner">
+
+            <div class="graphics">
+
+				
+                
+
+                    <a data-produrl="https://www.callofduty.com/ca/en/blog/2026/05/modernwarfare4-fob" href="/ca/en/blog/2026/05/modernwarfare4-fob" aria-labelledby="title-https://www.callofduty.com/ca/en/blog/2026/05/modernwarfare4-fob">
+
+                
+
+                <div class="bg">
+
+                    
+                	
+
+                    
+                    
+                        
+
+                        <img aria-hidden="true" data-src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/fob/MW4-FOB-TOUT.jpg" alt="UPDATING: Modern Warfare 4: Latest Official Intel Here" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/fob/MW4-FOB-TOUT.jpg" class="blog-image"/>
+                    
+
+                </div>
+
+                
+					</a>
+                
+            </div>
+
+            <div class="text">
+
+                <div class="date-line">
+					
+    
+
+    <ul class="game-list">
+        <li class="game-tile mw4">
+
+			
+            <a href="https://www.callofduty.com/ca/en/blog/modernwarfare4">MW4</a>
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+    
+            
+            
+    
+            
+            
+    
+            
+            
+
+            
+            
+
+            
+            
+    
+            
+            
+    
+            
+            
+    
+        </li>
+    </ul>
+
+
+					
+
+    
+         
+    
+        
+    
+        <div data-month="05" data-loc="en_CA" data-date="May 28, 2026" data-date-loc="May 28, 2026" class="news-published">
+            <span class="date-ph" data-i18n-template="{0} days ago">...</span> 
+        </div>
+    
+
+                </div>
+
+                <div class="title" id="title-https://www.callofduty.com/ca/en/blog/2026/05/modernwarfare4-fob">
+                    
+
+                        <a href="/ca/en/blog/2026/05/modernwarfare4-fob">
+							UPDATING: Modern Warfare 4: Latest Official Intel Here
+						</a>
+                    
+                </div>
+
+                
+
+                
+
+    <ul class="tag-list">
+        <li class="tag-item" data-value="news">
+            
+            News
+        </li>
+    
+        <li class="tag-item" data-value="news-announcements">
+            
+            Announcements
+        </li>
+    </ul>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</li>
+            <li>
+    
+    
+    
+    
+    
+
+	
+	
+        <div class="blog-card-item blog-card-md " data-game="mw4" data-tag="news,news-announcements">
+	
+
+        <div class="card-inner">
+
+            <div class="graphics">
+
+				
+                
+
+                    <a href="https://news.xbox.com/en-us/2026/05/28/call-of-duty-modern-warfare-4-first-details-campaign/" aria-labelledby="title-">
+
+                
+
+                <div class="bg">
+
+                    
+                	
+
+                    
+                    
+                        
+
+                        <img aria-hidden="true" data-src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-013.webp" alt="XBOX Wire: Call of Duty: Modern Warfare 4 – First Details on the Next Call of Duty Campaign" src="/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/reveal/MW4-REVEAL-013.webp" class="blog-image"/>
+                    
+
+                </div>
+
+                
+					</a>
+                
+            </div>
+
+            <div class="text">
+
+                <div class="date-line">
+					
+    
+
+    <ul class="game-list">
+        <li class="game-tile mw4">
+
+			
+            <a href="https://www.callofduty.com/ca/en/blog/modernwarfare4">MW4</a>
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+    
+            
+            
+    
+            
+            
+    
+            
+            
+
+            
+            
+
+            
+            
+    
+            
+            
+    
+            
+            
+    
+        </li>
+    </ul>
+
+
+					
+
+    
+         
+    
+        
+    
+        <div data-month="05" data-loc="en_CA" data-date="May 28, 2026" data-date-loc="May 28, 2026" class="news-published">
+            <span class="date-ph" data-i18n-template="{0} days ago">...</span> 
+        </div>
+    
+
+                </div>
+
+                <div class="title" id="title-">
+                    
+
+                        <a href="https://news.xbox.com/en-us/2026/05/28/call-of-duty-modern-warfare-4-first-details-campaign/">
+							XBOX Wire: Call of Duty: Modern Warfare 4 – First Details on the Next Call of Duty Campaign
+						</a>
+                    
+                </div>
+
+                
+
+                
+
+    <ul class="tag-list">
+        <li class="tag-item" data-value="news">
+            
+            News
+        </li>
+    
+        <li class="tag-item" data-value="news-announcements">
+            
+            Announcements
+        </li>
+    </ul>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</li>
+        </ul>
+    </div>
+</div>
+
+
+</div>
+    </div>
+
+    
+
+    
+    
+    <!-- Author-only publishing panel -->
+        
+    
+    
+</main>
+
+
+
+
+    <div class="atvi-xfpage page basicpage">
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="cod-footer aem-GridColumn aem-GridColumn--default--12">            
+
+    
+<link rel="stylesheet" href="/apps/atvi/callofduty/global/components/structure/v2023/cod-footer/clientlibs.50f892f087b18204e7590fc75a2edfea.css" type="text/css"><script type="text/javascript" src="/apps/atvi/callofduty/global/components/structure/v2023/cod-footer/clientlibs.fe79ab00f5d0e5fad2180abf8b46135f.js" defer></script>
+
+
+
+
+
+
+
+<footer role="contentInfo" class="cod-global-footer ">
+
+	<div class="inner-footer">
+
+		<div class="legal-links">
+			
+                <ul>
+                    <li>
+						<a href="https://www.activision.com/ca/en/legal" target="_blank">
+                        	Legal
+                    	</a>
+					</li>
+                
+                    <li>
+						<a href="https://www.activision.com/ca/en/legal/terms-of-use" target="_blank">
+                        	Terms of Use
+                    	</a>
+					</li>
+                
+                    <li>
+						<a href="https://www.activision.com/ca/en/legal/privacy-policy" target="_blank">
+                        	Privacy Policy
+                    	</a>
+					</li>
+                
+                    <li>
+						<a href="https://careers.activision.com" target="_blank">
+                        	Careers
+                    	</a>
+					</li>
+                
+                    <li>
+						<a href="https://www.activision.com/ca/en/legal/cookie-policy" target="_blank">
+                        	Cookie Policy
+                    	</a>
+					</li>
+                
+                    <li>
+						<a href="https://support.activision.com" target="_blank">
+                        	Support
+                    	</a>
+					</li>
+                
+                    <li>
+						<a href="https://www.callofduty.com/ca/en/values" target="_blank">
+                        	Code of Conduct
+                    	</a>
+					</li>
+                </ul>
+            
+		</div>
+
+		<div class="studio-links">
+			
+                <ul>
+                    <li class="atvi-logo">
+                        <a href="https://www.activision.com/ca/en" target="_blank" aria-label="Visit the Activision website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/activision-logo.png" alt="Activision logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="treyarch-logo">
+                        <a href="https://www.treyarch.com" target="_blank" aria-label="Visit the Treyarch website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/treyarch-logo.png" alt="Treyarch Logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="shg-logo">
+                        <a href="https://www.sledgehammergames.com" target="_blank" aria-label="Visit the Sledgehammer Games website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/shg-logo.png" alt="Sledgehammer Games Logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="hms-logo">
+                        <a href="https://www.highmoonstudios.com" target="_blank" aria-label="Visit the Highmoon Studios website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/high-moon-logo.png" alt="High Moon Studios logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="digital-logo">
+                        <a href="https://www.digital-legends.com" target="_blank" aria-label="Visit the Digital Legends Entertainment website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/digital-legends-logo.png" alt="Digital Legends Entertainment logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="shanghai-logo">
+                        <a href="https://www.activision.com/company/locations/shanghai" target="_blank" aria-label="Visit the Activision Shanghai Studio profile page">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/atvi-shanghai-logo.png" alt="Shanghai Studio logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="iw-logo">
+                        <a href="https://www.infinityward.com" target="_blank" aria-label="Visit the Infinity Ward website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/iw-logo-white.webp" alt="Infinity Ward logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="raven-logo">
+                        <a href="https://www.ravensoftware.com" target="_blank" aria-label="Visit the Raven Software website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/raven-logo.png" alt="Raven logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="solid-state-logo">
+                        <a href="https://www.activision.com/solidstate" target="_blank" aria-label="Visit the Solid State Studios website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/solid-state-logo.png" alt="Solid State Studios logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="dw-logo">
+                        <a href="https://www.demonware.net" target="_blank" aria-label="Visit the Demonware website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/demonware-logo.png" alt="Demonware logo" loading="lazy"/>
+                        </a>
+                    </li>
+                
+                    <li class="beenox-logo">
+                        <a href="https://www.beenox.com" target="_blank" aria-label="Visit the Beenox website">
+                            <img src="/content/dam/atvi/callofduty/cod-touchui/hub/studio-logos/beenox-logo.png" alt="Beenox logo" loading="lazy"/>
+                        </a>
+                    </li>
+                </ul>
+            
+		</div>
+
+        
+		<div class="rating-links">
+			<ul>
+                <li class="na-logo">
+                	<a target="_blank" class="esrb-pc" href="https://www.esrb.org/EPCConfirm/832/" aria-label="Visit the Activision ESRB Privacy Certified Profile">
+  <!-- <img
+              src="https://imgs.callofduty.com/content/dam/atvi/global/ratings/esrb/esrb-privacy.jpg"
+              alt="ESBR Privacy Certified Logo"
+              loading="lazy"
+            /> -->
+
+            <img src="/content/dam/atvi/activision/home/footer/Privacy_Certified_Globe_color_2022.png" alt="ESBR Privacy Certified Logo" loading="lazy"/>                    </a>
+                </li>
+				<li class="na-logo">
+                    
+						<a class="rating-logo" aria-label="Visit the rating board website" href="https://www.esrb.org"><img src="https://imgs.callofduty.com/content/dam/atvi/global/ratings/esrb/cod-hub-esrb-en.png" alt="Mature 17+: Blood and Gore, Intense Violence, Strong Language, Suggestive Themes, Use of Drugs, In-game Purchases / Users Interact" loading="lazy"/></a>
+					
+                </li>
+            </ul>
+		</div>
+
+		<div class="copyright">
+
+            
+            
+            <p>©/TM/<b>®</b> 2026 Activision Publishing, Inc.</p>
+
+
+			
+		</div>
+
+		<div class="cookie-settings">
+			<button id="ot-sdk-btn" aria-label="Configure cookie settings" class="ot-sdk-show-settings">Cookie Settings</button>
+		</div>
+
+		<div class="footer-locale-selector">
+			<div>
+    
+
+
+
+
+
+
+<div class="atvi-locale-selector  open-up " data-selectedLocale="en_ca" role="navigation" aria-label="locale-selector.ariaLabel">
+    <h2 class="visually-hidden">Choose your region</h2>
+
+    <p class="cur-locale-selector-btn">
+        <button id="locale-selector-toggle" aria-haspopup="listbox" aria-controls="locale-selector-list" aria-expanded="false" class="flag-button flag-en_ca" aria-label="Selected region - English Canada">
+            <span class="visually-hidden">Selected region -
+                English Canada</span>
+            <span class="flag-icon" aria-hidden="true">English Canada</span>
+            
+        </button>
+    </p>
+
+    <div class="locale-panel" id="locale-selector-list" role="listbox">
+        <div class="locale-panel-inner-container">
+            <div class="locale-panel-header">
+                <p class="selected-region-text">
+                    <span class="label">Selected region:</span>
+                    <span class="locale-string">English Canada</span>
+                </p>
+                <p class="close-btn">
+                    <button type="button" aria-label="Close Menu">
+                        <span class="visually-hidden">Close Menu</span>+
+                    </button>
+                </p>
+            </div>
+
+            
+
+            
+
+            <ul>
+                <li class=" flag-en" data-lang="en" role="option">
+                    <a href="/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="United States">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            United States
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-en_gb" data-lang="en_gb" role="option">
+                    <a href="/uk/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="United Kingdom">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            United Kingdom
+                        </div>
+                    </a>
+                </li>
+            
+                <li class="active flag-en_ca" data-lang="en_ca" role="option" aria-selected>
+                    <a href="/ca/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="English Canada">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            English Canada
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-en_au" data-lang="en_au" role="option">
+                    <a href="/au/en/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Australia">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Australia
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-fr" data-lang="fr" role="option">
+                    <a href="/fr/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Francais">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Francais
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-fr_ca" data-lang="fr_ca" role="option">
+                    <a href="/ca/fr/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Canada Français">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Canada Français
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-de" data-lang="de" role="option">
+                    <a href="/de/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Deutschland">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Deutschland
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-it" data-lang="it" role="option">
+                    <a href="/it/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Italia">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Italia
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-es" data-lang="es" role="option">
+                    <a href="/es/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="España">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            España
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-es_mx" data-lang="es_mx" role="option">
+                    <a href="/mx/es/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="México">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            México
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-pt_br" data-lang="pt_br" role="option">
+                    <a href="/br/pt/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Brasil">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Brasil
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ru" data-lang="ru" role="option">
+                    <a href="/ru/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Россия">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Россия
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ar" data-lang="ar" role="option">
+                    <a href="/ar/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="Arabic">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Arabic
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ja" data-lang="ja" role="option">
+                    <a href="/ja/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="日本語">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            日本語
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-ko" data-lang="ko" role="option">
+                    <a href="/ko/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="한국">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            한국
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-zh_cn" data-lang="zh_cn" role="option">
+                    <a href="/cn/zh/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="简体中文">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            简体中文
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-zh_tw" data-lang="zh_tw" role="option">
+                    <a href="/tw/zh/blog/2026/05/call-of-duty-modern-warfare-4-announcement" aria-label="繁體中文">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            繁體中文
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+		</div>
+
+	</div>
+
+</footer>
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section></div>
+
+
+
+</div>
+
+    
+</div>
+</div>
+
+    
+
+        
+        
+
+	
+
+	
+	
+
+	
+	
+
+	
+	
+
+	
+	
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+        
+
+
+
+
+		
+		
+
+        <script type="text/javascript">
+            if (typeof _satellite !== 'undefined') {
+       			 _satellite.pageBottom(); // Execute if _satellite exists
+      		}
+    	</script>
+
+    </body>
+
+
+</html>

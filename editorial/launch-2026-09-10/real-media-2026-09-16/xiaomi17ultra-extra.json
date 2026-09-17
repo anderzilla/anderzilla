@@ -1,0 +1,912 @@
+{
+  "key": "xiaomi17ultra-product",
+  "sourcePage": "https://www.mi.com/global/product/xiaomi-17-ultra/",
+  "images": [
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/489eb45a3fd47a6c3c09a0a94fa5bace.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div2.lazy > picture.xm-picture.image3",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/3daf9b115eb928eb378d9a0039d43176.png",
+      "alt": "",
+      "path": "div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div2.lazy > div.div4 > picture.xm-picture.image5",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/f60ec798661b8c8a7f842b9d9205ad6d.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > picture.xm-picture.image8",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/gcdah302e2d613088f2aff7jf97a0bc8.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > div.div9 > div.div10 > picture.xm-picture.image11",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/83a48170d77599429bf3924b96a0c01a.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > div.div9 > div.div15 > div.div16 > picture.xm-picture.image17",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/5c2979dc05b84e39c56cd8ed8d82f4b6.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > div.div9 > div.div15 > div.div21 > picture.xm-picture.image22",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/a5392231716a854aeb4f9d3895ad4b81.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > div.div9 > div.div26 > div.div27 > picture.xm-picture.image28",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/5a440afec1f61d7e87a0ce47a3ac3f4d.png",
+      "alt": "",
+      "path": "div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > div.div9 > div.div26 > div.div32 > div.div33 > picture.xm-picture.image34",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/576ca472666f751f15c6d35c60a73e46.png",
+      "alt": "",
+      "path": "div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > div.div9 > div.div26 > div.div32 > div.div38 > picture.xm-picture.image39",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/fc3ecf741a442d942020417f2167dd32.png",
+      "alt": "",
+      "path": "main.fly-birds-page_3c42c7da98.div1 > div.section.div7.lazy > div.div9 > div.div26 > div.div32 > div.div38 > div.div40 > picture.xm-picture.image41",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/6993916053ba1be78889a1e4c6f5c476.jpg",
+      "alt": "",
+      "path": "div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.watch-film-container.lazy > div.film-trigger > picture.xm-picture.film-trigger-bg",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/39ccee7ee927dbfbe498cca56d97878f.png",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.watch-film-container.lazy > div.film-trigger > div.film-trigger-content > picture.xm-picture.film-trigger-icon",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/9d34fe3dafd2af7d76a743e6d4ceda27.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div52.lazy > picture.xm-picture.image53",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/new_green_img.jpg",
+      "alt": "",
+      "path": "div.color_slider_container_001 > div.color_slider_wrapper_001 > div.xm-scroll.color_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-active.slick-current > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/new_black_img.jpg",
+      "alt": "",
+      "path": "div.color_slider_container_001 > div.color_slider_wrapper_001 > div.xm-scroll.color_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/new_white_img.jpg",
+      "alt": "",
+      "path": "div.color_slider_container_001 > div.color_slider_wrapper_001 > div.xm-scroll.color_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/green_icon_out.png",
+      "alt": "",
+      "path": "div.section.color_wrapper_001.lazy > div.color_content_wrapper_001 > div.color_slider_container_001 > div.color_slider_wrapper_001 > div.color_controls_wrapper_001 > div.color_dots_container_001 > div.color_dot_item_001.active > picture.xm-picture.color_dot_active_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/icon_png_in.png",
+      "alt": "",
+      "path": "div.section.color_wrapper_001.lazy > div.color_content_wrapper_001 > div.color_slider_container_001 > div.color_slider_wrapper_001 > div.color_controls_wrapper_001 > div.color_dots_container_001 > div.color_dot_item_001.active > picture.xm-picture.color_dot_inactive_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/black_icon_in.png",
+      "alt": "",
+      "path": "div.section.color_wrapper_001.lazy > div.color_content_wrapper_001 > div.color_slider_container_001 > div.color_slider_wrapper_001 > div.color_controls_wrapper_001 > div.color_dots_container_001 > div.color_dot_item_001 > picture.xm-picture.color_dot_active_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/icon_png_in.png",
+      "alt": "",
+      "path": "div.section.color_wrapper_001.lazy > div.color_content_wrapper_001 > div.color_slider_container_001 > div.color_slider_wrapper_001 > div.color_controls_wrapper_001 > div.color_dots_container_001 > div.color_dot_item_001 > picture.xm-picture.color_dot_inactive_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/white_icon_in.png",
+      "alt": "",
+      "path": "div.section.color_wrapper_001.lazy > div.color_content_wrapper_001 > div.color_slider_container_001 > div.color_slider_wrapper_001 > div.color_controls_wrapper_001 > div.color_dots_container_001 > div.color_dot_item_001 > picture.xm-picture.color_dot_active_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/icon_png_in.png",
+      "alt": "",
+      "path": "div.section.color_wrapper_001.lazy > div.color_content_wrapper_001 > div.color_slider_container_001 > div.color_slider_wrapper_001 > div.color_controls_wrapper_001 > div.color_dots_container_001 > div.color_dot_item_001 > picture.xm-picture.color_dot_inactive_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/f7ccba248ad1fd1de33cdef8defbf288.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div85.lazy > picture.xm-picture.image86",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/45173bdc9940de3ef35489688dfb9e84.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div99.lazy > picture.xm-picture.image100",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/hd50bbd90aa2dfac77ab877h092d2e58.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div99.lazy > div.div101 > div.div102 > picture.xm-picture.image103",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/bg6he5ej85a2c48ecd2fad7a7a7379e5.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div99.lazy > div.div101 > div.div107 > picture.xm-picture.image108",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/72580587920f0de125e0056274e41322.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div112.lazy > picture.xm-picture.image113",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/f571f82d4b01de532d232160f93c6ab7.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div126.lazy > picture.xm-picture.image127",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/99245cd3229c2dfc4c0d1fa539a54b79.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div126.lazy > div.div128 > div.div129 > picture.xm-picture.image130",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/gc9s0a5fccad8648cd0f84d96h690c71.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div126.lazy > div.div128 > div.div134 > picture.xm-picture.image135",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/39c63dc2db48ccea4f3a094b8f1129ab.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div126.lazy > div.div128 > div.div139 > picture.xm-picture.image140",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/hfe27af794be23fs3b2ae9bj34f2206f.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div144.lazy > picture.xm-picture.image145",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/d4e8d860e3d2d4e99dff9db5cd55b8ba.png",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div144.lazy > div.div146 > div.div147 > picture.xm-picture.image148",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/1002385ef7c5cf959baf7bbc624d3a78.png",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div144.lazy > div.div146 > div.div163 > picture.xm-picture.image164",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/c8fb533eb25cdc7e6db44209e2e794cf.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div171.lazy > picture.xm-picture.image172",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/b4aac970ba7e788e5d99469686d67711.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.camera_specs_pin.lazy > div > div.section.camera_specs_screen1.lazy > picture.xm-picture.camera_specs_bg1",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/d20203c9f3bdc99c032ee1f7debc62b9.jpg",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.camera_specs_pin.lazy > div > div.section.camera_specs_screen2.lazy > div.camera_specs_screen2_top > picture.xm-picture.camera_specs_bg2_top",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/s0d630afb2d50fa8cf8ad6e9b5f773be.jpg",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.camera_specs_pin.lazy > div > div.section.camera_specs_screen2.lazy > div.camera_specs_screen2_bottom_wrap > picture.xm-picture.camera_specs_bg2_bottom",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/854665b187ff36cb5af1284fa8589cfc.png",
+      "alt": "",
+      "path": "div > div.section.camera_specs_screen2.lazy > div.camera_specs_screen2_bottom_wrap > div.camera_specs_fusion_block > div.camera_specs_icons_row > div.camera_specs_icons_first > div.camera_specs_icon1_wrap > picture.xm-picture.camera_specs_icon1",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/b575cb12e04e5d50b6912d8912b114b5.png",
+      "alt": "",
+      "path": "div > div.section.camera_specs_screen2.lazy > div.camera_specs_screen2_bottom_wrap > div.camera_specs_fusion_block > div.camera_specs_icons_row > div.camera_specs_icons_first > div.camera_specs_icon2_wrap > picture.xm-picture.camera_specs_icon2",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/0aa2977c1e6a65767616f1f9e88e76d5.png",
+      "alt": "",
+      "path": "div > div.section.camera_specs_screen2.lazy > div.camera_specs_screen2_bottom_wrap > div.camera_specs_fusion_block > div.camera_specs_icons_row > div.camera_specs_icons_second > div.camera_specs_icon3_wrap > picture.xm-picture.camera_specs_icon3",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/0ff3da1989bcdd5b57b0405946acec28.png",
+      "alt": "",
+      "path": "div > div.section.camera_specs_screen2.lazy > div.camera_specs_screen2_bottom_wrap > div.camera_specs_fusion_block > div.camera_specs_icons_row > div.camera_specs_icons_second > div.camera_specs_icon4_wrap > picture.xm-picture.camera_specs_icon4",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/cc3457b215f1b0a34d54e16eb3f512c8.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div249.lazy > picture.xm-picture.image250",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/8b1896a30dbc042d0b381b71d65cd9b5.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div254.lazy > picture.xm-picture.image255",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/74ceabb58bcfa460ee8bfec1b1d1f2bc.png",
+      "alt": "",
+      "path": "html > body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > picture.xm-picture.section.image263",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/74801f7655b7b14c65953326e17afede.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div264.lazy > picture.xm-picture.image265",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/2312b614d67e58e4b9a7e37f08794fe7.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div274.lazy > picture.xm-picture.image275",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img5.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img6.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img1.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-active.slick-center.slick-current > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img2_new.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img3.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img4.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img5.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img6.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img1.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-center.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img2_new.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img3.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img4.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img5.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera_img6.jpg",
+      "alt": "",
+      "path": "div.section.camera_slider_wrapper_001.lazy > div.camera_slider_container_001 > div.xm-scroll.camera_slider_001 > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/geabd7eg81d4b87d6d7295a5d7hcd0ee.jpg?q=100",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div285.lazy > picture.xm-picture.image286",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/a77h0cs3680c81716ad4c963721d5665.jpg",
+      "alt": "",
+      "path": "html > body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > picture.xm-picture.section.image290",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/c80738fcc5f6509a1407dae888b34451.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div291.lazy > picture.xm-picture.image292",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/862aaaaab18bcf8ac271558755d4e1d2.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div296.lazy > picture.xm-picture.image297",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/932kk4d15320127e67ad2ba4923jjf04e.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div301.lazy > picture.xm-picture.image302",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/939d81165d8cf7fff98449b5ea3965a3.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div301.lazy > div.div303 > div.div308 > div.div309 > picture.xm-picture.image310",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/ad28543e43c14f1324d7fe314d04b7d1.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div301.lazy > div.div303 > div.div308 > div.div314 > picture.xm-picture.image315",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/55c37f7ab61f3bf7ff85184ce54a2c51.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div301.lazy > div.div303 > div.div308 > div.div317 > picture.xm-picture.image318",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/6c0607f5d279a82cb24e13a31cd2660d.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div320.lazy > picture.xm-picture.image321",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/b3ffa089c7cb03bbbde3a0ef8d820323.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div326.lazy > picture.xm-picture.image327",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/fbd77ef31cfdca8483c4c0b2956383c2.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.photography-section.lazy > picture.xm-picture.photography-bg",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica2.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-center.slick-cloned > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica3.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica1_new.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica2.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-active.slick-center.slick-current > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica3.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica1_new.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica2.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-center.slick-cloned > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica3.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/essential_leica1_new.jpg",
+      "alt": "",
+      "path": "div.xm-scroll.photography-slider > div.slick-slider.slick-initialized > div.slick-list > div.slick-track > div.slick-slide.slick-cloned > div > div.photography-slide-container > picture.xm-picture.photography-slide-image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/camera-wide.webp?q=100",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.ultra_wide_pin.lazy > div > div.section.ultra_wide_screen1.lazy > picture.xm-picture.ultra_wide_bg1",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/d5d041767298e8082e91eb31f6613dad.jpg",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.ultra_wide_pin.lazy > div > div.section.ultra_wide_screen2.lazy > picture.xm-picture.ultra_wide_bg_image",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/a5d363f8e5cf9e97968362d047d974f5.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div348.lazy > picture.xm-picture.image349",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/53e4a9a5bc7d2c480e1d257748526ae7.jpg",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div348.lazy > div.div350 > div.div358 > div.div359 > picture.xm-picture.image361",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/hf729627a34c989f8a8d46ds2547f140.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div363.lazy > picture.xm-picture.image364",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/1f1c770220594c22e9b1ed6e158a9e9d.png",
+      "alt": "",
+      "path": "div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div363.lazy > div.div365 > picture.xm-picture.image366",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/g07adgbe76hdccfa1edf3dc4afb8ja4f.webp?q=100",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div368.lazy > picture.xm-picture.image369",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/video-slice-bg.png",
+      "alt": "",
+      "path": "div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.vs_pinIn.lazy > div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide1.lazy > picture.xm-picture.vs_slide1_bg",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/4b587c96972165eba21835752447760a.png",
+      "alt": "",
+      "path": "div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide1.lazy > div.vs_slide1_content > div.vs_video_player. > div.vs_video_player_watch._watch > picture.xm-picture.vs_video_player_watch_icon._watch_icon",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/video-slice-bg.png",
+      "alt": "",
+      "path": "div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.vs_pinIn.lazy > div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide2.lazy > picture.xm-picture.vs_slide2_bg",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/4b587c96972165eba21835752447760a.png",
+      "alt": "",
+      "path": "div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide2.lazy > div.vs_slide2_content > div.vs_video_player. > div.vs_video_player_watch._watch > picture.xm-picture.vs_video_player_watch_icon._watch_icon",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/abd7906598737e4b251775ee5ee401e0.png",
+      "alt": "",
+      "path": "div.vs_pinIn.lazy > div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide2.lazy > div.vs_slide2_content > div.vs_slide2_aces.lazy > picture.xm-picture.vs_slide2_aces_logo",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/e68ef230b2736cba6a057217c8528b08.png",
+      "alt": "",
+      "path": "div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide2.lazy > div.vs_slide2_content > div.vs_slide2_aces.lazy > div.vs_slide2_aces_link.lazy > picture.xm-picture.vs_slide2_aces_link_icon",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/video-slice-bg.png",
+      "alt": "",
+      "path": "div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.vs_pinIn.lazy > div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide3.lazy > picture.xm-picture.vs_slide3_bg",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/4b587c96972165eba21835752447760a.png",
+      "alt": "",
+      "path": "div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide3.lazy > div.vs_slide3_content > div.vs_video_player. > div.vs_video_player_watch._watch > picture.xm-picture.vs_video_player_watch_icon._watch_icon",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/m/023957fb0d5cd6156a19b5362f0072f0.png",
+      "alt": "",
+      "path": "div > div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide3.lazy > div.vs_slide3_content > div.vs_slide3_info > div.vs_slide3_dolby > picture.xm-picture.vs_slide3_dolby_logo",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/ceca5aee02a4aa2cc456da10b9908c4e.png",
+      "alt": "",
+      "path": "div.section.vs_wrapper.lazy > div.div98 > div.vs_slide.vs_slide3.lazy > div.vs_slide3_content > div.vs_slide3_info > div.vs_slide3_audio > div.vs_slide3_audio_title > picture.xm-picture.vs_slide3_audio_logo",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/e68ef230b2736cba6a057217c8528b08.png",
+      "alt": "",
+      "path": "div.div98 > div.vs_slide.vs_slide3.lazy > div.vs_slide3_content > div.vs_slide3_info > div.vs_slide3_audio > div.vs_slide3_audio_title > div.vs_slide3_aces_link > picture.xm-picture.vs_slide3_aces_link_icon",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/h5ef234f503a7a14cd068add94t322ef.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div423.lazy > picture.xm-picture.image424",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/769fab181ec27e92310dee8247cd1d69.png",
+      "alt": "",
+      "path": "div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div423.lazy > div.div425 > picture.xm-picture.image426",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/23illkl32ke0296ca93dgsg8d1bb877faf416.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div429.lazy > picture.xm-picture.image430",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/hfb34sd5a2101f18db1e88a154e783ef.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div434.lazy > picture.xm-picture.image435",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/e0b041e2a8e11c4c710ae978ae22acc4.png",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div434.lazy > div.div436 > div.div459 > picture.xm-picture.image460",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/7871eebec3e3b92adb3f0d081987f8c2.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div465.lazy > picture.xm-picture.image466",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/c170935773f52befe2af0ff3acfe51ca.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div476.lazy > picture.xm-picture.image477",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/656407g786e24c4636116ee066b57dd7.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div493.lazy > picture.xm-picture.image494",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/ba12208a1c35f83227a51f1643c872b9.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div498.lazy > picture.xm-picture.image499",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/d7423e018ccc603d171972ad7a0f4142.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div504.lazy > picture.xm-picture.image505",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/s44af6212a0eb16f2d9c50f0kdn86e04.jpg?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div504.lazy > div.div506 > div.div507 > div.div508 > picture.xm-picture.image509",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/s44af6212a0eb16f2d9c50f0kdn86e04.jpg?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div504.lazy > div.div506 > div.div507 > div.div513 > picture.xm-picture.image514",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/s44af6212a0eb16f2d9c50f0kdn86e04.jpg?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div504.lazy > div.div506 > div.div507 > div.div520 > picture.xm-picture.image521",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/s44af6212a0eb16f2d9c50f0kdn86e04.jpg?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div504.lazy > div.div506 > div.div527 > div.div528 > picture.xm-picture.image529",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/s44af6212a0eb16f2d9c50f0kdn86e04.jpg?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div504.lazy > div.div506 > div.div527 > div.div535 > picture.xm-picture.image536",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/s44af6212a0eb16f2d9c50f0kdn86e04.jpg?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div504.lazy > div.div506 > div.div527 > div.div542 > picture.xm-picture.image543",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/e137cf0e50cc60af56561abc7a82a7e3.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div547.lazy > picture.xm-picture.image548",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/5c9a722e39d640558f396e1fcabdb9a1.jpg",
+      "alt": "",
+      "path": "div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div547.lazy > div.div549 > div.div553 > div.div555 > div.div556 > picture.xm-picture.image562",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/kkgol23c7cccde6ksdkungno3,1d576.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div568.lazy > picture.xm-picture.image569",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/i3jkjsdf212a0eb16sjdjufjj3ahy86e04.png?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div568.lazy > div.div570 > div.div578 > div.div579.lazy > picture.xm-picture.image580",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/i3jkjsdf212a0eb16sjdjufjj3ahy86e04.png?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div568.lazy > div.div570 > div.div578 > div.div586.lazy > picture.xm-picture.image587",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/i3jkjsdf212a0eb16sjdjufjj3ahy86e04.png?q=100",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div568.lazy > div.div570 > div.div578 > div.div593.lazy > picture.xm-picture.image594",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/3kkladfc3fefc3ea748dsingik348059f10.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div600.lazy > picture.xm-picture.image601",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/2a8ea992feb06aa9a0068c5d9e2f1462.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div609.lazy > picture.xm-picture.image610",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/f41f7dd75f9e02b26aceb27ae9f4f7ac.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div614.lazy > picture.xm-picture.image615",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/be4750c146a7ded6ae73a4167147f335.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div633.lazy > picture.xm-picture.image634",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/2bf1e3cd88f109270d93c890368d6d99.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div644.lazy > picture.xm-picture.image645",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/4e1c0901fc349fa10cacac86aa5f9075.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div651.lazy > picture.xm-picture.image652",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/xiaomiicon_pc.png",
+      "alt": "",
+      "path": "div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div651.lazy > div.div653 > picture.xm-picture.image658",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/40ccb541e5139c33e7642e62e0d7688d.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div659.lazy > picture.xm-picture.image660",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/ga308a2fgedh13712a3dd3281h2f31fh.png",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div659.lazy > div.div661 > div.div662 > picture.xm-picture.image663",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/8ceeee91ee92b11163e12d66f1039030.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div659.lazy > div.div661 > div.div662 > div.div664 > picture.xm-picture.image665",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/ga308a2fgedh13712a3dd3281h2f31fh.png",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div659.lazy > div.div661 > div.div667 > picture.xm-picture.image668",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/3b41697f2a76870d787ccc169640f6ce.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div659.lazy > div.div661 > div.div667 > div.div669 > picture.xm-picture.image670",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/ga308a2fgedh13712a3dd3281h2f31fh.png",
+      "alt": "",
+      "path": "div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div659.lazy > div.div661 > div.div672 > picture.xm-picture.image673",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/021b1df5aa040d2e8fbcb86a7cbac1b0.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div659.lazy > div.div661 > div.div672 > div.div674 > picture.xm-picture.image675",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/aebca9946e6f02f810832c220a0c25cd.png",
+      "alt": "",
+      "path": "html > body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > picture.xm-picture.section.image677",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/de0efe0fc1d42be6935d9ad2bbe2440b.jpg",
+      "alt": "",
+      "path": "div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.hyperai_wrapper_001_container > div.hyperai_wrapper_001.lazy > picture.xm-picture.hyperai_bg_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17/pc/b491ef5fc990dee4f18539b860df0bf2.png",
+      "alt": "",
+      "path": "div.slick-list > div.slick-track > div.slick-slide.slick-active.slick-current > div > div.hyperai_slide_wrap_001.lazy > div.hyperai_slide_content_001 > div.hyperai_title_section_001 > picture.xm-picture.hyperai_title_image_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17/pc/5ae7f922355881e171152b8691d20572.png",
+      "alt": "",
+      "path": "div.slick-track > div.slick-slide.slick-active.slick-current > div > div.hyperai_slide_wrap_001.lazy > div.hyperai_slide_content_001 > div.hyperai_features_list_001 > div.hyperai_feature_item_001 > picture.xm-picture.hyperai_feature_image_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17/pc/b2907d4c23d0741786885c529c933d5b.png",
+      "alt": "",
+      "path": "div.slick-track > div.slick-slide.slick-active.slick-current > div > div.hyperai_slide_wrap_001.lazy > div.hyperai_slide_content_001 > div.hyperai_features_list_001 > div.hyperai_feature_item_001 > picture.xm-picture.hyperai_feature_image_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17/pc/2919913ca41ea298f0a9bd82cf132034.png",
+      "alt": "",
+      "path": "div.slick-track > div.slick-slide.slick-active.slick-current > div > div.hyperai_slide_wrap_001.lazy > div.hyperai_slide_content_001 > div.hyperai_features_list_001 > div.hyperai_feature_item_001 > picture.xm-picture.hyperai_feature_image_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17/pc/14303c5b11a6ddab16cb273fcc663515.png",
+      "alt": "",
+      "path": "div.slick-track > div.slick-slide.slick-active.slick-current > div > div.hyperai_slide_wrap_001.lazy > div.hyperai_slide_content_001 > div.hyperai_features_list_001 > div.hyperai_feature_item_001 > picture.xm-picture.hyperai_feature_image_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/9e6ca264181d8b33540ff26baebfcefb.png",
+      "alt": "",
+      "path": "div.slick-list > div.slick-track > div.slick-slide > div > div.hyperai_slide_wrap_001.lazy > div.hyperai_slide_content_001 > div.hyperai_google_title_001 > picture.xm-picture.hyperai_google_logo_001",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/e33fd7351373a0bbeb30d760fc3f7b3a.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div701.lazy > picture.xm-picture.image702",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/2a2c41c2fd00795b73f2ee41634c66e2.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div708.lazy > picture.xm-picture.image709",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/aa7c60293178300600899d532d1f8857.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div708.lazy > div.div710 > div.div716 > div.div718 > picture.xm-picture.image720",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/b99l72d5gj0d8fd030623a1ec6877368.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div721.lazy > div.div723 > div.div727 > div.div749.lazy > picture.xm-picture.image750",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/o9ls7115229e1fdd9dd9d9llj0c0af714.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div721.lazy > div.div723 > div.div727 > div.div752.lazy > picture.xm-picture.image753",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/9ld6e70ikg8f9cb8f86cfbe3adadd45c.png",
+      "alt": "",
+      "path": "div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div721.lazy > div.div723 > div.div727 > div.div755.lazy > picture.xm-picture.image756",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/f954ba10c35526b89b50c413a0cb753d.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div769.lazy > picture.xm-picture.image770",
+      "srcset": ""
+    },
+    {
+      "url": "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-17-ultra/pc/29b4f3d1bfdd111e4ac74b39aafc9fc6.jpg",
+      "alt": "",
+      "path": "body > div#root > div.global > div.xm-layout.product_v4.xm-layout--pc > div.xm-page-area > main.fly-birds-page_3c42c7da98.div1 > div.section.div776.lazy > picture.xm-picture.image777",
+      "srcset": ""
+    }
+  ]
+}

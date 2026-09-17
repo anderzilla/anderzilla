@@ -1,0 +1,18 @@
+[
+  {
+    "file": "cover.jpg",
+    "altPT": "Qwen3.8-Flash-Next: banner oficial anunciando o modelo com pesos abertos.",
+    "altEN": "Qwen3.8-Flash-Next: official banner announcing the open-weight model.",
+    "credit": "Qwen / Alibaba",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://qwen.ai/blog?id=qwen3.8-flash-next"
+  },
+  {
+    "file": "gallery-01.jpg",
+    "altPT": "Qwen3.8-Flash-Next: diagrama oficial da arquitetura com camadas QSA e GDN.",
+    "altEN": "Qwen3.8-Flash-Next: official architecture diagram with QSA and GDN layers.",
+    "credit": "Qwen / Alibaba",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://qwen.ai/blog?id=qwen3.8-flash-next"
+  }
+]

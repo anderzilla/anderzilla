@@ -1,0 +1,18 @@
+[
+  {
+    "file": "cover.jpg",
+    "altPT": "TypeScript 7: gráfico de tempo de compilação divulgado pela Microsoft.",
+    "altEN": "TypeScript 7: compile-time chart published by Microsoft.",
+    "credit": "Microsoft",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/"
+  },
+  {
+    "file": "gallery-01.jpg",
+    "altPT": "TypeScript 7: gráfico de uso de memória divulgado pela Microsoft.",
+    "altEN": "TypeScript 7: memory-usage chart published by Microsoft.",
+    "credit": "Microsoft",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/"
+  }
+]

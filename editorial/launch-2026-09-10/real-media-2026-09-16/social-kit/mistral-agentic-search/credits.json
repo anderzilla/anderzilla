@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "altPT": "Mistral Agentic Search: ilustração de busca em documentos.",
+    "altEN": "Mistral Agentic Search: illustration of document search.",
+    "credit": "Mistral AI",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://mistral.ai/news/agentic-search/"
+  },
+  {
+    "file": "gallery-01.jpg",
+    "altPT": "Mistral Agentic Search: diagrama de recuperação parcial com resposta incorreta.",
+    "altEN": "Mistral Agentic Search: diagram of partial retrieval producing an incorrect answer.",
+    "credit": "Mistral AI",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://mistral.ai/news/agentic-search/"
+  },
+  {
+    "file": "gallery-02.jpg",
+    "altPT": "Mistral Agentic Search: diagrama de busca que localiza a tabela necessária.",
+    "altEN": "Mistral Agentic Search: search diagram locating the required table.",
+    "credit": "Mistral AI",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://mistral.ai/news/agentic-search/"
+  }
+]

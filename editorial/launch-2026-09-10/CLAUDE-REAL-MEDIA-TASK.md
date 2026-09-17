@@ -1,0 +1,9 @@
+# Task: official imagery for all launch articles
+
+The owner explicitly asked to continue in Claude Code and correct all 60 posts: real official product photographs/screenshots as cover, and a gallery when more than one relevant image is available. Existing original vector cards are fallback only.
+
+Work ONLY on research artifacts under Z:/AnderZilla-docs/editorial/launch-2026-09-10/real-media-2026-09-16. Read ../launch-manifest.json (60 items; omit its image base64 from tool output). For EACH article, inspect its official source and official press/media resources. Find up to 3 distinct relevant image URLs. Verify existence and subject match. Prefer press assets offered for editorial publication. Public availability alone is not a license. Do not claim a photo of a different product is the target. AI announcements may use actual official UI screenshots or diagrams, labeled accurately.
+
+Write research.json with items [{key, status: 'ready'|'fallback', reason, images:[{url, sourcePage, credit, rightsUrl, rightsBasis, altPT, altEN, kind: 'photo'|'screenshot'|'official-artwork'|'diagram'}]}]. Provide every one of the60 keys even if blocked. Record actual researched evidence, not invented asset paths or permission. Check factual correspondence; report nonexistent source articles rather than silently making up assets.
+
+Read AGENTS.md and CLAUDE.md in Z:/AnderZilla, and applicable canonical editorial/brand guidance in Z:/AnderZilla-docs. Existing source files are dated Sep10; current date Sep16. Do not edit articles, code, CMS, deploys or secrets. No messages to external people. No purchases/accounts. No bypassing login, paywalls, anti-bot or permissions. You may create local research helpers and fetch public official pages/assets for inspection. Prefer quality breadth and evidence over forcing 3 images for every topic. Return summary counts and path. Coordinate no other agent yourself; the main agent will implement CMS updates and review.

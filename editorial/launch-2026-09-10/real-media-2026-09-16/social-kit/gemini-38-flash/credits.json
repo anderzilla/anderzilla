@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "altPT": "Gemini 3.8 Flash: arte oficial de apresentação do modelo.",
+    "altEN": "Gemini 3.8 Flash: official model announcement artwork.",
+    "credit": "Google",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  },
+  {
+    "file": "gallery-01.jpg",
+    "altPT": "Gemini 3.8 Flash: tabela de avaliações divulgada pelo Google.",
+    "altEN": "Gemini 3.8 Flash: evaluation table published by Google.",
+    "credit": "Google",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  },
+  {
+    "file": "gallery-02.jpg",
+    "altPT": "Gemini 3.8 Flash: gráfico de avaliação DeepSWE divulgado pelo Google.",
+    "altEN": "Gemini 3.8 Flash: DeepSWE evaluation chart published by Google.",
+    "credit": "Google",
+    "license": "Divulgação. Direitos reservados ao titular.",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  }
+]

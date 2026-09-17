@@ -1,0 +1,370 @@
+diff --git a/apps/web/src/app/[lang]/[section]/[slug]/page.tsx b/apps/web/src/app/[lang]/[section]/[slug]/page.tsx
+index f60490c..aec9900 100644
+--- a/apps/web/src/app/[lang]/[section]/[slug]/page.tsx
++++ b/apps/web/src/app/[lang]/[section]/[slug]/page.tsx
+@@ -46,7 +46,7 @@ export default async function Article({params}:{params:Promise<Params>}){
+      <h1>{local(item,'title',p.lang)}</h1><p className="lede">{local(item,'summary',p.lang)}</p>
+      <p className="source">{item.author||'AnderZilla'}{item.published&&<> · <time dateTime={item.published}>{item.published}</time></>}</p>
+      {item.verifiedAt&&<p className="source">{pt?'Apuração':'Verified'}: <time dateTime={item.verifiedAt}>{item.verifiedAt}</time>{item.eventDate&&<> · {pt?'Data do anúncio ou evento':'Announcement or event date'}: <time dateTime={item.eventDate}>{item.eventDate}</time></>}</p>}
+-     {media&&<figure><img className="article-cover" src={media.url} width={media.width} height={media.height} alt={(pt?media.altPT:media.altEN)||''}/><figcaption>{media.credit} · {media.license}</figcaption></figure>}
++     {media&&<figure><a className="article-cover-link" href={media.url} target="_blank" rel="noopener noreferrer" aria-label={`${pt?'Abrir imagem ampliada':'Open full image'}: ${(pt?media.altPT:media.altEN)||''}`}><img className="article-cover" src={media.url} width={media.width} height={media.height} alt={(pt?media.altPT:media.altEN)||''}/></a><figcaption>{media.credit} · {media.license}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{pt?'Fonte da imagem':'Image source'} ↗</a></>}</figcaption></figure>}
+      <SafeMarkdown body={body}/>
+      <MediaGallery ids={item.mediaIds} english={!pt}/>
+      {!!item.sources?.length&&<details className="article-sources"><summary>{pt?'Fontes e contexto da apuração':'Sources and reporting context'} ({item.sources.length})</summary><ul>{item.sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a>{source.publishedAt&&<time dateTime={source.publishedAt}> · {source.publishedAt}</time>}{source.note&&pt&&<p>{source.note}</p>}</li>)}</ul></details>}
+diff --git a/apps/web/src/components/hub/Editorial.tsx b/apps/web/src/components/hub/Editorial.tsx
+index 62d63e4..1faf54f 100644
+--- a/apps/web/src/components/hub/Editorial.tsx
++++ b/apps/web/src/components/hub/Editorial.tsx
+@@ -2,7 +2,7 @@ import Markdown from 'react-markdown';
+ import remarkGfm from 'remark-gfm';
+ import published from './cms-published.json';
+ 
+-export type PublicMedia = {id:string;url:string;previewUrl?:string;mediaType?:string;altPT?:string;altEN?:string;credit?:string;license?:string;width?:number;height?:number};
++export type PublicMedia = {id:string;url:string;previewUrl?:string;sourceUrl?:string;mediaType?:string;altPT?:string;altEN?:string;credit?:string;license?:string;width?:number;height?:number};
+ export function findMedia(id?:string){return (published.media as PublicMedia[]).find(item=>item.id===id)}
+ export function SafeMarkdown({body}:{body:string}){
+   return <div className="editorial-body"><Markdown remarkPlugins={[remarkGfm]} skipHtml
+diff --git a/apps/web/src/components/hub/Hub.tsx b/apps/web/src/components/hub/Hub.tsx
+index 6f1542a..2af0379 100644
+--- a/apps/web/src/components/hub/Hub.tsx
++++ b/apps/web/src/components/hub/Hub.tsx
+@@ -50,7 +50,7 @@ function Header() {
+     <>
+       <div className="preview">
+         <span>
+-          {t("PRÉVIA · HUB EM CONSTRUÇÃO", "PREVIEW · HUB UNDER CONSTRUCTION")}
++          {t("GAMES · IA · TECNOLOGIA", "GAMES · AI · TECHNOLOGY")}
+         </span>
+         <div className="languages" aria-label="Language">
+           <button
+@@ -130,8 +130,8 @@ function Footer() {
+       <a href="/terms">{t("Termos", "Terms")}</a>
+       <small>
+         {t(
+-          "Prévia com curadoria datada e artes conceituais. Não é feed automático. Mochila, interesses e progresso ficam no navegador; pontos demonstrativos sem valor financeiro.",
+-          "Preview with dated curation and concept artwork. Not an automatic news feed. Backpack, interests and progress stay in your browser; demo points have no monetary value.",
++          "Curadoria editorial com fontes, créditos e data de apuração. Mochila, interesses e progresso ficam no navegador; pontos demonstrativos sem valor financeiro.",
++          "Editorial curation with sources, credits and verification dates. Backpack, interests and progress stay in your browser; demo points have no monetary value.",
+         )}
+       </small>
+     </footer>
+diff --git a/apps/web/src/components/hub/MediaGallery.tsx b/apps/web/src/components/hub/MediaGallery.tsx
+index b474ba6..6dd1c0e 100644
+--- a/apps/web/src/components/hub/MediaGallery.tsx
++++ b/apps/web/src/components/hub/MediaGallery.tsx
+@@ -8,12 +8,12 @@ export function MediaGallery({ids,english=false}:{ids?:string;english?:boolean})
+   const title=(english?media.altEN:media.altPT)||'AnderZilla';
+   let embed='';try{const u=new URL(media.url);if(['youtube.com','www.youtube.com','youtu.be'].includes(u.hostname)){const video=u.hostname==='youtu.be'?u.pathname.slice(1):u.searchParams.get('v');if(video&&/^[\w-]{11}$/.test(video))embed=`https://www.youtube-nocookie.com/embed/${video}`}}catch{}
+   return <figure key={id}>
+-   {media.mediaType==='image'?<img src={media.url} alt={title} loading="lazy" width={media.width} height={media.height}/>:
++   {media.mediaType==='image'?<a className="gallery-image" href={media.url} target="_blank" rel="noopener noreferrer" aria-label={`${english?'Open full image':'Abrir imagem ampliada'}: ${title}`}><img src={media.url} alt={title} loading="lazy" width={media.width} height={media.height}/></a>:
+     embed?(playing===id?<iframe src={embed} title={title} allowFullScreen referrerPolicy="strict-origin-when-cross-origin"/>:<button className="button secondary" onClick={()=>setPlaying(id)}>{english?'Load YouTube video':'Carregar vídeo do YouTube'} ▷</button>):
+     media.mediaType==='video'&&/\.mp4(?:\?|$)/i.test(media.url)?<video src={media.url} controls preload="none" aria-label={title}/>:
+     media.mediaType==='audio'?<audio src={media.url} controls preload="none" aria-label={title}/>:
+     <a href={media.url} target="_blank" rel="noopener noreferrer">{title} ↗</a>}
+-    <figcaption>{title} · {media.credit} · {media.license}</figcaption>
++    <figcaption>{title} · {media.credit} · {media.license}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{english?'Image source':'Fonte da imagem'} ↗</a></>}</figcaption>
+   </figure>
+  })}</div>
+ }
+diff --git a/apps/web/src/components/hub/hub.css b/apps/web/src/components/hub/hub.css
+index 2596708..4a3ceca 100644
+--- a/apps/web/src/components/hub/hub.css
++++ b/apps/web/src/components/hub/hub.css
+@@ -2076,7 +2076,8 @@
+ .hub .demo-badge {display:inline-block;padding:5px 9px;margin:8px 0;border:1px solid #ff58d4;border-radius:6px;color:#ff9ee5;font-size:11px;font-weight:700;letter-spacing:.05em}
+ .hub .article-page {max-width:900px;padding-top:48px;padding-bottom:80px}
+ .hub .article-page h1 {font:700 clamp(2rem,5vw,3.8rem)/1.1 var(--font-brand-display),sans-serif;margin:16px 0}
+-.hub .article-cover {width:100%;height:auto;max-height:600px;object-fit:cover;border-radius:18px}
++.hub .article-cover {width:100%;height:auto;max-height:760px;object-fit:contain;border-radius:20px}
++.hub .article-cover-link {display:block;cursor:zoom-in}
+ .hub figcaption {font-size:12px;color:#a9b6ce;margin:8px 0 24px}
+ .hub .editorial-body {font-size:17px;line-height:1.8;overflow-wrap:anywhere}
+ .hub .editorial-body h1,.hub .editorial-body h2,.hub .editorial-body h3 {margin:1.4em 0 .6em;line-height:1.3}
+@@ -2090,10 +2091,14 @@
+ .hub .editorial-body td,.hub .editorial-body th {padding:8px;border:1px solid #334563}
+ .hub .editorial-tags {display:flex;gap:8px;flex-wrap:wrap;padding:0;list-style:none;color:#c2ff36;margin:24px 0}
+ .hub .media-gallery {display:grid;gap:24px;margin:24px 0}
+-.hub .media-gallery img,.hub .media-gallery video {max-width:100%;height:auto;border-radius:12px}
++.hub .media-gallery .gallery-image {display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;background:#0b1322;border:1px solid #334563;border-radius:12px;overflow:hidden;cursor:zoom-in}
++.hub .media-gallery .gallery-image img {width:100%;height:100%;object-fit:contain}
++.hub .article-page .media-gallery figure {margin:0;min-width:0}
++@media (min-width:700px){.hub .media-gallery {grid-template-columns:repeat(2,minmax(0,1fr))}}
++.hub .media-gallery video {max-width:100%;height:auto;border-radius:12px}
+ .hub .media-gallery iframe {width:100%;aspect-ratio:16/9;border:0;border-radius:12px}
+ .hub .radar-search {display:grid;gap:8px;margin:0 0 20px;color:#a9b6ce}
+ .hub .radar-search input {background:#10182b;border:1px solid #647594;padding:12px 16px;border-radius:12px;color:#f4f7ff;width:100%}
+ 
+ .article-share{margin:32px 0;padding:24px;border:1px solid var(--border,#334563);border-radius:20px;background:#10182b}
+-.article-share>strong{display:block;font-size:1.2rem;margin-bottom:16px}.share-actions{display:flex;flex-wrap:wrap;gap:12px}.article-share .source:empty{display:none}.article-sources{margin:24px 0;padding:20px;border:1px solid #334563;border-radius:16px}.article-sources summary{cursor:pointer;font-weight:700;min-height:28px}.article-sources li{margin:16px 0;overflow-wrap:anywhere}.article-sources p{color:#a9b6ce}.article-related{margin:32px 0}.article-related li{margin:16px 0}.article-page .lede{max-width:70ch}.article-page figure{margin:24px 0}.article-page figcaption{font-size:.8rem;color:#a9b6ce;margin-top:8px}.article-page nav{display:flex;gap:20px;flex-wrap:wrap}.article-page .article-cover{width:100%;height:auto;border-radius:20px}
++.article-share>strong{display:block;font-size:1.2rem;margin-bottom:16px}.share-actions{display:flex;flex-wrap:wrap;gap:12px}.article-share .source:empty{display:none}.article-sources{margin:24px 0;padding:20px;border:1px solid #334563;border-radius:16px}.article-sources summary{cursor:pointer;font-weight:700;min-height:28px}.article-sources li{margin:16px 0;overflow-wrap:anywhere}.article-sources p{color:#a9b6ce}.article-related{margin:32px 0}.article-related li{margin:16px 0}.article-page .lede{max-width:70ch}.article-page figure{margin:24px 0}.article-page figcaption{font-size:.8rem;color:#a9b6ce;margin-top:8px}.article-page nav{display:flex;gap:20px;flex-wrap:wrap}
+diff --git a/docs/NEWSROOM-IMPORT.md b/docs/NEWSROOM-IMPORT.md
+index e233806..a2b946c 100644
+--- a/docs/NEWSROOM-IMPORT.md
++++ b/docs/NEWSROOM-IMPORT.md
+@@ -12,10 +12,18 @@ Formato do manifesto:
+ 
+ O exemplo demonstra a estrutura; `data` precisa conter os campos editoriais obrigatórios reais antes da aprovação. Use nomes de arquivo únicos por capa. Campos disponíveis: título, resumo/introduction, corpo Markdown, slugs e SEO PT/EN, categoria, fonte principal, autoria, capa/galeria, tags de taxonomia, `sources`, `verifiedAt`, `eventDate`, `editorialType`, `hashtagsPT/EN` e `socialInstagramPT/EN`, `socialFacebookPT/EN`, `socialWhatsappPT/EN`. `sources` é uma string JSON com 1–20 objetos `{name,url,publishedAt?,note?}`; no dataset público vira uma lista. Fontes usam HTTPS público. Datas aceitam ISO `YYYY-MM-DD` ou timestamp com fuso. Data do fato não é data de publicação do artigo.
+ 
+-Importação preserva registros existentes por slug e fonte. Uma fonte divergente para um slug existente interrompe o lote; não sobrescreve uma revisão. Uma falha preserva operações anteriores e pode ser retomada com o mesmo manifesto. A interface cria rascunhos, limita o lote a 100 itens e o arquivo a 15 MB. Capas usam o upload normalizado existente (2 MB por arquivo, 10 MB totais da biblioteca). O lote não publica o site.
++Importação preserva registros existentes por slug e fonte. Uma fonte divergente para um slug existente interrompe o lote; não sobrescreve uma revisão. Uma falha preserva operações anteriores e pode ser retomada com o mesmo manifesto. A interface cria rascunhos, limita o lote a 100 itens e o arquivo a 15 MB. Capas usam o upload normalizado existente (2 MB por arquivo, 32 MB totais da biblioteca — amplia de 10 MB para suportar 60 notícias com fotos/galerias, mantendo 1600 px, validação hash/WEBP e teto consistente entre CMS e publisher). O lote não publica o site.
+ 
+ O checkbox **Aprovar matérias após importar** vem desligado. Quando marcado por um operador após a revisão editorial, cada notícia nova recebe a transição de aprovação pela mesma API, com histórico separado. Registros existentes continuam preservados. O campo opcional `socialImage` de cada item aceita a mesma estrutura de upload de `cover`: cadastra uma imagem vertical aprovada na biblioteca e referencia `socialMediaId`, separado da galeria do site. No editor, o kit social mostra a imagem enviada e permite baixá-la para distribuição.
+ 
+ Para o operador, o mesmo domínio CMS está disponível por `python services/cms/import_newsroom.py manifesto.json --azure --report relatorio.json`. A opção `--approve` aprova apenas notícias recém-criadas; matérias já existentes continuam intocadas, inclusive rascunhos. Configure `CMS_SQL_SERVER`, `CMS_SQL_DATABASE`, `CMS_SQL_USER`, `CMS_SQL_PASSWORD` exclusivamente no ambiente privado e use a identidade SQL de runtime com permissões restritas. Esse CLI usa `CMS.upload_media`/`CMS.save`, grava revisões e registra o ator explícito `operator:editorial-launch`, como o publicador operador existente. Não é um endpoint de autenticação, não personifica usuário e não escreve tabelas diretamente.
+ 
+ Após revisão, a publicação mantém o fluxo snapshot → build → homologação → validação. Cadastros aprovados não comprovam uma implantação. Textos sociais e hashtags são metadados editáveis e versionados junto à matéria. Links canônicos do kit pressupõem a futura publicação no domínio AnderZilla; confira o artigo publicado antes de distribuir.
++
++## Imagens das fontes
++
++Priorize fotografias, capturas e materiais oficiais diretamente relacionados à pauta. Use arte editorial própria como alternativa quando não houver imagem adequada verificável. Diferencie fotografia, render de produto, captura de jogo e arte promocional nas descrições; não apresente uma ilustração como fotografia ou prova de uso real.
++
++Cadastre cada arquivo na biblioteca com descrições PT/EN, crédito, direitos e `sourceUrl` apontando para a página de origem. A disponibilidade pública não implica licença aberta. Inspecione cada imagem: exclua avatares, QR codes, anúncios, produtos de notícias relacionadas e duplicatas. Quando a fonte oferecer mais imagens relevantes, selecione uma capa e vincule as demais em `mediaIds`. Preserve os arquivos anteriores e o histórico.
++
++O site mostra a fonte nas legendas e permite ampliar capas e imagens da galeria, mantendo seu enquadramento. O publicador inclui `sourceUrl` no registro público e gera JPEG para as prévias sociais. Depois de publicar, confira carregamento, enquadramento, fontes e compartilhamento nas versões PT/EN e em tela pequena.
+diff --git a/services/cms/core.py b/services/cms/core.py
+index 4c7dc3c..21fe631 100644
+--- a/services/cms/core.py
++++ b/services/cms/core.py
+@@ -40,6 +40,12 @@ REQUIRED = {
+ }
+ PUBLIC_COLLECTIONS = set(FIELDS) - {'missions', 'rewards'}
+ ROLES = {'anderzilla_admin', 'anderzilla_editor', 'anderzilla_commercial', 'anderzilla_rewards'}
++# Biblioteca de imagens: 60 notícias com fotos/galerias — 2 MiB por imagem, 1600 px, total 32 MiB.
++# O CMS persiste base64 (4/3 do binário); publisher valida bytes decodificados. Ambos os tetos derivam do mesmo limite lógico.
++MEDIA_PER_IMAGE_BYTES = 2 * 1024 * 1024
++MEDIA_PER_IMAGE_B64_LIMIT = 2800000  # ~2 MiB raw como base64 (≈2_796_203) + folga para padding
++MEDIA_LIBRARY_LIMIT_BYTES = 32 * 1024 * 1024
++MEDIA_LIBRARY_LIMIT_B64 = 44739244  # 32 MiB raw como base64 (4*ceil(32 MiB/3)) — quota consistente com publisher
+ 
+ 
+ class Error(Exception):
+@@ -74,7 +80,7 @@ def validate(collection, data, approved=False, internal=False):
+         raise Error(422, 'protected_asset', 'Use o endpoint de upload para arquivos.')
+     for key, value in data.items():
+         if key == 'assetBase64':
+-            if not isinstance(value, str) or len(value) > 2800000:
++            if not isinstance(value, str) or len(value) > MEDIA_PER_IMAGE_B64_LIMIT:
+                 raise Error(413, 'asset_too_large', 'Arquivo normalizado muito grande.')
+             continue
+         if key == 'isDemo':
+@@ -206,12 +212,12 @@ class CMS:
+         if not isinstance(body, dict) or set(body) - {'filename', 'contentBase64', 'altPT', 'altEN', 'credit', 'license'}:
+             raise Error(422, 'invalid_upload', 'Campos de upload inválidos.')
+         encoded = body.get('contentBase64', '')
+-        if not isinstance(encoded, str) or len(encoded) > 2800000:
++        if not isinstance(encoded, str) or len(encoded) > MEDIA_PER_IMAGE_B64_LIMIT:
+             raise Error(413, 'asset_too_large', 'Use uma imagem de até 2 MB.')
+         from PIL import Image, ImageOps
+         try:
+             raw = base64.b64decode(encoded, validate=True)
+-            if not raw or len(raw) > 2 * 1024 * 1024:
++            if not raw or len(raw) > MEDIA_PER_IMAGE_BYTES:
+                 raise ValueError()
+             import warnings
+             with warnings.catch_warnings():
+@@ -226,7 +232,7 @@ class CMS:
+                     normalized.save(output, format='WEBP', quality=85, method=4, exif=b'')
+                     asset = output.getvalue()
+                     width, height = normalized.size
+-            if len(asset) > 2 * 1024 * 1024:
++            if len(asset) > MEDIA_PER_IMAGE_BYTES:
+                 raise ValueError()
+         except (ValueError, OSError, SyntaxError, Image.DecompressionBombWarning, Image.DecompressionBombError):
+             raise Error(422, 'invalid_image', 'Imagem inválida. Use JPEG, PNG ou WebP até 2 MB e 20 megapixels.')
+@@ -236,8 +242,8 @@ class CMS:
+                     url='/media/' + sha + '.webp', assetBase64=base64.b64encode(asset).decode(), assetSha256=sha, mimeType='image/webp')
+         validate('media', data, approved=True, internal=True)
+         with self.store.transaction() as db:
+-            if db.media_bytes() + len(data['assetBase64']) > 14000000:
+-                raise Error(413, 'media_quota', 'Biblioteca atingiu o limite inicial de 10 MB. Revise os arquivos antes de continuar.')
++            if db.media_bytes() + len(data['assetBase64']) > MEDIA_LIBRARY_LIMIT_B64:
++                raise Error(413, 'media_quota', 'Biblioteca atingiu o limite de 32 MB. Revise os arquivos antes de continuar.')
+             record = {'id': str(uuid.uuid4()), 'version': 1, 'status': 'draft', 'data': data, 'updatedAt': now()}
+             db.save_record('media', record)
+             db.audit(principal['id'], 'upload_normalized_image', 'media', record['id'], 1)
+@@ -328,8 +334,8 @@ class CMS:
+                     public['data'].pop('approvalReference', None)
+                     items.append(public)
+                 collections[collection] = items
+-            if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > 14000000:
+-                raise Error(413, 'media_quota', 'Snapshot excede limite inicial de 10 MB de imagens.')
++            if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > MEDIA_LIBRARY_LIMIT_B64:
++                raise Error(413, 'media_quota', 'Snapshot excede limite de 32 MB de imagens.')
+             for collection in ('missions', 'rewards'):
+                 demos = [copy.deepcopy(row) for row in records[collection] if row['status'] == 'approved' and row['data'].get('isDemo') is True]
+                 for row in demos:
+diff --git a/services/cms/test_editorial.py b/services/cms/test_editorial.py
+index aa0d859..319f417 100644
+--- a/services/cms/test_editorial.py
++++ b/services/cms/test_editorial.py
+@@ -7,10 +7,18 @@ import unittest
+ from unittest.mock import patch
+ from pathlib import Path
+ from PIL import Image
+-from core import CMS, Error, FIELDS, PUBLIC_COLLECTIONS, validate, validate_references
+-from storage import SQLiteStore, Session
+-from seed_examples import seed
+-from import_newsroom import import_manifest
++try:
++    import core
++    from core import CMS, Error, FIELDS, PUBLIC_COLLECTIONS, validate, validate_references
++    from storage import SQLiteStore, Session
++    from seed_examples import seed
++    from import_newsroom import import_manifest
++except ModuleNotFoundError:
++    from services.cms import core
++    from services.cms.core import CMS, Error, FIELDS, PUBLIC_COLLECTIONS, validate, validate_references
++    from services.cms.storage import SQLiteStore, Session
++    from services.cms.seed_examples import seed
++    from services.cms.import_newsroom import import_manifest
+ 
+ ADMIN = {'id': 'admin', 'roles': ['anderzilla_admin']}
+ 
+@@ -175,6 +183,42 @@ class EditorialTests(unittest.TestCase):
+         self.assertEqual(len(self.cms.list(ADMIN, 'media')['items']), 2)
+         self.assertEqual(result[0]['status'], 'approved')
+ 
++    def test_media_library_quota_32mib_upload_rejects_without_large_fixture_and_is_atomic(self):
++        # 32 MiB totais, 2 MiB por imagem, 1600 px — valida quota sem alocar 32 MB.
++        first = self.upload()
++        baseline_count = len(self.cms.list(ADMIN, 'media')['items'])
++        with self.cms.store.transaction() as db:
++            baseline_bytes = db.media_bytes()
++            baseline_audit = len(db.recent_audit())
++        self.assertEqual(baseline_bytes, len(first['data']['assetBase64']))
++        # Simula biblioteca cheia sem criar fixtures gigantes: media_bytes() retorna o teto de 32 MiB.
++        output = io.BytesIO()
++        Image.new('RGB', (10, 10), '#00ff00').save(output, format='PNG')
++        tiny = base64.b64encode(output.getvalue()).decode()
++        with patch.object(Session, 'media_bytes', return_value=core.MEDIA_LIBRARY_LIMIT_B64):
++            with self.assertRaises(Error) as failure:
++                self.cms.upload_media(ADMIN, {'filename': 'tiny.png', 'contentBase64': tiny, 'altPT': 'Quota', 'altEN': 'Quota', 'credit': 'Test', 'license': 'Own test fixture'})
++            self.assertEqual(failure.exception.code, 'media_quota')
++            self.assertEqual(failure.exception.status, 413)
++        # Atomicidade: upload recusado não persiste registro, bytes ou auditoria.
++        self.assertEqual(len(self.cms.list(ADMIN, 'media')['items']), baseline_count)
++        with self.cms.store.transaction() as db:
++            self.assertEqual(db.media_bytes(), baseline_bytes)
++            self.assertEqual(len(db.recent_audit()), baseline_audit)
++
++    def test_media_library_quota_32mib_release_rejects_without_large_fixture(self):
++        # Release também deve rejeitar snapshot que excede 32 MiB sem precisar de 16 imagens de 2 MiB.
++        media = self.approve('media', self.upload())
++        page = self.approve('pages', self.cms.save(ADMIN, 'pages', {'titlePT': 'Page quota', 'slugPT': 'quota-page', 'bodyPT': 'Body', 'coverMediaId': media['id']}))
++        # Força o teto para um valor pequeno apenas neste teste, simulando biblioteca cheia com fixtures mínimas.
++        with patch.object(core, 'MEDIA_LIBRARY_LIMIT_B64', 100):
++            with self.assertRaises(Error) as failure:
++                self.cms.release(ADMIN, 'quota-release-test')
++            self.assertEqual(failure.exception.code, 'media_quota')
++        # Com o limite real de 32 MiB o mesmo snapshot deve publicar normalmente.
++        release = self.cms.release(ADMIN, 'quota-release-ok')
++        self.assertEqual(release['status'], 'queued')
++
+ 
+ if __name__ == '__main__':
+     unittest.main()
+diff --git a/services/publisher/import_snapshot.py b/services/publisher/import_snapshot.py
+index 5f298ff..24d80f9 100644
+--- a/services/publisher/import_snapshot.py
++++ b/services/publisher/import_snapshot.py
+@@ -13,6 +13,10 @@ from PIL import Image
+ 
+ CATEGORIES = {'games', 'consoles', 'celulares', 'ia', 'gadgets', 'curiosidades'}
+ NEWSROOM = ('verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'hashtagsPT', 'hashtagsEN', 'socialInstagramPT', 'socialInstagramEN', 'socialFacebookPT', 'socialFacebookEN', 'socialWhatsappPT', 'socialWhatsappEN')
++# Limites de mídia alinhados ao CMS: 2 MiB por imagem (1600 px, WEBP, hash) e 32 MiB totais (60 notícias com galerias).
++MEDIA_PER_IMAGE_BYTES = 2 * 1024 * 1024
++MEDIA_LIBRARY_LIMIT_BYTES = 32 * 1024 * 1024
++MEDIA_LIBRARY_LIMIT_B64 = 44739244  # 32 MiB raw como base64 — espelho da quota do CMS (armazena base64)
+ 
+ def public_sources(value):
+     sources = json.loads(value) if value else []
+@@ -43,7 +47,7 @@ def write_assets(snapshot, public_dir):
+         sha = hashlib.sha256(raw).hexdigest()
+         if row.get('status') != 'approved' or sha != data.get('assetSha256') or data.get('url') != '/media/' + sha + '.webp':
+             raise ValueError('Invalid media integrity or path')
+-        if len(raw) > 2 * 1024 * 1024 or total > 10 * 1024 * 1024 or raw[:4] != b'RIFF' or raw[8:12] != b'WEBP':
++        if len(raw) > MEDIA_PER_IMAGE_BYTES or total > MEDIA_LIBRARY_LIMIT_BYTES or raw[:4] != b'RIFF' or raw[8:12] != b'WEBP':
+             raise ValueError('Media exceeds limits or is not WebP')
+         with Image.open(io.BytesIO(raw)) as picture:
+             if picture.format != 'WEBP' or max(picture.size) > 1600:
+@@ -126,6 +130,8 @@ def transform(snapshot):
+                 out[collection].append(public)
+             elif collection == 'media':
+                 public = {'id': row['id'], **{key: d[key] for key in ('titlePT','titleEN','url','mediaType','mimeType','altPT','altEN','credit','license','width','height','isDemo') if key in d}}
++                if d.get('sourceUrl'):
++                    public['sourceUrl'] = https(d['sourceUrl'])
+                 if not public.get('url', '').startswith('/media/'):
+                     https(public['url'])
+                 else:
+diff --git a/services/publisher/test_import_snapshot.py b/services/publisher/test_import_snapshot.py
+index 30dc7f1..70fa2b6 100644
+--- a/services/publisher/test_import_snapshot.py
++++ b/services/publisher/test_import_snapshot.py
+@@ -7,10 +7,12 @@ from pathlib import Path
+ import sys
+ import tempfile
+ import unittest
++from unittest.mock import patch
+ 
+ sys.path.insert(0, str(Path(__file__).parent))
+ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'cms'))
+ from import_snapshot import transform, write_assets
++import import_snapshot
+ from seed_examples import examples
+ 
+ 
+@@ -22,6 +24,16 @@ def snapshot():
+ 
+ 
+ class ImportSnapshotTests(unittest.TestCase):
++    def test_media_source_is_public_https(self):
++        value = snapshot()
++        data = value['collections']['media'][0]['data']
++        data['sourceUrl'] = 'https://example.com/press/images'
++        self.assertEqual(transform(value)['media'][0]['sourceUrl'], data['sourceUrl'])
++        for url in ('javascript:alert(1)', 'https://127.0.0.1/private'):
++            data['sourceUrl'] = url
++            with self.subTest(url=url), self.assertRaises(ValueError):
++                transform(value)
++
+     def test_newsroom_sources_export_allowlist_and_https(self):
+         value = snapshot()
+         data = value['collections']['content'][0]['data']
+@@ -125,6 +137,36 @@ class ImportSnapshotTests(unittest.TestCase):
+         with tempfile.TemporaryDirectory() as folder, self.assertRaises((ValueError, OSError)):
+             write_assets(value, Path(folder))
+ 
++    def test_media_library_limits_are_32mib_total_and_2mib_per_image(self):
++        # Teto ampliado para 60 notícias: 32 MiB totais, 2 MiB por imagem, 1600 px, WEBP com hash.
++        self.assertEqual(import_snapshot.MEDIA_LIBRARY_LIMIT_BYTES, 32 * 1024 * 1024)
++        self.assertEqual(import_snapshot.MEDIA_PER_IMAGE_BYTES, 2 * 1024 * 1024)
++        self.assertEqual(import_snapshot.MEDIA_LIBRARY_LIMIT_B64, 44739244)
++        # Consistência com CMS (armazena base64): 32 MiB raw ≈ 44739244 base64 chars.
++        import pathlib as _pl
++        cms_core = _pl.Path(__file__).resolve().parents[1] / 'cms' / 'core.py'
++        text = cms_core.read_text(encoding='utf-8')
++        self.assertIn('MEDIA_LIBRARY_LIMIT_BYTES = 32', text)
++        self.assertIn('MEDIA_LIBRARY_LIMIT_B64 = 44739244', text)
++        self.assertIn('MEDIA_PER_IMAGE_BYTES = 2', text)
++
++    def test_write_assets_quota_rejects_without_large_fixture(self):
++        # Valida quota de 32 MiB sem alocar 32 MB: usa duas mídias mínimas e limite mockado pequeno.
++        value = snapshot()
++        first = value['collections']['media'][0]
++        second = copy.deepcopy(first)
++        second['id'] = 'second-media-quota-id'
++        value['collections']['media'].append(second)
++        raw_len = len(base64.b64decode(first['data']['assetBase64'], validate=True))
++        # Um arquivo cabe, dois excedem o limite mockado.
++        with patch.object(import_snapshot, 'MEDIA_LIBRARY_LIMIT_BYTES', raw_len + 10):
++            with tempfile.TemporaryDirectory() as folder, self.assertRaises(ValueError):
++                write_assets(value, Path(folder))
++        # Com o limite real de 32 MiB ambas as mídias mínimas devem materializar.
++        with tempfile.TemporaryDirectory() as folder:
++            write_assets(value, Path(folder))
++            self.assertTrue((Path(folder) / 'media' / (first['data']['assetSha256'] + '.webp')).exists())
++
+ 
+ if __name__ == '__main__':
+     unittest.main()
