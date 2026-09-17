@@ -18,8 +18,6 @@ import {
   Passport,
 } from "./Primitives";
 import {
-  AdPlacement,
-  AffiliateArea,
   AgendaPage,
   ChannelsPage,
   LivePage,
@@ -35,16 +33,15 @@ import {
 } from "./Rewards";
 import "./hub.css";
 import { CMSSections } from "./CMSSections";
+import { CommerceHome } from "../commerce/CommerceHome";
+import { flag } from "../commerce/data";
+import {AccountProvider,useAccount} from "../account/AccountProvider";
+import {AccountAccess,AccountDialog,AccountSyncStatus} from "../account/AccountUI";
 
 function Header() {
   const { t, lang, changeLanguage, route, player } = useHub();
   const links: [Route, string][] = [
-    ["home", "Radar"],
-    ["saved", t("Minha mochila", "My backpack")],
-    ["quiz", t("Desafio", "Challenge")],
-    ["live", "Live"],
-    ["agenda", "Agenda"],
-    ["points", "Karaca Points"],
+    ["home", t("Explorar", "Explore")],
   ];
   return (
     <>
@@ -88,8 +85,15 @@ function Header() {
               {label}
             </a>
           ))}
+          <a href={`/?lang=${lang}&category=ia#home`}>{t("IA", "AI")}</a>
+          <a href={`/?lang=${lang}&category=games#home`}>Games</a>
+          <a href={`/?lang=${lang}&category=gadgets#home`}>Gadgets</a>
+          <a href={`/${lang}/stackpick/`}>StackPick</a>
+          <a href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</a>
+          <a href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</a>
         </nav>
         <div className="actions">
+          <AccountAccess/>
           <a
             href="#saved"
             aria-label={`${t("Minha mochila", "My backpack")}: ${player.saved.length}`}
@@ -107,7 +111,7 @@ function Header() {
   );
 }
 function Footer() {
-  const { t } = useHub();
+  const { t, lang } = useHub();
   return (
     <footer>
       <a className="wordmark" href="#home">
@@ -120,18 +124,18 @@ function Footer() {
         )}
       </p>
       <a href="#channels">{t("Canais", "Channels")}</a>
-      <a href="#sponsor">{t("Parcerias", "Partnerships")}</a>
-      <a href="#store">Store Points</a>
-      <a href="/stackpick">StackPick</a>
-      <External href="https://anderzilla.gumroad.com/l/edkel">
-        ForgeKit / {t("produto próprio", "own product")} ↗
-      </External>
+      <a href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</a>
+      {flag("showPointsStore","global")&&<a href="#store">Store Points</a>}
+      <a href={`/${lang}/stackpick/`}>StackPick</a>
+      <a href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</a>
+      <a href={`/${lang}/transparencia/`}>{t("Transparência", "Transparency")}</a>
+      <a href={`/${lang}/forgekit/`}>ForgeKit</a>
       <a href="/privacy">{t("Privacidade", "Privacy")}</a>
       <a href="/terms">{t("Termos", "Terms")}</a>
       <small>
         {t(
-          "Curadoria editorial com fontes, créditos e data de apuração. Mochila, interesses e progresso ficam no navegador; pontos demonstrativos sem valor financeiro.",
-          "Editorial curation with sources, credits and verification dates. Backpack, interests and progress stay in your browser; demo points have no monetary value.",
+          "Curadoria editorial com fontes, créditos e data de apuração. Visitantes guardam progresso neste navegador; contas sincronizam preferências quando disponíveis. KP oficial depende de validação do servidor.",
+          "Editorial curation with sources, credits and verification dates. Guests keep progress in this browser; accounts sync preferences when available. Official KP require server validation.",
         )}
       </small>
     </footer>
@@ -341,8 +345,7 @@ function Home() {
           </aside>
         </div>
         <PointsTeaser />
-        <AdPlacement />
-        <AffiliateArea />
+        <CommerceHome />
         <CMSSections />
         <section className="return-band">
           <Ghost size={68} />
@@ -367,6 +370,7 @@ function Home() {
   );
 }
 function SavedPage() {
+  const account=useAccount();
   const { t, player } = useHub();
   const items = discoveries.filter((x) => player.saved.includes(x.id));
   return (
@@ -380,8 +384,8 @@ function SavedPage() {
       </h1>
       <p className="lede">
         {t(
-          "Sua coleção pessoal, guardada neste navegador e pronta para revisitar.",
-          "Your personal collection, stored in this browser and ready to revisit.",
+          account.user?"Sua coleção pessoal, sincronizada com a conta e pronta para revisitar.":"Sua coleção pessoal, guardada neste navegador e pronta para revisitar.",
+          account.user?"Your personal collection, synced with your account and ready to revisit.":"Your personal collection, stored in this browser and ready to revisit.",
         )}
       </p>
       <div className="feed saved-feed">
@@ -423,7 +427,7 @@ function HubContent() {
     live: LivePage,
     agenda: AgendaPage,
     points: PointsPage,
-    store: StorePage,
+    store: flag("showPointsStore", "global") ? StorePage : PointsPage,
   };
   const Page = pages[route];
   return (
@@ -432,11 +436,13 @@ function HubContent() {
         {t("Pular para o conteúdo", "Skip to content")}
       </a>
       <Header />
+      <AccountSyncStatus/>
       <main id="hub-main" tabIndex={-1}>
         <Page />
       </main>
       <Footer />
       <DetailDialog />
+      <AccountDialog />
       <div id="toast" role="status" className={toast ? "show" : ""}>
         {toast}
       </div>
@@ -445,8 +451,8 @@ function HubContent() {
 }
 export default function Hub() {
   return (
-    <HubProvider>
+    <AccountProvider><HubProvider>
       <HubContent />
-    </HubProvider>
+    </HubProvider></AccountProvider>
   );
 }

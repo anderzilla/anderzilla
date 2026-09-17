@@ -6,7 +6,7 @@ import { Footer } from "./Footer";
 
 export function SiteFrame({ children }: { children: ReactNode }) {
   const path = usePathname();
-  if (path === "/" || /^\/(pt|en)\/(radar|pages)\//.test(path)) return <>{children}</>;
+  if (path === "/" || path === "/verify" || path === "/account/callback" || path === "/forgekit" || path === "/stackpick" || /^\/(pt|en)\//.test(path)) return <>{children}</>;
   return (
     <div className="flex min-h-screen flex-col bg-hero-glow bg-ink-950">
       <a href="#main-content" className="skip-link">

@@ -1,9 +1,11 @@
 "use client";
+import {useAccount} from "../account/AccountProvider";
 import {
   createContext,
   useContext,
   useEffect,
   useState,
+  useRef,
   type ReactNode,
 } from "react";
 import {
@@ -11,7 +13,6 @@ import {
   discoveries,
   freshPlayer,
   parsePlayer,
-  pointRules,
   routes,
   type Category,
   type Discovery,
@@ -24,7 +25,10 @@ import {
 function useHubState() {
   const [lang, setLang] = useState<Language>("pt");
   const [route, setRoute] = useState<Route>("home");
-  const [player, setPlayer] = useState<PlayerState>(freshPlayer);
+  const account=useAccount();
+  const interestPrompted=useRef(false);
+  const [guestPlayer, setPlayer] = useState<PlayerState>(freshPlayer);
+  const player:PlayerState=account.user?{...guestPlayer,saved:account.user.saved,opened:account.user.opened,interests:account.user.interests.filter((c):c is Category=>categories.includes(c as Category)),claims:[]}:guestPlayer;
   const [ready, setReady] = useState(false);
   const [storage, setStorage] = useState(true);
   const [current, setCurrent] = useState<Discovery | null>(null);
@@ -42,6 +46,8 @@ function useHubState() {
         ? "en"
         : "pt",
     );
+    const requestedCategory = new URLSearchParams(window.location.search).get("category");
+    if(categories.includes(requestedCategory as Category))setFilter(requestedCategory as Category);
     sync();
     try {
       setPlayer(
@@ -59,12 +65,12 @@ function useHubState() {
   useEffect(() => {
     if (ready) {
       try {
-        localStorage.setItem("anderzilla-hub-demo-v1", JSON.stringify(player));
+        localStorage.setItem("anderzilla-hub-demo-v1", JSON.stringify(guestPlayer));
       } catch {
         setStorage(false);
       }
     }
-  }, [player, ready]);
+  }, [guestPlayer, ready]);
   useEffect(() => {
     document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
   }, [lang]);
@@ -79,13 +85,16 @@ function useHubState() {
       window.scrollTo(0, 0);
     }
   }, [route, ready]);
+  useEffect(()=>{if(account.user)setLang(account.user.language)},[account.user?.id,account.user?.language]);
   const changeLanguage = (value: Language) => {
     setLang(value);
+    if(account.user)void account.savePreferences({language:value});
     const url = new URL(window.location.href);
     url.searchParams.set("lang", value);
     window.history.replaceState(null, "", url);
   };
   const toggleSave = (id: string) => {
+    if(account.user){void account.savePreferences({saved:player.saved.includes(id)?player.saved.filter(x=>x!==id):[...player.saved,id]});return}
     setPlayer((p) => ({
       ...p,
       saved: p.saved.includes(id)
@@ -96,6 +105,7 @@ function useHubState() {
   };
   const open = (item: Discovery) => {
     setCurrent(item);
+    if(account.user){if(!player.opened.includes(item.id))void account.savePreferences({opened:[...player.opened,item.id]});return}
     setPlayer((p) => ({
       ...p,
       opened: p.opened.includes(item.id) ? p.opened : [...p.opened, item.id],
@@ -106,26 +116,23 @@ function useHubState() {
     if (!pool.length) pool = discoveries.filter((x) => x.id !== current?.id);
     open(pool[Math.floor(Math.random() * pool.length)]);
   };
-  const toggleInterest = (category: Category) =>
-    setPlayer((p) => ({
-      ...p,
-      interests: p.interests.includes(category)
-        ? p.interests.filter((x) => x !== category)
-        : [...p.interests, category],
-    }));
-  const claim = (id: Mission) =>
-    setPlayer((p) => {
-      const eligible = id === "quiz" ? p.quizDone : p.interests.length >= 3;
-      return eligible && !p.claims.includes(id)
-        ? { ...p, claims: [...p.claims, id] }
-        : p;
-    });
-  const completeQuiz = () =>
-    setPlayer((p) => ({
-      ...p,
-      quizDone: true,
-      claims: p.claims.includes("quiz") ? p.claims : [...p.claims, "quiz"],
-    }));
+  const toggleInterest = (category: Category) => {
+    if(account.user){void account.savePreferences({interests:player.interests.includes(category)?player.interests.filter(c=>c!==category):[...player.interests,category]});return}
+    const next=player.interests.includes(category)?player.interests.filter(c=>c!==category):[...player.interests,category];
+    setPlayer(p=>({...p,interests:next}));
+    if(next.length>=3&&player.interests.length<3&&!interestPrompted.current){interestPrompted.current=true;account.open('reward')}
+  };
+  const claim = (id: Mission) => {
+    const eligible=id==='quiz'?player.quizDone:player.interests.length>=3;
+    if(!eligible)return;
+    if(!account.user)account.open('reward');
+    else setToast(t('Este progresso é local. KP oficial exige uma missão validada pelo servidor.','This progress is local. Official KP require a server-validated mission.'));
+  };
+  const completeQuiz = () => {
+    setPlayer(p=>({...p,quizDone:true}));
+    if(!account.user)account.open('reward');
+    else setToast(t('Desafio local concluído. Nenhum KP oficial foi creditado.','Local challenge completed. No official KP were credited.'));
+  };
   const reset = () => {
     setPlayer(freshPlayer());
     setToast(t("Dados locais limpos.", "Local data cleared."));
@@ -154,7 +161,7 @@ function useHubState() {
       .filter((x) => player.opened.includes(x.id))
       .map((x) => x.category),
   );
-  const balance = player.claims.reduce((sum, id) => sum + pointRules[id], 0);
+  const balance = account.balance;
   return {
     lang,
     route,

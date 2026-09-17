@@ -1,7 +1,11 @@
 "use client";
+import {OfficialMissions} from "../account/OfficialMissions";
+import {AccountPanel,AccountWallet} from "../account/AccountUI";
+import {useAccount} from "../account/AccountProvider";
+import {flag} from "../commerce/data";
 import { useEffect, useRef, useState } from "react";
 import { useHub } from "./HubProvider";
-import { discoveries, pointRules, type Mission } from "./model";
+import { discoveries, type Mission } from "./model";
 import { External, Icon, Passport } from "./Primitives";
 import published from './cms-published.json';
 import { DemoBadge } from './Editorial';
@@ -17,7 +21,7 @@ export function PointsTeaser() {
   return (
     <section className="points-banner">
       <div>
-        <p className="eyebrow">KARACA POINTS / {t("MODO DEMO", "DEMO MODE")}</p>
+        <p className="eyebrow">KARACA POINTS / {t("SUA CONTA", "YOUR ACCOUNT")}</p>
         <h2>
           {t(
             "Sua curiosidade ganha uma nova fase.",
@@ -26,38 +30,21 @@ export function PointsTeaser() {
         </h2>
         <p>
           {t(
-            "Complete missões. Junte Karaca Points. Explore a futura Store Points.",
-            "Complete missions. Collect Karaca Points. Explore the future Store Points.",
+            "Explore as missões disponíveis. KP oficial exige conta verificada e validação do servidor.",
+            "Explore available missions. Official KP require a verified account and server validation.",
           )}
         </p>
       </div>
       <a className="button" href="#points">
-        {balance} KP · {t("Ver missões", "View missions")} →
+        {balance!==null?`${balance} KP · `:""}{t("Ver missões", "View missions")} →
       </a>
     </section>
   );
 }
-function Wallet({ store = false }: { store?: boolean }) {
-  const { t, balance } = useHub();
-  return (
-    <div className="points-wallet">
-      <div>
-        <span>{t("SALDO DEMONSTRATIVO", "DEMO BALANCE")}</span>
-        <strong>
-          {balance} <small>KP</small>
-        </strong>
-      </div>
-      <a
-        className={`button ${store ? "" : "pink"}`}
-        href={store ? "#points" : "#store"}
-      >
-        {store ? t("Ganhar pontos", "Earn points") : "Store Points"} →
-      </a>
-    </div>
-  );
-}
+function Wallet() {return <AccountWallet/>}
 export function PointsPage() {
   const { t, player, claim, ready } = useHub();
+  const account=useAccount();
   const missions: {
     id: Mission;
     ready: boolean;
@@ -95,23 +82,24 @@ export function PointsPage() {
       <Wallet />
       <p className="notice">
         {t(
-          "Prévia: pontos locais, sem valor e sem resgate real. O programa real terá conta, validação de missões e catálogo com estoque confirmado. Este saldo não será migrado.",
-          "Preview: local points, no value and no real redemption. The real program will use accounts, mission verification and confirmed inventory. This balance will not migrate.",
+          "As atividades abaixo são locais e não creditam KP oficial. Somente missões validadas pelo servidor em conta verificada podem aparecer no extrato. Nenhum saldo demonstrativo será importado.",
+          "Activities below are local and do not credit official KP. Only server-validated missions on a verified account can appear in the ledger. No demo balance will be imported.",
         )}
       </p>
-      <h2>{t("Suas missões", "Your missions")}</h2>
+      <OfficialMissions/>
+      <h2>{t("Atividades locais", "Local activities")}</h2>
       <CMSDemoDefinitions collection="missions"/>
       <div className="mission-grid">
         {missions.map((m) => (
           <article className="mission-card" key={m.id}>
             <p className="eyebrow">
-              +{pointRules[m.id]} KP · {t("DEMONSTRAÇÃO", "DEMO")}
+              {t("ATIVIDADE LOCAL · SEM KP OFICIAL", "LOCAL ACTIVITY · NO OFFICIAL KP")}
             </p>
             <h3>{m.title}</h3>
             <p>{m.copy}</p>
             {player.claims.includes(m.id) ? (
               <span className="mission-done">
-                ✓ {t("Recompensa recebida", "Reward claimed")}
+                ✓ {t("Progresso demonstrativo anterior", "Previous demo progress")}
               </span>
             ) : m.ready ? (
               <button
@@ -119,7 +107,7 @@ export function PointsPage() {
                 disabled={!ready}
                 onClick={() => claim(m.id)}
               >
-                {t("Receber pontos demo", "Claim demo points")}
+                {account.user?t("Ver regras da conta", "View account rules"):t("Criar login para continuar", "Create login to continue")}
               </button>
             ) : (
               <a className="button secondary" href={m.url}>
@@ -129,24 +117,6 @@ export function PointsPage() {
           </article>
         ))}
       </div>
-      <h2>{t("Extrato de Karaca Points", "Karaca Points activity")}</h2>
-      <ul className="points-ledger">
-        {player.claims.length ? (
-          player.claims.map((id) => (
-            <li key={id}>
-              <span>{missions.find((m) => m.id === id)?.title}</span>
-              <strong>+{pointRules[id]} KP</strong>
-            </li>
-          ))
-        ) : (
-          <li>
-            {t(
-              "Sua primeira missão começa agora.",
-              "Your first mission starts now.",
-            )}
-          </li>
-        )}
-      </ul>
       <p>
         {t(
           "Na Store Points, só pontos conquistados no site. Sem comprar pontos, sem dinheiro no checkout.",
@@ -168,7 +138,7 @@ export function StorePage() {
           "The destination for your Karaca Points: subscriptions, digital products and gadgets supplied by AnderZilla. Catalog in preparation.",
         )}
       </p>
-      <Wallet store />
+      <Wallet />
       <CMSDemoDefinitions collection="rewards"/>
       <div className="mission-grid reward-concepts">
         {[
@@ -228,8 +198,8 @@ export function StorePage() {
         </ol>
         <p className="notice">
           {t(
-            "Nenhum produto disponível para resgate ainda. Pontos desta prévia são demonstrativos. Não há promessa de prêmio, conversão em dinheiro ou assinatura recorrente.",
-            "No products are redeemable yet. Preview points are demonstrations. No prize, cash conversion or recurring subscription is promised.",
+            "Nenhum produto disponível para resgate ainda. O saldo oficial é consultado na conta; progresso local não vale como saldo. Não há promessa de prêmio, conversão em dinheiro ou assinatura recorrente.",
+            "No products are redeemable yet. Official balances come from your account; local progress is not a balance. No prize, cash conversion or recurring subscription is promised.",
           )}
         </p>
       </section>
@@ -238,6 +208,7 @@ export function StorePage() {
 }
 export function ProfilePage() {
   const { t, categories, labels, player, toggleInterest, reset } = useHub();
+  const account=useAccount();
   return (
     <div className="wrap subpage">
       <p className="eyebrow">{t("SEU RADAR", "YOUR RADAR")}</p>
@@ -248,6 +219,8 @@ export function ProfilePage() {
           "Your favorite topics appear first. You can still explore every topic.",
         )}
       </p>
+      <AccountPanel/>
+      <AccountWallet/>
       <div
         className="interest-list"
         role="group"
@@ -269,8 +242,8 @@ export function ProfilePage() {
       </div>
       <div className="notice">
         {t(
-          "Preferências, mochila e progresso ficam somente neste navegador. Sem login, sincronização entre dispositivos ou coleta no servidor.",
-          "Preferences, backpack and progress stay only in this browser. No login, cross-device sync or server-side collection.",
+          account.user?"Interesses, idioma e mochila são salvos na sua conta. O progresso de desafios locais não concede KP oficial.":"Como visitante, preferências e progresso ficam neste navegador. Você pode criar uma conta para salvar preferências entre dispositivos.",
+          account.user?"Interests, language and your backpack are saved to your account. Local challenge progress does not award official KP.":"As a guest, preferences and progress stay in this browser. Create an account to save preferences across devices.",
         )}
       </div>
       <a className="button" href="#home">
@@ -352,8 +325,8 @@ export function QuizPage() {
         </h1>
         <p className="lede">
           {t(
-            "Karaca! Você completou as três perguntas. A primeira conclusão libera 100 KP demonstrativos. Repetir não multiplica a recompensa.",
-            "Karaca! You completed all three questions. Your first completion unlocks 100 demo KP. Replays do not multiply the reward.",
+            "Karaca! Você completou as três perguntas e ganhou um selo local. Nenhum KP oficial foi creditado: missões da conta dependem de validação do servidor.",
+            "Karaca! You completed all three questions and earned a local badge. No official KP were credited: account missions require server validation.",
           )}
         </p>
         <button
