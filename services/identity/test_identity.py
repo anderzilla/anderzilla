@@ -63,9 +63,11 @@ class IdentityTests(unittest.TestCase):
         return self.svc.authenticate(login['sessionToken']), login, data
 
     def mission(self, kind='interests', mission_id='test-mission', award=25):
-        definition = {'questions': [{'id': 'q1', 'promptPT': 'Escolha A', 'promptEN': 'Choose A',
-                                     'options': [{'id': 'a', 'textPT': 'A', 'textEN': 'A'}, {'id': 'b', 'textPT': 'B', 'textEN': 'B'}],
-                                     'correctOption': 'a'}]} if kind == 'quiz' else {}
+        definition = {'titlePT': 'Missão de teste', 'titleEN': 'Test mission'}
+        if kind == 'quiz':
+            definition['questions'] = [{'id': 'q1', 'promptPT': 'Escolha A', 'promptEN': 'Choose A',
+                                        'options': [{'id': 'a', 'textPT': 'A', 'textEN': 'A'}, {'id': 'b', 'textPT': 'B', 'textEN': 'B'}],
+                                        'correctOption': 'a'}]
         with self.store.transaction() as db:
             db.execute('INSERT INTO missions(id,version,award,starts_at,ends_at,active,verifier,definition_json,coverage_reference) VALUES(?,?,?,?,?,?,?,?,?)',
                        (mission_id, 1, award, self.now - 1, self.now + 86400, 1, kind, json.dumps(definition), 'test-only; not public'))

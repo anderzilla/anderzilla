@@ -5,7 +5,7 @@ import re
 import time
 import uuid
 from dataclasses import dataclass
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlsplit
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from . import security
@@ -40,6 +40,17 @@ def text(value, maximum=200, minimum=1):
     if not isinstance(value, str) or not minimum <= len(value.strip()) <= maximum:
         reject('invalid_text', 'Texto inválido.')
     return value.strip()
+
+
+def google_avatar(value):
+    # Best-effort only: a missing/odd picture claim must never fail sign-in.
+    # Google always serves this over https; reject anything else defensively.
+    if not isinstance(value, str) or not 1 <= len(value) <= 2048:
+        return None
+    parsed = urlsplit(value)
+    if parsed.scheme != 'https' or not parsed.hostname or parsed.username or parsed.password:
+        return None
+    return value
 
 
 def email_address(value):
@@ -104,15 +115,15 @@ class IdentityService:
             db.execute('INSERT INTO consents(id,account_id,purpose,version,granted,created_at) VALUES(?,?,?,?,?,?)',
                        (identifier(), account_id, purpose, version, int(granted), self.clock()))
 
-    def _new_account(self, db, email, name, password_hash, verified, data):
+    def _new_account(self, db, email, name, password_hash, verified, data, avatar_url=None):
         consent = policies(data)
         lang = data.get('lang', 'pt-BR')
         if lang not in {'pt-BR', 'en'}:
             reject('invalid_lang', 'Idioma inválido.')
         interests = preferences(data.get('interests', []))
         account_id, now = identifier(), self.clock()
-        db.execute('INSERT INTO accounts(id,email,email_verified,display_name,password_hash,state,lang,timezone,marketing_opt_in,age_confirmed_at,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',
-                   (account_id, email, int(verified), text(name, 80), password_hash, 'active', lang, 'America/Sao_Paulo', int(consent['marketingOptIn']), now, now, now))
+        db.execute('INSERT INTO accounts(id,email,email_verified,display_name,password_hash,state,lang,timezone,marketing_opt_in,age_confirmed_at,created_at,updated_at,avatar_url) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                   (account_id, email, int(verified), text(name, 80), password_hash, 'active', lang, 'America/Sao_Paulo', int(consent['marketingOptIn']), now, now, now, avatar_url))
         db.execute('INSERT INTO wallets(account_id,available,reserved) VALUES(?,?,?)', (account_id, 0, 0))
         db.execute('INSERT INTO preferences_bookmarks(account_id,interests,saved,opened) VALUES(?,?,?,?)',
                    (account_id, json.dumps(interests), '[]', '[]'))
@@ -227,6 +238,7 @@ class IdentityService:
         return {'account': {'id': account['id'], 'email': account['email'], 'emailVerified': bool(account['email_verified']),
                             'displayName': account['display_name'], 'hasPassword': bool(account['password_hash']),
                             'lang': account['lang'], 'timezone': account['timezone'], 'marketingOptIn': bool(account['marketing_opt_in']),
+                            'avatarUrl': account['avatar_url'],
                             **{key: json.loads(pref[key]) for key in ('interests', 'saved', 'opened')}},
                 'wallet': {**wallet, 'unit': 'KP'}}
 
@@ -359,6 +371,7 @@ class IdentityService:
             claims = security.verify_google_id_token(response.json().get('id_token'), os.environ['IDENTITY_GOOGLE_CLIENT_ID'], row['nonce'])
             email = email_address(claims.get('email'))
             subject = text(claims.get('sub'), 256)
+            avatar_url = google_avatar(claims.get('picture'))
         except Exception:
             reject('google_verification_failed', 'Não foi possível validar a resposta Google. Inicie novamente.', 401)
         with self.store.transaction() as db:
@@ -369,7 +382,7 @@ class IdentityService:
             else:
                 if db.execute('SELECT id FROM accounts WHERE email=?', (email,)).fetchone():
                     reject('account_link_required', 'Já existe cadastro por e-mail. Use sua senha; vínculo de provedores requer confirmação separada.', 409)
-                account_id = self._new_account(db, email, str(claims.get('name') or email.split('@')[0])[:80], None, True, json.loads(row['consent_json']))
+                account_id = self._new_account(db, email, str(claims.get('name') or email.split('@')[0])[:80], None, True, json.loads(row['consent_json']), avatar_url)
                 db.execute('INSERT INTO oauth_identities(provider,subject,account_id,created_at) VALUES(?,?,?,?)', ('google', subject, account_id, self.clock()))
             return self._session(db, account_id)
 
@@ -383,6 +396,11 @@ class IdentityService:
         try:
             data = json.loads(mission['definition_json'])
             if not isinstance(data, dict):
+                raise ValueError()
+            title_pt, title_en = data['titlePT'], data['titleEN']
+            if not isinstance(title_pt, str) or not 1 <= len(title_pt.strip()) <= 120:
+                raise ValueError()
+            if not isinstance(title_en, str) or not 1 <= len(title_en.strip()) <= 120:
                 raise ValueError()
             if mission['verifier'] == 'quiz':
                 questions = data['questions']
@@ -405,10 +423,26 @@ class IdentityService:
         except (KeyError, TypeError, ValueError):
             reject('mission_unavailable', 'Definição de missão indisponível.', 503)
 
+    def _title(self, definition_json):
+        # Best-effort: one malformed definition must not break the whole mission list.
+        try:
+            data = json.loads(definition_json)
+            title_pt, title_en = data.get('titlePT'), data.get('titleEN')
+            if isinstance(title_pt, str) and isinstance(title_en, str) and title_pt.strip() and title_en.strip():
+                return title_pt.strip()[:120], title_en.strip()[:120]
+        except (TypeError, ValueError):
+            pass
+        return None, None
+
     def missions(self):
         with self.store.transaction() as db:
-            rows = db.execute("SELECT id,version,award,starts_at,ends_at,verifier FROM missions WHERE active=1 AND starts_at<=? AND ends_at>? AND coverage_reference<>'' ORDER BY id,version", (self.clock(), self.clock())).fetchall()
-        return {'items': [{'id': r['id'], 'version': r['version'], 'awardKP': r['award'], 'kind': r['verifier'], 'startsAt': r['starts_at'], 'endsAt': r['ends_at']} for r in rows], 'nextCursor': None}
+            rows = db.execute("SELECT id,version,award,starts_at,ends_at,verifier,definition_json FROM missions WHERE active=1 AND starts_at<=? AND ends_at>? AND coverage_reference<>'' ORDER BY id,version", (self.clock(), self.clock())).fetchall()
+        items = []
+        for r in rows:
+            title_pt, title_en = self._title(r['definition_json'])
+            items.append({'id': r['id'], 'version': r['version'], 'awardKP': r['award'], 'kind': r['verifier'],
+                          'startsAt': r['starts_at'], 'endsAt': r['ends_at'], 'titlePT': title_pt, 'titleEN': title_en})
+        return {'items': items, 'nextCursor': None}
 
     def challenge(self, browser_hash, principal, mission_id, version):
         if not isinstance(mission_id, str) or type(version) is not int or version < 1:
@@ -421,6 +455,7 @@ class IdentityService:
             db.execute('INSERT INTO challenges(id,browser_hash,account_id,mission_id,mission_version,definition_hash,expires_at) VALUES(?,?,?,?,?,?,?)',
                        (challenge_id, browser_hash, principal.account_id if principal else None, mission_id, version, security.token_hash(mission['definition_json']), expires))
             return {'challengeId': challenge_id, 'kind': mission['verifier'], 'expiresAt': expires,
+                    'titlePT': definition['titlePT'], 'titleEN': definition['titleEN'],
                     'questions': [{k: q[k] for k in ('id', 'promptPT', 'promptEN', 'options')} for q in definition.get('questions', [])]}
 
     def _answers(self, mission, payload):
