@@ -9,21 +9,29 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 
 | ID | Processo | Market | Onde no site | Como monetiza | Status | CMS? | Próxima ação | Atualizado |
 |----|----------|--------|--------------|---------------|--------|------|--------------|------------|
-| mon-forgekit | ForgeKit produto próprio | intl | /forgekit + Gumroad | US$149 one-time ZIP | ativo | parcial→CMS | Trust + página CMS-driven | 2026-09-10 |
-| mon-hub-br | Hub comercial Área Brasil | br | /comercio/brasil | Agrupa ofertas BRL/afiliados BR | especificado | sim | Implementar hub + empty state | 2026-09-10 |
-| mon-hub-intl | Hub comercial Área Internacional | intl | /comercio/internacional | Agrupa ForgeKit + afiliados USD | especificado | sim | Implementar hub + ForgeKit destaque | 2026-09-10 |
-| mon-stackpick | StackPick comparações | global | /stackpick | Afiliado quando aprovado (por market) | especificado | sim | CTAs só active + market | 2026-09-10 |
-| mon-aff-br | Afiliados Brasil | br | /parceiros?market=br · hub BR | Amazon BR, ML, Hotmart… | especificado | sim | Candidatos listados abaixo; só promover com aprovação+URL | 2026-09-10 |
-| mon-aff-intl | Afiliados Internacional | intl | /parceiros?market=intl · hub INT | SaaS/Impact/Awin… | especificado | sim | Só aprovados; PartnerStack pausado | 2026-09-10 |
-| mon-ads | Slots publicidade | global | home / inventário | Ads / house | especificado | sim | Ocultar se não vendido | 2026-09-10 |
+| mon-forgekit | ForgeKit produto próprio | intl | /forgekit + Gumroad | US$149 one-time ZIP | ativo | sim (implementação local) | CMS/página PT+EN validados localmente; validar release Azure; venda Gumroad permanece ativa | 2026-09-17 |
+| mon-hub-br | Hub comercial Área Brasil | br | /comercio/brasil | Agrupa ofertas BRL/afiliados BR | em_build | sim (implementação local) | Hub BR/estado vazio implementado e validado localmente; publicar e verificar Azure | 2026-09-17 |
+| mon-hub-intl | Hub comercial Área Internacional | intl | /comercio/internacional | Agrupa ForgeKit + afiliados USD | em_build | sim (implementação local) | Hub INT/ForgeKit implementado e validado localmente; publicar e verificar Azure | 2026-09-17 |
+| mon-stackpick | StackPick comparações | global | /stackpick | Afiliado quando aprovado (por market) | em_build | sim (implementação local) | CTAs por mercado implementado e validado localmente; afiliação depende de aprovação real | 2026-09-17 |
+| mon-aff-br | Afiliados Brasil | br | /parceiros?market=br · hub BR | Amazon BR, ML, Hotmart… | em_build | sim (implementação local) | CMS por mercado preparado; nenhum candidato aprovado/ativado nesta execução | 2026-09-17 |
+| mon-aff-intl | Afiliados Internacional | intl | /parceiros?market=intl · hub INT | SaaS/Impact/Awin… | em_build | sim (implementação local) | CMS por mercado preparado; nenhum candidato ativado; PartnerStack permanece pausado | 2026-09-17 |
+| mon-ads | Slots publicidade | global | home / inventário | Ads / house | em_build | sim (implementação local) | Flags/vigência/placements implementados e validado localmente; nenhum anúncio vendido ou ativado | 2026-09-17 |
 | mon-live | Lives Twitch/YT/Kick | global | #live / hub live | Tips, subs, sponsor in-stream | em_build | parcial | Cadência + disclosure live | 2026-09-10 |
-| mon-sponsor | Patrocínios diretos | global | /patrocine | Pacotes fechados | especificado | sim | Kit sem métricas fake | 2026-09-10 |
+| mon-sponsor | Patrocínios diretos | global | /patrocine | Pacotes fechados | em_build | sim (implementação local) | Página/pacotes PT+EN implementado e validado localmente; sem contrato ou outreach | 2026-09-17 |
 | mon-newsletter | Lista email | global | captura hub | Sponsor / lançamentos | ideia | sim | Lead magnet real | 2026-09-10 |
-| mon-karaca | Karaca Points / Store | global | #points #store | Retenção (não vende KP) | em_build (demo) | sim (flags) | Auth+ledger antes de resgate | 2026-09-10 |
+| mon-auth-accounts | Contas leitor + e-mail/OAuth + perfil | global | /entrar /perfil | Habilita KP real e personalização sync | especificado | sim | Rodar BRIFs auth multi-IA (gap→legal→backend→UI) | 2026-09-17 |
+| mon-karaca | Karaca Points / Store | global | #points #store | Retenção (não vende KP) | em_build (demo) | sim (flags) | Plano econômico/XP preparado; definir verba e coorte; auth+ledger antes de resgate | 2026-09-10 |
+| mon-karaca-sponsored | Campanhas e catálogo Karaca patrocinados | global | Store Points + missões (proposto) | Conteúdo/campanha patrocinados; benefícios financiados | especificado | planejado | Negociar direito de resgate, cobertura, região e regulamento; nenhum sponsor ativo | 2026-09-10 |
+| mon-karaca-supply | Fornecimento B2B de recompensas | global | Store Points (proposto) | Custo de operação/retencão; não receita automática | especificado | planejado | Cotar fornecedores BR e validar elegibilidade, mínimos e SKUs; sem compra autorizada | 2026-09-10 |
 | mon-partnerstack | Rede PartnerStack | intl | — | SaaS affiliates USD | pausado | n/a | Reaplicar ≥ 2026-09-21 | 2026-09-10 |
 | mon-kiwify-br | Infoproduto/checkout BRL | br | hub BR (futuro) | PIX → C6 via plataforma BR | ideia | sim | Avaliar Kiwify/Hotmart vs Stripe BR | 2026-09-10 |
-| mon-trust | Trust / Transparência | global | /transparencia | Confiança (explica BR×INT) | especificado | sim | Implementar com Commerce CMS | 2026-09-10 |
+| mon-trust | Trust / Transparência | global | /transparencia | Confiança (explica BR×INT) | em_build | sim (implementação local) | Trust PT+EN e BR×INT implementados e validado localmente; publicar e verificar Azure | 2026-09-17 |
 | mon-platform | Receita nativa YT/Twitch | global | canais | Ads plataforma / bits | ideia | n/a | Após cadência estável | 2026-09-10 |
+| mon-automation-control | Controle de processos comerciais | global | CMS / Automações | Apoia verificação de ofertas e relatórios sem representar receita | em_build | sim | Painel/backend construídos e schema homolog aplicado; implantar bundle único e conectar fontes reais depois | 2026-09-10 |
+
+## Planejamento Karaca! — 10/09/2026
+
+[Plano de economia, gamificação e operação](KARACA-ECONOMY-AND-PARTNERSHIPS.md) e [diretório de candidatos/fontes](../research/KARACA-PARTNER-MAP-2026-09.md). XP separado de KP é proposta; KP continua sem venda/saque. ExitLag, Nuuvem, Fanatical, fornecedores de PIN e lojas são candidatos, não acordos ativos. Afiliado, fornecedor e patrocinador têm permissões distintas. Nenhum contato, cadastro, compra ou lançamento nesta pesquisa.
 
 ## Rails de payout (operador — não publicar dados sensíveis)
 
@@ -61,3 +69,9 @@ Fonte: Caça Promo · 2026-09-10. **Nenhum `ativo`.** Só candidatura/docs ofici
 | cand-pichau | Pichau Parceiros | https://www.pichau.com.br/parceiros | ideia | Só lista influenciadores; inscrição afiliado pouco clara |
 
 Regra: promover a `ativo` no processo `mon-aff-br` só com contrato/aprovação + URL HTTPS de tracking verificada + `market=br` no CMS.
+
+## Execução Trust & Commerce — 17/09/2026
+
+Prompt executado no código local, com CMS/Admin/publisher e superfícies PT/EN por mercado. `em_build` distingue capacidade de software de operação comercial publicada. Não houve deploy Azure, candidatura, contato com marcas, compra, anúncio real nem resgate KP. Validação final e roteiro de edição constam em `Z:/AnderZilla/docs/TRUST-COMMERCE-EDITOR-GUIDE.md`; inventário dos demais prompts em `Z:/AnderZilla/docs/PROMPT-EXECUTION-AUDIT.md`.
+
+Leitura pública nesta data: Gumroad ForgeKit HTTP 200, preço estruturado USD 149,00; demo HTTP 200. Checkout, conteúdo do ZIP e payout não foram testados. Nenhuma evidência nova de parceiro ativo.

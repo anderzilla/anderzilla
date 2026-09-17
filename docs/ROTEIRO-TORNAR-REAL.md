@@ -143,3 +143,7 @@ Dia 10-14 1º link ativo no site OU empty mantido; automation: 1 fonte→rascunh
 ## Fora de escopo até gate explícito
 
 Outreach a marcas · compra de tráfego · Polar · inventar parceiros · KP cash · publish automático sem revisão · dados bancários no repo · Cloud Agents (plano atual).
+
+## Atualização 2026-09-17 — Contas + Karaca produção
+
+Prioridade elevada sob pedido do proprietário: prompts multi-IA em `BRIEF-auth-karaca-accounts.md` + `LOAD-SPLIT-auth-karaca.md`. KP só com conta; popup de cadastro; Google OAuth; Instagram só se viável; privacy/terms/cookies; ledger autoritativo. Pode avançar em paralelo ao Trust Commerce se Codex tiver sessões separadas.
