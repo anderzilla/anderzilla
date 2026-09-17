@@ -1,7 +1,7 @@
 "use client";
 import {createContext,useCallback,useContext,useEffect,useRef,useState,type ReactNode} from 'react';
 
-export type AccountUser={id:string;email:string;emailVerified:boolean;displayName:string;language:'pt'|'en';interests:string[];saved:string[];opened:string[];marketingOptIn?:boolean;hasPassword?:boolean};
+export type AccountUser={id:string;email:string;emailVerified:boolean;displayName:string;language:'pt'|'en';interests:string[];saved:string[];opened:string[];marketingOptIn?:boolean;hasPassword?:boolean;avatarUrl?:string|null};
 export type Capabilities={registration:boolean;emailPassword:boolean;google:boolean;meta:boolean;passwordReset:boolean;emailResend:boolean;rewards:boolean;minimumAge:number;termsVersion?:string;privacyVersion?:string};
 export type Entry={id:string;amount:number;reservedAmount:number;description?:string;missionId?:string;createdAt:string};
 function normalizeUser(row:any):AccountUser|null {if(!row||typeof row.id!=='string')return null;return {...row,language:row.lang==='en'?'en':'pt',saved:Array.isArray(row.saved)?row.saved:[],opened:Array.isArray(row.opened)?row.opened:[],interests:Array.isArray(row.interests)?row.interests:[]}}

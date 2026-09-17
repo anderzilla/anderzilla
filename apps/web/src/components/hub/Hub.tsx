@@ -36,10 +36,11 @@ import { CMSSections } from "./CMSSections";
 import { CommerceHome } from "../commerce/CommerceHome";
 import { flag } from "../commerce/data";
 import {AccountProvider,useAccount} from "../account/AccountProvider";
-import {AccountAccess,AccountDialog,AccountSyncStatus} from "../account/AccountUI";
+import {AccountAccess,AccountDialog,AccountSyncStatus,UserAvatar} from "../account/AccountUI";
 
 function Header() {
   const { t, lang, changeLanguage, route, player } = useHub();
+  const account = useAccount();
   const links: [Route, string][] = [
     ["home", t("Explorar", "Explore")],
   ];
@@ -102,7 +103,16 @@ function Header() {
             <span className="count">{player.saved.length}</span>
           </a>
           <a className="profile-link" href="#profile">
-            <Ghost size={26} />
+            {account.user ? (
+              <UserAvatar
+                name={account.user.displayName}
+                email={account.user.email}
+                src={account.user.avatarUrl}
+                size={26}
+              />
+            ) : (
+              <Ghost size={26} />
+            )}
             <span>{t("Seu radar", "Your radar")}</span>
           </a>
         </div>
