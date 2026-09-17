@@ -50,7 +50,7 @@ function Header() {
     <>
       <div className="preview">
         <span>
-          {t("PRÉVIA · HUB EM CONSTRUÇÃO", "PREVIEW · HUB UNDER CONSTRUCTION")}
+          {t("GAMES · IA · TECNOLOGIA", "GAMES · AI · TECHNOLOGY")}
         </span>
         <div className="languages" aria-label="Language">
           <button
@@ -130,8 +130,8 @@ function Footer() {
       <a href="/terms">{t("Termos", "Terms")}</a>
       <small>
         {t(
-          "Prévia com curadoria datada e artes conceituais. Não é feed automático. Mochila, interesses e progresso ficam no navegador; pontos demonstrativos sem valor financeiro.",
-          "Preview with dated curation and concept artwork. Not an automatic news feed. Backpack, interests and progress stay in your browser; demo points have no monetary value.",
+          "Curadoria editorial com fontes, créditos e data de apuração. Mochila, interesses e progresso ficam no navegador; pontos demonstrativos sem valor financeiro.",
+          "Editorial curation with sources, credits and verification dates. Backpack, interests and progress stay in your browser; demo points have no monetary value.",
         )}
       </small>
     </footer>

@@ -7,10 +7,18 @@ import unittest
 from unittest.mock import patch
 from pathlib import Path
 from PIL import Image
-from core import CMS, Error, FIELDS, PUBLIC_COLLECTIONS, validate, validate_references
-from storage import SQLiteStore, Session
-from seed_examples import seed
-from import_newsroom import import_manifest
+try:
+    import core
+    from core import CMS, Error, FIELDS, PUBLIC_COLLECTIONS, validate, validate_references
+    from storage import SQLiteStore, Session
+    from seed_examples import seed
+    from import_newsroom import import_manifest
+except ModuleNotFoundError:
+    from services.cms import core
+    from services.cms.core import CMS, Error, FIELDS, PUBLIC_COLLECTIONS, validate, validate_references
+    from services.cms.storage import SQLiteStore, Session
+    from services.cms.seed_examples import seed
+    from services.cms.import_newsroom import import_manifest
 
 ADMIN = {'id': 'admin', 'roles': ['anderzilla_admin']}
 
@@ -174,6 +182,42 @@ class EditorialTests(unittest.TestCase):
         self.assertNotEqual(row['data']['socialMediaId'], row['data']['coverMediaId'])
         self.assertEqual(len(self.cms.list(ADMIN, 'media')['items']), 2)
         self.assertEqual(result[0]['status'], 'approved')
+
+    def test_media_library_quota_32mib_upload_rejects_without_large_fixture_and_is_atomic(self):
+        # 32 MiB totais, 2 MiB por imagem, 1600 px — valida quota sem alocar 32 MB.
+        first = self.upload()
+        baseline_count = len(self.cms.list(ADMIN, 'media')['items'])
+        with self.cms.store.transaction() as db:
+            baseline_bytes = db.media_bytes()
+            baseline_audit = len(db.recent_audit())
+        self.assertEqual(baseline_bytes, len(first['data']['assetBase64']))
+        # Simula biblioteca cheia sem criar fixtures gigantes: media_bytes() retorna o teto de 32 MiB.
+        output = io.BytesIO()
+        Image.new('RGB', (10, 10), '#00ff00').save(output, format='PNG')
+        tiny = base64.b64encode(output.getvalue()).decode()
+        with patch.object(Session, 'media_bytes', return_value=core.MEDIA_LIBRARY_LIMIT_B64):
+            with self.assertRaises(Error) as failure:
+                self.cms.upload_media(ADMIN, {'filename': 'tiny.png', 'contentBase64': tiny, 'altPT': 'Quota', 'altEN': 'Quota', 'credit': 'Test', 'license': 'Own test fixture'})
+            self.assertEqual(failure.exception.code, 'media_quota')
+            self.assertEqual(failure.exception.status, 413)
+        # Atomicidade: upload recusado não persiste registro, bytes ou auditoria.
+        self.assertEqual(len(self.cms.list(ADMIN, 'media')['items']), baseline_count)
+        with self.cms.store.transaction() as db:
+            self.assertEqual(db.media_bytes(), baseline_bytes)
+            self.assertEqual(len(db.recent_audit()), baseline_audit)
+
+    def test_media_library_quota_32mib_release_rejects_without_large_fixture(self):
+        # Release também deve rejeitar snapshot que excede 32 MiB sem precisar de 16 imagens de 2 MiB.
+        media = self.approve('media', self.upload())
+        page = self.approve('pages', self.cms.save(ADMIN, 'pages', {'titlePT': 'Page quota', 'slugPT': 'quota-page', 'bodyPT': 'Body', 'coverMediaId': media['id']}))
+        # Força o teto para um valor pequeno apenas neste teste, simulando biblioteca cheia com fixtures mínimas.
+        with patch.object(core, 'MEDIA_LIBRARY_LIMIT_B64', 100):
+            with self.assertRaises(Error) as failure:
+                self.cms.release(ADMIN, 'quota-release-test')
+            self.assertEqual(failure.exception.code, 'media_quota')
+        # Com o limite real de 32 MiB o mesmo snapshot deve publicar normalmente.
+        release = self.cms.release(ADMIN, 'quota-release-ok')
+        self.assertEqual(release['status'], 'queued')
 
 
 if __name__ == '__main__':

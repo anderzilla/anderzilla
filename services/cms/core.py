@@ -40,6 +40,12 @@ REQUIRED = {
 }
 PUBLIC_COLLECTIONS = set(FIELDS) - {'missions', 'rewards'}
 ROLES = {'anderzilla_admin', 'anderzilla_editor', 'anderzilla_commercial', 'anderzilla_rewards'}
+# Biblioteca de imagens: 60 notícias com fotos/galerias — 2 MiB por imagem, 1600 px, total 32 MiB.
+# O CMS persiste base64 (4/3 do binário); publisher valida bytes decodificados. Ambos os tetos derivam do mesmo limite lógico.
+MEDIA_PER_IMAGE_BYTES = 2 * 1024 * 1024
+MEDIA_PER_IMAGE_B64_LIMIT = 2800000  # ~2 MiB raw como base64 (≈2_796_203) + folga para padding
+MEDIA_LIBRARY_LIMIT_BYTES = 32 * 1024 * 1024
+MEDIA_LIBRARY_LIMIT_B64 = 44739244  # 32 MiB raw como base64 (4*ceil(32 MiB/3)) — quota consistente com publisher
 
 
 class Error(Exception):
@@ -74,7 +80,7 @@ def validate(collection, data, approved=False, internal=False):
         raise Error(422, 'protected_asset', 'Use o endpoint de upload para arquivos.')
     for key, value in data.items():
         if key == 'assetBase64':
-            if not isinstance(value, str) or len(value) > 2800000:
+            if not isinstance(value, str) or len(value) > MEDIA_PER_IMAGE_B64_LIMIT:
                 raise Error(413, 'asset_too_large', 'Arquivo normalizado muito grande.')
             continue
         if key == 'isDemo':
@@ -206,12 +212,12 @@ class CMS:
         if not isinstance(body, dict) or set(body) - {'filename', 'contentBase64', 'altPT', 'altEN', 'credit', 'license'}:
             raise Error(422, 'invalid_upload', 'Campos de upload inválidos.')
         encoded = body.get('contentBase64', '')
-        if not isinstance(encoded, str) or len(encoded) > 2800000:
+        if not isinstance(encoded, str) or len(encoded) > MEDIA_PER_IMAGE_B64_LIMIT:
             raise Error(413, 'asset_too_large', 'Use uma imagem de até 2 MB.')
         from PIL import Image, ImageOps
         try:
             raw = base64.b64decode(encoded, validate=True)
-            if not raw or len(raw) > 2 * 1024 * 1024:
+            if not raw or len(raw) > MEDIA_PER_IMAGE_BYTES:
                 raise ValueError()
             import warnings
             with warnings.catch_warnings():
@@ -226,7 +232,7 @@ class CMS:
                     normalized.save(output, format='WEBP', quality=85, method=4, exif=b'')
                     asset = output.getvalue()
                     width, height = normalized.size
-            if len(asset) > 2 * 1024 * 1024:
+            if len(asset) > MEDIA_PER_IMAGE_BYTES:
                 raise ValueError()
         except (ValueError, OSError, SyntaxError, Image.DecompressionBombWarning, Image.DecompressionBombError):
             raise Error(422, 'invalid_image', 'Imagem inválida. Use JPEG, PNG ou WebP até 2 MB e 20 megapixels.')
@@ -236,8 +242,8 @@ class CMS:
                     url='/media/' + sha + '.webp', assetBase64=base64.b64encode(asset).decode(), assetSha256=sha, mimeType='image/webp')
         validate('media', data, approved=True, internal=True)
         with self.store.transaction() as db:
-            if db.media_bytes() + len(data['assetBase64']) > 14000000:
-                raise Error(413, 'media_quota', 'Biblioteca atingiu o limite inicial de 10 MB. Revise os arquivos antes de continuar.')
+            if db.media_bytes() + len(data['assetBase64']) > MEDIA_LIBRARY_LIMIT_B64:
+                raise Error(413, 'media_quota', 'Biblioteca atingiu o limite de 32 MB. Revise os arquivos antes de continuar.')
             record = {'id': str(uuid.uuid4()), 'version': 1, 'status': 'draft', 'data': data, 'updatedAt': now()}
             db.save_record('media', record)
             db.audit(principal['id'], 'upload_normalized_image', 'media', record['id'], 1)
@@ -328,8 +334,8 @@ class CMS:
                     public['data'].pop('approvalReference', None)
                     items.append(public)
                 collections[collection] = items
-            if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > 14000000:
-                raise Error(413, 'media_quota', 'Snapshot excede limite inicial de 10 MB de imagens.')
+            if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > MEDIA_LIBRARY_LIMIT_B64:
+                raise Error(413, 'media_quota', 'Snapshot excede limite de 32 MB de imagens.')
             for collection in ('missions', 'rewards'):
                 demos = [copy.deepcopy(row) for row in records[collection] if row['status'] == 'approved' and row['data'].get('isDemo') is True]
                 for row in demos:

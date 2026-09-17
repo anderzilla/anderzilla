@@ -13,6 +13,10 @@ from PIL import Image
 
 CATEGORIES = {'games', 'consoles', 'celulares', 'ia', 'gadgets', 'curiosidades'}
 NEWSROOM = ('verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'hashtagsPT', 'hashtagsEN', 'socialInstagramPT', 'socialInstagramEN', 'socialFacebookPT', 'socialFacebookEN', 'socialWhatsappPT', 'socialWhatsappEN')
+# Limites de mídia alinhados ao CMS: 2 MiB por imagem (1600 px, WEBP, hash) e 32 MiB totais (60 notícias com galerias).
+MEDIA_PER_IMAGE_BYTES = 2 * 1024 * 1024
+MEDIA_LIBRARY_LIMIT_BYTES = 32 * 1024 * 1024
+MEDIA_LIBRARY_LIMIT_B64 = 44739244  # 32 MiB raw como base64 — espelho da quota do CMS (armazena base64)
 
 def public_sources(value):
     sources = json.loads(value) if value else []
@@ -43,7 +47,7 @@ def write_assets(snapshot, public_dir):
         sha = hashlib.sha256(raw).hexdigest()
         if row.get('status') != 'approved' or sha != data.get('assetSha256') or data.get('url') != '/media/' + sha + '.webp':
             raise ValueError('Invalid media integrity or path')
-        if len(raw) > 2 * 1024 * 1024 or total > 10 * 1024 * 1024 or raw[:4] != b'RIFF' or raw[8:12] != b'WEBP':
+        if len(raw) > MEDIA_PER_IMAGE_BYTES or total > MEDIA_LIBRARY_LIMIT_BYTES or raw[:4] != b'RIFF' or raw[8:12] != b'WEBP':
             raise ValueError('Media exceeds limits or is not WebP')
         with Image.open(io.BytesIO(raw)) as picture:
             if picture.format != 'WEBP' or max(picture.size) > 1600:
@@ -126,6 +130,8 @@ def transform(snapshot):
                 out[collection].append(public)
             elif collection == 'media':
                 public = {'id': row['id'], **{key: d[key] for key in ('titlePT','titleEN','url','mediaType','mimeType','altPT','altEN','credit','license','width','height','isDemo') if key in d}}
+                if d.get('sourceUrl'):
+                    public['sourceUrl'] = https(d['sourceUrl'])
                 if not public.get('url', '').startswith('/media/'):
                     https(public['url'])
                 else:

@@ -22,3 +22,6 @@
 .publisher-work/
 __pycache__/
 *.pyc
+
+.tmp/
+

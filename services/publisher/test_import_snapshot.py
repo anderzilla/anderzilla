@@ -7,10 +7,12 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'cms'))
 from import_snapshot import transform, write_assets
+import import_snapshot
 from seed_examples import examples
 
 
@@ -22,6 +24,16 @@ def snapshot():
 
 
 class ImportSnapshotTests(unittest.TestCase):
+    def test_media_source_is_public_https(self):
+        value = snapshot()
+        data = value['collections']['media'][0]['data']
+        data['sourceUrl'] = 'https://example.com/press/images'
+        self.assertEqual(transform(value)['media'][0]['sourceUrl'], data['sourceUrl'])
+        for url in ('javascript:alert(1)', 'https://127.0.0.1/private'):
+            data['sourceUrl'] = url
+            with self.subTest(url=url), self.assertRaises(ValueError):
+                transform(value)
+
     def test_newsroom_sources_export_allowlist_and_https(self):
         value = snapshot()
         data = value['collections']['content'][0]['data']
@@ -124,6 +136,36 @@ class ImportSnapshotTests(unittest.TestCase):
         value['collections']['media'][0]['data'].update(assetBase64=base64.b64encode(raw).decode(), assetSha256=sha, url='/media/' + sha + '.webp')
         with tempfile.TemporaryDirectory() as folder, self.assertRaises((ValueError, OSError)):
             write_assets(value, Path(folder))
+
+    def test_media_library_limits_are_32mib_total_and_2mib_per_image(self):
+        # Teto ampliado para 60 notícias: 32 MiB totais, 2 MiB por imagem, 1600 px, WEBP com hash.
+        self.assertEqual(import_snapshot.MEDIA_LIBRARY_LIMIT_BYTES, 32 * 1024 * 1024)
+        self.assertEqual(import_snapshot.MEDIA_PER_IMAGE_BYTES, 2 * 1024 * 1024)
+        self.assertEqual(import_snapshot.MEDIA_LIBRARY_LIMIT_B64, 44739244)
+        # Consistência com CMS (armazena base64): 32 MiB raw ≈ 44739244 base64 chars.
+        import pathlib as _pl
+        cms_core = _pl.Path(__file__).resolve().parents[1] / 'cms' / 'core.py'
+        text = cms_core.read_text(encoding='utf-8')
+        self.assertIn('MEDIA_LIBRARY_LIMIT_BYTES = 32', text)
+        self.assertIn('MEDIA_LIBRARY_LIMIT_B64 = 44739244', text)
+        self.assertIn('MEDIA_PER_IMAGE_BYTES = 2', text)
+
+    def test_write_assets_quota_rejects_without_large_fixture(self):
+        # Valida quota de 32 MiB sem alocar 32 MB: usa duas mídias mínimas e limite mockado pequeno.
+        value = snapshot()
+        first = value['collections']['media'][0]
+        second = copy.deepcopy(first)
+        second['id'] = 'second-media-quota-id'
+        value['collections']['media'].append(second)
+        raw_len = len(base64.b64decode(first['data']['assetBase64'], validate=True))
+        # Um arquivo cabe, dois excedem o limite mockado.
+        with patch.object(import_snapshot, 'MEDIA_LIBRARY_LIMIT_BYTES', raw_len + 10):
+            with tempfile.TemporaryDirectory() as folder, self.assertRaises(ValueError):
+                write_assets(value, Path(folder))
+        # Com o limite real de 32 MiB ambas as mídias mínimas devem materializar.
+        with tempfile.TemporaryDirectory() as folder:
+            write_assets(value, Path(folder))
+            self.assertTrue((Path(folder) / 'media' / (first['data']['assetSha256'] + '.webp')).exists())
 
 
 if __name__ == '__main__':
