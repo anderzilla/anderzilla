@@ -19,6 +19,7 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 | mon-live | Lives Twitch/YT/Kick | global | #live / hub live | Tips, subs, sponsor in-stream | em_build | parcial | Cadência + disclosure live | 2026-09-10 |
 | mon-sponsor | Patrocínios diretos | global | /patrocine | Pacotes fechados | em_build | sim (implementação local) | Página/pacotes PT+EN implementado e validado localmente; sem contrato ou outreach | 2026-09-17 |
 | mon-newsletter | Lista email | global | captura hub | Sponsor / lançamentos | ideia | sim | Lead magnet real | 2026-09-10 |
+| mon-tiktok-shop | TikTok Shop links (@anderzilla) | br | /loja-tiktok ou hub BR | Tráfego→TikTok Shop / comissão ETP se elegível | especificado | sim | Confirmar ETP na conta; MVP CMS com Copy Link; ver research/TIKTOK-SHOP-SITE-LINKS.md | 2026-09-17 |
 | mon-auth-accounts | Contas leitor + e-mail/OAuth + perfil | global | /entrar /perfil | Habilita KP real e personalização sync | especificado | sim | Rodar BRIFs auth multi-IA (gap→legal→backend→UI) | 2026-09-17 |
 | mon-karaca | Karaca Points / Store | global | #points #store | Retenção (não vende KP) | em_build (demo) | sim (flags) | Plano econômico/XP preparado; definir verba e coorte; auth+ledger antes de resgate | 2026-09-10 |
 | mon-karaca-sponsored | Campanhas e catálogo Karaca patrocinados | global | Store Points + missões (proposto) | Conteúdo/campanha patrocinados; benefícios financiados | especificado | planejado | Negociar direito de resgate, cobertura, região e regulamento; nenhum sponsor ativo | 2026-09-10 |
