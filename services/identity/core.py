@@ -1,4 +1,6 @@
 """Visitor identity and rewards. All mutable decisions use one durable transaction."""
+import base64
+import binascii
 import json
 import os
 import re
@@ -13,6 +15,8 @@ from .config import POLICY_VERSION
 
 INTERESTS = {'games', 'consoles', 'celulares', 'ia', 'gadgets', 'curiosidades'}
 SESSION_TTL = 30 * 86400
+AVATAR_PRESETS = {f'/hub/avatars/preset-{i}.svg' for i in range(1, 9)}
+AVATAR_DATA_URI_MAX = 120000  # ~90KB decoded; client resizes/compresses before upload
 
 
 class Rejected(Exception):
@@ -40,6 +44,28 @@ def text(value, maximum=200, minimum=1):
     if not isinstance(value, str) or not minimum <= len(value.strip()) <= maximum:
         reject('invalid_text', 'Texto inválido.')
     return value.strip()
+
+
+def account_avatar(value):
+    if value is None:
+        return None
+    if not isinstance(value, str) or not value:
+        reject('invalid_avatar', 'Avatar inválido.')
+    if value in AVATAR_PRESETS:
+        return value
+    if value.startswith('data:image/'):
+        header = value.split(',', 1)[0]
+        mime = header[len('data:'):].split(';')[0]
+        if mime not in {'image/jpeg', 'image/png', 'image/webp'} or ';base64' not in header:
+            reject('invalid_avatar', 'Formato de imagem não suportado. Use JPEG, PNG ou WebP.')
+        if len(value) > AVATAR_DATA_URI_MAX:
+            reject('avatar_too_large', 'Imagem muito grande. Escolha uma foto menor.')
+        try:
+            base64.b64decode(value.split(',', 1)[1], validate=True)
+        except (ValueError, binascii.Error):
+            reject('invalid_avatar', 'Imagem inválida.')
+        return value
+    reject('invalid_avatar', 'Escolha um avatar da lista ou envie uma imagem.')
 
 
 def google_avatar(value):
@@ -247,7 +273,7 @@ class IdentityService:
             return self._me(db, principal)
 
     def update_profile(self, principal, patch):
-        if not isinstance(patch, dict) or set(patch) - {'displayName', 'lang', 'timezone', 'marketingOptIn', 'interests', 'saved', 'opened'}:
+        if not isinstance(patch, dict) or set(patch) - {'displayName', 'lang', 'timezone', 'marketingOptIn', 'interests', 'saved', 'opened', 'avatarUrl'}:
             reject('invalid_fields', 'Campos desconhecidos.')
         values = {}
         if 'displayName' in patch:
@@ -267,6 +293,8 @@ class IdentityService:
             if type(patch['marketingOptIn']) is not bool:
                 reject('invalid_marketing', 'Escolha inválida.')
             values['marketing_opt_in'] = int(patch['marketingOptIn'])
+        if 'avatarUrl' in patch:
+            values['avatar_url'] = account_avatar(patch['avatarUrl'])
         with self.store.transaction() as db:
             self._account(db, principal.account_id)
             for column, value in values.items():

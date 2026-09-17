@@ -1,4 +1,5 @@
 """Adversarial local tests; Azure SQL integration is sql_smoke.py, not emulated."""
+import base64
 import json
 import os
 import sqlite3
@@ -169,6 +170,24 @@ class IdentityTests(unittest.TestCase):
         self.assertIsNone(row['password_hash'])
         self.assertEqual(row['display_name'], 'Deleted')
         self.assertNotEqual(row['email'], data['email'])
+
+    def test_avatar_preset_upload_and_invalid_rejected(self):
+        principal, _, _ = self.register()
+        profile = self.svc.update_profile(principal, {'avatarUrl': '/hub/avatars/preset-3.svg'})
+        self.assertEqual(profile['account']['avatarUrl'], '/hub/avatars/preset-3.svg')
+        upload = 'data:image/jpeg;base64,' + base64.b64encode(b'\xff\xd8\xff' + b'0' * 200).decode()
+        profile = self.svc.update_profile(principal, {'avatarUrl': upload})
+        self.assertEqual(profile['account']['avatarUrl'], upload)
+        with self.assertRaises(Rejected):
+            self.svc.update_profile(principal, {'avatarUrl': '/hub/avatars/preset-9.svg'})
+        with self.assertRaises(Rejected):
+            self.svc.update_profile(principal, {'avatarUrl': 'https://evil.example/tracker.png'})
+        with self.assertRaises(Rejected):
+            self.svc.update_profile(principal, {'avatarUrl': 'data:image/jpeg;base64,' + base64.b64encode(b'0' * 200000).decode()})
+        with self.assertRaises(Rejected):
+            self.svc.update_profile(principal, {'avatarUrl': 'data:text/html;base64,' + base64.b64encode(b'<script>').decode()})
+        profile = self.svc.update_profile(principal, {'avatarUrl': None})
+        self.assertIsNone(profile['account']['avatarUrl'])
 
     def test_sessions_expire_and_revoke_without_local_fallback(self):
         principal, login, _ = self.register()
