@@ -10,11 +10,11 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 | ID | Processo | Market | Onde no site | Como monetiza | Status | CMS? | Próxima ação | Atualizado |
 |----|----------|--------|--------------|---------------|--------|------|--------------|------------|
 | mon-forgekit | ForgeKit produto próprio | intl | /forgekit + Gumroad | US$149 one-time ZIP | ativo | sim (implementação local) | CMS/página PT+EN validados localmente; validar release Azure; venda Gumroad permanece ativa | 2026-09-17 |
-| mon-hub-br | Hub comercial Área Brasil | br | /comercio/brasil | Agrupa ofertas BRL/afiliados BR | em_build | sim (implementação local) | Hub BR/estado vazio implementado e validado localmente; publicar e verificar Azure | 2026-09-17 |
-| mon-hub-intl | Hub comercial Área Internacional | intl | /comercio/internacional | Agrupa ForgeKit + afiliados USD | em_build | sim (implementação local) | Hub INT/ForgeKit implementado e validado localmente; publicar e verificar Azure | 2026-09-17 |
+| mon-hub-br | Hub comercial Área Brasil | br | /comercio/brasil | Agrupa ofertas BRL/afiliados BR | ativo | sim (implementação local) | Prod /pt/comercio/brasil HTTP 200; copy rails alinhada (deploy deste PR) | 2026-09-23 |
+| mon-hub-intl | Hub comercial Área Internacional | intl | /comercio/internacional | Agrupa ForgeKit + afiliados USD | ativo | sim (implementação local) | Prod /pt/comercio/internacional HTTP 200; copy rails alinhada (deploy deste PR) | 2026-09-23 |
 | mon-stackpick | StackPick comparações | global | /stackpick | Afiliado quando aprovado (por market) | em_build | sim (implementação local) | CTAs por mercado implementado e validado localmente; afiliação depende de aprovação real | 2026-09-17 |
 | mon-aff-br | Afiliados Brasil | br | /parceiros?market=br · hub BR | Amazon BR, ML, Hotmart… | em_build | sim (implementação local) | CMS por mercado preparado; nenhum candidato aprovado/ativado nesta execução | 2026-09-17 |
-| mon-aff-intl | Afiliados Internacional | intl | /parceiros?market=intl · hub INT | SaaS/Impact/Awin… | em_build | sim (implementação local) | CMS por mercado preparado; nenhum candidato ativado; PartnerStack permanece pausado | 2026-09-17 |
+| mon-aff-intl | Afiliados Internacional | intl | /parceiros?market=intl · hub INT | SaaS/Impact/Awin… | em_build | sim (implementação local) | CMS por mercado preparado; nenhum candidato ativado; PartnerStack: reapply liberado, ainda sem afiliado ativo | 2026-09-23 |
 | mon-ads | Slots publicidade | global | home / inventário | Ads / house | em_build | sim (implementação local) | Flags/vigência/placements implementados e validado localmente; nenhum anúncio vendido ou ativado | 2026-09-17 |
 | mon-live | Lives Twitch/YT/Kick | global | #live / hub live | Tips, subs, sponsor in-stream | em_build | parcial | Cadência + disclosure live | 2026-09-10 |
 | mon-sponsor | Patrocínios diretos | global | /patrocine | Pacotes fechados | em_build | sim (implementação local) | Página/pacotes PT+EN implementado e validado localmente; sem contrato ou outreach | 2026-09-17 |
@@ -24,9 +24,9 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 | mon-karaca | Karaca Points / Store | global | #points #store | Retenção (não vende KP) | em_build (demo) | sim (flags) | Plano econômico/XP preparado; definir verba e coorte; auth+ledger antes de resgate | 2026-09-10 |
 | mon-karaca-sponsored | Campanhas e catálogo Karaca patrocinados | global | Store Points + missões (proposto) | Conteúdo/campanha patrocinados; benefícios financiados | especificado | planejado | Negociar direito de resgate, cobertura, região e regulamento; nenhum sponsor ativo | 2026-09-10 |
 | mon-karaca-supply | Fornecimento B2B de recompensas | global | Store Points (proposto) | Custo de operação/retencão; não receita automática | especificado | planejado | Cotar fornecedores BR e validar elegibilidade, mínimos e SKUs; sem compra autorizada | 2026-09-10 |
-| mon-partnerstack | Rede PartnerStack | intl | — | SaaS affiliates USD | pausado | n/a | Reaplicar ≥ 2026-09-21 | 2026-09-10 |
+| mon-partnerstack | Rede PartnerStack | intl | — | SaaS affiliates USD | em_build | n/a | reapply liberado desde 2026-09-21 / em andamento | 2026-09-23 |
 | mon-kiwify-br | Infoproduto/checkout BRL | br | hub BR (futuro) | PIX → C6 via plataforma BR | ideia | sim | Avaliar Kiwify/Hotmart vs Stripe BR | 2026-09-10 |
-| mon-trust | Trust / Transparência | global | /transparencia | Confiança (explica BR×INT) | em_build | sim (implementação local) | Trust PT+EN e BR×INT implementados e validado localmente; publicar e verificar Azure | 2026-09-17 |
+| mon-trust | Trust / Transparência | global | /transparencia | Confiança (explica BR×INT) | ativo | sim (implementação local) | Prod /pt/transparencia HTTP 200; copy rails alinhada (deploy deste PR) | 2026-09-23 |
 | mon-platform | Receita nativa YT/Twitch | global | canais | Ads plataforma / bits | ideia | n/a | Após cadência estável | 2026-09-10 |
 | mon-automation-control | Controle de processos comerciais | global | CMS / Automações | Apoia verificação de ofertas e relatórios sem representar receita | em_build | sim | Painel/backend construídos e schema homolog aplicado; implantar bundle único e conectar fontes reais depois | 2026-09-10 |
 
@@ -36,8 +36,12 @@ Legenda Market: `br` · `intl` · `global` · `n/a`
 
 ## Rails de payout (operador — não publicar dados sensíveis)
 
-- **USD / INT:** destino Wise (informado só no painel da plataforma). Gumroad seller BR hoje via PayPal quando aplicável.
-- **BRL / BR:** destino C6 / PIX (informado só no painel). Nunca commit de chave PIX/CPF/conta.
+- **USD / INT:** destino operacional C6 Conta Global USD CODEMATRIX (alias final 9543; detalhes só em operação privada). Gumroad/PayPal quando aplicável. **Wise fora** — não é destino.
+- **BRL / BR:** PicPay PJ (alias final 2935; detalhes só em operação privada). Sem PIX ou conta completa neste arquivo.
+
+## Atualização de rails e Trust — 23/09/2026
+
+Autorização MoneyMaker + Trust Commerce nesta data. Fato informado pelo proprietário: produção já respondia HTTP 200 em `/pt/comercio/brasil`, `/pt/comercio/internacional` e `/pt/transparencia` antes deste ajuste de copy. Este PR alinha o destino USD e o texto de reaplicação PartnerStack. `mon-trust`, `mon-hub-br` e `mon-hub-intl` passam a `ativo` com essa evidência de rota e com a copy alinhada no deploy deste PR. `mon-partnerstack` fica `em_build` (reapply liberado desde 2026-09-21 / em andamento), não `ativo`: não há prova de painel de afiliado aprovado. Nenhum número completo de conta, PIX, Swift ou CPF entra neste arquivo.
 
 ## Como atualizar (obrigatório)
 
