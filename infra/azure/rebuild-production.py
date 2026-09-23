@@ -1,6 +1,13 @@
 """Rebuild current code with the verified production editorial corpus; never deploy.
 
 Default is read-only preflight. Pass --build after the source tree is ready.
+
+A complete sha256 match of the launch directory is the historical rollback bundle.
+This rebuild copies only media/ and cms-release.json from that directory, then
+exports the current app with the editorial public-after.json corpus. When the
+HTML/_next half of the bundle is absent, preflight continues if every media
+file and cms-release.json match production-artifact-sha256.json and no file
+that is present has a different hash. Any hash mismatch fails closed.
 """
 import argparse
 import hashlib
@@ -25,20 +32,35 @@ def digest(path):
 
 def preflight():
     manifest = json.loads((DATA / 'production-artifact-sha256.json').read_text(encoding='utf-8'))
-    for name, expected in manifest.items():
-        path = (SOURCE / name).resolve()
-        if not path.is_relative_to(SOURCE.resolve()) or not path.is_file() or digest(path) != expected:
-            raise ValueError('Production rollback artifact mismatch: ' + name)
     public = json.loads((DATA / 'public-after.json').read_text(encoding='utf-8'))
     if len(public['discoveries']) != 60 or len(public['media']) != 231:
         raise ValueError('Unexpected editorial corpus; review the baseline explicitly.')
+    source_root = SOURCE.resolve()
+    missing = []
+    for name, expected in manifest.items():
+        path = (SOURCE / name).resolve()
+        if not path.is_relative_to(source_root):
+            raise ValueError('Production rollback artifact mismatch: ' + name)
+        if not path.is_file():
+            missing.append(name)
+            continue
+        if digest(path) != expected:
+            raise ValueError('Production rollback artifact mismatch: ' + name)
+    required = [name for name in missing if name.startswith('media/') or name == 'cms-release.json']
+    if required:
+        raise ValueError('Production rollback artifact mismatch: ' + required[0])
+    if not (SOURCE / 'media').is_dir():
+        raise ValueError('Expected all 462 original media files.')
     media = {path.name: digest(path) for path in (SOURCE / 'media').iterdir() if path.is_file()}
     if len(media) != 462:
         raise ValueError('Expected all 462 original media files.')
+    for name, expected in manifest.items():
+        if name.startswith('media/') and media.get(name.split('/', 1)[1]) != expected:
+            raise ValueError('Production rollback artifact mismatch: ' + name)
     marker = json.loads((SOURCE / 'cms-release.json').read_text(encoding='utf-8'))
     if marker != {'releaseId': '40565a1a-f845-4294-b216-1cff2540065a', 'snapshotSha256': 'c424f7ab817c2e5d9452878e9e59d01b4ebf6869051dfdcc94467c9982f1eb73', 'containsDemo': False}:
         raise ValueError('Unexpected editorial release marker.')
-    return public, media, marker
+    return public, media, marker, not missing
 
 
 def verify_export(out, public, media):
@@ -65,8 +87,8 @@ def main():
     parser.add_argument('--build', action='store_true')
     parser.add_argument('--output-name', default='')
     args = parser.parse_args()
-    public, media, marker = preflight()
-    report = {'rollbackArtifact': str(SOURCE), 'publicData': str(DATA / 'public-after.json'), 'articles': 60, 'articlePages': 120, 'mediaFiles': len(media), 'baselineVerified': True}
+    public, media, marker, full_tree = preflight()
+    report = {'rollbackArtifact': str(SOURCE), 'publicData': str(DATA / 'public-after.json'), 'articles': 60, 'articlePages': 120, 'mediaFiles': len(media), 'baselineVerified': True, 'fullTreeVerified': full_tree, 'mediaVerified': True}
     if not args.build:
         print(json.dumps(report, indent=2))
         return
