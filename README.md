@@ -3,48 +3,50 @@
 **Senior Full-Stack Software Engineer** · React · TypeScript · Python/FastAPI · React Native  
 Curitiba, Brazil (UTC−3) · Remote · Open to international contracts
 
-I work end to end: React/TypeScript UIs, Python/FastAPI and Node services, and the integrations between them. I modernize legacy products, own delivery while staying hands-on, and use AI-assisted development with human review.
+I build web and mobile applications, backend services and the integrations that connect them. My work includes modernizing legacy applications, designing APIs and delivering products while staying hands-on with architecture, implementation and code review.
 
----
+**Opportunities:** Senior Full-Stack, React/TypeScript and React Native roles.  
+**Contact:** [LinkedIn](https://www.linkedin.com/in/andersonhenriquegoncalves) · [anderson@codematrix.com.br](mailto:anderson@codematrix.com.br)  
+**Languages:** English B2 (professional working proficiency) · Portuguese native
 
-### Stack
+### Selected professional experience
+
+- **Banking & fintech — Banco Next via IBM:** React Native work involving PIX, biometrics, onboarding and App Store / Google Play publishing.
+- **Legacy modernization — Stellantis via Reply:** Android/Java modernization with React Native and Expo, architecture and documentation.
+- **Full-stack platforms — Formel D / CNH Industrial:** React and React Native interfaces, Python/FastAPI services and integrations.
+- **Web products — Banco SBcash and others:** Next.js, authentication and secure API consumption.
+
+### Projects and live websites
+
+The showcases below describe product features and technical structure. Application source is private; published websites provide a public view of the user experience.
+
+| Project | Focus | Explore |
+| --- | --- | --- |
+| **Gear31** | Automotive community platform · Next.js, TypeScript, Prisma | [Showcase](https://github.com/anderzilla/gear31-showcase) · [Live website](https://www.gear31.club) |
+| **AnderZilla Web** | Games, AI and technology discovery website | [Showcase](https://github.com/anderzilla/AnderZilla-Web-showcase) · [Live website](https://anderzilla.com) |
+| **CodeMatrix Agency** | Agency platform with CRM and briefing flows · Node.js, Firestore | [Showcase](https://github.com/anderzilla/CodeMatrix-Agency-showcase) · [Company website](https://codematrix.com.br) |
+| **Carpedia** | Mobile car encyclopedia · React Native, Expo, TypeScript | [Showcase](https://github.com/anderzilla/Carpedia-showcase) |
+| **CodeMatrix Integration Hub** | Policy and orchestration gateway · Python, FastAPI | [Showcase](https://github.com/anderzilla/CodeMatrix-Integration-Hub-showcase) |
+
+### Public code samples
+
+Earlier personal projects and challenges, separate from professional client work:
+
+- [AutoTrack](https://github.com/anderzilla/AutoTrack) — vehicle management project in Python.
+- [api-ebanx](https://github.com/anderzilla/api-ebanx) — Python coding challenge.
+- [EAD-mobile](https://github.com/anderzilla/EAD-mobile) — React Native / GraphQL sample.
+
+### Technical toolkit
 
 | Area | Tools |
-|------|--------|
+| --- | --- |
 | **Frontend** | React, TypeScript, Next.js, Context API, Styled Components, React Hook Form + Yup, micro frontends |
 | **Backend** | Python, FastAPI, Node.js, Nest.js, Adonis.js, REST, GraphQL |
 | **Mobile** | React Native, Expo (EAS Build, OTA), iOS & Android, Firebase, offline-first, Google Play & Apple App Store |
-| **Practices** | Jest, Git, architecture & code review, Agile/Scrum |
+| **Engineering** | Jest, Git, architecture, code review, Agile/Scrum |
 
----
+I use AI-assisted development with human review.
 
-### Selected work
+### Get in touch
 
-- **Banking & fintech (React Native)** — PIX, biometrics, onboarding; App Store / Play publishing (Banco Next via IBM)
-- **Legacy → React Native + Expo** — Android/Java modernization with architecture and documentation (Stellantis via Reply)
-- **Full-stack platforms** — React/RN interfaces + Python/FastAPI services and integrations (Formel D / CNH Industrial)
-- **Web product work** — Next.js, auth, secure API consumption (Banco SBcash and others)
-
-Public samples (older demos / challenges — not client code):
-
-- [AutoTrack](https://github.com/anderzilla/AutoTrack) — Python
-- [api-ebanx](https://github.com/anderzilla/api-ebanx) — Python challenge
-- [EAD-mobile](https://github.com/anderzilla/EAD-mobile) — React Native / GraphQL
-
-Recent projects (source private, public showcase READMEs):
-
-- [gear31](https://github.com/anderzilla/gear31-showcase): automotive community platform (Next.js, Prisma)
-- [Carpedia](https://github.com/anderzilla/Carpedia-showcase): car encyclopedia app (React Native, Expo)
-- [CodeMatrix Integration Hub](https://github.com/anderzilla/CodeMatrix-Integration-Hub-showcase): policy and orchestration gateway (Python, FastAPI)
-- [CodeMatrix Agency](https://github.com/anderzilla/CodeMatrix-Agency-showcase): virtual agency platform with CRM and briefing flows (Node.js, Firestore)
-
----
-
-### Links
-
-- LinkedIn: [andersonhenriquegoncalves](https://www.linkedin.com/in/andersonhenriquegoncalves)
-- Site: [anderzilla.com](https://anderzilla.com)
-- Email: anderson.hg25@gmail.com
-- Phone: +55 41 99226-2544
-
-**English:** B2 (professional working proficiency) · **Portuguese:** native
+For opportunities and project conversations: [anderson@codematrix.com.br](mailto:anderson@codematrix.com.br) or [LinkedIn](https://www.linkedin.com/in/andersonhenriquegoncalves).
