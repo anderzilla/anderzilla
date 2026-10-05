@@ -31,7 +31,12 @@ Public samples (older demos / challenges — not client code):
 - [api-ebanx](https://github.com/anderzilla/api-ebanx) — Python challenge
 - [EAD-mobile](https://github.com/anderzilla/EAD-mobile) — React Native / GraphQL
 
-Recent client work stays in **private repos**; public `*-showcase` READMEs are coming next so recruiters can see scope without full source.
+Recent projects (source private, public showcase READMEs):
+
+- [gear31](https://github.com/anderzilla/gear31-showcase): automotive community platform (Next.js, Prisma)
+- [Carpedia](https://github.com/anderzilla/Carpedia-showcase): car encyclopedia app (React Native, Expo)
+- [CodeMatrix Integration Hub](https://github.com/anderzilla/CodeMatrix-Integration-Hub-showcase): policy and orchestration gateway (Python, FastAPI)
+- [CodeMatrix Agency](https://github.com/anderzilla/CodeMatrix-Agency-showcase): virtual agency platform with CRM and briefing flows (Node.js, Firestore)
 
 ---
 
