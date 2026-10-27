@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { useHub } from "./HubProvider";
+import { BrandAvatar } from "../BrandAssets";
 import { articleUrl, colors, type Discovery } from "./model";
 import { DemoBadge, findMedia, SafeMarkdown } from './Editorial';
 
@@ -29,15 +30,9 @@ export function Icon({ name }: { name: string }) {
     </svg>
   );
 }
+// Keep the compatibility name used by the community UI.
 export function Ghost({ size = 62 }: { size?: number }) {
-  return (
-    <img
-      src="/hub/anderzilla-ghost.png"
-      alt="AnderZilla Ghost"
-      width={size}
-      height={size}
-    />
-  );
+ return <BrandAvatar size={size} />;
 }
 export function External({
   href,
@@ -272,3 +267,4 @@ export function DetailDialog() {
     </dialog>
   );
 }
+

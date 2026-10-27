@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Oxanium, Space_Grotesk } from "next/font/google";
 import { SiteFrame } from "@/components/SiteFrame";
 import { SITE } from "../../content/affiliates";
 import "./globals.css";
+import "./brand.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,10 +49,10 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
     title: `${SITE.name} — Games, IA e boas descobertas`,
-    description: "Games, AI, gadgets and great discoveries with the Ghost.",
+    description: "Games, AI, gadgets and great discoveries with AnderZilla.",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/brand/social-card.png",
         width: 1200,
         height: 630,
         alt: "AnderZilla",
@@ -62,19 +63,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} — Games, IA e boas descobertas`,
     description: "Games, AI, gadgets and great discoveries.",
-    images: ["/opengraph-image"],
+    images: ["/brand/social-card.png"],
   },
   robots: {
     index: true,
     follow: true,
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/brand/favicon.ico", sizes: "any" }, { url: "/brand/favicon-32.png", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   alternates: {
     canonical: SITE.url,
   },
 };
+
+export const viewport: Viewport = { themeColor: "#080d19", colorScheme: "dark" };
 
 export default function RootLayout({
   children,
@@ -91,3 +95,4 @@ export default function RootLayout({
     </html>
   );
 }
+

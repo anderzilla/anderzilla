@@ -2102,3 +2102,32 @@
 
 .article-share{margin:32px 0;padding:24px;border:1px solid var(--border,#334563);border-radius:20px;background:#10182b}
 .article-share>strong{display:block;font-size:1.2rem;margin-bottom:16px}.share-actions{display:flex;flex-wrap:wrap;gap:12px}.article-share .source:empty{display:none}.article-sources{margin:24px 0;padding:20px;border:1px solid #334563;border-radius:16px}.article-sources summary{cursor:pointer;font-weight:700;min-height:28px}.article-sources li{margin:16px 0;overflow-wrap:anywhere}.article-sources p{color:#a9b6ce}.article-related{margin:32px 0}.article-related li{margin:16px 0}.article-page .lede{max-width:70ch}.article-page figure{margin:24px 0}.article-page figcaption{font-size:.8rem;color:#a9b6ce;margin-top:8px}.article-page nav{display:flex;gap:20px;flex-wrap:wrap}
+
+
+/* AnderZilla 2026: approved skull and lettering, navy foundation preserved. */
+.hub{--yellow:#ffb000;--brand-ivory:#fff1cf;--brand-orange:#ff8a00;--brand-red:#ef263d;--brand-purple:#51205e}
+.hub header{flex-wrap:wrap;column-gap:24px;row-gap:16px}
+.hub .brand{flex-shrink:0}
+.hub .brand img.az-wordmark{width:234px;height:auto;border:0;border-radius:0}
+.hub .brand small{letter-spacing:1.3px;font-style:normal;margin-top:2px}
+.hub header nav{flex:1 1 480px;flex-wrap:wrap;column-gap:20px;row-gap:2px}
+.hub .brand-footer img.az-wordmark{width:180px;height:auto;border:0;border-radius:0}
+.hub img.az-avatar{border-color:#2b3851}
+.hub .button:not(.secondary){box-shadow:none}
+.hub .brand-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.85fr);align-items:center;gap:16px;min-height:430px;background:#080d19}
+.hub .brand-hero>img{position:static;inset:auto;width:100%;height:auto;object-fit:contain;grid-column:2;grid-row:1}
+.hub .brand-hero:after{display:none}
+.hub .brand-hero-copy{grid-column:1;grid-row:1;min-width:0}
+.hub .brand-hero .eyebrow{flex-wrap:wrap;line-height:1.5}
+.hub .brand-hero h2{font-size:clamp(32px,3.4vw,46px)}
+.hub .brand-hero .hero-buttons{flex-wrap:wrap}
+.hub .brand-hero-copy>p:not(.eyebrow){color:#cbd7e9;font-size:13px;line-height:1.7;max-width:375px;margin:0 0 23px}
+.hub .icon{stroke-width:1.8}
+@media(max-width:1100px){.hub header nav{order:3;flex-basis:100%;margin-left:0}.hub header .actions{margin-left:auto}.hub .brand-hero{grid-template-columns:minmax(0,1fr) minmax(170px,.75fr)}.hub .brand-hero h2{font-size:36px}}
+@media(max-width:800px){.hub .brand-hero{grid-template-columns:1fr;min-height:auto}.hub .brand-hero>img{grid-column:1;grid-row:1;max-width:380px;max-height:230px;justify-self:center}.hub .brand-hero-copy{grid-column:1;grid-row:2}.hub .brand-hero h2{font-size:38px}}
+@media(max-width:560px){.hub .brand img.az-wordmark{width:190px;height:auto}.hub .brand small{font-size:7px;letter-spacing:1px}.hub header{column-gap:14px}.hub header nav{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;gap:18px;padding-bottom:6px}.hub .brand-hero h2{font-size:34px}.hub .brand-hero>img{max-height:190px}.hub .brand-hero{padding:22px}.hub .brand-footer .az-wordmark{width:160px}}
+
+/* Legacy commerce markup keeps its data source untouched. */
+.hub .brand:has(>.wordmark)>img{display:none}
+.hub .brand>.wordmark{display:block;font-size:0;width:234px;height:78px;background:url('/brand/lettering.webp') center/contain no-repeat}
+@media(max-width:560px){.hub .brand>.wordmark{font-size:0;width:190px;height:64px}}
