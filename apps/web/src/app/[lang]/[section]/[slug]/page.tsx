@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { discoveries, type Discovery, type Language } from '@/components/hub/model';
 import published from '@/components/hub/cms-published.json';
-import { DemoBadge, findMedia, SafeMarkdown } from '@/components/hub/Editorial';
+import { DemoBadge, findMedia, mediaCaption, SafeMarkdown } from '@/components/hub/Editorial';
 import '@/components/hub/hub.css';
 import { MediaGallery } from '@/components/hub/MediaGallery';
 import { ArticleShare } from '@/components/hub/ArticleShare';
@@ -40,7 +40,7 @@ export default async function Article({params}:{params:Promise<Params>}){
  const schema={'@context':'https://schema.org','@type':item.editorialType==='news'?'NewsArticle':'Article',headline:local(item,'title',p.lang),description:local(item,'summary',p.lang),inLanguage:pt?'pt-BR':'en',datePublished:item.published,dateModified:item.updatedAt||item.verifiedAt||item.published,author:{'@type':'Organization',name:item.author||'AnderZilla',url:'https://anderzilla.com'},publisher:{'@type':'Organization',name:'AnderZilla',url:'https://anderzilla.com'},mainEntityOfPage:`https://anderzilla.com${path(item,p.lang,p.section)}`,...(media?{image:new URL(media.previewUrl||media.url,'https://anderzilla.com').href}:{}),citation:item.sources?.map(source=>source.url)||[item.url]};
  return <div className="hub" lang={pt?'pt-BR':'en'}><a className="skip" href="#article">{pt?'Pular para o conteúdo':'Skip to content'}</a>
    {!item.isDemo&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/>}
-   <header><a className="brand" href={`/?lang=${p.lang}#home`}><BrandWordmark /></a><nav aria-label={pt?'Navegação do artigo':'Article navigation'}><a href={`/${p.lang}/radar/`}>← Radar</a><a href={path(item,pt?'en':'pt',p.section)} lang={pt?'en':'pt-BR'}>{pt?'Read in English':'Ler em português'}</a></nav></header>
+   <header><a className="brand" href={`/${p.lang}/#home`}><BrandWordmark /></a><nav aria-label={pt?'Navegação do artigo':'Article navigation'}><a href={`/${p.lang}/radar/`}>← Radar</a><a href={path(item,pt?'en':'pt',p.section)} lang={pt?'en':'pt-BR'}>{pt?'Read in English':'Ler em português'}</a></nav></header>
    <main id="article" className="wrap article-page" tabIndex={-1}><article>
      <p className="eyebrow">{categoryLabel} / {type?type[pt?0:1]:(pt?'EXPLORAR':'EXPLORE')}</p>
      {item.isDemo&&<DemoBadge english={!pt}/>}
@@ -48,7 +48,7 @@ export default async function Article({params}:{params:Promise<Params>}){
      <p className="source">{item.author||'AnderZilla'}{item.published&&<> · <time dateTime={item.published}>{item.published}</time></>}</p>
      {item.verifiedAt&&<p className="source">{pt?'Apuração':'Verified'}: <time dateTime={item.verifiedAt}>{item.verifiedAt}</time>{item.eventDate&&<> · {pt?'Data do anúncio ou evento':'Announcement or event date'}: <time dateTime={item.eventDate}>{item.eventDate}</time></>}</p>}
      {item.updatedAt&&<p className="source">{pt?'Atualizado em':'Updated'}: <time dateTime={item.updatedAt}>{item.updatedAt}</time></p>}
-     {media&&<figure><a className="article-cover-link" href={media.url} target="_blank" rel="noopener noreferrer" aria-label={`${pt?'Abrir imagem ampliada':'Open full image'}: ${(pt?media.altPT:media.altEN)||''}`}><img className="article-cover" src={media.url} width={media.width} height={media.height} alt={(pt?media.altPT:media.altEN)||''}/></a><figcaption>{media.credit} · {media.license}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{pt?'Fonte da imagem':'Image source'} ↗</a></>}</figcaption></figure>}
+     {media&&<figure><a className="article-cover-link" href={media.url} target="_blank" rel="noopener noreferrer" aria-label={`${pt?'Abrir imagem ampliada':'Open full image'}: ${(pt?media.altPT:media.altEN)||''}`}><img className="article-cover" src={media.url} width={media.width} height={media.height} alt={(pt?media.altPT:media.altEN)||''}/></a><figcaption>{mediaCaption(media.credit, media.license)}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{pt?'Fonte da imagem':'Image source'} ↗</a></>}</figcaption></figure>}
      <SafeMarkdown body={body}/>
      <MediaGallery ids={item.mediaIds} english={!pt}/>
      {!!item.sources?.length&&<details className="article-sources"><summary>{pt?'Fontes e contexto da apuração':'Sources and reporting context'} ({item.sources.length})</summary><ul>{item.sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a>{source.publishedAt&&<time dateTime={source.publishedAt}> · {source.publishedAt}</time>}{source.note&&pt&&<p>{source.note}</p>}</li>)}</ul></details>}

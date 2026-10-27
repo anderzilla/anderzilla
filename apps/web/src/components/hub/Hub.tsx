@@ -81,9 +81,9 @@ function Header() {
               {label}
             </a>
           ))}
-          <a href={`/?lang=${lang}&category=ia#home`}>{t("IA", "AI")}</a>
-          <a href={`/?lang=${lang}&category=games#home`}>Games</a>
-          <a href={`/?lang=${lang}&category=gadgets#home`}>Gadgets</a>
+          <a href={`/${lang}/?category=ia#home`}>{t("IA", "AI")}</a>
+          <a href={`/${lang}/?category=games#home`}>Games</a>
+          <a href={`/${lang}/?category=gadgets#home`}>Gadgets</a>
           <a href={`/${lang}/stackpick/`}>StackPick</a>
           <a href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</a>
           <a href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</a>
@@ -133,8 +133,8 @@ function Footer() {
       <a href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</a>
       <a href={`/${lang}/transparencia/`}>{t("Transparência", "Transparency")}</a>
       <a href={`/${lang}/forgekit/`}>ForgeKit</a>
-      <a href="/privacy">{t("Privacidade", "Privacy")}</a>
-      <a href="/terms">{t("Termos", "Terms")}</a>
+      <a href="/privacy/">{t("Privacidade", "Privacy")}</a>
+      <a href="/terms/">{t("Termos", "Terms")}</a>
       <small>
         {t(
           "Curadoria editorial com fontes, créditos e data de apuração. Visitantes guardam progresso neste navegador; contas sincronizam preferências quando disponíveis. KP oficial depende de validação do servidor.",
@@ -448,9 +448,9 @@ function HubContent() {
     </div>
   );
 }
-export default function Hub() {
+export default function Hub({initialLang = "pt"}: {initialLang?: "pt" | "en"}) {
   return (
-    <AccountProvider><HubProvider>
+    <AccountProvider><HubProvider initialLang={initialLang}>
       <HubContent />
     </HubProvider></AccountProvider>
   );

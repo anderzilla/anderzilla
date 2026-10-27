@@ -3,7 +3,7 @@ import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { SITE } from "../../../content/affiliates";
 
 export const metadata: Metadata = {
-  alternates: { canonical: `${SITE.url}/terms` },
+  alternates: { canonical: `${SITE.url}/terms/` },
   title: "Terms",
   description: "Terms of use and affiliate disclosure for AnderZilla.",
 };

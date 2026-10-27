@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   alternates: {
-    canonical: SITE.url,
+    canonical: `${SITE.url}/`,
   },
 };
 

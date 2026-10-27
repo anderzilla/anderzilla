@@ -4,7 +4,7 @@ import { Credibility } from "@/components/Credibility";
 import { SITE } from "../../../content/affiliates";
 
 export const metadata: Metadata = {
-  alternates: { canonical: `${SITE.url}/about` },
+  alternates: { canonical: `${SITE.url}/about/` },
   title: "About",
   description: `About AnderZilla — ${SITE.role} building from ${SITE.location}.`,
 };
@@ -23,8 +23,8 @@ export default function AboutPage() {
           across mobile, web, and backend (banking, industrial, agritech).
         </p>
         <p>
-          Explore the <Link href="/forgekit">ForgeKit</Link> software starter and
-          <Link href="/stackpick"> StackPick</Link> tool comparisons. Each is built around
+          Explore the <Link href="/forgekit/">ForgeKit</Link> software starter and
+          <Link href="/stackpick/"> StackPick</Link> tool comparisons. Each is built around
           helping you understand your options and make progress on your own projects.
         </p>
         <h2>What I care about</h2>
@@ -49,7 +49,7 @@ export default function AboutPage() {
         >
           Buy on Gumroad — {SITE.forgekit.price}
         </a>
-        <Link href="/links" className="btn-secondary">
+        <Link href="/links/" className="btn-secondary">
           All links
         </Link>
       </div>

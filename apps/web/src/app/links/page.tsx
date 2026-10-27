@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE, SOCIAL_CHANNELS } from "../../../content/affiliates";
 
 export const metadata: Metadata = {
-  alternates: { canonical: `${SITE.url}/links` },
+  alternates: { canonical: `${SITE.url}/links/` },
   title: "Links",
   description: "Find AnderZilla on YouTube, TikTok, Instagram, Twitch, and Kick. Explore StackPick and ForgeKit.",
 };
@@ -26,9 +26,9 @@ const links = [
     external: true,
     primary: false,
   },
-  { href: "/forgekit", label: "ForgeKit product page", external: false, primary: false },
-  { href: "/stackpick", label: "StackPick hub", external: false, primary: false },
-  { href: "/about", label: "About AnderZilla", external: false, primary: false },
+  { href: "/forgekit/", label: "ForgeKit product page", external: false, primary: false },
+  { href: "/stackpick/", label: "StackPick hub", external: false, primary: false },
+  { href: "/about/", label: "About AnderZilla", external: false, primary: false },
   {
     href: SITE.social.github,
     label: "GitHub",

@@ -61,7 +61,7 @@ export function StackPickComparisonView({ data }: { data: Comparison }) {
   return (
     <article className="container-page py-16">
       <nav aria-label="Breadcrumb" className="text-sm text-zinc-500">
-        <Link href="/stackpick" className="hover:text-amber-soft">
+        <Link href="/stackpick/" className="hover:text-amber-soft">
           StackPick
         </Link>
         <span className="mx-2">/</span>
@@ -223,7 +223,7 @@ export function StackPickComparisonView({ data }: { data: Comparison }) {
 
       <p className="mt-12 text-sm text-zinc-500">
         Prefer a shippable starter kit?{" "}
-        <Link href="/forgekit" className="text-amber-soft hover:underline">
+        <Link href="/forgekit/" className="text-amber-soft hover:underline">
           ForgeKit
         </Link>{" "}
         · Buy on Gumroad for {SITE.forgekit.price}.

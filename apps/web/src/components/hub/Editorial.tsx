@@ -4,6 +4,16 @@ import published from './cms-published.json';
 
 export type PublicMedia = {id:string;url:string;previewUrl?:string;sourceUrl?:string;mediaType?:string;altPT?:string;altEN?:string;credit?:string;license?:string;width?:number;height?:number};
 export function findMedia(id?:string){return (published.media as PublicMedia[]).find(item=>item.id===id)}
+const RIGHTS = 'Direitos reservados ao titular.';
+export function mediaCaption(credit?:string, license?:string){
+  const parts = [credit, license].map(value => (value || '').trim()).filter(Boolean);
+  const shown: string[] = [];
+  for (const part of parts) {
+    if (shown.some(previous => previous.includes(part) || (part.includes(RIGHTS) && previous.includes(RIGHTS)))) continue;
+    shown.push(part);
+  }
+  return shown.join(' · ');
+}
 export function SafeMarkdown({body}:{body:string}){
   return <div className="editorial-body"><Markdown remarkPlugins={[remarkGfm]} skipHtml
     urlTransform={url=>/^(https:\/\/|mailto:|\/(?!\/)|#)/i.test(url)?url:''}

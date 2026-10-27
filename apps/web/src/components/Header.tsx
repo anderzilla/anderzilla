@@ -3,10 +3,10 @@ import Link from "next/link";
 import { SITE } from "../../content/affiliates";
 
 const nav = [
-  { href: "/forgekit", label: "ForgeKit" },
-  { href: "/stackpick", label: "StackPick" },
-  { href: "/about", label: "About" },
-  { href: "/links", label: "Links" },
+  { href: "/forgekit/", label: "ForgeKit" },
+  { href: "/stackpick/", label: "StackPick" },
+  { href: "/about/", label: "About" },
+  { href: "/links/", label: "Links" },
 ];
 
 export function Header() {

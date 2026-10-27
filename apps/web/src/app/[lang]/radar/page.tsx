@@ -82,9 +82,9 @@ export default async function RadarIndex({params}: {params: Promise<Params>}) {
       <a className="skip" href="#radar">{pt ? 'Pular para o conteúdo' : 'Skip to content'}</a>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schema).replace(/</g, '\\u003c')}} />
       <header>
-        <a className="brand" href={`/?lang=${lang}#home`}><BrandWordmark /></a>
+        <a className="brand" href={`/${lang}/#home`}><BrandWordmark /></a>
         <nav aria-label={pt ? 'Navegação do Radar' : 'Radar navigation'}>
-          <a href={`/?lang=${lang}#home`}>{pt ? 'Início' : 'Home'}</a>
+          <a href={`/${lang}/#home`}>{pt ? 'Início' : 'Home'}</a>
           <a href={pt ? '/en/radar/' : '/pt/radar/'} hrefLang={pt ? 'en' : 'pt-BR'} lang={pt ? 'en' : 'pt-BR'}>{pt ? 'Read in English' : 'Ler em português'}</a>
         </nav>
       </header>

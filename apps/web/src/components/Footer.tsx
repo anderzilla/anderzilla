@@ -19,7 +19,7 @@ export function Footer() {
           <p className="text-sm font-semibold text-zinc-200">Products</p>
           <ul className="mt-3 space-y-2 text-sm text-zinc-400">
             <li>
-              <Link href="/forgekit" className="hover:text-amber-soft">
+              <Link href="/forgekit/" className="hover:text-amber-soft">
                 ForgeKit
               </Link>
             </li>
@@ -34,7 +34,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <Link href="/stackpick" className="hover:text-amber-soft">
+              <Link href="/stackpick/" className="hover:text-amber-soft">
                 StackPick
               </Link>
             </li>
@@ -44,22 +44,22 @@ export function Footer() {
           <p className="text-sm font-semibold text-zinc-200">Site</p>
           <ul className="mt-3 space-y-2 text-sm text-zinc-400">
             <li>
-              <Link href="/about" className="hover:text-amber-soft">
+              <Link href="/about/" className="hover:text-amber-soft">
                 About
               </Link>
             </li>
             <li>
-              <Link href="/links" className="hover:text-amber-soft">
+              <Link href="/links/" className="hover:text-amber-soft">
                 Links
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-amber-soft">
+              <Link href="/privacy/" className="hover:text-amber-soft">
                 Privacy
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="hover:text-amber-soft">
+              <Link href="/terms/" className="hover:text-amber-soft">
                 Terms
               </Link>
             </li>

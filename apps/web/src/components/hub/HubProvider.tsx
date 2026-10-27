@@ -22,8 +22,13 @@ import {
   type Route,
 } from "./model";
 
-function useHubState() {
-  const [lang, setLang] = useState<Language>("pt");
+function localeFromPath(pathname: string): Language | null {
+  const first = pathname.split("/").filter(Boolean)[0];
+  return first === "pt" || first === "en" ? first : null;
+}
+
+function useHubState(initialLang: Language) {
+  const [lang, setLang] = useState<Language>(initialLang);
   const [route, setRoute] = useState<Route>("home");
   const account=useAccount();
   const interestPrompted=useRef(false);
@@ -41,11 +46,8 @@ function useHubState() {
       setRoute(routes.includes(hash as Route) ? (hash as Route) : "home");
       setCurrent(null);
     };
-    setLang(
-      new URLSearchParams(window.location.search).get("lang") === "en"
-        ? "en"
-        : "pt",
-    );
+    const fromPath = localeFromPath(window.location.pathname);
+    setLang(fromPath ?? (new URLSearchParams(window.location.search).get("lang") === "en" ? "en" : "pt"));
     const requestedCategory = new URLSearchParams(window.location.search).get("category");
     if(categories.includes(requestedCategory as Category))setFilter(requestedCategory as Category);
     sync();
@@ -85,11 +87,19 @@ function useHubState() {
       window.scrollTo(0, 0);
     }
   }, [route, ready]);
-  useEffect(()=>{if(account.user)setLang(account.user.language)},[account.user?.id,account.user?.language]);
+  useEffect(()=>{if(account.user && !localeFromPath(window.location.pathname))setLang(account.user.language)},[account.user?.id,account.user?.language]);
   const changeLanguage = (value: Language) => {
     setLang(value);
     if(account.user)void account.savePreferences({language:value});
     const url = new URL(window.location.href);
+    const parts = url.pathname.split("/").filter(Boolean);
+    if (parts[0] === "pt" || parts[0] === "en") {
+      parts[0] = value;
+      url.pathname = `/${parts.join("/")}/`;
+      url.searchParams.delete("lang");
+      window.location.assign(url.toString());
+      return;
+    }
     url.searchParams.set("lang", value);
     window.history.replaceState(null, "", url);
   };
@@ -193,8 +203,8 @@ function useHubState() {
   };
 }
 const Context = createContext<ReturnType<typeof useHubState> | null>(null);
-export function HubProvider({ children }: { children: ReactNode }) {
-  const state = useHubState();
+export function HubProvider({ children, initialLang = "pt" }: { children: ReactNode; initialLang?: Language }) {
+  const state = useHubState(initialLang);
   return <Context.Provider value={state}>{children}</Context.Provider>;
 }
 export function useHub() {

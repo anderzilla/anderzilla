@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { findMedia } from './Editorial';
+import { findMedia, mediaCaption } from './Editorial';
 export function MediaGallery({ids,english=false}:{ids?:string;english?:boolean}){
  const [playing,setPlaying]=useState<string|null>(null);
  return <div className="media-gallery">{(ids||'').split(',').filter(Boolean).map(id=>{
@@ -13,7 +13,7 @@ export function MediaGallery({ids,english=false}:{ids?:string;english?:boolean})
     media.mediaType==='video'&&/\.mp4(?:\?|$)/i.test(media.url)?<video src={media.url} controls preload="none" aria-label={title}/>:
     media.mediaType==='audio'?<audio src={media.url} controls preload="none" aria-label={title}/>:
     <a href={media.url} target="_blank" rel="noopener noreferrer">{title} ↗</a>}
-    <figcaption>{title} · {media.credit} · {media.license}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{english?'Image source':'Fonte da imagem'} ↗</a></>}</figcaption>
+    <figcaption>{[title, mediaCaption(media.credit, media.license)].filter(Boolean).join(' · ')}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{english?'Image source':'Fonte da imagem'} ↗</a></>}</figcaption>
   </figure>
  })}</div>
 }
