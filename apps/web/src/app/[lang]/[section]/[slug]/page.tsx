@@ -1,7 +1,7 @@
 import { BrandWordmark } from "@/components/BrandAssets";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { discoveries, type Discovery, type Language } from '@/components/hub/model';
+import { compareRadarNewestFirst, discoveries, type Discovery, type Language } from '@/components/hub/model';
 import published from '@/components/hub/cms-published.json';
 import { DemoBadge, findMedia, mediaCaption, SafeMarkdown } from '@/components/hub/Editorial';
 import '@/components/hub/hub.css';
@@ -36,7 +36,7 @@ export default async function Article({params}:{params:Promise<Params>}){
  const types:Record<string,[string,string]>={news:['Notícia','News'],analysis:['Análise documental','Documentary analysis'],comparison:['Comparação documental','Documentary comparison'],explainer:['Entenda','Explainer'],rumor:['Rumor em apuração','Unconfirmed report']};
  const type=types[item.editorialType||''];
  const categoryLabel=({games:['Games','Games'],consoles:['Consoles','Consoles'],celulares:['Celulares','Phones'],ia:['IA','AI'],gadgets:['Gadgets','Gadgets'],curiosidades:['Curiosidades','Curiosities']} as Record<string,[string,string]>)[item.category]?.[pt?0:1]||'AnderZilla';
- const related=discoveries.filter(x=>x.id!==item.id&&x.category===item.category&&!x.isDemo).slice(0,3);
+ const related=discoveries.filter(x=>x.id!==item.id&&x.category===item.category&&!x.isDemo).sort(compareRadarNewestFirst).slice(0,3);
  const schema={'@context':'https://schema.org','@type':item.editorialType==='news'?'NewsArticle':'Article',headline:local(item,'title',p.lang),description:local(item,'summary',p.lang),inLanguage:pt?'pt-BR':'en',datePublished:item.published,dateModified:item.updatedAt||item.verifiedAt||item.published,author:{'@type':'Organization',name:item.author||'AnderZilla',url:'https://anderzilla.com'},publisher:{'@type':'Organization',name:'AnderZilla',url:'https://anderzilla.com'},mainEntityOfPage:`https://anderzilla.com${path(item,p.lang,p.section)}`,...(media?{image:new URL(media.previewUrl||media.url,'https://anderzilla.com').href}:{}),citation:item.sources?.map(source=>source.url)||[item.url]};
  return <div className="hub" lang={pt?'pt-BR':'en'}><a className="skip" href="#article">{pt?'Pular para o conteúdo':'Skip to content'}</a>
    {!item.isDemo&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/>}

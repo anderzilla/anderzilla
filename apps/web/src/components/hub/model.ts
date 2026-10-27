@@ -76,13 +76,25 @@ export interface Discovery {
 }
 export const discoveries = (cmsPublished.enabled ? cmsPublished.discoveries : discoveryData) as Discovery[];
 export function articleUrl(item:Discovery,lang:Language){return `/${lang}/radar/${(lang==='pt'?item.slugPT:item.slugEN)||item.id}/`}
+function calendarDay(value?: string) {
+  const day = (value || "").slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(day) ? day : "";
+}
+/** Atualização ou apuração, a que for mais recente; sem as duas, a publicação. */
+export function radarRecency(item: Discovery) {
+  const editorial = [calendarDay(item.updatedAt), calendarDay(item.verifiedAt)].filter(Boolean).sort();
+  return editorial.at(-1) || calendarDay(item.published) || "0000-00-00";
+}
+/** Mais nova primeiro. Empate: publicação mais recente e, depois, o título. */
+export function compareRadarNewestFirst(a: Discovery, b: Discovery) {
+  const byRecent = radarRecency(b).localeCompare(radarRecency(a));
+  if (byRecent) return byRecent;
+  const byPublished = calendarDay(b.published).localeCompare(calendarDay(a.published));
+  if (byPublished) return byPublished;
+  return a.titlePT.localeCompare(b.titlePT, "pt");
+}
 export function publishedRadar(){
-  return discoveries.filter(item=>!item.isDemo).sort((a,b)=>{
-    const left=a.eventDate||a.published;
-    const right=b.eventDate||b.published;
-    if(left!==right) return left<right?1:-1;
-    return a.titlePT.localeCompare(b.titlePT,'pt');
-  });
+  return discoveries.filter(item=>!item.isDemo).sort(compareRadarNewestFirst);
 }
 export const colors: Record<Category, string> = {
   games: "#b39aff",

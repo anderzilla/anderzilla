@@ -5,6 +5,7 @@ import { HubProvider, useHub } from "./HubProvider";
 import {
   categories,
   colors,
+  compareRadarNewestFirst,
   discoveries,
   socials,
   type Category,
@@ -151,17 +152,10 @@ function Home() {
   const { t, filter, setFilter, labels, player, surprise,title,summary } = useHub();
   const [query,setQuery]=useState('');
   const [pageSize,setPageSize]=useState(12);
-  const matching = [...discoveries]
-    .sort(
-      (a, b) =>
-        Number(player.interests.includes(b.category)) -
-          Number(player.interests.includes(a.category)) ||
-        b.published.localeCompare(a.published) || (b.eventDate||b.published).localeCompare(a.eventDate||a.published),
-    )
-    .filter((x) => (filter === "all" || x.category === filter)&&`${title(x)} ${summary(x)} ${x.tags||''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
-  const categoryOrder=[...categories].sort((a,b)=>Number(player.interests.includes(b))-Number(player.interests.includes(a)));
-  const groups=categoryOrder.map(category=>matching.filter(item=>item.category===category));
-  const feed=filter==='all'&&!query.trim()?Array.from({length:Math.max(0,...groups.map(group=>group.length))},(_,index)=>groups.flatMap(group=>group[index]?[group[index]]:[])).flat():matching;
+  const matching = discoveries
+    .filter((x) => (filter === "all" || x.category === filter)&&`${title(x)} ${summary(x)} ${x.tags||''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()))
+    .sort(compareRadarNewestFirst);
+  const feed = matching;
   function loadMore(){const next=feed[pageSize];setPageSize(size=>size+12);requestAnimationFrame(()=>{if(next)document.getElementById(`discovery-${next.id}`)?.querySelector<HTMLAnchorElement>('h3 a')?.focus()})}
   function scrollFeed() {
     document
@@ -357,8 +351,8 @@ function Home() {
             </h2>
             <p>
               {t(
-                "Escolha seus temas. Eles aparecem primeiro na próxima visita.",
-                "Choose your topics. They appear first on your next visit.",
+                "Escolha seus temas. O radar lista as notas da mais nova para a mais antiga.",
+                "Choose your topics. The radar lists notes from newest to oldest.",
               )}
             </p>
           </div>

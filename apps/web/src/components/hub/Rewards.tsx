@@ -215,8 +215,8 @@ export function ProfilePage() {
       <h1>{t("Escolha seu universo.", "Choose your universe.")}</h1>
       <p className="lede">
         {t(
-          "Seus assuntos favoritos aparecem primeiro. Você ainda pode explorar todos os temas.",
-          "Your favorite topics appear first. You can still explore every topic.",
+          "As notas do radar seguem da mais nova para a mais antiga. Você ainda pode explorar todos os temas.",
+          "Radar notes run from newest to oldest. You can still explore every topic.",
         )}
       </p>
       <AccountPanel/>
