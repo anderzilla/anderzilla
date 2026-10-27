@@ -1,0 +1,5 @@
+.az-wordmark{display:block;width:234px;max-width:100%;height:auto;object-fit:contain}
+.az-wordmark-legacy{width:190px}
+.az-avatar{display:block;object-fit:contain;background:#080d19;border-radius:50%;flex-shrink:0}
+.brand-footer{display:inline-block;flex-shrink:0}
+.brand-footer .az-wordmark{width:180px}

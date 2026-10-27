@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandWordmark } from "./BrandAssets";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { SITE, SOCIAL_CHANNELS } from "../../content/affiliates";
 
@@ -8,7 +9,7 @@ export function Footer() {
     <footer className="mt-8 border-t border-ink-600/60 bg-ink-900/40">
       <div className="container-page grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-semibold text-white">AnderZilla</p>
+          <Link href="/" className="brand-footer"><BrandWordmark /></Link>
           <p className="mt-2 text-sm text-zinc-400">
             My corner of tech, AI, games, and gadgets. Stay curious, try things,
             and have some fun.
