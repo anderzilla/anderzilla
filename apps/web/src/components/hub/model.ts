@@ -60,6 +60,8 @@ export interface Discovery {
   isDemo?: boolean;
   sources?: {name:string;url:string;publishedAt?:string;note?:string}[];
   verifiedAt?: string;
+  /** Selo "Atualizado em", separado da apuração original. */
+  updatedAt?: string;
   eventDate?: string;
   editorialType?: string;
   hashtagsPT?: string;
@@ -74,6 +76,14 @@ export interface Discovery {
 }
 export const discoveries = (cmsPublished.enabled ? cmsPublished.discoveries : discoveryData) as Discovery[];
 export function articleUrl(item:Discovery,lang:Language){return `/${lang}/radar/${(lang==='pt'?item.slugPT:item.slugEN)||item.id}/`}
+export function publishedRadar(){
+  return discoveries.filter(item=>!item.isDemo).sort((a,b)=>{
+    const left=a.eventDate||a.published;
+    const right=b.eventDate||b.published;
+    if(left!==right) return left<right?1:-1;
+    return a.titlePT.localeCompare(b.titlePT,'pt');
+  });
+}
 export const colors: Record<Category, string> = {
   games: "#b39aff",
   consoles: "#ff939b",

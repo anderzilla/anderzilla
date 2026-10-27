@@ -1,14 +1,14 @@
 {
-  "trailingSlash": "never",
+  "trailingSlash": "always",
   "routes": [
     {
       "route": "/forgekit",
-      "redirect": "/pt/forgekit",
+      "redirect": "/pt/forgekit/",
       "statusCode": 301
     },
     {
       "route": "/stackpick",
-      "redirect": "/pt/stackpick",
+      "redirect": "/pt/stackpick/",
       "statusCode": 301
     },
     {
