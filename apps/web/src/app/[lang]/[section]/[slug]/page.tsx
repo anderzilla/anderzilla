@@ -37,16 +37,17 @@ export default async function Article({params}:{params:Promise<Params>}){
  const type=types[item.editorialType||''];
  const categoryLabel=({games:['Games','Games'],consoles:['Consoles','Consoles'],celulares:['Celulares','Phones'],ia:['IA','AI'],gadgets:['Gadgets','Gadgets'],curiosidades:['Curiosidades','Curiosities']} as Record<string,[string,string]>)[item.category]?.[pt?0:1]||'AnderZilla';
  const related=discoveries.filter(x=>x.id!==item.id&&x.category===item.category&&!x.isDemo).slice(0,3);
- const schema={'@context':'https://schema.org','@type':item.editorialType==='news'?'NewsArticle':'Article',headline:local(item,'title',p.lang),description:local(item,'summary',p.lang),inLanguage:pt?'pt-BR':'en',datePublished:item.published,dateModified:item.verifiedAt||item.published,author:{'@type':'Organization',name:item.author||'AnderZilla',url:'https://anderzilla.com'},publisher:{'@type':'Organization',name:'AnderZilla',url:'https://anderzilla.com'},mainEntityOfPage:`https://anderzilla.com${path(item,p.lang,p.section)}`,...(media?{image:new URL(media.previewUrl||media.url,'https://anderzilla.com').href}:{}),citation:item.sources?.map(source=>source.url)||[item.url]};
+ const schema={'@context':'https://schema.org','@type':item.editorialType==='news'?'NewsArticle':'Article',headline:local(item,'title',p.lang),description:local(item,'summary',p.lang),inLanguage:pt?'pt-BR':'en',datePublished:item.published,dateModified:item.updatedAt||item.verifiedAt||item.published,author:{'@type':'Organization',name:item.author||'AnderZilla',url:'https://anderzilla.com'},publisher:{'@type':'Organization',name:'AnderZilla',url:'https://anderzilla.com'},mainEntityOfPage:`https://anderzilla.com${path(item,p.lang,p.section)}`,...(media?{image:new URL(media.previewUrl||media.url,'https://anderzilla.com').href}:{}),citation:item.sources?.map(source=>source.url)||[item.url]};
  return <div className="hub" lang={pt?'pt-BR':'en'}><a className="skip" href="#article">{pt?'Pular para o conteúdo':'Skip to content'}</a>
    {!item.isDemo&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/>}
-   <header><a className="brand" href={`/?lang=${p.lang}#home`}><BrandWordmark /></a><nav aria-label={pt?'Navegação do artigo':'Article navigation'}><a href={`/?lang=${p.lang}#home`}>← Radar</a><a href={path(item,pt?'en':'pt',p.section)} lang={pt?'en':'pt-BR'}>{pt?'Read in English':'Ler em português'}</a></nav></header>
+   <header><a className="brand" href={`/?lang=${p.lang}#home`}><BrandWordmark /></a><nav aria-label={pt?'Navegação do artigo':'Article navigation'}><a href={`/${p.lang}/radar/`}>← Radar</a><a href={path(item,pt?'en':'pt',p.section)} lang={pt?'en':'pt-BR'}>{pt?'Read in English':'Ler em português'}</a></nav></header>
    <main id="article" className="wrap article-page" tabIndex={-1}><article>
      <p className="eyebrow">{categoryLabel} / {type?type[pt?0:1]:(pt?'EXPLORAR':'EXPLORE')}</p>
      {item.isDemo&&<DemoBadge english={!pt}/>}
      <h1>{local(item,'title',p.lang)}</h1><p className="lede">{local(item,'summary',p.lang)}</p>
      <p className="source">{item.author||'AnderZilla'}{item.published&&<> · <time dateTime={item.published}>{item.published}</time></>}</p>
      {item.verifiedAt&&<p className="source">{pt?'Apuração':'Verified'}: <time dateTime={item.verifiedAt}>{item.verifiedAt}</time>{item.eventDate&&<> · {pt?'Data do anúncio ou evento':'Announcement or event date'}: <time dateTime={item.eventDate}>{item.eventDate}</time></>}</p>}
+     {item.updatedAt&&<p className="source">{pt?'Atualizado em':'Updated'}: <time dateTime={item.updatedAt}>{item.updatedAt}</time></p>}
      {media&&<figure><a className="article-cover-link" href={media.url} target="_blank" rel="noopener noreferrer" aria-label={`${pt?'Abrir imagem ampliada':'Open full image'}: ${(pt?media.altPT:media.altEN)||''}`}><img className="article-cover" src={media.url} width={media.width} height={media.height} alt={(pt?media.altPT:media.altEN)||''}/></a><figcaption>{media.credit} · {media.license}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{pt?'Fonte da imagem':'Image source'} ↗</a></>}</figcaption></figure>}
      <SafeMarkdown body={body}/>
      <MediaGallery ids={item.mediaIds} english={!pt}/>
@@ -56,7 +57,7 @@ export default async function Article({params}:{params:Promise<Params>}){
      {item.isDemo&&<p className="notice">{pt?'Material fictício para avaliar o layout e o CMS. Não é notícia, evento confirmado, oferta ou promessa de recompensa.':'Fictional material to evaluate the layout and CMS. Not news, a confirmed event, an offer or a reward promise.'}</p>}
      {!item.isDemo&&<ArticleShare title={local(item,'title',p.lang)} summary={local(item,'summary',p.lang)} path={path(item,p.lang,p.section)} english={!pt}/>}
      {related.length>0&&<section className="article-related"><h2>{pt?'Continua no radar':'More on your radar'}</h2><ul>{related.map(record=><li key={record.id}><a href={path(record,p.lang,'radar')}>{local(record,'title',p.lang)} →</a></li>)}</ul></section>}
-     <a className="button" href={`/?lang=${p.lang}#home`}>{pt?'Voltar às descobertas':'Back to discoveries'} →</a>
+     <a className="button" href={`/${p.lang}/radar/`}>{pt?'Voltar ao Radar':'Back to Radar'} →</a>
    </article></main></div>
 }
 
