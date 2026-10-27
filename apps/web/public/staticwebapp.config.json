@@ -2,18 +2,8 @@
   "trailingSlash": "always",
   "routes": [
     {
-      "route": "/forgekit",
-      "redirect": "/pt/forgekit/",
-      "statusCode": 301
-    },
-    {
       "route": "/forgekit/",
       "redirect": "/pt/forgekit/",
-      "statusCode": 301
-    },
-    {
-      "route": "/stackpick",
-      "redirect": "/pt/stackpick/",
       "statusCode": 301
     },
     {
