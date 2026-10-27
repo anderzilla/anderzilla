@@ -1,3 +1,4 @@
+import { BrandWordmark } from "./BrandAssets";
 import Link from "next/link";
 import { SITE } from "../../content/affiliates";
 
@@ -16,17 +17,7 @@ export function Header() {
           href="/"
           className="group flex items-center gap-2 font-semibold tracking-tight"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-glow to-violet-glow text-sm font-bold text-ink-950">
-            Az
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-white transition group-hover:text-amber-soft">
-              AnderZilla
-            </span>
-            <span className="mt-0.5 font-mono text-[10px] font-normal text-zinc-500">
-              tools & perspectives
-            </span>
-          </span>
+          <BrandWordmark className="az-wordmark-legacy" />
         </Link>
         <nav
           aria-label="Main navigation"
@@ -60,3 +51,4 @@ export function Header() {
     </header>
   );
 }
+

@@ -1,5 +1,6 @@
 "use client";
 import { useState, type CSSProperties } from "react";
+import { BrandWordmark } from "../BrandAssets";
 import { HubProvider, useHub } from "./HubProvider";
 import {
   categories,
@@ -68,13 +69,7 @@ function Header() {
       </div>
       <header>
         <a className="brand" href="#home">
-          <Ghost size={45} />
-          <div className="wordmark">
-            ANDER<span>ZILLA</span>
-            <small>
-              {t("GAMES. TECH. BOAS DESCOBERTAS.", "GAMES. TECH. GREAT FINDS.")}
-            </small>
-          </div>
+          <div><BrandWordmark /><small>{t("GAMES. TECH. BOAS DESCOBERTAS.", "GAMES. TECH. GREAT FINDS.")}</small></div>
         </a>
         <nav aria-label={t("Principal", "Main")}>
           {links.map(([r, label]) => (
@@ -124,9 +119,7 @@ function Footer() {
   const { t, lang } = useHub();
   return (
     <footer>
-      <a className="wordmark" href="#home">
-        ANDER<span>ZILLA</span>
-      </a>
+      <a className="brand-footer" href="#home"><BrandWordmark /></a>
       <p>
         {t(
           "Um esconderijo para quem gosta de games e de fuçar no futuro.",
@@ -209,15 +202,16 @@ function Home() {
           </button>
         </div>
         <div className="hero-layout">
-          <section className="hero">
+          <section className="hero brand-hero">
             <img
-              src="/hub/discovery-room.png"
+              src="/brand/caveira.webp"
               width={1536}
               height={1024}
               alt=""
             />
+            <div className="brand-hero-copy">
             <p className="eyebrow">
-              <span className="tag">GHOST&apos;S HIDEOUT</span>
+              <span className="tag">ANDERZILLA</span>
               {t("ABRA UMA NOVA FASE", "ENTER A NEW LEVEL")}
             </p>
             <h2>
@@ -243,12 +237,7 @@ function Home() {
                 {t("Abrir uma surpresa", "Open a surprise")}
               </button>
             </div>
-            <span className="art-note">
-              {t(
-                "Arte conceitual · não representa produto real",
-                "Concept art · not an actual product",
-              )}
-            </span>
+            </div>
           </section>
           <Passport />
         </div>
@@ -466,3 +455,4 @@ export default function Hub() {
     </HubProvider></AccountProvider>
   );
 }
+

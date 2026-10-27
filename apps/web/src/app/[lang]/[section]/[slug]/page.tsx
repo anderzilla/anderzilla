@@ -1,3 +1,4 @@
+import { BrandWordmark } from "@/components/BrandAssets";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { discoveries, type Discovery, type Language } from '@/components/hub/model';
@@ -39,7 +40,7 @@ export default async function Article({params}:{params:Promise<Params>}){
  const schema={'@context':'https://schema.org','@type':item.editorialType==='news'?'NewsArticle':'Article',headline:local(item,'title',p.lang),description:local(item,'summary',p.lang),inLanguage:pt?'pt-BR':'en',datePublished:item.published,dateModified:item.verifiedAt||item.published,author:{'@type':'Organization',name:item.author||'AnderZilla',url:'https://anderzilla.com'},publisher:{'@type':'Organization',name:'AnderZilla',url:'https://anderzilla.com'},mainEntityOfPage:`https://anderzilla.com${path(item,p.lang,p.section)}`,...(media?{image:new URL(media.previewUrl||media.url,'https://anderzilla.com').href}:{}),citation:item.sources?.map(source=>source.url)||[item.url]};
  return <div className="hub" lang={pt?'pt-BR':'en'}><a className="skip" href="#article">{pt?'Pular para o conteúdo':'Skip to content'}</a>
    {!item.isDemo&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/>}
-   <header><a className="brand" href={`/?lang=${p.lang}#home`}><img src="/hub/anderzilla-ghost.png" alt="AnderZilla Ghost" width="45" height="45"/><span className="wordmark">ANDER<span>ZILLA</span></span></a><nav aria-label={pt?'Navegação do artigo':'Article navigation'}><a href={`/?lang=${p.lang}#home`}>← Radar</a><a href={path(item,pt?'en':'pt',p.section)} lang={pt?'en':'pt-BR'}>{pt?'Read in English':'Ler em português'}</a></nav></header>
+   <header><a className="brand" href={`/?lang=${p.lang}#home`}><BrandWordmark /></a><nav aria-label={pt?'Navegação do artigo':'Article navigation'}><a href={`/?lang=${p.lang}#home`}>← Radar</a><a href={path(item,pt?'en':'pt',p.section)} lang={pt?'en':'pt-BR'}>{pt?'Read in English':'Ler em português'}</a></nav></header>
    <main id="article" className="wrap article-page" tabIndex={-1}><article>
      <p className="eyebrow">{categoryLabel} / {type?type[pt?0:1]:(pt?'EXPLORAR':'EXPLORE')}</p>
      {item.isDemo&&<DemoBadge english={!pt}/>}
@@ -58,3 +59,4 @@ export default async function Article({params}:{params:Promise<Params>}){
      <a className="button" href={`/?lang=${p.lang}#home`}>{pt?'Voltar às descobertas':'Back to discoveries'} →</a>
    </article></main></div>
 }
+
