@@ -69,7 +69,10 @@ function Header() {
       </div>
       <header>
         <a className="brand" href="#home">
-          <div><BrandWordmark /><small>{t("GAMES. TECH. BOAS DESCOBERTAS.", "GAMES. TECH. GREAT FINDS.")}</small></div>
+          <div>
+            <BrandWordmark />
+            <small>{t("GAMES. TECH. BOAS DESCOBERTAS.", "GAMES. TECH. GREAT FINDS.")}</small>
+          </div>
         </a>
         <nav aria-label={t("Principal", "Main")}>
           {links.map(([r, label]) => (

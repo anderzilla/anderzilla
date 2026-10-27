@@ -30,9 +30,9 @@ export function Icon({ name }: { name: string }) {
     </svg>
   );
 }
-// Keep the compatibility name used by the community UI.
+// Compatibility name for existing community UI; the artwork is the approved brand symbol.
 export function Ghost({ size = 62 }: { size?: number }) {
- return <BrandAvatar size={size} />;
+  return <BrandAvatar size={size} />;
 }
 export function External({
   href,

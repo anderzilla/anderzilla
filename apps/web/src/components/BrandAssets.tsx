@@ -1,4 +1,4 @@
-/** Approved artwork: retain intrinsic aspect ratios. */
+/** Approved artwork. Keep intrinsic aspect ratios; never recreate the wordmark as text. */
 export function BrandWordmark({className = ""}:{className?:string}) {
  return <img className={`az-wordmark ${className}`} src="/brand/lettering.webp" alt="AnderZilla" width={960} height={320} decoding="async"/>;
 }
