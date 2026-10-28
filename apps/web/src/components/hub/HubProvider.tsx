@@ -12,6 +12,7 @@ import {
   categories,
   discoveries,
   freshPlayer,
+  radarCardLabel,
   parsePlayer,
   routes,
   type Category,
@@ -159,13 +160,7 @@ function useHubState(initialLang: Language) {
   const title = (x: Discovery) => (lang === "pt" ? x.titlePT : x.titleEN);
   const summary = (x: Discovery) => (lang === "pt" ? x.summaryPT : x.summaryEN);
   const fact = (x: Discovery) => (lang === "pt" ? x.fact : x.factEN);
-  const date = (x: Discovery) =>
-    new Intl.DateTimeFormat(lang === "pt" ? "pt-BR" : "en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      timeZone: "UTC",
-    }).format(new Date(x.published + "T12:00:00Z"));
+  const date = (x: Discovery) => radarCardLabel(x, lang);
   const seen = new Set(
     discoveries
       .filter((x) => player.opened.includes(x.id))

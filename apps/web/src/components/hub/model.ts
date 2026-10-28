@@ -80,10 +80,33 @@ function calendarDay(value?: string) {
   const day = (value || "").slice(0, 10);
   return /^\d{4}-\d{2}-\d{2}$/.test(day) ? day : "";
 }
-/** Atualização ou apuração, a que for mais recente; sem as duas, a publicação. */
+/**
+ * Última atualização (apuração ou selo, a mais recente).
+ * A publicação entra só quando não há nenhuma das duas.
+ * Ordenação e texto do card usam este mesmo dia.
+ */
+export function radarCardDate(item: Discovery) {
+  const published = calendarDay(item.published);
+  const editorial = [calendarDay(item.updatedAt), calendarDay(item.verifiedAt)].filter(Boolean).sort().at(-1) || "";
+  if (editorial) return { day: editorial, revised: Boolean(published) && editorial > published };
+  return { day: published, revised: false };
+}
 export function radarRecency(item: Discovery) {
-  const editorial = [calendarDay(item.updatedAt), calendarDay(item.verifiedAt)].filter(Boolean).sort();
-  return editorial.at(-1) || calendarDay(item.published) || "0000-00-00";
+  return radarCardDate(item).day || "0000-00-00";
+}
+export function formatRadarDay(day: string, lang: Language) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return day;
+  return new Intl.DateTimeFormat(lang === "pt" ? "pt-BR" : "en-US", {
+    day: lang === "pt" ? "2-digit" : "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${day}T12:00:00Z`));
+}
+export function radarCardLabel(item: Discovery, lang: Language) {
+  const { day, revised } = radarCardDate(item);
+  const formatted = formatRadarDay(day, lang);
+  return revised ? (lang === "pt" ? `Atualizado em ${formatted}` : `Updated ${formatted}`) : formatted;
 }
 /** Mais nova primeiro. Empate: publicação mais recente e, depois, o título. */
 export function compareRadarNewestFirst(a: Discovery, b: Discovery) {

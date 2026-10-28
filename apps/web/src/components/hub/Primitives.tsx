@@ -2,7 +2,7 @@
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { useHub } from "./HubProvider";
 import { BrandAvatar } from "../BrandAssets";
-import { articleUrl, colors, type Discovery } from "./model";
+import { articleUrl, colors, radarCardDate, type Discovery } from "./model";
 import { DemoBadge, findMedia, SafeMarkdown } from './Editorial';
 
 const paths: Record<string, string> = {
@@ -123,7 +123,7 @@ export function DiscoveryCard({ item }: { item: Discovery }) {
           <small>
             {item.sourceName}
             <br />
-            <time dateTime={item.published}>{date(item)}</time>
+            <time dateTime={radarCardDate(item).day}>{date(item)}</time>
           </small>
           <SaveButton item={item} />
         </div>
@@ -236,7 +236,7 @@ export function DetailDialog() {
             {current.isDemo&&<DemoBadge english={lang==='en'}/>}
             <p className="source">
               {current.sourceName} ·{" "}
-              <time dateTime={current.published}>{date(current)}</time>
+              <time dateTime={radarCardDate(current).day}>{date(current)}</time>
             </p>
             <p>{summary(current)}</p>
             <div className="fact">

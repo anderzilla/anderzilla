@@ -2,7 +2,7 @@ import {BrandWordmark} from '@/components/BrandAssets';
 import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import type {CSSProperties} from 'react';
-import {articleUrl, colors, publishedRadar, type Discovery, type Language} from '@/components/hub/model';
+import {articleUrl, colors, publishedRadar, radarCardDate, radarCardLabel, type Discovery, type Language} from '@/components/hub/model';
 import {findMedia} from '@/components/hub/Editorial';
 import '@/components/hub/hub.css';
 
@@ -108,7 +108,7 @@ export default async function RadarIndex({params}: {params: Promise<Params>}) {
                   <div className="card-category">
                     <span>{labels[item.category]?.[pt ? 0 : 1] || 'AnderZilla'}</span>
                     {archived && <span className="archive">{pt ? 'ARQUIVO' : 'ARCHIVE'}</span>}
-                    {item.updatedAt && <span className="archive">{pt ? 'ATUALIZADO' : 'UPDATED'}</span>}
+                    {radarCardDate(item).revised && <span className="archive">{pt ? 'ATUALIZADO' : 'UPDATED'}</span>}
                   </div>
                   <h3><a href={articleUrl(item, lang)}>{pt ? item.titlePT : item.titleEN}</a></h3>
                   <p>{pt ? item.summaryPT : item.summaryEN}</p>
@@ -116,9 +116,7 @@ export default async function RadarIndex({params}: {params: Promise<Params>}) {
                     <small>
                       {item.sourceName}
                       <br />
-                      <time dateTime={item.eventDate || item.published}>{item.eventDate || item.published}</time>
-                      {item.verifiedAt && <> · {pt ? 'Apuração' : 'Verified'} {item.verifiedAt}</>}
-                      {item.updatedAt && <> · {pt ? 'Atualizado em' : 'Updated'} {item.updatedAt}</>}
+                      <time dateTime={radarCardDate(item).day}>{radarCardLabel(item, lang)}</time>
                     </small>
                   </div>
                 </div>
