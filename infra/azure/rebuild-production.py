@@ -33,7 +33,8 @@ def digest(path):
 def preflight():
     manifest = json.loads((DATA / 'production-artifact-sha256.json').read_text(encoding='utf-8'))
     public = json.loads((DATA / 'public-after.json').read_text(encoding='utf-8'))
-    if len(public['discoveries']) != 60 or len(public['media']) != 231:
+    # 60/231 era o corpus de 2026-09-16. Em 2026-10-28 entraram 10 notas aprovadas, cada uma com uma capa.
+    if len(public['discoveries']) != 70 or len(public['media']) != 241:
         raise ValueError('Unexpected editorial corpus; review the baseline explicitly.')
     source_root = SOURCE.resolve()
     missing = []
@@ -88,7 +89,7 @@ def main():
     parser.add_argument('--output-name', default='')
     args = parser.parse_args()
     public, media, marker, full_tree = preflight()
-    report = {'rollbackArtifact': str(SOURCE), 'publicData': str(DATA / 'public-after.json'), 'articles': 60, 'articlePages': 120, 'mediaFiles': len(media), 'baselineVerified': True, 'fullTreeVerified': full_tree, 'mediaVerified': True}
+    report = {'rollbackArtifact': str(SOURCE), 'publicData': str(DATA / 'public-after.json'), 'articles': len(public['discoveries']), 'articlePages': len(public['discoveries']) * 2, 'mediaFiles': len(media), 'baselineVerified': True, 'fullTreeVerified': full_tree, 'mediaVerified': True}
     if not args.build:
         print(json.dumps(report, indent=2))
         return
