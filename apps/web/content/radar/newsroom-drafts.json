@@ -1,12 +1,12 @@
 {
-  "status": "draft",
-  "publish": false,
+  "status": "published",
+  "publish": true,
   "apuracao": "2026-10-27",
-  "note": "Rascunhos do Radar. O importador do CMS grava status draft e não aprova. Cada item tem coverMediaId de uma mídia draft em media[]. O arquivo é covers/<slug>.webp (1600x900). A URL pública é /media/<sha256>.webp; os mesmos bytes ficam em apps/web/public/media/ na branch do site. Crédito e alt em português vêm do CREDITOS de 2026-10-27. O alt de MW4 e de Phantom Blade Zero descreve a imagem anexada. O alt em inglês traduz esse texto. A licença segue o corpus: divulgação oficial, ou arte editorial própria quando o crédito é Arte: Anderzilla. Não entram em public-after.json nem no índice.",
+  "note": "Dez notas do Radar aprovadas para publicação em 2026-10-28. status published e publish true. Cada item tem coverMediaId de uma mídia em media[]. O arquivo é covers/<slug>.webp (1600x900). A URL pública é /media/<sha256>.webp; os mesmos bytes ficam em apps/web/public/media/ na branch do site. Crédito e alt em português vêm do CREDITOS. O alt em inglês traduz esse texto. A licença segue o corpus: divulgação oficial, ou arte editorial própria quando o crédito é Arte: Anderzilla. As dez entram em public-after.json e no índice. A data exibida e a ordenação usam a apuração (verifiedAt) ou o selo de atualização, o que for mais recente, e não uma data de redação anterior. O item ps-blog-27-outubro-aloft-where-winds-meet segue como rodada anterior dos mesmos anúncios de Aloft e Where Winds Meet.",
   "media": [
     {
       "id": "129ab54e-5ce6-59f6-8683-703c7b54df6d",
-      "status": "draft",
+      "status": "published",
       "slug": "gta-vi-reta-final-19-novembro",
       "file": "covers/gta-vi-reta-final-19-novembro.webp",
       "assetSha256": "fd26b8967adcdb38ebf04585b592b38e3040067ec57d41d91588a115ac43fd29",
@@ -26,7 +26,7 @@
     },
     {
       "id": "a50be017-c919-5646-99dd-344383b7305a",
-      "status": "draft",
+      "status": "published",
       "slug": "mw4-lancado-roadmap-season-1",
       "file": "covers/mw4-lancado-roadmap-season-1.webp",
       "assetSha256": "47d31603df68446f316182307dd18f43fe88e50b74745522977da14331cea110",
@@ -46,7 +46,7 @@
     },
     {
       "id": "0b575e8a-0cef-50c2-abc6-0f5558b9f383",
-      "status": "draft",
+      "status": "published",
       "slug": "outubro-2026-lancamentos-gears-e-day",
       "file": "covers/outubro-2026-lancamentos-gears-e-day.webp",
       "assetSha256": "89ab9a8baed646767ca99d68e56ff9e9aca37a36c408488eb550bd8863309b9d",
@@ -65,7 +65,7 @@
     },
     {
       "id": "abf0dcf7-9a24-5c0f-ab33-d203f1cad43a",
-      "status": "draft",
+      "status": "published",
       "slug": "phantom-blade-zero-lancamento",
       "file": "covers/phantom-blade-zero-lancamento.webp",
       "assetSha256": "6ab028861f64f23acdcde2dba9a5fd60ca31b0ff3a60b0e6f7df40a315aa97bb",
@@ -85,7 +85,7 @@
     },
     {
       "id": "def9f3d2-5a80-55bd-ab2a-5c43f5d9eafc",
-      "status": "draft",
+      "status": "published",
       "slug": "ps-blog-27-outubro-aloft-where-winds-meet",
       "file": "covers/ps-blog-27-outubro-aloft-where-winds-meet.webp",
       "assetSha256": "71cbed3917245962318239a2252c9be17c172ce0c801192274983db6ded779b7",
@@ -105,7 +105,7 @@
     },
     {
       "id": "0b0021bd-63e5-59db-9179-f8595460118b",
-      "status": "draft",
+      "status": "published",
       "slug": "ps-plus-outubro-ultimos-dias",
       "file": "covers/ps-plus-outubro-ultimos-dias.webp",
       "assetSha256": "f3fef843d493e2648fe864c32e4f60179b7932d2b31c2da345860506750f2c09",
@@ -125,7 +125,7 @@
     },
     {
       "id": "2533757a-d682-5da9-ac4c-161a7a3d688a",
-      "status": "draft",
+      "status": "published",
       "slug": "semana-26-30-outubro-lancamentos",
       "file": "covers/semana-26-30-outubro-lancamentos.webp",
       "assetSha256": "bb0b1edca7a28c8705503ecc802b33689d7001b08da5ea7077ece5f68542f70c",
@@ -141,13 +141,73 @@
         "width": 1600,
         "height": 900
       }
+    },
+    {
+      "id": "8bb5961d-e95d-5d9a-80d6-8be10fc71c65",
+      "status": "published",
+      "slug": "genie-4-mundos-interativos",
+      "file": "covers/genie-4-mundos-interativos.webp",
+      "assetSha256": "c60f1eea8bf6218ff999378e8cdae2d0647554119606913a1654c35e163e630f",
+      "data": {
+        "titlePT": "genie-4-mundos-interativos.webp",
+        "url": "/media/c60f1eea8bf6218ff999378e8cdae2d0647554119606913a1654c35e163e630f.webp",
+        "mediaType": "image",
+        "mimeType": "image/webp",
+        "altPT": "Card oficial do Genie 4, com o título à esquerda e um beija-flor dentro de uma esfera de vidro sobre uma flor laranja",
+        "altEN": "Official Genie 4 card, with the title on the left and a hummingbird inside a glass sphere over an orange flower",
+        "credit": "Divulgação/Google DeepMind",
+        "license": "Divulgação. Direitos reservados ao titular.",
+        "width": 1600,
+        "height": 900,
+        "sourceUrl": "https://lh3.googleusercontent.com/i7iotPkcMbMubxRzAdriO5wsIsowROonBvjLNnmPbOaRgEb1k4LKTBqay5VrcPpZi0R4il_bYCCsPYQ0Gy_-XbAw66azAGEfE-E6_9Izz5apP0BMJVE=w1200-h630-n-nu-rw"
+      }
+    },
+    {
+      "id": "5476c04a-b240-5d17-a258-80ef54d6e6ba",
+      "status": "published",
+      "slug": "aloft-conan-exiles-enhanced-ps5-2027",
+      "file": "covers/aloft-conan-exiles-enhanced-ps5-2027.webp",
+      "assetSha256": "51411eb1959a04305c8078c1a954c15799ffee65b3b4f9df425f42010aef2ccc",
+      "data": {
+        "titlePT": "aloft-conan-exiles-enhanced-ps5-2027.webp",
+        "url": "/media/51411eb1959a04305c8078c1a954c15799ffee65b3b4f9df425f42010aef2ccc.webp",
+        "mediaType": "image",
+        "mimeType": "image/webp",
+        "altPT": "Arte dividida de Conan Exiles Enhanced, com dois guerreiros nas planícies, e de Aloft, com uma ilha flutuante e dois personagens de costas",
+        "altEN": "Split key art of Conan Exiles Enhanced, with two warriors on the plains, and Aloft, with a floating island and two characters seen from behind",
+        "credit": "Divulgação/Funcom",
+        "license": "Divulgação. Direitos reservados ao titular.",
+        "width": 1600,
+        "height": 900,
+        "sourceUrl": "https://blog.playstation.com/tachyon/2086/10/d90c6cc29a861f55fc6013f43487f410dcd639ad.jpg"
+      }
+    },
+    {
+      "id": "8ed54036-002f-5b1c-9d70-98283f0ad29d",
+      "status": "published",
+      "slug": "where-winds-meet-hutuo-13-novembro",
+      "file": "covers/where-winds-meet-hutuo-13-novembro.webp",
+      "assetSha256": "f468becb7d2f7d2faa1eb2c2ebeb87768b6078104f9b43b90f6b66d9db8f63ea",
+      "data": {
+        "titlePT": "where-winds-meet-hutuo-13-novembro.webp",
+        "url": "/media/f468becb7d2f7d2faa1eb2c2ebeb87768b6078104f9b43b90f6b66d9db8f63ea.webp",
+        "mediaType": "image",
+        "mimeType": "image/webp",
+        "altPT": "Três lutadores de Where Winds Meet em primeiro plano, de espada em punho, diante de um exército sob chuva",
+        "altEN": "Three Where Winds Meet fighters in the foreground, swords drawn, before an army in the rain",
+        "credit": "Divulgação/Sony Interactive Entertainment",
+        "license": "Divulgação. Direitos reservados ao titular.",
+        "width": 1600,
+        "height": 900,
+        "sourceUrl": "https://blog.playstation.com/tachyon/2026/10/d90b9946eaf75ed2c43b0b527138cad134f8e02d.jpg"
+      }
     }
   ],
   "items": [
     {
       "key": "gta-vi-reta-final-19-novembro",
       "id": "c69746ea-adff-4b01-991a-c33b7bf4899b",
-      "status": "draft",
+      "status": "published",
       "data": {
         "titlePT": "GTA VI na reta final: lançamento em 19 de novembro e pré-download no dia 12",
         "titleEN": "GTA VI in the final stretch: November 19 launch and pre-download on the 12th",
@@ -187,7 +247,7 @@
     {
       "key": "mw4-lancado-roadmap-season-1",
       "id": "83ed566f-ec30-4918-9ca5-3a080f1d7246",
-      "status": "draft",
+      "status": "published",
       "data": {
         "titlePT": "Modern Warfare 4 está no ar: o que chega até a Season 1",
         "titleEN": "Modern Warfare 4 is live: what arrives before Season 1",
@@ -227,7 +287,7 @@
     {
       "key": "outubro-2026-lancamentos-gears-e-day",
       "id": "4dff8834-01f6-4d8c-8469-706019372c95",
-      "status": "draft",
+      "status": "published",
       "data": {
         "titlePT": "Outubro de 2026 em resumo: Gears E-Day, Ace Combat 8 e Final Fantasy Resonance",
         "titleEN": "October 2026 in brief: Gears E-Day, Ace Combat 8 and Final Fantasy Resonance",
@@ -267,7 +327,7 @@
     {
       "key": "phantom-blade-zero-lancamento",
       "id": "6dc800f9-0c5b-444f-9d6c-e84e62a7c719",
-      "status": "draft",
+      "status": "published",
       "data": {
         "titlePT": "Phantom Blade Zero chega ao PS5 e ao PC nesta quarta",
         "titleEN": "Phantom Blade Zero arrives on PS5 and PC this Wednesday",
@@ -307,7 +367,7 @@
     {
       "key": "ps-blog-27-outubro-aloft-where-winds-meet",
       "id": "8469fec7-6460-42b5-8655-ded737f8bc47",
-      "status": "draft",
+      "status": "published",
       "data": {
         "titlePT": "PlayStation: Aloft e Conan Exiles Enhanced em 2027, Where Winds Meet em 13/11",
         "titleEN": "PlayStation: Aloft and Conan Exiles Enhanced in 2027, Where Winds Meet on November 13",
@@ -347,7 +407,7 @@
     {
       "key": "ps-plus-outubro-ultimos-dias",
       "id": "28e60732-5fa3-42db-a56d-e7e7ce09ee9b",
-      "status": "draft",
+      "status": "published",
       "data": {
         "titlePT": "PS Plus: os jogos de outubro podem ser resgatados até 2 de novembro",
         "titleEN": "PS Plus: October's games can be claimed until November 2",
@@ -387,7 +447,7 @@
     {
       "key": "semana-26-30-outubro-lancamentos",
       "id": "76c89017-f19a-4edd-91bf-50943f9ceb35",
-      "status": "draft",
+      "status": "published",
       "data": {
         "titlePT": "Lançamentos da semana: Minecraft no Switch 2, Wolf Among Us Remastered e mais",
         "titleEN": "This week's releases: Minecraft on Switch 2, The Wolf Among Us Remastered and more",
@@ -422,6 +482,126 @@
         "socialFacebookEN": "This week's releases: Minecraft on Switch 2, The Wolf Among Us Remastered and more\n\nThis week brings Minecraft on Switch 2, Sulfur 1.0, The Wolf Among Us Remastered and Monster Hunter Outlanders on phones.\nhttps://anderzilla.com/en/radar/releases-october-26-30-minecraft-switch-2-and-more/\n#AnderZilla #Lancamentos #NintendoSwitch2",
         "socialWhatsappPT": "Lançamentos da semana: Minecraft no Switch 2, Wolf Among Us Remastered e mais\nEsta semana tem Minecraft no Switch 2, Sulfur 1.0, The Wolf Among Us Remastered e Monster Hunter Outlanders no celular.\nhttps://anderzilla.com/pt/radar/semana-26-30-outubro-lancamentos/",
         "socialWhatsappEN": "This week's releases: Minecraft on Switch 2, The Wolf Among Us Remastered and more\nThis week brings Minecraft on Switch 2, Sulfur 1.0, The Wolf Among Us Remastered and Monster Hunter Outlanders on phones.\nhttps://anderzilla.com/en/radar/releases-october-26-30-minecraft-switch-2-and-more/"
+      }
+    },
+    {
+      "key": "genie-4-mundos-interativos",
+      "id": "1e9686f0-4e56-5703-8735-2bd57a2dea08",
+      "status": "published",
+      "data": {
+        "titlePT": "Genie 4 simula mundos em tempo real, e ainda não é um jogo",
+        "titleEN": "Genie 4 simulates worlds in real time, and it is not a game yet",
+        "summaryPT": "O Genie 4, anunciado em 27/10, simula cenas em tempo real com áudio e pedidos em linguagem natural. A prévia está com testadores confiáveis; ainda não é um jogo nem algo que o público abre.",
+        "summaryEN": "Genie 4, announced on October 27, simulates scenes in real time with audio and natural-language prompts. The preview is with trusted testers; it is not a game, and the public cannot open it yet.",
+        "seoTitlePT": "Genie 4 simula mundos em tempo real, e ainda não é um jogo",
+        "seoTitleEN": "Genie 4 simulates worlds in real time, and it is not a game yet",
+        "seoDescriptionPT": "O Genie 4, anunciado em 27/10, simula cenas em tempo real com áudio e pedidos em linguagem natural. A prévia está com testadores confiáveis; ainda não é um jogo nem algo que o público abre.",
+        "seoDescriptionEN": "Genie 4, announced on October 27, simulates scenes in real time with audio and natural-language prompts. The preview is with trusted testers; it is not a game, and the public cannot open it yet.",
+        "bodyPT": "O Google DeepMind anunciou o Genie 4 em 27 de outubro de 2026. É um modelo de mundo: em vez de entregar só um vídeo pronto, ele simula uma cena que segue em tempo real. Dá para mudar o tempo, mover a câmera ou colocar uma pessoa ou um objeto novo por linguagem natural, enquanto a cena continua. O som nasce junto com a imagem. Ambiente, música e diálogo saem do próprio modelo. Nos exemplos publicados, a navegação e a câmera também usam teclado.\n\nPara quem faz jogos, a DeepMind descreve o que os testadores estão experimentando: sair de uma ideia para um protótipo explorável, e testar visual, material e mecânica, antes de escrever código de engine. Isso não transforma o Genie 4 num jogo, nem num motor no lugar de uma engine, nem numa ferramenta aberta ao público. A prévia de pesquisa está com testadores confiáveis. A DeepMind diz que, sem data marcada, o modelo chega depois aos assinantes do Google AI Ultra no Project Genie e a parceiros de acesso antecipado na API Gemini e no Google AI Studio. Não há preço nem janela para o Brasil.\n\nO texto oficial trata o modelo como experimental. A cena se sustenta melhor em sessões curtas. Detalhe visual e permanência de objeto ainda podem mudar quando a simulação dura mais, depois de vários pedidos, ou ao percorrer o cenário. Física mais complexa, precisão do áudio, texto legível, precisão espacial e consistência longa seguem em pesquisa. Vídeo e áudio gerados levam a marca d'água SynthID.\n\nNossa leitura: um world model é um simulador gerado na hora, útil para imaginar uma cena. Para quem joga, o catálogo de hoje não muda. Quando a prévia abrir para mais gente, a pergunta útil é o quanto a cena se mantém depois dos primeiros segundos, não só se o primeiro quadro impressiona.",
+        "bodyEN": "Google DeepMind announced Genie 4 on October 27, 2026. It is a world model: instead of handing over a finished video, it simulates a scene that keeps going in real time. You can change the weather, move the camera, or add a person or object with natural language while the scene continues. Sound is generated with the picture. Ambience, music, and dialogue come from the model itself. In the published examples, navigation and the camera also use a keyboard.\n\nFor people making games, DeepMind describes what testers are trying: going from an idea to an explorable prototype, and testing look, materials, and mechanics, before writing engine code. That does not make Genie 4 a game, a replacement for a game engine, or a tool the public can open. The research preview is with trusted testers. DeepMind says that, with no date set, the model later reaches Google AI Ultra subscribers in Project Genie and early-access partners on the Gemini API and Google AI Studio. There is no price and no window for Brazil.\n\nThe official post treats the model as experimental. A scene holds together better in short sessions. Visual detail and object permanence can still shift when a simulation runs longer, after several prompts, or as you move through the scene. More complex physics, audio accuracy, readable text, spatial accuracy, and long-term consistency remain research. Generated video and audio carry the SynthID watermark.\n\nOur take: a world model is a simulation generated on the fly, useful for picturing a scene. For someone playing games today, the catalog does not change. When the preview opens to more people, the useful question is how long the scene stays coherent, not only whether the first frame looks striking.",
+        "category": "ia",
+        "slug": "genie-4-mundos-interativos",
+        "slugPT": "genie-4-mundos-interativos",
+        "slugEN": "genie-4-interactive-worlds-not-a-game-yet",
+        "sourceName": "Google DeepMind",
+        "sourceUrl": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+        "publishedAt": "2026-10-28",
+        "verifiedAt": "2026-10-28",
+        "eventDate": "2026-10-27",
+        "editorialType": "explainer",
+        "author": "Redação AnderZilla",
+        "coverMediaId": "8bb5961d-e95d-5d9a-80d6-8be10fc71c65",
+        "isDemo": false,
+        "tags": "",
+        "hashtagsPT": "#AnderZilla #Genie4 #IA",
+        "hashtagsEN": "#AnderZilla #Genie4 #AI",
+        "sources": "[{\"name\": \"Google DeepMind — Genie 4\", \"url\": \"https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/\", \"publishedAt\": \"2026-10-27\", \"note\": \"Post oficial de 27/10/2026. Conferido em 28/10/2026. Prévia de pesquisa para testadores confiáveis; Ultra e parceiros de acesso antecipado ficam para depois, sem data.\"}, {\"name\": \"Google Blog — Introducing Genie 4\", \"url\": \"https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/\", \"publishedAt\": \"2026-10-27\", \"note\": \"Anúncio de 27/10/2026 no blog do Google, com o mesmo enquadramento: testadores agora, Project Genie e API em seguida.\"}]",
+        "socialInstagramPT": "Genie 4 simula mundos em tempo real, e ainda não é um jogo\n\nO Genie 4, anunciado em 27/10, simula cenas em tempo real com áudio e pedidos em linguagem natural. A prévia está com testadores confiáveis; ainda não é um jogo nem algo que o público abre.\n\nLeia a matéria no link da bio.\n#AnderZilla #Genie4 #IA",
+        "socialInstagramEN": "Genie 4 simulates worlds in real time, and it is not a game yet\n\nGenie 4, announced on October 27, simulates scenes in real time with audio and natural-language prompts. The preview is with trusted testers; it is not a game, and the public cannot open it yet.\n\nRead the story via the link in bio.\n#AnderZilla #Genie4 #AI",
+        "socialFacebookPT": "Genie 4 simula mundos em tempo real, e ainda não é um jogo\n\nO Genie 4, anunciado em 27/10, simula cenas em tempo real com áudio e pedidos em linguagem natural. A prévia está com testadores confiáveis; ainda não é um jogo nem algo que o público abre.\nhttps://anderzilla.com/pt/radar/genie-4-mundos-interativos/\n#AnderZilla #Genie4 #IA",
+        "socialFacebookEN": "Genie 4 simulates worlds in real time, and it is not a game yet\n\nGenie 4, announced on October 27, simulates scenes in real time with audio and natural-language prompts. The preview is with trusted testers; it is not a game, and the public cannot open it yet.\nhttps://anderzilla.com/en/radar/genie-4-interactive-worlds-not-a-game-yet/\n#AnderZilla #Genie4 #AI",
+        "socialWhatsappPT": "Genie 4 simula mundos em tempo real, e ainda não é um jogo\nO Genie 4, anunciado em 27/10, simula cenas em tempo real com áudio e pedidos em linguagem natural. A prévia está com testadores confiáveis; ainda não é um jogo nem algo que o público abre.\nhttps://anderzilla.com/pt/radar/genie-4-mundos-interativos/",
+        "socialWhatsappEN": "Genie 4 simulates worlds in real time, and it is not a game yet\nGenie 4, announced on October 27, simulates scenes in real time with audio and natural-language prompts. The preview is with trusted testers; it is not a game, and the public cannot open it yet.\nhttps://anderzilla.com/en/radar/genie-4-interactive-worlds-not-a-game-yet/"
+      }
+    },
+    {
+      "key": "aloft-conan-exiles-enhanced-ps5-2027",
+      "id": "c05da6f3-3b2c-5dad-a81e-da9947bcef3d",
+      "status": "published",
+      "data": {
+        "titlePT": "Aloft e Conan Exiles Enhanced chegam ao PS5 no início de 2027",
+        "titleEN": "Aloft and Conan Exiles Enhanced come to PS5 in early 2027",
+        "summaryPT": "A Funcom leva Aloft completo e Conan Exiles Enhanced ao PS5 no início de 2027, sem dia marcado. Quem tem Conan no PlayStation ganha a versão de PS5; Isle of Siptah segue à parte.",
+        "summaryEN": "Funcom is bringing the complete Aloft and Conan Exiles Enhanced to PS5 in early 2027, with no day set. PlayStation owners of Conan get the PS5 version; Isle of Siptah stays separate.",
+        "seoTitlePT": "Aloft e Conan Exiles Enhanced chegam ao PS5 no início de 2027",
+        "seoTitleEN": "Aloft and Conan Exiles Enhanced come to PS5 in early 2027",
+        "seoDescriptionPT": "A Funcom leva Aloft completo e Conan Exiles Enhanced ao PS5 no início de 2027, sem dia marcado. Quem tem Conan no PlayStation ganha a versão de PS5; Isle of Siptah segue à parte.",
+        "seoDescriptionEN": "Funcom is bringing the complete Aloft and Conan Exiles Enhanced to PS5 in early 2027, with no day set. PlayStation owners of Conan get the PS5 version; Isle of Siptah stays separate.",
+        "bodyPT": "A Funcom anunciou no PlayStation Blog, em 27 de outubro de 2026, que Aloft e Conan Exiles Enhanced chegam ao PS5 no início de 2027. O texto não traz o dia de nenhum dos dois. A empresa diz que as datas e mais detalhes saem depois.\n\nAloft, o sandbox cooperativo nas ilhas flutuantes, estreia em console já completo: as atualizações do acesso antecipado no PC e a experiência 1.0. No Conan Exiles, quem já tem o jogo no PlayStation recebe a versão Enhanced de PS5 de graça. Comprar a versão de PS4 ou a de PS5 entrega a outra sem custo extra. Itens da Bazaar e DLCs já comprados passam do PS4 para o PS5. Isle of Siptah continua como compra separada. O arco Legacy of the Giant-Kings entra no lançamento de console da versão Enhanced. A Funcom descreve a Enhanced com ambientes, personagens, iluminação e efeitos revisados, interface redesenhada e ajustes de desempenho e de uso no dia a dia. Não há preço em real nem horário de Brasília nesse anúncio.\n\nNossa leitura: os dois podem ir para a lista de desejos da PlayStation Store. \"Início de 2027\" ainda não é uma semana. Quem joga Conan no PS4 precisa esperar a Funcom explicar como o upgrade gratuito aparece na conta.",
+        "bodyEN": "Funcom announced on the PlayStation Blog, on October 27, 2026, that Aloft and Conan Exiles Enhanced come to PS5 in early 2027. The post gives no day for either game. The company says dates and further details will come later.\n\nAloft, the co-op sandbox on floating islands, makes its console debut as the complete game: the PC Early Access updates plus the 1.0 experience. For Conan Exiles, anyone who already owns the game on PlayStation gets the PS5 Enhanced version free. Buying the PS4 or the PS5 version includes the other at no extra cost. Purchased Bazaar items and DLC carry over from PS4 to PS5. Isle of Siptah stays a separate purchase. The Legacy of the Giant-Kings story arc is included in the console launch of the Enhanced version. Funcom describes Enhanced with revised environments, characters, lighting, and effects, a redesigned interface, and performance and day-to-day improvements. This announcement has no price in reais and no Brasília time.\n\nOur take: both can go on a PlayStation Store wishlist. \"Early 2027\" is not a week yet. Anyone playing Conan on PS4 still needs Funcom to explain how the free upgrade shows up on the account.",
+        "category": "games",
+        "slug": "aloft-conan-exiles-enhanced-ps5-2027",
+        "slugPT": "aloft-conan-exiles-enhanced-ps5-2027",
+        "slugEN": "aloft-and-conan-exiles-enhanced-ps5-early-2027",
+        "sourceName": "PlayStation Blog",
+        "sourceUrl": "https://blog.playstation.com/2026/10/27/aloft-and-conan-exiles-enhanced-launch-on-ps5-in-early-2027/",
+        "publishedAt": "2026-10-28",
+        "verifiedAt": "2026-10-28",
+        "eventDate": "2026-10-27",
+        "editorialType": "news",
+        "author": "Redação AnderZilla",
+        "coverMediaId": "5476c04a-b240-5d17-a258-80ef54d6e6ba",
+        "isDemo": false,
+        "tags": "",
+        "hashtagsPT": "#AnderZilla #Aloft #ConanExiles #PS5",
+        "hashtagsEN": "#AnderZilla #Aloft #ConanExiles #PS5",
+        "sources": "[{\"name\": \"PlayStation Blog — Aloft e Conan Exiles Enhanced\", \"url\": \"https://blog.playstation.com/2026/10/27/aloft-and-conan-exiles-enhanced-launch-on-ps5-in-early-2027/\", \"publishedAt\": \"2026-10-27\", \"note\": \"Post da Funcom no PlayStation Blog, 27/10/2026. Conferido em 28/10/2026. Datas exatas ainda não divulgadas.\"}]",
+        "socialInstagramPT": "Aloft e Conan Exiles Enhanced chegam ao PS5 no início de 2027\n\nA Funcom leva Aloft completo e Conan Exiles Enhanced ao PS5 no início de 2027, sem dia marcado. Quem tem Conan no PlayStation ganha a versão de PS5; Isle of Siptah segue à parte.\n\nLeia a matéria no link da bio.\n#AnderZilla #Aloft #ConanExiles #PS5",
+        "socialInstagramEN": "Aloft and Conan Exiles Enhanced come to PS5 in early 2027\n\nFuncom is bringing the complete Aloft and Conan Exiles Enhanced to PS5 in early 2027, with no day set. PlayStation owners of Conan get the PS5 version; Isle of Siptah stays separate.\n\nRead the story via the link in bio.\n#AnderZilla #Aloft #ConanExiles #PS5",
+        "socialFacebookPT": "Aloft e Conan Exiles Enhanced chegam ao PS5 no início de 2027\n\nA Funcom leva Aloft completo e Conan Exiles Enhanced ao PS5 no início de 2027, sem dia marcado. Quem tem Conan no PlayStation ganha a versão de PS5; Isle of Siptah segue à parte.\nhttps://anderzilla.com/pt/radar/aloft-conan-exiles-enhanced-ps5-2027/\n#AnderZilla #Aloft #ConanExiles #PS5",
+        "socialFacebookEN": "Aloft and Conan Exiles Enhanced come to PS5 in early 2027\n\nFuncom is bringing the complete Aloft and Conan Exiles Enhanced to PS5 in early 2027, with no day set. PlayStation owners of Conan get the PS5 version; Isle of Siptah stays separate.\nhttps://anderzilla.com/en/radar/aloft-and-conan-exiles-enhanced-ps5-early-2027/\n#AnderZilla #Aloft #ConanExiles #PS5",
+        "socialWhatsappPT": "Aloft e Conan Exiles Enhanced chegam ao PS5 no início de 2027\nA Funcom leva Aloft completo e Conan Exiles Enhanced ao PS5 no início de 2027, sem dia marcado. Quem tem Conan no PlayStation ganha a versão de PS5; Isle of Siptah segue à parte.\nhttps://anderzilla.com/pt/radar/aloft-conan-exiles-enhanced-ps5-2027/",
+        "socialWhatsappEN": "Aloft and Conan Exiles Enhanced come to PS5 in early 2027\nFuncom is bringing the complete Aloft and Conan Exiles Enhanced to PS5 in early 2027, with no day set. PlayStation owners of Conan get the PS5 version; Isle of Siptah stays separate.\nhttps://anderzilla.com/en/radar/aloft-and-conan-exiles-enhanced-ps5-early-2027/"
+      }
+    },
+    {
+      "key": "where-winds-meet-hutuo-13-novembro",
+      "id": "7e757b2a-c4b9-51af-900a-e9414091ba2e",
+      "status": "published",
+      "data": {
+        "titlePT": "Where Winds Meet: o arco Hutuo Battlefield chega em 13 de novembro",
+        "titleEN": "Where Winds Meet: the Hutuo Battlefield arc arrives November 13",
+        "summaryPT": "Hutuo Battlefield chega em 13/11/2026 com a atualização de primeiro aniversário. A live especial é em 2/11; Dual Spears, com coreografia de Yuen Woo-ping, fica para o fim de novembro.",
+        "summaryEN": "Hutuo Battlefield arrives on November 13, 2026 with the first anniversary update. The special broadcast is November 2; Dual Spears, choreographed by Yuen Woo-ping, comes in late November.",
+        "seoTitlePT": "Where Winds Meet: o arco Hutuo Battlefield chega em 13 de novembro",
+        "seoTitleEN": "Where Winds Meet: the Hutuo Battlefield arc arrives November 13",
+        "seoDescriptionPT": "Hutuo Battlefield chega em 13/11/2026 com a atualização de primeiro aniversário. A live especial é em 2/11; Dual Spears, com coreografia de Yuen Woo-ping, fica para o fim de novembro.",
+        "seoDescriptionEN": "Hutuo Battlefield arrives on November 13, 2026 with the first anniversary update. The special broadcast is November 2; Dual Spears, choreographed by Yuen Woo-ping, comes in late November.",
+        "bodyPT": "O PlayStation Blog publicou em 27 de outubro de 2026 o arco Hutuo Battlefield, de Where Winds Meet. Hutuo é uma região nova e chega em 13 de novembro de 2026, no mesmo dia da atualização de primeiro aniversário global. O texto não diz se a região entra de graça ou como pacote pago, nem fixa horário de Brasília.\n\nA transmissão especial de aniversário fica em 2 de novembro de 2026, com comentários da equipe e cenas de Hutuo. O post não informa o horário. Ainda em novembro, sem dia — o texto fala em fim de novembro — estreia a arte marcial Dual Spears, com direção e coreografia de Yuen Woo-ping. O estilo alterna lanças leves, de ataque, e lanças pesadas, que quebram a postura, e acumula Spear Stance para encadear golpes. A atualização de 13 de novembro também traz recompensas e os modos de tabuleiro Horse Racing Chess e Jianghu Tactics, segundo o anúncio.\n\nNossa leitura: 13 de novembro é a data do arco. 2 de novembro é a live de prévia, não o dia em que Hutuo entra. Dual Spears fica para o fim do mês, sem um dia no calendário.",
+        "bodyEN": "The PlayStation Blog published Where Winds Meet's Hutuo Battlefield arc on October 27, 2026. Hutuo is a new region and arrives on November 13, 2026, the same day as the game's first global anniversary update. The post does not say whether the region is free or a paid pack, and it sets no Brasília time.\n\nThe special anniversary broadcast is on November 2, 2026, with comments from the team and Hutuo footage. The post does not give a time. Later in November, with no day named — the text says late November — the Dual Spears martial art debuts, directed and choreographed by Yuen Woo-ping. The style switches between offensive Light Spears and stance-breaking Heavy Spears, and builds Spear Stance to chain hits. The November 13 update also brings rewards and the board-game modes Horse Racing Chess and Jianghu Tactics, according to the announcement.\n\nOur take: November 13 is the arc's date. November 2 is the preview broadcast, not the day Hutuo arrives. Dual Spears is late in the month, with no calendar day.",
+        "category": "games",
+        "slug": "where-winds-meet-hutuo-13-novembro",
+        "slugPT": "where-winds-meet-hutuo-13-novembro",
+        "slugEN": "where-winds-meet-hutuo-battlefield-november-13",
+        "sourceName": "PlayStation Blog",
+        "sourceUrl": "https://blog.playstation.com/2026/10/27/where-winds-meets-climactic-hutuo-battlefield-narrative-arc-revealed-out-nov-13/",
+        "publishedAt": "2026-10-28",
+        "verifiedAt": "2026-10-28",
+        "eventDate": "2026-10-27",
+        "editorialType": "news",
+        "author": "Redação AnderZilla",
+        "coverMediaId": "8ed54036-002f-5b1c-9d70-98283f0ad29d",
+        "isDemo": false,
+        "tags": "",
+        "hashtagsPT": "#AnderZilla #WhereWindsMeet #PS5",
+        "hashtagsEN": "#AnderZilla #WhereWindsMeet #PS5",
+        "sources": "[{\"name\": \"PlayStation Blog — Hutuo Battlefield\", \"url\": \"https://blog.playstation.com/2026/10/27/where-winds-meets-climactic-hutuo-battlefield-narrative-arc-revealed-out-nov-13/\", \"publishedAt\": \"2026-10-27\", \"note\": \"Post de 27/10/2026. Conferido em 28/10/2026. Hutuo em 13/11; live em 2/11, sem horário; Dual Spears no fim de novembro, sem dia.\"}]",
+        "socialInstagramPT": "Where Winds Meet: o arco Hutuo Battlefield chega em 13 de novembro\n\nHutuo Battlefield chega em 13/11/2026 com a atualização de primeiro aniversário. A live especial é em 2/11; Dual Spears, com coreografia de Yuen Woo-ping, fica para o fim de novembro.\n\nLeia a matéria no link da bio.\n#AnderZilla #WhereWindsMeet #PS5",
+        "socialInstagramEN": "Where Winds Meet: the Hutuo Battlefield arc arrives November 13\n\nHutuo Battlefield arrives on November 13, 2026 with the first anniversary update. The special broadcast is November 2; Dual Spears, choreographed by Yuen Woo-ping, comes in late November.\n\nRead the story via the link in bio.\n#AnderZilla #WhereWindsMeet #PS5",
+        "socialFacebookPT": "Where Winds Meet: o arco Hutuo Battlefield chega em 13 de novembro\n\nHutuo Battlefield chega em 13/11/2026 com a atualização de primeiro aniversário. A live especial é em 2/11; Dual Spears, com coreografia de Yuen Woo-ping, fica para o fim de novembro.\nhttps://anderzilla.com/pt/radar/where-winds-meet-hutuo-13-novembro/\n#AnderZilla #WhereWindsMeet #PS5",
+        "socialFacebookEN": "Where Winds Meet: the Hutuo Battlefield arc arrives November 13\n\nHutuo Battlefield arrives on November 13, 2026 with the first anniversary update. The special broadcast is November 2; Dual Spears, choreographed by Yuen Woo-ping, comes in late November.\nhttps://anderzilla.com/en/radar/where-winds-meet-hutuo-battlefield-november-13/\n#AnderZilla #WhereWindsMeet #PS5",
+        "socialWhatsappPT": "Where Winds Meet: o arco Hutuo Battlefield chega em 13 de novembro\nHutuo Battlefield chega em 13/11/2026 com a atualização de primeiro aniversário. A live especial é em 2/11; Dual Spears, com coreografia de Yuen Woo-ping, fica para o fim de novembro.\nhttps://anderzilla.com/pt/radar/where-winds-meet-hutuo-13-novembro/",
+        "socialWhatsappEN": "Where Winds Meet: the Hutuo Battlefield arc arrives November 13\nHutuo Battlefield arrives on November 13, 2026 with the first anniversary update. The special broadcast is November 2; Dual Spears, choreographed by Yuen Woo-ping, comes in late November.\nhttps://anderzilla.com/en/radar/where-winds-meet-hutuo-battlefield-november-13/"
       }
     }
   ]
