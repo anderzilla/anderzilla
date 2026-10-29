@@ -237,6 +237,18 @@ def validate_references(db, collection, data, record_id=None):
                     raise Error(422, 'duplicate_slug', 'Slug já usado por outro registro aprovado neste idioma.')
 
 
+def hydrate_assets(db, snapshot):
+    """Fill assetBase64 of every uploaded image of a by-reference snapshot, verifying each against its recorded SHA-256."""
+    pending = [row for row in snapshot['collections'].get('media', []) if row['data'].get('assetSha256') and not row['data'].get('assetBase64')]
+    assets = db.media_assets([row['id'] for row in pending])
+    for row in pending:
+        encoded = assets.get(row['id'])
+        if not encoded or hashlib.sha256(base64.b64decode(encoded, validate=True)).hexdigest() != row['data']['assetSha256']:
+            raise ValueError('Image bytes missing or different from the approved asset: ' + row['id'])
+        row['data']['assetBase64'] = encoded
+    return snapshot
+
+
 class CMS:
     def __init__(self, store):
         self.store = store
@@ -341,13 +353,17 @@ class CMS:
             counts = {key: len(db.records(key)) for key in permitted}
             return {'counts': counts, 'recentAudit': [row for row in db.recent_audit() if row['collection'] in permitted or ('anderzilla_admin' in principal['roles'])], 'capabilities': {'collections': permitted, 'publish': 'anderzilla_admin' in principal['roles'], 'rewardsLive': False, 'analyticsConnected': False}}
 
-    def snapshot(self, db, overlay=None):
-        """Frozen public view of approved records. overlay={(collection, id): record} previews drafts as approved."""
+    def snapshot(self, db, overlay=None, include_assets=True):
+        """Frozen public view of approved records. overlay={(collection, id): record} previews drafts as approved.
+
+        include_assets=False keeps image bytes out of the snapshot (media rows keep assetSha256 and url): the 242 library images
+        are ~21 MiB, and writing that into every release took ~2 minutes on Azure SQL, past the 45 s limit of the review site.
+        Assets are immutable and content-addressed, so the publisher loads them by id with hydrate_assets()."""
         # A release is read-only until its snapshot is written. Load each
         # collection once under the transaction lock, then validate the same
         # frozen view without per-reference SQL round trips. Never reuse this
         # cache across transactions or in save(), where records may change.
-        records = {name: db.records(name) for name in sorted(FIELDS)}
+        records = {name: db.records(name, light=(name == 'media' and not include_assets)) for name in sorted(FIELDS)}
         for (collection, record_id), record in (overlay or {}).items():  # preview: drafts of one package count as approved
             records[collection] = [row for row in records[collection] if row['id'] != record_id] + [{**record, 'status': 'approved'}]
         indexes = {name: {row['id']: row for row in rows} for name, rows in records.items()}
@@ -376,15 +392,19 @@ class CMS:
                 public['data'].pop('approvalReference', None)
                 items.append(public)
             collections[collection] = items
-        if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > MEDIA_LIBRARY_LIMIT_B64:
-            raise Error(413, 'media_quota', 'Snapshot excede limite de 32 MB de imagens.')
+        if include_assets:
+            if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > MEDIA_LIBRARY_LIMIT_B64:
+                raise Error(413, 'media_quota', 'Snapshot excede limite de 32 MB de imagens.')
+        else:  # the quota is enforced at upload; the light rows carry only a placeholder, which must not leak into the snapshot
+            for row in collections.get('media', []):
+                row['data'].pop('assetBase64', None)
         for collection in ('missions', 'rewards'):
             demos = [copy.deepcopy(row) for row in records[collection] if row['status'] == 'approved' and row['data'].get('isDemo') is True]
             for row in demos:
                 validate(collection, row['data'], approved=True)
             if demos:
                 collections[collection] = demos
-        return {'schemaVersion': 1, 'createdAt': now(), 'collections': collections}
+        return {'schemaVersion': 1, 'createdAt': now(), 'assets': 'included' if include_assets else 'by-reference', 'collections': collections}
 
     def release(self, principal, key):
         require(principal, publish=True)
@@ -394,7 +414,7 @@ class CMS:
             existing = db.release_by_key(key)
             if existing:
                 return existing
-            snapshot = self.snapshot(db)
+            snapshot = self.snapshot(db, include_assets=False)
             release = {'id': str(uuid.uuid4()), 'status': 'queued', 'createdAt': now(), 'updatedAt': now(), 'url': None}
             db.save_release(release, key, snapshot)
             db.audit(principal['id'], 'queue_release', 'releases', release['id'], 1)

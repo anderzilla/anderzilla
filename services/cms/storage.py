@@ -2,6 +2,7 @@
 import json
 import os
 import sqlite3
+import threading
 from contextlib import contextmanager
 from pathlib import Path
 from core import now
@@ -16,9 +17,38 @@ class Session:
         cursor.execute(query.replace('?', '%s') if self.sql_server else query, tuple(params))
         return cursor
 
-    def records(self, collection):
-        rows = self.execute('SELECT document FROM cms_records WHERE collection=? ORDER BY updated_at DESC', (collection,)).fetchall()
-        return [json.loads(row[0]) for row in rows]
+    def records(self, collection, light=False):
+        """light=True replaces the image bytes of media rows by the placeholder 'omitted' inside the database, so ~20 MiB never cross the wire."""
+        if light and collection == 'media':
+            if self.sql_server:
+                query = "SELECT CASE WHEN JSON_VALUE(document,'$.data.assetSha256') IS NOT NULL THEN JSON_MODIFY(document,'$.data.assetBase64','omitted') ELSE document END FROM cms_records WHERE collection=? ORDER BY updated_at DESC"
+            else:
+                query = "SELECT CASE WHEN json_extract(document,'$.data.assetSha256') IS NOT NULL THEN json_set(document,'$.data.assetBase64','omitted') ELSE document END FROM cms_records WHERE collection=? ORDER BY updated_at DESC"
+        else:
+            query = 'SELECT document FROM cms_records WHERE collection=? ORDER BY updated_at DESC'
+        return [json.loads(row[0]) for row in self.execute(query, (collection,)).fetchall()]
+
+    def media_assets(self, record_ids):
+        """Base64 bytes of many uploaded images in a few queries (one round trip per ~500 ids instead of one per image)."""
+        ids, found = list(record_ids), {}
+        for start in range(0, len(ids), 500):
+            chunk = ids[start:start + 500]
+            marks = ','.join('?' * len(chunk))
+            if self.sql_server:
+                query = f"SELECT id, asset.assetBase64 FROM cms_records CROSS APPLY OPENJSON(document) WITH (assetBase64 nvarchar(max) '$.data.assetBase64') AS asset WHERE collection='media' AND id IN ({marks})"
+            else:
+                query = f"SELECT id, json_extract(document, '$.data.assetBase64') FROM cms_records WHERE collection='media' AND id IN ({marks})"
+            found.update({row[0]: row[1] for row in self.execute(query, chunk).fetchall()})
+        return found
+
+    def media_asset(self, record_id):
+        """Base64 bytes of one uploaded image (SQL Server needs OPENJSON: JSON_VALUE truncates values over 4000 characters)."""
+        if self.sql_server:
+            query = "SELECT asset.assetBase64 FROM cms_records CROSS APPLY OPENJSON(document) WITH (assetBase64 nvarchar(max) '$.data.assetBase64') AS asset WHERE collection='media' AND id=?"
+        else:
+            query = "SELECT json_extract(document, '$.data.assetBase64') FROM cms_records WHERE collection='media' AND id=?"
+        row = self.execute(query, (record_id,)).fetchone()
+        return row[0] if row else None
 
     def media_bytes(self):
         """Return encoded quota usage without transferring every uploaded image."""
@@ -183,9 +213,48 @@ class AzureSQLStore:
                 except Exception:
                     pass
 
+    # One connection per worker thread, reused across transactions. A TLS connect plus login costs ~1.4 s on Azure SQL and a single
+    # approval opens about ten transactions, which pushed it past the 45 s limit of the review site.
+    _local = threading.local()
+
+    def _key(self):
+        return tuple(os.environ.get(name, '') for name in ('CMS_SQL_SERVER', 'CMS_SQL_DATABASE', 'CMS_SQL_USER'))
+
+    def _state(self):
+        state = getattr(self._local, 'state', None)
+        if state is None or state['key'] != self._key():
+            if state and state['connection'] is not None:
+                self._close(state['connection'])
+            state = self._local.state = {'key': self._key(), 'connection': None, 'depth': 0}
+        return state
+
+    @staticmethod
+    def _close(connection):
+        try:
+            connection.close()
+        except Exception:
+            pass
+
+    def _acquire(self, state):
+        connection = state['connection']
+        if connection is not None:
+            try:  # the server may have closed an idle connection or paused the database since the last use
+                connection.cursor().execute('SELECT 1').fetchone()
+                connection.rollback()
+                return connection
+            except Exception:
+                self._close(connection)
+                state['connection'] = None
+        state['connection'] = self.connect()
+        return state['connection']
+
     @contextmanager
     def transaction(self):
-        db = self.connect()
+        state = self._state()
+        if state['depth']:
+            raise RuntimeError('Nested CMS transactions would commit the outer one early and deadlock on the application lock.')
+        db = self._acquire(state)
+        state['depth'] = 1
         try:
             db.cursor().execute('SET TRANSACTION ISOLATION LEVEL SERIALIZABLE')
             # Serialize CMS writes and release snapshots across instances. Low-volume admin workload.
@@ -193,7 +262,11 @@ class AzureSQLStore:
             yield Session(db, True)
             db.commit()
         except Exception:
-            db.rollback()
+            try:
+                db.rollback()
+            except Exception:  # a broken connection is dropped instead of being reused
+                self._close(db)
+                state['connection'] = None
             raise
         finally:
-            db.close()
+            state['depth'] = 0

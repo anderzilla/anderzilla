@@ -5,6 +5,7 @@ This is an operator CLI, not an HTTP endpoint or an authentication bypass.
 No scheduler is installed. An uncertain deployment remains deploying for reconciliation.
 """
 import argparse
+import copy
 import hashlib
 import json
 import os
@@ -18,7 +19,7 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'services' / 'cms'))
-from core import CMS, Error, now
+from core import CMS, Error, hydrate_assets, now
 from storage import SQLiteStore, AzureSQLStore
 from import_snapshot import transform, write_assets
 
@@ -132,7 +133,10 @@ def run(cms, release_id=None, root=ROOT, azure_cli='az', builder=build, deployer
     deploying = False
     try:
         with staging_directory() as temporary:
-            artifact = builder(root, temporary / 'web', snapshot, marker)
+            # The stored snapshot references images by id and SHA-256; the bytes are loaded here, verified, and never stored in the release.
+            with cms.store.transaction() as db:
+                complete = hydrate_assets(db, copy.deepcopy(snapshot))
+            artifact = builder(root, temporary / 'web', complete, marker)
             cms.update_release(PRINCIPAL, release['id'], 'validated')
             cms.update_release(PRINCIPAL, release['id'], 'deploying')
             deploying = True

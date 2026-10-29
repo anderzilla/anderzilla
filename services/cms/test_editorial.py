@@ -153,9 +153,9 @@ class EditorialTests(unittest.TestCase):
         reads = []
         original = Session.records
 
-        def counted(db, collection):
+        def counted(db, collection, **options):
             reads.append(collection)
-            return original(db, collection)
+            return original(db, collection, **options)
 
         with patch.object(Session, 'records', counted), patch.object(Session, 'record', side_effect=AssertionError('Release must not query individual references')):
             release = self.cms.release(ADMIN, 'release-cache-equivalence')
@@ -164,6 +164,9 @@ class EditorialTests(unittest.TestCase):
             self.assertEqual(self.cms.release(ADMIN, 'release-cache-equivalence'), release)
             self.assertEqual(reads, [])
         snapshot = self.cms.releases(ADMIN, release['id'], True)
+        # Releases now reference uploaded images by id and SHA-256 instead of embedding their bytes (see test_release_assets.py).
+        for row in expected.get('media', []):
+            row['data'].pop('assetBase64', None)
         self.assertEqual(snapshot['collections'], expected)
 
     def test_release_cache_rejects_preexisting_duplicate_slugs(self):
@@ -216,9 +219,12 @@ class EditorialTests(unittest.TestCase):
         media = self.approve('media', self.upload())
         page = self.approve('pages', self.cms.save(ADMIN, 'pages', {'titlePT': 'Page quota', 'slugPT': 'quota-page', 'bodyPT': 'Body', 'coverMediaId': media['id']}))
         # Força o teto para um valor pequeno apenas neste teste, simulando biblioteca cheia com fixtures mínimas.
+        # O release referencia as imagens por hash (a cota é aplicada no upload); o snapshot completo, usado em prévias e builds,
+        # continua rejeitando quando as imagens embutidas passam do teto.
         with patch.object(core, 'MEDIA_LIBRARY_LIMIT_B64', 100):
-            with self.assertRaises(Error) as failure:
-                self.cms.release(ADMIN, 'quota-release-test')
+            with self.cms.store.transaction() as db:
+                with self.assertRaises(Error) as failure:
+                    self.cms.snapshot(db)
             self.assertEqual(failure.exception.code, 'media_quota')
         # Com o limite real de 32 MiB o mesmo snapshot deve publicar normalmente.
         release = self.cms.release(ADMIN, 'quota-release-ok')
