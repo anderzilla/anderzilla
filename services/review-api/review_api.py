@@ -8,7 +8,6 @@ import base64
 import json
 import logging
 import os
-import re
 from urllib.parse import urlsplit
 from agent_api import AgentGateway, handle
 from core import CMS, Error
@@ -40,35 +39,6 @@ def swa_principal(encoded):
 
 def reply(status, payload, extra=None):
     return status, payload, {**SECURITY_HEADERS, **(extra or {})}
-
-
-ADMIN_ROLE = 'anderzilla_admin'
-ALLOWLIST_ENTRY = re.compile(r'^[a-z]{2,20}:[A-Za-z0-9_.-]{8,128}$')
-
-
-def admin_allowlist(value):
-    """`provider:userId` pairs from REVIEW_ADMIN_USER_IDS. Malformed entries are dropped, never guessed."""
-    return {item.strip() for item in (value or '').split(',') if ALLOWLIST_ENTRY.fullmatch(item.strip())}
-
-
-def roles_for(raw, allowlist):
-    """Roles for the identity Static Web Apps describes at sign-in. The decision rests on the provider's stable
-    userId; the e-mail (`userDetails`) and every claim are ignored because they can be set by another tenant."""
-    try:
-        body = json.loads(raw) if raw else {}
-        provider, user = body.get('identityProvider'), body.get('userId')
-    except (ValueError, UnicodeDecodeError, AttributeError):
-        return []
-    if not isinstance(provider, str) or not isinstance(user, str):
-        return []
-    return [ADMIN_ROLE] if f'{provider}:{user}' in allowlist else []
-
-
-def process_roles(raw, environ=None):
-    """Role function called by Static Web Apps right after a sign-in. It always answers 200 with a role list
-    (empty on any doubt), so an ordinary sign-in still works and never reveals why a role was withheld."""
-    environ = os.environ if environ is None else environ
-    return reply(200, {'roles': roles_for(raw, admin_allowlist(environ.get('REVIEW_ADMIN_USER_IDS')))})
 
 
 def same_origin(headers, allowed=None):

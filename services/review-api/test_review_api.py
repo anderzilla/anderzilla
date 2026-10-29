@@ -14,7 +14,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(CMS_DIR))
 from agent_api import AgentGateway, handle
 from core import CMS
-from review_api import MAX_JSON_BYTES, process, process_roles, same_origin, swa_principal
+from review_api import MAX_JSON_BYTES, process, same_origin, swa_principal
 from storage import SQLiteStore
 
 ADMIN = {'id': 'seed-admin', 'name': 'seed', 'roles': ['anderzilla_admin']}
@@ -128,49 +128,6 @@ class ReviewApiTest(unittest.TestCase):
         status, payload, headers = process('GET', 'submissions', {}, {'x-ms-client-principal': principal()}, b'', gateway_factory=broken)
         self.assertEqual((status, headers['Retry-After']), (503, '30'))
         self.assertNotIn('PRIVATE-SENTINEL', json.dumps(payload) + json.dumps(headers))
-
-
-class RoleSourceTest(unittest.TestCase):
-    OWNER = 'aad:419850329e1c4dcd9a440a2d94fcb131'
-
-    def roles(self, body, allowed=OWNER):
-        raw = body if isinstance(body, bytes) else json.dumps(body).encode()
-        status, payload, headers = process_roles(raw, {'REVIEW_ADMIN_USER_IDS': allowed})
-        self.assertEqual(status, 200)
-        self.assertEqual(headers['Cache-Control'], 'no-store')
-        return payload['roles']
-
-    def test_only_the_listed_provider_and_user_id_get_the_admin_role(self):
-        self.assertEqual(self.roles({'identityProvider': 'aad', 'userId': '419850329e1c4dcd9a440a2d94fcb131'}), ['anderzilla_admin'])
-        self.assertEqual(self.roles({'identityProvider': 'aad', 'userId': '00000000000000000000000000000000'}), [])
-        self.assertEqual(self.roles({'identityProvider': 'github', 'userId': '419850329e1c4dcd9a440a2d94fcb131'}), [])  # same id, other provider
-
-    def test_the_email_and_claims_never_grant_anything(self):
-        body = {'identityProvider': 'aad', 'userId': 'ffffffffffffffffffffffffffffffff', 'userDetails': 'anderzilla@ymail.com',
-                'claims': [{'typ': 'preferred_username', 'val': 'anderzilla@ymail.com'}, {'typ': 'roles', 'val': 'anderzilla_admin'}]}
-        self.assertEqual(self.roles(body), [])
-        self.assertEqual(self.roles({**body, 'userId': '419850329e1c4dcd9a440a2d94fcb131'}), ['anderzilla_admin'])  # the id decides, extras are ignored
-
-    def test_malformed_input_and_empty_allow_list_fail_closed_with_200(self):
-        for bad in (b'', b'not json', b'[]', b'{"identityProvider": 1, "userId": 2}', b'{"identityProvider": "aad"}', b'\xff\xfe'):
-            self.assertEqual(self.roles(bad), [], bad)
-        for empty in ('', '   ', ',,', 'aad:short', 'AAD:419850329e1c4dcd9a440a2d94fcb131', 'aad:419850329e1c4dcd9a440a2d94fcb131 extra'):
-            self.assertEqual(self.roles({'identityProvider': 'aad', 'userId': '419850329e1c4dcd9a440a2d94fcb131'}, allowed=empty), [], empty)
-        self.assertEqual(process_roles(b'{}', {})[1], {'roles': []})  # setting absent
-
-    def test_allow_list_parsing_keeps_valid_entries_and_drops_the_rest(self):
-        from review_api import admin_allowlist
-        value = ' aad:419850329e1c4dcd9a440a2d94fcb131 , bad entry, github:12345678 ,, aad:x '
-        self.assertEqual(admin_allowlist(value), {'aad:419850329e1c4dcd9a440a2d94fcb131', 'github:12345678'})
-        self.assertEqual(admin_allowlist(None), set())
-
-    def test_the_site_config_declares_the_role_source_and_keeps_everything_else_closed(self):
-        config = json.loads((HERE.parent.parent / 'apps' / 'review' / 'public' / 'staticwebapp.config.json').read_text(encoding='utf-8'))
-        self.assertEqual(config['auth']['rolesSource'], '/api/GetRoles')
-        anonymous = [route['route'] for route in config['routes'] if 'anonymous' in route.get('allowedRoles', [])]
-        self.assertEqual(anonymous, ['/.auth/*'])  # the role function must not be reachable anonymously
-        catch_all = next(route for route in config['routes'] if route['route'] == '/*')
-        self.assertEqual(catch_all['allowedRoles'], ['anderzilla_admin'])
 
 
 class PackagingTest(unittest.TestCase):
