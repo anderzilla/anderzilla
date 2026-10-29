@@ -2,7 +2,7 @@
   "status": "published",
   "publish": true,
   "apuracao": "2026-10-27",
-  "note": "Dez notas do Radar aprovadas para publicação em 2026-10-28. status published e publish true. Cada item tem coverMediaId de uma mídia em media[]. O arquivo é covers/<slug>.webp (1600x900). A URL pública é /media/<sha256>.webp; os mesmos bytes ficam em apps/web/public/media/ na branch do site. Crédito e alt em português vêm do CREDITOS. O alt em inglês traduz esse texto. A licença segue o corpus: divulgação oficial, ou arte editorial própria quando o crédito é Arte: Anderzilla. As dez entram em public-after.json e no índice. A data exibida e a ordenação usam a apuração (verifiedAt) ou o selo de atualização, o que for mais recente, e não uma data de redação anterior. O item ps-blog-27-outubro-aloft-where-winds-meet segue como rodada anterior dos mesmos anúncios de Aloft e Where Winds Meet.",
+  "note": "Onze notas do Radar aprovadas para publicação. As dez de 27 e 28/10 seguem no lote; a de 29/10 é ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2, com última atualização em 2026-10-29. status published e publish true. Cada item tem coverMediaId de uma mídia em media[]. O arquivo é covers/<slug>.webp (1600x900). A URL pública é /media/<sha256>.webp; os mesmos bytes ficam em apps/web/public/media/ na branch do site. Crédito e alt em português vêm do CREDITOS. O alt em inglês traduz esse texto. A licença segue o corpus: divulgação oficial, ou arte editorial própria quando o crédito é Arte: Anderzilla. As onze entram em public-after.json e no índice. A data exibida e a ordenação usam a apuração (verifiedAt) ou o selo de atualização, o que for mais recente, e não uma data de redação anterior. O item ps-blog-27-outubro-aloft-where-winds-meet segue como rodada anterior dos mesmos anúncios de Aloft e Where Winds Meet.",
   "media": [
     {
       "id": "129ab54e-5ce6-59f6-8683-703c7b54df6d",
@@ -200,6 +200,26 @@
         "width": 1600,
         "height": 900,
         "sourceUrl": "https://blog.playstation.com/tachyon/2026/10/d90b9946eaf75ed2c43b0b527138cad134f8e02d.jpg"
+      }
+    },
+    {
+      "id": "844df4aa-cfd2-5604-8a29-5fef96397802",
+      "status": "published",
+      "slug": "ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2",
+      "file": "covers/ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2.webp",
+      "assetSha256": "6a45f506ee57ce28061466091db614312ca9e293f39798feb8f75dc855902ff7",
+      "data": {
+        "titlePT": "ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2.webp",
+        "url": "/media/6a45f506ee57ce28061466091db614312ca9e293f39798feb8f75dc855902ff7.webp",
+        "mediaType": "image",
+        "mimeType": "image/webp",
+        "altPT": "Arte oficial dos jogos mensais do PS Plus de novembro, com as capas de Tomb Raider IV-VI Remastered, Dead Island 2 e Monster Train 2",
+        "altEN": "Official art for the November PS Plus monthly games, with the covers of Tomb Raider IV-VI Remastered, Dead Island 2 and Monster Train 2",
+        "credit": "Divulgação/Sony Interactive Entertainment",
+        "license": "Divulgação. Direitos reservados ao titular.",
+        "width": 1600,
+        "height": 900,
+        "sourceUrl": "https://blog.playstation.com/tachyon/2026/10/ee14b16f5f65f3dd7cdf074a83bbfa255de288ea-scaled.jpg"
       }
     }
   ],
@@ -602,6 +622,46 @@
         "socialFacebookEN": "Where Winds Meet: the Hutuo Battlefield arc arrives November 13\n\nHutuo Battlefield arrives on November 13, 2026 with the first anniversary update. The special broadcast is November 2; Dual Spears, choreographed by Yuen Woo-ping, comes in late November.\nhttps://anderzilla.com/en/radar/where-winds-meet-hutuo-battlefield-november-13/\n#AnderZilla #WhereWindsMeet #PS5",
         "socialWhatsappPT": "Where Winds Meet: o arco Hutuo Battlefield chega em 13 de novembro\nHutuo Battlefield chega em 13/11/2026 com a atualização de primeiro aniversário. A live especial é em 2/11; Dual Spears, com coreografia de Yuen Woo-ping, fica para o fim de novembro.\nhttps://anderzilla.com/pt/radar/where-winds-meet-hutuo-13-novembro/",
         "socialWhatsappEN": "Where Winds Meet: the Hutuo Battlefield arc arrives November 13\nHutuo Battlefield arrives on November 13, 2026 with the first anniversary update. The special broadcast is November 2; Dual Spears, choreographed by Yuen Woo-ping, comes in late November.\nhttps://anderzilla.com/en/radar/where-winds-meet-hutuo-battlefield-november-13/"
+      }
+    },
+    {
+      "key": "ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2",
+      "id": "5fafae07-a019-5494-852a-fb4bef508e7d",
+      "status": "published",
+      "data": {
+        "titlePT": "PS Plus de novembro: Dead Island 2, Tomb Raider IV-VI Remastered e Monster Train 2",
+        "titleEN": "PS Plus in November: Dead Island 2, Tomb Raider IV-VI Remastered and Monster Train 2",
+        "summaryPT": "A PlayStation revelou os jogos do PS Plus Essential de novembro. Eles ficam disponíveis para resgate de 3 a 30/11.",
+        "summaryEN": "PlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30.",
+        "seoTitlePT": "PS Plus de novembro: Dead Island 2, Tomb Raider IV-VI Remastered e Monster Train 2",
+        "seoTitleEN": "PS Plus in November: Dead Island 2, Tomb Raider IV-VI Remastered and Monster Train 2",
+        "seoDescriptionPT": "A PlayStation revelou os jogos do PS Plus Essential de novembro. Eles ficam disponíveis para resgate de 3 a 30/11.",
+        "seoDescriptionEN": "PlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30.",
+        "bodyPT": "A PlayStation revelou os jogos do PS Plus Essential de novembro. Eles ficam disponíveis para resgate de 3 a 30 de novembro de 2026.\n\nDead Island 2, no PS5 e no PS4. Zumbis, muito gore e uma Los Angeles destruída. O coop é o ponto forte: chama a galera e vai pra resenha.\n\nTomb Raider IV-VI Remastered, no PS5 e no PS4. Três clássicos da Lara Croft — The Last Revelation, Chronicles e The Angel of Darkness — voltam com visual renovado. É nostalgia pura pra quem jogou na época e uma porta de entrada pra quem nunca jogou.\n\nMonster Train 2, no PS5. Roguelike de construção de baralho, daqueles de \"só mais uma run\" até as 3 da manhã.\n\nOs jogos de outubro saem do catálogo em 2 de novembro, então resgata enquanto dá tempo. São F1 25, Hunt: Showdown 1896 e Earth Defense Force: World Brothers 2.\n\nQual você vai baixar primeiro? Comenta no nosso Instagram, @anderzilla.",
+        "bodyEN": "PlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30, 2026.\n\nDead Island 2, on PS5 and PS4. Zombies, plenty of gore and a wrecked Los Angeles. Co-op is the draw: call your friends and go.\n\nTomb Raider IV-VI Remastered, on PS5 and PS4. Three Lara Croft classics — The Last Revelation, Chronicles and The Angel of Darkness — come back with a refreshed look. Pure nostalgia if you played them then, and a way in if you never did.\n\nMonster Train 2, on PS5. A deck-building roguelike, the \"one more run\" kind that goes until 3 a.m.\n\nOctober's games leave the catalog on November 2, so claim them while you can. They are F1 25, Hunt: Showdown 1896 and Earth Defense Force: World Brothers 2.\n\nWhich one are you downloading first? Comment on our Instagram, @anderzilla.",
+        "category": "consoles",
+        "slug": "ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2",
+        "slugPT": "ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2",
+        "slugEN": "ps-plus-november-dead-island-2-tomb-raider-monster-train-2",
+        "sourceName": "PlayStation Blog",
+        "sourceUrl": "https://blog.playstation.com/2026/10/28/playstation-plus-monthly-games-for-november-dead-island-2-tomb-raider-iv-vi-remastered-monster-train-2/",
+        "publishedAt": "2026-10-29",
+        "verifiedAt": "2026-10-29",
+        "eventDate": "2026-10-28",
+        "editorialType": "news",
+        "author": "Redação AnderZilla",
+        "coverMediaId": "844df4aa-cfd2-5604-8a29-5fef96397802",
+        "isDemo": false,
+        "tags": "",
+        "hashtagsPT": "#AnderZilla #PSPlus #PlayStation #DeadIsland2 #TombRaider #MonsterTrain2",
+        "hashtagsEN": "#AnderZilla #PSPlus #PlayStation #DeadIsland2 #TombRaider #MonsterTrain2",
+        "sources": "[{\"name\": \"PlayStation Blog — jogos mensais de novembro\", \"url\": \"https://blog.playstation.com/2026/10/28/playstation-plus-monthly-games-for-november-dead-island-2-tomb-raider-iv-vi-remastered-monster-train-2/\", \"publishedAt\": \"2026-10-28\", \"note\": \"Post oficial de 28/10/2026. Conferido em 29/10/2026. Resgate de 3 a 30/11/2026. Os jogos de outubro podem ser adicionados à biblioteca até 2/11/2026.\"}]",
+        "socialInstagramPT": "PS Plus de novembro: Dead Island 2, Tomb Raider IV-VI Remastered e Monster Train 2\n\nA PlayStation revelou os jogos do PS Plus Essential de novembro. Eles ficam disponíveis para resgate de 3 a 30/11.\n\nLeia a matéria no link da bio.\n#AnderZilla #PSPlus #PlayStation #DeadIsland2 #TombRaider #MonsterTrain2",
+        "socialInstagramEN": "PS Plus in November: Dead Island 2, Tomb Raider IV-VI Remastered and Monster Train 2\n\nPlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30.\n\nRead the story via the link in bio.\n#AnderZilla #PSPlus #PlayStation #DeadIsland2 #TombRaider #MonsterTrain2",
+        "socialFacebookPT": "PS Plus de novembro: Dead Island 2, Tomb Raider IV-VI Remastered e Monster Train 2\n\nA PlayStation revelou os jogos do PS Plus Essential de novembro. Eles ficam disponíveis para resgate de 3 a 30/11.\nhttps://anderzilla.com/pt/radar/ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2/\n#AnderZilla #PSPlus #PlayStation #DeadIsland2 #TombRaider #MonsterTrain2",
+        "socialFacebookEN": "PS Plus in November: Dead Island 2, Tomb Raider IV-VI Remastered and Monster Train 2\n\nPlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30.\nhttps://anderzilla.com/en/radar/ps-plus-november-dead-island-2-tomb-raider-monster-train-2/\n#AnderZilla #PSPlus #PlayStation #DeadIsland2 #TombRaider #MonsterTrain2",
+        "socialWhatsappPT": "PS Plus de novembro: Dead Island 2, Tomb Raider IV-VI Remastered e Monster Train 2\nA PlayStation revelou os jogos do PS Plus Essential de novembro. Eles ficam disponíveis para resgate de 3 a 30/11.\nhttps://anderzilla.com/pt/radar/ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2/",
+        "socialWhatsappEN": "PS Plus in November: Dead Island 2, Tomb Raider IV-VI Remastered and Monster Train 2\nPlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30.\nhttps://anderzilla.com/en/radar/ps-plus-november-dead-island-2-tomb-raider-monster-train-2/"
       }
     }
   ]
