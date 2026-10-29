@@ -35,6 +35,27 @@ Data: 2026-10-29. Somente leitura: inventário do Azure, do repositório e da pr
 - O caminho `-Apply` ainda não foi exercitado de verdade (só `-WhatIf`), por desenho; a primeira execução real deve ser a de homolog.
 - Fora do escopo desta etapa e feito depois, um passo por vez: esquema do banco e usuário SQL de runtime, configurações do app, permissão da identidade da API no contêiner, deploy do código, DNS (`ia.` e `revisao.`) e segredos do GitHub.
 
+## Homolog criado (2026-10-29, aprovado pelo proprietário)
+
+Criados e conferidos pela CLI e pelo ARM no grupo `anderzilla-web` (16 → 19 recursos; SWAs continuam em 8):
+
+| Recurso | Estado verificado |
+|---|---|
+| Storage `anderzillacontentst` | StorageV2, Standard_LRS, TLS 1.2, só HTTPS, acesso público de blob desligado |
+| Contêiner `media-homolog` | privado (sem acesso público) |
+| Function App `anderzilla-content-api-homolog` | Linux, Python 3.11, plano de consumo existente `EastUS2LinuxDynamicPlan`, HTTPS obrigatório, FTPS apenas, TLS 1.2, identidade gerenciada atribuída ao sistema; `https://anderzilla-content-api-homolog.azurewebsites.net` (sem código implantado) |
+| Application Insights `anderzilla-content-api-homolog` | criado automaticamente pela CLI (como no identity-api); gratuito até 5 GB/mês, retenção de 90 dias |
+
+Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
+
+**Tropeços e lições (já refletidos em `content-provision.ps1`):**
+- `az functionapp create --plan <plano existente>` falha com "AlwaysOn" e com `--consumption-plan-location` o app **é criado**, mas a CLI sai com erro ("Cannot find ServerFarm") depois. O script agora tolera esse erro e confere o app pelo ARM.
+- `az functionapp/webapp update` e `identity assign` retornam `Conflict` para esses apps; a atribuição de identidade e o HTTPS obrigatório são feitos por PATCH direto no ARM, que funciona.
+- Reexecutar o `-Apply` em homolog é idempotente (nada novo, 19 recursos).
+- O Azure avisa que o Linux Consumption chega ao fim do suporte em **30/09/2028**; o Flex Consumption é o substituto recomendado (também tem franquia gratuita). Vale migrar a API depois; o identity-api tem o mesmo prazo.
+
+**Próximos passos de homolog (cada um separado e revisado):** esquema novo no banco `anderzilla-cms-homolog` (tabelas de chaves, pacotes e comentários) e usuário SQL de runtime, configurações do app e permissão da identidade no contêiner, deploy do código da API, DNS `ia.`. Os dois primeiros exigem a credencial SQL de operador, que fica fora do Git e nunca passa pelo chat.
+
 ## O que a investigação mudou no plano
 
 1. **A produção não nasce do banco.** O artefato de produção sai de `infra/azure/rebuild-production.py`, que usa o corpus `public-after.json` do worktree `G:\AnderZilla-docs` (71 notícias, 242 mídias) e 462 arquivos de imagem do bundle `.deploy/` (fora do Git). O banco `anderzilla-cms-homolog` provavelmente está defasado em relação a esse corpus (as 11 notas de 28–29/10 entraram pelo corpus; não verifiquei o banco). Antes de qualquer cutover, o banco precisa ser populado **a partir do corpus** e provar que gera o mesmo site.
