@@ -284,7 +284,9 @@ function PreviewPanel({ id, token, onAuth, enabled }: { id: string; token: strin
   const width = device === 'desktop' ? 1440 : 390;
   const height = device === 'desktop' ? 900 : 780;
 
-  const refresh = useCallback(() => call<PreviewState>(`/v1/submissions/${id}/preview`).then(setState).catch((e) => setError(e.message)), [call, id]);
+  // 501 means this environment has no preview builder (hosted review before the release pipeline exists): say so instead of failing.
+  const unavailable = (e: unknown) => (e instanceof ApiError && e.status === 501 ? (setState({ state: 'unavailable' }), true) : false);
+  const refresh = useCallback(() => call<PreviewState>(`/v1/submissions/${id}/preview`).then(setState).catch((e) => { if (!(e instanceof ApiError && e.status === 501)) setError(e.message); else setState({ state: 'unavailable' }); }), [call, id]);
   useEffect(() => { refresh(); }, [refresh]);
   useEffect(() => {
     if (state.state !== 'building') return;
@@ -303,7 +305,7 @@ function PreviewPanel({ id, token, onAuth, enabled }: { id: string; token: strin
 
   async function start() {
     setError('');
-    try { setState(await call<PreviewState>(`/v1/submissions/${id}/preview`, { method: 'POST', body: '{}' })); } catch (e) { setError((e as Error).message); }
+    try { setState(await call<PreviewState>(`/v1/submissions/${id}/preview`, { method: 'POST', body: '{}' })); } catch (e) { if (!unavailable(e)) setError((e as Error).message); }
   }
   async function open() {
     setError('');
@@ -319,14 +321,16 @@ function PreviewPanel({ id, token, onAuth, enabled }: { id: string; token: strin
           <button className={device === 'mobile' ? 'on' : ''} aria-pressed={device === 'mobile'} onClick={() => setDevice('mobile')}>Mobile 390</button>
         </div>
       </div>
-      <p>O site real é construído com este pacote como se já estivesse aprovado. Nada é publicado.</p>
+      {state.state === 'unavailable' ? (
+        <p>A prévia fiel do site ainda não está disponível neste ambiente: ela exige um build do site, que entra com o pipeline de publicação. Revise o conteúdo abaixo; comentar, pedir correções e aprovar funcionam normalmente.</p>
+      ) : <p>O site real é construído com este pacote como se já estivesse aprovado. Nada é publicado.</p>}
       {error && <div className="error" role="alert">{error}</div>}
       {state.state === 'failed' && <div className="error" role="alert">{state.error || 'A prévia falhou.'}</div>}
-      <div className="actions">
+      {state.state !== 'unavailable' && <div className="actions">
         <button className="primary" onClick={start} disabled={!enabled || state.state === 'building'}>{state.state === 'building' ? 'Construindo…' : state.state === 'ready' ? 'Gerar de novo' : 'Gerar prévia'}</button>
         {state.state === 'ready' && !state.active && <button onClick={open}>Abrir esta prévia</button>}
         {state.state === 'ready' && state.active && <a className="link" href={previewUrl + '/'} target="_blank" rel="noopener noreferrer">Abrir em outra aba</a>}
-      </div>
+      </div>}
       {state.state === 'ready' && state.active && (
         <div ref={box} className="frame-box" style={{ height: height * scale }}>
           <iframe title="Prévia do site" src={previewUrl + '/'} width={width} height={height} sandbox="allow-scripts allow-same-origin" style={{ transform: `scale(${scale})`, transformOrigin: 'top left', width, height }} />

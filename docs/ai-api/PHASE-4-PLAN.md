@@ -59,6 +59,24 @@ Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
 
 **Próximos passos de homolog (cada um separado e revisado):** deploy do código da API (o esquema do banco e as configurações já foram aplicados), primeira chave de agente, teste de um fluxo real e DNS `ia.`.
 
+## Página de revisão em homolog: preparada (2026-10-29, **nada criado nem implantado**)
+
+**Arquitetura:** Static Web App Free `anderzilla-review-homolog` com login Microsoft (provedor `aad`) e a UI estática de `apps/review`; a API de revisão é a **API gerenciada** do próprio SWA (`services/review-api/`, Python 3.11, único suportado), então ela só é alcançável por trás do login do SWA. A API da fase anterior (`ia.`) continua separada e só aceita chaves de agente.
+
+- **`services/review-api/review_api.py`:** a identidade vem **somente** do `x-ms-client-principal` do SWA (decodificado e validado: usuário autenticado, papéis como lista de textos); sem o papel `anderzilla_admin` as rotas humanas dão 403. **Chaves de agente nunca são aceitas aqui** (rotas de agente respondem 401, mesmo com chave válida). Como o login é por cookie, todo POST exige `application/json` e `Origin` igual ao do site (`REVIEW_ALLOWED_ORIGIN` ou o host encaminhado); não há CORS. Corpo máximo de 300 KB, 503 sem detalhes, `no-store`. Prévia e promoção respondem 501 (a interface mostra "prévia ainda não disponível neste ambiente" em vez de erro).
+- **Testes** (10 em `services/review-api/`): identidade forjada ou mal formada (401), logado sem papel (403), chave de agente recusada, ciclo humano completo (listar, itens, comentar, pedir correções, reenvio pelo agente, aprovar com release enfileirado), CSRF/Origin, limites, cabeçalhos, 503 sanitizado e pacote plano importável. Suítes: CMS 137, publisher 36, content-api 25, review-api 10.
+- **Empacotamento:** `package_content_api.py --profile review` (wheels Linux cp311, só as fontes da lista, mesmas varreduras). Pacote da API 13 MiB, 1154 arquivos, sem binários Windows; UI com 34 arquivos e base `/api` embutida.
+- **`infra/azure/deploy-review.ps1`** (dry-run construído e conferido): confere que **só `/.auth/*` é anônimo**, que a rota `/*` exige exatamente `anderzilla_admin`, que o runtime é `python:3.11` e que nenhum arquivo proibido vai junto; com `-Apply` implanta pelo SWA CLI 2.0.10 (token lido do `az`, nunca impresso) e depois verifica anonimamente que `/`, `/api/v1/health`, `/api/v1/submissions` e um arquivo estático **redirecionam para o login Microsoft**; se qualquer um não redirecionar, o script falha.
+- **`review-configure.ps1`** (dry-run): `CMS_SQL_*`, `CMS_ENVIRONMENT` e `REVIEW_ALLOWED_ORIGIN`, a senha só como `(hidden)`.
+- **`review-invite.ps1`** (dry-run): convite com o papel `anderzilla_admin` para `anderzilla@ymail.com`; o link de uso único aparece **só no terminal de quem roda** (rodar você mesmo).
+- **UI:** com `NEXT_PUBLIC_REVIEW_API_BASE=/api` ela chama a API do mesmo site; o painel de prévia some quando o ambiente responde 501.
+
+**Impacto nos limites e custo:** a conta tem 8 de 10 SWAs gratuitas; criar esta leva a 9. Sem custo (SWA Free; SQL e Function já existentes). A mesma credencial de runtime (`anderzilla_content_runtime`) passa a ser usada pela API de revisão e pela API das IAs; usuários separados seriam melhores e exigem um parâmetro de arquivo de segredo no `content-migrate.ps1` (não feito).
+
+**Riscos conhecidos:** (1) o login `aad` pré-configurado do SWA já falhou antes neste projeto (`ERR_BLOCKED_BY_CLIENT` em `identity.*.azurestaticapps.net`, provavelmente bloqueador de anúncios no navegador); (2) o provedor pré-configurado pode não aceitar a conta pessoal `ymail.com` neste tenant (não verificado); (3) o banco de homolog pausa após 60 min, a primeira abertura pode demorar cerca de 1 minuto; (4) sem prévia fiel até o pipeline de build existir.
+
+**Passos que faltam, cada um com aprovação:** criar o SWA (`content-provision.ps1 -Environment homolog`, sem `-NoReviewSite`), aplicar as configurações, implantar, convidar e entrar.
+
 ## API das IAs em homolog: IMPLANTADA e verificada (2026-10-29)
 
 `infra/azure/deploy-content-api.ps1 -Environment homolog -Apply` empacotou e implantou o código na Function App Flex (pacote `c2bebbc20c2b`, 13,1 MiB; guardado em `.deploy/content-api-homolog-20261029T141425/` para rollback, fora do Git). O empacotador (`infra/azure/package_content_api.py`) copia só 8 arquivos de uma lista explícita, instala dependências como **wheels Linux** (cp312, manylinux; sem `__pycache__` nem `.exe`), varre as fontes atrás de segredos, recusa arquivos proibidos (`.env`, `.pem`, `.sqlite`, `.exe`, credenciais; só o `cacert.pem` público do certifi é permitido) e gera um zip reprodutível (mesmas entradas, mesmo hash). 6 testes novos; `services/content-api` tem 16.

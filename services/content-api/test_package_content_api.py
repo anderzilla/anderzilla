@@ -29,6 +29,16 @@ class PackageContentApiTest(unittest.TestCase):
             second = packager.build(Path(folder) / 'b', install=False)
             self.assertEqual(first['sha256'], second['sha256'])
 
+    def test_review_profile_ships_the_review_sources_for_python_311(self):
+        with tempfile.TemporaryDirectory() as folder:
+            result = packager.build(Path(folder) / 'out', install=False, profile='review')
+            with zipfile.ZipFile(result['zip']) as bundle:
+                names = sorted(bundle.namelist())
+            self.assertEqual(names, sorted(['function_app.py', 'review_api.py', 'host.json', 'requirements.txt', 'agent_api.py', 'core.py', 'commerce.py', 'storage.py']))
+            self.assertEqual((result['profile'], result['pythonVersion']), ('review', '3.11'))
+            self.assertTrue(Path(result['package'], 'review_api.py').is_file())
+            self.assertNotIn('content_api.py', names)  # each app ships only its own edge
+
     def test_output_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as folder:
             with self.assertRaises(ValueError):

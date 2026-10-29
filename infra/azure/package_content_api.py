@@ -17,6 +17,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES = {'services/content-api': ('function_app.py', 'content_api.py', 'host.json', 'requirements.txt'),
            'services/cms': ('agent_api.py', 'core.py', 'commerce.py', 'storage.py')}
+CMS_SOURCES = ('agent_api.py', 'core.py', 'commerce.py', 'storage.py')
+# The content API runs on Flex Consumption (Python 3.12); the review API is the managed API of a Static Web App (Python 3.11 only).
+PROFILES = {
+    'content': {'sources': SOURCES, 'python_version': '3.12'},
+    'review': {'sources': {'services/review-api': ('function_app.py', 'review_api.py', 'host.json', 'requirements.txt'), 'services/cms': CMS_SOURCES}, 'python_version': '3.11'},
+}
 REQUIRED_PACKAGES = ('azure/functions', 'pytds', 'PIL', 'OpenSSL', 'certifi')
 FORBIDDEN_NAMES = re.compile(r'(?i)(^|/)(\.env[^/]*|.*\.(pem|key|pfx|p12|sqlite3?|db|exe|dll|pyd)|cms-secrets\.json|content-api-[a-z]+\.json|local\.settings\.json|__pycache__)(/|$)')
 SECRET_ASSIGNMENT = re.compile(r'(?i)\b(password|secret|token|api[_-]?key|connectionstring)\b\s*[:=]\s*[\'"][^\'"\s]{8,}[\'"]')
@@ -44,11 +50,12 @@ def forbidden_entries(entries):
     return sorted(name for name in entries if FORBIDDEN_NAMES.search(name) and not PUBLIC_ALLOWED.search(name))
 
 
-def install_dependencies(package_dir, python=sys.executable):
+def install_dependencies(package_dir, python=sys.executable, python_version='3.12'):
+    tag = 'cp' + python_version.replace('.', '')
     target = package_dir / '.python_packages' / 'lib' / 'site-packages'
     command = [python, '-m', 'pip', 'install', '--disable-pip-version-check', '--quiet', '--no-compile', '--only-binary=:all:',
                '--platform', 'manylinux2014_x86_64', '--platform', 'manylinux_2_28_x86_64', '--implementation', 'cp',
-               '--python-version', '3.12', '--abi', 'cp312', '--abi', 'abi3', '--abi', 'none',
+               '--python-version', python_version, '--abi', tag, '--abi', 'abi3', '--abi', 'none',
                '--target', str(target), '-r', str(package_dir / 'requirements.txt')]
     subprocess.run(command, check=True, timeout=600)
     for cache in list(target.rglob('__pycache__')):  # bytecode is rebuilt by the host; shipping it only adds noise
@@ -61,14 +68,15 @@ def install_dependencies(package_dir, python=sys.executable):
     return target
 
 
-def build(output_dir, install=True, root=ROOT):
+def build(output_dir, install=True, root=ROOT, profile='content'):
     output_dir = Path(output_dir)
+    settings = PROFILES[profile]
     if output_dir.exists():
         raise ValueError('Output already exists; packages are immutable.')
     package = output_dir / 'package'
     package.mkdir(parents=True)
     copied = {}
-    for folder, names in SOURCES.items():
+    for folder, names in settings['sources'].items():
         for name in names:
             source = Path(root) / folder / name
             if not source.is_file():
@@ -79,7 +87,7 @@ def build(output_dir, install=True, root=ROOT):
     if problems:
         raise ValueError('Possible embedded secret in: ' + ', '.join(problems))
     if install:
-        install_dependencies(package)
+        install_dependencies(package, python_version=settings['python_version'])
     entries = sorted(path.relative_to(package).as_posix() for path in package.rglob('*') if path.is_file())
     bad = forbidden_entries(entries)
     if bad:
@@ -91,7 +99,7 @@ def build(output_dir, install=True, root=ROOT):
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             bundle.writestr(info, (package / name).read_bytes())
-    return {'zip': str(archive), 'sha256': sha256(archive), 'bytes': archive.stat().st_size, 'entries': len(entries),
+    return {'profile': profile, 'pythonVersion': settings['python_version'], 'package': str(package), 'zip': str(archive), 'sha256': sha256(archive), 'bytes': archive.stat().st_size, 'entries': len(entries),
             'sources': copied, 'dependenciesInstalled': install, 'topLevel': sorted({name.split('/')[0] for name in entries})}
 
 
@@ -99,8 +107,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True, help='new directory (must not exist)')
     parser.add_argument('--no-install', action='store_true', help='skip pip (tests only)')
+    parser.add_argument('--profile', choices=sorted(PROFILES), default='content')
     args = parser.parse_args()
-    print(json.dumps(build(args.output, install=not args.no_install), indent=2))
+    print(json.dumps(build(args.output, install=not args.no_install, profile=args.profile), indent=2))
 
 
 if __name__ == '__main__':

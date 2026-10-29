@@ -3,7 +3,7 @@ export type Item = { collection: 'content' | 'media' | 'banners' | string; id: s
 export type Media = { id: string; altPT?: string; credit?: string; imageDataUrl?: string | null };
 export type Submission = { id: string; status: 'pending' | 'changes_requested' | 'approved' | 'rejected' | 'published'; round: number; note: string; agentName?: string; agentId: string; records: { collection: string; id: string; version: number }[]; releaseId: string | null; createdAt: string; updatedAt: string };
 export type Detail = { submission: Submission; items: Item[]; referencedMedia: Media[]; comments: Comment[] };
-export type PreviewState = { state: 'none' | 'building' | 'ready' | 'failed'; error?: string; builtAt?: string; active?: boolean; round?: string };
+export type PreviewState = { state: 'none' | 'building' | 'ready' | 'failed' | 'unavailable'; error?: string; builtAt?: string; active?: boolean; round?: string };
 
 export const apiBase = (process.env.NEXT_PUBLIC_REVIEW_API_BASE || '').replace(/\/$/, '');
 export const previewUrl = (process.env.NEXT_PUBLIC_REVIEW_PREVIEW_URL || 'http://127.0.0.1:8789').replace(/\/$/, '');
