@@ -17,7 +17,8 @@ except ImportError:
 
 COMMON = {'titlePT', 'titleEN', 'summaryPT', 'summaryEN', 'isDemo'}
 EDITORIAL = {'slugPT', 'slugEN', 'seoTitlePT', 'seoTitleEN', 'seoDescriptionPT', 'seoDescriptionEN', 'tags', 'author', 'coverMediaId', 'mediaIds'}
-NEWSROOM = {'sources', 'verifiedAt', 'eventDate', 'editorialType', 'socialMediaId'} | {name + lang for name in ('hashtags', 'socialInstagram', 'socialFacebook', 'socialWhatsapp') for lang in ('PT', 'EN')}
+NEWSROOM = {'sources', 'verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'instagramUrl'} | {name + lang for name in ('hashtags', 'socialInstagram', 'socialFacebook', 'socialWhatsapp') for lang in ('PT', 'EN')}
+INSTAGRAM_POST = re.compile(r'^/(?:[A-Za-z0-9._]+/)?(?:p|reel|reels|tv)/[A-Za-z0-9_-]+/?$')
 ASSET_FIELDS = {'assetBase64', 'assetSha256', 'mimeType'}
 FIELDS = {
     'content': COMMON | EDITORIAL | NEWSROOM | {'bodyPT', 'bodyEN', 'category', 'sourceName', 'sourceUrl', 'publishedAt', 'imageUrl', 'slug'},
@@ -161,6 +162,11 @@ def validate(collection, data, approved=False, internal=False):
         for key in ('socialInstagramPT', 'socialInstagramEN'):
             if len(data.get(key, '')) > 2200:
                 raise Error(422, 'invalid_social', 'Legenda Instagram: máximo 2200 caracteres.')
+        if data.get('instagramUrl'):
+            parts = urlsplit(data['instagramUrl'])
+            host = (parts.hostname or '').lower()
+            if host not in {'instagram.com', 'www.instagram.com'} or not INSTAGRAM_POST.fullmatch(parts.path or ''):
+                raise Error(422, 'invalid_instagram_url', 'instagramUrl: use um post ou reel HTTPS em instagram.com.')
     if collection == 'campaigns' and data.get('placement') and data['placement'] != 'home':
         raise Error(422, 'invalid_placement', 'Espaço disponível nesta entrega: home.')
     if collection in {'offers', 'affiliates', 'campaigns'}:

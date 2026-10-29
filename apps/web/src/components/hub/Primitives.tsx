@@ -20,6 +20,10 @@ const paths: Record<string, string> = {
   shuffle:
     "M3 6h3c4 0 8 12 12 12h3 M18 15l3 3-3 3 M3 18h3c1 0 3-2 4-4 M14 10c2-3 3-4 4-4h3 M18 3l3 3-3 3",
   arrow: "M5 12h14 M13 6l6 6-6 6",
+  "chevron-left": "M15 6 9 12l6 6",
+  "chevron-right": "M9 6l6 6-6 6",
+  pause: "M8 5v14 M16 5v14",
+  play: "M8 5l11 7-11 7z",
   trophy:
     "M7 3h10v6a5 5 0 0 1-10 0z M7 5H3v3a4 4 0 0 0 4 4 M17 5h4v3a4 4 0 0 0 4 4 M12 14v6 M7 21h10",
 };

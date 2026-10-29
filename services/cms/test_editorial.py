@@ -100,6 +100,11 @@ class EditorialTests(unittest.TestCase):
             with self.assertRaises(Error):
                 validate('content', data)
         validate('content', {'sources':json.dumps([{'name':'Official','url':'https://example.com/news','publishedAt':'2026-09-10'}]),'verifiedAt':'2026-09-10','hashtagsPT':'#Games #Programação'})
+        validate('content', {'instagramUrl':'https://www.instagram.com/p/Abc123_/'})
+        validate('content', {'instagramUrl':'https://instagram.com/reel/Abc123'})
+        for url in ('https://example.com/p/Abc123','https://www.instagram.com/anderzilla/','https://www.instagram.com/p/','http://www.instagram.com/p/Abc123'):
+            with self.subTest(url=url), self.assertRaises(Error):
+                validate('content', {'instagramUrl': url})
 
     def test_newsroom_import_is_audited_and_retry_preserves_edits(self):
         data = {'titlePT':'Notícia','titleEN':'News','summaryPT':'Resumo','summaryEN':'Summary','bodyPT':'Texto','bodyEN':'Text','category':'games','sourceName':'Official','sourceUrl':'https://example.com/news','publishedAt':'2026-09-10','slugPT':'noticia','slugEN':'news'}

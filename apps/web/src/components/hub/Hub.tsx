@@ -35,6 +35,7 @@ import {
 } from "./Rewards";
 import "./hub.css";
 import { CMSSections } from "./CMSSections";
+import { HeroCarousel } from "./HeroCarousel";
 import { CommerceHome } from "../commerce/CommerceHome";
 import { flag } from "../commerce/data";
 import {AccountProvider,useAccount} from "../account/AccountProvider";
@@ -199,43 +200,7 @@ function Home() {
           </button>
         </div>
         <div className="hero-layout">
-          <section className="hero brand-hero">
-            <img
-              src="/brand/caveira.webp"
-              width={1536}
-              height={1024}
-              alt=""
-            />
-            <div className="brand-hero-copy">
-            <p className="eyebrow">
-              <span className="tag">ANDERZILLA</span>
-              {t("ABRA UMA NOVA FASE", "ENTER A NEW LEVEL")}
-            </p>
-            <h2>
-              {t("Seu próximo", "Your next")}
-              <br />
-              <em>“Karaca!”</em>
-              <br />
-              {t("está aqui.", "starts here.")}
-            </h2>
-            <p>
-              {t(
-                "Uma corrida nova, um gadget improvável ou uma IA que resolve aquele perrengue. Escolha sua próxima descoberta.",
-                "A new race, an unexpected gadget or AI that solves a little everyday problem. Pick your next discovery.",
-              )}
-            </p>
-            <div className="hero-buttons">
-              <button className="button" onClick={scrollFeed}>
-                {t("Entrar no radar", "Explore the radar")}
-                <Icon name="arrow" />
-              </button>
-              <button className="button secondary" onClick={surprise}>
-                <Icon name="shuffle" />
-                {t("Abrir uma surpresa", "Open a surprise")}
-              </button>
-            </div>
-            </div>
-          </section>
+          <HeroCarousel onExplore={scrollFeed} />
           <Passport />
         </div>
         <div className="dock" role="group" aria-label="Radar">

@@ -80,6 +80,16 @@ class ImportSnapshotTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             transform(value)
 
+    def test_instagram_post_url_is_published_and_other_links_rejected(self):
+        value = snapshot()
+        data = value['collections']['content'][0]['data']
+        data['instagramUrl'] = 'https://www.instagram.com/p/Abc123_/'
+        self.assertEqual(transform(value)['discoveries'][0]['instagramUrl'], 'https://www.instagram.com/p/Abc123_/')
+        for url in ('https://example.com/p/Abc123', 'https://www.instagram.com/anderzilla/'):
+            data['instagramUrl'] = url
+            with self.subTest(url=url), self.assertRaises(ValueError):
+                transform(value)
+
     def test_content_formatting_localized_seo_and_gallery_preserved(self):
         value = snapshot()
         published = transform(value)
