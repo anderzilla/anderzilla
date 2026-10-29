@@ -56,6 +56,23 @@ Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
 
 **Próximos passos de homolog (cada um separado e revisado):** esquema novo no banco `anderzilla-cms-homolog` (tabelas de chaves, pacotes e comentários) e usuário SQL de runtime, configurações do app e permissão da identidade no contêiner, deploy do código da API, DNS `ia.`. Os dois primeiros exigem a credencial SQL de operador, que fica fora do Git e nunca passa pelo chat.
 
+## Esquema do banco de homolog (preparado, **não aplicado**)
+
+`infra/azure/content-migrate.ps1 -Environment homolog` aplica o esquema aditivo em `anderzilla-cms-homolog` e cria o usuário SQL de runtime `anderzilla_content_runtime`. Sem `-Apply` é um dry-run que valida os arquivos SQL e o alvo no Azure e **nunca abre conexão**.
+
+- **Verificações estáticas:** só `IF OBJECT_ID/NOT EXISTS … CREATE` (sem DROP, TRUNCATE, DELETE, ALTER nem EXEC) e só `GRANT/DENY` para o usuário de runtime, sem `db_owner`, `CONTROL`, `ALTER` ou `EXECUTE`. As 11 tabelas têm `SELECT` concedido.
+- **Teste de paridade** (`services/cms/test_schema_parity.py`, 4 testes): o esquema SQLite dos testes e o do Azure têm as mesmas tabelas, colunas e índices; as permissões cobrem toda tabela, negam `DELETE` em todas, negam `UPDATE` em auditoria, revisões, requisições e comandos, e a chave de agente só permite atualizar a coluna `document` (revogar), nunca o hash.
+- **Dentro da transação, antes do commit**, o `-Apply` impersona o usuário de runtime e confere (`HAS_PERMS_BY_NAME`): pode inserir/atualizar registros, não pode apagar nada, não atualiza auditoria nem revisões, não é `db_owner`. Qualquer falha desfaz tudo.
+- **Credenciais:** o administrador SQL (`anderzilla_bootstrap`) é pedido de forma interativa (`Get-Credential`), nunca por argumento, arquivo do repositório ou chat. A senha do usuário de runtime é gerada localmente (48 caracteres aleatórios) e gravada só em `C:/Users/ander/.codex/anderzilla-azure/content-api-homolog.json`, com permissão restrita ao seu usuário do Windows, e nunca é exibida. Um usuário que já exista mantém a senha, salvo `-RotateRuntimePassword`.
+- **Firewall:** o IP público desta máquina (191.177.44.56) já tem regra no servidor SQL.
+- **Ressalva:** o T-SQL do `-Apply` ainda não foi executado contra um SQL Server (só foram testados a análise estática, a paridade e o `-WhatIf`); a transação com verificação e rollback é a rede de segurança. O esquema atual dos bancos não foi lido.
+
+Comando para rodar **no seu terminal** (ele pede a senha do administrador na hora):
+
+```powershell
+./infra/azure/content-migrate.ps1 -Environment homolog -Apply
+```
+
 ## O que a investigação mudou no plano
 
 1. **A produção não nasce do banco.** O artefato de produção sai de `infra/azure/rebuild-production.py`, que usa o corpus `public-after.json` do worktree `G:\AnderZilla-docs` (71 notícias, 242 mídias) e 462 arquivos de imagem do bundle `.deploy/` (fora do Git). O banco `anderzilla-cms-homolog` provavelmente está defasado em relação a esse corpus (as 11 notas de 28–29/10 entraram pelo corpus; não verifiquei o banco). Antes de qualquer cutover, o banco precisa ser populado **a partir do corpus** e provar que gera o mesmo site.
