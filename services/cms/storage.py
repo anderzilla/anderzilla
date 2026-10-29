@@ -77,6 +77,10 @@ class Session:
     def save_agent_key(self, document, key_hash):
         self.execute('INSERT INTO agent_keys(id,key_hash,document) VALUES(?,?,?)', (document['id'], key_hash, json.dumps(document)))
 
+    def agent_keys(self):
+        """Key metadata only (name, scopes, dates, revoked); the stored hash is never returned."""
+        return [json.loads(row[0]) for row in self.execute('SELECT document FROM agent_keys ORDER BY id').fetchall()]
+
     def update_agent_key(self, document):
         self.execute('UPDATE agent_keys SET document=? WHERE id=?', (json.dumps(document), document['id']))
 

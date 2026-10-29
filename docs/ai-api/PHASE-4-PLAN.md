@@ -77,7 +77,11 @@ Verificado **de fora** em `https://anderzilla-content-api-homolog.azurewebsites.
 
 Todas as respostas JSON trazem `Cache-Control: no-store` e nenhuma tem cabeçalho CORS. `DELETE /v1/articles` devolve 404 do próprio host (a rota só aceita GET e POST), não o 405 do adaptador; sem impacto de segurança.
 
-**Ainda não feito:** nenhuma chave de agente existe; criar uma exige o administrador (função humana) e deve ser feito por script local que mostra a chave **uma única vez** no terminal do proprietário; testar um fluxo completo (artigo, imagem, pacote); página de revisão e DNS `ia.`/`revisao.`; `AGENT_MEDIA_HOSTS` continua vazio (a API recusa buscar imagens por URL; imagens só por base64).
+**Chaves de agente (ferramenta local, preparada; nenhuma chave criada ainda):** `infra/azure/content-key.ps1 -Environment homolog -Action list|create|revoke` chama `services/content-api/manage_keys.py`, que **nunca é implantado** (fora da lista do empacotador). `create` e `revoke` são dry-run sem `-Apply` e sem abrir conexão; a chave nova aparece **uma única vez** no terminal de quem roda (ou vai para a área de transferência com `-ToClipboard`, sem ser impressa); só o hash vai ao banco; `list` mostra metadados (id, nome, escopo, validade, revogada) e nunca o hash. A credencial do arquivo privado vira variável de ambiente só do processo filho e é removida no `finally`. A ferramenta recusa rodar se `CMS_SQL_DATABASE` não for o banco do ambiente pedido. A chave só cria rascunhos, sobe mídia e envia pacotes; nunca aprova. 6 testes novos (22 em `services/content-api`); eles pegaram um defeito meu: o dry-run do `revoke` abria a conexão antes de checar `-Apply` (corrigido).
+
+Verificado: `list` contra o banco real de homolog, a partir desta máquina, respondeu "No agent keys." (credencial de runtime, esquema e permissão de leitura de `agent_keys` funcionando). Na máquina do proprietário falta o driver SQL (`python-tds`, `certifi`, `pyOpenSSL`): o script avisa e `-InstallDependencies` instala as versões **pinadas** (`pyOpenSSL` 26.x remove um método que o `python-tds` 1.17.1 usa; foi o que quebrou meu primeiro teste local).
+
+**Ainda não feito:** criar a primeira chave (passo do proprietário); testar um fluxo completo (artigo, imagem, pacote); página de revisão e DNS `ia.`/`revisao.`; `AGENT_MEDIA_HOSTS` continua vazio (a API recusa buscar imagens por URL; imagens só por base64).
 
 ## API das IAs: adaptador e configuração preparados (2026-10-29; depois implantados, ver acima)
 
