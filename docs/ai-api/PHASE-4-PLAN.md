@@ -56,7 +56,15 @@ Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
 
 **Próximos passos de homolog (cada um separado e revisado):** esquema novo no banco `anderzilla-cms-homolog` (tabelas de chaves, pacotes e comentários) e usuário SQL de runtime, configurações do app e permissão da identidade no contêiner, deploy do código da API, DNS `ia.`. Os dois primeiros exigem a credencial SQL de operador, que fica fora do Git e nunca passa pelo chat.
 
-## Esquema do banco de homolog (preparado, **não aplicado**)
+## Esquema do banco de homolog: APLICADO (2026-10-29, pelo proprietário no próprio terminal)
+
+O proprietário redefiniu a senha do administrador SQL no portal (ninguém tinha a anterior; ela ficara no ambiente antigo do Codex) e rodou `content-migrate.ps1 -Environment homolog -Apply`. Saída: "Content schema and runtime grants applied; permission checks passed." O login correto é `anderzilla_bootstrap` (as duas primeiras tentativas falharam por usar `anderzilla@ymail.com` e `anderzilla`; o SQL não alterou nada).
+
+Conferido sem abrir segredos: o arquivo `C:\Users\ander\.codex\anderzilla-azure\content-api-homolog.json` existe (314 bytes), está fora do repositório, com herança de permissões bloqueada e acesso só do usuário `ander`; contém os campos `environment, server, database, user, password, createdAt`. Não li os valores.
+
+**Não verificado:** o conteúdo do banco (não há credencial de leitura nesta sessão); a confirmação vem das verificações de permissão feitas dentro da transação antes do commit e do próprio `Applied`.
+
+## Esquema do banco de homolog (como foi preparado)
 
 `infra/azure/content-migrate.ps1 -Environment homolog` aplica o esquema aditivo em `anderzilla-cms-homolog` e cria o usuário SQL de runtime `anderzilla_content_runtime`. Sem `-Apply` é um dry-run que valida os arquivos SQL e o alvo no Azure e **nunca abre conexão**.
 
