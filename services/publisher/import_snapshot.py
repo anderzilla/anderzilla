@@ -91,21 +91,59 @@ def https(value):
     return value
 
 
+def banner_link(value):
+    """Internal path or public HTTPS URL; never protocol-relative or script URLs."""
+    if value.startswith('/') and not value.startswith('//'):
+        return value
+    return https(value)
+
+
+def public_banners(rows, media_by_id):
+    banners = []
+    for row in rows:
+        d = row['data']
+        media = media_by_id.get(d.get('imageMediaId'))
+        if not media or media.get('mediaType', 'image') != 'image':
+            raise ValueError('Missing approved banner image')
+        day = lambda value: value[:10] if value else None
+        for value in (d['startsAt'], d.get('endsAt')):
+            if value:
+                datetime.strptime(value[:10], '%Y-%m-%d')
+        banner = {'id': row['id'], 'image': media['url'], 'width': media.get('width'), 'height': media.get('height'),
+                  'imageAlt': {'pt': media.get('altPT', ''), 'en': media.get('altEN', '')},
+                  'title': {'pt': d['titlePT'], 'en': d['titleEN']},
+                  'text': {'pt': d.get('textPT', ''), 'en': d.get('textEN', '')},
+                  'startsAt': day(d['startsAt']), 'order': d.get('order', 0)}
+        if d.get('endsAt'):
+            banner['endsAt'] = day(d['endsAt'])
+        if d.get('ctaPT') or d.get('ctaEN'):
+            banner['cta'] = {'pt': d.get('ctaPT', ''), 'en': d.get('ctaEN', d.get('ctaPT', ''))}
+        banner['link'] = {'pt': banner_link(d['linkPT']), 'en': banner_link(d['linkEN'])}
+        if d.get('disclosure'):
+            banner['disclosure'] = d['disclosure']
+        banners.append(banner)
+    return sorted(banners, key=lambda item: (item['order'], item['id']))
+
+
 def transform(snapshot):
     if snapshot.get('schemaVersion') != 1 or not isinstance(snapshot.get('collections'), dict):
         raise ValueError('Unsupported snapshot')
     out = {'enabled': True, 'discoveries': [], 'events': [], 'affiliates': [],
            'offers': [], 'campaigns': [], 'pages': [], 'media': [], 'taxonomies': [],
-           'missions': [], 'rewards': [], 'releaseId': snapshot.get('releaseId')}
+           'missions': [], 'rewards': [], 'banners': [], 'releaseId': snapshot.get('releaseId')}
     out.update({name: [] for name in commerce.FIELDS if name in snapshot['collections']})
     identities = set()
+    banner_rows = []
     for collection, records in snapshot['collections'].items():
-        if collection not in ({'content', 'events', 'affiliates', 'offers', 'campaigns', 'pages', 'media', 'taxonomies', 'missions', 'rewards'} | set(commerce.FIELDS)):
+        if collection not in ({'content', 'events', 'affiliates', 'offers', 'campaigns', 'pages', 'media', 'taxonomies', 'missions', 'rewards', 'banners'} | set(commerce.FIELDS)):
             raise ValueError('Non-public collection in snapshot')
         for row in records:
             if row.get('status') != 'approved':
                 raise ValueError('Unapproved record in snapshot')
             d = row['data']
+            if collection == 'banners':
+                banner_rows.append(row)  # resolved after media, which is processed later in sorted order
+                continue
             # Legacy commerce remains in the CMS for migration; only market-aware
             # collections participate in public flags and disclosure rendering.
             if collection in {'offers', 'affiliates', 'campaigns'}:
@@ -186,6 +224,7 @@ def transform(snapshot):
                 if d.get('isDemo') is not True:
                     raise ValueError('Only demo reward definitions can be published')
                 out[collection].append({'id': row['id'], 'isDemo': True, **{key: d[key] for key in ('titlePT','titleEN','summaryPT','summaryEN','points','pointsCost','costKP','descriptionPT','descriptionEN','coverMediaId','termsPT','termsEN','category','regions','verifier','limit') if key in d}})
+    out['banners'] = public_banners(banner_rows, {row['id']: row for row in out['media']})
     media_ids = {row['id'] for row in out['media']}
     tag_ids = {row['id'] for row in out['taxonomies']}
     for name in ('discoveries','pages','offers','campaigns','missions','rewards'):

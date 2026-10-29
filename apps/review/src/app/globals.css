@@ -1,0 +1,63 @@
+/* Tokens from the AnderZilla brand manual 1.0: blue base #080D19, panel #111B2D, line #2B3851, ivory #FFF1CF, amber #FFB000, orange #FF8A00, red #EF263D.
+   Purple #51205E is decoration only (contrast 1.59:1) and is never used for text. */
+:root{color-scheme:dark;--bg:#080D19;--panel:#111B2D;--line:#2B3851;--ivory:#FFF1CF;--text:#FFF1CF;--muted:#C7BFA8;--amber:#FFB000;--orange:#FF8A00;--red:#EF263D;--green:#8FD18F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body),Arial,sans-serif;font-size:16px;line-height:1.6}
+h1,h2,h3,.tag,.badge,.eyebrow{font-family:var(--display),Arial,sans-serif}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:12px 0 6px;font-weight:700}
+h2{font-size:clamp(22px,3vw,28px);line-height:1.2;margin:0 0 10px;font-weight:700}
+h3{font-size:16px;margin:22px 0 8px}
+p{margin:0 0 12px}
+a{color:var(--amber)}
+button,input,select,textarea{font:inherit;color:inherit}
+button,a,input,select,textarea,summary{outline-offset:3px}
+:focus-visible{outline:2px solid var(--amber)}
+.skip-link{position:fixed;top:-90px;left:16px;background:var(--amber);color:var(--bg);padding:12px;z-index:50}.skip-link:focus{top:12px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);background:#0b1120}
+.top img{display:block;height:auto;width:200px}
+.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+main{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+main>a:first-child{display:inline-flex;align-items:center;min-height:44px}
+.lead{color:var(--muted);max-width:760px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:22px 0}
+.cards{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card.pack{display:flex;flex-direction:column;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:var(--text);min-height:44px}
+.card.pack:hover{border-color:var(--amber)}
+.card small,.meta small,.item-top small{color:var(--muted);font-size:13px}
+.badge{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:4px 9px;color:var(--muted);width:fit-content}
+.badge.pending{color:var(--amber);border-color:var(--amber)}.badge.changes_requested{color:var(--orange);border-color:var(--orange)}.badge.approved,.badge.published{color:var(--green);border-color:var(--green)}
+.head{display:flex;gap:24px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.meta{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.item-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.item-top .seg{margin-left:auto}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:9px 14px;min-height:44px;cursor:pointer;color:var(--muted)}
+.seg button.on{background:var(--amber);color:var(--bg);font-weight:700}
+button{border:1px solid var(--line);background:#16233a;border-radius:10px;padding:11px 16px;min-height:44px;cursor:pointer}
+button:hover:not(:disabled){border-color:var(--amber)}button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:var(--amber);border-color:var(--amber);color:var(--bg);font-weight:700}
+.warn{border-color:var(--orange);color:var(--orange)}
+.link{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.news{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:28px}
+.news figure{margin:0}.news figure img,.banner-mock img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
+figcaption{font-size:12px;color:var(--muted);margin-top:6px}
+.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.summary{font-size:18px}
+.markdown{overflow-wrap:anywhere;line-height:1.75}.markdown a{color:var(--amber)}
+.sources{padding-left:20px}.sources li{margin:4px 0}
+dl{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px 14px;font-size:14px}dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}
+details{margin-top:14px}summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--amber)}
+.banner-mock{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;background:#0b1424;border:1px solid var(--line);border-radius:12px;padding:20px}
+.cta{display:inline-block;background:var(--amber);color:var(--bg);font-weight:700;border-radius:10px;padding:10px 16px;margin:6px 0 14px}
+.comments{border-top:1px solid var(--line);margin-top:24px;padding-top:6px}
+.comment{background:#0b1424;border-left:3px solid var(--orange);border-radius:6px;padding:10px 14px;margin:10px 0}.comment small{display:block}.comment.done{border-left-color:var(--green);opacity:.7}
+form{display:grid;gap:12px;margin-top:14px;max-width:720px}label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+input,select,textarea{background:#0b1223;border:1px solid var(--line);border-radius:8px;padding:11px 12px;min-height:44px;width:100%}textarea{resize:vertical;line-height:1.6}
+.error,.notice{border:1px solid var(--red);background:#2a1119;border-radius:10px;padding:14px 18px;margin:16px 0;overflow-wrap:anywhere}.notice{border-color:var(--green);background:#12261b}
+.loading{color:var(--amber)}.fine{font-size:13px;color:var(--muted)}
+.empty{text-align:center}
+.login{max-width:480px;margin:60px auto}
+.frame-box{margin-top:18px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:#fff}.frame-box iframe{border:0;display:block;background:#fff}
+@media(max-width:760px){.top{padding:12px 16px}.top img{width:180px}.tag{display:none}main{padding:20px 16px 60px}.panel{padding:18px}.news,.banner-mock{grid-template-columns:1fr}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:10px}.meta{align-items:flex-start}.item-top .seg{margin-left:0}.actions button,.actions a{width:100%}.actions .link{justify-content:center}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

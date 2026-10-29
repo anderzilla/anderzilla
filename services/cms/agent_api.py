@@ -53,6 +53,19 @@ def require_agent(principal):
         raise Error(401, 'authentication_required', 'Chave de agente obrigatória.')
 
 
+def _thumbnail(encoded, width=640):
+    """Small WebP data URL so the review page never downloads full-size library images."""
+    if not encoded:
+        return None
+    from PIL import Image
+    import io
+    with Image.open(io.BytesIO(base64.b64decode(encoded))) as picture:
+        picture.thumbnail((width, width))
+        output = io.BytesIO()
+        picture.save(output, format='WEBP', quality=80)
+    return 'data:image/webp;base64,' + base64.b64encode(output.getvalue()).decode()
+
+
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, *args, **kwargs):
         return None
@@ -91,8 +104,9 @@ def fetch_image(url, allowed_hosts, resolver=socket.getaddrinfo, opener=None, ti
 
 
 class AgentGateway:
-    def __init__(self, cms, media_hosts=None, fetcher=fetch_image, review_base=None):
-        self.cms, self.store, self.fetcher = cms, cms.store, fetcher
+    def __init__(self, cms, media_hosts=None, fetcher=fetch_image, review_base=None, previewer=None):
+        # previewer: object with start(snapshot_builder, submission_id) and state(submission_id); None disables previews.
+        self.cms, self.store, self.fetcher, self.previewer = cms, cms.store, fetcher, previewer
         hosts = media_hosts if media_hosts is not None else os.environ.get('AGENT_MEDIA_HOSTS', '').split(',')
         self.media_hosts = [host.strip().lower() for host in hosts if host.strip()]
         self.review_base = (review_base or os.environ.get('CMS_REVIEW_BASE', 'http://127.0.0.1:8788')).rstrip('/')
@@ -417,6 +431,40 @@ class AgentGateway:
             db.audit(human['id'], 'approve_submission', 'submissions', submission_id, submission['round'])
         return release
 
+    def items(self, human, submission_id):
+        """Everything the review page needs: package, current record contents (images as thumbnails) and comments."""
+        require_human(human)
+        with self.store.transaction() as db:
+            submission = self._load(db, submission_id)
+            rows = []
+            for item in submission['records']:
+                record = copy.deepcopy(db.record(item['collection'], item['id']))
+                data = record['data']
+                if item['collection'] == 'media':
+                    data['imageDataUrl'] = _thumbnail(data.pop('assetBase64', ''))
+                rows.append({'collection': item['collection'], **record})
+            media = {}
+            for row in rows:  # images referenced by articles and banners, even when not part of the package
+                data = row['data']
+                for media_id in filter(None, [data.get('coverMediaId'), data.get('imageMediaId'), *(data.get('mediaIds') or '').split(',')]):
+                    media_id = media_id.strip()
+                    if media_id and media_id not in media and not any(r['id'] == media_id for r in rows):
+                        found = db.record('media', media_id)
+                        if found:
+                            media[media_id] = {'id': media_id, 'altPT': found['data'].get('altPT'), 'credit': found['data'].get('credit'), 'imageDataUrl': _thumbnail(found['data'].get('assetBase64', ''))}
+            key = db.agent_key(submission['agentId'].split(':', 1)[-1])
+            return {'submission': {**self._view(submission), 'agentName': key[1]['name'] if key else submission['agentId']}, 'items': rows, 'referencedMedia': list(media.values()), 'comments': db.comments(submission_id)}
+
+    def preview_snapshot(self, human, submission_id):
+        """Release-shaped snapshot where this package's drafts count as approved. Never persisted, never published."""
+        require_human(human)
+        with self.store.transaction() as db:
+            submission = self._load(db, submission_id)
+            overlay = {(item['collection'], item['id']): db.record(item['collection'], item['id']) for item in submission['records']}
+            snapshot = self.cms.snapshot(db, overlay)
+        snapshot['releaseId'] = f'preview-{submission_id}-r{submission["round"]}'
+        return snapshot
+
     def release_status(self, principal, release_id):
         with self.store.transaction() as db:
             release = db.release(release_id)
@@ -438,6 +486,10 @@ ROUTES = [
     ('POST', r'/v1/banners', 'banner'),
     ('POST', r'/v1/submissions', 'submit'),
     ('GET', r'/v1/submissions/([a-zA-Z0-9-]+)', 'submission'),
+    ('GET', r'/v1/submissions', 'submissions_list'),
+    ('GET', r'/v1/submissions/([a-zA-Z0-9-]+)/items', 'items'),
+    ('POST', r'/v1/submissions/([a-zA-Z0-9-]+)/preview', 'preview_start'),
+    ('GET', r'/v1/submissions/([a-zA-Z0-9-]+)/preview', 'preview_state'),
     ('GET', r'/v1/submissions/([a-zA-Z0-9-]+)/comments', 'comments'),
     ('POST', r'/v1/submissions/([a-zA-Z0-9-]+)/comments', 'comment'),
     ('POST', r'/v1/submissions/([a-zA-Z0-9-]+)/request-changes', 'changes'),
@@ -447,10 +499,10 @@ ROUTES = [
     ('POST', r'/v1/releases/([a-zA-Z0-9-]+)/promote', 'later'),
     ('POST', r'/v1/releases/([a-zA-Z0-9-]+)/rollback', 'later'),
 ]
-HUMAN_ROUTES = {'comment', 'changes', 'approve', 'later'}
+HUMAN_ROUTES = {'comment', 'changes', 'approve', 'later', 'submissions_list', 'items', 'preview_start', 'preview_state'}
 
 
-def handle(gateway, method, path, body=None, authorization=None, human=None, idempotency_key=None):
+def handle(gateway, method, path, body=None, authorization=None, human=None, idempotency_key=None, query=None):
     """Return (status, payload). Human routes accept only the trusted SWA principal in `human`;
     agent routes accept only a valid key. Identity never comes from the request body."""
     try:
@@ -463,6 +515,18 @@ def handle(gateway, method, path, body=None, authorization=None, human=None, ide
             require_human(human)
             if name == 'later':
                 raise Error(501, 'not_implemented', 'Promoção e rollback dependem do pipeline de produção (fase 4).')
+            if name == 'submissions_list':
+                return 200, gateway.list_submissions(human, (query or {}).get('status'))
+            if name == 'items':
+                return 200, gateway.items(human, args[0])
+            if name in {'preview_start', 'preview_state'}:
+                if gateway.previewer is None:
+                    raise Error(501, 'not_implemented', 'Build de prévia não está configurado neste ambiente.')
+                if name == 'preview_start':
+                    gateway.get_submission(human, args[0])
+                    return 202, gateway.previewer.start(lambda: gateway.preview_snapshot(human, args[0]), args[0])
+                gateway.get_submission(human, args[0])
+                return 200, gateway.previewer.state(args[0])
             if name == 'comment':
                 return 201, gateway.add_comment(human, args[0], body)
             if name == 'changes':

@@ -339,6 +339,51 @@ class CMS:
             counts = {key: len(db.records(key)) for key in permitted}
             return {'counts': counts, 'recentAudit': [row for row in db.recent_audit() if row['collection'] in permitted or ('anderzilla_admin' in principal['roles'])], 'capabilities': {'collections': permitted, 'publish': 'anderzilla_admin' in principal['roles'], 'rewardsLive': False, 'analyticsConnected': False}}
 
+    def snapshot(self, db, overlay=None):
+        """Frozen public view of approved records. overlay={(collection, id): record} previews drafts as approved."""
+        # A release is read-only until its snapshot is written. Load each
+        # collection once under the transaction lock, then validate the same
+        # frozen view without per-reference SQL round trips. Never reuse this
+        # cache across transactions or in save(), where records may change.
+        records = {name: db.records(name) for name in sorted(FIELDS)}
+        for (collection, record_id), record in (overlay or {}).items():  # preview: drafts of one package count as approved
+            records[collection] = [row for row in records[collection] if row['id'] != record_id] + [{**record, 'status': 'approved'}]
+        indexes = {name: {row['id']: row for row in rows} for name, rows in records.items()}
+
+        class ReleaseReferences:
+            def records(self, collection):
+                return records[collection]
+
+            def record(self, collection, record_id):
+                return indexes[collection].get(record_id)
+
+        references = ReleaseReferences()
+        collections = {}
+        for collection in sorted(PUBLIC_COLLECTIONS):
+            items = []
+            for record in records[collection]:
+                if record['status'] != 'approved':
+                    continue
+                validate(collection, record['data'], approved=True, internal=True)
+                validate_references(references, collection, record['data'], record['id'])
+                public = copy.deepcopy(record)
+                if collection in commerce.FIELDS and record['data'].get('status') != 'active':
+                    continue
+                if collection in {'affiliate_placements', 'ad_placements'}:
+                    public['data']['approvalVerified'] = bool(record['data'].get('approvalReference'))
+                public['data'].pop('approvalReference', None)
+                items.append(public)
+            collections[collection] = items
+        if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > MEDIA_LIBRARY_LIMIT_B64:
+            raise Error(413, 'media_quota', 'Snapshot excede limite de 32 MB de imagens.')
+        for collection in ('missions', 'rewards'):
+            demos = [copy.deepcopy(row) for row in records[collection] if row['status'] == 'approved' and row['data'].get('isDemo') is True]
+            for row in demos:
+                validate(collection, row['data'], approved=True)
+            if demos:
+                collections[collection] = demos
+        return {'schemaVersion': 1, 'createdAt': now(), 'collections': collections}
+
     def release(self, principal, key):
         require(principal, publish=True)
         if not isinstance(key, str) or not 8 <= len(key) <= 100:
@@ -347,46 +392,7 @@ class CMS:
             existing = db.release_by_key(key)
             if existing:
                 return existing
-            # A release is read-only until its snapshot is written. Load each
-            # collection once under the transaction lock, then validate the same
-            # frozen view without per-reference SQL round trips. Never reuse this
-            # cache across transactions or in save(), where records may change.
-            records = {name: db.records(name) for name in sorted(FIELDS)}
-            indexes = {name: {row['id']: row for row in rows} for name, rows in records.items()}
-
-            class ReleaseReferences:
-                def records(self, collection):
-                    return records[collection]
-
-                def record(self, collection, record_id):
-                    return indexes[collection].get(record_id)
-
-            references = ReleaseReferences()
-            collections = {}
-            for collection in sorted(PUBLIC_COLLECTIONS):
-                items = []
-                for record in records[collection]:
-                    if record['status'] != 'approved':
-                        continue
-                    validate(collection, record['data'], approved=True, internal=True)
-                    validate_references(references, collection, record['data'], record['id'])
-                    public = copy.deepcopy(record)
-                    if collection in commerce.FIELDS and record['data'].get('status') != 'active':
-                        continue
-                    if collection in {'affiliate_placements', 'ad_placements'}:
-                        public['data']['approvalVerified'] = bool(record['data'].get('approvalReference'))
-                    public['data'].pop('approvalReference', None)
-                    items.append(public)
-                collections[collection] = items
-            if sum(len(row['data'].get('assetBase64', '')) for row in collections.get('media', [])) > MEDIA_LIBRARY_LIMIT_B64:
-                raise Error(413, 'media_quota', 'Snapshot excede limite de 32 MB de imagens.')
-            for collection in ('missions', 'rewards'):
-                demos = [copy.deepcopy(row) for row in records[collection] if row['status'] == 'approved' and row['data'].get('isDemo') is True]
-                for row in demos:
-                    validate(collection, row['data'], approved=True)
-                if demos:
-                    collections[collection] = demos
-            snapshot = {'schemaVersion': 1, 'createdAt': now(), 'collections': collections}
+            snapshot = self.snapshot(db)
             release = {'id': str(uuid.uuid4()), 'status': 'queued', 'createdAt': now(), 'updatedAt': now(), 'url': None}
             db.save_release(release, key, snapshot)
             db.audit(principal['id'], 'queue_release', 'releases', release['id'], 1)

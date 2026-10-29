@@ -135,6 +135,32 @@ paths:
                   items: { type: object, required: [collection, id, version], properties: { collection: { type: string }, id: { type: string }, version: { type: integer } } }
       responses:
         '201': { description: Pending submission with preview links, content: { application/json: { schema: { $ref: '#/components/schemas/Submission' } } } }
+  /submissions/{id}/items:
+    get:
+      tags: [Submissions]
+      operationId: getSubmissionItems
+      summary: HUMAN ONLY (review page). Package records with current content, image thumbnails and comments
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Package detail, content: { application/json: { schema: { type: object } } } }
+  /submissions/{id}/preview:
+    post:
+      tags: [Submissions]
+      operationId: buildPreview
+      summary: HUMAN ONLY. Builds the real site with this package's drafts counted as approved. Nothing is published
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '202': { description: Build started, content: { application/json: { schema: { $ref: '#/components/schemas/PreviewState' } } } }
+        '501': { description: No preview builder is configured in this environment }
+    get:
+      tags: [Submissions]
+      operationId: getPreviewState
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Build state, content: { application/json: { schema: { $ref: '#/components/schemas/PreviewState' } } } }
   /submissions/{id}:
     get:
       tags: [Submissions]
@@ -328,6 +354,13 @@ components:
         reviewUrl: { type: string, format: uri, description: 'Review page for the human (separate host, sign-in required)' }
         previewUrls: { type: array, items: { type: string, format: uri } }
         releaseId: { type: string }
+    PreviewState:
+      type: object
+      properties:
+        state: { type: string, enum: [none, building, ready, failed] }
+        error: { type: string, description: 'Why the package cannot be built, e.g. a missing required field' }
+        builtAt: { type: string, format: date-time }
+        active: { type: boolean }
     Comment:
       type: object
       properties:

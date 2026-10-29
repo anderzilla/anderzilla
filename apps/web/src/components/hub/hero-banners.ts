@@ -31,6 +31,8 @@
  * Não use fallback: true — isso reserva o banner para o carrossel vazio.
  * A imagem precisa existir em apps/web/public.
  */
+import published from "./cms-published.json";
+
 export type Localized = { pt: string; en: string };
 
 export type ManualBanner = {
@@ -71,4 +73,42 @@ export const karacaBanner: ManualBanner = {
   fallback: true,
 };
 
-export const heroBanners: ManualBanner[] = [karacaBanner];
+/** Banner aprovado no CMS e publicado em cms-published.json (ver services/publisher/import_snapshot.py). */
+type PublishedBanner = {
+  id: string;
+  image: string;
+  width?: number;
+  height?: number;
+  imageAlt: Localized;
+  title: Localized;
+  text: Localized;
+  cta?: Localized;
+  link: Localized;
+  startsAt: string;
+  endsAt?: string;
+  disclosure?: string;
+};
+
+function fromCms(banner: PublishedBanner): ManualBanner {
+  return {
+    id: `cms-${banner.id}`,
+    image: banner.image,
+    width: banner.width,
+    height: banner.height,
+    imageAlt: banner.imageAlt,
+    kicker: { pt: "ANDERZILLA", en: "ANDERZILLA" },
+    // Banner comercial: a identificação aparece na própria faixa do banner.
+    kickerNote: banner.disclosure ? { pt: banner.disclosure, en: banner.disclosure } : undefined,
+    title: banner.title,
+    text: banner.text,
+    cta: banner.cta,
+    link: banner.link,
+    startsAt: banner.startsAt,
+    endsAt: banner.endsAt,
+  };
+}
+
+const cmsBanners = ((published.banners ?? []) as PublishedBanner[]).map(fromCms);
+
+/** Banners do CMS (já ordenados) e, por último, o Karaca como fallback. */
+export const heroBanners: ManualBanner[] = [...cmsBanners, karacaBanner];

@@ -54,6 +54,19 @@ Código em `services/cms/agent_api.py` (testes em `test_agent_api.py`; suíte co
 - **Ainda não feito:** servidor HTTP, prévia privada (501), promoção e rollback (501, dependem do pipeline), página de revisão (fase 3), leitura do site a partir do banco (fase 3), conectores OpenAPI/MCP (fase 5).
 - **Limitação do `validate`:** o domínio de validação levanta o primeiro erro; a simulação devolve um erro por chamada (campos obrigatórios ausentes vêm todos juntos na mesma mensagem).
 
+## Fase 3 — página de revisão e banners do banco (somente local, com testes)
+
+- **Banners no site:** o publisher (`import_snapshot.py`) agora publica a coleção `banners` em `cms-published.json` e `hero-banners.ts` os usa no carrossel antes do Karaca (fallback). Com `banners: []` o site é idêntico ao de hoje.
+- **Prévia fiel:** `preview_site.py` constrói o site real com um snapshot em que os rascunhos do pacote contam como aprovados (`CMS.snapshot(overlay)`). Não grava nada no CMS nem publica. Se o pacote não for publicável, o motivo aparece na página (ex.: campo obrigatório ausente).
+- **Servidor local:** `services/publisher/review_local.py` (porta 8788 = API + página; 8789 = prévia). Só loopback, token de pelo menos 32 caracteres vindo do ambiente (`REVIEW_LOCAL_TOKEN`), nunca no código.
+- **Página de revisão:** `apps/review` (Next.js, exportação estática, tokens do manual de identidade): lista de pacotes, cada notícia/banner/imagem renderizados, alternância PT/EN, prévia fiel em iframe (desktop 1440 / mobile 390), comentários por registro e campo, **Pedir correções** e **Aprovar e enviar a homolog**. Em produção a rota `/*` exige o papel `anderzilla_admin` (login Microsoft).
+- **Verificado de ponta a ponta no navegador** com um pacote de demonstração: lista, detalhe, prévia, comentário e pedido de correções. A prévia mostrou o banner do banco no carrossel e a notícia marcada como demonstração.
+- **Limites conhecidos:**
+  - Um site de prévia por vez no servidor local (o site usa caminhos absolutos); em Azure, cada prévia precisará de seu próprio endereço (fase 4).
+  - O banco local de demonstração não tem as 71 notícias e as 242 imagens atuais, que vivem no banco Azure `anderzilla-cms-homolog`. A comparação com a produção (idêntico) só pode ser feita com acesso a esse banco; fica para a fase 4.
+  - O iframe aponta para `http://127.0.0.1:8789`; o app ainda não tem implantação (sem SWA, sem API gerenciada).
+  - Banner comercial: o campo `disclosure` aparece na faixa do banner.
+
 ## Decisões ainda abertas
 
 - Papel novo `anderzilla_agent` e tabela de chaves (hash) no banco do CMS.
