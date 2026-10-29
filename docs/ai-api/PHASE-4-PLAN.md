@@ -19,6 +19,22 @@ O corpus de produção foi importado para um SQLite local e o site inteiro foi c
 
 Data: 2026-10-29. Somente leitura: inventário do Azure, do repositório e da produção. Nenhum recurso foi criado, nenhum deploy foi feito.
 
+## Resultado do dry-run da etapa 4b (2026-10-29, nada criado)
+
+`infra/azure/content-provision.ps1 -Environment homolog|production` inspeciona o Azure, imprime o que seria criado, o custo e os comandos exatos. Sem `-Apply` é somente leitura; com `-Apply` ainda respeita `-WhatIf` e `-Confirm`. Rodei os dois ambientes e `-Apply -WhatIf`; a contagem de recursos do grupo ficou em 16 antes e depois.
+
+| Recurso | Homolog | Produção | Custo |
+|---|---|---|---|
+| Banco do CMS | `anderzilla-cms-homolog` já existe (reaproveitado como sandbox) | `anderzilla-cms-production` (novo, oferta gratuita, 4 de 10) | R$ 0 |
+| API das IAs | `anderzilla-content-api-homolog` (Function App, plano Y1 existente) | `anderzilla-content-api-production` | R$ 0 dentro da franquia mensal |
+| Armazenamento de mídia | conta `anderzillacontentst` + contêiner privado `media-homolog` | contêiner `media-production` na mesma conta | centavos |
+| Página de revisão | opcional (`-NoReviewSite`) | `anderzilla-review-production` | R$ 0 |
+
+- **Limite de SWAs gratuitas:** a assinatura já tem **8 de 10** (as 5 da AnderZilla mais `codematrix-agency`, `codematrix-corporate` e `ia-engineer-course`). Duas páginas de revisão ocupariam as últimas vagas. Proposta: **uma única** página de revisão (`anderzilla-review-production`) e o sandbox testado com o servidor local; ou aposentar `anderzilla-admin-homolog`, que a revisão substitui.
+- Nomes verificados como livres: conta de storage `anderzillacontentst` e hosts `anderzilla-content-api-*.azurewebsites.net`.
+- O caminho `-Apply` ainda não foi exercitado de verdade (só `-WhatIf`), por desenho; a primeira execução real deve ser a de homolog.
+- Fora do escopo desta etapa e feito depois, um passo por vez: esquema do banco e usuário SQL de runtime, configurações do app, permissão da identidade da API no contêiner, deploy do código, DNS (`ia.` e `revisao.`) e segredos do GitHub.
+
 ## O que a investigação mudou no plano
 
 1. **A produção não nasce do banco.** O artefato de produção sai de `infra/azure/rebuild-production.py`, que usa o corpus `public-after.json` do worktree `G:\AnderZilla-docs` (71 notícias, 242 mídias) e 462 arquivos de imagem do bundle `.deploy/` (fora do Git). O banco `anderzilla-cms-homolog` provavelmente está defasado em relação a esse corpus (as 11 notas de 28–29/10 entraram pelo corpus; não verifiquei o banco). Antes de qualquer cutover, o banco precisa ser populado **a partir do corpus** e provar que gera o mesmo site.
