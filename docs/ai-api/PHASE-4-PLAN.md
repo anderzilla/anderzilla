@@ -59,7 +59,27 @@ Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
 
 **Próximos passos de homolog (cada um separado e revisado):** deploy do código da API (o esquema do banco e as configurações já foram aplicados), primeira chave de agente, teste de um fluxo real e DNS `ia.`.
 
-## API das IAs: adaptador e configuração preparados (2026-10-29, **nada aplicado nem implantado**)
+## API das IAs em homolog: IMPLANTADA e verificada (2026-10-29)
+
+`infra/azure/deploy-content-api.ps1 -Environment homolog -Apply` empacotou e implantou o código na Function App Flex (pacote `c2bebbc20c2b`, 13,1 MiB; guardado em `.deploy/content-api-homolog-20261029T141425/` para rollback, fora do Git). O empacotador (`infra/azure/package_content_api.py`) copia só 8 arquivos de uma lista explícita, instala dependências como **wheels Linux** (cp312, manylinux; sem `__pycache__` nem `.exe`), varre as fontes atrás de segredos, recusa arquivos proibidos (`.env`, `.pem`, `.sqlite`, `.exe`, credenciais; só o `cacert.pem` público do certifi é permitido) e gera um zip reprodutível (mesmas entradas, mesmo hash). 6 testes novos; `services/content-api` tem 16.
+
+Verificado **de fora** em `https://anderzilla-content-api-homolog.azurewebsites.net` (e pelo ARM: a função `content_api` está registrada):
+
+| Chamada | Resultado |
+|---|---|
+| `GET /v1/health` | 200 `{"status":"ok"}` |
+| `GET /v1/schema` sem chave | 401 |
+| `GET /v1/schema` com chave inválida | 401 (a recusa só acontece depois de consultar a tabela `agent_keys`; prova conexão, credencial de runtime e esquema) |
+| `POST /v1/submissions/x/approve` com `x-ms-client-principal` forjado | 401 |
+| `POST /v1/articles` com `text/plain` | 415 |
+| `GET /api/v1/health` (prefixo antigo) | 404 (a rota é `/v1/...` mesmo) |
+| `http://…` | 301 para HTTPS |
+
+Todas as respostas JSON trazem `Cache-Control: no-store` e nenhuma tem cabeçalho CORS. `DELETE /v1/articles` devolve 404 do próprio host (a rota só aceita GET e POST), não o 405 do adaptador; sem impacto de segurança.
+
+**Ainda não feito:** nenhuma chave de agente existe; criar uma exige o administrador (função humana) e deve ser feito por script local que mostra a chave **uma única vez** no terminal do proprietário; testar um fluxo completo (artigo, imagem, pacote); página de revisão e DNS `ia.`/`revisao.`; `AGENT_MEDIA_HOSTS` continua vazio (a API recusa buscar imagens por URL; imagens só por base64).
+
+## API das IAs: adaptador e configuração preparados (2026-10-29; depois implantados, ver acima)
 
 - **Adaptador** `services/content-api/` (`content_api.py` + `function_app.py`, `host.json` sem prefixo `/api`, `requirements.txt` fixado). A app é pública, então só aceita **chave de agente**: qualquer `x-ms-client-principal` ou cookie enviado pelo cliente é ignorado e as rotas humanas (aprovar, comentar, pedir correções, prévia, promover) respondem 401 aqui; elas ficam atrás do login Microsoft da página de revisão. `GET /v1/health` é público e não toca o banco. Corpos: 300 KB, ou 3 MB em `/v1/media`; só `application/json`; sem CORS; `Cache-Control: no-store`; falhas de infraestrutura viram 503 sem detalhes e com `Retry-After: 30`.
 - **Testes** (10, `services/content-api/`): autenticação e desafio `Bearer`, identidade forjada, validação de requisição, limite por rota, fluxo agente (rascunho e pacote, mas não aprovação), 503 sanitizado, cabeçalhos, e um teste de empacotamento que importa o pacote **plano** (sem o layout do repositório) e acusa arquivo faltando. Suítes: CMS 137, publisher 36, content-api 10.
