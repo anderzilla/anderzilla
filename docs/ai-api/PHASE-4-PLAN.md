@@ -37,33 +37,35 @@ Data: 2026-10-29. Somente leitura: inventário do Azure, do repositório e da pr
 
 ## Homolog criado (2026-10-29, aprovado pelo proprietário)
 
-Criados e conferidos pela CLI e pelo ARM no grupo `anderzilla-web` (16 → 19 recursos; SWAs continuam em 8):
+Criados e conferidos pela CLI e pelo ARM no grupo `anderzilla-web` (16 → 20 recursos; SWAs continuam em 8). A Function App foi **recriada em Flex Consumption** depois de a primeira versão (plano Linux Consumption) ficar meio provisionada; veja as lições abaixo.
 
 | Recurso | Estado verificado |
 |---|---|
 | Storage `anderzillacontentst` | StorageV2, Standard_LRS, TLS 1.2, só HTTPS, acesso público de blob desligado |
 | Contêiner `media-homolog` | privado (sem acesso público) |
-| Function App `anderzilla-content-api-homolog` | Linux, Python 3.11, plano de consumo existente `EastUS2LinuxDynamicPlan`, HTTPS obrigatório, FTPS apenas, TLS 1.2, identidade gerenciada atribuída ao sistema; `https://anderzilla-content-api-homolog.azurewebsites.net` (sem código implantado) |
-| Application Insights `anderzilla-content-api-homolog` | criado automaticamente pela CLI (como no identity-api); gratuito até 5 GB/mês, retenção de 90 dias |
+| Function App `anderzilla-content-api-homolog` | **Flex Consumption (FC1)**, Python 3.12, 2048 MB por instância, **máximo de 10 instâncias**, plano próprio `ASP-anderzillaweb-1af9`, HTTPS obrigatório, identidade gerenciada atribuída ao sistema, armazenamento de deploy por identidade (sem chaves); `https://anderzilla-content-api-homolog.azurewebsites.net` (sem código implantado) |
+| Application Insights `anderzilla-content-api-homolog` | criado automaticamente pela CLI; gratuito até 5 GB/mês |
+| Permissão da identidade da app | a CLI concedeu *Storage Blob Data Contributor* **na conta** `anderzillacontentst` (necessário para o armazenamento de deploy por identidade). É mais amplo que "só o contêiner de mídia", mas a conta só contém os dados desta plataforma. O script `content-grant-storage.ps1` ficou redundante e foi removido |
+| Configurações da app | `CMS_SQL_SERVER`, `CMS_SQL_DATABASE`, `CMS_SQL_USER`, `CMS_SQL_PASSWORD`, `CMS_ENVIRONMENT` aplicadas e verificadas por `content-configure.ps1` (a senha nunca foi exibida); `AGENT_MEDIA_HOSTS` e `CMS_REVIEW_BASE` não definidas de propósito |
 
 Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
 
 **Tropeços e lições (já refletidos em `content-provision.ps1`):**
-- `az functionapp create --plan <plano existente>` falha com "AlwaysOn" e com `--consumption-plan-location` o app **é criado**, mas a CLI sai com erro ("Cannot find ServerFarm") depois. O script agora tolera esse erro e confere o app pelo ARM.
-- `az functionapp/webapp update` e `identity assign` retornam `Conflict` para esses apps; a atribuição de identidade e o HTTPS obrigatório são feitos por PATCH direto no ARM, que funciona.
-- Reexecutar o `-Apply` em homolog é idempotente (nada novo, 19 recursos).
-- O Azure avisa que o Linux Consumption chega ao fim do suporte em **30/09/2028**; o Flex Consumption é o substituto recomendado (também tem franquia gratuita). Vale migrar a API depois; o identity-api tem o mesmo prazo.
+- **A primeira Function App (Linux Consumption no plano `EastUS2LinuxDynamicPlan`) ficou meio provisionada:** leitura e PATCH do site funcionavam, mas toda escrita de configuração e a exclusão falhavam com "Cannot find ServerFarm" / "Unable to resolve the App Service plan for delete validation". Conclusão minha a partir desses sintomas, não confirmada pela Azure. Com a aprovação do proprietário, apaguei a app e seu Application Insights (ambos meus, vazios) e recriei em Flex Consumption, que funcionou de primeira.
+- **Exclusão:** `az rest --method delete` só funcionou com `--url-parameters deleteEmptyServerFarm=false deleteMetrics=false`. Um `&` dentro da URL é mutilado pelo `az.cmd` (o `cmd` o trata como separador); use sempre `--url-parameters`.
+- **Python 3.12 e não 3.11:** no Flex, o 3.11 sai de suporte em 10/2027 e o 3.12 em 10/2028; o código já é testado em 3.12.
+- **Linux Consumption** perde o suporte em 30/09/2028 (aviso do Azure). O `anderzilla-identity-api` ainda está no plano antigo e tem o mesmo prazo; não foi tocado.
+- Reexecutar `content-provision.ps1 -Apply` em homolog é idempotente (20 recursos, nada novo) e o script agora confere pelo ARM que a app é Flex, Python 3.12, com no máximo 10 instâncias e fora do plano antigo.
 
-**Próximos passos de homolog (cada um separado e revisado):** esquema novo no banco `anderzilla-cms-homolog` (tabelas de chaves, pacotes e comentários) e usuário SQL de runtime, configurações do app e permissão da identidade no contêiner, deploy do código da API, DNS `ia.`. Os dois primeiros exigem a credencial SQL de operador, que fica fora do Git e nunca passa pelo chat.
+**Próximos passos de homolog (cada um separado e revisado):** deploy do código da API (o esquema do banco e as configurações já foram aplicados), primeira chave de agente, teste de um fluxo real e DNS `ia.`.
 
 ## API das IAs: adaptador e configuração preparados (2026-10-29, **nada aplicado nem implantado**)
 
 - **Adaptador** `services/content-api/` (`content_api.py` + `function_app.py`, `host.json` sem prefixo `/api`, `requirements.txt` fixado). A app é pública, então só aceita **chave de agente**: qualquer `x-ms-client-principal` ou cookie enviado pelo cliente é ignorado e as rotas humanas (aprovar, comentar, pedir correções, prévia, promover) respondem 401 aqui; elas ficam atrás do login Microsoft da página de revisão. `GET /v1/health` é público e não toca o banco. Corpos: 300 KB, ou 3 MB em `/v1/media`; só `application/json`; sem CORS; `Cache-Control: no-store`; falhas de infraestrutura viram 503 sem detalhes e com `Retry-After: 30`.
 - **Testes** (10, `services/content-api/`): autenticação e desafio `Bearer`, identidade forjada, validação de requisição, limite por rota, fluxo agente (rascunho e pacote, mas não aprovação), 503 sanitizado, cabeçalhos, e um teste de empacotamento que importa o pacote **plano** (sem o layout do repositório) e acusa arquivo faltando. Suítes: CMS 137, publisher 36, content-api 10.
 - `infra/azure/content-configure.ps1`: mescla `CMS_SQL_SERVER/DATABASE/USER/PASSWORD` e `CMS_ENVIRONMENT` nas configurações da app, lendo o arquivo da credencial de runtime. Dry-run por padrão, imprime só nomes (a senha aparece como `(hidden)`), preserva as 5 configurações existentes, usa corpo temporário com ACL restrita e confere o resultado depois. Não define `AGENT_MEDIA_HOSTS` (vazio = a API recusa buscar imagens por URL) nem `CMS_REVIEW_BASE` (a revisão ainda não existe).
-- `infra/azure/content-grant-storage.ps1`: papel *Storage Blob Data Contributor* da identidade da app **só no contêiner** `media-homolog`. **Não aplicar ainda**: o código ainda grava mídia no banco (base64), então a permissão ficaria sem uso.
-- Verificado depois dos dry-runs: a app continua com as 5 configurações originais e o grupo com 19 recursos.
-- **Falta (cada passo com aprovação):** aplicar as configurações; empacotar e implantar o código (dependências Linux, como em `deploy-admin.ps1`; a CLI tem se comportado mal com apps de consumo Linux, então o deploy deve ser verificado pelo ARM); criar a primeira chave de agente; testar `/v1/health` e um fluxo real.
+- **Atualização:** as configurações foram **aplicadas** em homolog depois da recriação da app em Flex (ver acima); o script `content-grant-storage.ps1` foi removido por ficar redundante.
+- **Falta (cada passo com aprovação):** empacotar e implantar o código (dependências Linux, como em `deploy-admin.ps1`; verificar pelo ARM e pelo `/v1/health`); criar a primeira chave de agente; testar um fluxo real. O endereço `/v1/health` ainda não respondeu (`curl` devolveu erro de conexão, esperado sem código implantado); revisar depois do deploy.
 
 ## Esquema do banco de homolog: APLICADO (2026-10-29, pelo proprietário no próprio terminal)
 
