@@ -31,7 +31,7 @@ class CMSTest(unittest.TestCase):
             self.cms.list(EDITOR, 'rewards')
         with self.assertRaises(Error):
             self.cms.release(EDITOR, 'test-release')
-        self.assertEqual(self.cms.summary(EDITOR)['capabilities']['collections'], ['content', 'events', 'pages', 'media', 'taxonomies'])
+        self.assertEqual(self.cms.summary(EDITOR)['capabilities']['collections'], ['content', 'events', 'pages', 'media', 'taxonomies', 'banners'])
 
     def test_swa_session_does_not_trust_bad_principal(self):
         self.assertIsNone(swa_principal('not-base64'))

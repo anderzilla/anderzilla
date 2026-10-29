@@ -285,6 +285,7 @@ components:
         key: { type: string, description: Stable id chosen by the agent for this article }
         id: { type: string, description: Existing record id when updating }
         version: { type: integer, description: Required when updating }
+        allowEditPublished: { type: boolean, description: 'Editing an approved article takes it offline until re-approved; the server refuses unless this is true' }
         data: { $ref: '#/components/schemas/Article' }
     Banner:
       type: object

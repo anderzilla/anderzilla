@@ -41,6 +41,19 @@ Endereço planejado: `https://revisao.anderzilla.com` (SWA Free próprio, domín
 4. Anderson abre a página, comenta ou aprova. Se pediu correções, o agente lê os comentários e reenvia.
 5. Aprovado: release em homolog; após a conferência, promoção para produção (humana) e verificação.
 
+## Fase 2 — núcleo implementado (somente local, com testes)
+
+Código em `services/cms/agent_api.py` (testes em `test_agent_api.py`; suíte completa do CMS: 133 passando, publisher: 25). Nenhum recurso Azure foi criado.
+
+- **Chaves por agente:** `create_key`/`revoke_key` (só humano). A chave `azk_<id>_<segredo>` aparece uma vez; o banco guarda só o hash SHA-256, com escopo por coleção e validade (1–365 dias).
+- **Rotas:** `handle(...)` implementa schema, `articles:validate`, artigos (upsert idempotente por `key`), mídia (base64 ou URL), banners, pacotes, comentários, pedir correções, reenviar, aprovar e status de release.
+- **Banners:** nova coleção `banners` no `core.py` (imagem aprovada obrigatória; links internos `/…` ou HTTPS público).
+- **Mídia por URL:** HTTPS na porta 443, lista de domínios obrigatória (`AGENT_MEDIA_HOSTS`; vazia rejeita tudo), só endereços públicos, sem redirecionamentos, 2 MB. Risco residual: o DNS pode mudar entre a checagem e o download, por isso a lista de domínios é obrigatória.
+- **Aprovação humana:** só o principal do SWA com `anderzilla_admin` aprova, comenta e pede correções. Aprovar é atômico: se um registro falhar, os já aprovados voltam a rascunho. Um rascunho alterado depois do envio invalida o pacote (409).
+- **Proteção de conteúdo no ar:** editar um artigo já aprovado o tira do ar até nova aprovação, então o servidor exige `allowEditPublished=true`.
+- **Ainda não feito:** servidor HTTP, prévia privada (501), promoção e rollback (501, dependem do pipeline), página de revisão (fase 3), leitura do site a partir do banco (fase 3), conectores OpenAPI/MCP (fase 5).
+- **Limitação do `validate`:** o domínio de validação levanta o primeiro erro; a simulação devolve um erro por chamada (campos obrigatórios ausentes vêm todos juntos na mesma mensagem).
+
 ## Decisões ainda abertas
 
 - Papel novo `anderzilla_agent` e tabela de chaves (hash) no banco do CMS.

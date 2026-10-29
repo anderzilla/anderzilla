@@ -69,6 +69,48 @@ class Session:
     def update_release(self, release):
         self.execute('UPDATE cms_releases SET document=? WHERE id=?', (json.dumps(release), release['id']))
 
+    # AI agent gateway: keys are stored only as hashes; requests, submissions and comments are JSON documents.
+    def agent_key(self, key_id):
+        row = self.execute('SELECT key_hash,document FROM agent_keys WHERE id=?', (key_id,)).fetchone()
+        return (row[0], json.loads(row[1])) if row else None
+
+    def save_agent_key(self, document, key_hash):
+        self.execute('INSERT INTO agent_keys(id,key_hash,document) VALUES(?,?,?)', (document['id'], key_hash, json.dumps(document)))
+
+    def update_agent_key(self, document):
+        self.execute('UPDATE agent_keys SET document=? WHERE id=?', (json.dumps(document), document['id']))
+
+    def agent_request(self, agent_id, request_key):
+        row = self.execute('SELECT input_hash,document FROM agent_requests WHERE agent_id=? AND request_key=?', (agent_id, request_key)).fetchone()
+        return (row[0], json.loads(row[1])) if row else None
+
+    def save_agent_request(self, agent_id, request_key, input_hash, document):
+        self.execute('INSERT INTO agent_requests(agent_id,request_key,input_hash,document) VALUES(?,?,?,?)', (agent_id, request_key, input_hash, json.dumps(document, ensure_ascii=False)))
+
+    def submission(self, submission_id):
+        row = self.execute('SELECT document FROM submissions WHERE id=?', (submission_id,)).fetchone()
+        return json.loads(row[0]) if row else None
+
+    def save_submission(self, document, new=False):
+        text = json.dumps(document, ensure_ascii=False)
+        if new:
+            self.execute('INSERT INTO submissions(id,updated_at,document) VALUES(?,?,?)', (document['id'], document['updatedAt'], text))
+        else:
+            self.execute('UPDATE submissions SET document=?,updated_at=? WHERE id=?', (text, document['updatedAt'], document['id']))
+
+    def submissions(self):
+        return [json.loads(row[0]) for row in self.execute('SELECT document FROM submissions ORDER BY updated_at DESC').fetchall()]
+
+    def comments(self, submission_id):
+        return [json.loads(row[0]) for row in self.execute('SELECT document FROM submission_comments WHERE submission_id=? ORDER BY created_at', (submission_id,)).fetchall()]
+
+    def save_comment(self, document, new=False):
+        text = json.dumps(document, ensure_ascii=False)
+        if new:
+            self.execute('INSERT INTO submission_comments(id,submission_id,created_at,document) VALUES(?,?,?,?)', (document['id'], document['submissionId'], document['createdAt'], text))
+        else:
+            self.execute('UPDATE submission_comments SET document=? WHERE id=?', (text, document['id']))
+
 
 class SQLiteStore:
     def __init__(self, path):

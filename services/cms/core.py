@@ -44,6 +44,8 @@ REQUIRED = {
     'missions': {'titlePT', 'points', 'verifier', 'limit', 'termsPT'},
     'rewards': {'titlePT', 'points', 'category', 'regions', 'termsPT'},
 }
+FIELDS['banners'] = COMMON | {'imageMediaId', 'textPT', 'textEN', 'ctaPT', 'ctaEN', 'linkPT', 'linkEN', 'startsAt', 'endsAt', 'order', 'disclosure'}
+REQUIRED['banners'] = {'titlePT', 'titleEN', 'imageMediaId', 'linkPT', 'linkEN', 'startsAt'}
 for legacy in ('offers', 'affiliates', 'campaigns'):
     FIELDS[legacy] |= {'market', 'currency', 'store', 'status'}
 FIELDS.update(commerce.FIELDS)
@@ -96,7 +98,7 @@ def validate(collection, data, approved=False, internal=False):
         if key in {'isDemo', 'enabled'}:
             if type(value) is not bool:
                 raise Error(422, 'invalid_boolean', 'isDemo deve ser booleano.')
-        elif key in {'points', 'limit', 'priceMinor', 'width', 'height'}:
+        elif key in {'points', 'limit', 'priceMinor', 'width', 'height', 'order'}:
             if type(value) is not int or not 0 <= value <= 100000000:
                 raise Error(422, 'invalid_number', key + ': inteiro não negativo obrigatório.')
         elif not isinstance(value, str) or len(value) > (50000 if key.startswith('body') else 15000 if key == 'sources' else 3000):
@@ -169,6 +171,11 @@ def validate(collection, data, approved=False, internal=False):
                 raise Error(422, 'invalid_instagram_url', 'instagramUrl: use um post ou reel HTTPS em instagram.com.')
     if collection == 'campaigns' and data.get('placement') and data['placement'] != 'home':
         raise Error(422, 'invalid_placement', 'Espaço disponível nesta entrega: home.')
+    if collection == 'banners':
+        for key in ('linkPT', 'linkEN'):
+            link = data.get(key)
+            if link and not (link.startswith('/') and not link.startswith('//')):
+                validate('offers', {'url': link})  # same HTTPS/public-host rules as any external URL
     if collection in {'offers', 'affiliates', 'campaigns'}:
         for key, values in [('market', {'br','intl','global'}), ('currency', {'BRL','USD'}), ('status', {'candidate','active','paused','ended'})]:
             if key in data and data[key] not in values:
@@ -215,6 +222,10 @@ def validate_references(db, collection, data, record_id=None):
             taxonomy = db.record('taxonomies', tag)
             if not taxonomy or taxonomy['status'] != 'approved' or taxonomy['data'].get('kind') != 'tag':
                 raise Error(422, 'invalid_tag', 'Tags devem referenciar IDs de taxonomias aprovadas.')
+    if collection == 'banners' and data.get('imageMediaId'):
+        media = db.record('media', data['imageMediaId'])
+        if not media or media['status'] != 'approved' or media['data'].get('mediaType', 'image') != 'image':
+            raise Error(422, 'invalid_banner_image', 'Selecione uma imagem aprovada na biblioteca.')
     if collection in {'content', 'pages', 'taxonomies'}:
         for other in db.records(collection):
             if other['id'] == record_id or other['status'] != 'approved':
