@@ -59,7 +59,19 @@ Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
 
 **Próximos passos de homolog (cada um separado e revisado):** deploy do código da API (o esquema do banco e as configurações já foram aplicados), primeira chave de agente, teste de um fluxo real e DNS `ia.`.
 
-## Página de revisão em homolog: preparada (2026-10-29, **nada criado nem implantado**)
+## Página de revisão em homolog: CRIADA, configurada e IMPLANTADA (2026-10-29); falta o convite
+
+Com a aprovação do proprietário: SWA `anderzilla-review-homolog` criado (**Free**, East US 2, confirmado pelo ARM; 9 de 10 SWAs; 21 recursos no grupo) em `https://victorious-river-0830f700f.6.azurestaticapps.net`. Configurações aplicadas e verificadas (`CMS_SQL_SERVER/DATABASE/USER/PASSWORD`, `CMS_ENVIRONMENT`, `REVIEW_ALLOWED_ORIGIN`; senha nunca exibida). Implantado pelo `deploy-review.ps1`; a API gerenciada registrou a função `review_api` (HttpTrigger).
+
+**Verificação anônima, de fora:** `/`, `/api/v1/health`, `/api/v1/submissions` e `/brand/lettering.webp` respondem **302 para `/.auth/login/aad`**; `http://` dá 301 para HTTPS; `/.auth/me` anônimo devolve `clientPrincipal: null`; as respostas trazem `x-robots-tag: noindex, nofollow`, `Cache-Control: no-store`, `nosniff` e `no-referrer`. Ou seja, **nada do site nem da API é alcançável sem entrar**.
+
+**Tropeço (já corrigido no script):** o SWA CLI escreve o progresso no stderr; com `ErrorActionPreference='Stop'` o PowerShell tratou isso como erro e abortou o script **depois** de o deploy ter terminado, então a verificação final não rodou na primeira vez. Confirmei o estado por fora (ambiente `Ready`, rotas redirecionando, função registrada), corrigi o script para julgar só pelo código de saída e rodei o fluxo inteiro de novo: deploy e verificação passaram. Os 2 processos `node` restantes na máquina não são do deploy.
+
+**Falta:** o **convite** (`review-invite.ps1 -Environment homolog -Apply`), que deve ser rodado pelo proprietário no próprio terminal porque o link de uso único aparece na tela; entrar com `anderzilla@ymail.com` e conferir os 2 pacotes de teste pendentes. Riscos: o login `aad` pré-configurado pode não aceitar a conta pessoal `ymail.com` e um bloqueador de anúncios pode barrar `identity.*.azurestaticapps.net`; nenhum dos dois foi testado ainda.
+
+### Como estava preparada
+
+## Página de revisão em homolog: preparação (2026-10-29)
 
 **Arquitetura:** Static Web App Free `anderzilla-review-homolog` com login Microsoft (provedor `aad`) e a UI estática de `apps/review`; a API de revisão é a **API gerenciada** do próprio SWA (`services/review-api/`, Python 3.11, único suportado), então ela só é alcançável por trás do login do SWA. A API da fase anterior (`ia.`) continua separada e só aceita chaves de agente.
 

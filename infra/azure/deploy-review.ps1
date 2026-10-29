@@ -55,8 +55,15 @@ try{
  $token=(& $AzureCli staticwebapp secrets list --name $app --resource-group $IdentityGroup --subscription $IdentitySubscription --query properties.apiKey --output tsv --only-show-errors)
  if($LASTEXITCODE -or [string]::IsNullOrWhiteSpace($token)){throw 'Could not read the deployment credential.'}
  $env:SWA_CLI_DEPLOYMENT_TOKEN=$token.Trim();$token=$null
- & npx --yes '@azure/static-web-apps-cli@2.0.10' deploy $site --app-location $site --swa-config-location $site --api-location $api --api-language python --api-version 3.11 --env production --no-use-keychain
- if($LASTEXITCODE){throw 'Review deployment failed.'}
+ # The SWA CLI prints progress on stderr; with ErrorActionPreference=Stop PowerShell would turn that into a terminating error
+ # and abort before the verification below (seen on 2026-10-29: the deploy had completed). Judge only by the exit code.
+ $stopPreference=$ErrorActionPreference
+ $ErrorActionPreference='Continue'
+ try{
+  & npx --yes '@azure/static-web-apps-cli@2.0.10' deploy $site --app-location $site --swa-config-location $site --api-location $api --api-language python --api-version 3.11 --env production --no-use-keychain 2>&1 | ForEach-Object {Write-Host $_.ToString()}
+  $deployExit=$LASTEXITCODE
+ }finally{$ErrorActionPreference=$stopPreference}
+ if($deployExit){throw "Review deployment failed (exit code $deployExit)."}
 }finally{$env:SWA_CLI_DEPLOYMENT_TOKEN=$old;$token=$null}
 $hostName=$existing.defaultHostname
 function Get-Redirect([string]$path){
