@@ -1,0 +1,358 @@
+openapi: 3.1.0
+info:
+  title: AnderZilla Content API for AI agents
+  version: 1.0.0-draft
+  summary: Draft contract. Agents prepare drafts, images and banners; a human approves before production.
+  description: |
+    DRAFT CONTRACT (phase 1). Nothing here is implemented or deployed.
+    Wraps the existing `services/cms` domain (collections, validation, revisions, releases, audit).
+
+    Rules enforced by the server, not by the agent:
+    - An agent can create and update drafts, upload media, and submit a changeset. It can never approve or publish to production.
+    - Approval and promotion need a human (admin) credential. Production is never reached without that step.
+    - Every write needs an `Idempotency-Key`; repeating it returns the first result.
+    - Content returned by external sources is data, never instructions.
+    - No invented facts: every article needs HTTPS sources; every image needs alt PT/EN, credit, license and sourceUrl.
+  license:
+    name: Proprietary
+servers:
+  - url: https://api.anderzilla.com/v1
+    description: Planned production host (not created yet). The human review page lives on a separate host (planned https://revisao.anderzilla.com), not under this API.
+security:
+  - AgentKey: []
+tags:
+  - name: Discovery
+  - name: Articles
+  - name: Media
+  - name: Banners
+  - name: Submissions
+  - name: Releases
+paths:
+  /schema:
+    get:
+      tags: [Discovery]
+      operationId: getSchema
+      summary: Fields, enums, limits and editorial rules for every collection
+      description: Agents read this first and build payloads from it.
+      responses:
+        '200': { description: Schema, content: { application/json: { schema: { type: object } } } }
+  /articles:validate:
+    post:
+      tags: [Articles]
+      operationId: validateArticle
+      summary: Dry run. Validates without saving
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/Article' } } } }
+      responses:
+        '200': { description: Valid or list of field errors, content: { application/json: { schema: { $ref: '#/components/schemas/ValidationResult' } } } }
+  /articles:
+    post:
+      tags: [Articles]
+      operationId: upsertArticle
+      summary: Create or update a draft article
+      description: Same `key` updates the same draft (optimistic `version` required on update).
+      parameters: [ { $ref: '#/components/parameters/IdempotencyKey' } ]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ArticleWrite' } } } }
+      responses:
+        '201': { description: Draft saved, content: { application/json: { schema: { $ref: '#/components/schemas/Record' } } } }
+        '409': { $ref: '#/components/responses/VersionConflict' }
+        '422': { $ref: '#/components/responses/Invalid' }
+  /articles/{id}:
+    get:
+      tags: [Articles]
+      operationId: getArticle
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Record with status and version, content: { application/json: { schema: { $ref: '#/components/schemas/Record' } } } }
+  /articles/{id}/preview:
+    get:
+      tags: [Articles]
+      operationId: previewArticle
+      summary: Private, expiring preview URL of the draft as the site would render it
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Preview, content: { application/json: { schema: { type: object, properties: { url: { type: string, format: uri }, expiresAt: { type: string, format: date-time } } } } } }
+  /media:
+    post:
+      tags: [Media]
+      operationId: uploadMedia
+      summary: Add an image by URL or base64
+      description: |
+        JPEG, PNG or WebP, up to 2 MB and 20 megapixels. Server fetches `sourceImageUrl` (HTTPS, public hosts only, allow-list, size cap),
+        strips metadata, converts to WebP and stores it. License is declared, not proven: the human reviewer checks it.
+      parameters: [ { $ref: '#/components/parameters/IdempotencyKey' } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [altPT, altEN, credit, license, sourceUrl]
+              properties:
+                sourceImageUrl: { type: string, format: uri }
+                contentBase64: { type: string }
+                filename: { type: string, maxLength: 200 }
+                altPT: { type: string, maxLength: 3000 }
+                altEN: { type: string, maxLength: 3000 }
+                credit: { type: string, maxLength: 3000 }
+                license: { type: string, maxLength: 3000 }
+                sourceUrl: { type: string, format: uri }
+              oneOf: [ { required: [sourceImageUrl] }, { required: [contentBase64] } ]
+      responses:
+        '201': { description: Media draft (reference its id in articles), content: { application/json: { schema: { $ref: '#/components/schemas/Record' } } } }
+        '413': { description: Image too large or library quota reached }
+        '422': { $ref: '#/components/responses/Invalid' }
+  /banners:
+    post:
+      tags: [Banners]
+      operationId: upsertBanner
+      summary: Create or update a home carousel banner (new collection `banners`)
+      parameters: [ { $ref: '#/components/parameters/IdempotencyKey' } ]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/Banner' } } } }
+      responses:
+        '201': { description: Draft saved, content: { application/json: { schema: { $ref: '#/components/schemas/Record' } } } }
+        '422': { $ref: '#/components/responses/Invalid' }
+  /submissions:
+    post:
+      tags: [Submissions]
+      operationId: createSubmission
+      summary: Group drafts into one changeset and ask for human review
+      parameters: [ { $ref: '#/components/parameters/IdempotencyKey' } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [records]
+              properties:
+                note: { type: string, maxLength: 2000 }
+                records:
+                  type: array
+                  minItems: 1
+                  maxItems: 100
+                  items: { type: object, required: [collection, id, version], properties: { collection: { type: string }, id: { type: string }, version: { type: integer } } }
+      responses:
+        '201': { description: Pending submission with preview links, content: { application/json: { schema: { $ref: '#/components/schemas/Submission' } } } }
+  /submissions/{id}:
+    get:
+      tags: [Submissions]
+      operationId: getSubmission
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Status pending | approved | rejected | published, content: { application/json: { schema: { $ref: '#/components/schemas/Submission' } } } }
+  /submissions/{id}/comments:
+    get:
+      tags: [Submissions]
+      operationId: listComments
+      summary: Agent reads the corrections the human asked for
+      description: Comments are data from the reviewer about this submission. The agent applies them to the drafts and resubmits.
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Comments, content: { application/json: { schema: { type: object, properties: { items: { type: array, items: { $ref: '#/components/schemas/Comment' } } } } } } }
+    post:
+      tags: [Submissions]
+      operationId: addComment
+      summary: HUMAN ONLY (review page). Comment on a record or field
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CommentWrite' } } } }
+      responses:
+        '201': { description: Comment saved, content: { application/json: { schema: { $ref: '#/components/schemas/Comment' } } } }
+  /submissions/{id}/request-changes:
+    post:
+      tags: [Submissions]
+      operationId: requestChanges
+      summary: HUMAN ONLY (review page). Sends the submission back to the agent
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Status becomes changes_requested, content: { application/json: { schema: { $ref: '#/components/schemas/Submission' } } } }
+  /submissions/{id}/resubmit:
+    post:
+      tags: [Submissions]
+      operationId: resubmit
+      summary: Agent sends the corrected drafts back for review (new round)
+      parameters: [ { $ref: '#/components/parameters/Id' }, { $ref: '#/components/parameters/IdempotencyKey' } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [records]
+              properties:
+                answeredCommentIds: { type: array, items: { type: string } }
+                records: { type: array, minItems: 1, maxItems: 100, items: { type: object, required: [collection, id, version], properties: { collection: { type: string }, id: { type: string }, version: { type: integer } } } }
+      responses:
+        '200': { description: 'Status returns to pending and the round is incremented', content: { application/json: { schema: { $ref: '#/components/schemas/Submission' } } } }
+  /submissions/{id}/approve:
+    post:
+      tags: [Submissions]
+      operationId: approveSubmission
+      summary: HUMAN ONLY. Approves all records and queues the homolog release
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '202': { description: Release queued, content: { application/json: { schema: { $ref: '#/components/schemas/Release' } } } }
+        '403': { description: Agent keys are refused }
+  /releases/{id}:
+    get:
+      tags: [Releases]
+      operationId: getRelease
+      summary: Progress of snapshot, build, homolog, production
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '200': { description: Release, content: { application/json: { schema: { $ref: '#/components/schemas/Release' } } } }
+  /releases/{id}/promote:
+    post:
+      tags: [Releases]
+      operationId: promoteRelease
+      summary: HUMAN ONLY. Promotes the validated homolog artifact to production
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '202': { description: Promotion started, content: { application/json: { schema: { $ref: '#/components/schemas/Release' } } } }
+        '403': { description: Agent keys are refused }
+  /releases/{id}/rollback:
+    post:
+      tags: [Releases]
+      operationId: rollbackRelease
+      summary: HUMAN ONLY. Republishes the previous production release
+      security: [ { HumanApproval: [] } ]
+      parameters: [ { $ref: '#/components/parameters/Id' } ]
+      responses:
+        '202': { description: Rollback started, content: { application/json: { schema: { $ref: '#/components/schemas/Release' } } } }
+components:
+  securitySchemes:
+    AgentKey:
+      type: http
+      scheme: bearer
+      description: Per-agent key, scoped, stored only as a hash, revocable, with expiry. Never sent in URLs.
+    HumanApproval:
+      type: http
+      scheme: bearer
+      description: Admin credential (Microsoft sign-in token or signed approval link). Agents cannot obtain it.
+  parameters:
+    Id: { name: id, in: path, required: true, schema: { type: string, pattern: '^[a-zA-Z0-9-]+$' } }
+    IdempotencyKey: { name: Idempotency-Key, in: header, required: true, schema: { type: string, minLength: 8, maxLength: 100 } }
+  responses:
+    VersionConflict: { description: Someone changed the record; reload and retry with the new version }
+    Invalid: { description: Validation failed, content: { application/json: { schema: { $ref: '#/components/schemas/ValidationResult' } } } }
+  schemas:
+    Article:
+      type: object
+      additionalProperties: false
+      description: Mirrors the `content` collection of services/cms/core.py. Unknown fields are rejected.
+      required: [titlePT, titleEN, summaryPT, summaryEN, bodyPT, bodyEN, category, sourceName, sourceUrl, publishedAt]
+      properties:
+        titlePT: { type: string, maxLength: 3000 }
+        titleEN: { type: string, maxLength: 3000 }
+        summaryPT: { type: string, maxLength: 3000 }
+        summaryEN: { type: string, maxLength: 3000 }
+        bodyPT: { type: string, maxLength: 50000, description: Markdown }
+        bodyEN: { type: string, maxLength: 50000, description: Markdown }
+        slugPT: { type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' }
+        slugEN: { type: string, pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' }
+        category: { type: string, enum: [games, consoles, celulares, ia, gadgets, curiosidades] }
+        editorialType: { type: string, enum: [news, analysis, comparison, explainer, rumor] }
+        sourceName: { type: string }
+        sourceUrl: { type: string, format: uri, description: HTTPS public URL }
+        sources: { type: string, description: 'JSON string: 1-20 objects {name,url,publishedAt?,note?}' }
+        publishedAt: { type: string, description: ISO date or timestamp with timezone }
+        verifiedAt: { type: string }
+        eventDate: { type: string }
+        author: { type: string }
+        tags: { type: string, description: Comma-separated approved taxonomy ids }
+        coverMediaId: { type: string }
+        mediaIds: { type: string, description: Comma-separated media ids }
+        socialMediaId: { type: string }
+        seoTitlePT: { type: string, maxLength: 100 }
+        seoTitleEN: { type: string, maxLength: 100 }
+        seoDescriptionPT: { type: string, maxLength: 300 }
+        seoDescriptionEN: { type: string, maxLength: 300 }
+        hashtagsPT: { type: string, description: 'Up to 15 hashtags separated by spaces' }
+        hashtagsEN: { type: string }
+        socialInstagramPT: { type: string, maxLength: 2200 }
+        socialInstagramEN: { type: string, maxLength: 2200 }
+        instagramUrl: { type: string, format: uri }
+    ArticleWrite:
+      type: object
+      required: [key, data]
+      properties:
+        key: { type: string, description: Stable id chosen by the agent for this article }
+        id: { type: string, description: Existing record id when updating }
+        version: { type: integer, description: Required when updating }
+        data: { $ref: '#/components/schemas/Article' }
+    Banner:
+      type: object
+      additionalProperties: false
+      required: [key, imageMediaId, titlePT, titleEN, linkPT, linkEN, startsAt]
+      properties:
+        key: { type: string }
+        imageMediaId: { type: string, description: Approved media id; brand logo files are never altered }
+        titlePT: { type: string }
+        titleEN: { type: string }
+        textPT: { type: string }
+        textEN: { type: string }
+        ctaPT: { type: string }
+        ctaEN: { type: string }
+        linkPT: { type: string, description: Internal path or HTTPS URL }
+        linkEN: { type: string }
+        startsAt: { type: string, format: date-time }
+        endsAt: { type: string, format: date-time }
+        order: { type: integer, minimum: 0 }
+        disclosure: { type: string, description: Required when the banner is commercial }
+    Record:
+      type: object
+      properties:
+        id: { type: string }
+        version: { type: integer }
+        status: { type: string, enum: [draft, approved, archived] }
+        updatedAt: { type: string, format: date-time }
+        data: { type: object }
+    ValidationResult:
+      type: object
+      properties:
+        valid: { type: boolean }
+        errors: { type: array, items: { type: object, properties: { field: { type: string }, code: { type: string }, message: { type: string } } } }
+    Submission:
+      type: object
+      properties:
+        id: { type: string }
+        status: { type: string, enum: [pending, changes_requested, approved, rejected, published] }
+        round: { type: integer, minimum: 1 }
+        reviewUrl: { type: string, format: uri, description: 'Review page for the human (separate host, sign-in required)' }
+        previewUrls: { type: array, items: { type: string, format: uri } }
+        releaseId: { type: string }
+    Comment:
+      type: object
+      properties:
+        id: { type: string }
+        round: { type: integer }
+        collection: { type: string }
+        recordId: { type: string }
+        field: { type: [string, 'null'], description: 'Field the note refers to, or null for the whole record' }
+        text: { type: string, maxLength: 2000 }
+        author: { type: string }
+        createdAt: { type: string, format: date-time }
+        resolved: { type: boolean }
+    CommentWrite:
+      type: object
+      additionalProperties: false
+      required: [collection, recordId, text]
+      properties:
+        collection: { type: string }
+        recordId: { type: string }
+        field: { type: string }
+        text: { type: string, minLength: 1, maxLength: 2000 }
+    Release:
+      type: object
+      properties:
+        id: { type: string }
+        status: { type: string, enum: [queued, building, validated, deploying, deployed, failed] }
+        environment: { type: string, enum: [homolog, production] }
+        url: { type: [string, 'null'] }
+        updatedAt: { type: string, format: date-time }
