@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
  [Parameter(Mandatory)][ValidateSet('homolog','production')][string]$Environment,
- [Parameter(Mandatory)][ValidateSet('list','create','revoke')][string]$Action,
+ [Parameter(Mandatory)][ValidateSet('list','create','revoke','smoke')][string]$Action,
  [string]$Name,
  [ValidateRange(1,365)][int]$Days=90,
  [string]$Collections='content,media,banners',
@@ -22,6 +22,18 @@ $server='anderzilla-sql-44b76346-cus.database.windows.net'
 $repo=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 $tool=Join-Path $repo 'services/content-api/manage_keys.py'
 $arguments=@($tool,$Action,'--environment',$Environment)
+if($Action -eq 'smoke'){
+ # Smoke test of the deployed homolog API (services/content-api/smoke_homolog.py): mints a throwaway 1-day key, runs ~28 checks
+ # over HTTPS, revokes the key. It leaves test drafts and one pending package in the homolog sandbox database, so it needs -Apply.
+ if($Environment -ne 'homolog'){throw 'The smoke test only runs against homolog.'}
+ $tool=Join-Path $repo 'services/content-api/smoke_homolog.py'
+ $arguments=@($tool)
+ if(!$Apply){
+  Write-Host 'Plan: create a throwaway 1-day key (not displayed), run the checks against the homolog API, revoke the key. Test drafts and one pending package stay in the homolog database (no delete permission). Nothing is approved or published.'
+  Write-Host 'Dry run only. Re-run with -Apply.'
+  exit 0
+ }
+}
 if($Action -eq 'create'){
  if(!$Name){throw '-Name is required for create (for example claude-homolog).'}
  $arguments+=@('--name',$Name,'--days',[string]$Days,'--collections',$Collections)
@@ -31,7 +43,7 @@ if($Action -eq 'revoke'){
  if(!$Id){throw '-Id is required for revoke (see the list action).'}
  $arguments+=@('--id',$Id)
 }
-if($Apply -and $Action -ne 'list'){$arguments+='--apply'}
+if($Apply -and $Action -notin 'list','smoke'){$arguments+='--apply'}
 $needsDatabase=($Action -eq 'list') -or $Apply
 if(!$needsDatabase){
  & $Python @arguments
