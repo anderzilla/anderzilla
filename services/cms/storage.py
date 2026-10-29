@@ -144,7 +144,7 @@ class AzureSQLStore:
     def connect(self):
         import certifi
         import pytds
-        return pytds.connect(server=os.environ['CMS_SQL_SERVER'], database=os.environ['CMS_SQL_DATABASE'], user=os.environ['CMS_SQL_USER'], password=os.environ['CMS_SQL_PASSWORD'], cafile=certifi.where(), validate_host=True, enc_login_only=False, autocommit=False, login_timeout=15, timeout=30)
+        return pytds.connect(server=os.environ['CMS_SQL_SERVER'], database=os.environ['CMS_SQL_DATABASE'], user=os.environ['CMS_SQL_USER'], password=os.environ['CMS_SQL_PASSWORD'], cafile=certifi.where(), validate_host=True, enc_login_only=False, autocommit=False, login_timeout=40, timeout=30)  # a paused serverless database takes up to ~40 s to resume; Static Web Apps cuts a request at ~45 s
 
     def health(self):
         """Protected operator diagnostic: never expose exception text or connection data."""

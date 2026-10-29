@@ -14,15 +14,26 @@ export class ApiError extends Error {
   }
 }
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** Reads are retried on 503: the serverless database pauses when idle and the first request after a pause can fail while it wakes up.
+ *  Writes are never retried automatically. */
 export async function api<T>(path: string, token: string, init: RequestInit = {}): Promise<T> {
-  const response = await fetch(apiBase + path, {
-    ...init,
-    credentials: 'same-origin',
-    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...init.headers },
-  });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new ApiError(response.status, payload.error?.message || `Operação recusada (${response.status}).`);
-  return payload as T;
+  const isRead = !init.method || init.method === 'GET';
+  for (let attempt = 0; ; attempt++) {
+    const response = await fetch(apiBase + path, {
+      ...init,
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...init.headers },
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (response.status === 503 && isRead && attempt < 3) {
+      await wait(5000);
+      continue;
+    }
+    if (!response.ok) throw new ApiError(response.status, payload.error?.message || `Operação recusada (${response.status}).`);
+    return payload as T;
+  }
 }
 
 export const statusLabel: Record<string, string> = {

@@ -85,7 +85,7 @@ function ListView({ token, onAuth }: { token: string; onAuth: () => void }) {
       <h1>Pacotes para revisão</h1>
       <p className="lead">O que as IAs prepararam. Nada vai ao ar sem a sua aprovação aqui.</p>
       {error && <div className="error" role="alert">{error}</div>}
-      {items === null && !error && <p className="loading">Carregando…</p>}
+      {items === null && !error && <p className="loading">Carregando… A primeira abertura depois de um tempo parado pode levar até 1 minuto, porque o banco de dados acorda.</p>}
       {items?.length === 0 && <section className="panel empty"><h2>Nada aguardando</h2><p>Quando uma IA enviar um pacote, ele aparece aqui.</p></section>}
       <ul className="cards">
         {items?.map((item) => (
@@ -184,7 +184,9 @@ function ItemCard({ item, media, comments, submissionId, canComment, call, onCha
   const image = (id?: string) => media.find((row) => row.id === id);
   const cover = d.coverMediaId ? image(d.coverMediaId) : undefined;
   const banner = d.imageMediaId ? image(d.imageMediaId) : undefined;
-  const fields = Object.keys(d).filter((key) => key !== 'imageDataUrl');
+  // Technical bookkeeping fields are not something a reviewer comments on.
+  const internal = new Set(['imageDataUrl', 'assetBase64', 'assetSha256', 'mimeType', 'url', 'width', 'height', 'mediaType', 'isDemo', 'coverMediaId', 'imageMediaId', 'mediaIds', 'socialMediaId']);
+  const fields = Object.keys(d).filter((key) => !internal.has(key));
 
   async function send() {
     setError('');

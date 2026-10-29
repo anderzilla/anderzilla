@@ -59,7 +59,20 @@ Banco `anderzilla-cms-homolog` reaproveitado (existia). Nenhuma SWA criada.
 
 **Próximos passos de homolog (cada um separado e revisado):** deploy do código da API (o esquema do banco e as configurações já foram aplicados), primeira chave de agente, teste de um fluxo real e DNS `ia.`.
 
-## Página de revisão em homolog: CRIADA, configurada e IMPLANTADA (2026-10-29); falta o convite
+## Página de revisão em homolog: FUNCIONANDO (2026-10-29)
+
+**Teste real, com a sessão logada do proprietário (somente leitura):** `/.auth/me` com `anderzilla_admin`; `/` carrega a interface; `GET /api/v1/submissions` devolve 200 e a lista mostra os 2 pacotes pendentes de teste ("Smoke test d93578c9" e "Teste end-to-end automatizado"); o detalhe de um pacote carrega (`/items` 200) com a imagem, alt PT/EN, crédito, licença e fonte, o campo de comentário e o aviso de licença declarada; a prévia responde 501, como previsto. Nada foi aprovado nem comentado nesse teste.
+
+**O que deu errado e a causa:**
+1. **403 por cerca de 40 minutos depois do convite.** O papel aparecia no Azure (`az staticwebapp users list`) logo após o convite, mas só chegou à sessão (`/.auth/me`) muito depois, mesmo com logout e novo login; é um atraso de propagação do SWA, não um erro de e-mail nem de link (o e-mail do login batia com o do convite). **Lição:** depois de aceitar um convite, espere e confira o `/.auth/me` antes de mexer na configuração.
+2. **Plano B inviável no plano Free.** Tentei atribuir o papel por função (`auth.rolesSource` no `staticwebapp.config.json`); o serviço recusou: *"The 'auth' configuration … is only supported on the Standard SKU"*. O deploy falhou sem alterar o site, e o commit do plano B foi revertido (`9da6df5`). A setting `REVIEW_ADMIN_USER_IDS` ficou aplicada no site, sem uso nenhum; é só um identificador e pode ser removida depois. Padrão Standard custa cerca de US$ 9/mês e só valeria se o convite voltar a falhar.
+3. **503 na primeira chamada.** O banco serverless pausa após 60 minutos e a primeira requisição depois da pausa estoura a conexão enquanto ele acorda (a segunda vem 200). Correções no código, **ainda não implantadas**: tempo de login do banco de 15 para 40 s (o SWA corta uma requisição em ~45 s); a interface repete as leituras até 3 vezes com intervalo de 5 s e avisa que a primeira abertura pode levar até 1 minuto (escritas nunca são repetidas sozinhas); o menu de campos do comentário deixa de listar campos técnicos (hash, tipo MIME, largura etc.).
+
+**Teste do ciclo completo contra o banco real: não executado.** O classificador de segurança do Claude Code bloqueou o script (criar chave descartável, simular um humano administrador e aprovar um pacote novo de teste). O ciclo está coberto por testes automatizados em SQLite (10 em `services/review-api/`), mas **não foi exercitado no SQL Azure** (aprovar escreve o snapshot do release no banco). Pendência.
+
+### Estado anterior (criação e implantação)
+
+## Página de revisão em homolog: criada, configurada e implantada (2026-10-29)
 
 Com a aprovação do proprietário: SWA `anderzilla-review-homolog` criado (**Free**, East US 2, confirmado pelo ARM; 9 de 10 SWAs; 21 recursos no grupo) em `https://victorious-river-0830f700f.6.azurestaticapps.net`. Configurações aplicadas e verificadas (`CMS_SQL_SERVER/DATABASE/USER/PASSWORD`, `CMS_ENVIRONMENT`, `REVIEW_ALLOWED_ORIGIN`; senha nunca exibida). Implantado pelo `deploy-review.ps1`; a API gerenciada registrou a função `review_api` (HttpTrigger).
 
