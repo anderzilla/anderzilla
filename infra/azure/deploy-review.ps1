@@ -36,6 +36,7 @@ $api=$manifest.package
 $config=Get-Content -LiteralPath (Join-Path $site 'staticwebapp.config.json') -Raw | ConvertFrom-Json
 $open=@($config.routes | Where-Object {$_.allowedRoles -contains 'anonymous'} | ForEach-Object {$_.route})
 if($config.platform.apiRuntime -ne 'python:3.11'){throw 'staticwebapp.config.json must pin python:3.11.'}
+if($config.auth.rolesSource -ne '/api/GetRoles'){throw 'staticwebapp.config.json must declare auth.rolesSource=/api/GetRoles (owner role by userId).'}
 if(($open -join ',') -ne '/.auth/*'){throw "Only /.auth/* may be anonymous; found: $($open -join ', ')"}
 $catchAll=$config.routes | Where-Object {$_.route -eq '/*'}
 if(!$catchAll -or ($catchAll.allowedRoles -join ',') -ne 'anderzilla_admin'){throw 'The catch-all route must require exactly the anderzilla_admin role.'}
@@ -44,7 +45,7 @@ if($leak){throw "Forbidden file in the deployment: $($leak[0].Name)"}
 $apiBundle=$false
 if((Get-ChildItem -LiteralPath $site -Recurse -Filter *.js | Select-String -Pattern '"/api"' -SimpleMatch | Select-Object -First 1)){$apiBundle=$true}
 if(!$apiBundle){throw 'The UI bundle does not use the /api base.'}
-[pscustomobject]@{Environment=$Environment;Target=$app;TargetExists=[bool]$existing;ApiProfile="review, Python $($manifest.pythonVersion)";ApiSha256=$manifest.sha256;ApiFiles=$manifest.entries;ApiSizeMiB=[math]::Round($manifest.bytes/1MB,1);UiFiles=@(Get-ChildItem -LiteralPath $site -Recurse -File).Count;AnonymousRoutes=$open;CatchAllRoles=$catchAll.allowedRoles;UiUsesApiBase='/api';Staging=$work;Applied=[bool]$Apply} | ConvertTo-Json
+[pscustomobject]@{Environment=$Environment;Target=$app;TargetExists=[bool]$existing;RolesSource=$config.auth.rolesSource;ApiProfile="review, Python $($manifest.pythonVersion)";ApiSha256=$manifest.sha256;ApiFiles=$manifest.entries;ApiSizeMiB=[math]::Round($manifest.bytes/1MB,1);UiFiles=@(Get-ChildItem -LiteralPath $site -Recurse -File).Count;AnonymousRoutes=$open;CatchAllRoles=$catchAll.allowedRoles;UiUsesApiBase='/api';Staging=$work;Applied=[bool]$Apply} | ConvertTo-Json
 Write-Host "Command: npx @azure/static-web-apps-cli@2.0.10 deploy <site> --app-location <site> --swa-config-location <site> --api-location <api> --api-language python --api-version 3.11 --env production (token read from az, never printed)"
 if(!$existing){Write-Host "The Static Web App $app does not exist yet; create it with content-provision.ps1 (after approval)."}
 if(!$Apply){Write-Host 'Dry run only. Everything was built locally; nothing was deployed.';return}

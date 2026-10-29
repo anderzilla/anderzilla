@@ -3,8 +3,11 @@ param(
  [Parameter(Mandatory)][ValidateSet('homolog','production')][string]$Environment,
  [string]$SecretsDirectory='C:/Users/ander/.codex/anderzilla-azure',
  [string]$AzureCli='az',
+ [ValidatePattern('^[a-z]{2,20}:[A-Za-z0-9_.-]{8,128}$')][string[]]$AdminUserId,
  [switch]$Apply
 )
+# -AdminUserId aad:<userId> lists the sign-ins that receive the anderzilla_admin role from the GetRoles function (REVIEW_ADMIN_USER_IDS).
+# It is an identifier, not a secret. The decision uses the provider's userId, never the e-mail.
 # Application settings of the review site's managed API (database + same-origin guard). Dry run by default: reads the private
 # runtime-credential file locally, prints only setting NAMES and what would change (the password shows as "(hidden)").
 # Merges with any existing settings; values go to Azure only in the request body (temporary file restricted to the current user).
@@ -20,6 +23,7 @@ $secret=Get-Content -LiteralPath $secretFile -Raw | ConvertFrom-Json
 if($secret.environment -ne $Environment -or $secret.database -ne $database -or $secret.server -ne $server -or ([string]$secret.password).Length -lt 32){throw 'The credential file does not match this environment or is incomplete.'}
 $origin=if($site){"https://$($site.defaultHostname)"}else{'(known after the site is created)'}
 $desired=[ordered]@{CMS_SQL_SERVER=$server;CMS_SQL_DATABASE=$database;CMS_SQL_USER=[string]$secret.user;CMS_SQL_PASSWORD=[string]$secret.password;CMS_ENVIRONMENT=$Environment;REVIEW_ALLOWED_ORIGIN=$origin}
+if($AdminUserId){$desired['REVIEW_ADMIN_USER_IDS']=(@($AdminUserId | ForEach-Object {$_.Trim()}) -join ',')}
 $hidden=@('CMS_SQL_PASSWORD')
 $base="https://management.azure.com/subscriptions/$IdentitySubscription/resourceGroups/$IdentityGroup/providers/Microsoft.Web/staticSites/$app"
 $current=[ordered]@{}

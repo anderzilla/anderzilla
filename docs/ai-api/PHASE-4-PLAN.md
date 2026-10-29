@@ -69,6 +69,21 @@ Com a aprovação do proprietário: SWA `anderzilla-review-homolog` criado (**Fr
 
 **Falta:** o **convite** (`review-invite.ps1 -Environment homolog -Apply`), que deve ser rodado pelo proprietário no próprio terminal porque o link de uso único aparece na tela; entrar com `anderzilla@ymail.com` e conferir os 2 pacotes de teste pendentes. Riscos: o login `aad` pré-configurado pode não aceitar a conta pessoal `ymail.com` e um bloqueador de anúncios pode barrar `identity.*.azurestaticapps.net`; nenhum dos dois foi testado ainda.
 
+### Entrada na revisão: o convite gravou o papel, mas a sessão não o recebe (2026-10-29)
+
+O convite funcionou do lado do Azure: o CLI lista `anderzilla@ymail.com` (provedor `aad`, userId `419850329e1c4dcd9a440a2d94fcb131`) com os papéis `anderzilla_admin, anonymous, authenticated`. Mesmo assim o `/.auth/me` da sessão do Chrome do proprietário continua só com `anonymous` e `authenticated`, também depois de sair e entrar de novo (login por SSO, sem digitar nada), e o site responde **403**. Causa não identificada (atraso de propagação do SWA ou limitação do provedor `aad` pré-configurado com conta pessoal; nenhuma confirmada). O diagnóstico partiu de dois erros do proprietário que não eram o problema: o e-mail do login bate com o do convite, e o primeiro link provavelmente não foi aberto corretamente.
+
+**Plano B, preparado e testado, ainda não aplicado:** papel por **função de papéis** do SWA, sem depender do convite. `staticwebapp.config.json` ganha `auth.rolesSource = /api/GetRoles`; a função `get_roles` (em `services/review-api/`) é chamada pelo SWA logo após cada login e devolve `anderzilla_admin` **somente** para os pares `provider:userId` listados na configuração `REVIEW_ADMIN_USER_IDS` (ex.: `aad:419850329e1c4dcd9a440a2d94fcb131`). Decisões de segurança:
+- A decisão usa o **userId estável do provedor**, nunca o e-mail (`userDetails`) nem claims, que podem ser definidos em outro tenant.
+- Responde sempre 200 com uma lista (vazia diante de qualquer dúvida), sem revelar por que um papel foi negado, para o login comum continuar funcionando.
+- A rota `/*` continua exigindo `anderzilla_admin` e só `/.auth/*` é anônimo; o `deploy-review.ps1` agora também recusa implantar sem `auth.rolesSource`.
+- Entradas mal formadas da lista são descartadas (nunca "adivinhadas"); `review-configure.ps1 -AdminUserId` valida o formato (recusa um e-mail).
+- 5 testes novos (15 em `services/review-api/`): id e provedor corretos; mesmo id em outro provedor; e-mail e claims forjados; entradas malformadas e lista vazia (200 com `roles: []`); análise da lista; e a configuração do site.
+
+**Ainda não verificado:** que o plano Free do SWA chama a função de papéis para conta pessoal, e que essa chamada interna não é barrada pela regra `/*`. Só se sabe aplicando e entrando de novo. Se não funcionar, nada piora (o convite continua gravado) e o rollback é reimplantar o pacote anterior.
+
+**Para aplicar (cada um com aprovação):** `review-configure.ps1 -Environment homolog -AdminUserId aad:419850329e1c4dcd9a440a2d94fcb131 -Apply`, depois `deploy-review.ps1 -Environment homolog -Apply`, depois sair e entrar em `/.auth/logout` e conferir `/.auth/me`.
+
 ### Como estava preparada
 
 ## Página de revisão em homolog: preparação (2026-10-29)
