@@ -16,7 +16,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'cms'))
 import commerce
 
 CATEGORIES = {'games', 'consoles', 'celulares', 'ia', 'gadgets', 'curiosidades'}
-NEWSROOM = ('verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'hashtagsPT', 'hashtagsEN', 'socialInstagramPT', 'socialInstagramEN', 'socialFacebookPT', 'socialFacebookEN', 'socialWhatsappPT', 'socialWhatsappEN')
+NEWSROOM = ('verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'hashtagsPT', 'hashtagsEN', 'socialInstagramPT', 'socialInstagramEN', 'socialFacebookPT', 'socialFacebookEN', 'socialWhatsappPT', 'socialWhatsappEN', 'instagramUrl')
+INSTAGRAM_POST = re.compile(r'^/(?:[A-Za-z0-9._]+/)?(?:p|reel|reels|tv)/[A-Za-z0-9_-]+/?$')
 # Limites de mídia alinhados ao CMS: 2 MiB por imagem (1600 px, WEBP, hash) e 32 MiB totais (60 notícias com galerias).
 MEDIA_PER_IMAGE_BYTES = 2 * 1024 * 1024
 MEDIA_LIBRARY_LIMIT_BYTES = 32 * 1024 * 1024
@@ -63,6 +64,16 @@ def write_assets(snapshot, public_dir):
         # A broadly compatible share derivative; the site retains compact WebP.
         with Image.open(io.BytesIO(raw)) as picture:
             picture.convert('RGB').save(folder / (sha + '-social.jpg'), 'JPEG', quality=90, optimize=True)
+
+
+def instagram_post(value):
+    """Public Instagram post or reel. Rejects profiles and other hosts."""
+    url = https(value)
+    parts = urlsplit(url)
+    host = (parts.hostname or '').lower()
+    if host not in {'instagram.com', 'www.instagram.com'} or not INSTAGRAM_POST.fullmatch(parts.path or ''):
+        raise ValueError('instagramUrl must be an instagram.com post or reel')
+    return url
 
 
 def https(value):
@@ -131,7 +142,8 @@ def transform(snapshot):
                     'fact': d.get('bodyPT') or d['summaryPT'],
                     'factEN': d.get('bodyEN') or d['summaryEN'],
                     'sources': public_sources(d.get('sources')),
-                    **{key: d[key] for key in NEWSROOM if key in d},
+                    **{key: d[key] for key in NEWSROOM if key in d and key != 'instagramUrl'},
+                    **({'instagramUrl': instagram_post(d['instagramUrl'])} if d.get('instagramUrl') else {}),
                     **{key: d[key] for key in ('slugPT','slugEN','seoTitlePT','seoTitleEN','seoDescriptionPT','seoDescriptionEN','author','tags','coverMediaId','mediaIds','isDemo') if key in d},
                 })
             elif collection == 'events':

@@ -73,6 +73,24 @@ export interface Discovery {
   socialWhatsappPT?: string;
   socialWhatsappEN?: string;
   socialMediaId?: string;
+  /** Post ou reel público. Quando preenchido, a home prioriza a notícia no carrossel e a página mostra o link. */
+  instagramUrl?: string;
+}
+const INSTAGRAM_POST = /^\/(?:[A-Za-z0-9._]+\/)?(?:p|reel|reels|tv)\/[A-Za-z0-9_-]+\/?$/;
+/** URL https de um post ou reel em instagram.com. Qualquer outro valor fica de fora da página e da fila. */
+export function instagramPostUrl(value?: string) {
+  const raw = value?.trim();
+  if (!raw) return "";
+  try {
+    const url = new URL(raw);
+    const host = url.hostname.toLowerCase();
+    if (url.protocol !== "https:" || url.username || url.password) return "";
+    if (host !== "instagram.com" && host !== "www.instagram.com") return "";
+    if (!INSTAGRAM_POST.test(url.pathname)) return "";
+    return url.toString();
+  } catch {
+    return "";
+  }
 }
 export const discoveries = (cmsPublished.enabled ? cmsPublished.discoveries : discoveryData) as Discovery[];
 export function articleUrl(item:Discovery,lang:Language){return `/${lang}/radar/${(lang==='pt'?item.slugPT:item.slugEN)||item.id}/`}
