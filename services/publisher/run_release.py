@@ -92,13 +92,15 @@ def stage_app(root, destination):
         link.symlink_to(dependencies, target_is_directory=True)
 
 
-def build(root, directory, snapshot, marker):
+def build(root, directory, snapshot, marker, preview=True):
+    """Export the site from a snapshot. preview=True marks articles noindex (homolog and review builds);
+    production-grade builds pass preview=False, like rebuild-production.py does."""
     stage_app(root, directory)
     target = directory / 'src' / 'components' / 'hub' / 'cms-published.json'
     target.write_text(json.dumps(transform(snapshot), ensure_ascii=False, indent=2), encoding='utf-8')
     write_assets(snapshot, directory / 'public')
     (directory / 'public' / 'cms-release.json').write_text(json.dumps(marker), encoding='utf-8')
-    env = dict(os.environ, NEXT_OUTPUT='export', NEXT_TELEMETRY_DISABLED='1', CMS_PREVIEW='1')
+    env = dict(os.environ, NEXT_OUTPUT='export', NEXT_TELEMETRY_DISABLED='1', CMS_PREVIEW='1' if preview else '0')
     subprocess.run([shutil.which('npm.cmd' if os.name == 'nt' else 'npm') or 'npm', 'run', 'build'], cwd=directory, env=env, check=True, timeout=600)
     artifact = directory / 'out'
     if not (artifact / 'index.html').is_file() or not (artifact / 'cms-release.json').is_file():

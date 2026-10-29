@@ -17,7 +17,7 @@ except ImportError:
 
 COMMON = {'titlePT', 'titleEN', 'summaryPT', 'summaryEN', 'isDemo'}
 EDITORIAL = {'slugPT', 'slugEN', 'seoTitlePT', 'seoTitleEN', 'seoDescriptionPT', 'seoDescriptionEN', 'tags', 'author', 'coverMediaId', 'mediaIds'}
-NEWSROOM = {'sources', 'verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'instagramUrl'} | {name + lang for name in ('hashtags', 'socialInstagram', 'socialFacebook', 'socialWhatsapp') for lang in ('PT', 'EN')}
+NEWSROOM = {'sources', 'verifiedAt', 'eventDate', 'editorialType', 'socialMediaId', 'instagramUrl', 'observedAt', 'editorialUpdatedAt'} | {name + lang for name in ('hashtags', 'socialInstagram', 'socialFacebook', 'socialWhatsapp') for lang in ('PT', 'EN')}
 INSTAGRAM_POST = re.compile(r'^/(?:[A-Za-z0-9._]+/)?(?:p|reel|reels|tv)/[A-Za-z0-9_-]+/?$')
 ASSET_FIELDS = {'assetBase64', 'assetSha256', 'mimeType'}
 FIELDS = {
@@ -119,10 +119,10 @@ def validate(collection, data, approved=False, internal=False):
                     address = None
                 if address and not address.is_global:
                     raise Error(422, 'invalid_url', 'Endereço privado não permitido.')
-            if key in {'startsAt', 'endsAt', 'publishedAt', 'verifiedAt', 'eventDate'}:
+            if key in {'startsAt', 'endsAt', 'publishedAt', 'verifiedAt', 'eventDate', 'observedAt', 'editorialUpdatedAt'}:
                 try:
                     parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
-                    if parsed.tzinfo is None and not (key in {'publishedAt', 'verifiedAt', 'eventDate'} and re.fullmatch(r'\d{4}-\d{2}-\d{2}', value)):
+                    if parsed.tzinfo is None and not (key in {'publishedAt', 'verifiedAt', 'eventDate', 'observedAt', 'editorialUpdatedAt'} and re.fullmatch(r'\d{4}-\d{2}-\d{2}', value)):
                         raise ValueError()
                 except ValueError:
                     raise Error(422, 'invalid_date', key + ': data ISO com fuso obrigatório.')
@@ -304,6 +304,8 @@ class CMS:
                 raise Error(422, 'invalid_action', 'Crie o rascunho primeiro.')
             status = {'approve': 'approved', 'archive': 'archived'}.get(action, 'draft')
             payload = previous['data'] if action else copy.deepcopy(data)
+            if action == 'approve' and collection == 'content' and not payload.get('observedAt'):
+                payload = {**payload, 'observedAt': now()[:10]}  # first approval date; never re-derived from later releases
             if collection == 'media' and isinstance(payload, dict):
                 for key in ASSET_FIELDS:
                     if key in payload and (not previous or payload[key] != previous['data'].get(key)):

@@ -290,6 +290,8 @@ components:
         publishedAt: { type: string, description: ISO date or timestamp with timezone }
         verifiedAt: { type: string }
         eventDate: { type: string }
+        editorialUpdatedAt: { type: string, description: 'Date (YYYY-MM-DD) of a substantive editorial update; shown on the Radar card. Omit for new articles' }
+        observedAt: { type: string, description: 'Set by the server at the first approval; agents normally omit it' }
         author: { type: string }
         tags: { type: string, description: Comma-separated approved taxonomy ids }
         coverMediaId: { type: string }

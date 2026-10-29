@@ -176,11 +176,12 @@ def transform(snapshot):
                     **{key: d[key] for key in ('titlePT', 'titleEN', 'summaryPT', 'summaryEN')},
                     'sourceName': d.get('sourceName') or urlsplit(d['sourceUrl']).hostname,
                     'url': https(d['sourceUrl']), 'published': date,
-                    'observed': snapshot['createdAt'][:10],
+                    'observed': d.get('observedAt') or snapshot['createdAt'][:10],
                     'fact': d.get('bodyPT') or d['summaryPT'],
                     'factEN': d.get('bodyEN') or d['summaryEN'],
                     'sources': public_sources(d.get('sources')),
                     **{key: d[key] for key in NEWSROOM if key in d and key != 'instagramUrl'},
+                    **({'updatedAt': d['editorialUpdatedAt']} if d.get('editorialUpdatedAt') else {}),
                     **({'instagramUrl': instagram_post(d['instagramUrl'])} if d.get('instagramUrl') else {}),
                     **{key: d[key] for key in ('slugPT','slugEN','seoTitlePT','seoTitleEN','seoDescriptionPT','seoDescriptionEN','author','tags','coverMediaId','mediaIds','isDemo') if key in d},
                 })

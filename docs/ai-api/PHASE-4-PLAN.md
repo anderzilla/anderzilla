@@ -1,5 +1,22 @@
 # Fase 4 — publicação com Azure (plano; nada foi criado)
 
+## Resultado da etapa 4a (2026-10-29, local, sem Azure)
+
+O corpus de produção foi importado para um SQLite local e o site inteiro foi construído **a partir do banco**. Comparado com o artefato que está no ar (`.deploy/production-20261029`):
+
+- **Dados:** 71 notícias, 242 mídias e o produto ForgeKit fazem a ida e volta pelo CMS sem nenhuma diferença (`import_corpus.py`).
+- **Site:** 669 arquivos idênticos, incluindo as 242 imagens WebP e as 231 imagens sociais, byte a byte.
+- **Diferenças, todas explicadas:**
+  - 22 páginas (11 notas do Radar, PT e EN) trocam o `og:image` de `.webp` para `-social.jpg`, e há 11 arquivos `-social.jpg` novos. Essas 11 notas nunca tiveram imagem social; é uma melhoria, não uma regressão.
+  - `sitemap.xml`: mesmas 174 URLs, só muda o `lastmod` dos 32 itens que usam a hora do build.
+  - `cms-release.json`: o marcador de release muda porque o snapshot é outro.
+- **Três lacunas do modelo, corrigidas no código:**
+  1. `observed` é por notícia (60 em 17/09, 10 em 28/10, 1 em 29/10) e o transform usava a data do release; agora é o campo `observedAt`, carimbado na primeira aprovação e nunca recalculado.
+  2. 4 notas têm `updatedAt` editorial, que o transform ignorava e o site usa para ordenar o Radar; agora é `editorialUpdatedAt`, publicado só quando existe.
+  3. O ForgeKit aparecia por um *fallback* do site (`commerce/data.ts`) que deixa de valer quando o banco publica `products: []`; sem o registro no banco, a página perdia o card. O importador cria o registro com o texto idêntico ao do site (um teste mantém os dois em sincronia).
+- **Ressalvas:** a importação lê o corpus do worktree de documentação e as imagens do bundle `.deploy/`, ambos locais; o banco Azure não foi tocado. O artefato registra `deployed: false` no JSON, mas o log de 29/10 e a data de modificação da produção mostram que foi publicado.
+- **Portão da 4a cumprido:** o banco reproduz o site de hoje. A etapa 4b (criar recursos Azure) continua exigindo a sua aprovação.
+
 Data: 2026-10-29. Somente leitura: inventário do Azure, do repositório e da produção. Nenhum recurso foi criado, nenhum deploy foi feito.
 
 ## O que a investigação mudou no plano
