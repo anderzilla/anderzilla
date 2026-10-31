@@ -35,7 +35,8 @@ def preflight():
     public = json.loads((DATA / 'public-after.json').read_text(encoding='utf-8'))
     # 60/231 era o corpus de 2026-09-16. Em 2026-10-28 entraram 10 notas aprovadas, cada uma com uma capa.
     # Em 2026-10-29 entrou a nota do PS Plus de novembro, com uma capa.
-    if len(public['discoveries']) != 71 or len(public['media']) != 242:
+    # Em 2026-10-31 entrou halloween-gamer, com uma capa.
+    if len(public['discoveries']) != 72 or len(public['media']) != 243:
         raise ValueError('Unexpected editorial corpus; review the baseline explicitly.')
     source_root = SOURCE.resolve()
     missing = []
