@@ -2,7 +2,7 @@
   "status": "published",
   "publish": true,
   "apuracao": "2026-10-27",
-  "note": "Onze notas do Radar aprovadas para publicação. As dez de 27 e 28/10 seguem no lote; a de 29/10 é ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2, com última atualização em 2026-10-29. status published e publish true. Cada item tem coverMediaId de uma mídia em media[]. O arquivo é covers/<slug>.webp (1600x900). A URL pública é /media/<sha256>.webp; os mesmos bytes ficam em apps/web/public/media/ na branch do site. Crédito e alt em português vêm do CREDITOS. O alt em inglês traduz esse texto. A licença segue o corpus: divulgação oficial, ou arte editorial própria quando o crédito é Arte: Anderzilla. As onze entram em public-after.json e no índice. A data exibida e a ordenação usam a apuração (verifiedAt) ou o selo de atualização, o que for mais recente, e não uma data de redação anterior. O item ps-blog-27-outubro-aloft-where-winds-meet segue como rodada anterior dos mesmos anúncios de Aloft e Where Winds Meet.",
+  "note": "Doze notas do Radar aprovadas para publicação. As dez de 27 e 28/10 seguem no lote; a de 29/10 é ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2; a de 31/10 é halloween-gamer, com última atualização em 2026-10-31. status published e publish true. Cada item tem coverMediaId de uma mídia em media[]. O arquivo é covers/<slug>.webp. As capas anteriores do lote são 1600x900; halloween-gamer.webp é 1080x1350, o 4:5 do carrossel. A URL pública é /media/<sha256>.webp; os mesmos bytes ficam em apps/web/public/media/ na branch do site. Crédito e alt em português vêm do CREDITOS. O alt em inglês traduz esse texto. A licença segue o corpus: divulgação oficial, ou arte editorial própria quando o crédito é Arte: Anderzilla. As doze entram em public-after.json e no índice. A data exibida e a ordenação usam a apuração (verifiedAt) ou o selo de atualização, o que for mais recente, e não uma data de redação anterior. halloween-gamer não tem eventDate: a página mostra só a data de 2026-10-31. O item ps-blog-27-outubro-aloft-where-winds-meet segue como rodada anterior dos mesmos anúncios de Aloft e Where Winds Meet.",
   "media": [
     {
       "id": "129ab54e-5ce6-59f6-8683-703c7b54df6d",
@@ -220,6 +220,25 @@
         "width": 1600,
         "height": 900,
         "sourceUrl": "https://blog.playstation.com/tachyon/2026/10/ee14b16f5f65f3dd7cdf074a83bbfa255de288ea-scaled.jpg"
+      }
+    },
+    {
+      "id": "33956f9c-bef1-5674-ae60-b0922ecb5dc5",
+      "status": "published",
+      "slug": "halloween-gamer",
+      "file": "covers/halloween-gamer.webp",
+      "assetSha256": "2c7e9f053928068b3b5aa824edf9f26c3c34501c412faa2ddfcf35bf8878a097",
+      "data": {
+        "titlePT": "halloween-gamer.webp",
+        "url": "/media/2c7e9f053928068b3b5aa824edf9f26c3c34501c412faa2ddfcf35bf8878a097.webp",
+        "mediaType": "image",
+        "mimeType": "image/webp",
+        "altPT": "Capa Halloween gamer: close de um rosto pálido com a pele rachada, teias e uma vela, e o título Halloween gamer",
+        "altEN": "Halloween gamer cover: close-up of a pale face with cracked skin, cobwebs and a candle, and the Halloween gamer title",
+        "credit": "Arte: Anderzilla",
+        "license": "Arte editorial própria AnderZilla; autorizada para uso no site e seus canais sociais.",
+        "width": 1080,
+        "height": 1350
       }
     }
   ],
@@ -662,6 +681,46 @@
         "socialFacebookEN": "PS Plus in November: Dead Island 2, Tomb Raider IV-VI Remastered and Monster Train 2\n\nPlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30.\nhttps://anderzilla.com/en/radar/ps-plus-november-dead-island-2-tomb-raider-monster-train-2/\n#AnderZilla #PSPlus #PlayStation #DeadIsland2 #TombRaider #MonsterTrain2",
         "socialWhatsappPT": "PS Plus de novembro: Dead Island 2, Tomb Raider IV-VI Remastered e Monster Train 2\nA PlayStation revelou os jogos do PS Plus Essential de novembro. Eles ficam disponíveis para resgate de 3 a 30/11.\nhttps://anderzilla.com/pt/radar/ps-plus-novembro-dead-island-2-tomb-raider-monster-train-2/",
         "socialWhatsappEN": "PS Plus in November: Dead Island 2, Tomb Raider IV-VI Remastered and Monster Train 2\nPlayStation revealed November's PS Plus Essential games. They can be claimed from November 3 through November 30.\nhttps://anderzilla.com/en/radar/ps-plus-november-dead-island-2-tomb-raider-monster-train-2/"
+      }
+    },
+    {
+      "key": "halloween-gamer",
+      "id": "db3d1f77-016d-5bb7-95f5-dc840afe18c5",
+      "status": "published",
+      "data": {
+        "titlePT": "Halloween gamer: o que jogar hoje à noite (se tiver coragem)",
+        "titleEN": "Halloween gamer: what to play tonight (if you dare)",
+        "summaryPT": "Terror novo na PS Store nesta semana, Metro Redux no PS5 e nove jogos saindo do Game Pass hoje, 31/10.",
+        "summaryEN": "New horror on the PS Store this week, Metro Redux on PS5, and nine games leaving Game Pass today, October 31.",
+        "seoTitlePT": "Halloween gamer: o que jogar hoje à noite (se tiver coragem)",
+        "seoTitleEN": "Halloween gamer: what to play tonight (if you dare)",
+        "seoDescriptionPT": "Terror novo na PS Store nesta semana, Metro Redux no PS5 e nove jogos saindo do Game Pass hoje, 31/10.",
+        "seoDescriptionEN": "New horror on the PS Store this week, Metro Redux on PS5, and nine games leaving Game Pass today, October 31.",
+        "bodyPT": "Hoje é 31 de outubro. Se a luz vai ficar apagada, a PS Store encheu a semana de terror, e o Game Pass solta uma leva hoje.\n\nRemothered: Red Nun's Legacy chegou ao PS5 em 27/10/2026. A filha de Susan foi levada. O capítulo final da trilogia manda ela para a Villa Ashmann, atrás da Freira Vermelha. A ficha da PlayStation descreve um survival horror clássico, em terceira pessoa, com toque italiano de neo-giallo: esconder, desviar e, quando não der, revidar.\n\nHunter's Moon saiu no PS5 em 26/10/2026 na Europa, no Reino Unido, na Ásia, na Austrália e na Nova Zelândia. Na América do Norte, em 25/10. É terror folclórico em primeira pessoa, numa noite só. Você é uma mulher acusada de bruxaria, com caçadores no encalço, num vilarejo inglês do século XVII. O PlayStation Blog apresenta o jogo como exclusivo de PS5.\n\nMouthwashing chegou em 29/10/2026 no PS4 e no PS5. O terror psicológico que já rodava no PC acompanha a tripulação do cargueiro Tulpar, presa no espaço. A ficha marca sangue, violência intensa e linguagem forte. No Xbox, o mesmo jogo entrou no Game Pass em 29/10, em nuvem, Xbox Series X|S, handheld e PC.\n\nDe bônus, Metro 2033 Redux e Metro Last Light Redux ganharam atualização de nova geração no PS5 em 29/10/2026. A Deep Silver diz que é de graça para quem já tem os jogos. Não é remake: é o Redux com suporte nativo de PS5.\n\nE corre. Estes nove saem do Game Pass hoje, 31/10/2026, em nuvem, console e PC:\n\n- Day of the Tentacle Remastered\n- Dead Static Drive\n- Deep Rock Galactic\n- Full Throttle Remastered\n- Grim Fandango Remastered\n- Lara Croft and the Temple of Osiris\n- Lego Star Wars: The Skywalker Saga\n- Wartales\n- Wildgate\n\nA lista é da Xbox Wire de 20/10/2026. Football Manager 26 fica para 10/11, no mesmo post.\n\nQual você vai jogar primeiro? Comenta no nosso Instagram, @anderzilla.",
+        "bodyEN": "Today is October 31. If the lights are staying off, the PS Store filled the week with horror, and Game Pass drops a batch today.\n\nRemothered: Red Nun's Legacy arrived on PS5 on October 27, 2026. Susan's daughter has been taken. The trilogy's final chapter sends her to Villa Ashmann, after the Red Nun. The PlayStation listing describes a classic third-person survival horror with an Italian neo-giallo twist: hide, evade, and fight back when you have to.\n\nHunter's Moon launched on PS5 on October 26, 2026 in Europe, the UK, Asia, Australia and New Zealand. In North America, on October 25. It is first-person folk horror, set across one night. You play a woman accused of witchcraft, with hunters after her, in a 17th-century English village. The PlayStation Blog presents the game as a PS5 exclusive.\n\nMouthwashing arrived on October 29, 2026 on PS4 and PS5. The psychological horror that was already on PC follows the crew of the freighter Tulpar, stranded in space. The listing flags blood, intense violence and strong language. On Xbox, the same game joined Game Pass on October 29, on cloud, Xbox Series X|S, handheld and PC.\n\nAs a bonus, Metro 2033 Redux and Metro Last Light Redux got a next-gen update on PS5 on October 29, 2026. Deep Silver says it is free for people who already own the games. It is not a remake: it is Redux with native PS5 support.\n\nAnd hurry. These nine leave Game Pass today, October 31, 2026, on cloud, console and PC:\n\n- Day of the Tentacle Remastered\n- Dead Static Drive\n- Deep Rock Galactic\n- Full Throttle Remastered\n- Grim Fandango Remastered\n- Lara Croft and the Temple of Osiris\n- Lego Star Wars: The Skywalker Saga\n- Wartales\n- Wildgate\n\nThe list is from the October 20, 2026 Xbox Wire post. Football Manager 26 waits until November 10, in the same post.\n\nWhich one are you playing first? Comment on our Instagram, @anderzilla.",
+        "category": "games",
+        "slug": "halloween-gamer",
+        "slugPT": "halloween-gamer",
+        "slugEN": "halloween-gamer",
+        "sourceName": "PlayStation Store",
+        "sourceUrl": "https://store.playstation.com/en-us/product/EP3376-PPSA36015_00-0341152064035383",
+        "publishedAt": "2026-10-31",
+        "verifiedAt": "2026-10-31",
+        "editorialType": "news",
+        "author": "Redação AnderZilla",
+        "coverMediaId": "33956f9c-bef1-5674-ae60-b0922ecb5dc5",
+        "isDemo": false,
+        "tags": "",
+        "hashtagsPT": "#AnderZilla #Halloween #JogosDeTerror #PS5 #XboxGamePass #Mouthwashing #Remothered #HuntersMoon #Metro",
+        "hashtagsEN": "#AnderZilla #Halloween #HorrorGames #PS5 #XboxGamePass #Mouthwashing #Remothered #HuntersMoon #Metro",
+        "sources": "[{\"name\": \"PlayStation Store — Remothered: Red Nun's Legacy\", \"url\": \"https://store.playstation.com/en-us/product/EP3376-PPSA36015_00-0341152064035383\", \"publishedAt\": \"2026-10-27\", \"note\": \"Ficha de PS5. Lançamento 27/10/2026. Editora Stormind Games. Conferido em 31/10/2026.\"}, {\"name\": \"PlayStation Blog — Hunter's Moon\", \"url\": \"https://blog.playstation.com/2026/09/03/hunters-moon-an-immersive-historical-folk-horror-launches-october-26-on-ps5/\", \"publishedAt\": \"2026-09-03\", \"note\": \"Post de 3/09/2026. Lançamento 26/10/2026 fora da América do Norte e 25/10 na América do Norte. Exclusivo de PS5. Conferido em 31/10/2026.\"}, {\"name\": \"PlayStation Store — Hunter's Moon\", \"url\": \"https://store.playstation.com/en-us/concept/10013468/\", \"publishedAt\": \"2026-10-26\", \"note\": \"Ficha com lançamento 26/10/2026. Editora Twin Swans Limited. Conferido em 31/10/2026.\"}, {\"name\": \"PlayStation Store — Mouthwashing (PS5)\", \"url\": \"https://store.playstation.com/en-us/product/UP7176-PPSA34836_00-0893827677310778\", \"publishedAt\": \"2026-10-29\", \"note\": \"Ficha de PS5. Lançamento 29/10/2026. Editora Inpleron Ltd. Conferido em 31/10/2026.\"}, {\"name\": \"PlayStation Store — Mouthwashing (PS4)\", \"url\": \"https://store.playstation.com/en-us/product/UP7176-CUSA57726_00-0251100268419666\", \"publishedAt\": \"2026-10-29\", \"note\": \"Ficha de PS4. Lançamento 29/10/2026. Conferido em 31/10/2026.\"}, {\"name\": \"Xbox Wire — Game Pass de outubro, segunda leva\", \"url\": \"https://news.xbox.com/en-us/2026/10/20/xbox-game-pass-october-2026-wave-2/\", \"publishedAt\": \"2026-10-20\", \"note\": \"Post de 20/10/2026. Mouthwashing no Game Pass em 29/10. Nove jogos saem em 31/10, em nuvem, console e PC. Football Manager 26 sai em 10/11. Conferido em 31/10/2026.\"}, {\"name\": \"Deep Silver — atualização de nova geração de Metro Redux\", \"url\": \"https://www.deepsilver.com/games/metro2039/news/metro-redux-next-gen-update-coming-this-month\", \"note\": \"Atualização grátis para quem já tem Metro 2033 Redux e Metro Last Light Redux. Consoles, incluindo PS5, em 29/10/2026. Não é remake. Conferido em 31/10/2026.\"}]",
+        "instagramUrl": "https://www.instagram.com/anderzilla/p/DfKMaE8ltGv/",
+        "socialInstagramPT": "Halloween gamer: o que jogar hoje à noite (se tiver coragem)\n\nTerror novo na PS Store nesta semana, Metro Redux no PS5 e nove jogos saindo do Game Pass hoje, 31/10.\n\nLeia a matéria no link da bio.\n#AnderZilla #Halloween #JogosDeTerror #PS5 #XboxGamePass #Mouthwashing #Remothered #HuntersMoon #Metro",
+        "socialInstagramEN": "Halloween gamer: what to play tonight (if you dare)\n\nNew horror on the PS Store this week, Metro Redux on PS5, and nine games leaving Game Pass today, October 31.\n\nRead the story via the link in bio.\n#AnderZilla #Halloween #HorrorGames #PS5 #XboxGamePass #Mouthwashing #Remothered #HuntersMoon #Metro",
+        "socialFacebookPT": "Halloween gamer: o que jogar hoje à noite (se tiver coragem)\n\nTerror novo na PS Store nesta semana, Metro Redux no PS5 e nove jogos saindo do Game Pass hoje, 31/10.\nhttps://anderzilla.com/pt/radar/halloween-gamer/\n#AnderZilla #Halloween #JogosDeTerror #PS5 #XboxGamePass #Mouthwashing #Remothered #HuntersMoon #Metro",
+        "socialFacebookEN": "Halloween gamer: what to play tonight (if you dare)\n\nNew horror on the PS Store this week, Metro Redux on PS5, and nine games leaving Game Pass today, October 31.\nhttps://anderzilla.com/en/radar/halloween-gamer/\n#AnderZilla #Halloween #HorrorGames #PS5 #XboxGamePass #Mouthwashing #Remothered #HuntersMoon #Metro",
+        "socialWhatsappPT": "Halloween gamer: o que jogar hoje à noite (se tiver coragem)\nTerror novo na PS Store nesta semana, Metro Redux no PS5 e nove jogos saindo do Game Pass hoje, 31/10.\nhttps://anderzilla.com/pt/radar/halloween-gamer/",
+        "socialWhatsappEN": "Halloween gamer: what to play tonight (if you dare)\nNew horror on the PS Store this week, Metro Redux on PS5, and nine games leaving Game Pass today, October 31.\nhttps://anderzilla.com/en/radar/halloween-gamer/"
       }
     }
   ]
