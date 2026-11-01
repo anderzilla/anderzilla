@@ -1544,6 +1544,41 @@
   background: #ff5573;
   box-shadow: 0 0 10px #ff5573;
 }
+.hub .live-heading a {
+  color: var(--brand-orange);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.hub .live-current-link {
+  overflow-wrap: anywhere;
+}
+.hub .live-room.is-live {
+  background: linear-gradient(110deg, #1a1014, #080d19);
+  border-color: var(--brand-red);
+  color: var(--brand-ivory);
+}
+.hub .live-room.is-live .live-heading .eyebrow {
+  color: var(--brand-orange);
+}
+.hub .live-room.is-live .live-heading h2,
+.hub .live-room.is-live .live-current-link {
+  color: var(--brand-ivory);
+}
+.hub .live-room.is-live .status-dot.on {
+  background: var(--brand-red);
+  box-shadow: 0 0 10px var(--brand-red);
+}
+.hub .live-room.is-live .schedule {
+  border-top-color: #3a2430;
+}
+.hub .live-room.is-live .schedule strong {
+  color: var(--brand-orange);
+}
+.hub .live-summary .button {
+  flex-shrink: 0;
+}
 .hub .schedule {
   display: flex;
   gap: 17px;

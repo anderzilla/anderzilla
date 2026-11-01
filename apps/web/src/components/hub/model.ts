@@ -145,8 +145,13 @@ export const colors: Record<Category, string> = {
   gadgets: "#8ee8d6",
   curiosidades: "#acc8ff",
 };
+export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@anderzilla-tv" as const;
+export const YOUTUBE_LIVE_URL = `${YOUTUBE_CHANNEL_URL}/live` as const;
+export const LIVE_STATUS_URL =
+  "https://anderzilla-live.anderzilla.workers.dev/status" as const;
+export const LIVE_STATUS_POLL_MS = 60_000;
 export const socials = [
-  ["YouTube", "https://www.youtube.com/@anderzilla-tv"],
+  ["YouTube", YOUTUBE_CHANNEL_URL],
   ["Twitch", "https://www.twitch.tv/anderzillacwb"],
   ["TikTok", "https://www.tiktok.com/@anderzilla"],
   ["Instagram", "https://www.instagram.com/anderzilla/"],
@@ -205,7 +210,7 @@ export const platforms = {
   twitch: { name: "Twitch", url: "https://www.twitch.tv/anderzillacwb" },
   youtube: {
     name: "YouTube",
-    url: "https://www.youtube.com/@anderzilla-tv/live",
+    url: YOUTUBE_CHANNEL_URL,
   },
   kick: { name: "Kick", url: "https://kick.com/anderzilla" },
 };
@@ -224,6 +229,38 @@ export interface Broadcast {
   title: string;
   checkedAt: string;
   expiresAt: string;
+}
+export interface LiveStatus {
+  live: boolean;
+  title: string;
+  url: string;
+  platform: "youtube";
+  startedAt: string;
+  updatedAt: string;
+}
+function httpsUrl(value: unknown): string | null {
+  if (typeof value !== "string" || value.length > 2000) return null;
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:") return null;
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+export function parseLiveStatus(value: unknown): LiveStatus | null {
+  if (!value || typeof value !== "object") return null;
+  const raw = value as Record<string, unknown>;
+  if (typeof raw.live !== "boolean") return null;
+  if (raw.platform !== "youtube") return null;
+  return {
+    live: raw.live,
+    title: typeof raw.title === "string" ? raw.title.trim() : "",
+    url: httpsUrl(raw.url) ?? YOUTUBE_LIVE_URL,
+    platform: "youtube",
+    startedAt: typeof raw.startedAt === "string" ? raw.startedAt : "",
+    updatedAt: typeof raw.updatedAt === "string" ? raw.updatedAt : "",
+  };
 }
 export interface Affiliate {
   isDemo?: boolean;
