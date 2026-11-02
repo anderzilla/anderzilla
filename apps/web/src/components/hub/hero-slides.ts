@@ -1,7 +1,6 @@
 import {
   compareRadarNewestFirst,
   formatRadarDay,
-  instagramPostUrl,
   radarCardDate,
   radarRecency,
   type Discovery,
@@ -9,18 +8,12 @@ import {
 } from "./model";
 import { heroBanners, karacaBanner, type ManualBanner } from "./hero-banners";
 
-/** Uma vaga por dia, nos últimos 5 dias. A mais antiga sai quando entra um dia novo. */
+/** Cinco notícias, da mais nova para a mais antiga. A mais antiga sai quando entra uma mais nova. */
 export const NEWS_SLOT_COUNT = 5;
 
 export type NewsHeroSlide = { kind: "news"; item: Discovery };
 export type ManualHeroSlide = { kind: "manual"; banner: ManualBanner };
 export type HeroSlide = NewsHeroSlide | ManualHeroSlide;
-
-export function shiftUtcDay(day: string, delta: number) {
-  const date = new Date(`${day}T12:00:00Z`);
-  date.setUTCDate(date.getUTCDate() + delta);
-  return date.toISOString().slice(0, 10);
-}
 
 function isDay(value: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value);
@@ -34,30 +27,15 @@ function bannerIsActive(banner: ManualBanner, today: string) {
 
 /**
  * Fila de notícias do carrossel.
- * Janela: os últimos 5 dias civis, pela mesma data dos cards.
- * Uma notícia por dia, a mais recente daquele dia.
- * Se alguma da janela tem instagramUrl válido, só essas entram.
- * Caso contrário, entra a notícia de cada dia da janela.
+ * Cinco vagas, pela mesma data dos cards, da mais nova para a mais antiga.
+ * Notas do mesmo dia entram juntas, na ordem do título, até fechar as vagas.
  */
 export function selectNewsForCarousel(items: Discovery[], today: string) {
   if (!isDay(today)) return [];
-  const start = shiftUtcDay(today, -(NEWS_SLOT_COUNT - 1));
-  const windowed = items.filter((item) => {
-    if (item.isDemo) return false;
-    const day = radarRecency(item);
-    return day >= start && day <= today;
-  });
-  const social = windowed.filter((item) => instagramPostUrl(item.instagramUrl));
-  const pool = social.length ? social : windowed;
-  const byDay = new Map<string, Discovery>();
-  for (const item of [...pool].sort(compareRadarNewestFirst)) {
-    const day = radarRecency(item);
-    if (!byDay.has(day)) byDay.set(day, item);
-  }
-  return [...byDay.keys()]
-    .sort((a, b) => b.localeCompare(a))
-    .slice(0, NEWS_SLOT_COUNT)
-    .map((day) => byDay.get(day)!);
+  return items
+    .filter((item) => !item.isDemo && radarRecency(item) <= today)
+    .sort(compareRadarNewestFirst)
+    .slice(0, NEWS_SLOT_COUNT);
 }
 
 export function heroUpdatedLabel(item: Discovery, lang: Language) {

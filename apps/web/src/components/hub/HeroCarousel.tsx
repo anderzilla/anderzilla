@@ -82,20 +82,32 @@ function SlideArt({
   );
 }
 
+/** Arte 16:9 do slide. Prefere o banner dedicado, depois outra mídia larga, e por último a capa. */
+function newsBanner(item: Discovery) {
+  const ids = [item.bannerMediaId, ...(item.mediaIds || "").split(",")].filter((id): id is string => Boolean(id && id.trim()));
+  for (const id of ids) {
+    const media = findMedia(id.trim());
+    if (media?.width && media.height && media.width / media.height >= 1.5) return media;
+  }
+  return findMedia(item.coverMediaId);
+}
+
 function NewsSlide({ item, active }: { item: Discovery; active: boolean }) {
   const { t, lang, title, labels } = useHub();
-  const media = findMedia(item.coverMediaId);
+  const media = newsBanner(item);
   const day = radarCardDate(item).day;
   const label = heroUpdatedLabel(item, lang);
   return (
     <>
       {media && (
-        <SlideArt
-          src={media.url}
-          alt={(lang === "pt" ? media.altPT : media.altEN) || ""}
-          width={media.width}
-          height={media.height}
-        />
+        <div className="hero-slide-media">
+          <SlideArt
+            src={media.url}
+            alt={(lang === "pt" ? media.altPT : media.altEN) || ""}
+            width={media.width}
+            height={media.height}
+          />
+        </div>
       )}
       <div className="brand-hero-copy">
         <p className="eyebrow">
@@ -306,7 +318,7 @@ export function HeroCarousel({ onExplore }: { onExplore: () => void }) {
         return (
           <div
             key={slideId(slide)}
-            className={`hero-slide${count > 1 ? " has-controls" : ""}`}
+            className={`hero-slide${slide.kind === "news" ? " is-news" : ""}${count > 1 ? " has-controls" : ""}`}
             id={`hero-slide-${slideId(slide)}`}
             role="group"
             aria-roledescription={t("slide", "slide")}

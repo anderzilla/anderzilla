@@ -2211,3 +2211,70 @@
 @media(prefers-reduced-motion:reduce){
   .hub .hero-dot{transition:none}
 }
+
+/* News slide: wide banner on the right, at least half the hero, full height. */
+.hub .hero-carousel .hero-slide.is-news{
+  grid-template-columns:minmax(0,1fr) minmax(50%,60%);
+  align-items:stretch;
+  gap:0;
+  padding:0;
+  overflow:hidden;
+}
+.hub .hero-carousel .hero-slide.is-news.has-controls{padding-bottom:0}
+.hub .hero-carousel .hero-slide.is-news .hero-slide-media{
+  grid-column:2;
+  grid-row:1;
+  position:relative;
+  min-height:430px;
+  height:100%;
+}
+.hub .hero-carousel .hero-slide.is-news .hero-slide-art{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  object-fit:cover;
+  object-position:center;
+}
+.hub .hero-carousel .hero-slide.is-news .hero-slide-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,#080d19 0%,rgba(8,13,25,.82) 16%,rgba(8,13,25,.28) 42%,rgba(8,13,25,0) 68%);
+  pointer-events:none;
+}
+.hub .hero-carousel .hero-slide.is-news .brand-hero-copy{
+  grid-column:1;
+  grid-row:1;
+  position:relative;
+  z-index:1;
+  padding:34px 12px 78px 34px;
+}
+@media(max-width:1100px){
+  .hub .hero-carousel .hero-slide.is-news .brand-hero-copy{padding:27px 12px 74px 27px}
+}
+@media(max-width:800px){
+  .hub .hero-carousel .hero-slide.is-news{
+    grid-template-columns:1fr;
+    grid-template-rows:minmax(380px,58vw) auto;
+  }
+  .hub .hero-carousel .hero-slide.is-news .hero-slide-media{
+    grid-column:1;
+    grid-row:1;
+    min-height:380px;
+  }
+  .hub .hero-carousel .hero-slide.is-news .hero-slide-media::after{
+    background:linear-gradient(180deg,rgba(8,13,25,0) 42%,#080d19 100%);
+  }
+  .hub .hero-carousel .hero-slide.is-news .brand-hero-copy{
+    grid-column:1;
+    grid-row:2;
+    padding:8px 22px 72px;
+  }
+}
+@media(max-width:560px){
+  .hub .hero-carousel .hero-slide.is-news .hero-slide-media{min-height:320px}
+  .hub .hero-carousel .hero-slide.is-news .brand-hero-copy{padding:8px 22px 72px}
+}

@@ -56,6 +56,8 @@ export interface Discovery {
   author?: string;
   tags?: string;
   coverMediaId?: string;
+  /** Arte 16:9 do slide da home. Sem isso, o carrossel usa a primeira mídia larga ou a capa. */
+  bannerMediaId?: string;
   mediaIds?: string;
   isDemo?: boolean;
   sources?: {name:string;url:string;publishedAt?:string;note?:string}[];
