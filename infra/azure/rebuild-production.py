@@ -36,7 +36,9 @@ def preflight():
     # 60/231 era o corpus de 2026-09-16. Em 2026-10-28 entraram 10 notas aprovadas, cada uma com uma capa.
     # Em 2026-10-29 entrou a nota do PS Plus de novembro, com uma capa.
     # Em 2026-10-31 entrou halloween-gamer, com uma capa.
-    if len(public['discoveries']) != 72 or len(public['media']) != 243:
+    # Em 2026-11-02 entraram Pikmin (capa e wide), Evercold (capa e wide), PUBG (capa 16:9),
+    # Fortnite (capa e wide) e o banner largo do Halloween. 243 + 8 = 251.
+    if len(public['discoveries']) != 76 or len(public['media']) != 251:
         raise ValueError('Unexpected editorial corpus; review the baseline explicitly.')
     source_root = SOURCE.resolve()
     missing = []
