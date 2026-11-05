@@ -23,3 +23,13 @@ IF OBJECT_ID('dbo.rate_limits') IS NULL CREATE TABLE dbo.rate_limits (scope NVAR
 IF OBJECT_ID('dbo.consents') IS NULL CREATE TABLE dbo.consents (id NVARCHAR(64) PRIMARY KEY,account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),purpose NVARCHAR(64) NOT NULL,version NVARCHAR(32) NOT NULL,granted BIT NOT NULL,created_at BIGINT NOT NULL);
 IF OBJECT_ID('dbo.tr_ledger_no_update') IS NULL EXEC('CREATE TRIGGER dbo.tr_ledger_no_update ON dbo.ledger INSTEAD OF UPDATE AS BEGIN THROW 51001, ''append-only ledger'', 1; END');
 IF OBJECT_ID('dbo.tr_ledger_no_delete') IS NULL EXEC('CREATE TRIGGER dbo.tr_ledger_no_delete ON dbo.ledger INSTEAD OF DELETE AS BEGIN THROW 51001, ''append-only ledger'', 1; END');
+
+-- Clerk identities: CPF is keyed, never stored as plaintext or public metadata.
+IF OBJECT_ID('dbo.managed_identities') IS NULL CREATE TABLE dbo.managed_identities (subject NVARCHAR(128) PRIMARY KEY,account_id NVARCHAR(64) NOT NULL UNIQUE REFERENCES accounts(id),created_at BIGINT NOT NULL);
+IF OBJECT_ID('dbo.managed_profiles') IS NULL CREATE TABLE dbo.managed_profiles (account_id NVARCHAR(64) PRIMARY KEY REFERENCES accounts(id),cpf_fingerprint NVARCHAR(64) NOT NULL UNIQUE,cpf_last_two NVARCHAR(2) NOT NULL,birth_date NVARCHAR(10) NOT NULL);
+IF OBJECT_ID('dbo.managed_bans') IS NULL CREATE TABLE dbo.managed_bans (cpf_fingerprint NVARCHAR(64) PRIMARY KEY,email_fingerprint NVARCHAR(64) NOT NULL,account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),created_at BIGINT NOT NULL);
+IF NOT EXISTS(SELECT 1 FROM sys.indexes WHERE name='managed_bans_email' AND object_id=OBJECT_ID('dbo.managed_bans')) CREATE INDEX managed_bans_email ON dbo.managed_bans(email_fingerprint);
+IF OBJECT_ID('dbo.managed_audit') IS NULL CREATE TABLE dbo.managed_audit (id NVARCHAR(64) PRIMARY KEY,account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),actor NVARCHAR(128) NOT NULL,action NVARCHAR(32) NOT NULL,reason NVARCHAR(500) NOT NULL,created_at BIGINT NOT NULL);
+IF OBJECT_ID('dbo.managed_deletions') IS NULL CREATE TABLE dbo.managed_deletions (account_id NVARCHAR(64) PRIMARY KEY REFERENCES accounts(id),subject NVARCHAR(128) NOT NULL,requested_at BIGINT NOT NULL,completed_at BIGINT NULL);
+
+IF OBJECT_ID('dbo.managed_webhook_receipts') IS NULL CREATE TABLE dbo.managed_webhook_receipts (message_id NVARCHAR(128) PRIMARY KEY,event_type NVARCHAR(64) NOT NULL,received_at BIGINT NOT NULL);

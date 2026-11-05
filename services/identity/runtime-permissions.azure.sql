@@ -17,3 +17,11 @@ GRANT SELECT, INSERT, UPDATE ON OBJECT::dbo.rate_limits TO anderzilla_identity_r
 GRANT SELECT, INSERT ON OBJECT::dbo.consents TO anderzilla_identity_runtime;
 DENY UPDATE, DELETE ON OBJECT::dbo.ledger TO anderzilla_identity_runtime;
 DENY UPDATE, DELETE ON OBJECT::dbo.completions TO anderzilla_identity_runtime;
+
+-- No visitor permission to create bans; operator uses a separate privileged SQL identity.
+GRANT SELECT, INSERT ON OBJECT::dbo.managed_identities TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.managed_profiles TO anderzilla_identity_runtime;
+GRANT SELECT ON OBJECT::dbo.managed_bans TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT ON OBJECT::dbo.managed_audit TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE ON OBJECT::dbo.managed_deletions TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT ON OBJECT::dbo.managed_webhook_receipts TO anderzilla_identity_runtime;

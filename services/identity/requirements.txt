@@ -1,9 +1,13 @@
 azure-functions==1.25.0
 python-tds==1.17.1
-certifi==2026.7.22
-pyOpenSSL==25.3.0
+certifi==2026.10.23
+pyOpenSSL==26.4.0
 # Password hashing: prefer argon2-cffi, fallback bcrypt (explicit dependency)
 argon2-cffi==23.1.0
 bcrypt==4.3.0
 google-auth==2.41.1
-requests==2.32.3
+requests==2.34.2
+PyJWT[crypto]==2.15.1
+cryptography==50.0.2
+tzdata==2026.6
+svix==2.9.1

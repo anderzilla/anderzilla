@@ -1,5 +1,7 @@
 # AnderZilla Identity & Karaca Points — API Contract (services/identity)
 
+> Contrato **legado nativo**. Para `IDENTITY_AUTH_PROVIDER=clerk`, seguir [CLERK.md](CLERK.md). Não usar cookies/senhas deste contrato para autorizar contas Clerk.
+
 **Base prefix:** `/api/account/*` (conta) e `/api/points/*` (KP). Versionamento futuro em `/api/v1`; prefixo curto mantido por simplicidade do piloto SWA. Todas respostas privadas `Cache-Control: no-store`. Erros estruturados `{error:{code,message,correlationId}}`. Nunca retorna stack/SQL. `401` sem sessão, `403` conta suspensa/inativa, `404` recurso alheio, `409` idempotência/version, `422` payload, `429` rate limit, `503` indisponível/verificador desabilitado/banco pausado.
 
 **Sessão:** cookie `__Host-anderzilla_sid` HttpOnly Secure SameSite=Lax Path=/ Max-Age 30d. Valor = token aleatório 32 bytes hex; armazenamento é hash SHA-256. Toda mutação exige `Origin` == `IDENTITY_ALLOWED_ORIGIN` e `Content-Type: application/json`. Sem Origin em produção → `403`. Sem header `x-ms-client-principal` nunca confia.

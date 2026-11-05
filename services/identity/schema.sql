@@ -17,3 +17,13 @@ CREATE TABLE IF NOT EXISTS rate_limits (scope TEXT NOT NULL,bucket TEXT NOT NULL
 CREATE TABLE IF NOT EXISTS consents (id TEXT PRIMARY KEY,account_id TEXT NOT NULL REFERENCES accounts(id),purpose TEXT NOT NULL,version TEXT NOT NULL,granted INTEGER NOT NULL,created_at INTEGER NOT NULL);
 CREATE TRIGGER IF NOT EXISTS ledger_no_update BEFORE UPDATE ON ledger BEGIN SELECT RAISE(ABORT,'append-only ledger'); END;
 CREATE TRIGGER IF NOT EXISTS ledger_no_delete BEFORE DELETE ON ledger BEGIN SELECT RAISE(ABORT,'append-only ledger'); END;
+
+-- Managed identity tables are additive; old native identities are never auto-linked.
+CREATE TABLE IF NOT EXISTS managed_identities (subject TEXT PRIMARY KEY,account_id TEXT NOT NULL UNIQUE REFERENCES accounts(id),created_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS managed_profiles (account_id TEXT PRIMARY KEY REFERENCES accounts(id),cpf_fingerprint TEXT NOT NULL UNIQUE,cpf_last_two TEXT NOT NULL,birth_date TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS managed_bans (cpf_fingerprint TEXT PRIMARY KEY,email_fingerprint TEXT NOT NULL,account_id TEXT NOT NULL REFERENCES accounts(id),created_at INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS managed_bans_email ON managed_bans(email_fingerprint);
+CREATE TABLE IF NOT EXISTS managed_audit (id TEXT PRIMARY KEY,account_id TEXT NOT NULL REFERENCES accounts(id),actor TEXT NOT NULL,action TEXT NOT NULL,reason TEXT NOT NULL,created_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS managed_deletions (account_id TEXT PRIMARY KEY REFERENCES accounts(id),subject TEXT NOT NULL,requested_at INTEGER NOT NULL,completed_at INTEGER);
+
+CREATE TABLE IF NOT EXISTS managed_webhook_receipts (message_id TEXT PRIMARY KEY,event_type TEXT NOT NULL,received_at INTEGER NOT NULL);

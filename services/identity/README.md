@@ -1,5 +1,7 @@
 # services/identity — AnderZilla Contas & Karaca Points (piloto)
 
+A fase 1 usa **Clerk**, com cadastro privado de maiores de 18 anos e CPF obrigatório. Consulte [CLERK.md](CLERK.md) para configuração, contratos e testes. O conteúdo nativo abaixo é histórico; não comprova estado de produção.
+
 Domínio exclusivo de contas públicas. Operado pelo coordenador via Azure Functions gerenciado SWA (Python 3.11) + Azure SQL (free, auto-pause). SQLite apenas para testes locais. Nenhum saldo demo migra como direito.
 
 ## Arquivos

@@ -12,3 +12,5 @@ Clerk foi escolhido pelo proprietário. Esta entrega não inclui pagamentos, pla
 O backend deve rejeitar identidades sem e-mail confirmado, CPF inválido/repetido, cadastro incompleto, conta banida e vínculo parental ausente. Informar CPF do responsável não autoriza o cadastro de um menor. Menores precisam de autorização prévia autenticada e procedimento do fornecedor confirmado.
 
 Não incluir chaves, CPF real, tokens, dados de menores ou credenciais em exemplos, testes, commits ou relatórios. Instalação/configuração e validação real serão registradas nos documentos canônicos.
+
+Atualização do proprietário: **menores de 18 anos bloqueados nesta fase**. Vínculo parental está adiado. Operador: Anderson Henrique Gonçalves; atendimento: player.one@anderzilla.com.

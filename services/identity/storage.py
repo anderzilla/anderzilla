@@ -57,7 +57,7 @@ class AzureSQLStore:
         return pytds.connect(server=os.environ['IDENTITY_SQL_SERVER'], database=os.environ['IDENTITY_SQL_DATABASE'],
                              user=os.environ['IDENTITY_SQL_USER'], password=os.environ['IDENTITY_SQL_PASSWORD'],
                              cafile=certifi.where(), validate_host=True, enc_login_only=False, autocommit=False,
-                             login_timeout=15, timeout=30)
+                             login_timeout=40, timeout=30)
     @contextmanager
     def transaction(self):
         db = self.connect()

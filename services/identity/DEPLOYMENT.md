@@ -1,5 +1,7 @@
 # Identity — Required Environment Keys (no values)
 
+> Estas chaves descrevem o modo nativo legado. A fase 1 com Clerk está documentada em [CLERK.md](CLERK.md), incluindo bearer, cadastro privado, webhook e variáveis de build. Não implantar o serviço legado sobre produção para habilitar Clerk.
+
 > Nunca commitar valores. Em `IDENTITY_ENV=production` faltas causam fail-closed (503).
 
 ## Core
