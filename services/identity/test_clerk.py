@@ -221,6 +221,9 @@ class ManagedTests(unittest.TestCase):
         self.assertEqual(result['body']['minimumAge'], 18)
         self.assertFalse(result['body']['minorAccessEnabled'])
         self.assertNotIn(self.cfg['cpfKey'], json.dumps(result))
+        ready = self.call('GET', '/api/account/ready')
+        self.assertEqual(ready['status'], 200)
+        self.assertTrue(ready['body']['ready'])
         for route in ('register', 'login', 'password/reset', 'family/invitations'):
             self.assertEqual(self.call('POST', '/api/account/' + route, {})['status'], 404)
 

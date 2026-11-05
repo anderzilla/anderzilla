@@ -36,6 +36,10 @@ def dispatch_clerk(store, method, path, headers=None, body=None, gateway=None, c
                              'termsVersion': POLICY_VERSION, 'privacyVersion': POLICY_VERSION}, headers=cors)
         if not cfg['ok']:
             reject('temporarily_unavailable', 'Serviço de contas não configurado.', 503)
+        if method == 'GET' and route == '/api/account/ready':
+            if hasattr(store, 'health') and not store.health().get('healthy'):
+                reject('temporarily_unavailable', 'Ativando serviço de contas.', 503)
+            return response({'ready': True}, headers=cors)
         if method in {'POST', 'PATCH', 'DELETE', 'PUT'}:
             if origin not in cfg['origins']:
                 reject('invalid_origin', 'Origem obrigatória.', 403)

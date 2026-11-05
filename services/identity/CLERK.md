@@ -17,6 +17,7 @@ O cadastro local é independente da identidade Clerk. Enquanto não houver CPF, 
 | Método | Rota | Autoridade e comportamento |
 |---|---|---|
 | GET | `/api/account/capabilities` | Público; informa `provider: clerk`, disponibilidade, versão dos termos, idade mínima 18 e rewards desligados. Não confirma saúde de SQL nem entrega de e-mail. |
+| GET | `/api/account/ready` | Público; valida conexão SQL (`store.health()`), retornando `200 {"ready": true}` quando online ou `503` enquanto o banco serverless está acordando do AutoPause. |
 | GET | `/api/account/me` | Sem bearer retorna visitante. Com bearer válido retorna perfil ou `onboardingRequired: true`. |
 | POST | `/api/account/onboarding` | Bearer com e-mail verificado; recebe `cpf`, `displayName`, `birthDate`, `termsAccepted`, `termsVersion`, `privacyVersion`, `marketingOptIn`, `lang`. Idade calculada no servidor; menores de 18 rejeitados. |
 | PATCH | `/api/account/profile` | Perfil próprio; campos permitidos pelo domínio de perfil. Não permite alterar CPF, identidade ou idade pelo navegador. |

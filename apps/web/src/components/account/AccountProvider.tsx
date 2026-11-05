@@ -21,7 +21,7 @@ const signedOut:AuthBridge={loaded:false,signedIn:false,getToken:async()=>null,s
 export class AccountError extends Error {constructor(public code:string){super(code)}}
 function useAccountState(auth:AuthBridge){
  const authRef=useRef(auth);authRef.current=auth;
- const [profileStatus,setProfileStatus]=useState<'idle'|'loading'|'ready'|'blocked'|'error'>('idle'),[deletionPending,setDeletionPending]=useState(false);
+ const [profileStatus,setProfileStatus]=useState<'idle'|'loading'|'waking'|'ready'|'blocked'|'error'>('idle'),[deletionPending,setDeletionPending]=useState(false);
  const [onboardingRequired,setOnboardingRequired]=useState(false),[authEnabled,setAuthEnabled]=useState(false);
  const [entry,setEntry]=useState<'adult'|'returning'|null>(null);
  const [capabilities,setCapabilities]=useState(disabled),[status,setStatus]=useState<'loading'|'ready'|'unavailable'>(baseEnabled?'loading':'unavailable');
@@ -44,7 +44,7 @@ function useAccountState(auth:AuthBridge){
    return data;
   }catch(e){if(e instanceof AccountError)throw e;throw new AccountError('network_error')}finally{clearTimeout(timer)}
  },[]);
- const refresh=useCallback(async()=>{setProfileStatus('loading');try{const data=await request('/api/account/me');const u=normalizeUser(data.account);commitUser(u);setOnboardingRequired(data.onboardingRequired===true);setProfileStatus('ready');return u}catch(e){commitUser(null);setOnboardingRequired(false);if(e instanceof AccountError&&['authentication_required','session_expired'].includes(e.code)){setProfileStatus('idle');return null}setProfileStatus(e instanceof AccountError&&e.code==='account_unavailable'?'blocked':'error');throw e}},[request,commitUser]);
+ const refresh=useCallback(async()=>{setProfileStatus('loading');for(let attempt=0;attempt<4;attempt++){try{if(attempt>0){try{await request('/api/account/ready')}catch{}}const data=await request('/api/account/me');const u=normalizeUser(data.account);commitUser(u);setOnboardingRequired(data.onboardingRequired===true);setProfileStatus('ready');return u}catch(e){if(e instanceof AccountError&&['temporarily_unavailable','network_error'].includes(e.code)&&attempt<3){setProfileStatus('waking');await new Promise(r=>setTimeout(r,2500));continue}commitUser(null);setOnboardingRequired(false);if(e instanceof AccountError&&['authentication_required','session_expired'].includes(e.code)){setProfileStatus('idle');return null}setProfileStatus(e instanceof AccountError&&e.code==='account_unavailable'?'blocked':'error');throw e}}return null},[request,commitUser]);
  const reconnect=useCallback(async()=>{if(!baseEnabled){setStatus('unavailable');return}setStatus('loading');try{const data=await request('/api/account/capabilities');if(data.provider!=='clerk'||data.available!==true||!clerkKey)throw new AccountError('unavailable');setCapabilities({...disabled,...data,rewards:false});if(authRef.current.loaded&&authRef.current.signedIn)await refresh();setStatus('ready')}catch{setStatus('unavailable');commitUser(null)}},[request,refresh,commitUser]);
  useEffect(()=>{void reconnect()},[reconnect]);
  useEffect(()=>{if(!auth.loaded)return;if(!auth.signedIn){commitUser(null);setOnboardingRequired(false);return}void refresh().then(u=>{if(!u)setScreen('onboarding');else setScreen(null)}).catch(e=>setError(e instanceof AccountError?e.code:'request_failed'))},[auth.loaded,auth.signedIn,refresh,commitUser]);
@@ -55,7 +55,7 @@ function useAccountState(auth:AuthBridge){
  useEffect(()=>{try{const value=JSON.parse(sessionStorage.getItem('anderzilla-pending-reward')||'null');if(value&&typeof value.pendingToken==='string'&&Date.parse(value.expiresAt)>Date.now())setPending(value);else sessionStorage.removeItem('anderzilla-pending-reward')}catch{}},[]);
  function rememberReward(value:Omit<PendingReward,'idempotencyKey'>){const reward={...value,idempotencyKey:crypto.randomUUID()};setPending(reward);try{sessionStorage.setItem('anderzilla-pending-reward',JSON.stringify(reward))}catch{}if(!user)open('reward');else setNotice('reward_pending')}
  function forgetReward(){setPending(null);try{sessionStorage.removeItem('anderzilla-pending-reward')}catch{}}
- function open(next:AccountScreen){setError('');setNotice('');setScreen(next)}
+ function open(next:AccountScreen){setError('');setNotice('');setScreen(next);if(next&&baseEnabled)void request('/api/account/ready').catch(()=>{})}
  async function action(operation:()=>Promise<unknown>){setBusy(true);setError('');setNotice('');try{await operation();return true}catch(e){setError(e instanceof AccountError?e.code:'request_failed');return false}finally{setBusy(false)}}
  const patchProfile=useCallback((patch:Partial<AccountUser>)=>{
   const owner=userRef.current?.id,revision=++profileRevision.current;
