@@ -7,7 +7,7 @@ A fonte canônica das decisões está na branch documental `codex/anderzilla-doc
 
 Branch de implementação: `codex/registration-phase1-20261104`.
 
-Clerk foi escolhido pelo proprietário. Esta entrega não inclui pagamentos, planos ou streaming. Estado inicial: em implementação, **não publicado**. Não confundir autenticação Clerk, conclusão do cadastro privado e autorização de acesso futuro.
+Clerk foi escolhido pelo proprietário. Esta entrega não inclui pagamentos, planos ou streaming. Estado atual: API Clerk e portal publicados em homologação e produção (com rollback preservado); validação com e-mail real em produção aguarda confirmação do proprietário. Não confundir autenticação Clerk, conclusão do cadastro privado e autorização de acesso futuro.
 
 O backend deve rejeitar identidades sem e-mail confirmado, CPF inválido/repetido, cadastro incompleto, conta banida e vínculo parental ausente. Informar CPF do responsável não autoriza o cadastro de um menor. Menores precisam de autorização prévia autenticada e procedimento do fornecedor confirmado.
 

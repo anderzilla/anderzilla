@@ -1,6 +1,6 @@
 # Contas gerenciadas — Clerk, fase 1
 
-Estado: API Clerk publicada em homologação; domínio e TLS Clerk prontos. Navegador e publicação de produção ainda em validação. Fonte de decisões: `G:/AnderZilla-docs/strategy/ACCOUNTS-AND-ACCESS-PHASES.md`. Operação: `G:/AnderZilla-docs/operations/REGISTRATION-PHASE1-20261104.md`.
+Estado: API Clerk publicada em homologação e na Function App dedicada de produção (`anderzilla-identity-api`); portal estático publicado em homologação (`anderzilla-web-homolog`, same-origin `/api`) e produção (`anderzilla-web-production`, `https://anderzilla.com`) preservando o corpus editorial completo (78 artigos, 462 mídias). Validação com conta real de e-mail em produção deve ser feita pelo proprietário para encerrar o aceite operacional. Fonte de decisões: `G:/AnderZilla-docs/strategy/ACCOUNTS-AND-ACCESS-PHASES.md`. Operação: `G:/AnderZilla-docs/operations/REGISTRATION-PHASE1-20261104.md`.
 
 ## Fronteiras
 
