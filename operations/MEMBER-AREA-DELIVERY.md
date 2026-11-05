@@ -8,6 +8,8 @@
 
 O proprietário pediu que o Antigravity execute o código e o Codex valide depois. Prompt canônico: [ANTIGRAVITY-MEMBER-AREA.md](../ai/prompts/ANTIGRAVITY-MEMBER-AREA.md). Delegação prevê branch isolada, cinco lotes e relatório reproduzível; não inclui publicação em produção antes da revisão. Esta referência não comprova que o Antigravity já executou o trabalho.
 
+Publicação posterior foi autorizada pelo proprietário condicionada à validação aqui da versão exata. Prompt separado: [ANTIGRAVITY-MEMBER-AREA-RELEASE.md](../ai/prompts/ANTIGRAVITY-MEMBER-AREA-RELEASE.md). Não é autorização para antecipar deploy antes do gate, ativar KP sem regras/cobertura aprovadas ou declarar publicação sem evidência real.
+
 | Evidência no código atual | Diferença para a decisão nova | Trabalho |
 |---|---|---|
 | HubProvider usa guestPlayer/localStorage para saved/opened/interests | Visitante ainda tem recursos agora exclusivos | Remover escrita/leitura/contadores anônimos e limpar legado; manter somente preferências públicas permitidas |
