@@ -1,6 +1,6 @@
 # Cadastro fase 1 — execução e continuidade
 
-Última atualização: 2026-11-04. **Em implementação, não publicado.**
+Última atualização: 2026-11-04. **Publicado em homologação e produção; aguardando confirmação final com conta de e-mail real pelo proprietário.**
 
 ## Onde continuar
 
@@ -125,3 +125,24 @@ Esta seção substitui as pendências anteriores de login CLI, salvamento de cha
   - `prepare-artifact.ps1` ajustado no perfil `homolog` para definir `platform.apiRuntime = python:3.11`, manter exigência de `anderzilla_reviewer` em `/*` e liberar `/api/account/webhooks/clerk` para entrega assinada Svix.
   - Settings de runtime (`AZ_ACCOUNT_*` e `CLERK_*`) aplicados e pacote unificado (`apps/web/out` + API Python 3.11) implantado com sucesso em `anderzilla-web-homolog`.
   - Verificado: acesso anônimo a `/pt/` e `/api/account/capabilities` bloqueado pela SWA (`401`); webhook sem assinatura válida rejeitado (`400`); webhook assinado processado com transação SQL (`200`).
+
+## Produção preparada e publicada com preservação do corpus e rollback
+
+- **Migração aditiva SQL (`anderzilla-identity-production`)**:
+  - `schema.azure.sql` e `runtime-permissions.azure.sql` aplicados via Entra ID temporário (removido ao final da execução).
+  - Criado usuário contido dedicado `anderzilla_clerk_runtime`; usuário legado `anderzilla_identity_runtime` e a 1 conta legada existente preservados intactos (sem vinculação automática).
+  - `clerk-readiness.py --environment production --settings C:/Users/ander/.codex/anderzilla-identity-production-clerk.json --check-azure` aprovou `ready: true`, `errors: []`.
+- **Function App dedicada de produção (`anderzilla-identity-api`)**:
+  - Snapshot integral dos 25 settings anteriores salvo fora do Git em `C:/Users/ander/.codex/anderzilla-identity-api-rollback-20261104.json`; pacote anterior `identity-func-fixed6.zip` mantido em `anderzillaidentityst/deploy`.
+  - Novo pacote Linux Python 3.11 `.deploy/identity-func-clerk-phase1-20261104.zip` (`sha256=eb548aa7def0abd3017fdae692b58dc5bfff472e665810558dd5ab6e073d28a6`) publicado em `anderzillaidentityst/deploy` e configurado em `WEBSITE_RUN_FROM_PACKAGE` com settings Clerk live (`CLERK_ISSUER=https://clerk.anderzilla.com`, `IDENTITY_AUTH_PROVIDER=clerk`, `IDENTITY_SQL_USER=anderzilla_clerk_runtime`).
+  - Probes reais em `https://anderzilla-identity-api.azurewebsites.net`:
+    - `GET /api/account/capabilities` (`Origin: https://anderzilla.com`): `200`, `provider: clerk`, `available: true`, `termsVersion: 2026-11-04`, `Access-Control-Allow-Origin: https://anderzilla.com`.
+    - `OPTIONS /api/account/profile` (`Origin: https://anderzilla.com`): `204`, `Access-Control-Allow-Origin: https://anderzilla.com`, `Access-Control-Allow-Headers: x-anderzilla-authorization,content-type`.
+    - `GET /api/account/me` anônimo: `200`; origem não autorizada: `403`; bearer falso: `401`.
+    - `POST /api/account/webhooks/clerk`: assinatura falsa `400`; assinatura Svix válida `200` (`duplicate: false` na 1ª e `duplicate: true` no replay).
+- **Portal público (`anderzilla-web-production` / `https://anderzilla.com`)**:
+  - Branch sincronizada com `web/codex/anderzilla-foundation` (`309f66a`), preservando todas as **78 descobertas do Radar** (156 páginas PT/EN, incluindo as notas de 03/11), 253 registros de mídia e 462 arquivos originais verificados por SHA256.
+  - Artefato imutável construído via `rebuild-production.py --build --output-name production-clerk-phase1-20261104` (202 páginas estáticas; manifesto em `.deploy/production-clerk-phase1-20261104-build.json` e `.deploy/production-clerk-phase1-20261104-sha256.json`; rollback anterior preservado em `G:/AnderZilla-deploy/.deploy/production-radar-20261103` e `.deploy/production-40565a1a-f845-4294-b216-1cff2540065a-launch`).
+  - Publicado em `anderzilla-web-production` e verificado em `https://anderzilla.com`: `/pt/`, `/en/`, `/pt/termos/`, `/pt/privacidade/` e notas recentes de 03/11 respondendo `200`, bundle JS contendo `pk_live_...` e `https://anderzilla-identity-api.azurewebsites.net` (nenhum segredo exposto).
+- **Próximo passo (validação real pelo proprietário)**:
+  - Realizar 1 teste real de cadastro/login com e-mail real em `https://anderzilla.com` (confirmando recebimento do código pelo domínio `anderzilla.com`, conclusão do onboarding adulto e exclusão/limpeza se for conta de teste).
