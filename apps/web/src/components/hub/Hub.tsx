@@ -38,15 +38,16 @@ import { CMSSections } from "./CMSSections";
 import { HeroCarousel } from "./HeroCarousel";
 import { CommerceHome } from "../commerce/CommerceHome";
 import { flag } from "../commerce/data";
-import {AccountProvider,useAccount} from "../account/AccountProvider";
-import {AccountAccess,AccountDialog,AccountSyncStatus,UserAvatar} from "../account/AccountUI";
+import { AccountProvider, useAccount } from "../account/AccountProvider";
+import {
+  AccountAccess,
+  AccountDialog,
+  AccountSyncStatus,
+} from "../account/AccountUI";
 
-function Header() {
-  const { t, lang, changeLanguage, route, player } = useHub();
-  const account = useAccount();
-  const links: [Route, string][] = [
-    ["home", t("Explorar", "Explore")],
-  ];
+export function Header() {
+  const { t, lang, changeLanguage, route } = useHub();
+  const links: [Route, string][] = [["home", t("Explorar", "Explore")]];
   return (
     <>
       <div className="preview">
@@ -70,16 +71,21 @@ function Header() {
         </div>
       </div>
       <header>
-        <a className="brand" href="#home">
+        <a className="brand" href={`/${lang}/#home`}>
           <div>
             <BrandWordmark />
-            <small>{t("GAMES. TECH. BOAS DESCOBERTAS.", "GAMES. TECH. GREAT FINDS.")}</small>
+            <small>
+              {t(
+                "GAMES. TECH. BOAS DESCOBERTAS.",
+                "GAMES. TECH. GREAT FINDS.",
+              )}
+            </small>
           </div>
         </a>
         <nav aria-label={t("Principal", "Main")}>
           {links.map(([r, label]) => (
             <a
-              href={`#${r}`}
+              href={`/${lang}/#${r}`}
               key={r}
               aria-current={route === r ? "page" : undefined}
             >
@@ -94,85 +100,102 @@ function Header() {
           <a href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</a>
         </nav>
         <div className="actions">
-          <AccountAccess/>
-          <a
-            href="#saved"
-            aria-label={`${t("Minha mochila", "My backpack")}: ${player.saved.length}`}
-          >
-            <Icon name="save" />{" "}
-            <span className="count">{player.saved.length}</span>
-          </a>
-          <a className="profile-link" href="#profile">
-            {account.user ? (
-              <UserAvatar
-                name={account.user.displayName}
-                email={account.user.email}
-                src={account.user.avatarUrl}
-                size={26}
-              />
-            ) : (
-              <Ghost size={26} />
-            )}
-            <span className="profile-link-label">{t("Seu radar", "Your radar")}</span>
-          </a>
+          <AccountAccess />
         </div>
       </header>
     </>
   );
 }
-function Footer() {
+
+export function Footer() {
   const { t, lang } = useHub();
   return (
     <footer>
-      <a className="brand-footer" href="#home"><BrandWordmark /></a>
+      <a className="brand-footer" href={`/${lang}/#home`}>
+        <BrandWordmark />
+      </a>
       <p>
         {t(
           "Um esconderijo para quem gosta de games e de fuçar no futuro.",
           "A hideout for people who love games and tinkering with the future.",
         )}
       </p>
-      <a href="#channels">{t("Canais", "Channels")}</a>
+      <a href={`/${lang}/#channels`}>{t("Canais", "Channels")}</a>
       <a href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</a>
-      {flag("showPointsStore","global")&&<a href="#store">Store Points</a>}
+      {flag("showPointsStore", "global") && (
+        <a href={`/${lang}/#store`}>Store Points</a>
+      )}
       <a href={`/${lang}/stackpick/`}>StackPick</a>
       <a href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</a>
-      <a href={`/${lang}/transparencia/`}>{t("Transparência", "Transparency")}</a>
+      <a href={`/${lang}/transparencia/`}>
+        {t("Transparência", "Transparency")}
+      </a>
       <a href={`/${lang}/forgekit/`}>ForgeKit</a>
       <a href="/privacy/">{t("Privacidade", "Privacy")}</a>
       <a href="/terms/">{t("Termos", "Terms")}</a>
       <small>
         {t(
-          "Curadoria editorial com fontes, créditos e data de apuração. Visitantes guardam progresso neste navegador; contas sincronizam preferências quando disponíveis. KP oficial depende de validação do servidor.",
-          "Editorial curation with sources, credits and verification dates. Guests keep progress in this browser; accounts sync preferences when available. Official KP require server validation.",
+          "Curadoria editorial com fontes, créditos e data de apuração. Mochila, interesses, histórico e Karaca Points oficiais pertencem à conta autenticada e verificada.",
+          "Editorial curation with sources, credits and verification dates. Your backpack, interests, history and official Karaca Points belong to your verified account.",
         )}
       </small>
     </footer>
   );
 }
+
 function Home() {
-  const { t, filter, setFilter, labels, player, surprise,title,summary } = useHub();
-  const [query,setQuery]=useState('');
-  const [pageSize,setPageSize]=useState(12);
+  const {
+    t,
+    lang,
+    filter,
+    setFilter,
+    labels,
+    player,
+    surprise,
+    title,
+    summary,
+  } = useHub();
+  const [query, setQuery] = useState("");
+  const [pageSize, setPageSize] = useState(12);
   const matching = discoveries
-    .filter((x) => (filter === "all" || x.category === filter)&&`${title(x)} ${summary(x)} ${x.tags||''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()))
+    .filter(
+      (x) =>
+        (filter === "all" || x.category === filter) &&
+        `${title(x)} ${summary(x)} ${x.tags || ""}`
+          .toLocaleLowerCase()
+          .includes(query.trim().toLocaleLowerCase()),
+    )
     .sort(compareRadarNewestFirst);
   const feed = matching;
-  function loadMore(){const next=feed[pageSize];setPageSize(size=>size+12);requestAnimationFrame(()=>{if(next)document.getElementById(`discovery-${next.id}`)?.querySelector<HTMLAnchorElement>('h3 a')?.focus()})}
+  function loadMore() {
+    const next = feed[pageSize];
+    setPageSize((size) => size + 12);
+    requestAnimationFrame(() => {
+      if (next)
+        document
+          .getElementById(`discovery-${next.id}`)
+          ?.querySelector<HTMLAnchorElement>("h3 a")
+          ?.focus();
+    });
+  }
   function scrollFeed() {
-    document
-      .getElementById("feed-start")
-      ?.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-      });
+    document.getElementById("feed-start")?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
     document.getElementById("feed-title")?.focus({ preventScroll: true });
   }
   return (
     <>
       <div className="ticker">
         <strong>{t("NO RADAR", "ON THE RADAR")}</strong>
-        {feed.filter(item=>!item.isDemo).slice(0,4).map(item=><span key={item.id}>{title(item)}</span>)}
+        {feed
+          .filter((item) => !item.isDemo)
+          .slice(0, 4)
+          .map((item) => (
+            <span key={item.id}>{title(item)}</span>
+          ))}
       </div>
       <div className="wrap">
         <div className="welcome">
@@ -214,7 +237,10 @@ function Home() {
                 } as CSSProperties
               }
               aria-pressed={filter === cat}
-              onClick={() => {setFilter(cat);setPageSize(12)}}
+              onClick={() => {
+                setFilter(cat);
+                setPageSize(12);
+              }}
             >
               <Icon name={cat} />
               {labels[cat]}
@@ -235,21 +261,50 @@ function Home() {
                 )}
               </small>
             </div>
-            <label className="radar-search">{t('Buscar no radar','Search the radar')}<input type="search" value={query} onChange={e=>{setQuery(e.target.value);setPageSize(12)}} placeholder={t('Games, IA, gadgets…','Games, AI, gadgets…')}/></label>
-            <p className="source">{feed.length} {t('descobertas neste radar','discoveries on this radar')}</p>
+            <label className="radar-search">
+              {t("Buscar no radar", "Search the radar")}
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setPageSize(12);
+                }}
+                placeholder={t(
+                  "Games, IA, gadgets…",
+                  "Games, AI, gadgets…",
+                )}
+              />
+            </label>
+            <p className="source">
+              {feed.length}{" "}
+              {t("descobertas neste radar", "discoveries on this radar")}
+            </p>
             <div className="feed" aria-live="polite">
-              {!feed.length&&<p className="empty">{t('Nenhuma descoberta para esta busca.','No discoveries match your search.')}</p>}
-              {feed.slice(0,pageSize).map((item) => (
+              {!feed.length && (
+                <p className="empty">
+                  {t(
+                    "Nenhuma descoberta para esta busca.",
+                    "No discoveries match your search.",
+                  )}
+                </p>
+              )}
+              {feed.slice(0, pageSize).map((item) => (
                 <DiscoveryCard key={item.id} item={item} />
               ))}
             </div>
-            {feed.length>pageSize&&<button className="button secondary" onClick={loadMore}>{t('Carregar mais descobertas','Load more discoveries')} ({feed.length-pageSize})</button>}
+            {feed.length > pageSize && (
+              <button className="button secondary" onClick={loadMore}>
+                {t("Carregar mais descobertas", "Load more discoveries")} (
+                {feed.length - pageSize})
+              </button>
+            )}
           </section>
           <aside className="sidebar">
             <section className="quiz-teaser">
               <Icon name={player.quizDone ? "trophy" : "ia"} />
               <p className="eyebrow">
-                {t("DESAFIO DA VEZ", "YOUR NEXT CHALLENGE")}
+                {t("DESAFIO EDITORIAL", "EDITORIAL CHALLENGE")}
               </p>
               <h2>
                 {player.quizDone
@@ -261,12 +316,12 @@ function Home() {
               </h2>
               <p>
                 {t(
-                  "Três perguntas. Umas descobertas inesperadas. Acerte, entenda e desbloqueie seu selo.",
-                  "Three questions. A few unexpected discoveries. Learn the details and unlock your badge.",
+                  "Missões oficiais com Karaca Points exigem conta verificada e validação no servidor.",
+                  "Official missions with Karaca Points require a verified account and server validation.",
                 )}
               </p>
-              <a className="button" href="#quiz">
-                {t("Aceitar desafio", "Accept challenge")}
+              <a className="button" href={`/${lang}/conta/missoes/`}>
+                {t("Ver missões oficiais", "View official missions")}
                 <Icon name="arrow" />
               </a>
             </section>
@@ -295,11 +350,11 @@ function Home() {
               </h2>
               <p>
                 {t(
-                  "Sua mochila junta o que vale revisitar. Abra, salve, compare e volte quando quiser.",
-                  "Your backpack keeps what is worth revisiting. Open, save, compare and come back anytime.",
+                  "Sua mochila junta o que vale revisitar na sua conta. Abra, salve, compare e volte quando quiser.",
+                  "Your backpack keeps what is worth revisiting in your account. Open, save, compare and come back anytime.",
                 )}
               </p>
-              <a href="#saved">
+              <a href={`/${lang}/conta/mochila/`}>
                 {t("Abrir minha mochila →", "Open my backpack →")}
               </a>
             </section>
@@ -316,12 +371,12 @@ function Home() {
             </h2>
             <p>
               {t(
-                "Escolha seus temas. O radar lista as notas da mais nova para a mais antiga.",
-                "Choose your topics. The radar lists notes from newest to oldest.",
+                "Escolha seus temas na sua conta. Seu Radar lista as notas da mais nova para a mais antiga.",
+                "Choose your topics in your account. Your Radar lists notes from newest to oldest.",
               )}
             </p>
           </div>
-          <a className="button secondary" href="#profile">
+          <a className="button secondary" href={`/${lang}/conta/interesses/`}>
             {t("Personalizar meu radar", "Personalize my radar")}
             <Icon name="arrow" />
           </a>
@@ -330,9 +385,10 @@ function Home() {
     </>
   );
 }
+
 function SavedPage() {
-  const account=useAccount();
-  const { t, player } = useHub();
+  const account = useAccount();
+  const { t, lang, player } = useHub();
   const items = discoveries.filter((x) => player.saved.includes(x.id));
   return (
     <div className="wrap subpage">
@@ -345,37 +401,59 @@ function SavedPage() {
       </h1>
       <p className="lede">
         {t(
-          account.user?"Sua coleção pessoal, sincronizada com a conta e pronta para revisitar.":"Sua coleção pessoal, guardada neste navegador e pronta para revisitar.",
-          account.user?"Your personal collection, synced with your account and ready to revisit.":"Your personal collection, stored in this browser and ready to revisit.",
+          "Sua coleção pessoal, sincronizada com a sua conta e pronta para revisitar.",
+          "Your personal collection, synced with your account and ready to revisit.",
         )}
       </p>
-      <div className="feed saved-feed">
-        {items.length ? (
-          items.map((item) => <DiscoveryCard item={item} key={item.id} />)
-        ) : (
-          <div className="empty">
-            <Icon name="save" />
-            <h2>
-              {t(
-                "Sua mochila espera o primeiro loot.",
-                "Your backpack awaits its first find.",
-              )}
-            </h2>
-            <p>
-              {t(
-                "Toque no marcador de uma descoberta para guardar aqui. Sem conta e sem pressa.",
-                "Tap the bookmark on a discovery to save it here. No account and no rush.",
-              )}
-            </p>
-            <a className="button" href="#home">
-              {t("Voltar ao radar", "Back to radar")}
-            </a>
-          </div>
-        )}
-      </div>
+      {!account.user ? (
+        <div className="empty">
+          <Icon name="save" />
+          <h2>
+            {t(
+              "Entre na sua conta para usar a Mochila.",
+              "Sign in to your account to use your Backpack.",
+            )}
+          </h2>
+          <p>
+            {t(
+              "Itens salvos são sincronizados na sua conta verificada, sem depender de armazenamento local.",
+              "Saved items are synced to your verified account, without relying on local browser storage.",
+            )}
+          </p>
+          <a className="button" href={`/${lang}/conta/mochila/`}>
+            {t("Ir para Minha Mochila", "Go to My Backpack")}
+          </a>
+        </div>
+      ) : (
+        <div className="feed saved-feed">
+          {items.length ? (
+            items.map((item) => <DiscoveryCard item={item} key={item.id} />)
+          ) : (
+            <div className="empty">
+              <Icon name="save" />
+              <h2>
+                {t(
+                  "Sua mochila está vazia.",
+                  "Your backpack is empty.",
+                )}
+              </h2>
+              <p>
+                {t(
+                  "Salve notícias e descobertas para ler com calma depois.",
+                  "Save stories and discoveries to read later at your own pace.",
+                )}
+              </p>
+              <a className="button" href={`/${lang}/radar/`}>
+                {t("Explorar o Radar", "Explore the Radar")}
+              </a>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
+
 function HubContent() {
   const { route, t, toast } = useHub();
   const pages = {
@@ -397,7 +475,7 @@ function HubContent() {
         {t("Pular para o conteúdo", "Skip to content")}
       </a>
       <Header />
-      <AccountSyncStatus/>
+      <AccountSyncStatus />
       <main id="hub-main" tabIndex={-1}>
         <Page />
       </main>
@@ -410,11 +488,17 @@ function HubContent() {
     </div>
   );
 }
-export default function Hub({initialLang = "pt"}: {initialLang?: "pt" | "en"}) {
+
+export default function Hub({
+  initialLang = "pt",
+}: {
+  initialLang?: "pt" | "en";
+}) {
   return (
-    <AccountProvider><HubProvider initialLang={initialLang}>
-      <HubContent />
-    </HubProvider></AccountProvider>
+    <AccountProvider>
+      <HubProvider initialLang={initialLang}>
+        <HubContent />
+      </HubProvider>
+    </AccountProvider>
   );
 }
-

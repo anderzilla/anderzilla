@@ -8,6 +8,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/pt/conta/", "/en/conta/", "/account/", "/account/callback/"],
     },
     sitemap: `${SITE.url}/sitemap.xml`,
   };

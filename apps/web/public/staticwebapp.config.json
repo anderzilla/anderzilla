@@ -2,6 +2,25 @@
   "trailingSlash": "always",
   "routes": [
     {
+      "route": "/account/",
+      "redirect": "/pt/conta/",
+      "statusCode": 302
+    },
+    {
+      "route": "/pt/conta/*",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0, must-revalidate",
+        "X-Robots-Tag": "noindex, nofollow"
+      }
+    },
+    {
+      "route": "/en/conta/*",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0, must-revalidate",
+        "X-Robots-Tag": "noindex, nofollow"
+      }
+    },
+    {
       "route": "/forgekit/",
       "redirect": "/pt/forgekit/",
       "statusCode": 301
