@@ -12,8 +12,9 @@ export type PendingReward={pendingToken:string;evidenceRef:string;missionId:stri
 export type AccountScreen='login'|'register'|'verify'|'forgot'|'reset'|'reward'|'onboarding'|'security'|null;
 const disabled:Capabilities={registration:false,emailPassword:false,google:false,meta:false,passwordReset:false,emailResend:false,rewards:false,minimumAge:18};
 const configuredBase=process.env.NEXT_PUBLIC_ACCOUNT_API_BASE?.replace(/\/$/,'')||'';
-function approvedBase(){try{const u=new URL(configuredBase);return u.protocol==='https:'||u.protocol==='http:'&&['localhost','127.0.0.1'].includes(u.hostname)?configuredBase:''}catch{return ''}}
+function approvedBase(){if(configuredBase==='/api')return '';try{const u=new URL(configuredBase);return u.protocol==='https:'||u.protocol==='http:'&&['localhost','127.0.0.1'].includes(u.hostname)?configuredBase:''}catch{return ''}}
 const base=approvedBase();
+const baseEnabled=configuredBase==='/api'||Boolean(base);
 const clerkKey=process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY||'';
 type AuthBridge={loaded:boolean;signedIn:boolean;getToken:()=>Promise<string|null>;signOut:()=>Promise<void>};
 const signedOut:AuthBridge={loaded:false,signedIn:false,getToken:async()=>null,signOut:async()=>{}};
@@ -23,7 +24,7 @@ function useAccountState(auth:AuthBridge){
  const [profileStatus,setProfileStatus]=useState<'idle'|'loading'|'ready'|'blocked'|'error'>('idle'),[deletionPending,setDeletionPending]=useState(false);
  const [onboardingRequired,setOnboardingRequired]=useState(false),[authEnabled,setAuthEnabled]=useState(false);
  const [entry,setEntry]=useState<'adult'|'returning'|null>(null);
- const [capabilities,setCapabilities]=useState(disabled),[status,setStatus]=useState<'loading'|'ready'|'unavailable'>(base?'loading':'unavailable');
+ const [capabilities,setCapabilities]=useState(disabled),[status,setStatus]=useState<'loading'|'ready'|'unavailable'>(baseEnabled?'loading':'unavailable');
  const [user,setUser]=useState<AccountUser|null>(null),[screen,setScreen]=useState<AccountScreen>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState('');
  const [reserved,setReserved]=useState<number|null>(null),[cursor,setCursor]=useState<string|null>(null);
  const [balance,setBalance]=useState<number|null>(null),[history,setHistory]=useState<Entry[]>([]),[walletStatus,setWalletStatus]=useState<'idle'|'loading'|'ready'|'error'>('idle');
@@ -33,7 +34,7 @@ function useAccountState(auth:AuthBridge){
  const profileRevision=useRef(0);
  const csrf=useRef('');const profileQueue=useRef<Promise<unknown>>(Promise.resolve());
  const request=useCallback(async(path:string,method='GET',body?:unknown,idempotencyKey?:string)=>{
-  if(!base)throw new AccountError('unavailable');
+  if(!baseEnabled)throw new AccountError('unavailable');
   const token=authRef.current.signedIn?await authRef.current.getToken():null;
   if(authRef.current.signedIn&&!token)throw new AccountError('session_expired');
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),45000);
@@ -44,7 +45,7 @@ function useAccountState(auth:AuthBridge){
   }catch(e){if(e instanceof AccountError)throw e;throw new AccountError('network_error')}finally{clearTimeout(timer)}
  },[]);
  const refresh=useCallback(async()=>{setProfileStatus('loading');try{const data=await request('/api/account/me');const u=normalizeUser(data.account);commitUser(u);setOnboardingRequired(data.onboardingRequired===true);setProfileStatus('ready');return u}catch(e){commitUser(null);setOnboardingRequired(false);if(e instanceof AccountError&&['authentication_required','session_expired'].includes(e.code)){setProfileStatus('idle');return null}setProfileStatus(e instanceof AccountError&&e.code==='account_unavailable'?'blocked':'error');throw e}},[request,commitUser]);
- const reconnect=useCallback(async()=>{if(!base){setStatus('unavailable');return}setStatus('loading');try{const data=await request('/api/account/capabilities');if(data.provider!=='clerk'||data.available!==true||!clerkKey)throw new AccountError('unavailable');setCapabilities({...disabled,...data,rewards:false});if(authRef.current.loaded&&authRef.current.signedIn)await refresh();setStatus('ready')}catch{setStatus('unavailable');commitUser(null)}},[request,refresh,commitUser]);
+ const reconnect=useCallback(async()=>{if(!baseEnabled){setStatus('unavailable');return}setStatus('loading');try{const data=await request('/api/account/capabilities');if(data.provider!=='clerk'||data.available!==true||!clerkKey)throw new AccountError('unavailable');setCapabilities({...disabled,...data,rewards:false});if(authRef.current.loaded&&authRef.current.signedIn)await refresh();setStatus('ready')}catch{setStatus('unavailable');commitUser(null)}},[request,refresh,commitUser]);
  useEffect(()=>{void reconnect()},[reconnect]);
  useEffect(()=>{if(!auth.loaded)return;if(!auth.signedIn){commitUser(null);setOnboardingRequired(false);return}void refresh().then(u=>{if(!u)setScreen('onboarding');else setScreen(null)}).catch(e=>setError(e instanceof AccountError?e.code:'request_failed'))},[auth.loaded,auth.signedIn,refresh,commitUser]);
  useEffect(()=>{try{const url=new URL(window.location.href);const mode=url.searchParams.get('account');if(mode==='register'||mode==='complete'||mode==='login')setScreen(mode==='register'?'register':'login');const previousEntry=sessionStorage.getItem('anderzilla-auth-entry');if(previousEntry==='adult'||previousEntry==='returning'){setEntry(previousEntry);setAuthEnabled(true)}}catch{}},[]);

@@ -34,10 +34,16 @@ function Set-NoindexHeaders($cfg) {
     $cfg.globalHeaders | Add-Member -Force -NotePropertyName 'Cache-Control' -NotePropertyValue 'no-store'
 }
 if ($Environment -eq 'homolog') {
+    if (-not $config.PSObject.Properties.Name.Contains('platform')) {
+        $config | Add-Member -NotePropertyName platform -NotePropertyValue ([pscustomobject]@{})
+    }
+    $config.platform | Add-Member -Force -NotePropertyName apiRuntime -NotePropertyValue 'python:3.11'
     # A custom invited role is required: ordinary authenticated visitors cannot enter.
     # Authentication system routes stay reachable to accept the owner invitation.
+    # Clerk webhook callbacks are authenticated by Svix signature on the raw body.
     $config | Add-Member -Force -NotePropertyName routes -NotePropertyValue @(
         [pscustomobject]@{ route = '/.auth/*'; allowedRoles = @('anonymous') },
+        [pscustomobject]@{ route = '/api/account/webhooks/clerk'; allowedRoles = @('anonymous') },
         [pscustomobject]@{ route = '/*'; allowedRoles = @('anderzilla_reviewer') }
     )
     Set-NoindexHeaders $config

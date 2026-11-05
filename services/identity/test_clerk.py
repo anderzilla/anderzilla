@@ -136,9 +136,12 @@ class ManagedTests(unittest.TestCase):
         self.register()
         for patch in [{'id': 'other'}, {'cpf': cpf(987654321)}, {'email': 'other@example.invalid'}, {'state': 'active'}]:
             self.assert_rejected('invalid_fields', self.service.profile, self.identity, patch)
-        result = self.service.profile(self.identity, {'displayName': 'Changed', 'saved': ['item-1']})
+        result = self.service.profile(self.identity, {'displayName': 'Changed', 'saved': ['item-1'], 'marketingOptIn': True})
         self.assertEqual(result['account']['displayName'], 'Changed')
         self.assertEqual(result['account']['saved'], ['item-1'])
+        self.assertTrue(result['account']['marketingOptIn'])
+        exported = self.service.export(self.identity)
+        self.assertTrue(all(c['version'] == POLICY_VERSION for c in exported['consents']))
 
     def test_private_data_scoped_to_signed_identity(self):
         own = self.register()

@@ -103,8 +103,8 @@ def policies(data):
 
 
 class IdentityService:
-    def __init__(self, store, email_sender=None, clock=None):
-        self.store, self.email_sender = store, email_sender
+    def __init__(self, store, email_sender=None, clock=None, policy_version=POLICY_VERSION):
+        self.store, self.email_sender, self.policy_version = store, email_sender, policy_version
         self.clock = clock or (lambda: int(time.time()))
 
     def email_ready(self):
@@ -301,7 +301,7 @@ class IdentityService:
                 db.execute(f'UPDATE accounts SET {column}=?,updated_at=? WHERE id=?', (value, self.clock(), principal.account_id))
             if 'marketingOptIn' in patch:
                 db.execute('INSERT INTO consents(id,account_id,purpose,version,granted,created_at) VALUES(?,?,?,?,?,?)',
-                           (identifier(), principal.account_id, 'marketing', POLICY_VERSION, values['marketing_opt_in'], self.clock()))
+                           (identifier(), principal.account_id, 'marketing', self.policy_version, values['marketing_opt_in'], self.clock()))
             for field in ('interests', 'saved', 'opened'):
                 if field not in patch:
                     continue

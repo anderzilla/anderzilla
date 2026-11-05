@@ -49,9 +49,10 @@ def inspect(values, environment):
         errors.append('dedicated_runtime_user_required')
     if len(values['IDENTITY_CPF_HMAC_KEY']) < 32:
         errors.append('cpf_secret_too_short')
-    for key in ('CLERK_ISSUER', 'NEXT_PUBLIC_ACCOUNT_API_BASE'):
-        if not origin(values[key]):
-            errors.append('invalid_https_origin:' + key)
+    if not origin(values['CLERK_ISSUER']):
+        errors.append('invalid_https_origin:CLERK_ISSUER')
+    if values['NEXT_PUBLIC_ACCOUNT_API_BASE'] != '/api' and not origin(values['NEXT_PUBLIC_ACCOUNT_API_BASE'], allow_loopback=environment == 'homolog'):
+        errors.append('invalid_https_origin:NEXT_PUBLIC_ACCOUNT_API_BASE')
     origins = {v.strip().rstrip('/') for v in values['IDENTITY_ALLOWED_ORIGIN'].split(',')}
     if not origins or not all(origin(v, allow_loopback=environment == 'homolog') for v in origins):
         errors.append('invalid_allowed_origins')

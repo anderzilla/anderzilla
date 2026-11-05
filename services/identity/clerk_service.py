@@ -42,7 +42,7 @@ class ClerkAccountService:
     def __init__(self, store, cfg, clock=None):
         self.store, self.cfg = store, cfg
         self.clock = clock or (lambda: int(time.time()))
-        self.domain = IdentityService(store, clock=self.clock)
+        self.domain = IdentityService(store, clock=self.clock, policy_version=POLICY_VERSION)
 
     def _record(self, db, identity, required=True, allow_deleted=False):
         row = db.execute('SELECT a.*,p.cpf_fingerprint,p.cpf_last_two,p.birth_date '

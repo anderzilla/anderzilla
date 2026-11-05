@@ -55,7 +55,7 @@ Backend, por ambiente:
 Frontend, **no momento do build**:
 
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: chave publicável da instância correta. Nunca colocar `sk_...` em variáveis `NEXT_PUBLIC_*`.
-- `NEXT_PUBLIC_ACCOUNT_API_BASE`: origem HTTPS da API identity. Esta variável ausente produz estado indisponível no site estático; mudar setting no Azure depois do build não corrige um bundle já exportado.
+- `NEXT_PUBLIC_ACCOUNT_API_BASE`: origem HTTPS da API identity ou `/api` quando servida na mesma origem da SWA. Esta variável ausente produz estado indisponível no site estático; mudar setting no Azure depois do build não corrige um bundle já exportado.
 - `NEXT_PUBLIC_CLERK_SECURITY_ENABLED=true`: só habilitar gestão de credenciais após configurar e testar o callback de exclusão no provedor.
 
 As variáveis Clerk substituem SMTP/OAuth próprios para as contas novas. O serviço privado de perfil continua necessário. Não criar banco ou provedor de e-mail adicional por engano.
