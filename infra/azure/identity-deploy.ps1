@@ -38,7 +38,8 @@ if($settings.IDENTITY_AUTH_PROVIDER -eq 'clerk'){
 }
 if(!$Apply){Write-Host 'Plan only. Settings values were not printed or applied.';return}
 if(!$PSCmdlet.ShouldProcess($names.App,'Apply private settings and deploy isolated identity API')){return}
-$stage=Join-Path (Join-Path $repo '.deploy') ('identity-api-'+[guid]::NewGuid().ToString('N'))
+# Keep native uploader staging and temporary archives on the local volume.
+$stage=Join-Path ([IO.Path]::GetTempPath()) ('anderzilla-identity-'+[guid]::NewGuid().ToString('N'))
 $static=Join-Path $stage 'static';$api=Join-Path $stage 'api';$package=Join-Path $api 'services/identity'
 New-Item -ItemType Directory -Path $static,$package -Force | Out-Null
 foreach($path in (Get-ChildItem -LiteralPath $apiSource -File -Filter '*.py')){
@@ -79,7 +80,10 @@ try {
  $env:SWA_CLI_DEPLOYMENT_TOKEN=$secrets.properties.apiKey
  $secrets=$null
  if(!$env:SWA_CLI_DEPLOYMENT_TOKEN){throw 'Deployment credential unavailable.'}
- & npx --yes '@azure/static-web-apps-cli@2.0.10' deploy $static --app-location $static --swa-config-location $static --api-location $api --api-language python --api-version 3.11 --env production --no-use-keychain
+ Push-Location $stage
+ try {
+  & npx --yes '@azure/static-web-apps-cli@2.0.10' deploy $static --app-location $static --swa-config-location $static --api-location $api --api-language python --api-version 3.11 --env production --no-use-keychain
+ } finally { Pop-Location }
  if($LASTEXITCODE){throw 'Identity deployment failed.'}
  Write-Host "Identity API deployed to https://$($app.defaultHostname). Verify the configured provider, authorization, CORS and lifecycle callbacks before enabling frontend."
 }finally{

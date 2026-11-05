@@ -1,4 +1,5 @@
 """Bearer-only visitor API. Native cookies and SWA principals cannot authorize it."""
+import os
 from urllib.parse import urlsplit
 
 from .api import response, fields
@@ -10,6 +11,11 @@ from .clerk_service import ClerkAccountService, POLICY_VERSION
 def dispatch_clerk(store, method, path, headers=None, body=None, gateway=None, cfg=None, clock=None):
     cfg = cfg or settings()
     headers = {k.lower(): v for k, v in (headers or {}).items()}
+    # SWA owns and overwrites Authorization on its internal Functions hop.
+    # Our header still carries a fully verified Clerk bearer, never a principal.
+    authorization = headers.get('x-anderzilla-authorization')
+    if authorization is None and os.environ.get('AZ_ACCOUNT_AUTH_PROVIDER') != 'clerk':
+        authorization = headers.get('authorization')
     origin = headers.get('origin')
     cors = {'Vary': 'Origin', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer'}
     if origin in cfg['origins']:
@@ -22,7 +28,7 @@ def dispatch_clerk(store, method, path, headers=None, body=None, gateway=None, c
             if origin not in cfg['origins'] or headers.get('access-control-request-method') not in {'GET', 'POST', 'PATCH'}:
                 reject('invalid_origin', 'Origem não permitida.', 403)
             return response(status=204, headers={**cors, 'Access-Control-Allow-Methods': 'GET, POST, PATCH, OPTIONS',
-                                                'Access-Control-Allow-Headers': 'Authorization, Content-Type', 'Access-Control-Max-Age': '600'})
+                                                'Access-Control-Allow-Headers': 'Authorization, X-AnderZilla-Authorization, Content-Type', 'Access-Control-Max-Age': '600'})
         if method == 'GET' and route == '/api/account/capabilities':
             return response({'provider': 'clerk', 'available': cfg['ok'], 'registration': cfg['ok'], 'emailPassword': False,
                              'google': False, 'meta': False, 'passwordReset': False, 'emailResend': False, 'rewards': False,
@@ -39,10 +45,10 @@ def dispatch_clerk(store, method, path, headers=None, body=None, gateway=None, c
         if not isinstance(body, dict):
             reject('invalid_body', 'Objeto JSON obrigatório.')
         service = ClerkAccountService(store, cfg, clock=clock)
-        if method == 'GET' and route == '/api/account/me' and not headers.get('authorization'):
+        if method == 'GET' and route == '/api/account/me' and not authorization:
             return response({'account': None, 'onboardingRequired': False}, headers=cors)
         gateway = gateway or ClerkGateway(cfg)
-        identity = gateway.verify(headers.get('authorization'))
+        identity = gateway.verify(authorization)
         if method == 'GET' and route == '/api/account/me':
             return response(service.me(identity), headers=cors)
         if method == 'POST' and route == '/api/account/onboarding':

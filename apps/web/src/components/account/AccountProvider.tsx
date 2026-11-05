@@ -37,7 +37,7 @@ function useAccountState(auth:AuthBridge){
   const token=authRef.current.signedIn?await authRef.current.getToken():null;
   if(authRef.current.signedIn&&!token)throw new AccountError('session_expired');
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),45000);
-  try{const response=await fetch(`${base}${path}`,{method,credentials:'omit',cache:'no-store',signal:controller.signal,headers:{Accept:'application/json',...(token?{Authorization:`Bearer ${token}`} :{}),...(idempotencyKey?{'Idempotency-Key':idempotencyKey}:{}),...(method!=='GET'?{'Content-Type':'application/json'}:{})},...(method!=='GET'?{body:JSON.stringify(body??{})}:{})});
+  try{const response=await fetch(`${base}${path}`,{method,credentials:'omit',cache:'no-store',signal:controller.signal,headers:{Accept:'application/json',...(token?{'X-AnderZilla-Authorization':`Bearer ${token}`} :{}),...(idempotencyKey?{'Idempotency-Key':idempotencyKey}:{}),...(method!=='GET'?{'Content-Type':'application/json'}:{})},...(method!=='GET'?{body:JSON.stringify(body??{})}:{})});
    const data=await response.json().catch(()=>({}));if(!response.ok)throw new AccountError(typeof data.error?.code==='string'?data.error.code:typeof data.code==='string'?data.code:typeof data.error==='string'?data.error:response.status===401?'session_expired':response.status===429?'rate_limited':'request_failed');
    if(typeof data.csrfToken==='string')csrf.current=data.csrfToken;
    return data;

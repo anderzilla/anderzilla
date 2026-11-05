@@ -13,10 +13,13 @@ from .email_adapter import SmtpEmailSender
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 
-@app.route(route="account/{*path}", methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"])
-@app.route(route="points/{*path}", methods=["GET", "POST", "OPTIONS"])
 def identity_api(req: func.HttpRequest) -> func.HttpResponse:
     base = {'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff'}
+    origin = req.headers.get('origin')
+    allowed = {v.strip().rstrip('/') for v in os.environ.get('IDENTITY_ALLOWED_ORIGIN', '').split(',') if v.strip()}
+    if os.environ.get('IDENTITY_AUTH_PROVIDER') == 'clerk' and origin in allowed:
+        # Preserve readable error responses during SQL cold starts, too.
+        base.update({'Access-Control-Allow-Origin': origin, 'Vary': 'Origin'})
     try:
         raw = req.get_body() or b''
         if len(raw) > 64000:
@@ -50,3 +53,13 @@ def identity_api(req: func.HttpRequest) -> func.HttpResponse:
         # Database/SMTP/JWT exceptions may carry PII or credentials; do not log them.
         return func.HttpResponse('{"error":{"code":"temporarily_unavailable","message":"Serviço temporariamente indisponível."}}',
                                  status_code=503, mimetype='application/json', headers=base)
+
+
+@app.route(route="account/{*path}", methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"])
+def account_http(req: func.HttpRequest) -> func.HttpResponse:
+    return identity_api(req)
+
+
+@app.route(route="points/{*path}", methods=["GET", "POST", "OPTIONS"])
+def points_http(req: func.HttpRequest) -> func.HttpResponse:
+    return identity_api(req)

@@ -29,6 +29,16 @@ def cpf(number):
 
 
 class ManagedTests(unittest.TestCase):
+    def test_managed_host_ignores_platform_bearer_and_forwards_application_bearer(self):
+        with patch.dict(os.environ, {'AZ_ACCOUNT_AUTH_PROVIDER': 'clerk'}):
+            result = self.call('GET', '/api/account/me', headers={'Authorization': 'Bearer platform-token'})
+            self.assertEqual(result['status'], 200)
+            self.assertIsNone(result['body']['account'])
+            self.gateway.verify.assert_not_called()
+            self.call('GET', '/api/account/me', headers={'Authorization': 'Bearer platform-token',
+                                                       'X-AnderZilla-Authorization': 'Bearer clerk-token'})
+            self.gateway.verify.assert_called_once_with('Bearer clerk-token')
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
         self.store = SQLiteStore(Path(self.tmp.name) / 'test.sqlite')

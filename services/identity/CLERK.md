@@ -1,12 +1,14 @@
 # Contas gerenciadas — Clerk, fase 1
 
-Estado: implementação local; configuração externa e testes reais de produção pendentes. Fonte de decisões: `G:/AnderZilla-docs/strategy/ACCOUNTS-AND-ACCESS-PHASES.md`. Operação: `G:/AnderZilla-docs/operations/REGISTRATION-PHASE1-20261104.md`.
+Estado: API Clerk publicada em homologação; domínio e TLS Clerk prontos. Navegador e publicação de produção ainda em validação. Fonte de decisões: `G:/AnderZilla-docs/strategy/ACCOUNTS-AND-ACCESS-PHASES.md`. Operação: `G:/AnderZilla-docs/operations/REGISTRATION-PHASE1-20261104.md`.
 
 ## Fronteiras
 
 `IDENTITY_AUTH_PROVIDER=clerk` seleciona o contrato deste documento. O contrato nativo de `CONTRACT.md` é legado: cookies, senhas e Google OAuth próprios **não** autorizam o modo Clerk. Não publicar a fonte legada sobre o serviço existente sem reconciliação: o pacote publicado contém correções ausentes naquela fonte.
 
-O portal continua estático. O SDK React obtém token Clerk e envia `Authorization: Bearer ...` à API, com `credentials: omit`. A API valida assinatura RS256, emissor exato, expiração, início de validade e origem autorizada (`azp`); confirma sessão ativa e e-mail primário verificado no backend Clerk. Dados de perfil e metadados recebidos do navegador não são prova de identidade. Cabeçalhos administrativos SWA não concedem acesso de membro.
+O portal continua estático. O SDK React obtém token Clerk e envia `X-AnderZilla-Authorization: Bearer ...` à API, com `credentials: omit`; SWA substitui o cabeçalho Authorization padrão. A API valida assinatura RS256, emissor exato, expiração, início de validade e origem autorizada (`azp`); confirma sessão ativa e e-mail primário verificado no backend Clerk. Dados de perfil e metadados recebidos do navegador não são prova de identidade. Cabeçalhos administrativos SWA não concedem acesso de membro. Em Functions dedicada, Authorization padrão também é aceito para clientes diretos.
+
+SWA gerenciada intercepta OPTIONS sem os cabeçalhos CORS necessários a uma origem externa. Homolog web deve usar API na mesma origem ou uma Function App dedicada com CORS configurado. O proxy de loopback de teste não comprova CORS de uma publicação remota. Configurar globalHeaders não resolveu o preflight no probe real.
 
 O cadastro local é independente da identidade Clerk. Enquanto não houver CPF, data de nascimento adulta e aceite da política vigente, o perfil permanece incompleto. Contas suspensas/excluídas são rejeitadas em cada acesso, mesmo com JWT válido.
 
@@ -86,3 +88,11 @@ Não executar sanções reais como teste. Erros de banimento precisam de revisã
 Aplicação/chaves Clerk, DNS, webhook configurado, migração SQL e envio real não são comprovados por build ou mocks. Uma próxima IA deve consultar o registro operacional e o estado atual antes de publicar ou declarar a fase concluída.
 
 Compatibilidade TLS: `tds_tls.py` adapta a validação de hostname do python-tds à API atual do pyOpenSSL, usando service-identity sobre SANs cryptography. A cadeia de certificados permanece validada; ausência de SAN ou nome divergente é rejeitada.
+
+## Teste local com homologação isolada
+
+O helper `infra/azure/identity-local-homolog.py` serve `apps/web/out` em **127.0.0.1:4027** e encaminha somente `/api/` ao hostname fixo da identidade homolog. Rodar da raiz do repositório. Não expor esse servidor à rede.
+
+Preparar o build com a chave **pública dev**, `NEXT_PUBLIC_ACCOUNT_API_BASE=http://localhost:4027` e `NEXT_PUBLIC_CLERK_SECURITY_ENABLED=false`; depois executar `npm run build` em apps/web e `python infra/azure/identity-local-homolog.py` na raiz. Abrir http://localhost:4027/pt/. A origem exata de loopback deve constar somente nos settings homolog. Esse artefato é exclusivo de teste e nunca deve ser promovido a produção.
+
+Usar contas sintéticas Clerk dev com código reservado de teste. Não confundir sucesso desse código com envio real de e-mail. Não usar CPF real em fixtures, logs ou documentação.
