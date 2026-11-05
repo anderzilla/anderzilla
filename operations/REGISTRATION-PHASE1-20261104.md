@@ -10,6 +10,8 @@
 - Alterações preexistentes no código e na documentação devem ser preservadas; adicionar/commitar somente arquivos desta entrega.
 - O worktree documental apontava para Z:; `git worktree repair G:/AnderZilla-docs` restaurou a associação ao repositório em G:, sem alterar conteúdo editorial.
 
+**Decisão posterior do proprietário em 2026-11-04:** bloquear todos os menores de 18 anos nesta entrega. Implementação de vínculo parental adiada; nenhum endpoint, convite ou cadastro de menor será ativado nesta fase. O desenho abaixo de responsabilidade parental é histórico/requisito futuro, não escopo ativo.
+
 ## Evidência inicial
 
 1. Azure CLI confirmou conta `anderzilla@ymail.com`, assinatura `44b76346-26bd-4cd3-a529-627e47e99e5a`, tenant `3fdcb773-0842-4fb9-925e-bea17d681f83`.
@@ -28,8 +30,8 @@
 ## Pendências externas conhecidas
 
 - Painel Clerk abriu em tela de login; aplicação/chaves de produção ainda não confirmadas.
-- Nome do operador e contato público para privacidade/contas solicitados ao proprietário.
-- Procedimento Clerk para consentimento parental verificável precisa ser confirmado antes de ativar menores, em especial abaixo de 16 anos.
+- Operador e contato confirmados pelo proprietário: Anderson Henrique Gonçalves; player.one@anderzilla.com.
+- Menores: escopo adiado pelo proprietário; cadastro bloqueado para todos abaixo de 18 anos. Procedimento parental fica para entrega futura.
 - Validar instâncias distintas de desenvolvimento e produção, domínio/DNS, métodos de entrada e envio de e-mails em ambiente real.
 
 ## Verificações
@@ -44,3 +46,29 @@
 2. Confirmar estado Git e contratos reais dos módulos Clerk; não usar o pacote zip legado como fonte definitiva.
 3. Não declarar cadastro em produção enquanto houver pendência externa ou testes reais não executados.
 4. Atualizar este registro com commits, resultados, URLs verificadas, bloqueios e rollback após cada etapa.
+
+## Atualização de implementação e painel
+
+- Aplicação Clerk escolhida/criada pelo proprietário: `app_3LfL00ug9zbg6lc9IiZM8VFBqpZ`.
+- Instância development: `ins_3LfL02LzigyjweId4LrMfRLsqU5`.
+- Instância production criada para `anderzilla.com`: `ins_3LfLVsZrOTj3E1BBMXZIYif5EXB`.
+- Plano observado no painel: Hobby. Nenhuma assinatura paga foi contratada.
+- Em development, observados: e-mail obrigatório, verificação no cadastro por código, login por código e senha habilitados; proteção de senha comprometida ligada e mínimo 15 caracteres. Produção foi criada copiando configurações development; precisa de revalidação e DNS.
+- Chave secreta production está no checklist de exibição única. Proprietário orientado a salvá-la fora do repositório em `C:/Users/ander/.codex/anderzilla-clerk-production.env`. Não presumir existência até verificar arquivo.
+- CLI não autenticado no momento do probe. Proprietário orientado a executar `npx --yes clerk@latest auth login` para autenticar a ferramenta. Login do painel não equivale a login do CLI.
+- A falha temporária `browser.user is unavailable` foi resolvida com reinicialização de `cua_repl` e seleção da aba IAB por ID. Não contornar controles de segurança usando automação alternativa.
+
+### Validações locais concluídas
+
+- `python -m unittest discover -s services/identity -q`, usando venv em `C:/Users/ander/AppData/Local/Temp/anderzilla-identity-phase1-venv`: **55 testes passaram**, incluindo JWT assinado, origem/emissor, CPF concorrente, idade exata no fuso São Paulo, bloqueio e exclusão, assinatura falsa/expirada de webhook e replay.
+- Teste de webhook revelou incompatibilidade real: Svix atual verifica assinatura e retorna `None`; corrigido para interpretar JSON somente após verificação. Nunca processar retorno `None` como evento nem interpretar conteúdo antes de validar autenticidade.
+- `npm run build` em `apps/web`: **188 páginas exportadas**, TypeScript e compilação aprovados. Build local ainda sem chaves/configuração final; não é pacote autorizado de produção nem prova de preservação do corpus ao publicar.
+- Auditorias de dependências: npm sem vulnerabilidades conhecidas no probe após patches; pip-audit final sem vulnerabilidades conhecidas após atualização dos pins de TLS/JWT/requests. Logs privados em `.tmp/` não são provas de deploy.
+- Tentativa de inventário SQL somente leitura no banco identity production expirou com TimeoutError; nenhuma linha de conta foi exibida, criada ou alterada. Contagem e migração de possíveis contas legadas continuam pendentes. Cadastro por e-mail legado não é vinculado automaticamente ao Clerk.
+
+### Próximos passos imediatos
+
+1. Confirmar salvamento privado da chave e autenticação CLI; não criar outra aplicação.
+2. Ler registros DNS específicos da instância production e configurar no provedor atual, preservando e-mail Google.
+3. Configurar chaves e webhook assinado, migrar apenas o banco identity, testar em homologação isolada e verificar contas legadas.
+4. Build com variáveis públicas corretas e teste real de cadastro/e-mail, recuperação, perfil, exportação e exclusão; depois seguir fluxo de promoção e registrar rollback.
