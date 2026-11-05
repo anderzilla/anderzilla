@@ -226,7 +226,7 @@ export function OfficialMissions({
         : `${Date.now()}-${Math.random()}`);
     setLastClaimKey(key);
     try {
-      const ok = await a.claimReward(activePending.pendingToken);
+      const ok = await a.claimReward(activePending.pendingToken, key);
       if (ok) {
         setUncertainClaim(false);
         setLastClaimKey(null);
@@ -428,7 +428,7 @@ export function OfficialMissions({
                     {!focusMissionId && (
                       <a
                         className="button secondary"
-                        href={`/${lang}/conta/missoes/${encodeURIComponent(m.id)}/`}
+                        href={`/${lang}/conta/missoes/detalhe/?id=${encodeURIComponent(m.id)}`}
                       >
                         {t("Detalhes", "Details")}
                       </a>

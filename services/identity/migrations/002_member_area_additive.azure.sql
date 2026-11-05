@@ -1,164 +1,19 @@
--- Additive Azure SQL migration for Member Area & Single Wallet (Lotes 2-4)
--- Prepared for operator execution after homolog validation; do NOT auto-run in production without operator gate.
-
-IF OBJECT_ID('dbo.member_collection_state', 'U') IS NULL
-CREATE TABLE dbo.member_collection_state (
-  account_id VARCHAR(64) PRIMARY KEY REFERENCES dbo.accounts(id),
-  interests_version INT NOT NULL DEFAULT 1,
-  exploration_generation INT NOT NULL DEFAULT 1,
-  backfilled_at VARCHAR(40) NULL,
-  updated_at VARCHAR(40) NOT NULL
-);
-
-IF OBJECT_ID('dbo.member_interests', 'U') IS NULL
-CREATE TABLE dbo.member_interests (
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  category VARCHAR(40) NOT NULL,
-  created_at VARCHAR(40) NOT NULL,
-  CONSTRAINT PK_member_interests PRIMARY KEY (account_id, category)
-);
-
-IF OBJECT_ID('dbo.member_bookmarks', 'U') IS NULL
-CREATE TABLE dbo.member_bookmarks (
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  discovery_id VARCHAR(120) NOT NULL,
-  saved_at VARCHAR(40) NOT NULL,
-  updated_at VARCHAR(40) NOT NULL,
-  CONSTRAINT PK_member_bookmarks PRIMARY KEY (account_id, discovery_id)
-);
-
-IF OBJECT_ID('dbo.member_exploration', 'U') IS NULL
-CREATE TABLE dbo.member_exploration (
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  discovery_id VARCHAR(120) NOT NULL,
-  first_opened_at VARCHAR(40) NOT NULL,
-  last_opened_at VARCHAR(40) NOT NULL,
-  last_item_version VARCHAR(64) NOT NULL,
-  open_count INT NOT NULL DEFAULT 1,
-  history_generation INT NOT NULL DEFAULT 1,
-  CONSTRAINT PK_member_exploration PRIMARY KEY (account_id, discovery_id)
-);
-
-IF OBJECT_ID('dbo.member_exploration_tombstones', 'U') IS NULL
-CREATE TABLE dbo.member_exploration_tombstones (
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  discovery_id VARCHAR(120) NOT NULL,
-  deleted_at VARCHAR(40) NOT NULL,
-  min_generation INT NOT NULL,
-  CONSTRAINT PK_member_exploration_tombstones PRIMARY KEY (account_id, discovery_id)
-);
-
-IF OBJECT_ID('dbo.member_exploration_events', 'U') IS NULL
-CREATE TABLE dbo.member_exploration_events (
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  event_key VARCHAR(160) NOT NULL,
-  discovery_id VARCHAR(120) NOT NULL,
-  item_version VARCHAR(64) NOT NULL,
-  history_generation INT NOT NULL,
-  recorded_at VARCHAR(40) NOT NULL,
-  CONSTRAINT PK_member_exploration_events PRIMARY KEY (account_id, event_key)
-);
-
-IF OBJECT_ID('dbo.account_entitlements', 'U') IS NULL
-CREATE TABLE dbo.account_entitlements (
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  entitlement_key VARCHAR(120) NOT NULL,
-  status VARCHAR(32) NOT NULL,
-  granted_at VARCHAR(40) NOT NULL,
-  expires_at VARCHAR(40) NULL,
-  CONSTRAINT PK_account_entitlements PRIMARY KEY (account_id, entitlement_key)
-);
-
-IF OBJECT_ID('dbo.mission_campaigns', 'U') IS NULL
-CREATE TABLE dbo.mission_campaigns (
-  mission_id VARCHAR(80) NOT NULL,
-  mission_version INT NOT NULL,
-  status VARCHAR(32) NOT NULL DEFAULT 'active',
-  total_budget_kp INT NOT NULL,
-  reserved_kp INT NOT NULL DEFAULT 0,
-  consumed_kp INT NOT NULL DEFAULT 0,
-  per_account_limit INT NOT NULL DEFAULT 1,
-  starts_at VARCHAR(40) NULL,
-  ends_at VARCHAR(40) NULL,
-  updated_at VARCHAR(40) NOT NULL,
-  CONSTRAINT PK_mission_campaigns PRIMARY KEY (mission_id, mission_version),
-  CONSTRAINT CK_mission_campaigns_budget CHECK (
-    total_budget_kp >= 0 AND reserved_kp >= 0 AND consumed_kp >= 0 AND reserved_kp + consumed_kp <= total_budget_kp
-  )
-);
-
-IF OBJECT_ID('dbo.mission_attempts', 'U') IS NULL
-CREATE TABLE dbo.mission_attempts (
-  attempt_id VARCHAR(64) PRIMARY KEY,
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  mission_id VARCHAR(80) NOT NULL,
-  mission_version INT NOT NULL,
-  challenge_id VARCHAR(120) NOT NULL UNIQUE,
-  status VARCHAR(32) NOT NULL,
-  questions_json NVARCHAR(MAX) NOT NULL,
-  issued_at VARCHAR(40) NOT NULL,
-  expires_at VARCHAR(40) NOT NULL,
-  updated_at VARCHAR(40) NOT NULL
-);
-
-IF OBJECT_ID('dbo.mission_pending_claims', 'U') IS NULL
-CREATE TABLE dbo.mission_pending_claims (
-  pending_id VARCHAR(64) PRIMARY KEY,
-  attempt_id VARCHAR(64) NOT NULL UNIQUE REFERENCES dbo.mission_attempts(attempt_id),
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  mission_id VARCHAR(80) NOT NULL,
-  mission_version INT NOT NULL,
-  occurrence_key VARCHAR(80) NOT NULL,
-  award_kp INT NOT NULL CHECK (award_kp >= 0),
-  pending_token NVARCHAR(MAX) NOT NULL,
-  evidence_ref VARCHAR(120) NOT NULL UNIQUE,
-  status VARCHAR(32) NOT NULL,
-  reservation_state VARCHAR(32) NOT NULL,
-  issued_at VARCHAR(40) NOT NULL,
-  expires_at VARCHAR(40) NOT NULL,
-  updated_at VARCHAR(40) NOT NULL
-);
-
-IF OBJECT_ID('dbo.mission_receipts', 'U') IS NULL
-CREATE TABLE dbo.mission_receipts (
-  receipt_id VARCHAR(64) PRIMARY KEY,
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  mission_id VARCHAR(80) NOT NULL,
-  mission_version INT NOT NULL,
-  occurrence_key VARCHAR(80) NOT NULL,
-  pending_id VARCHAR(64) NOT NULL UNIQUE,
-  ledger_entry_id VARCHAR(64) NOT NULL UNIQUE,
-  awarded_kp INT NOT NULL CHECK (awarded_kp >= 0),
-  completed_at VARCHAR(40) NOT NULL,
-  CONSTRAINT UQ_mission_receipt_occurrence UNIQUE (account_id, mission_id, mission_version, occurrence_key)
-);
-
-IF OBJECT_ID('dbo.idempotent_operations', 'U') IS NULL
-CREATE TABLE dbo.idempotent_operations (
-  operation_id VARCHAR(64) PRIMARY KEY,
-  account_id VARCHAR(64) NOT NULL REFERENCES dbo.accounts(id),
-  operation_type VARCHAR(40) NOT NULL,
-  idempotency_key VARCHAR(120) NOT NULL,
-  payload_hash CHAR(64) NOT NULL,
-  status VARCHAR(32) NOT NULL,
-  response_status INT NOT NULL,
-  response_json NVARCHAR(MAX) NOT NULL,
-  created_at VARCHAR(40) NOT NULL,
-  updated_at VARCHAR(40) NOT NULL,
-  CONSTRAINT UQ_idempotent_account_op UNIQUE (account_id, operation_type, idempotency_key)
-);
-
-IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'idx_member_bookmarks_account_saved' AND object_id = OBJECT_ID('dbo.member_bookmarks'))
-CREATE INDEX idx_member_bookmarks_account_saved ON dbo.member_bookmarks(account_id, saved_at DESC, discovery_id ASC);
-
-IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'idx_member_exploration_account_opened' AND object_id = OBJECT_ID('dbo.member_exploration'))
-CREATE INDEX idx_member_exploration_account_opened ON dbo.member_exploration(account_id, last_opened_at DESC, discovery_id ASC);
-
-IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'idx_mission_attempts_account' AND object_id = OBJECT_ID('dbo.mission_attempts'))
-CREATE INDEX idx_mission_attempts_account ON dbo.mission_attempts(account_id, mission_id, mission_version, status);
-
-IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'idx_mission_pending_claims_account' AND object_id = OBJECT_ID('dbo.mission_pending_claims'))
-CREATE INDEX idx_mission_pending_claims_account ON dbo.mission_pending_claims(account_id, status, expires_at);
-
-IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'idx_ledger_account_created' AND object_id = OBJECT_ID('dbo.ledger'))
-CREATE INDEX idx_ledger_account_created ON dbo.ledger(account_id, created_at DESC, id ASC);
+-- Additive Member Area migration. Canonical definitions from schema.azure.sql.
+-- Existing identity tables must already exist. No destructive rollback.
+IF OBJECT_ID('dbo.member_collection_state') IS NULL CREATE TABLE dbo.member_collection_state (account_id NVARCHAR(64) PRIMARY KEY REFERENCES accounts(id),interests_version INT NOT NULL DEFAULT 1 CHECK(interests_version>=1),exploration_generation INT NOT NULL DEFAULT 1 CHECK(exploration_generation>=1),exploration_paused BIT NOT NULL DEFAULT 0,backfilled_at BIGINT NULL,updated_at BIGINT NOT NULL);
+IF OBJECT_ID('dbo.member_interests') IS NULL CREATE TABLE dbo.member_interests (account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),category_id NVARCHAR(32) NOT NULL,created_at BIGINT NOT NULL,CONSTRAINT pk_member_interests PRIMARY KEY(account_id,category_id));
+IF OBJECT_ID('dbo.member_bookmarks') IS NULL CREATE TABLE dbo.member_bookmarks (account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),discovery_id NVARCHAR(128) NOT NULL,saved_at BIGINT NOT NULL,CONSTRAINT pk_member_bookmarks PRIMARY KEY(account_id,discovery_id));
+IF NOT EXISTS(SELECT 1 FROM sys.indexes WHERE name='idx_member_bookmarks_order' AND object_id=OBJECT_ID('dbo.member_bookmarks')) CREATE INDEX idx_member_bookmarks_order ON dbo.member_bookmarks(account_id, saved_at DESC, discovery_id DESC);
+IF OBJECT_ID('dbo.member_exploration') IS NULL CREATE TABLE dbo.member_exploration (account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),discovery_id NVARCHAR(128) NOT NULL,first_opened_at BIGINT NOT NULL,last_opened_at BIGINT NOT NULL,open_count INT NOT NULL DEFAULT 1 CHECK(open_count>=1),generation INT NOT NULL DEFAULT 1 CHECK(generation>=1),item_version INT NOT NULL DEFAULT 1 CHECK(item_version>=1),CONSTRAINT pk_member_exploration PRIMARY KEY(account_id,discovery_id));
+IF NOT EXISTS(SELECT 1 FROM sys.indexes WHERE name='idx_member_exploration_order' AND object_id=OBJECT_ID('dbo.member_exploration')) CREATE INDEX idx_member_exploration_order ON dbo.member_exploration(account_id, last_opened_at DESC, discovery_id DESC);
+IF OBJECT_ID('dbo.member_exploration_tombstones') IS NULL CREATE TABLE dbo.member_exploration_tombstones (account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),discovery_id NVARCHAR(128) NOT NULL,removed_at BIGINT NOT NULL,removed_generation INT NOT NULL CHECK(removed_generation>=1),item_version INT NOT NULL CHECK(item_version>=1),CONSTRAINT pk_member_exploration_tombstones PRIMARY KEY(account_id,discovery_id));
+IF OBJECT_ID('dbo.member_exploration_events') IS NULL CREATE TABLE dbo.member_exploration_events (account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),event_id NVARCHAR(128) NOT NULL,discovery_id NVARCHAR(128) NOT NULL,history_generation INT NOT NULL CHECK(history_generation>=1),created_at BIGINT NOT NULL,CONSTRAINT pk_member_exploration_events PRIMARY KEY(account_id,event_id));
+IF OBJECT_ID('dbo.account_entitlements') IS NULL CREATE TABLE dbo.account_entitlements (id NVARCHAR(64) PRIMARY KEY,account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),kind NVARCHAR(32) NOT NULL CHECK(kind IN('site_plan','purchase','live_channel')),target_id NVARCHAR(128) NOT NULL,state NVARCHAR(16) NOT NULL CHECK(state IN('active','revoked','expired')),starts_at BIGINT NULL,ends_at BIGINT NULL,created_at BIGINT NOT NULL);
+IF NOT EXISTS(SELECT 1 FROM sys.indexes WHERE name='idx_account_entitlements_lookup' AND object_id=OBJECT_ID('dbo.account_entitlements')) CREATE INDEX idx_account_entitlements_lookup ON dbo.account_entitlements(account_id, kind, state);
+IF OBJECT_ID('dbo.mission_campaigns') IS NULL CREATE TABLE dbo.mission_campaigns (id NVARCHAR(64) PRIMARY KEY,total_budget_kp INT NOT NULL CHECK(total_budget_kp>=0),reserved_kp INT NOT NULL DEFAULT 0 CHECK(reserved_kp>=0),consumed_kp INT NOT NULL DEFAULT 0 CHECK(consumed_kp>=0),per_account_limit_kp INT NOT NULL CHECK(per_account_limit_kp>=0),starts_at BIGINT NOT NULL,ends_at BIGINT NOT NULL,state NVARCHAR(32) NOT NULL CHECK(state IN('draft','active','new_activity_paused','maintenance','closed')),CONSTRAINT ck_mission_campaigns_period CHECK(ends_at>starts_at),CONSTRAINT ck_mission_campaigns_budget CHECK(reserved_kp + consumed_kp <= total_budget_kp));
+IF OBJECT_ID('dbo.mission_attempts') IS NULL CREATE TABLE dbo.mission_attempts (id NVARCHAR(64) PRIMARY KEY,account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),mission_id NVARCHAR(64) NOT NULL,mission_version INT NOT NULL,occurrence_key NVARCHAR(128) NOT NULL,campaign_id NVARCHAR(64) NOT NULL REFERENCES mission_campaigns(id),definition_hash NVARCHAR(64) NOT NULL,award_kp INT NOT NULL CHECK(award_kp>0 AND award_kp<=500),state NVARCHAR(32) NOT NULL CHECK(state IN('active','submitted','failed','expired','completed')),attempt_number INT NOT NULL CHECK(attempt_number>=1),expires_at BIGINT NOT NULL,submitted_at BIGINT NULL,result_code NVARCHAR(64) NULL,pending_id NVARCHAR(64) NULL,receipt_id NVARCHAR(64) NULL,created_at BIGINT NOT NULL,CONSTRAINT fk_mission_attempts_mission FOREIGN KEY(mission_id,mission_version) REFERENCES missions(id,version));
+IF NOT EXISTS(SELECT 1 FROM sys.indexes WHERE name='idx_mission_attempts_account' AND object_id=OBJECT_ID('dbo.mission_attempts')) CREATE INDEX idx_mission_attempts_account ON dbo.mission_attempts(account_id, mission_id, created_at DESC);
+IF OBJECT_ID('dbo.mission_pending_claims') IS NULL CREATE TABLE dbo.mission_pending_claims (id NVARCHAR(64) PRIMARY KEY,account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),attempt_id NVARCHAR(64) NOT NULL UNIQUE REFERENCES mission_attempts(id),mission_id NVARCHAR(64) NOT NULL,mission_version INT NOT NULL,occurrence_key NVARCHAR(128) NOT NULL,campaign_id NVARCHAR(64) NOT NULL REFERENCES mission_campaigns(id),evidence_id NVARCHAR(64) NOT NULL UNIQUE REFERENCES mission_evidence(id),award_kp INT NOT NULL CHECK(award_kp>0 AND award_kp<=500),reservation_state NVARCHAR(32) NOT NULL CHECK(reservation_state IN('reserved','consumed','released')),expires_at BIGINT NOT NULL,claimed_at BIGINT NULL,released_at BIGINT NULL,receipt_id NVARCHAR(64) NULL,created_at BIGINT NOT NULL,CONSTRAINT fk_mission_pending_mission FOREIGN KEY(mission_id,mission_version) REFERENCES missions(id,version));
+IF NOT EXISTS(SELECT 1 FROM sys.indexes WHERE name='idx_mission_pending_account' AND object_id=OBJECT_ID('dbo.mission_pending_claims')) CREATE INDEX idx_mission_pending_account ON dbo.mission_pending_claims(account_id, reservation_state, expires_at);
+IF OBJECT_ID('dbo.mission_receipts') IS NULL CREATE TABLE dbo.mission_receipts (id NVARCHAR(64) PRIMARY KEY,account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),completion_id NVARCHAR(64) NOT NULL UNIQUE REFERENCES completions(id),ledger_id NVARCHAR(64) NOT NULL UNIQUE REFERENCES ledger(id),pending_id NVARCHAR(64) NOT NULL UNIQUE REFERENCES mission_pending_claims(id),attempt_id NVARCHAR(64) NOT NULL UNIQUE REFERENCES mission_attempts(id),mission_id NVARCHAR(64) NOT NULL,mission_version INT NOT NULL,occurrence_key NVARCHAR(128) NOT NULL,award_kp INT NOT NULL CHECK(award_kp>0 AND award_kp<=500),support_ref NVARCHAR(64) NOT NULL UNIQUE,created_at BIGINT NOT NULL,CONSTRAINT uq_mission_receipt_occurrence UNIQUE(account_id,mission_id,occurrence_key));
+IF OBJECT_ID('dbo.idempotent_operations') IS NULL CREATE TABLE dbo.idempotent_operations (account_id NVARCHAR(64) NOT NULL REFERENCES accounts(id),operation_type NVARCHAR(32) NOT NULL,idempotency_key NVARCHAR(128) NOT NULL,operation_id NVARCHAR(64) NOT NULL UNIQUE,payload_hash NVARCHAR(64) NOT NULL,status_code INT NOT NULL,response_json NVARCHAR(MAX) NOT NULL,created_at BIGINT NOT NULL,CONSTRAINT pk_idempotent_operations PRIMARY KEY(account_id,operation_type,idempotency_key));

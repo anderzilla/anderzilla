@@ -295,7 +295,7 @@ class MemberAreaService:
         reject_authority_fields(body)
         if not isinstance(body, dict) or set(body.keys()) - {'categoryIds', 'interests', 'expectedVersion'}:
             reject('invalid_fields', 'Campos inválidos para interesses.', 422)
-        expected_version = parse_expected_version(body, headers, required=False)
+        expected_version = parse_expected_version(body, headers, required=True)
         raw_cats = body.get('interests') if 'interests' in body else body.get('categoryIds', [])
         cats = preferences(raw_cats)
         with self.store.transaction() as db:
@@ -626,7 +626,7 @@ class MemberAreaService:
         if event_type != 'open':
             reject('invalid_event_type', 'Apenas eventos de abertura confirmada (open) são aceitos.', 422)
         req_gen = body.get('historyGeneration')
-        if req_gen is not None and (type(req_gen) is not int or req_gen < 1):
+        if type(req_gen) is not int or req_gen < 1:
             reject('invalid_generation', 'historyGeneration inválido.', 422)
         req_item_ver = parse_item_version(body.get('itemVersion'))
         raw_event_id = body.get('eventId')
@@ -634,7 +634,7 @@ class MemberAreaService:
             member = self.require_member(db, identity)
             state = self._ensure_collection_state(db, member['id'])
             current_gen = state['exploration_generation']
-            if req_gen is not None and req_gen < current_gen:
+            if req_gen != current_gen:
                 reject('stale_exploration_event', 'Este evento pertence a um histórico já limpo.', 409)
             entitlements = self._active_entitlements(db, member['id'])
             proj = self._accessible_item(db, member['id'], disc_id, entitlements)
@@ -721,7 +721,7 @@ class MemberAreaService:
         with self.store.transaction() as db:
             member = self.require_member(db, identity)
             state = self._ensure_collection_state(db, member['id'])
-            gen = state['exploration_generation']
+            gen = state['exploration_generation'] + 1
             existing = db.execute(
                 'SELECT item_version FROM member_exploration WHERE account_id=? AND discovery_id=?',
                 (member['id'], disc_id),
@@ -744,7 +744,7 @@ class MemberAreaService:
                     'INSERT INTO member_exploration_tombstones(account_id,discovery_id,removed_at,removed_generation,item_version) VALUES(?,?,?,?,?)',
                     (member['id'], disc_id, now, gen, ver),
                 )
-            db.execute('UPDATE member_collection_state SET updated_at=? WHERE account_id=?', (now, member['id']))
+            db.execute('UPDATE member_collection_state SET exploration_generation=?,updated_at=? WHERE account_id=?', (gen, now, member['id']))
             self._sync_legacy_mirror(db, member['id'])
             return {
                 'discoveryId': disc_id,
@@ -758,7 +758,7 @@ class MemberAreaService:
         reject_authority_fields(body)
         if not isinstance(body, dict) or set(body.keys()) - {'confirm', 'expectedGeneration'}:
             reject('invalid_fields', 'Campos inválidos para limpar exploração.', 422)
-        if 'confirm' in body and body.get('confirm') is not True:
+        if body.get('confirm') is not True:
             reject('confirmation_required', 'Confirme a limpeza do histórico de exploração.', 422)
         with self.store.transaction() as db:
             member = self.require_member(db, identity)
@@ -819,14 +819,9 @@ class MemberAreaService:
         row = db.execute('SELECT * FROM mission_campaigns WHERE id=?', (camp_id,)).fetchone()
         if row:
             return row
-        budget = int(self.cfg.get('kpCycleBudget') if 'kpCycleBudget' in self.cfg else os.environ.get('IDENTITY_KP_CYCLE_BUDGET', '500'))
-        per_account = int(self.cfg.get('kpPerAccountLimit') if 'kpPerAccountLimit' in self.cfg else os.environ.get('IDENTITY_KP_ACCOUNT_LIMIT', '500'))
-        state = 'active' if self.program_state() == 'active' and budget > 0 else ('new_activity_paused' if self.program_state() == 'new_activity_paused' else 'draft')
-        db.execute(
-            'INSERT INTO mission_campaigns(id,total_budget_kp,reserved_kp,consumed_kp,per_account_limit_kp,starts_at,ends_at,state) VALUES(?,?,?,?,?,?,?,?)',
-            (camp_id, max(budget, 0), 0, 0, max(per_account, 0), mission['starts_at'], mission['ends_at'], state),
-        )
-        return db.execute('SELECT * FROM mission_campaigns WHERE id=?', (camp_id,)).fetchone()
+        # Funding is provisioned by a trusted operator, never inferred from a
+        # mission or minted by a runtime default when a campaign is missing.
+        reject('reward_capacity', 'Esta missão ainda não está disponível.', 409)
 
     def _mission_meta(self, mission):
         try:
@@ -835,7 +830,7 @@ class MemberAreaService:
                 data = {}
         except Exception:
             data = {}
-        occurrence = str(data.get('occurrenceKey') or f"{mission['id']}@v{mission['version']}")
+        occurrence = str(data.get('occurrenceKey') or mission['id'])
         max_attempts = int(data.get('maxAttempts', 3))
         cooldown_sec = int(data.get('cooldownSeconds', 0))
         return data, occurrence, max(1, max_attempts), max(0, cooldown_sec)
@@ -1256,6 +1251,12 @@ class MemberAreaService:
             return self._format_attempt_response(attempt, mission or {'verifier': 'quiz'}, defn, pending, receipt)
 
     def submit_evidence(self, identity, body, headers=None):
+        result = self._submit_evidence_transaction(identity, body, headers)
+        if isinstance(result, Rejected):
+            raise result
+        return result
+
+    def _submit_evidence_transaction(self, identity, body, headers=None):
         reject_authority_fields(body)
         if not isinstance(body, dict) or set(body.keys()) - {'attemptId', 'challengeId', 'answers', 'interests'}:
             reject('invalid_fields', 'Campos inválidos para envio de evidência.', 422)
@@ -1323,6 +1324,8 @@ class MemberAreaService:
                         (now, attempt_id),
                     )
                     db.execute('UPDATE challenges SET used_at=? WHERE id=?', (now, attempt_id))
+                    # Commit failed state; raising here would roll it back.
+                    return err
                 raise
             account_used = self._account_campaign_kp(db, member['id'], campaign['id'], now)
             if account_used + attempt['award_kp'] > campaign['per_account_limit_kp']:

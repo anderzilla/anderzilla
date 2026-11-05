@@ -299,7 +299,6 @@ function DashboardView() {
           <article className="member-block-card span-2">
             <div className="member-block-head">
               <div>
-                <p className="eyebrow">{t("BLOCO 1", "BLOCK 1")}</p>
                 <h2>{t("Seu Radar", "Your Radar")}</h2>
               </div>
               <a className="button secondary" href={`/${lang}/conta/radar/`}>
@@ -345,7 +344,6 @@ function DashboardView() {
           <article className="member-block-card">
             <div className="member-block-head">
               <div>
-                <p className="eyebrow">{t("BLOCO 2", "BLOCK 2")}</p>
                 <h2>{t("KP e Carteira", "KP & Wallet")}</h2>
               </div>
               <a className="button secondary" href={`/${lang}/conta/carteira/`}>
@@ -377,7 +375,6 @@ function DashboardView() {
           <article className="member-block-card">
             <div className="member-block-head">
               <div>
-                <p className="eyebrow">{t("BLOCO 3", "BLOCK 3")}</p>
                 <h2>
                   {t("Mochila", "Backpack")} ({data.backpack.totalCount})
                 </h2>
@@ -416,7 +413,6 @@ function DashboardView() {
           <article className="member-block-card">
             <div className="member-block-head">
               <div>
-                <p className="eyebrow">{t("BLOCO 4", "BLOCK 4")}</p>
                 <h2>{t("Próxima missão", "Next mission")}</h2>
               </div>
               <a className="button secondary" href={`/${lang}/conta/missoes/`}>
@@ -444,7 +440,7 @@ function DashboardView() {
                 </p>
                 <a
                   className="button"
-                  href={`/${lang}/conta/missoes/${encodeURIComponent(data.nextMission.mission.id)}/`}
+                  href={`/${lang}/conta/missoes/detalhe/?id=${encodeURIComponent(data.nextMission.mission.id)}`}
                 >
                   {data.nextMission.mission.pendingClaim
                     ? t("Confirmar resgate de KP", "Confirm KP claim")
@@ -460,7 +456,6 @@ function DashboardView() {
           <article className="member-block-card">
             <div className="member-block-head">
               <div>
-                <p className="eyebrow">{t("BLOCO 5", "BLOCK 5")}</p>
                 <h2>{t("Exploração", "Exploration")}</h2>
               </div>
               <a
@@ -477,7 +472,7 @@ function DashboardView() {
               </strong>{" "}
               {t("territórios explorados", "territories explored")} ·{" "}
               <strong>{data.exploration.totalOpened}</strong>{" "}
-              {t("descobertas lidas", "discoveries read")}
+              {t("descobertas abertas", "discoveries opened")}
             </p>
             {data.exploration.recentItems.length === 0 ? (
               <p className="notice">{msg("exploration_empty")}</p>
@@ -504,7 +499,6 @@ function DashboardView() {
           <article className="member-block-card">
             <div className="member-block-head">
               <div>
-                <p className="eyebrow">{t("BLOCO 6", "BLOCK 6")}</p>
                 <h2>{t("Seus interesses", "Your interests")}</h2>
               </div>
               <a
@@ -1333,8 +1327,8 @@ function ExplorationView() {
           </h1>
           <p className="lede">
             {t(
-              "Seu histórico editorial confirmado. Abrir notícias registra sua leitura e não concede KP automático.",
-              "Your confirmed editorial history. Opening stories records your reading and does not grant automatic KP.",
+              "Seu mapa de descobertas. Este histórico registra o que você abriu, sem conceder KP automaticamente.",
+              "Your discovery map. This history records what you opened, without awarding KP automatically.",
             )}
           </p>
         </div>
@@ -1387,7 +1381,7 @@ function ExplorationView() {
           </strong>{" "}
           {t("territórios visitados", "territories visited")} ·{" "}
           <strong>{totalOpened}</strong>{" "}
-          {t("descobertas lidas", "discoveries read")}
+          {t("descobertas abertas", "discoveries opened")}
         </p>
       </div>
 
@@ -1651,7 +1645,7 @@ function WalletDetailView() {
           <p className="notice">
             {t(
               "Nenhuma movimentação registrada ainda.",
-              "No ledger entries recorded yet.",
+              "No activity yet.",
             )}
           </p>
         ) : (
@@ -1665,7 +1659,7 @@ function WalletDetailView() {
                       : entry.availableDelta}{" "}
                     KP
                   </strong>{" "}
-                  · {entry.reason}
+                  · {entry.reason === "mission" ? t("Missão concluída", "Mission completed") : t("Movimentação de KP", "KP activity")}
                   {entry.referenceId ? ` (${entry.referenceId})` : ""}
                   <br />
                   <small>
@@ -1703,8 +1697,8 @@ function ProfileView() {
           </h1>
           <p className="lede">
             {t(
-              "Gerencie seu perfil público, preferências de comunicação, exportação de dados e exclusão da conta.",
-              "Manage your public profile, communication preferences, data export and account deletion.",
+              "Gerencie seu perfil, preferências de comunicação, exportação de dados e exclusão da conta.",
+              "Manage your profile, communication preferences, data export and account deletion.",
             )}
           </p>
         </div>
@@ -1723,6 +1717,12 @@ function MemberAreaContent({
 }) {
   const account = useAccount();
   const { t, lang, toast } = useHub();
+  const [resolvedMissionId, setResolvedMissionId] = useState(missionId === "detalhe" ? undefined : missionId);
+  useEffect(() => {
+    if (missionId !== "detalhe") return;
+    const value = new URLSearchParams(window.location.search).get("id");
+    setResolvedMissionId(value && /^[A-Za-z0-9_.:-]{1,64}$/.test(value) ? value : undefined);
+  }, [missionId]);
 
   useEffect(() => {
     if (account.status !== "ready" || !account.user) return;
@@ -1750,12 +1750,12 @@ function MemberAreaContent({
       <main id="member-main" className="wrap member-area-main" tabIndex={-1}>
         <MemberSubnav view={view} lang={lang} t={t} />
 
-        {account.status === "loading" || account.profileStatus === "loading" ? (
+        {!account.user && (account.status === "loading" || account.profileStatus === "loading") ? (
           <div className="account-loader" role="status" aria-busy="true">
             <span className="account-spinner" aria-hidden="true" />
             <p>{t("Verificando sua sessão…", "Verifying your session…")}</p>
           </div>
-        ) : account.profileStatus === "waking" ? (
+        ) : !account.user && account.profileStatus === "waking" ? (
           <div className="member-block-card" role="status">
             <h2>{t("Conectando à sua conta", "Connecting to your account")}</h2>
             <p>{msg("warming")}</p>
@@ -1818,7 +1818,7 @@ function MemberAreaContent({
             {view === "wallet" && <WalletDetailView />}
             {view === "missions" && <OfficialMissions />}
             {view === "mission_detail" && (
-              <OfficialMissions focusMissionId={missionId} />
+              <OfficialMissions focusMissionId={resolvedMissionId} />
             )}
             {view === "profile" && <ProfileView />}
           </>

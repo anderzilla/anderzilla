@@ -619,7 +619,7 @@ class MemberAreaScenarioTests(unittest.TestCase):
             'PUT',
             '/api/member/interests',
             token=user['token'],
-            body={'interests': ['ia']},
+            body={'interests': ['ia'], 'expectedVersion': 1},
         )
         r_ia = self._call('GET', '/api/member/radar', token=user['token'])['body']
         self.assertEqual(r_ia['status'], 'ok')

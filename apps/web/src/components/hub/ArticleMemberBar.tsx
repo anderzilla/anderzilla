@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import {
   AccountProvider,
-  consumePostLoginIntent,
   savePostLoginIntent,
   useAccount,
 } from "../account/AccountProvider";
@@ -18,7 +17,6 @@ function ArticleMemberBarInner({
   const account = useAccount();
   const { t, lang, player, toggleSave, recordOpen, toast } = useHub();
   const recordedRef = useRef(false);
-  const [intentApplied, setIntentApplied] = useState(false);
 
   useEffect(() => {
     if (account.status !== "ready" || !account.user) return;
@@ -26,24 +24,10 @@ function ArticleMemberBarInner({
       recordedRef.current = true;
       void recordOpen(discoveryId);
     }
-    if (!intentApplied) {
-      const intent = consumePostLoginIntent();
-      if (
-        intent &&
-        intent.type === "save_article" &&
-        intent.discoveryId === discoveryId
-      ) {
-        setIntentApplied(true);
-        if (!player.saved.includes(discoveryId)) {
-          void toggleSave(discoveryId);
-        }
-      }
-    }
   }, [
     account.status,
     account.user,
     discoveryId,
-    intentApplied,
     player.saved,
     recordOpen,
     toggleSave,

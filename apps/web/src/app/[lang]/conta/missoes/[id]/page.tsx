@@ -5,6 +5,7 @@ import { buildContaMetadata, validateContaLang } from "../../routeHelper";
 type MissionParams = { lang: string; id: string };
 
 const KNOWN_MISSION_IDS = [
+  "detalhe",
   "checkpoint-curiosidade",
   "monte-seu-radar",
   "radar-ia-2026",

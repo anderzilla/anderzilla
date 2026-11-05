@@ -1,7 +1,7 @@
 "use client";
 import {ClerkProvider, useAuth, useClerk} from '@clerk/react';
 import {ptBR, enUS} from '@clerk/localizations';
-import {createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode} from 'react';
+import {createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode} from 'react';
 
 export type AccountUser = {
   id: string;
@@ -242,6 +242,7 @@ type AuthBridge = {
   loaded: boolean;
   signedIn: boolean;
   subject?: string | null;
+  sessionId?: string | null;
   getToken: () => Promise<string | null>;
   signOut: () => Promise<void>;
 };
@@ -369,6 +370,8 @@ function useAccountState(auth: AuthBridge) {
     async (path: string, method = 'GET', body?: unknown, idempotencyKey?: string, extraHeaders?: Record<string, string>) => {
       if (!isApiAvailable()) throw new AccountError('unavailable');
       const startEpoch = sessionEpochRef.current;
+      const startSubject = authRef.current.subject;
+      const startSession = authRef.current.sessionId;
       const startOwner = userRef.current?.id || null;
       const synthToken = getSyntheticLoopbackToken();
       let token: string | null = null;
@@ -380,7 +383,7 @@ function useAccountState(auth: AuthBridge) {
       if (authRef.current.signedIn && !logoutPendingLocalRef.current && !token && !synthToken) {
         throw new AccountError('session_expired', 401);
       }
-      if (sessionEpochRef.current !== startEpoch) {
+      if (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession) {
         throw new AccountError('session_invalidated', 499);
       }
       const controller = new AbortController();
@@ -402,10 +405,13 @@ function useAccountState(auth: AuthBridge) {
           },
           ...(isBodyMethod ? {body: JSON.stringify(body ?? {})} : {}),
         });
-        if (sessionEpochRef.current !== startEpoch || (startOwner && userRef.current && userRef.current.id !== startOwner)) {
+        if (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession || (startOwner && userRef.current && userRef.current.id !== startOwner)) {
           throw new AccountError('session_invalidated', 499);
         }
         const data = await response.json().catch(() => ({}));
+        if (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession) {
+          throw new AccountError('session_invalidated', 499);
+        }
         if (!response.ok) {
           const code =
             typeof data.error?.code === 'string'
@@ -544,11 +550,9 @@ function useAccountState(auth: AuthBridge) {
         const msg = ev.data;
         if (!msg || typeof msg !== 'object') return;
         if (msg.type === 'session_invalidated') {
+          logoutPendingLocalRef.current = true;
           clearPrivateState(false);
           setProfileStatus('idle');
-          if (authRef.current.signedIn || getSyntheticLoopbackToken()) {
-            void refresh().catch(() => {});
-          }
         } else if (msg.type === 'collections_updated' || msg.type === 'wallet_updated') {
           if (userRef.current && (!msg.accountId || msg.accountId === userRef.current.id)) {
             void refresh().catch(() => {});
@@ -593,6 +597,16 @@ function useAccountState(auth: AuthBridge) {
     };
   }, [clearPrivateState, refresh, reconnect]);
 
+  const lastIdentity = useRef({subject: auth.subject, sessionId: auth.sessionId});
+  useLayoutEffect(() => {
+    if (lastIdentity.current.subject !== auth.subject || lastIdentity.current.sessionId !== auth.sessionId) {
+      lastIdentity.current = {subject: auth.subject, sessionId: auth.sessionId};
+      if (auth.signedIn && auth.subject) logoutPendingLocalRef.current = false;
+      clearPrivateState(false);
+      setProfileStatus('loading');
+    }
+  }, [auth.subject, auth.sessionId, clearPrivateState]);
+
   useEffect(() => {
     const synth = Boolean(getSyntheticLoopbackToken());
     if (!auth.loaded && !synth) return;
@@ -624,7 +638,7 @@ function useAccountState(auth: AuthBridge) {
           setError(e.code);
         }
       });
-  }, [auth.loaded, auth.signedIn, auth.subject, refresh, clearPrivateState, reauthReturnScreen]);
+  }, [auth.loaded, auth.signedIn, auth.subject, auth.sessionId, refresh, clearPrivateState, reauthReturnScreen]);
 
   useEffect(() => {
     try {
@@ -821,12 +835,12 @@ function useAccountState(auth: AuthBridge) {
     action,
     patchProfile,
     savePreferences,
-    claimReward: (pendingId?: string) =>
+    claimReward: (pendingId?: string, operationKey?: string) =>
       action(async () => {
         if (!user?.emailVerified) throw new AccountError('email_not_verified');
         const targetId = pendingId || pendingClaims[0]?.pendingId || pending?.pendingToken;
         if (!targetId) throw new AccountError('invalid_pending');
-        const idemKey = `claim-${targetId}`;
+        const idemKey = operationKey || `claim-${targetId}`;
         await request('/api/points/pending/claim', 'POST', {pendingId: targetId}, idemKey);
         forgetReward();
         await loadWallet();
@@ -954,19 +968,20 @@ function useAccountState(auth: AuthBridge) {
 const Context = createContext<ReturnType<typeof useAccountState> | null>(null);
 
 function ClerkBridge({onChange}: {onChange: (auth: AuthBridge) => void}) {
-  const {isLoaded, isSignedIn, userId, getToken} = useAuth();
+  const {isLoaded, isSignedIn, userId, sessionId, getToken} = useAuth();
   const clerk = useClerk();
   useEffect(() => {
     onChange({
       loaded: isLoaded,
       signedIn: !!isSignedIn,
       subject: userId || null,
+      sessionId: sessionId || null,
       getToken: () => getToken(),
       signOut: async () => {
         await clerk.signOut();
       },
     });
-  }, [isLoaded, isSignedIn, userId, getToken, clerk, onChange]);
+  }, [isLoaded, isSignedIn, userId, sessionId, getToken, clerk, onChange]);
   return null;
 }
 
