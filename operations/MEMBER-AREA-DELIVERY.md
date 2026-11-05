@@ -4,6 +4,10 @@
 
 ## Estado observado e correções necessárias
 
+### Delegação de implementação
+
+O proprietário pediu que o Antigravity execute o código e o Codex valide depois. Prompt canônico: [ANTIGRAVITY-MEMBER-AREA.md](../ai/prompts/ANTIGRAVITY-MEMBER-AREA.md). Delegação prevê branch isolada, cinco lotes e relatório reproduzível; não inclui publicação em produção antes da revisão. Esta referência não comprova que o Antigravity já executou o trabalho.
+
 | Evidência no código atual | Diferença para a decisão nova | Trabalho |
 |---|---|---|
 | HubProvider usa guestPlayer/localStorage para saved/opened/interests | Visitante ainda tem recursos agora exclusivos | Remover escrita/leitura/contadores anônimos e limpar legado; manter somente preferências públicas permitidas |
