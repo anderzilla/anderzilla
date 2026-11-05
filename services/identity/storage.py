@@ -7,6 +7,9 @@ from pathlib import Path
 class Result:
     def __init__(self, cursor):
         self.cursor = cursor
+    @property
+    def rowcount(self):
+        return self.cursor.rowcount
     def _row(self, row):
         if row is None:
             return None

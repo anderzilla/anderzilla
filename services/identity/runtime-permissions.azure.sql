@@ -25,3 +25,18 @@ GRANT SELECT ON OBJECT::dbo.managed_bans TO anderzilla_identity_runtime;
 GRANT SELECT, INSERT ON OBJECT::dbo.managed_audit TO anderzilla_identity_runtime;
 GRANT SELECT, INSERT, UPDATE ON OBJECT::dbo.managed_deletions TO anderzilla_identity_runtime;
 GRANT SELECT, INSERT ON OBJECT::dbo.managed_webhook_receipts TO anderzilla_identity_runtime;
+
+-- Member Area relational collections, entitlements and transactional KP/missions grants.
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.member_collection_state TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.member_interests TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.member_bookmarks TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.member_exploration TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.member_exploration_tombstones TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.member_exploration_events TO anderzilla_identity_runtime;
+GRANT SELECT ON OBJECT::dbo.account_entitlements TO anderzilla_identity_runtime;
+GRANT SELECT, UPDATE ON OBJECT::dbo.mission_campaigns TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.mission_attempts TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON OBJECT::dbo.mission_pending_claims TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT ON OBJECT::dbo.mission_receipts TO anderzilla_identity_runtime;
+GRANT SELECT, INSERT ON OBJECT::dbo.idempotent_operations TO anderzilla_identity_runtime;
+DENY UPDATE, DELETE ON OBJECT::dbo.mission_receipts TO anderzilla_identity_runtime;
