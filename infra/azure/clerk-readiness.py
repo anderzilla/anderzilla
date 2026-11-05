@@ -21,10 +21,11 @@ REQUIRED = (
 )
 
 
-def origin(value):
+def origin(value, allow_loopback=False):
     try:
         p = urlsplit(value)
-        return p.scheme == 'https' and bool(p.hostname) and not any(
+        secure = p.scheme == 'https' or (allow_loopback and p.scheme == 'http' and p.hostname in {'localhost', '127.0.0.1'})
+        return secure and bool(p.hostname) and not any(
             (p.username, p.password, p.query, p.fragment, p.path not in ('', '/')))
     except (ValueError, TypeError):
         return False
@@ -44,7 +45,7 @@ def inspect(values, environment):
         errors.append('unexpected_sql_server')
     if values['IDENTITY_SQL_DATABASE'] != 'anderzilla-identity-' + environment:
         errors.append('unexpected_sql_database')
-    if values['IDENTITY_SQL_USER'] != 'anderzilla_identity_runtime':
+    if values['IDENTITY_SQL_USER'] not in {'anderzilla_identity_runtime', 'anderzilla_clerk_runtime'}:
         errors.append('dedicated_runtime_user_required')
     if len(values['IDENTITY_CPF_HMAC_KEY']) < 32:
         errors.append('cpf_secret_too_short')
@@ -52,7 +53,7 @@ def inspect(values, environment):
         if not origin(values[key]):
             errors.append('invalid_https_origin:' + key)
     origins = {v.strip().rstrip('/') for v in values['IDENTITY_ALLOWED_ORIGIN'].split(',')}
-    if not origins or not all(origin(v) for v in origins):
+    if not origins or not all(origin(v, allow_loopback=environment == 'homolog') for v in origins):
         errors.append('invalid_allowed_origins')
     if environment == 'production' and 'https://anderzilla.com' not in origins:
         errors.append('production_origin_missing')

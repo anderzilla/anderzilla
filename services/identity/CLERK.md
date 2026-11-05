@@ -43,7 +43,7 @@ Backend, por ambiente:
 
 - `IDENTITY_AUTH_PROVIDER=clerk`, `IDENTITY_ENV=homolog|production`.
 - `IDENTITY_ALLOWED_ORIGIN`: origens HTTPS explícitas separadas por vírgula; sem wildcard. Produção inclui `https://anderzilla.com` e a origem www se ela puder executar a app.
-- `IDENTITY_SQL_SERVER`, `IDENTITY_SQL_DATABASE`, `IDENTITY_SQL_USER`, `IDENTITY_SQL_PASSWORD`: banco identity separado do CMS e usuário contido dedicado.
+- `IDENTITY_SQL_SERVER`, `IDENTITY_SQL_DATABASE`, `IDENTITY_SQL_USER`, `IDENTITY_SQL_PASSWORD`: banco identity separado do CMS e usuário contido dedicado. O novo modo usa `anderzilla_clerk_runtime`, separado do usuário legado `anderzilla_identity_runtime`; não rotacionar a credencial legada.
 - `IDENTITY_CPF_HMAC_KEY`: aleatório, gerado fora do repositório, distinto entre ambientes.
 - `CLERK_ISSUER`: emissor HTTPS exato da instância, sem barra final.
 - `CLERK_SECRET_KEY`: chave secreta do ambiente correto; produção exige chave live.
@@ -84,3 +84,5 @@ Não executar sanções reais como teste. Erros de banimento precisam de revisã
 ## Pendências que não podem ser simuladas
 
 Aplicação/chaves Clerk, DNS, webhook configurado, migração SQL e envio real não são comprovados por build ou mocks. Uma próxima IA deve consultar o registro operacional e o estado atual antes de publicar ou declarar a fase concluída.
+
+Compatibilidade TLS: `tds_tls.py` adapta a validação de hostname do python-tds à API atual do pyOpenSSL, usando service-identity sobre SANs cryptography. A cadeia de certificados permanece validada; ausência de SAN ou nome divergente é rejeitada.

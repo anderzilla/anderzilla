@@ -3,6 +3,7 @@ param(
  [Parameter(Mandatory)][ValidateSet('homolog','production')][string]$Environment,
  [Parameter(Mandatory)][System.Management.Automation.PSCredential]$AdminCredential,
  [Parameter(Mandatory)][System.Security.SecureString]$RuntimePassword,
+ [ValidateSet('anderzilla_identity_runtime','anderzilla_clerk_runtime')][string]$RuntimeUser='anderzilla_identity_runtime',
  [string]$AzureCli='C:/Users/ander/.codex/tools/azure-cli/portable/bin/az.cmd'
 )
 . (Join-Path $PSScriptRoot 'identity-common.ps1')
@@ -11,6 +12,7 @@ $names=Get-IdentityNames $Environment
 Assert-IdentityDatabase (Invoke-IdentityAz -Arguments @('sql','db','show','--name',$names.Database,'--server',$IdentityServer,'--resource-group',$IdentityGroup))
 $schema=Get-Content -LiteralPath (Join-Path $PSScriptRoot '../../services/identity/schema.azure.sql') -Raw
 $grants=Get-Content -LiteralPath (Join-Path $PSScriptRoot '../../services/identity/runtime-permissions.azure.sql') -Raw
+$grants=$grants.Replace('anderzilla_identity_runtime',$RuntimeUser)
 $builder=[System.Data.SqlClient.SqlConnectionStringBuilder]::new()
 $builder['Data Source']="$IdentityServer.database.windows.net"
 $builder['Initial Catalog']=$names.Database
@@ -28,7 +30,7 @@ try {
   $runtime=[System.Net.NetworkCredential]::new('unused',$RuntimePassword).Password
   if($runtime.Length -lt 32){throw 'Runtime password must contain at least 32 characters.'}
   $escaped=$runtime.Replace("'","''")
-  $userSql="IF DATABASE_PRINCIPAL_ID(N'anderzilla_identity_runtime') IS NULL CREATE USER anderzilla_identity_runtime WITH PASSWORD=N'$escaped';"
+  $userSql="IF DATABASE_PRINCIPAL_ID(N'$RuntimeUser') IS NULL CREATE USER $RuntimeUser WITH PASSWORD=N'$escaped';"
   $phaseIndex=0
   foreach($text in @($schema,$userSql,$grants)){
    $phase=@('schema','runtime-user','grants')[$phaseIndex]

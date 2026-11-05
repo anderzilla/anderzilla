@@ -349,6 +349,15 @@ class GatewayTests(unittest.TestCase):
             self.assertFalse(settings()['ok'])
             os.environ['CLERK_SECRET_KEY'] = 'sk_live_OFFLINE'
             self.assertTrue(settings()['ok'])
+            os.environ['IDENTITY_ALLOWED_ORIGIN'] = 'http://localhost:4027'
+            self.assertFalse(settings()['ok'])
+            os.environ['IDENTITY_ENV'] = 'homolog'
+            self.assertTrue(settings()['ok'])
+            os.environ['IDENTITY_ALLOWED_ORIGIN'] = 'http://untrusted.example.invalid'
+            self.assertFalse(settings()['ok'])
+            os.environ['IDENTITY_ALLOWED_ORIGIN'] = 'http://localhost:4027'
+            os.environ['CLERK_ISSUER'] = 'http://localhost:4027'
+            self.assertFalse(settings()['ok'])
 
 
 if __name__ == '__main__':

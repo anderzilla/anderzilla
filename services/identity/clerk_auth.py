@@ -15,10 +15,12 @@ def settings():
     public_key = os.environ.get('CLERK_JWT_KEY', '').replace('\\n', '\n')
     cpf_key = os.environ.get('IDENTITY_CPF_HMAC_KEY', '')
     webhook_key = os.environ.get('CLERK_WEBHOOK_SIGNING_SECRET', '')
-    def valid_origin(value):
+    def valid_origin(value, allow_loopback=False):
         p = urlsplit(value)
-        return p.scheme == 'https' and p.hostname and not p.username and not p.password and not p.query and not p.fragment and not p.path
-    valid = bool(origins and all(valid_origin(v) for v in origins) and valid_origin(issuer)
+        secure = p.scheme == 'https' or (allow_loopback and os.environ.get('IDENTITY_ENV') == 'homolog' and
+                 p.scheme == 'http' and p.hostname in {'localhost', '127.0.0.1'})
+        return secure and p.hostname and not p.username and not p.password and not p.query and not p.fragment and not p.path
+    valid = bool(origins and all(valid_origin(v, True) for v in origins) and valid_origin(issuer)
                  and secret.startswith('sk_') and len(cpf_key) >= 32 and public_key.startswith('-----BEGIN PUBLIC KEY-----')
                  and webhook_key.startswith('whsec_'))
     valid = valid and os.environ.get('IDENTITY_ENV') in {'homolog', 'production'} and all(os.environ.get(k) for k in

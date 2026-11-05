@@ -54,6 +54,8 @@ class AzureSQLStore:
     def connect(self):
         import certifi
         import pytds
+        from .tds_tls import configure
+        configure()
         return pytds.connect(server=os.environ['IDENTITY_SQL_SERVER'], database=os.environ['IDENTITY_SQL_DATABASE'],
                              user=os.environ['IDENTITY_SQL_USER'], password=os.environ['IDENTITY_SQL_PASSWORD'],
                              cafile=certifi.where(), validate_host=True, enc_login_only=False, autocommit=False,

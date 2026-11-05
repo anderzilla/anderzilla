@@ -1,6 +1,8 @@
 """Standalone visitor API. No authority is accepted from SWA identity headers."""
 import json
 import os
+from .runtime_config import configure_settings
+configure_settings()
 import azure.functions as func
 from urllib.parse import urlsplit
 from .api import dispatch
