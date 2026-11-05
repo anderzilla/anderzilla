@@ -1,12 +1,13 @@
 import { BrandWordmark } from "@/components/BrandAssets";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { compareRadarNewestFirst, discoveries, formatRadarDay, instagramPostUrl, radarCardDate, radarCardLabel, type Discovery, type Language } from '@/components/hub/model';
+import { compareRadarNewestFirst, discoveries, formatRadarDay, instagramPostUrl, radarCardDate, radarCardLabel, type Discovery } from '@/components/hub/model';
 import published from '@/components/hub/cms-published.json';
 import { DemoBadge, findMedia, mediaCaption, SafeMarkdown } from '@/components/hub/Editorial';
 import '@/components/hub/hub.css';
 import { MediaGallery } from '@/components/hub/MediaGallery';
 import { ArticleShare } from '@/components/hub/ArticleShare';
+import { ArticleMemberBar } from '@/components/hub/ArticleMemberBar';
 
 type PageRecord=Discovery & {slug?:string;bodyPT?:string;bodyEN?:string};
 type Params={lang:string;section:string;slug:string};
@@ -49,6 +50,7 @@ export default async function Article({params}:{params:Promise<Params>}){
      {item.isDemo&&<DemoBadge english={!pt}/>}
      <h1>{local(item,'title',p.lang)}</h1><p className="lede">{local(item,'summary',p.lang)}</p>
      <p className="source">{item.author||'AnderZilla'}{radarCardDate(item).day&&<> · <time dateTime={radarCardDate(item).day}>{radarCardLabel(item, pt?'pt':'en')}</time></>}</p>
+     {p.section==='radar'&&<ArticleMemberBar discoveryId={item.id} itemVersion={modified||'v1'} lang={pt?'pt':'en'}/>}
      {instagram&&<p className="article-social"><a href={instagram} target="_blank" rel="noopener noreferrer">{pt?'Veja no Instagram':'See it on Instagram'}</a></p>}
      {item.verifiedAt&&<p className="source">{pt?'Apuração':'Verified'}: <time dateTime={item.verifiedAt}>{formatRadarDay(item.verifiedAt, pt?'pt':'en')}</time>{item.eventDate&&<> · {pt?'Data do anúncio ou evento':'Announcement or event date'}: <time dateTime={item.eventDate}>{formatRadarDay(item.eventDate, pt?'pt':'en')}</time></>}</p>}
      {media&&<figure><a className="article-cover-link" href={media.url} target="_blank" rel="noopener noreferrer" aria-label={`${pt?'Abrir imagem ampliada':'Open full image'}: ${(pt?media.altPT:media.altEN)||''}`}><img className="article-cover" src={media.url} width={media.width} height={media.height} alt={(pt?media.altPT:media.altEN)||''}/></a><figcaption>{mediaCaption(media.credit, media.license)}{media.sourceUrl&&<> · <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{pt?'Fonte da imagem':'Image source'} ↗</a></>}</figcaption></figure>}
@@ -63,4 +65,3 @@ export default async function Article({params}:{params:Promise<Params>}){
      <a className="button" href={`/${p.lang}/radar/`}>{pt?'Voltar ao Radar':'Back to Radar'} →</a>
    </article></main></div>
 }
-
