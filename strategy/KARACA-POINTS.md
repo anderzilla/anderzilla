@@ -1,5 +1,7 @@
 # Karaca Points e Store Points
 
+**Decisão de 05/11/2026:** KP, carteira e missões oficiais exigem membro completo ativo desde iniciar tentativa até receber crédito; não há pendência visitante transferível. Mochila, interesses e exploração também passam a exigir cadastro completo. Dashboard, menu, saldo no topo, fluxos e contratos estão em [MEMBER-AREA.md](MEMBER-AREA.md) e [MEMBER-AREA-SECURITY-API.md](MEMBER-AREA-SECURITY-API.md). Esta entrega documenta o plano, não ativa programa/premiações. Playtest e valores demo abaixo são históricos e não devem aparecer como funcionalidades abertas ou saldo real. Não há conversão de saldo demo.
+
 Planejamento detalhado de 10/09/2026: [economia, XP, gamificação, parcerias e operação](KARACA-ECONOMY-AND-PARTNERSHIPS.md) e [mapa de candidatos e recompensas com fontes oficiais](../research/KARACA-PARTNER-MAP-2026-09.md). São propostas; não ativam pontos reais, contratos, orçamento ou migração do saldo demonstrativo. O plano explicita revisão jurídica para campanhas com estoque promocional limitado, além dos controles técnicos abaixo.
 
 Direção autorizada pelo proprietário: identidade **Karaca!**, pontos ganhos no site e usados exclusivamente na Store Points. Produtos fornecidos pelo proprietário. Sem compra de pontos ou checkout em dinheiro. Assinaturas, produtos digitais e gadgets são categorias planejadas, não estoque confirmado.

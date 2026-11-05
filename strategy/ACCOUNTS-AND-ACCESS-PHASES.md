@@ -2,6 +2,10 @@
 
 Atualizado em 2026-11-04. Escopo confirmado no chat de implementação de cadastro.
 
+## Ampliação documental em 05/11/2026 — área do jogador
+
+O proprietário determinou que mochila, interesses, exploração, KP, carteira e missões oficiais sejam exclusivos de sessão válida com cadastro completo. Login comum deve abrir dashboard, Perfil vira página separada, nome/avatar abre menu, Seu Radar mostra notícias conforme preferências e saldo KP aparece no topo quando habilitado e confirmado. O pedido desta etapa é **planejar e documentar**, sem ativar KP nem publicar redesign. Plano canônico: [MEMBER-AREA.md](MEMBER-AREA.md), [UX](MEMBER-AREA-UX.md), [segurança/API](MEMBER-AREA-SECURITY-API.md) e [entrega](../operations/MEMBER-AREA-DELIVERY.md). Esta decisão substitui qualquer orientação antiga de funções pessoais locais para visitantes; leitura editorial pública permanece aberta. Valores/regras econômicas e benefícios exigem aprovação própria antes da ativação.
+
 ## Fases
 
 1. **Cadastro geral:** e-mail, CPF brasileiro obrigatório em PT/EN, confirmação de e-mail, login e funcionalidades básicas de conta. Serviços gratuitos serão definidos depois. Termos devem proibir práticas criminosas, abusivas e pornográficas e prever banimento permanente.

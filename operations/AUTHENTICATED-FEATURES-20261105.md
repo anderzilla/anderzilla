@@ -1,5 +1,7 @@
 # Funções de usuários autenticados — inventário de 05/11/2026
 
+**Atualização posterior do proprietário em 05/11/2026:** mochila, interesses e exploração também exigem autenticação e cadastro completo, assim como KP, carteira e missões. A coluna “Visitante” abaixo descreve a implementação observada antes dessa decisão, não a regra futura autorizada. Plano vigente: [área do jogador](../strategy/MEMBER-AREA.md) e [entrega](MEMBER-AREA-DELIVERY.md). Não oferecer migração/progresso local como comportamento novo.
+
 ## Escopo e evidência
 
 Análise do código atual da branch codex/registration-phase1-20261104, registro REGISTRATION-PHASE1-20261104.md e probes públicos somente leitura. Não foram criadas/excluídas contas nem alterada produção nesta análise. Portal /pt/ respondeu200 e capabilities de produção respondeu provider=clerk, available=true, registration=true, minimumAge=18, minorAccessEnabled=false, rewards=false. Capabilities não prova todas as funções nem saúde do banco.

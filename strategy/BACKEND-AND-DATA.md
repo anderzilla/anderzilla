@@ -1,5 +1,7 @@
 # Backend e dados — AnderZilla
 
+**Precedência em 05/11/2026:** [área do jogador](MEMBER-AREA.md) e [contratos de acesso](MEMBER-AREA-SECURITY-API.md) substituem propostas de mochila/interesses/exploração anônimas e desafios/recompensas sem conta deste histórico. Todas essas funções exigirão cadastro completo. Arquitetura de identidade já implantada e evidências atuais estão em [registro de cadastro](../operations/REGISTRATION-PHASE1-20261104.md): frontend SWA estático; produção usa API Function App dedicada com CORS, homolog web usa /api same-origin. Não interpretar a proposta histórica abaixo como inventário de infraestrutura atual ou autorização de novo custo.
+
 Decisão de arquitetura, 10/09/2026. O objetivo é um hub divertido e recorrente de games, IA, gadgets e tecnologia, com monetização contextual e Karaca Points. Este documento especifica o backend a implementar; não declara API ou banco implantados. Código de referência transacional existe em `services/rewards` na branch de aplicação.
 
 ## Escolha para o primeiro piloto
@@ -27,7 +29,7 @@ Produção com resgates exige comprovar capacidade, recuperação e verba de rec
 | Função visual | Dados e comportamento de produção |
 |---|---|
 | Radar, categorias, busca, PT/EN | Conteúdo validado e versionado no Git; export público por idioma; busca local no índice publicado. Rebuild publica novidades, sem consultar SQL para cada artigo. |
-| Mochila e interesses | Visitante pode salvar localmente; conta sincroniza bookmarks e preferências na API. Importar somente itens válidos após ação explícita, nunca saldo demo. |
+| Mochila, interesses e exploração | Regra vigente: somente membro completo ativo; dados próprios na API. Visitante lê conteúdo público, sem persistência pessoal. Não importar dados locais legados automaticamente nem saldo demo. |
 | Quiz e passaporte | Questões públicas sem gabarito de missão; tentativa emitida pelo servidor com versão/expiração; resultado verificado no backend. Abrir artigo não comprova leitura. |
 | Missões, carteira e extrato | Valores, recorrência, janela e evidência definidos no servidor; ledger imutável e saldo transacional. |
 | Store Points e pedidos | Só produto financiado, disponível e elegível pode ativar; custo e termos congelados no pedido. Reserva de pontos e estoque é atômica. |
