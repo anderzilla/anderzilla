@@ -109,3 +109,19 @@ Esta seção substitui as pendências anteriores de login CLI, salvamento de cha
 - Para testar o fluxo de UI sem mudar produção, servidor loopback localhost:4027 encaminha /api para homolog. Build local usa NEXT_PUBLIC_ACCOUNT_API_BASE=http://localhost:4027; isso é apenas ferramenta de teste, não artefato publicável. Resolver homolog web com mesma origem (API junto da SWA privada) ou Function App dedicada antes da promoção. Produção já usa Function App dedicada; validar CORS ali separadamente.
 - Navegador carregou Clerk dev, gate18+, cadastro por e-mail e confirmação com código reservado de teste. Identidade sintética somente dev: anderzilla.phase1+clerk_test@example.com. Isso **não valida entrega real de e-mail**. Onboarding privado ainda em teste; nenhuma aprovação de termos reais pelo operador foi simulada.
 - Build frontend com chaves públicas dev aprovado. Suíte atual: **64 testes aprovados**, incluindo import do host, cabeçalho de autenticação e erro503 com origem exata sem detalhes privados.
+
+## Validação completa em homologação e publicação same-origin (`anderzilla-web-homolog`)
+
+- Corrigida inconsistência em `IdentityService.update_profile`: ao atualizar `marketingOptIn` em contas Clerk (`ClerkAccountService`), o consentimento agora grava `POLICY_VERSION` (`2026-11-04`) em vez da versão legada `2026-09-17`. Coberto em `test_clerk.py` (64 testes aprovados) e republicado em `anderzilla-identity-homolog`.
+- Bateria ponta a ponta executada contra `anderzilla-identity-homolog` e SQL `anderzilla-identity-homolog` com JWTs reais emitidos pelo Clerk Frontend API (`azp=http://localhost:4027`):
+  - `GET /api/account/me`: `200` com perfil completo e CPF mascarado (`***.***.***-09`), e `onboardingRequired: true` antes do onboarding.
+  - `PATCH /api/account/profile`: `200` atualizando nome, avatar preset, interesses, salvos e opt-in de marketing; tentativa de enviar `cpf` rejeitada com `422 invalid_fields`.
+  - `GET /api/account/export`: `200` retornando dados da conta, consentimentos (`2026-11-04`) e `registration` com CPF mascarado (sem vazar CPF completo ou chave HMAC).
+  - `POST /api/account/logout`: `204` revogando a sessão no Clerk; chamada subsequente a `/api/account/me` com o mesmo JWT recusada imediatamente com `401 authentication_required`.
+  - `POST /api/account/onboarding`: menor de 18 anos bloqueado com `403 minor_registration_unavailable`; CPF já existente bloqueado com `409 registration_conflict`; cadastro adulto inédito aprovado com `200`.
+  - `POST /api/account/delete`: sem `DELETE` recusado com `422 confirmation_required`; com `confirm: DELETE` retornou `204`, removeu o usuário no Clerk (`404` confirmado na API do Clerk), limpou dados pessoais e `managed_profiles` no SQL e registrou conclusão em `managed_deletions`.
+- Homologação web na mesma origem (`anderzilla-web-homolog`, `https://salmon-stone-0a4d29c0f.5.azurestaticapps.net`):
+  - `AccountProvider.tsx` e `clerk-readiness.py` atualizados para aceitar `NEXT_PUBLIC_ACCOUNT_API_BASE=/api` (same-origin).
+  - `prepare-artifact.ps1` ajustado no perfil `homolog` para definir `platform.apiRuntime = python:3.11`, manter exigência de `anderzilla_reviewer` em `/*` e liberar `/api/account/webhooks/clerk` para entrega assinada Svix.
+  - Settings de runtime (`AZ_ACCOUNT_*` e `CLERK_*`) aplicados e pacote unificado (`apps/web/out` + API Python 3.11) implantado com sucesso em `anderzilla-web-homolog`.
+  - Verificado: acesso anônimo a `/pt/` e `/api/account/capabilities` bloqueado pela SWA (`401`); webhook sem assinatura válida rejeitado (`400`); webhook assinado processado com transação SQL (`200`).
