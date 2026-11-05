@@ -2,11 +2,11 @@
  * Banners manuais do carrossel da home.
  *
  * Eles giram no mesmo bloco das notícias e não ocupam as 5 vagas
- * (uma por dia: entra a mais recente, sai a mais antiga).
+ * (as cinco notícias mais novas; a mais antiga sai quando entra uma mais nova).
  * Notícias vêm primeiro; banners ativos entram em seguida, nesta ordem.
  *
  * O banner Karaca é o fallback. Ele só aparece quando não há notícia
- * na janela de 5 dias nem outro banner manual ativo.
+ * nem outro banner manual ativo.
  *
  * Para adicionar um banner promocional, copie um objeto para `heroBanners`
  * e mantenha o Karaca na lista:
@@ -108,7 +108,7 @@ function fromCms(banner: PublishedBanner): ManualBanner {
   };
 }
 
-const cmsBanners = ((published.banners ?? []) as PublishedBanner[]).map(fromCms);
+const cmsBanners = (((published as { banners?: PublishedBanner[] }).banners ?? []) as PublishedBanner[]).map(fromCms);
 
 /** Banners do CMS (já ordenados) e, por último, o Karaca como fallback. */
 export const heroBanners: ManualBanner[] = [...cmsBanners, karacaBanner];

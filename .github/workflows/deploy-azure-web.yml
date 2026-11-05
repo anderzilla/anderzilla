@@ -1,22 +1,22 @@
 name: Azure web release
 on:
   push:
-    branches: [develop]
+    branches: [develop, main]
   workflow_dispatch:
     inputs:
       homolog_run_id:
-        description: Successful develop run ID to promote unchanged (dispatch on main)
+        description: Successful develop run ID to promote unchanged (dispatch on main; use for rollback)
         required: true
         type: string
 permissions:
   contents: read
   actions: read
 concurrency:
-  group: azure-web-${{ github.event_name == 'push' && 'homolog' || 'production' }}
+  group: azure-web-${{ github.ref == 'refs/heads/develop' && 'homolog' || 'production' }}
   cancel-in-progress: false
 jobs:
   homolog:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     environment: homolog
     steps:
@@ -59,34 +59,48 @@ jobs:
           status=$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' --max-time 30 "${HOMOLOG_URL%/}/")
           [[ "$status" == 401 || "$status" == 403 ]]
   production:
-    if: github.event_name == 'workflow_dispatch'
+    # Push to main (fast-forward from develop) promotes the exact artifact homologated for
+    # that commit. workflow_dispatch on main with a run ID promotes an older artifact (rollback).
+    # The production environment must require a reviewer and allow only main; declaring
+    # the name here does not create that protection.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    # Configure this environment's main-only deployment policy and reviewers in GitHub.
-    # Declaring the name here does not create approval protection.
     environment: production
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Verify successful homolog provenance
+      - name: Resolve and verify homolog run
+        id: homolog
         env:
           GH_TOKEN: ${{ github.token }}
-          RUN_ID: ${{ inputs.homolog_run_id }}
+          INPUT_RUN_ID: ${{ inputs.homolog_run_id }}
         shell: bash
         run: |
           set -euo pipefail
           [[ "$GITHUB_REF" == refs/heads/main ]]
+          if [[ "$GITHUB_EVENT_NAME" == push ]]; then
+            RUN_ID=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/deploy-azure-web.yml/runs?branch=develop&event=push&status=success&head_sha=$GITHUB_SHA&per_page=1" --jq '.workflow_runs[0].id // empty')
+            if [[ -z "$RUN_ID" ]]; then
+              echo "::error::Commit $GITHUB_SHA has no successful homolog run on develop. Push it to develop first, then fast-forward main."
+              exit 1
+            fi
+          else
+            RUN_ID="$INPUT_RUN_ID"
+          fi
           [[ "$RUN_ID" =~ ^[0-9]+$ ]]
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" > "$RUNNER_TEMP/homolog-run.json"
           jq -e '.path == ".github/workflows/deploy-azure-web.yml" and .head_branch == "develop" and .event == "push" and .conclusion == "success"' "$RUNNER_TEMP/homolog-run.json"
           source_sha=$(jq -r '.head_sha' "$RUNNER_TEMP/homolog-run.json")
           [[ "$source_sha" =~ ^[a-f0-9]{40}$ ]]
           git merge-base --is-ancestor "$source_sha" HEAD
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "Promoting homolog run $RUN_ID (commit $source_sha)" >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/download-artifact@v4
         with:
           name: azure-web-static
           path: deploy-production
-          run-id: ${{ inputs.homolog_run_id }}
+          run-id: ${{ steps.homolog.outputs.run_id }}
           github-token: ${{ github.token }}
       - name: Check static artifact
         run: test -f deploy-production/index.html && test -f deploy-production/staticwebapp.config.json

@@ -2,17 +2,67 @@
 import { useEffect, useRef, useState } from "react";
 import { useHub } from "./HubProvider";
 import {
-  discoveries,
   hubSettings,
+  LIVE_STATUS_POLL_MS,
+  LIVE_STATUS_URL,
+  parseLiveStatus,
   platforms,
   socials,
+  YOUTUBE_CHANNEL_URL,
+  YOUTUBE_LIVE_URL,
+  type Broadcast,
+  type LiveStatus,
   type Platform,
 } from "./model";
+import { BrandAvatar } from "../BrandAssets";
 import { External, Ghost, Icon } from "./Primitives";
 import { DemoBadge } from "./Editorial";
 
+type RemoteLive =
+  | { state: "pending" }
+  | { state: "ready"; status: LiveStatus }
+  | { state: "error" };
+
+function useLiveStatus(): RemoteLive {
+  const [remote, setRemote] = useState<RemoteLive>({ state: "pending" });
+  useEffect(() => {
+    let cancelled = false;
+    let current = 0;
+    async function pull() {
+      const id = ++current;
+      try {
+        const response = await fetch(LIVE_STATUS_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const status = parseLiveStatus(await response.json());
+        if (!status) throw new Error("invalid status");
+        if (!cancelled && id === current) setRemote({ state: "ready", status });
+      } catch {
+        if (!cancelled && id === current) setRemote({ state: "error" });
+      }
+    }
+    void pull();
+    const timer = window.setInterval(() => void pull(), LIVE_STATUS_POLL_MS);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, []);
+  return remote;
+}
+function activeBroadcast(now: number): Broadcast | null {
+  const broadcast = hubSettings.broadcast;
+  if (
+    !broadcast ||
+    Date.parse(broadcast.checkedAt) > now ||
+    Date.parse(broadcast.expiresAt) <= now
+  )
+    return null;
+  return broadcast;
+}
+
 export function LiveRoom({ inRoom = false }: { inRoom?: boolean }) {
   const { t, lang, ready } = useHub();
+  const remote = useLiveStatus();
   const [now, setNow] = useState(0);
   useEffect(() => {
     if (!ready) return;
@@ -20,43 +70,68 @@ export function LiveRoom({ inRoom = false }: { inRoom?: boolean }) {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(timer);
   }, [ready]);
-  const b = hubSettings.broadcast;
-  const live =
-    b && Date.parse(b.checkedAt) <= now && Date.parse(b.expiresAt) > now
-      ? b
+  const fallback =
+    remote.state === "ready" ? null : activeBroadcast(now);
+  const live = remote.state === "ready" && remote.status.live
+    ? {
+        title: remote.status.title,
+        url: remote.status.url || YOUTUBE_LIVE_URL,
+      }
+    : fallback
+      ? {
+          title: fallback.title,
+          url:
+            fallback.platform === "youtube"
+              ? YOUTUBE_LIVE_URL
+              : platforms[fallback.platform].url,
+        }
       : null;
   const next = hubSettings.events
     .filter((e) => !e.isDemo && Date.parse(e.startsAt) > now)
     .sort((a, b) => Date.parse(a.startsAt) - Date.parse(b.startsAt))[0];
   return (
-    <section className="live-room">
+    <section className={`live-room${live ? " is-live" : ""}`}>
       <div className="live-summary">
-        <Ghost size={54} />
+        <BrandAvatar size={54} />
         <div className="live-heading">
           <p className="eyebrow">
             <span className={`status-dot ${live ? "on" : ""}`} />
             {live
-              ? t("AO VIVO AGORA", "LIVE NOW")
+              ? t("ANDERSON AO VIVO AGORA", "ANDERSON IS LIVE NOW")
               : t("PONTO DE ENCONTRO", "MEETING POINT")}
           </p>
           <h2>
             {live
-              ? live.title
-              : t("A sala de live do Ghost", "Ghost’s stream room")}
+              ? live.title || t("AnderZilla", "AnderZilla")
+              : t("A sala de live do Anderson", "Anderson’s stream room")}
           </h2>
-          <p>
-            {live
-              ? platforms[live.platform].name
-              : t(
+          <p className={live ? "live-current-link" : undefined}>
+            {live ? (
+              <External href={live.url}>{live.url}</External>
+            ) : (
+              <>
+                {t(
                   "Status não confirmado. Escolha um canal para conferir.",
                   "Status unconfirmed. Pick a channel to check.",
-                )}
+                )}{" "}
+                <External href={YOUTUBE_CHANNEL_URL}>
+                  youtube.com/@anderzilla-tv
+                </External>
+              </>
+            )}
           </p>
         </div>
-        {!inRoom && (
-          <a className="button pink" href="#live">
-            {t("Entrar na sala", "Enter the room")} <Icon name="arrow" />
-          </a>
+        {live ? (
+          <External className="button" href={live.url}>
+            {t("Assistir à live agora", "Watch the live now")}{" "}
+            <Icon name="arrow" />
+          </External>
+        ) : (
+          !inRoom && (
+            <a className="button pink" href="#live">
+              {t("Entrar na sala", "Enter the room")} <Icon name="arrow" />
+            </a>
+          )
         )}
       </div>
       <div className="schedule">
@@ -101,7 +176,9 @@ export function LivePage() {
   }
   return (
     <div className="wrap subpage">
-      <p className="eyebrow">GHOST / LIVE ROOM</p>
+      <p className="eyebrow">
+        {t("ANDERSON / SALA DE LIVE", "ANDERSON / LIVE ROOM")}
+      </p>
       <h1>
         {t("Puxa uma cadeira. Bora de live.", "Pull up a chair. Let’s stream.")}
       </h1>
@@ -144,7 +221,7 @@ export function LivePage() {
           </p>
         ) : (
           <>
-            <Ghost size={85} />
+            <BrandAvatar size={85} />
             <h2>{p.name} / AnderZilla</h2>
             <p>
               {t(
