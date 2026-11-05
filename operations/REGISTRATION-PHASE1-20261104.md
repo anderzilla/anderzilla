@@ -72,3 +72,28 @@
 2. Ler registros DNS específicos da instância production e configurar no provedor atual, preservando e-mail Google.
 3. Configurar chaves e webhook assinado, migrar apenas o banco identity, testar em homologação isolada e verificar contas legadas.
 4. Build com variáveis públicas corretas e teste real de cadastro/e-mail, recuperação, perfil, exportação e exclusão; depois seguir fluxo de promoção e registrar rollback.
+
+## Continuação — domínio pronto, homologação ainda em implantação
+
+Esta seção substitui as pendências anteriores de login CLI, salvamento de chaves e DNS.
+
+- CLI autenticado na conta player.one@anderzilla.com; aplicação existente vinculada. Chaves dev/live guardadas fora do Git, nunca no frontend nem nestes registros.
+- Cinco CNAMEs adicionados na Wix: clerk → frontend-api.clerk.services; accounts → accounts.clerk.services; clkmail → mail.qqtnme9yx1ri.clerk.services; clk._domainkey → dkim1.qqtnme9yx1ri.clerk.services; clk2._domainkey → dkim2.qqtnme9yx1ri.clerk.services. TTL 1 hora. Registros web e Google MX/TXT preservados.
+- `clerk deploy status --mode agent` confirmou DNS, mail e SSL completos. Painel mostra domínio Verified e certificados Issued. Isso prova configuração do Clerk, não entrega real de e-mail ao usuário.
+- Dev e produção: login por código de e-mail, senha opcional; Google desativado até existir configuração OAuth de produção válida.
+- Webhooks user.updated e user.deleted criados para homolog e produção. Segredos gravados apenas nos settings privados. Entrega real ainda não testada; manter NEXT_PUBLIC_CLERK_SECURITY_ENABLED=false.
+- Homolog: schema aditivo aplicado ao banco anderzilla-identity-homolog, novo usuário contido anderzilla_clerk_runtime. Usuário legado preservado. Acesso Entra administrativo temporário removido ao final. Não repetir criação/rotação cegamente.
+- Leitura de produção confirmou uma conta legada e usuário runtime sem db_owner. Não vincular por coincidência de e-mail nem apagar essa conta. Migração Clerk de produção não executada.
+- Compatibilidade TLS python-tds/pyOpenSSL corrigida sem desativar validação da cadeia nem do hostname. Testes SAN ausente/divergente recusados.
+- Suíte local atual: **60 testes aprovados**, incluindo aliases de settings e TLS. pip-audit dos requisitos atuais: nenhuma vulnerabilidade conhecida.
+- API de homolog gerenciada SWA segue sem rota funcional (probe capabilities retornou 404). Upload anterior falhou com “Failed to deploy the Azure Functions”; ambiente Ready não prova API publicada. Ajustes: requirements na raiz, empacotamento Linux cp311, aliases AZ_ACCOUNT_ para prefixo IDENTITY_ reservado e tentativa com function.json explícito para evitar dependência de worker indexing. Esta última tentativa precisa de resultado registrado.
+- Python 3.11 consta como suportado na documentação atual: https://learn.microsoft.com/en-us/azure/static-web-apps/languages-runtimes. Não reduzir TLS nem contratar plano pago para contornar falha sem diagnóstico.
+- Produção permanece no serviço nativo existente; fase 1 **não concluída**. Build de 188 páginas e testes unitários não equivalem a cadastro em produção validado.
+
+### Retomada concreta
+
+1. Verificar resultado de `.tmp/clerk-homolog-binding-deploy.log` (não versionar logs ou settings). Script requer `-AzureCli az` nesta máquina; caminho portátil antigo não existe.
+2. Exigir capabilities Clerk, SQL real, CORS, rejeição de tokens e assinatura/replay de webhook antes de testes de navegador. Não repetir upload inalterado após a mesma falha.
+3. Validar fluxo dev em localhost:4027 ou homolog privada; loopback permitido somente em homolog. Contas sintéticas apenas em dev/homolog.
+4. Preparar produção isolada após homolog: schema aditivo, novo runtime, PEM/JWKS live, HMAC estável e webhook; preservar settings/artefato antigos para rollback. Não guardar material privado no Git.
+5. Preservar corpus recente do remoto AnderZilla-Web; rebuild-production.py tem baseline antigo. Promover feature → homolog → produção somente após testes reais, incluindo e-mail, CPF, saída, exportação e exclusão.
