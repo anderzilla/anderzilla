@@ -45,15 +45,18 @@ New-Item -ItemType Directory -Path $static,$package -Force | Out-Null
 foreach($path in (Get-ChildItem -LiteralPath $apiSource -File -Filter '*.py')){
  if($path.Name -notlike 'test_*'){Copy-Item -LiteralPath $path.FullName -Destination $package}
 }
+foreach($jsonPath in (Get-ChildItem -LiteralPath $apiSource -File -Filter '*.json')){
+ Copy-Item -LiteralPath $jsonPath.FullName -Destination $package
+}
 Set-Content -LiteralPath (Join-Path $api 'services/__init__.py') -Value '' -Encoding utf8NoBOM
 Set-Content -LiteralPath (Join-Path $package '__init__.py') -Value '' -Encoding utf8NoBOM
 # Explicit HTTP binding metadata avoids depending on worker indexing settings,
 # which SWA reserves and does not let this deployment configure.
-foreach($routeName in @('account','points')){
+foreach($routeName in @('account','member','points')){
  $bindingDirectory=Join-Path $api ($routeName+'Http')
  New-Item -ItemType Directory -Path $bindingDirectory -Force | Out-Null
  'from services.identity.function_app import identity_api as main' | Set-Content -LiteralPath (Join-Path $bindingDirectory '__init__.py') -Encoding utf8NoBOM
- @{scriptFile='__init__.py';bindings=@(@{authLevel='anonymous';type='httpTrigger';direction='in';name='req';route=($routeName+'/{*path}');methods=@('get','post','patch','delete','options')},@{type='http';direction='out';name='$return'})} | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $bindingDirectory 'function.json') -Encoding utf8NoBOM
+ @{scriptFile='__init__.py';bindings=@(@{authLevel='anonymous';type='httpTrigger';direction='in';name='req';route=($routeName+'/{*path}');methods=@('get','post','put','patch','delete','options')},@{type='http';direction='out';name='$return'})} | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $bindingDirectory 'function.json') -Encoding utf8NoBOM
 }
 Copy-Item -LiteralPath (Join-Path $apiSource 'requirements.txt') -Destination (Join-Path $api 'requirements.txt')
 '{"version":"2.0","logging":{"logLevel":{"default":"Warning"}}}' | Set-Content -LiteralPath (Join-Path $api 'host.json') -Encoding utf8NoBOM
@@ -61,7 +64,7 @@ $packages=Join-Path $api '.python_packages/lib/site-packages'
 & $Python -m pip install --disable-pip-version-check --only-binary=:all: --platform manylinux_2_28_x86_64 --platform manylinux2014_x86_64 --implementation cp --python-version 3.11 --abi cp311 --abi abi3 --abi none --target $packages -r (Join-Path $apiSource 'requirements.txt') --quiet
 if($LASTEXITCODE -or !(Test-Path (Join-Path $packages 'azure/functions/__init__.py'))){throw 'Linux API packaging failed.'}
 '<!doctype html><html lang="en"><meta name="robots" content="noindex"><title>AnderZilla API</title><body>AnderZilla account service.</body></html>' | Set-Content -LiteralPath (Join-Path $static 'index.html') -Encoding utf8NoBOM
-$config=@{platform=@{apiRuntime='python:3.11'};globalHeaders=@{'X-Robots-Tag'='noindex, nofollow, noarchive';'Cache-Control'='no-store'};routes=@(@{route='/api/account/*';allowedRoles=@('anonymous')},@{route='/api/points/*';allowedRoles=@('anonymous')},@{route='/*';statusCode=404})}
+$config=@{platform=@{apiRuntime='python:3.11'};globalHeaders=@{'X-Robots-Tag'='noindex, nofollow, noarchive';'Cache-Control'='no-store'};routes=@(@{route='/api/account/*';allowedRoles=@('anonymous')},@{route='/api/member/*';allowedRoles=@('anonymous')},@{route='/api/points/*';allowedRoles=@('anonymous')},@{route='/*';statusCode=404})}
 $config | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $static 'staticwebapp.config.json') -Encoding utf8NoBOM
 $url="https://management.azure.com/subscriptions/$IdentitySubscription/resourceGroups/$IdentityGroup/providers/Microsoft.Web/staticSites/$($names.App)/config/appsettings?api-version=2024-11-01"
 $oldToken=$env:SWA_CLI_DEPLOYMENT_TOKEN

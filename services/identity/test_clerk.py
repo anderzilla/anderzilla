@@ -134,11 +134,11 @@ class ManagedTests(unittest.TestCase):
 
     def test_profile_rejects_arbitrary_identity_and_cpf_changes(self):
         self.register()
-        for patch in [{'id': 'other'}, {'cpf': cpf(987654321)}, {'email': 'other@example.invalid'}, {'state': 'active'}]:
+        for patch in [{'id': 'other'}, {'cpf': cpf(987654321)}, {'email': 'other@example.invalid'}, {'state': 'active'},
+                      {'saved': ['item-1']}, {'interests': ['games']}, {'opened': ['item-1']}]:
             self.assert_rejected('invalid_fields', self.service.profile, self.identity, patch)
-        result = self.service.profile(self.identity, {'displayName': 'Changed', 'saved': ['item-1'], 'marketingOptIn': True})
+        result = self.service.profile(self.identity, {'displayName': 'Changed', 'marketingOptIn': True})
         self.assertEqual(result['account']['displayName'], 'Changed')
-        self.assertEqual(result['account']['saved'], ['item-1'])
         self.assertTrue(result['account']['marketingOptIn'])
         exported = self.service.export(self.identity)
         self.assertTrue(all(c['version'] == POLICY_VERSION for c in exported['consents']))
@@ -226,7 +226,6 @@ class ManagedTests(unittest.TestCase):
         self.assertTrue(ready['body']['ready'])
         for route in ('register', 'login', 'password/reset', 'family/invitations'):
             self.assertEqual(self.call('POST', '/api/account/' + route, {})['status'], 404)
-
 
     def webhook(self, event, message_id='msg_Offline', timestamp=None, signature=None):
         import base64

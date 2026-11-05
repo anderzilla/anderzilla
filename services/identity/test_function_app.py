@@ -19,9 +19,9 @@ class HostTests(unittest.TestCase):
 
     def test_http_routes_have_separate_triggers(self):
         functions = app.get_functions()
-        self.assertEqual(len(functions), 2)
+        self.assertEqual(len(functions), 3)
         self.assertEqual({f.get_trigger().get_dict_repr()['route'] for f in functions},
-                         {'account/{*path}', 'points/{*path}'})
+                         {'account/{*path}', 'member/{*path}', 'points/{*path}'})
 
     def test_request_limit_runs_through_real_entrypoint(self):
         req = func.HttpRequest(method='POST', url='https://example.invalid/api/account/onboarding', body=b'x' * 64001)

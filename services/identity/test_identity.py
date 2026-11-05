@@ -70,11 +70,11 @@ class IdentityTests(unittest.TestCase):
                                         'options': [{'id': 'a', 'textPT': 'A', 'textEN': 'A'}, {'id': 'b', 'textPT': 'B', 'textEN': 'B'}],
                                         'correctOption': 'a'}]
         with self.store.transaction() as db:
-            db.execute('INSERT INTO missions(id,version,award,starts_at,ends_at,active,verifier,definition_json,coverage_reference) VALUES(?,?,?,?,?,?,?,?,?)',
+            db.execute('INSERT OR REPLACE INTO missions(id,version,award,starts_at,ends_at,active,verifier,definition_json,coverage_reference) VALUES(?,?,?,?,?,?,?,?,?)',
                        (mission_id, 1, award, self.now - 1, self.now + 86400, 1, kind, json.dumps(definition), 'test-only; not public'))
         return mission_id
 
-    def evidence(self, principal=None, kind='interests'):
+    def evidence(self, principal, kind='interests'):
         mid = self.mission(kind)
         challenge = self.svc.challenge(self.browser, principal, mid, 1)
         payload = {'interests': ['games', 'ia', 'gadgets']} if kind == 'interests' else {'answers': {'q1': 'a'}}
@@ -197,21 +197,28 @@ class IdentityTests(unittest.TestCase):
         self.now = new['expiresAt']
         self.assertIsNone(self.svc.authenticate(new['sessionToken']))
 
-    def test_pending_anonymous_requires_same_browser_verified_account(self):
-        _, evidence = self.evidence(None)
-        principal, _, _ = self.register(False)
+    def test_anonymous_and_unverified_rejected_from_start_of_missions(self):
+        mid = self.mission()
         with self.assertRaises(Rejected) as caught:
-            self.svc.claim(principal, self.browser, 'unverified-key', pending_token=evidence['pendingToken'])
+            self.svc.missions(None)
+        self.assertEqual(caught.exception.code, 'authentication_required')
+        with self.assertRaises(Rejected) as caught:
+            self.svc.challenge(self.browser, None, mid, 1)
+        self.assertEqual(caught.exception.code, 'authentication_required')
+        unverified, _, _ = self.register(False)
+        with self.assertRaises(Rejected) as caught:
+            self.svc.challenge(self.browser, unverified, mid, 1)
         self.assertEqual(caught.exception.code, 'email_not_verified')
         self.svc.verify_email(self.mail.token(), self.browser)
+        _, evidence = self.evidence(unverified)
         with self.assertRaises(Rejected):
-            self.svc.claim(principal, 'other-browser', 'wrong-browser-key', pending_token=evidence['pendingToken'])
-        first = self.svc.claim(principal, self.browser, 'pending-replay-key', pending_token=evidence['pendingToken'])
-        second = self.svc.claim(principal, self.browser, 'pending-replay-key', pending_token=evidence['pendingToken'])
+            self.svc.claim(unverified, 'other-browser', 'wrong-browser-key', pending_token=evidence['pendingToken'])
+        first = self.svc.claim(unverified, self.browser, 'pending-replay-key', pending_token=evidence['pendingToken'])
+        second = self.svc.claim(unverified, self.browser, 'pending-replay-key', pending_token=evidence['pendingToken'])
         self.assertEqual(first, second)
-        self.assertEqual(self.svc.wallet(principal)['available'], 25)
+        self.assertEqual(self.svc.wallet(unverified)['available'], 25)
         with self.assertRaises(Rejected):
-            self.svc.claim(principal, self.browser, 'new-key-after-claim', pending_token=evidence['pendingToken'])
+            self.svc.claim(unverified, self.browser, 'new-key-after-claim', pending_token=evidence['pendingToken'])
 
     def test_concurrent_claim_same_and_different_keys_credits_once(self):
         principal, _, _ = self.register()
@@ -246,10 +253,11 @@ class IdentityTests(unittest.TestCase):
         self.assertEqual(self.svc.wallet(principal)['available'], 25)
 
     def test_duplicate_interests_not_eligible(self):
+        principal, _, _ = self.register()
         mid = self.mission()
-        challenge = self.svc.challenge(self.browser, None, mid, 1)
+        challenge = self.svc.challenge(self.browser, principal, mid, 1)
         with self.assertRaises(Rejected):
-            self.svc.evidence(self.browser, None, challenge['challengeId'], {'interests': ['games'] * 3})
+            self.svc.evidence(self.browser, principal, challenge['challengeId'], {'interests': ['games'] * 3})
 
     def test_rules_changed_or_no_budget_reject_without_partial_credit(self):
         principal, _, _ = self.register()
@@ -297,7 +305,7 @@ class IdentityTests(unittest.TestCase):
         result = dispatch(self.svc, 'POST', '/api/account/register', headers, {'accountId': 'admin'})
         self.assertEqual(result['status'], 422)
         result = dispatch(self.svc, 'POST', '/api/points/evidence', headers, {'challengeId': 'fake', 'correct': True})
-        self.assertEqual(result['status'], 422)
+        self.assertEqual(result['status'], 401)
         result = dispatch(self.svc, 'POST', '/api/points/pending/claim', headers, {'pendingToken': 'x' * 43})
         self.assertEqual(result['status'], 401)
 
