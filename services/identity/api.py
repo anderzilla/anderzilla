@@ -45,10 +45,10 @@ def dispatch(service, method, path, headers=None, body=None):
             if not cfg['origin'] or origin != cfg['origin']:
                 reject('invalid_origin', 'Origem não permitida.', 403)
             requested = headers.get('access-control-request-method', '')
-            if requested not in {'GET', 'POST', 'PATCH', 'DELETE'}:
+            if requested not in {'GET', 'POST', 'PUT', 'PATCH', 'DELETE'}:
                 reject('invalid_method', 'Método não permitido.', 405)
-            return response(status=204, headers={**cors, 'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
-                            'Access-Control-Allow-Headers': 'Content-Type, X-CSRF-Token, Idempotency-Key', 'Access-Control-Max-Age': '600'})
+            return response(status=204, headers={**cors, 'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+                            'Access-Control-Allow-Headers': 'Content-Type, X-CSRF-Token, Idempotency-Key, If-Match', 'Access-Control-Max-Age': '600'})
         if body is None:
             body = {}
         if not isinstance(body, dict):
@@ -130,7 +130,7 @@ def dispatch(service, method, path, headers=None, body=None):
         if method == 'POST' and route == '/api/account/oauth/google/callback':
             fields(body, 'code state')
             if not cfg['google']:
-                reject('google_unavailable', 'Google indisponível.', 503)
+                reject('google_unavailable', 'Google indisponível.', 403 if not cfg['google'] else 503)
             return login_result(service.google_callback(ctx['browserHash'], body.get('code'), body.get('state')))
         if method == 'GET' and route == '/api/points/wallet':
             return response(service.wallet(authenticated()), headers=cors)
@@ -144,28 +144,30 @@ def dispatch(service, method, path, headers=None, body=None):
             authenticated()
             return response({'items': [], 'nextCursor': None}, headers=cors)
         if method == 'GET' and route == '/api/points/missions':
-            return response(service.missions() if cfg['rewards'] else {'items': [], 'nextCursor': None}, headers=cors)
+            member = authenticated()
+            return response(service.missions(member) if cfg['rewards'] else {'items': [], 'nextCursor': None}, headers=cors)
         if route.startswith('/api/points/') and method == 'POST':
             if not cfg['rewards']:
                 reject('rewards_unavailable', 'Missões oficiais ainda indisponíveis.', 503)
+            member = authenticated()
             if route == '/api/points/challenge':
                 fields(body, 'missionId missionVersion')
-                return response(service.challenge(ctx['browserHash'], principal, body.get('missionId'), body.get('missionVersion')), headers=cors)
+                return response(service.challenge(ctx['browserHash'], member, body.get('missionId'), body.get('missionVersion')), headers=cors)
             if route == '/api/points/evidence':
                 fields(body, 'challengeId answers interests')
-                return response(service.evidence(ctx['browserHash'], principal, body.get('challengeId'), body), headers=cors)
+                return response(service.evidence(ctx['browserHash'], member, body.get('challengeId'), body), headers=cors)
             if route in {'/api/points/claim', '/api/points/pending/claim'}:
                 if route.endswith('/pending/claim'):
                     fields(body, 'pendingToken')
                     pending = body.get('pendingToken')
                     if not isinstance(pending, str) or not 32 <= len(pending) <= 128:
                         reject('invalid_token', 'Token inválido.')
-                    cid = service.claim(authenticated(), ctx['browserHash'], headers.get('idempotency-key'), pending_token=pending)
+                    cid = service.claim(member, ctx['browserHash'], headers.get('idempotency-key'), pending_token=pending)
                 else:
                     fields(body, 'missionId missionVersion evidenceRef')
                     if not isinstance(body.get('evidenceRef'), str) or type(body.get('missionVersion')) is not int or not isinstance(body.get('missionId'), str):
                         reject('invalid_evidence', 'Missão/evidência inválidas.')
-                    cid = service.claim(authenticated(), ctx['browserHash'], headers.get('idempotency-key'), evidence_ref=body['evidenceRef'], mission_id=body['missionId'], version=body['missionVersion'])
+                    cid = service.claim(member, ctx['browserHash'], headers.get('idempotency-key'), evidence_ref=body['evidenceRef'], mission_id=body['missionId'], version=body['missionVersion'])
                 return response({'completionId': cid}, headers=cors)
         reject('not_found', 'Rota não encontrada.', 404)
     except Rejected as error:

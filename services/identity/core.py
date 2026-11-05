@@ -462,8 +462,11 @@ class IdentityService:
             pass
         return None, None
 
-    def missions(self):
+    def missions(self, principal=None):
+        if principal is None:
+            reject('authentication_required', 'Entre na sua conta.', 401)
         with self.store.transaction() as db:
+            self._account(db, principal.account_id, True)
             rows = db.execute("SELECT id,version,award,starts_at,ends_at,verifier,definition_json FROM missions WHERE active=1 AND starts_at<=? AND ends_at>? AND coverage_reference<>'' ORDER BY id,version", (self.clock(), self.clock())).fetchall()
         items = []
         for r in rows:
@@ -473,15 +476,18 @@ class IdentityService:
         return {'items': items, 'nextCursor': None}
 
     def challenge(self, browser_hash, principal, mission_id, version):
+        if principal is None:
+            reject('authentication_required', 'Entre na sua conta.', 401)
         if not isinstance(mission_id, str) or type(version) is not int or version < 1:
             reject('invalid_mission', 'Missão inválida.')
         self.rate('challenge', browser_hash, 20)
         with self.store.transaction() as db:
+            self._account(db, principal.account_id, True)
             mission = self._mission(db, mission_id, version)
             definition = self._definition(mission)
             challenge_id, expires = identifier(), self.clock() + 1800
             db.execute('INSERT INTO challenges(id,browser_hash,account_id,mission_id,mission_version,definition_hash,expires_at) VALUES(?,?,?,?,?,?,?)',
-                       (challenge_id, browser_hash, principal.account_id if principal else None, mission_id, version, security.token_hash(mission['definition_json']), expires))
+                       (challenge_id, browser_hash, principal.account_id, mission_id, version, security.token_hash(mission['definition_json']), expires))
             return {'challengeId': challenge_id, 'kind': mission['verifier'], 'expiresAt': expires,
                     'titlePT': definition['titlePT'], 'titleEN': definition['titleEN'],
                     'questions': [{k: q[k] for k in ('id', 'promptPT', 'promptEN', 'options')} for q in definition.get('questions', [])]}
@@ -500,12 +506,15 @@ class IdentityService:
         return {'answers': answers}
 
     def evidence(self, browser_hash, principal, challenge_id, payload):
+        if principal is None:
+            reject('authentication_required', 'Entre na sua conta.', 401)
         self.rate('evidence', browser_hash, 15)
         with self.store.transaction() as db:
+            self._account(db, principal.account_id, True)
             challenge = db.execute('SELECT * FROM challenges WHERE id=?', (text(challenge_id, 64),)).fetchone()
             if not challenge or not security.equal(challenge['browser_hash'], browser_hash) or challenge['expires_at'] <= self.clock():
                 reject('challenge_expired', 'Desafio inválido ou expirado.', 410)
-            if challenge['account_id'] and (not principal or challenge['account_id'] != principal.account_id):
+            if not challenge['account_id'] or challenge['account_id'] != principal.account_id:
                 reject('evidence_not_owned', 'Desafio pertence a outra conta.', 403)
             if challenge['used_at'] is not None:
                 reject('challenge_used', 'Desafio já concluído.', 409)
@@ -514,7 +523,7 @@ class IdentityService:
                 reject('mission_changed', 'A missão mudou. Inicie outro desafio.', 409)
             validated = self._answers(mission, payload)
             evidence_id, pending_token = identifier(), security.random_token()
-            account_id = principal.account_id if principal else None
+            account_id = principal.account_id
             db.execute('UPDATE challenges SET used_at=? WHERE id=?', (self.clock(), challenge_id))
             db.execute('INSERT INTO mission_evidence(id,challenge_id,browser_hash,account_id,mission_id,mission_version,payload,created_at) VALUES(?,?,?,?,?,?,?,?)',
                        (evidence_id, challenge_id, browser_hash, account_id, mission['id'], mission['version'], json.dumps(validated), self.clock()))
@@ -543,10 +552,8 @@ class IdentityService:
                     reject('pending_claimed', 'Recompensa já reivindicada.', 409)
                 evidence_ref = pending['evidence_id']
             evidence = db.execute('SELECT * FROM mission_evidence WHERE id=?', (evidence_ref,)).fetchone()
-            if not evidence or not security.equal(evidence['browser_hash'], browser_hash) or (evidence['account_id'] is not None and evidence['account_id'] != principal.account_id):
+            if not evidence or not security.equal(evidence['browser_hash'], browser_hash) or evidence['account_id'] != principal.account_id:
                 reject('evidence_not_owned', 'Evidência indisponível para esta conta.', 403)
-            if not pending and evidence['account_id'] != principal.account_id:
-                reject('pending_required', 'Conclua o vínculo da recompensa pendente.', 403)
             if mission_id is not None and (mission_id != evidence['mission_id'] or version != evidence['mission_version']):
                 reject('evidence_mismatch', 'Evidência não corresponde à missão.')
             challenge = db.execute('SELECT definition_hash,expires_at FROM challenges WHERE id=?', (evidence['challenge_id'],)).fetchone()

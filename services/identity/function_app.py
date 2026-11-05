@@ -24,7 +24,7 @@ def identity_api(req: func.HttpRequest) -> func.HttpResponse:
         raw = req.get_body() or b''
         if len(raw) > 64000:
             return func.HttpResponse('{"error":{"code":"too_large","message":"Requisição muito grande."}}', status_code=413, mimetype='application/json', headers=base)
-        # Use the actual URL, preserving account/points; route_params only has tail.
+        # Use the actual URL, preserving account/member/points; route_params only has tail.
         parsed = urlsplit(req.url)
         path = parsed.path + ('?' + parsed.query if parsed.query else '')
         if os.environ.get('IDENTITY_AUTH_PROVIDER') == 'clerk' and parsed.path.rstrip('/') == '/api/account/webhooks/clerk':
@@ -55,11 +55,16 @@ def identity_api(req: func.HttpRequest) -> func.HttpResponse:
                                  status_code=503, mimetype='application/json', headers=base)
 
 
-@app.route(route="account/{*path}", methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"])
+@app.route(route="account/{*path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
 def account_http(req: func.HttpRequest) -> func.HttpResponse:
     return identity_api(req)
 
 
-@app.route(route="points/{*path}", methods=["GET", "POST", "OPTIONS"])
+@app.route(route="member/{*path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
+def member_http(req: func.HttpRequest) -> func.HttpResponse:
+    return identity_api(req)
+
+
+@app.route(route="points/{*path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
 def points_http(req: func.HttpRequest) -> func.HttpResponse:
     return identity_api(req)

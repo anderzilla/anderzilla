@@ -1,27 +1,58 @@
 "use client";
-import {OfficialMissions} from "../account/OfficialMissions";
-import {AccountPanel,AccountWallet} from "../account/AccountUI";
-import {useAccount} from "../account/AccountProvider";
-import {flag} from "../commerce/data";
+import { OfficialMissions } from "../account/OfficialMissions";
+import { AccountPanel, AccountWallet } from "../account/AccountUI";
+import { useAccount } from "../account/AccountProvider";
 import { useEffect, useRef, useState } from "react";
 import { useHub } from "./HubProvider";
 import { discoveries, type Mission } from "./model";
 import { External, Icon, Passport } from "./Primitives";
-import published from './cms-published.json';
-import { DemoBadge } from './Editorial';
+import published from "./cms-published.json";
+import { DemoBadge } from "./Editorial";
 
-function CMSDemoDefinitions({collection}:{collection:'missions'|'rewards'}){
- const {lang,t}=useHub();
- const rows=published[collection] as {id:string;titlePT:string;titleEN:string;points:number;termsPT?:string;termsEN?:string;isDemo:boolean}[];
- return <div className="mission-grid">{rows.filter(r=>r.isDemo).map(r=><article className="mission-card" key={r.id}><DemoBadge english={lang==='en'}/><h3>{lang==='pt'?r.titlePT:r.titleEN}</h3><p>{r.points} KP · {t('ilustrativos','illustrative')}</p><p>{lang==='pt'?r.termsPT:r.termsEN}</p><button className="button secondary" disabled>{t('Demonstração · indisponível','Demo · unavailable')}</button></article>)}</div>
+function CMSDemoDefinitions({
+  collection,
+}: {
+  collection: "missions" | "rewards";
+}) {
+  const { lang, t } = useHub();
+  const rows = published[collection] as {
+    id: string;
+    titlePT: string;
+    titleEN: string;
+    points: number;
+    termsPT?: string;
+    termsEN?: string;
+    isDemo: boolean;
+  }[];
+  return (
+    <div className="mission-grid">
+      {rows
+        .filter((r) => r.isDemo)
+        .map((r) => (
+          <article className="mission-card" key={r.id}>
+            <DemoBadge english={lang === "en"} />
+            <h3>{lang === "pt" ? r.titlePT : r.titleEN}</h3>
+            <p>
+              {r.points} KP · {t("ilustrativos", "illustrative")}
+            </p>
+            <p>{lang === "pt" ? r.termsPT : r.termsEN}</p>
+            <button className="button secondary" disabled>
+              {t("Demonstração · indisponível", "Demo · unavailable")}
+            </button>
+          </article>
+        ))}
+    </div>
+  );
 }
 
 export function PointsTeaser() {
-  const { t, balance } = useHub();
+  const { t, lang, balance } = useHub();
   return (
     <section className="points-banner">
       <div>
-        <p className="eyebrow">KARACA POINTS / {t("SUA CONTA", "YOUR ACCOUNT")}</p>
+        <p className="eyebrow">
+          KARACA POINTS / {t("SUA CONTA", "YOUR ACCOUNT")}
+        </p>
         <h2>
           {t(
             "Sua curiosidade ganha uma nova fase.",
@@ -35,16 +66,21 @@ export function PointsTeaser() {
           )}
         </p>
       </div>
-      <a className="button" href="#points">
-        {balance!==null?`${balance} KP · `:""}{t("Ver missões", "View missions")} →
+      <a className="button" href={`/${lang}/conta/kp/`}>
+        {balance !== null ? `${balance} KP · ` : ""}
+        {t("Karaca Points e missões", "Karaca Points & missions")} →
       </a>
     </section>
   );
 }
-function Wallet() {return <AccountWallet/>}
+
+function Wallet() {
+  return <AccountWallet />;
+}
+
 export function PointsPage() {
-  const { t, player, claim, ready } = useHub();
-  const account=useAccount();
+  const { t, lang, player, claim, ready } = useHub();
+  const account = useAccount();
   const missions: {
     id: Mission;
     ready: boolean;
@@ -57,20 +93,20 @@ export function PointsPage() {
       ready: player.quizDone,
       title: t("Checkpoint da curiosidade", "Curiosity checkpoint"),
       copy: t(
-        "Acerte as três perguntas do desafio. Uma recompensa por desafio, sem multiplicar ao repetir.",
-        "Answer all three challenge questions correctly. One reward per challenge, no replay farming.",
+        "Acerte as três perguntas do desafio. Uma recompensa por desafio oficial validado no servidor.",
+        "Answer all three challenge questions correctly. One reward per official server-validated challenge.",
       ),
-      url: "#quiz",
+      url: `/${lang}/conta/missoes/`,
     },
     {
       id: "interests",
       ready: player.interests.length >= 3,
       title: t("Monte seu radar", "Build your radar"),
       copy: t(
-        "Escolha pelo menos três interesses. Missão única de boas-vindas.",
-        "Choose at least three interests. A one-time welcome mission.",
+        "Escolha pelo menos três interesses na sua conta.",
+        "Choose at least three interests in your account.",
       ),
-      url: "#profile",
+      url: `/${lang}/conta/interesses/`,
     },
   ];
   return (
@@ -82,36 +118,37 @@ export function PointsPage() {
       <Wallet />
       <p className="notice">
         {t(
-          "As atividades abaixo são locais e não creditam KP oficial. Somente missões validadas pelo servidor em conta verificada podem aparecer no extrato. Nenhum saldo demonstrativo será importado.",
-          "Activities below are local and do not credit official KP. Only server-validated missions on a verified account can appear in the ledger. No demo balance will be imported.",
+          "Somente missões validadas pelo servidor em conta verificada podem aparecer no extrato oficial. Nenhum saldo demonstrativo será importado.",
+          "Only server-validated missions on a verified account can appear in the official ledger. No demo balance will be imported.",
         )}
       </p>
-      <OfficialMissions/>
-      <h2>{t("Atividades locais", "Local activities")}</h2>
-      <CMSDemoDefinitions collection="missions"/>
+      <OfficialMissions />
+      <h2>{t("Atividades demonstrativas", "Demo activities")}</h2>
+      <CMSDemoDefinitions collection="missions" />
       <div className="mission-grid">
         {missions.map((m) => (
           <article className="mission-card" key={m.id}>
             <p className="eyebrow">
-              {t("ATIVIDADE LOCAL · SEM KP OFICIAL", "LOCAL ACTIVITY · NO OFFICIAL KP")}
+              {t(
+                "ATIVIDADE EDITORIAL · CONTA REQUERIDA PARA KP",
+                "EDITORIAL ACTIVITY · ACCOUNT REQUIRED FOR KP",
+              )}
             </p>
             <h3>{m.title}</h3>
             <p>{m.copy}</p>
-            {player.claims.includes(m.id) ? (
-              <span className="mission-done">
-                ✓ {t("Progresso demonstrativo anterior", "Previous demo progress")}
-              </span>
-            ) : m.ready ? (
+            {m.ready ? (
               <button
                 className="button"
                 disabled={!ready}
                 onClick={() => claim(m.id)}
               >
-                {account.user?t("Ver regras da conta", "View account rules"):t("Criar login para continuar", "Create login to continue")}
+                {account.user
+                  ? t("Ver regras da conta", "View account rules")
+                  : t("Entrar para continuar", "Sign in to continue")}
               </button>
             ) : (
               <a className="button secondary" href={m.url}>
-                {t("Começar missão", "Start mission")} →
+                {t("Ir para a área do jogador", "Go to player area")} →
               </a>
             )}
           </article>
@@ -126,6 +163,7 @@ export function PointsPage() {
     </div>
   );
 }
+
 export function StorePage() {
   const { t } = useHub();
   return (
@@ -139,7 +177,7 @@ export function StorePage() {
         )}
       </p>
       <Wallet />
-      <CMSDemoDefinitions collection="rewards"/>
+      <CMSDemoDefinitions collection="rewards" />
       <div className="mission-grid reward-concepts">
         {[
           [t("Assinaturas", "Subscriptions"), "◇"],
@@ -206,12 +244,14 @@ export function StorePage() {
     </div>
   );
 }
+
 export function ProfilePage() {
-  const { t, categories, labels, player, toggleInterest, reset } = useHub();
-  const account=useAccount();
+  const { t, lang, categories, labels, player, toggleInterest, reset } =
+    useHub();
+  const account = useAccount();
   return (
     <div className="wrap subpage">
-      <p className="eyebrow">{t("SEU RADAR", "YOUR RADAR")}</p>
+      <p className="eyebrow">{t("ÁREA DO JOGADOR", "PLAYER AREA")}</p>
       <h1>{t("Escolha seu universo.", "Choose your universe.")}</h1>
       <p className="lede">
         {t(
@@ -219,8 +259,8 @@ export function ProfilePage() {
           "Radar notes run from newest to oldest. You can still explore every topic.",
         )}
       </p>
-      <AccountPanel/>
-      <AccountWallet/>
+      <AccountPanel />
+      <AccountWallet />
       <div
         className="interest-list"
         role="group"
@@ -242,19 +282,29 @@ export function ProfilePage() {
       </div>
       <div className="notice">
         {t(
-          account.user?"Interesses, idioma e mochila são salvos na sua conta. O progresso de desafios locais não concede KP oficial.":"Como visitante, preferências e progresso ficam neste navegador. Você pode criar uma conta para salvar preferências entre dispositivos.",
-          account.user?"Interests, language and your backpack are saved to your account. Local challenge progress does not award official KP.":"As a guest, preferences and progress stay in this browser. Create an account to save preferences across devices.",
+          account.user
+            ? "Interesses, idioma, exploração e mochila são salvos na sua conta."
+            : "Entre na sua conta para sincronizar interesses, idioma e mochila entre dispositivos.",
+          account.user
+            ? "Interests, language, exploration and your backpack are saved to your account."
+            : "Sign in to your account to sync interests, language and your backpack across devices.",
         )}
       </div>
-      <a className="button" href="#home">
-        {t("Voltar ao meu radar", "Back to my radar")}
+      <a className="button" href={`/${lang}/conta/radar/`}>
+        {t("Ir para Seu Radar", "Go to Your Radar")}
       </a>
-      <button className="quiet" onClick={reset}>
-        {t("Limpar meus dados locais", "Clear my local data")}
-      </button>
+      {account.user && (
+        <button className="quiet" onClick={reset}>
+          {t(
+            "Limpar meu histórico de exploração",
+            "Clear my exploration history",
+          )}
+        </button>
+      )}
     </div>
   );
 }
+
 const questions = [
   {
     cat: "gadgets",
@@ -301,6 +351,7 @@ const questions = [
     correct: 0,
   },
 ];
+
 export function QuizPage() {
   const { t, lang, fact, completeQuiz } = useHub();
   const [index, setIndex] = useState(0);
@@ -325,8 +376,8 @@ export function QuizPage() {
         </h1>
         <p className="lede">
           {t(
-            "Karaca! Você completou as três perguntas e ganhou um selo local. Nenhum KP oficial foi creditado: missões da conta dependem de validação do servidor.",
-            "Karaca! You completed all three questions and earned a local badge. No official KP were credited: account missions require server validation.",
+            "Karaca! Você completou as três perguntas. Nenhum KP oficial foi creditado nesta atividade editorial: missões oficiais dependem de validação do servidor na sua conta.",
+            "Karaca! You completed all three questions. No official KP were credited in this editorial activity: official missions require server validation in your account.",
           )}
         </p>
         <button
@@ -339,8 +390,8 @@ export function QuizPage() {
         >
           {t("Jogar de novo", "Play again")}
         </button>{" "}
-        <a className="button secondary" href="#points">
-          Karaca Points →
+        <a className="button secondary" href={`/${lang}/conta/missoes/`}>
+          {t("Missões oficiais →", "Official missions →")}
         </a>
       </div>
     );
@@ -348,7 +399,7 @@ export function QuizPage() {
     <div className="wrap subpage quiz-page">
       <p className="eyebrow">
         <Icon name="trophy" />
-        {t("DESAFIO DA VEZ", "YOUR NEXT CHALLENGE")}
+        {t("DESAFIO EDITORIAL", "EDITORIAL CHALLENGE")}
       </p>
       <h1>
         {t(
@@ -392,7 +443,19 @@ export function QuizPage() {
                       "Almost. Here is what the source explains:",
                     )}
               </strong>
-              {source?<><p>{fact(source)}</p><External href={source.url}>{source.sourceName} ↗</External></>:<p>{t('Fonte arquivada. Este desafio é demonstrativo.','Archived source. This challenge is a demo.')}</p>}
+              {source ? (
+                <>
+                  <p>{fact(source)}</p>
+                  <External href={source.url}>{source.sourceName} ↗</External>
+                </>
+              ) : (
+                <p>
+                  {t(
+                    "Fonte arquivada. Este desafio é demonstrativo.",
+                    "Archived source. This challenge is a demo.",
+                  )}
+                </p>
+              )}
             </div>
             <button
               className="button"
@@ -409,7 +472,7 @@ export function QuizPage() {
               {answer !== q.correct
                 ? t("Tentar novamente", "Try again")
                 : index === 2
-                  ? t("Ver meu selo", "See my badge")
+                  ? t("Ver resultado", "See result")
                   : t("Próxima pergunta", "Next question")}
               <Icon name="arrow" />
             </button>

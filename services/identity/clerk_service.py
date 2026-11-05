@@ -70,12 +70,28 @@ class ClerkAccountService:
     def _principal(self, row, identity):
         return Principal(row['id'], identity.session_id, identity.authenticated_at)
 
+    def _sync_collections_into_me(self, db, account_id, result):
+        state = db.execute('SELECT interests_version,exploration_generation,backfilled_at FROM member_collection_state WHERE account_id=?', (account_id,)).fetchone()
+        if state and state['backfilled_at'] is not None:
+            interests = [r['category_id'] for r in db.execute('SELECT category_id FROM member_interests WHERE account_id=? ORDER BY category_id', (account_id,)).fetchall()]
+            saved = [r['discovery_id'] for r in db.page('SELECT discovery_id FROM member_bookmarks WHERE account_id=? ORDER BY saved_at DESC, discovery_id DESC', (account_id,), 1000).fetchall()]
+            opened = [r['discovery_id'] for r in db.page('SELECT discovery_id FROM member_exploration WHERE account_id=? ORDER BY last_opened_at DESC, discovery_id DESC', (account_id,), 1000).fetchall()]
+            result['account']['interests'] = interests
+            result['account']['saved'] = saved
+            result['account']['opened'] = opened
+            result['account']['interestsVersion'] = state['interests_version']
+            result['account']['explorationGeneration'] = state['exploration_generation']
+        else:
+            result['account']['interestsVersion'] = 1
+            result['account']['explorationGeneration'] = 1
+
     def me(self, identity):
         with self.store.transaction() as db:
             row = self._record(db, identity, required=False)
-            if row is None:
+            if row is None or not row['cpf_fingerprint'] or not row['birth_date']:
                 return {'account': None, 'onboardingRequired': True}
             result = self.domain._me(db, self._principal(row, identity))
+            self._sync_collections_into_me(db, row['id'], result)
             result['account'].update({'provider': 'clerk', 'isMinor': False,
                                       'guardianLinked': False,
                                       'cpfMasked': '***.***.***-' + (row['cpf_last_two'] or '**')})
@@ -118,14 +134,23 @@ class ClerkAccountService:
                        (account_id, cpf_hash, cpf[-2:], born))
             db.execute('INSERT INTO wallets(account_id,available,reserved) VALUES(?,?,?)', (account_id, 0, 0))
             db.execute("INSERT INTO preferences_bookmarks(account_id,interests,saved,opened) VALUES(?,?,?,?)", (account_id, '[]', '[]', '[]'))
+            db.execute('INSERT INTO member_collection_state(account_id,interests_version,exploration_generation,exploration_paused,backfilled_at,updated_at) VALUES(?,?,?,?,?,?)',
+                       (account_id, 1, 1, 0, now, now))
             for purpose, granted in [('terms', True), ('privacy', True), ('marketing', data.get('marketingOptIn', False))]:
                 db.execute('INSERT INTO consents(id,account_id,purpose,version,granted,created_at) VALUES(?,?,?,?,?,?)',
                            (identifier(), account_id, purpose, POLICY_VERSION, int(granted), now))
             return {'accountId': account_id}
 
     def profile(self, identity, data):
+        # Profile endpoint only updates account profile fields; full-list replacement of interests/saved/opened
+        # is retired in favor of /api/member/interests, /api/member/backpack and /api/member/exploration.
+        allowed = {'displayName', 'lang', 'timezone', 'marketingOptIn', 'avatarUrl'}
+        if not isinstance(data, dict) or set(data) - allowed:
+            reject('invalid_fields', 'Campos desconhecidos.')
         with self.store.transaction() as db:
             row = self._record(db, identity)
+            if not row['cpf_fingerprint'] or not row['birth_date']:
+                reject('onboarding_required', 'Complete seu cadastro.', 403)
             principal = self._principal(row, identity)
         self.domain.update_profile(principal, data)
         return self.me(identity)
@@ -133,8 +158,32 @@ class ClerkAccountService:
     def export(self, identity):
         with self.store.transaction() as db:
             row = self._record(db, identity)
+            if not row['cpf_fingerprint'] or not row['birth_date']:
+                reject('onboarding_required', 'Complete seu cadastro.', 403)
             principal = self._principal(row, identity)
         result = self.domain.export_data(principal)
+        with self.store.transaction() as db:
+            self._sync_collections_into_me(db, row['id'], result)
+            result['interests'] = [
+                {'categoryId': r['category_id'], 'createdAt': iso(r['created_at'])}
+                for r in db.execute('SELECT category_id,created_at FROM member_interests WHERE account_id=? ORDER BY category_id', (row['id'],)).fetchall()
+            ]
+            result['backpack'] = [
+                {'discoveryId': r['discovery_id'], 'savedAt': iso(r['saved_at'])}
+                for r in db.execute('SELECT discovery_id,saved_at FROM member_bookmarks WHERE account_id=? ORDER BY saved_at DESC, discovery_id DESC', (row['id'],)).fetchall()
+            ]
+            result['exploration'] = [
+                {'discoveryId': r['discovery_id'], 'firstOpenedAt': iso(r['first_opened_at']), 'lastOpenedAt': iso(r['last_opened_at']), 'openCount': r['open_count']}
+                for r in db.execute('SELECT discovery_id,first_opened_at,last_opened_at,open_count FROM member_exploration WHERE account_id=? ORDER BY last_opened_at DESC, discovery_id DESC', (row['id'],)).fetchall()
+            ]
+            result['missionReceipts'] = [
+                {'receiptId': r['id'], 'missionId': r['mission_id'], 'missionVersion': r['mission_version'], 'occurrenceKey': r['occurrence_key'], 'awardKP': r['award_kp'], 'supportRef': r['support_ref'], 'completedAt': iso(r['created_at'])}
+                for r in db.execute('SELECT id,mission_id,mission_version,occurrence_key,award_kp,support_ref,created_at FROM mission_receipts WHERE account_id=? ORDER BY created_at DESC', (row['id'],)).fetchall()
+            ]
+            result['pendingClaims'] = [
+                {'pendingId': r['id'], 'missionId': r['mission_id'], 'missionVersion': r['mission_version'], 'awardKP': r['award_kp'], 'reservationState': r['reservation_state'], 'expiresAt': iso(r['expires_at']), 'createdAt': iso(r['created_at'])}
+                for r in db.execute("SELECT id,mission_id,mission_version,award_kp,reservation_state,expires_at,created_at FROM mission_pending_claims WHERE account_id=? AND reservation_state='reserved'", (row['id'],)).fetchall()
+            ]
         result['registration'] = {'birthDate': row['birth_date'], 'cpfMasked': '***.***.***-' + row['cpf_last_two'],
                                   'isMinor': False}
         return result
@@ -146,18 +195,40 @@ class ClerkAccountService:
             reject('reauth_required', 'Entre novamente para excluir sua conta.', 403)
         with self.store.transaction() as db:
             row = self._record(db, identity, allow_deleted=True)
-            account_id, now = row['id'], self.clock()
+            account_id = row['id']
             self._erase(db, row, identity.subject)
             return {'accountId': account_id}
 
     def _erase(self, db, row, subject, remote_completed=False):
         account_id, now = row['id'], self.clock()
-        # Ban fingerprints remain solely for preventing a new prohibited account.
+        # Release any active campaign reservations held by pending claims of this account before deleting!
+        active_pending = db.execute(
+            "SELECT id,campaign_id,award_kp FROM mission_pending_claims WHERE account_id=? AND reservation_state='reserved'",
+            (account_id,),
+        ).fetchall()
+        for pend in active_pending:
+            cur = db.execute(
+                "UPDATE mission_pending_claims SET reservation_state='released',released_at=? WHERE id=? AND reservation_state='reserved'",
+                (now, pend['id']),
+            )
+            if getattr(cur, 'rowcount', 1) == 1:
+                db.execute(
+                    'UPDATE mission_campaigns SET reserved_kp = CASE WHEN reserved_kp >= ? THEN reserved_kp - ? ELSE 0 END WHERE id=?',
+                    (pend['award_kp'], pend['award_kp'], pend['campaign_id']),
+                )
+        # Ban fingerprints and append-only ledger/completions remain solely for audit/preventing prohibited accounts.
         db.execute("UPDATE accounts SET state='deleted',email=?,display_name='Deleted',password_hash=NULL,avatar_url=NULL,marketing_opt_in=0,updated_at=? WHERE id=?",
                    ('deleted-' + account_id + '@deleted.invalid', now, account_id))
         db.execute('UPDATE sessions SET revoked_at=? WHERE account_id=? AND revoked_at IS NULL', (now, account_id))
         db.execute("UPDATE preferences_bookmarks SET interests='[]',saved='[]',opened='[]' WHERE account_id=?", (account_id,))
         db.execute("UPDATE mission_evidence SET payload='{}' WHERE account_id=?", (account_id,))
+        db.execute("UPDATE mission_attempts SET state='expired',result_code='account_deleted' WHERE account_id=? AND state='active'", (account_id,))
+        db.execute('DELETE FROM member_interests WHERE account_id=?', (account_id,))
+        db.execute('DELETE FROM member_bookmarks WHERE account_id=?', (account_id,))
+        db.execute('DELETE FROM member_exploration WHERE account_id=?', (account_id,))
+        db.execute('DELETE FROM member_exploration_tombstones WHERE account_id=?', (account_id,))
+        db.execute('DELETE FROM member_exploration_events WHERE account_id=?', (account_id,))
+        db.execute('DELETE FROM account_entitlements WHERE account_id=?', (account_id,))
         db.execute('DELETE FROM email_verifications WHERE account_id=?', (account_id,))
         db.execute('DELETE FROM oauth_identities WHERE account_id=?', (account_id,))
         db.execute('DELETE FROM managed_profiles WHERE account_id=?', (account_id,))
