@@ -1,5 +1,10 @@
 "use client";
-import {SignIn, SignUp, UserProfile} from '@clerk/react';
+import Link from "next/link";
+import dynamic from 'next/dynamic';
+const loading = () => <div className="account-loader" aria-busy="true" />;
+const SignIn = dynamic(() => import('@clerk/react').then(m => m.SignIn), {ssr: false, loading});
+const SignUp = dynamic(() => import('@clerk/react').then(m => m.SignUp), {ssr: false, loading});
+const UserProfile = dynamic(() => import('@clerk/react').then(m => m.UserProfile), {ssr: false, loading});
 import {useEffect, useRef, useState, type FormEvent, type KeyboardEvent} from 'react';
 import {useAccount, AccountError, consumePostLoginIntent} from './AccountProvider';
 import {useHub} from '../hub/HubProvider';
@@ -559,7 +564,7 @@ export function AccountAccess() {
   }
 
   // Skeleton state while verifying an active session
-  if (a.signedIn && (a.profileStatus === 'loading' || a.profileStatus === 'waking')) {
+  if (!a.user && a.signedIn && (a.profileStatus === 'loading' || a.profileStatus === 'waking')) {
     return (
       <div className="member-header-skeleton" role="status" aria-label={t('Verificando acesso…', 'Verifying access…')}>
         <span className="skeleton-pill" aria-hidden="true" />
@@ -595,12 +600,12 @@ export function AccountAccess() {
 
   return (
     <div className="member-header-bar" ref={wrapperRef} onKeyDown={onMenuKeyDown}>
-      <a className="member-radar-link" href={`/${lang}/conta/radar/`}>
+      <Link className="member-radar-link" href={`/${lang}/conta/radar/`}>
         {t('Seu Radar', 'Your Radar')}
-      </a>
+      </Link>
 
       {kpActive ? (
-        <a
+        <Link
           className="member-kp-chip"
           href={`/${lang}/conta/carteira/`}
           aria-label={
@@ -617,15 +622,15 @@ export function AccountAccess() {
         >
           <span className="kp-badge-dot" aria-hidden="true" />
           <span>{formattedBalance !== null ? `${formattedBalance} KP` : 'KP —'}</span>
-        </a>
+        </Link>
       ) : (
-        <a
+        <Link
           className="member-kp-chip is-neutral"
           href={`/${lang}/conta/kp/`}
           aria-label={t('Karaca Points: ver regras e estado do programa', 'Karaca Points: view program rules and status')}
         >
           <span>Karaca Points</span>
-        </a>
+        </Link>
       )}
 
       <div className="member-disclosure">
@@ -652,51 +657,51 @@ export function AccountAccess() {
           >
             <ul className="member-disclosure-list">
               <li>
-                <a href={`/${lang}/conta/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/`} onClick={() => setMenuOpen(false)}>
                   {t('Painel do jogador', 'Player dashboard')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={`/${lang}/conta/radar/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/radar/`} onClick={() => setMenuOpen(false)}>
                   {t('Seu Radar', 'Your Radar')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={`/${lang}/conta/mochila/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/mochila/`} onClick={() => setMenuOpen(false)}>
                   {t('Mochila', 'Backpack')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={`/${lang}/conta/interesses/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/interesses/`} onClick={() => setMenuOpen(false)}>
                   {t('Interesses', 'Interests')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={`/${lang}/conta/exploracao/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/exploracao/`} onClick={() => setMenuOpen(false)}>
                   {t('Exploração', 'Exploration')}
-                </a>
+                </Link>
               </li>
               <li className="member-disclosure-divider" role="separator" aria-hidden="true" />
               <li>
-                <a href={`/${lang}/conta/kp/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/kp/`} onClick={() => setMenuOpen(false)}>
                   Karaca Points
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={`/${lang}/conta/carteira/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/carteira/`} onClick={() => setMenuOpen(false)}>
                   {t('Carteira', 'Wallet')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={`/${lang}/conta/missoes/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/missoes/`} onClick={() => setMenuOpen(false)}>
                   {t('Missões oficiais', 'Official missions')}
-                </a>
+                </Link>
               </li>
               <li className="member-disclosure-divider" role="separator" aria-hidden="true" />
               <li>
-                <a href={`/${lang}/conta/perfil/`} onClick={() => setMenuOpen(false)}>
+                <Link href={`/${lang}/conta/perfil/`} onClick={() => setMenuOpen(false)}>
                   {t('Perfil', 'Profile')}
-                </a>
+                </Link>
               </li>
               <li>
                 <button
@@ -873,7 +878,7 @@ export function OnboardingForm() {
     return (
       <>
         <p>{t('Seu espaço do jogador está pronto.', 'Your player space is ready.')}</p>
-        <a
+        <Link
           className="button"
           href={`/${lang}/conta/`}
           onClick={() => {
@@ -881,7 +886,7 @@ export function OnboardingForm() {
           }}
         >
           {t('Abrir meu painel', 'Open my dashboard')}
-        </a>
+        </Link>
       </>
     );
   }
@@ -974,13 +979,13 @@ export function OnboardingForm() {
           <input type="checkbox" required checked={terms} onChange={(e) => setTerms(e.target.checked)} />
           <span>
             {t('Li e aceito os', 'I accept the')}{' '}
-            <a href={`/${lang}/termos/`} target="_blank" rel="noopener noreferrer">
+            <Link href={`/${lang}/termos/`} target="_blank" rel="noopener noreferrer">
               {t('Termos de uso', 'Terms of use')}
-            </a>{' '}
+            </Link>{' '}
             {t('e li a', 'and have read the')}{' '}
-            <a href={`/${lang}/privacidade/`} target="_blank" rel="noopener noreferrer">
+            <Link href={`/${lang}/privacidade/`} target="_blank" rel="noopener noreferrer">
               {t('Privacidade', 'Privacy notice')}
-            </a>
+            </Link>
             .
           </span>
         </label>
@@ -1105,12 +1110,12 @@ export function AccountWallet() {
         <div className="notice">
           <p>{MEMBER_MESSAGES.kp_disabled[lang === 'pt' ? 0 : 1]}</p>
           <div className="account-actions">
-            <a className="button secondary" href={`/${lang}/conta/kp/`}>
+            <Link className="button secondary" href={`/${lang}/conta/kp/`}>
               {t('Ver regras KP', 'View KP rules')}
-            </a>
-            <a className="button secondary" href={`/${lang}/conta/radar/`}>
+            </Link>
+            <Link className="button secondary" href={`/${lang}/conta/radar/`}>
               {t('Abrir meu Radar', 'Open my Radar')}
-            </a>
+            </Link>
           </div>
         </div>
       ) : (

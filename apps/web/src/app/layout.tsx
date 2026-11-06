@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Oxanium, Space_Grotesk } from "next/font/google";
+import { AccountProvider } from "@/components/account/AccountProvider";
 import { SiteFrame } from "@/components/SiteFrame";
 import { SITE } from "../../content/affiliates";
 import "./globals.css";
@@ -90,7 +91,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${oxanium.variable} ${spaceGrotesk.variable} min-h-screen font-sans`}
       >
-        <SiteFrame>{children}</SiteFrame>
+        <AccountProvider><SiteFrame>{children}</SiteFrame></AccountProvider>
       </body>
     </html>
   );

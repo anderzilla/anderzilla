@@ -1,7 +1,7 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import {
-  AccountProvider,
   savePostLoginIntent,
   useAccount,
 } from "../account/AccountProvider";
@@ -69,9 +69,9 @@ function ArticleMemberBarInner({
               : t("Guardar na mochila", "Save to backpack")}
         </button>
         {account.user && (
-          <a className="button secondary" href={`/${lang}/conta/mochila/`}>
+          <Link className="button secondary" href={`/${lang}/conta/mochila/`}>
             {t("Minha mochila", "My backpack")} →
-          </a>
+          </Link>
         )}
         <AccountAccess />
       </div>
@@ -95,10 +95,10 @@ export function ArticleMemberBar({
   lang: "pt" | "en";
 }) {
   return (
-    <AccountProvider>
+
       <HubProvider initialLang={lang}>
         <ArticleMemberBarInner discoveryId={discoveryId} />
       </HubProvider>
-    </AccountProvider>
+
   );
 }

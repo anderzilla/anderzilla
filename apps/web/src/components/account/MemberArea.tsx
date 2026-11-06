@@ -1,8 +1,8 @@
 "use client";
+import Link from "next/link";
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
 import {
   AccountError,
-  AccountProvider,
   consumePostLoginIntent,
   savePostLoginIntent,
   useAccount,
@@ -15,7 +15,9 @@ import {
   AccountWallet,
   MEMBER_MESSAGES,
 } from "./AccountUI";
-import { OfficialMissions } from "./OfficialMissions";
+import dynamic from "next/dynamic";
+
+const OfficialMissions = dynamic(() => import("./OfficialMissions").then(m => m.OfficialMissions), { ssr: false, loading: () => <div className="account-loader" aria-busy="true" /> });
 import { HubProvider, useHub } from "../hub/HubProvider";
 import { Header, Footer } from "../hub/Hub";
 import { DetailDialog, Ghost, Icon } from "../hub/Primitives";
@@ -204,14 +206,14 @@ function MemberSubnav({
       aria-label={t("Navegação da conta", "Account navigation")}
     >
       {navItems.map((item) => (
-        <a
+        <Link
           key={item.key}
           href={item.href}
           className="member-subnav-link"
           aria-current={activeKey === item.key ? "page" : undefined}
         >
           {item.label}
-        </a>
+        </Link>
       ))}
     </nav>
   );
@@ -241,7 +243,7 @@ function DashboardView() {
     return () => {
       active = false;
     };
-  }, [a.status, a.user, a.request, reload]);
+  }, [a.status, a.user?.id, a.request, reload]);
 
   const msg = (key: string) => memberMsg(key, lang);
   const name =
@@ -261,11 +263,11 @@ function DashboardView() {
           </h1>
         </div>
         <div className="member-quick-links">
-          <a href={`/${lang}/conta/perfil/`}>{t("Perfil", "Profile")}</a>
+          <Link href={`/${lang}/conta/perfil/`}>{t("Perfil", "Profile")}</Link>
           <span aria-hidden="true">·</span>
-          <a href={`/${lang}/conta/kp/`}>{t("Regras KP", "KP Rules")}</a>
+          <Link href={`/${lang}/conta/kp/`}>{t("Regras KP", "KP Rules")}</Link>
           <span aria-hidden="true">·</span>
-          <a href={`/${lang}/transparencia/`}>{t("Ajuda", "Help")}</a>
+          <Link href={`/${lang}/transparencia/`}>{t("Ajuda", "Help")}</Link>
         </div>
       </div>
 
@@ -301,23 +303,23 @@ function DashboardView() {
               <div>
                 <h2>{t("Seu Radar", "Your Radar")}</h2>
               </div>
-              <a className="button secondary" href={`/${lang}/conta/radar/`}>
+              <Link className="button secondary" href={`/${lang}/conta/radar/`}>
                 {t("Abrir Seu Radar", "Open Your Radar")} →
-              </a>
+              </Link>
             </div>
             {data.radar.declaredInterests.length === 0 ? (
               <div className="member-empty-box">
                 <p>{msg("interests_empty")}</p>
-                <a className="button" href={`/${lang}/conta/interesses/`}>
+                <Link className="button" href={`/${lang}/conta/interesses/`}>
                   {t("Escolher interesses", "Choose interests")}
-                </a>
+                </Link>
               </div>
             ) : data.radar.items.length === 0 ? (
               <div className="member-empty-box">
                 <p>{msg("radar_empty")}</p>
-                <a className="button secondary" href={`/${lang}/radar/`}>
+                <Link className="button secondary" href={`/${lang}/radar/`}>
                   {t("Ver todo o Radar", "See all Radar")}
-                </a>
+                </Link>
               </div>
             ) : (
               <ul className="member-mini-list">
@@ -328,9 +330,9 @@ function DashboardView() {
                         {item.category ? labels[item.category] : "Radar"}
                       </span>
                       <h3>
-                        <a href={itemHref(item, lang)}>
+                        <Link href={itemHref(item, lang)}>
                           {itemTitle(item, lang)}
-                        </a>
+                        </Link>
                       </h3>
                       <p>{itemSummary(item, lang)}</p>
                     </div>
@@ -346,9 +348,9 @@ function DashboardView() {
               <div>
                 <h2>{t("KP e Carteira", "KP & Wallet")}</h2>
               </div>
-              <a className="button secondary" href={`/${lang}/conta/carteira/`}>
+              <Link className="button secondary" href={`/${lang}/conta/carteira/`}>
                 {t("Carteira", "Wallet")}
-              </a>
+              </Link>
             </div>
             {data.wallet.programStatus === "disabled" ? (
               <p className="notice">{msg("kp_disabled")}</p>
@@ -379,25 +381,25 @@ function DashboardView() {
                   {t("Mochila", "Backpack")} ({data.backpack.totalCount})
                 </h2>
               </div>
-              <a className="button secondary" href={`/${lang}/conta/mochila/`}>
+              <Link className="button secondary" href={`/${lang}/conta/mochila/`}>
                 {t("Ver todos", "See all")}
-              </a>
+              </Link>
             </div>
             {data.backpack.items.length === 0 ? (
               <div className="member-empty-box">
                 <p>{msg("backpack_empty")}</p>
-                <a className="button secondary" href={`/${lang}/radar/`}>
+                <Link className="button secondary" href={`/${lang}/radar/`}>
                   {t("Explorar Radar", "Explore Radar")}
-                </a>
+                </Link>
               </div>
             ) : (
               <ul className="member-mini-list">
                 {data.backpack.items.map((item) => (
                   <li key={item.discoveryId} className="member-mini-item">
                     {item.available ? (
-                      <a href={itemHref(item, lang)}>
+                      <Link href={itemHref(item, lang)}>
                         {itemTitle(item, lang)}
-                      </a>
+                      </Link>
                     ) : (
                       <span className="unavailable-text">
                         {msg("content_unavailable")}
@@ -415,9 +417,9 @@ function DashboardView() {
               <div>
                 <h2>{t("Próxima missão", "Next mission")}</h2>
               </div>
-              <a className="button secondary" href={`/${lang}/conta/missoes/`}>
+              <Link className="button secondary" href={`/${lang}/conta/missoes/`}>
                 {t("Missões", "Missions")}
-              </a>
+              </Link>
             </div>
             {data.nextMission.programStatus === "disabled" ? (
               <p className="notice">{msg("kp_disabled")}</p>
@@ -438,7 +440,7 @@ function DashboardView() {
                 <p>
                   <strong>{data.nextMission.mission.awardKP} KP</strong>
                 </p>
-                <a
+                <Link
                   className="button"
                   href={`/${lang}/conta/missoes/detalhe/?id=${encodeURIComponent(data.nextMission.mission.id)}`}
                 >
@@ -447,7 +449,7 @@ function DashboardView() {
                     : data.nextMission.mission.activeAttempt
                       ? t("Retomar missão", "Resume mission")
                       : t("Iniciar missão", "Start mission")}
-                </a>
+                </Link>
               </div>
             )}
           </article>
@@ -458,12 +460,12 @@ function DashboardView() {
               <div>
                 <h2>{t("Exploração", "Exploration")}</h2>
               </div>
-              <a
+              <Link
                 className="button secondary"
                 href={`/${lang}/conta/exploracao/`}
               >
                 {t("Histórico", "History")}
-              </a>
+              </Link>
             </div>
             <p className="member-stat-line">
               <strong>
@@ -481,9 +483,9 @@ function DashboardView() {
                 {data.exploration.recentItems.map((item) => (
                   <li key={item.discoveryId} className="member-mini-item">
                     {item.available ? (
-                      <a href={itemHref(item, lang)}>
+                      <Link href={itemHref(item, lang)}>
                         {itemTitle(item, lang)}
-                      </a>
+                      </Link>
                     ) : (
                       <span className="unavailable-text">
                         {msg("content_unavailable")}
@@ -501,12 +503,12 @@ function DashboardView() {
               <div>
                 <h2>{t("Seus interesses", "Your interests")}</h2>
               </div>
-              <a
+              <Link
                 className="button secondary"
                 href={`/${lang}/conta/interesses/`}
               >
                 {t("Editar", "Edit")}
-              </a>
+              </Link>
             </div>
             {data.interests.items.length === 0 ? (
               <p className="notice">{msg("interests_empty")}</p>
@@ -568,7 +570,7 @@ function MemberRadarView() {
         setLoading(false);
       }
     },
-    [a.status, a.user, a.request, tempCategory, query],
+    [a.status, a.user?.id, a.request, tempCategory, query],
   );
 
   useEffect(() => {
@@ -591,12 +593,12 @@ function MemberRadarView() {
           </p>
         </div>
         <div className="member-quick-links">
-          <a className="button secondary" href={`/${lang}/conta/interesses/`}>
+          <Link className="button secondary" href={`/${lang}/conta/interesses/`}>
             {t("Editar interesses salvos", "Edit saved interests")}
-          </a>
-          <a className="button secondary" href={`/${lang}/radar/`}>
+          </Link>
+          <Link className="button secondary" href={`/${lang}/radar/`}>
             {t("Radar completo", "Full Radar")}
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -664,12 +666,12 @@ function MemberRadarView() {
           <h2>{t("Personalize seu Radar", "Personalize your Radar")}</h2>
           <p>{msg("interests_empty")}</p>
           <div className="account-actions">
-            <a className="button" href={`/${lang}/conta/interesses/`}>
+            <Link className="button" href={`/${lang}/conta/interesses/`}>
               {t("Escolher interesses", "Choose interests")}
-            </a>
-            <a className="button secondary" href={`/${lang}/radar/`}>
+            </Link>
+            <Link className="button secondary" href={`/${lang}/radar/`}>
               {t("Explorar todas as notícias", "Explore all stories")}
-            </a>
+            </Link>
           </div>
         </div>
       ) : items.length === 0 ? (
@@ -699,9 +701,9 @@ function MemberRadarView() {
                       {item.category ? labels[item.category] : "Radar"}
                     </span>
                     <h3>
-                      <a href={itemHref(item, lang)}>
+                      <Link href={itemHref(item, lang)}>
                         {itemTitle(item, lang)}
-                      </a>
+                      </Link>
                     </h3>
                     <p>{itemSummary(item, lang)}</p>
                     <small>
@@ -779,7 +781,7 @@ function BackpackView() {
         setLoading(false);
       }
     },
-    [a.status, a.user, a.request, categoryFilter, query],
+    [a.status, a.user?.id, a.request, categoryFilter, query],
   );
 
   useEffect(() => {
@@ -960,9 +962,9 @@ function BackpackView() {
       ) : items.length === 0 ? (
         <div className="member-block-card">
           <p>{msg("backpack_empty")}</p>
-          <a className="button" href={`/${lang}/radar/`}>
+          <Link className="button" href={`/${lang}/radar/`}>
             {t("Explorar o Radar", "Explore the Radar")}
-          </a>
+          </Link>
         </div>
       ) : (
         <>
@@ -999,9 +1001,9 @@ function BackpackView() {
                           {item.category ? labels[item.category] : "Radar"}
                         </span>
                         <h3>
-                          <a href={itemHref(item, lang)}>
+                          <Link href={itemHref(item, lang)}>
                             {itemTitle(item, lang)}
-                          </a>
+                          </Link>
                         </h3>
                         <p>{itemSummary(item, lang)}</p>
                         <small>
@@ -1079,7 +1081,7 @@ function InterestsView() {
     } finally {
       setLoading(false);
     }
-  }, [a.status, a.user, a.request]);
+  }, [a.status, a.user?.id, a.request]);
 
   useEffect(() => {
     void loadInterests();
@@ -1230,9 +1232,9 @@ function InterestsView() {
             >
               {t("Cancelar", "Cancel")}
             </button>
-            <a className="button secondary" href={`/${lang}/conta/radar/`}>
+            <Link className="button secondary" href={`/${lang}/conta/radar/`}>
               {t("Ver Seu Radar →", "View Your Radar →")}
-            </a>
+            </Link>
           </div>
         </div>
       )}
@@ -1282,7 +1284,7 @@ function ExplorationView() {
         setLoading(false);
       }
     },
-    [a.status, a.user, a.request],
+    [a.status, a.user?.id, a.request],
   );
 
   useEffect(() => {
@@ -1393,9 +1395,9 @@ function ExplorationView() {
       ) : items.length === 0 ? (
         <div className="member-block-card">
           <p>{msg("exploration_empty")}</p>
-          <a className="button" href={`/${lang}/radar/`}>
+          <Link className="button" href={`/${lang}/radar/`}>
             {t("Explorar o Radar", "Explore the Radar")}
-          </a>
+          </Link>
         </div>
       ) : (
         <>
@@ -1409,9 +1411,9 @@ function ExplorationView() {
                         {item.category ? labels[item.category] : "Radar"}
                       </span>
                       <h3>
-                        <a href={itemHref(item, lang)}>
+                        <Link href={itemHref(item, lang)}>
                           {itemTitle(item, lang)}
-                        </a>
+                        </Link>
                       </h3>
                       <p>{itemSummary(item, lang)}</p>
                       <small>
@@ -1480,12 +1482,12 @@ function KPProgramView() {
           </p>
         </div>
         <div className="member-quick-links">
-          <a className="button" href={`/${lang}/conta/carteira/`}>
+          <Link className="button" href={`/${lang}/conta/carteira/`}>
             {t("Abrir Carteira", "Open Wallet")}
-          </a>
-          <a className="button secondary" href={`/${lang}/conta/missoes/`}>
+          </Link>
+          <Link className="button secondary" href={`/${lang}/conta/missoes/`}>
             {t("Missões oficiais", "Official missions")}
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -1592,7 +1594,7 @@ function WalletDetailView() {
         setLoading(false);
       }
     },
-    [a.status, a.user, a.request, reasonFilter],
+    [a.status, a.user?.id, a.request, reasonFilter],
   );
 
   useEffect(() => {
@@ -1608,9 +1610,9 @@ function WalletDetailView() {
             {t("Carteira e Extrato KP", "KP Wallet & Ledger")}
           </h1>
         </div>
-        <a className="button secondary" href={`/${lang}/conta/missoes/`}>
+        <Link className="button secondary" href={`/${lang}/conta/missoes/`}>
           {t("Missões oficiais", "Official missions")} →
-        </a>
+        </Link>
       </div>
 
       <AccountWallet />
@@ -1801,9 +1803,9 @@ function MemberAreaContent({
                   ? t("Completar cadastro", "Complete registration")
                   : t("Entrar na conta", "Sign in to account")}
               </button>
-              <a className="button secondary" href={`/${lang}/radar/`}>
+              <Link className="button secondary" href={`/${lang}/radar/`}>
                 {t("Voltar ao Radar público", "Back to public Radar")}
-              </a>
+              </Link>
             </div>
             <AccountFeedback />
           </div>
@@ -1844,10 +1846,10 @@ export function MemberArea({
   missionId?: string;
 }) {
   return (
-    <AccountProvider>
+
       <HubProvider initialLang={lang}>
         <MemberAreaContent view={view} missionId={missionId} />
       </HubProvider>
-    </AccountProvider>
+
   );
 }

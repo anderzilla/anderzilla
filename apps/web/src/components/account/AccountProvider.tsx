@@ -1,5 +1,6 @@
 "use client";
 import {ClerkProvider, useAuth, useClerk} from '@clerk/react';
+import {usePathname, useRouter} from 'next/navigation';
 import {ptBR, enUS} from '@clerk/localizations';
 import {createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode} from 'react';
 
@@ -282,6 +283,8 @@ function getSyntheticLoopbackToken(): string | null {
 }
 
 function useAccountState(auth: AuthBridge) {
+  const pathname = usePathname();
+  const router = useRouter();
   const authRef = useRef(auth);
   authRef.current = auth;
 
@@ -317,6 +320,8 @@ function useAccountState(auth: AuthBridge) {
   const [pendingIntentConfirmation, setPendingIntentConfirmation] = useState<PostLoginIntent | null>(null);
 
   const userRef = useRef<AccountUser | null>(null);
+  const profileCheckedAt = useRef(0);
+  const profileInFlight = useRef<{epoch: number; promise: Promise<AccountUser | null>} | null>(null);
   const commitUser = useCallback((value: AccountUser | null) => {
     userRef.current = value;
     setUser(value);
@@ -329,6 +334,8 @@ function useAccountState(auth: AuthBridge) {
   const clearPrivateState = useCallback((broadcast = false) => {
     const nextEpoch = sessionEpochRef.current + 1;
     sessionEpochRef.current = nextEpoch;
+    profileCheckedAt.current = 0;
+    profileInFlight.current = null;
     setSessionEpoch(nextEpoch);
     for (const c of controllersRef.current) {
       try {
@@ -462,11 +469,12 @@ function useAccountState(auth: AuthBridge) {
     setWalletStatus('ready');
   }, []);
 
-  const refresh = useCallback(async () => {
+  const fetchProfile = useCallback(async () => {
     const startEpoch = sessionEpochRef.current;
-    setProfileStatus('loading');
+    if (!userRef.current) setProfileStatus('loading');
     for (let attempt = 0; attempt < 4; attempt++) {
       try {
+        if (sessionEpochRef.current !== startEpoch) return null;
         if (attempt > 0) {
           try {
             await request('/api/account/ready');
@@ -480,20 +488,26 @@ function useAccountState(auth: AuthBridge) {
           clearPrivateState(true);
         }
         commitUser(u);
+        if (u && authRef.current.signedIn) {
+          try { localStorage.setItem('anderzilla-auth-resume', '1'); } catch {}
+        }
         setOnboardingRequired(data.onboardingRequired === true);
         if (data.wallet) {
           applyWalletSnapshot(data.wallet);
         }
         setProfileStatus('ready');
+        profileCheckedAt.current = Date.now();
         return u;
       } catch (e) {
         if (sessionEpochRef.current !== startEpoch) return null;
         if (e instanceof AccountError && e.code === 'session_invalidated') return null;
         if (e instanceof AccountError && ['temporarily_unavailable', 'network_error'].includes(e.code) && attempt < 3) {
-          setProfileStatus('waking');
+          if (!userRef.current) setProfileStatus('waking');
           await new Promise((r) => setTimeout(r, 2500));
           continue;
         }
+        if (userRef.current && e instanceof AccountError &&
+            ['temporarily_unavailable', 'network_error', 'offline'].includes(e.code)) throw e;
         commitUser(null);
         setOnboardingRequired(false);
         if (e instanceof AccountError && ['authentication_required', 'session_expired'].includes(e.code)) {
@@ -507,7 +521,18 @@ function useAccountState(auth: AuthBridge) {
     return null;
   }, [request, commitUser, clearPrivateState, applyWalletSnapshot]);
 
-  const reconnect = useCallback(async () => {
+  const refresh = useCallback(() => {
+    const epoch = sessionEpochRef.current;
+    const running = profileInFlight.current;
+    if (running?.epoch === epoch) return running.promise;
+    const promise = fetchProfile().finally(() => {
+      if (profileInFlight.current?.promise === promise) profileInFlight.current = null;
+    });
+    profileInFlight.current = {epoch, promise};
+    return promise;
+  }, [fetchProfile]);
+
+  const reconnect = useCallback(async (refreshProfile = true) => {
     if (!isApiAvailable()) {
       setStatus('unavailable');
       return;
@@ -526,7 +551,7 @@ function useAccountState(auth: AuthBridge) {
         rewards: Boolean(data.rewards),
         kpProgramState: data.kpProgramState || (data.rewards ? 'active' : 'disabled'),
       });
-      if ((authRef.current.loaded && authRef.current.signedIn) || synth) {
+      if (refreshProfile && ((authRef.current.loaded && authRef.current.signedIn) || synth)) {
         await refresh();
       }
       setStatus('ready');
@@ -537,7 +562,7 @@ function useAccountState(auth: AuthBridge) {
   }, [request, refresh, commitUser]);
 
   useEffect(() => {
-    void reconnect();
+    void reconnect(false);
   }, [reconnect]);
 
   // Multi-tab BroadcastChannel + bfcache (pageshow) + visibilitychange revalidation
@@ -572,7 +597,9 @@ function useAccountState(auth: AuthBridge) {
       if (document.visibilityState === 'visible') {
         const synth = Boolean(getSyntheticLoopbackToken());
         if ((authRef.current.loaded && authRef.current.signedIn) || synth) {
-          void refresh().catch(() => {});
+          if (!logoutPendingLocalRef.current && Date.now() - profileCheckedAt.current >= 60_000) {
+            void refresh().catch(() => {});
+          }
         } else if (userRef.current) {
           clearPrivateState(false);
         }
@@ -644,16 +671,19 @@ function useAccountState(auth: AuthBridge) {
     try {
       const url = new URL(window.location.href);
       const mode = url.searchParams.get('account');
-      if (mode === 'register' || mode === 'complete' || mode === 'login') {
+      if (!userRef.current && (mode === 'register' || mode === 'complete' || mode === 'login')) {
         setScreen(mode === 'register' ? 'register' : 'login');
       }
       const previousEntry = sessionStorage.getItem('anderzilla-auth-entry');
       if (previousEntry === 'adult' || previousEntry === 'returning') {
         setEntry(previousEntry);
         setAuthEnabled(true);
+      } else if (localStorage.getItem('anderzilla-auth-resume') === '1') {
+        setEntry('returning');
+        setAuthEnabled(true);
       }
     } catch {}
-  }, []);
+  }, [pathname]);
 
   function enableAuth(kind: 'adult' | 'returning') {
     logoutPendingLocalRef.current = false;
@@ -872,10 +902,11 @@ function useAccountState(auth: AuthBridge) {
         setDeletionPending(false);
         try {
           sessionStorage.removeItem('anderzilla-synthetic-test-token');
+          sessionStorage.removeItem('anderzilla-auth-entry');
+          localStorage.removeItem('anderzilla-auth-resume');
           if (typeof window !== 'undefined') window.__ANDERZILLA_SYNTHETIC_TOKEN__ = null;
         } catch {}
         try {
-          await request('/api/account/logout', 'POST', {}).catch(() => {});
           await authRef.current.signOut();
           setLogoutUnconfirmed(false);
           setNotice('signed_out');
@@ -904,6 +935,8 @@ function useAccountState(auth: AuthBridge) {
         logoutPendingLocalRef.current = true;
         try {
           sessionStorage.removeItem('anderzilla-synthetic-test-token');
+          sessionStorage.removeItem('anderzilla-auth-entry');
+          localStorage.removeItem('anderzilla-auth-resume');
           if (typeof window !== 'undefined') window.__ANDERZILLA_SYNTHETIC_TOKEN__ = null;
           await authRef.current.signOut();
         } catch {}
@@ -931,11 +964,11 @@ function useAccountState(auth: AuthBridge) {
           if (intent.type === 'save_article' && intent.discoveryId) {
             setPendingIntentConfirmation(intent);
           } else if (intent.path && typeof window !== 'undefined' && window.location.pathname !== intent.path) {
-            window.location.assign(intent.path);
+            router.push(intent.path);
           }
         } else if (typeof window !== 'undefined' && !window.location.pathname.includes('/conta')) {
           const lang = window.location.pathname.startsWith('/en') ? 'en' : 'pt';
-          window.location.assign(`/${lang}/conta/`);
+          router.push(`/${lang}/conta/`);
         }
       }),
     exportData: () =>
@@ -988,10 +1021,7 @@ function ClerkBridge({onChange}: {onChange: (auth: AuthBridge) => void}) {
 export function AccountProvider({children}: {children: ReactNode}) {
   const [auth, setAuth] = useState<AuthBridge>(signedOut);
   const value = useAccountState(auth);
-  const [english, setEnglish] = useState(false);
-  useEffect(() => {
-    setEnglish(/^\/en(\/|$)/.test(window.location.pathname));
-  }, []);
+  const english = /^\/en(\/|$)/.test(usePathname() || '');
   const content = <Context.Provider value={value}>{children}</Context.Provider>;
   return value.authEnabled && clerkKey ? (
     <ClerkProvider

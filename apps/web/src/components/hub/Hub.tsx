@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, type CSSProperties } from "react";
 import { BrandWordmark } from "../BrandAssets";
 import { HubProvider, useHub } from "./HubProvider";
@@ -38,7 +39,7 @@ import { CMSSections } from "./CMSSections";
 import { HeroCarousel } from "./HeroCarousel";
 import { CommerceHome } from "../commerce/CommerceHome";
 import { flag } from "../commerce/data";
-import { AccountProvider, useAccount } from "../account/AccountProvider";
+import { useAccount } from "../account/AccountProvider";
 import {
   AccountAccess,
   AccountDialog,
@@ -71,7 +72,7 @@ export function Header() {
         </div>
       </div>
       <header>
-        <a className="brand" href={`/${lang}/#home`}>
+        <Link className="brand" href={`/${lang}/#home`}>
           <div>
             <BrandWordmark />
             <small>
@@ -81,23 +82,23 @@ export function Header() {
               )}
             </small>
           </div>
-        </a>
+        </Link>
         <nav aria-label={t("Principal", "Main")}>
           {links.map(([r, label]) => (
-            <a
+            <Link
               href={`/${lang}/#${r}`}
               key={r}
               aria-current={route === r ? "page" : undefined}
             >
               {label}
-            </a>
+            </Link>
           ))}
-          <a href={`/${lang}/?category=ia#home`}>{t("IA", "AI")}</a>
-          <a href={`/${lang}/?category=games#home`}>Games</a>
-          <a href={`/${lang}/?category=gadgets#home`}>Gadgets</a>
-          <a href={`/${lang}/stackpick/`}>StackPick</a>
-          <a href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</a>
-          <a href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</a>
+          <Link href={`/${lang}/?category=ia#home`}>{t("IA", "AI")}</Link>
+          <Link href={`/${lang}/?category=games#home`}>Games</Link>
+          <Link href={`/${lang}/?category=gadgets#home`}>Gadgets</Link>
+          <Link href={`/${lang}/stackpick/`}>StackPick</Link>
+          <Link href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</Link>
+          <Link href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</Link>
         </nav>
         <div className="actions">
           <AccountAccess />
@@ -111,28 +112,28 @@ export function Footer() {
   const { t, lang } = useHub();
   return (
     <footer>
-      <a className="brand-footer" href={`/${lang}/#home`}>
+      <Link className="brand-footer" href={`/${lang}/#home`}>
         <BrandWordmark />
-      </a>
+      </Link>
       <p>
         {t(
           "Um esconderijo para quem gosta de games e de fuçar no futuro.",
           "A hideout for people who love games and tinkering with the future.",
         )}
       </p>
-      <a href={`/${lang}/#channels`}>{t("Canais", "Channels")}</a>
-      <a href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</a>
+      <Link href={`/${lang}/#channels`}>{t("Canais", "Channels")}</Link>
+      <Link href={`/${lang}/patrocine/`}>{t("Patrocine", "Sponsor")}</Link>
       {flag("showPointsStore", "global") && (
-        <a href={`/${lang}/#store`}>Store Points</a>
+        <Link href={`/${lang}/#store`}>Store Points</Link>
       )}
-      <a href={`/${lang}/stackpick/`}>StackPick</a>
-      <a href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</a>
-      <a href={`/${lang}/transparencia/`}>
+      <Link href={`/${lang}/stackpick/`}>StackPick</Link>
+      <Link href={`/${lang}/produtos/`}>{t("Produtos", "Products")}</Link>
+      <Link href={`/${lang}/transparencia/`}>
         {t("Transparência", "Transparency")}
-      </a>
-      <a href={`/${lang}/forgekit/`}>ForgeKit</a>
-      <a href="/privacy/">{t("Privacidade", "Privacy")}</a>
-      <a href="/terms/">{t("Termos", "Terms")}</a>
+      </Link>
+      <Link href={`/${lang}/forgekit/`}>ForgeKit</Link>
+      <Link href="/privacy/">{t("Privacidade", "Privacy")}</Link>
+      <Link href="/terms/">{t("Termos", "Terms")}</Link>
       <small>
         {t(
           "Curadoria editorial com fontes, créditos e data de apuração. Mochila, interesses, histórico e Karaca Points oficiais pertencem à conta autenticada e verificada.",
@@ -320,10 +321,10 @@ function Home() {
                   "Official missions with Karaca Points require a verified account and server validation.",
                 )}
               </p>
-              <a className="button" href={`/${lang}/conta/missoes/`}>
+              <Link className="button" href={`/${lang}/conta/missoes/`}>
                 {t("Ver missões oficiais", "View official missions")}
                 <Icon name="arrow" />
-              </a>
+              </Link>
             </section>
             <section className="sidebar-panel">
               <h2>{t("O papo continua", "Keep the conversation going")}</h2>
@@ -354,9 +355,9 @@ function Home() {
                   "Your backpack keeps what is worth revisiting in your account. Open, save, compare and come back anytime.",
                 )}
               </p>
-              <a href={`/${lang}/conta/mochila/`}>
+              <Link href={`/${lang}/conta/mochila/`}>
                 {t("Abrir minha mochila →", "Open my backpack →")}
-              </a>
+              </Link>
             </section>
           </aside>
         </div>
@@ -376,10 +377,10 @@ function Home() {
               )}
             </p>
           </div>
-          <a className="button secondary" href={`/${lang}/conta/interesses/`}>
+          <Link className="button secondary" href={`/${lang}/conta/interesses/`}>
             {t("Personalizar meu radar", "Personalize my radar")}
             <Icon name="arrow" />
-          </a>
+          </Link>
         </section>
       </div>
     </>
@@ -420,9 +421,9 @@ function SavedPage() {
               "Saved items are synced to your verified account, without relying on local browser storage.",
             )}
           </p>
-          <a className="button" href={`/${lang}/conta/mochila/`}>
+          <Link className="button" href={`/${lang}/conta/mochila/`}>
             {t("Ir para Minha Mochila", "Go to My Backpack")}
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="feed saved-feed">
@@ -443,9 +444,9 @@ function SavedPage() {
                   "Save stories and discoveries to read later at your own pace.",
                 )}
               </p>
-              <a className="button" href={`/${lang}/radar/`}>
+              <Link className="button" href={`/${lang}/radar/`}>
                 {t("Explorar o Radar", "Explore the Radar")}
-              </a>
+              </Link>
             </div>
           )}
         </div>
@@ -495,10 +496,10 @@ export default function Hub({
   initialLang?: "pt" | "en";
 }) {
   return (
-    <AccountProvider>
+
       <HubProvider initialLang={initialLang}>
         <HubContent />
       </HubProvider>
-    </AccountProvider>
+
   );
 }

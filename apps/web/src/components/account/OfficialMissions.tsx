@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 import { useAccount, AccountError } from "./AccountProvider";
 import { useHub } from "../hub/HubProvider";
@@ -426,12 +427,12 @@ export function OfficialMissions({
                         : t("Iniciar missão", "Start mission")}
                     </button>
                     {!focusMissionId && (
-                      <a
+                      <Link
                         className="button secondary"
                         href={`/${lang}/conta/missoes/detalhe/?id=${encodeURIComponent(m.id)}`}
                       >
                         {t("Detalhes", "Details")}
-                      </a>
+                      </Link>
                     )}
                   </div>
                 )}

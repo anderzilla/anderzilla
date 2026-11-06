@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import {
   useAccount,
   AccountError,
@@ -41,6 +42,7 @@ const LEGACY_HASH_REDIRECTS: Record<string, string> = {
 };
 
 function useHubState(initialLang: Language) {
+  const router = useRouter();
   const [lang, setLang] = useState<Language>(initialLang);
   const [route, setRoute] = useState<Route>("home");
   const account = useAccount();
@@ -136,12 +138,12 @@ function useHubState(initialLang: Language) {
       parts[0] = value;
       url.pathname = `/${parts.join("/")}/`;
       url.searchParams.delete("lang");
-      window.location.assign(url.toString());
+      router.push(url.pathname + url.search + url.hash);
       return;
     }
     url.searchParams.set("lang", value);
     window.history.replaceState(null, "", url);
-  }, []);
+  }, [router]);
 
   const changeLanguage = useCallback(
     async (value: Language, forceWithoutSave = false) => {
@@ -321,14 +323,14 @@ function useHubState(initialLang: Language) {
   const claim = useCallback(
     (_id: Mission) => {
       if (!requireMemberOrPrompt(`/${lang}/conta/missoes/`)) return;
-      window.location.assign(`/${lang}/conta/missoes/`);
+      router.push(`/${lang}/conta/missoes/`);
     },
     [lang, requireMemberOrPrompt],
   );
 
   const completeQuiz = useCallback(() => {
     if (!requireMemberOrPrompt(`/${lang}/conta/missoes/`)) return;
-    window.location.assign(`/${lang}/conta/missoes/`);
+    router.push(`/${lang}/conta/missoes/`);
   }, [lang, requireMemberOrPrompt]);
 
   const reset = useCallback(async () => {
