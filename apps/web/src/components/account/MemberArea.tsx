@@ -227,7 +227,7 @@ function DashboardView() {
   const [reload, setReload] = useState(0);
 
   useEffect(() => {
-    if (a.status !== "ready" || !a.user) return;
+    if (!a.user) return;
     let active = true;
     setState("loading");
     void a
@@ -243,7 +243,7 @@ function DashboardView() {
     return () => {
       active = false;
     };
-  }, [a.status, a.user?.id, a.request, reload]);
+  }, [a.user?.id, a.request, reload]);
 
   const msg = (key: string) => memberMsg(key, lang);
   const name =
@@ -544,7 +544,7 @@ function MemberRadarView() {
 
   const loadRadar = useCallback(
     async (cursor?: string | null, append = false) => {
-      if (a.status !== "ready" || !a.user) return;
+      if (!a.user) return;
       if (!append) setLoading(true);
       setError(false);
       try {
@@ -570,7 +570,7 @@ function MemberRadarView() {
         setLoading(false);
       }
     },
-    [a.status, a.user?.id, a.request, tempCategory, query],
+    [a.user?.id, a.request, tempCategory, query],
   );
 
   useEffect(() => {
@@ -757,7 +757,7 @@ function BackpackView() {
 
   const loadBackpack = useCallback(
     async (cursor?: string | null, append = false) => {
-      if (a.status !== "ready" || !a.user) return;
+      if (!a.user) return;
       if (!append) setLoading(true);
       setError(false);
       try {
@@ -781,7 +781,7 @@ function BackpackView() {
         setLoading(false);
       }
     },
-    [a.status, a.user?.id, a.request, categoryFilter, query],
+    [a.user?.id, a.request, categoryFilter, query],
   );
 
   useEffect(() => {
@@ -1064,7 +1064,7 @@ function InterestsView() {
   const [savedBanner, setSavedBanner] = useState(false);
 
   const loadInterests = useCallback(async () => {
-    if (a.status !== "ready" || !a.user) return;
+    if (!a.user) return;
     setLoading(true);
     setConflict(false);
     try {
@@ -1081,7 +1081,7 @@ function InterestsView() {
     } finally {
       setLoading(false);
     }
-  }, [a.status, a.user?.id, a.request]);
+  }, [a.user?.id, a.request]);
 
   useEffect(() => {
     void loadInterests();
@@ -1255,7 +1255,7 @@ function ExplorationView() {
 
   const loadExploration = useCallback(
     async (cursor?: string | null, append = false) => {
-      if (a.status !== "ready" || !a.user) return;
+      if (!a.user) return;
       if (!append) setLoading(true);
       try {
         const params = new URLSearchParams();
@@ -1284,7 +1284,7 @@ function ExplorationView() {
         setLoading(false);
       }
     },
-    [a.status, a.user?.id, a.request],
+    [a.user?.id, a.request],
   );
 
   useEffect(() => {
@@ -1556,7 +1556,7 @@ function WalletDetailView() {
 
   const loadLedger = useCallback(
     async (cursor?: string | null, append = false) => {
-      if (a.status !== "ready" || !a.user) return;
+      if (!a.user) return;
       if (!append) setLoading(true);
       try {
         const params = new URLSearchParams();
@@ -1594,7 +1594,7 @@ function WalletDetailView() {
         setLoading(false);
       }
     },
-    [a.status, a.user?.id, a.request, reasonFilter],
+    [a.user?.id, a.request, reasonFilter],
   );
 
   useEffect(() => {
@@ -1727,7 +1727,7 @@ function MemberAreaContent({
   }, [missionId]);
 
   useEffect(() => {
-    if (account.status !== "ready" || !account.user) return;
+    if (!account.user) return;
     const intent = consumePostLoginIntent();
     if (
       intent &&
@@ -1738,7 +1738,7 @@ function MemberAreaContent({
     ) {
       window.location.assign(intent.path);
     }
-  }, [account.status, account.user]);
+  }, [account.user]);
 
   const msg = (key: string) => memberMsg(key, lang);
 
@@ -1757,10 +1757,10 @@ function MemberAreaContent({
             <span className="account-spinner" aria-hidden="true" />
             <p>{t("Verificando sua sessão…", "Verifying your session…")}</p>
           </div>
-        ) : !account.user && account.profileStatus === "waking" ? (
+        ) : !account.user && (account.profileStatus === "waking" || account.profileStatus === "error" || account.status === "unavailable") ? (
           <div className="member-block-card" role="status">
             <h2>{t("Conectando à sua conta", "Connecting to your account")}</h2>
-            <p>{msg("warming")}</p>
+            <p>{msg(account.profileStatus === "error" || account.status === "unavailable" ? "load_failed" : "warming")}</p>
             <button
               className="button secondary"
               onClick={() => void account.reconnect()}
@@ -1768,7 +1768,7 @@ function MemberAreaContent({
               {t("Tentar novamente", "Try again")}
             </button>
           </div>
-        ) : account.status !== "ready" || !account.user ? (
+        ) : !account.user ? (
           <div className="member-block-card member-gate-card">
             <Ghost size={56} />
             <h1>

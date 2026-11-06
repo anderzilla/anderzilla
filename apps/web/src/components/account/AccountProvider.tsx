@@ -376,25 +376,26 @@ function useAccountState(auth: AuthBridge) {
   const request = useCallback(
     async (path: string, method = 'GET', body?: unknown, idempotencyKey?: string, extraHeaders?: Record<string, string>) => {
       if (!isApiAvailable()) throw new AccountError('unavailable');
+      const publicRead = method === 'GET' && ['/api/account/capabilities', '/api/account/ready'].includes(path);
       const startEpoch = sessionEpochRef.current;
       const startSubject = authRef.current.subject;
       const startSession = authRef.current.sessionId;
       const startOwner = userRef.current?.id || null;
-      const synthToken = getSyntheticLoopbackToken();
+      const synthToken = publicRead ? null : getSyntheticLoopbackToken();
       let token: string | null = null;
       if (synthToken) {
         token = synthToken;
-      } else if (authRef.current.signedIn && !logoutPendingLocalRef.current) {
+      } else if (!publicRead && authRef.current.signedIn && !logoutPendingLocalRef.current) {
         token = await authRef.current.getToken();
       }
-      if (authRef.current.signedIn && !logoutPendingLocalRef.current && !token && !synthToken) {
+      if (!publicRead && authRef.current.signedIn && !logoutPendingLocalRef.current && !token && !synthToken) {
         throw new AccountError('session_expired', 401);
       }
-      if (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession) {
+      if (!publicRead && (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession)) {
         throw new AccountError('session_invalidated', 499);
       }
       const controller = new AbortController();
-      controllersRef.current.add(controller);
+      if (!publicRead) controllersRef.current.add(controller);
       const timer = setTimeout(() => controller.abort(), 45000);
       try {
         const isBodyMethod = method !== 'GET' && method !== 'OPTIONS';
@@ -412,11 +413,11 @@ function useAccountState(auth: AuthBridge) {
           },
           ...(isBodyMethod ? {body: JSON.stringify(body ?? {})} : {}),
         });
-        if (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession || (startOwner && userRef.current && userRef.current.id !== startOwner)) {
+        if (!publicRead && (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession || (startOwner && userRef.current && userRef.current.id !== startOwner))) {
           throw new AccountError('session_invalidated', 499);
         }
         const data = await response.json().catch(() => ({}));
-        if (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession) {
+        if (!publicRead && (sessionEpochRef.current !== startEpoch || authRef.current.subject !== startSubject || authRef.current.sessionId !== startSession)) {
           throw new AccountError('session_invalidated', 499);
         }
         if (!response.ok) {
@@ -433,12 +434,12 @@ function useAccountState(auth: AuthBridge) {
                       ? 'rate_limited'
                       : 'request_failed';
           // Distinguish account-wide invalidation (401 or account_unavailable) from section-level 403
-          if (response.status === 401 || code === 'authentication_required' || code === 'session_expired') {
+          if (!publicRead && (response.status === 401 || code === 'authentication_required' || code === 'session_expired')) {
             if (userRef.current) {
               clearPrivateState(true);
               setProfileStatus('idle');
             }
-          } else if (code === 'account_unavailable' || code === 'account_suspended' || code === 'account_deleted') {
+          } else if (!publicRead && (code === 'account_unavailable' || code === 'account_suspended' || code === 'account_deleted')) {
             clearPrivateState(true);
             setProfileStatus('blocked');
           }
@@ -448,7 +449,7 @@ function useAccountState(auth: AuthBridge) {
         return data;
       } catch (e) {
         if (e instanceof AccountError) throw e;
-        if ((e as any)?.name === 'AbortError' && sessionEpochRef.current !== startEpoch) {
+        if (!publicRead && ((e as any)?.name === 'AbortError' && sessionEpochRef.current !== startEpoch)) {
           throw new AccountError('session_invalidated', 499);
         }
         throw new AccountError(typeof navigator !== 'undefined' && navigator.onLine === false ? 'offline' : 'network_error');
@@ -557,9 +558,8 @@ function useAccountState(auth: AuthBridge) {
       setStatus('ready');
     } catch {
       setStatus('unavailable');
-      commitUser(null);
     }
-  }, [request, refresh, commitUser]);
+  }, [request, refresh]);
 
   useEffect(() => {
     void reconnect(false);
